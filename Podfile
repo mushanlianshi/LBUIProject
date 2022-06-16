@@ -19,6 +19,7 @@ target 'LBUIProject' do
   pod 'BLTSwiftUIKit'
   pod 'AvoidCrash', '~>2.5.2'
   pod 'CHTCollectionViewWaterfallLayout/ObjC', '= 0.9.10'
+  pod 'JXPagingView/Pager'
 #  pod 'WechatOpenSDK', '1.9.2'
 #  pod 'charts', :git => 'https://github.com/danielgindi/Charts.git', :tag => '3.6.0'
   target 'LBUIProjectTests' do
