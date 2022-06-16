@@ -12,14 +12,17 @@
 #import "CHTCollectionViewWaterfallFooter.h"
 
 #import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
+#import "LBCustomCollectionDecoratorViewLayout.h"
+#import "LBCollectionDecoratorView.h"
+
 
 #define CELL_COUNT 20
 #define CELL_IDENTIFIER @"WaterfallCell"
 #define HEADER_IDENTIFIER @"WaterfallHeader"
 #define FOOTER_IDENTIFIER @"WaterfallFooter"
 
-@interface LBCollectionDecoratoViewController ()<CHTCollectionViewDelegateWaterfallLayout>{
-    CHTCollectionViewWaterfallLayout *layout;
+@interface LBCollectionDecoratoViewController ()<LBCustomCollectionDecoratorViewLayoutDelegate, UICollectionViewDataSource>{
+    LBCustomCollectionDecoratorViewLayout *layout;
 }
 @property (nonatomic, strong) NSArray *cellSizes;
 @property (nonatomic, strong) NSArray *cats;
@@ -32,13 +35,14 @@
 
 - (UICollectionView *)collectionView {
   if (!_collectionView) {
-    layout = [[CHTCollectionViewWaterfallLayout alloc] init];
+    layout = [[LBCustomCollectionDecoratorViewLayout alloc] init];
 
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
 //    layout.headerHeight = 15;
 //    layout.footerHeight = 10;
     layout.minimumColumnSpacing = 20;
     layout.minimumInteritemSpacing = 30;
+      layout.canSectionPin = true;
 
     _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -130,19 +134,22 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  UICollectionReusableView *reusableView = nil;
 
   if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
-    reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+      CHTCollectionViewWaterfallHeader *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                       withReuseIdentifier:HEADER_IDENTIFIER
                                                              forIndexPath:indexPath];
+      reusableView.title = [NSString stringWithFormat:@"header %@",@(indexPath.section)];
+      return  reusableView;
   } else if ([kind isEqualToString:CHTCollectionElementKindSectionFooter]) {
-    reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+      CHTCollectionViewWaterfallFooter *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                       withReuseIdentifier:FOOTER_IDENTIFIER
                                                              forIndexPath:indexPath];
+    reusableView.title = [NSString stringWithFormat:@"footer %@",@(indexPath.section)];
+      return  reusableView;
   }
 
-  return reusableView;
+  return nil;
 }
 
 
@@ -173,6 +180,25 @@
     }
     
     return  100;
+}
+
+
+#pragma custom layout
+- (LBCollectionDecoratorViewLayoutAttributes *)layoutDecoratorViewAttributesInSection:(NSInteger)section{
+    if (section == 2) {
+        LBCollectionDecoratorViewLayoutAttributes *attributes = [[LBCollectionDecoratorViewLayoutAttributes alloc] init];
+        attributes.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.4];
+        attributes.layoutCornerRaduis = 10;
+        return attributes;
+    }
+    return nil;
+}
+
+- (BOOL)layoutPinInSection:(NSInteger)section{
+    if (section == 1) {
+        return true;
+    }
+    return false;
 }
 
 @end

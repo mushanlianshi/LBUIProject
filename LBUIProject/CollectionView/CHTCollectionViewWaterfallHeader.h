@@ -10,4 +10,6 @@
 
 @interface CHTCollectionViewWaterfallHeader : UICollectionReusableView
 
+@property (nonatomic, copy) NSString *title;
+
 @end

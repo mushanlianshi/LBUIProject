@@ -40,6 +40,8 @@
 		4063EF5A285AFC1000335BA2 /* cat2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4063EF56285AFC1000335BA2 /* cat2.jpg */; };
 		4063EF5B285AFC1000335BA2 /* cat3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4063EF57285AFC1000335BA2 /* cat3.jpg */; };
 		4063EF5C285AFC1000335BA2 /* cat4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4063EF58285AFC1000335BA2 /* cat4.jpg */; };
+		4063EF62285B0AA900335BA2 /* LBCollectionDecoratorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF61285B0AA900335BA2 /* LBCollectionDecoratorView.m */; };
+		4063EF65285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF64285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.m */; };
 		40667D7826A5151100027791 /* LBGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40667D7726A5151100027791 /* LBGCDViewController.m */; };
 		40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40667D8126A5585A00027791 /* LBTestGestureView.m */; };
 		4066CF3D269314BF001A323C /* LBSafirController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CF3C269314BF001A323C /* LBSafirController.m */; };
@@ -160,6 +162,10 @@
 		4063EF56285AFC1000335BA2 /* cat2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat2.jpg; sourceTree = "<group>"; };
 		4063EF57285AFC1000335BA2 /* cat3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat3.jpg; sourceTree = "<group>"; };
 		4063EF58285AFC1000335BA2 /* cat4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat4.jpg; sourceTree = "<group>"; };
+		4063EF60285B0AA900335BA2 /* LBCollectionDecoratorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCollectionDecoratorView.h; sourceTree = "<group>"; };
+		4063EF61285B0AA900335BA2 /* LBCollectionDecoratorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBCollectionDecoratorView.m; sourceTree = "<group>"; };
+		4063EF63285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCustomCollectionDecoratorViewLayout.h; sourceTree = "<group>"; };
+		4063EF64285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBCustomCollectionDecoratorViewLayout.m; sourceTree = "<group>"; };
 		40667D7626A5151100027791 /* LBGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBGCDViewController.h; sourceTree = "<group>"; };
 		40667D7726A5151100027791 /* LBGCDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBGCDViewController.m; sourceTree = "<group>"; };
 		40667D8026A5585A00027791 /* LBTestGestureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGestureView.h; sourceTree = "<group>"; };
@@ -500,6 +506,10 @@
 				4063EF49285ADDCC00335BA2 /* CHTCollectionViewWaterfallFooter.m */,
 				4063EF4D285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.h */,
 				4063EF4B285ADDCC00335BA2 /* CHTCollectionViewWaterfallHeader.m */,
+				4063EF60285B0AA900335BA2 /* LBCollectionDecoratorView.h */,
+				4063EF61285B0AA900335BA2 /* LBCollectionDecoratorView.m */,
+				4063EF63285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.h */,
+				4063EF64285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.m */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -1054,9 +1064,11 @@
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
 				4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */,
+				4063EF62285B0AA900335BA2 /* LBCollectionDecoratorView.m in Sources */,
 				40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */,
 				4063EF50285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */,
+				4063EF65285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.m in Sources */,
 				402654272684720A00472F4F /* TestSwift.swift in Sources */,
 				40795CDF2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m in Sources */,
 				4086B7B22845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift in Sources */,

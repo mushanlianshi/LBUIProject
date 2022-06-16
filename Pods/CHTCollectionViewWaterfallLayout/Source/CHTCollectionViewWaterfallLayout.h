@@ -322,4 +322,13 @@ extern NSString *const CHTCollectionElementKindSectionFooter;
  */
 - (CGFloat)itemWidthInSectionAtIndex:(NSInteger)section;
 
+/// Array of arrays. Each array stores item attributes for each section
+@property (nonatomic, strong) NSMutableArray *sectionItemAttributes;
+/// Array to store attributes for all items includes headers, cells, and footers
+@property (nonatomic, strong) NSMutableArray *allItemAttributes;
+/// Dictionary to store section headers' attribute
+@property (nonatomic, strong) NSMutableDictionary *headersAttribute;
+/// Dictionary to store section footers' attribute
+@property (nonatomic, strong) NSMutableDictionary *footersAttribute;
+
 @end
