@@ -1,0 +1,6 @@
+framework module BLTSwiftUIKit {
+  umbrella header "BLTSwiftUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

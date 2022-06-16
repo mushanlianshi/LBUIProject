@@ -1,0 +1,6 @@
+framework module Pods_LBUIProject {
+  umbrella header "Pods-LBUIProject-umbrella.h"
+
+  export *
+  module * { export * }
+}

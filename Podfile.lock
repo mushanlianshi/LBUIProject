@@ -1,0 +1,140 @@
+PODS:
+  - AliyunOSSiOS (2.10.13)
+  - AvoidCrash (2.5.2)
+  - BLTBasicUIKit (0.2.4):
+    - Masonry (~> 1.1.0)
+  - BLTSwiftUIKit (1.1.3):
+    - BLTSwiftUIKit/Extension (= 1.1.3)
+    - BLTSwiftUIKit/ListView (= 1.1.3)
+    - BLTSwiftUIKit/NameSpace (= 1.1.3)
+    - BLTSwiftUIKit/Util (= 1.1.3)
+    - BLTSwiftUIKit/View (= 1.1.3)
+  - BLTSwiftUIKit/Extension (1.1.3):
+    - BLTSwiftUIKit/NameSpace
+    - BLTUIKitProject
+  - BLTSwiftUIKit/ListView (1.1.3):
+    - BLTSwiftUIKit/Extension
+    - BLTSwiftUIKit/NameSpace
+    - BLTUIKitProject
+    - HandyJSON
+    - SnapKit
+  - BLTSwiftUIKit/NameSpace (1.1.3)
+  - BLTSwiftUIKit/Util (1.1.3):
+    - HandyJSON
+  - BLTSwiftUIKit/View (1.1.3):
+    - BLTSwiftUIKit/Extension
+    - BLTSwiftUIKit/ListView
+    - BLTSwiftUIKit/NameSpace
+    - BLTSwiftUIKit/Util
+    - BLTUIKitProject
+    - JXMarqueeView
+    - Kingfisher
+    - SnapKit
+  - BLTUIKitProject (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Alert (= 1.8.2)
+    - BLTUIKitProject/BLTMenu (= 1.8.2)
+    - BLTUIKitProject/BLTTableViewCell (= 1.8.2)
+    - BLTUIKitProject/Category (= 1.8.2)
+    - BLTUIKitProject/Header (= 1.8.2)
+    - BLTUIKitProject/NotificationBarView (= 1.8.2)
+    - BLTUIKitProject/UploadImageKit (= 1.8.2)
+  - BLTUIKitProject/Alert (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+  - BLTUIKitProject/BLTMenu (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/BLTTableViewCell
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+    - Masonry
+  - BLTUIKitProject/BLTTableViewCell (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+    - Masonry
+  - BLTUIKitProject/Category (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Header
+  - BLTUIKitProject/Header (1.8.2):
+    - BLTBasicUIKit
+  - BLTUIKitProject/NotificationBarView (1.8.2):
+    - BLTBasicUIKit
+  - BLTUIKitProject/UploadImageKit (1.8.2):
+    - AliyunOSSiOS
+    - BLTBasicUIKit
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+    - SDWebImage
+    - TZImagePickerController
+  - FaceAware (2.1.0)
+  - HandyJSON (5.0.2)
+  - JXMarqueeView (0.0.9)
+  - Kingfisher (4.10.1)
+  - LookinServer (1.0.6)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MMKV (1.2.10):
+    - MMKVCore (~> 1.2.10)
+  - MMKVCore (1.2.10)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
+  - SnapKit (4.2.0)
+  - TZImagePickerController (3.8.1)
+
+DEPENDENCIES:
+  - AvoidCrash (~> 2.5.2)
+  - BLTBasicUIKit
+  - BLTSwiftUIKit
+  - BLTUIKitProject
+  - FaceAware
+  - LookinServer (= 1.0.6)
+  - Masonry (~> 1.1.0)
+  - MBProgressHUD
+  - MMKV
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AliyunOSSiOS
+    - AvoidCrash
+    - FaceAware
+    - HandyJSON
+    - JXMarqueeView
+    - Kingfisher
+    - LookinServer
+    - Masonry
+    - MBProgressHUD
+    - MMKV
+    - MMKVCore
+    - SDWebImage
+    - SnapKit
+    - TZImagePickerController
+  "ssh://git@47.110.64.20:7999/app/bltuikitspecrepo.git":
+    - BLTBasicUIKit
+    - BLTSwiftUIKit
+    - BLTUIKitProject
+
+SPEC CHECKSUMS:
+  AliyunOSSiOS: 8469b21f375813e0da340d63cbae1dadbfb0f0bf
+  AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
+  BLTBasicUIKit: 1c520f6d376deb32b89498b331ed462a8ec2874e
+  BLTSwiftUIKit: c05694cc4d48f45a4177f36bb71bc225af8e423f
+  BLTUIKitProject: c82d6ef1324a2ed9508f321775d519588c00f53f
+  FaceAware: f1266b8719a1a90da3d763b8cb428554edf0fa61
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  JXMarqueeView: 0058108f80f149b25ff3bc3705c1af348fe7be8f
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  LookinServer: 18155b1e4a08213c236a1dd6b7ca52328a70a1e3
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MMKV: 76033b9ace2006623308910a3afcc0e25eba3140
+  MMKVCore: b00e7a09ec77a1b916aef336eedd3b99ec249978
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  TZImagePickerController: 943511626019431372cf908f24c114521e484f0e
+
+PODFILE CHECKSUM: 695606bff36f520d02a79d8908da30f9ea176701
+
+COCOAPODS: 1.11.2

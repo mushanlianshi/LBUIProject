@@ -1,0 +1,1367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09BF6C6A1885141F37570A04 /* Pods_LBUIProject_LBUIProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */; };
+		400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DEA2695444B00C67D52 /* LBTestClassCacheMethodViewController.m */; };
+		400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */; };
+		400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */; };
+		401E9414272174D600F3BAB2 /* UIViewController+change1.m in Sources */ = {isa = PBXBuildFile; fileRef = 401E9413272174D600F3BAB2 /* UIViewController+change1.m */; };
+		4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4026540326846D9800472F4F /* LBTestFaceAwareController.m */; };
+		402654272684720A00472F4F /* TestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402654262684720A00472F4F /* TestSwift.swift */; };
+		402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBA92796900600B051C5 /* LBStrategyModeController.m */; };
+		402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */; };
+		402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402E3D2226BECAC60027CE64 /* LBBlockViewController.m */; };
+		4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */; };
+		4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB05265F9E2400EACB2B /* AppDelegate.m */; };
+		4043EB0C265F9E2400EACB2B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB0B265F9E2400EACB2B /* ViewController.m */; };
+		4043EB0F265F9E2400EACB2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4043EB0D265F9E2400EACB2B /* Main.storyboard */; };
+		4043EB11265F9E2700EACB2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4043EB10265F9E2700EACB2B /* Assets.xcassets */; };
+		4043EB14265F9E2700EACB2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4043EB12265F9E2700EACB2B /* LaunchScreen.storyboard */; };
+		4043EB17265F9E2700EACB2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB16265F9E2700EACB2B /* main.m */; };
+		4043EB21265F9E2700EACB2B /* LBUIProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB20265F9E2700EACB2B /* LBUIProjectTests.m */; };
+		4043EB2C265F9E2700EACB2B /* LBUIProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB2B265F9E2700EACB2B /* LBUIProjectUITests.m */; };
+		4043EB53265FA2B300EACB2B /* LBTestAutoLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB52265FA2B300EACB2B /* LBTestAutoLayoutViewController.m */; };
+		4043EB5C265FA2C500EACB2B /* LBTestStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB5B265FA2C500EACB2B /* LBTestStackViewViewController.m */; };
+		4043EB66265FA45600EACB2B /* LBTestAutoLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB65265FA45600EACB2B /* LBTestAutoLayoutView.m */; };
+		40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */; };
+		404B993C26831A5900B81861 /* LBFPSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B993B26831A5900B81861 /* LBFPSManager.m */; };
+		40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */; };
+		40667D7826A5151100027791 /* LBGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40667D7726A5151100027791 /* LBGCDViewController.m */; };
+		40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40667D8126A5585A00027791 /* LBTestGestureView.m */; };
+		4066CF3D269314BF001A323C /* LBSafirController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CF3C269314BF001A323C /* LBSafirController.m */; };
+		4076039F2840693E0019EC69 /* LBTestRunloopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4076039E2840693E0019EC69 /* LBTestRunloopViewController.m */; };
+		407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 407603A128406A0D0019EC69 /* LBCrashManager.m */; };
+		407603A6284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407603A5284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m */; };
+		407603A9284077B90019EC69 /* LBForwordingTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 407603A8284077B90019EC69 /* LBForwordingTarget.m */; };
+		407603AC284078AC0019EC69 /* NSObject+UnRecognizeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 407603AB284078AC0019EC69 /* NSObject+UnRecognizeSelector.m */; };
+		407603AF28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407603AE28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift */; };
+		40795CD42786BE7800E2A5B2 /* LBImageMemoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40795CD32786BE7800E2A5B2 /* LBImageMemoryController.swift */; };
+		40795CD92786C39800E2A5B2 /* test_memory_image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 40795CD82786C39800E2A5B2 /* test_memory_image.jpeg */; };
+		40795CDF2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m in Sources */ = {isa = PBXBuildFile; fileRef = 40795CDE2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m */; };
+		40795CE52786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m in Sources */ = {isa = PBXBuildFile; fileRef = 40795CE42786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m */; };
+		40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40795CEB2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m */; };
+		4085463C27434D8F00EEEC12 /* LBKVOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4085463B27434D8F00EEEC12 /* LBKVOViewController.m */; };
+		4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4085464227434F5000EEEC12 /* LBLoadAndInitializeController.m */; };
+		4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4085464927438ECF00EEEC12 /* LBKVCController.m */; };
+		4085AC9E26A15E6000A0664F /* LLTextRecogineImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4085AC9D26A15E6000A0664F /* LLTextRecogineImageView.m */; };
+		4086B7AE2845B941003CE2FF /* LLDoubleScrollViewPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4086B7AD2845B941003CE2FF /* LLDoubleScrollViewPinController.swift */; };
+		4086B7B02845B9DF003CE2FF /* LBRootScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4086B7AF2845B9DF003CE2FF /* LBRootScrollView.swift */; };
+		4086B7B22845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4086B7B12845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift */; };
+		4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089872A26B9130D0004BBA8 /* LBAffineTransformController.m */; };
+		4089873B26B9435D0004BBA8 /* LBAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089873A26B9435D0004BBA8 /* LBAnimationViewController.m */; };
+		4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089874326B962380004BBA8 /* LBBezierpathViewController.m */; };
+		409ACE4926BA614E0092A2DF /* LBTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409ACE4826BA614E0092A2DF /* LBTransitionAnimationController.m */; };
+		409ACE4F26BA72740092A2DF /* LBCloseDoorAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409ACE4E26BA72740092A2DF /* LBCloseDoorAnimationViewController.m */; };
+		409ACE7F26BA9DF10092A2DF /* IMG_0568.HEIC in Resources */ = {isa = PBXBuildFile; fileRef = 409ACE7B26BA9D9E0092A2DF /* IMG_0568.HEIC */; };
+		409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */; };
+		40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B11E14266DC9C600337CE4 /* LBTestOffScreenController.m */; };
+		40B206B32669F7770016A25C /* LBTestGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B206B22669F7770016A25C /* LBTestGestureViewController.m */; };
+		40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BD1F4626D8D1480002E493 /* LBChainElement.m */; };
+		40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BE03712679F93B000D3A70 /* LBTableViewNoStickyStyleController.m */; };
+		40DD20BB269FE619001E691B /* LBTextRecogineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DD20BA269FE619001E691B /* LBTextRecogineViewController.m */; };
+		40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */; };
+		40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EABDE026AFDD25007BD450 /* LBTransmitView.m */; };
+		40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F37AD226B7C48800009132 /* LBClockViewController.m */; };
+		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4043EB1D265F9E2700EACB2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4043EAF9265F9E2400EACB2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4043EB00265F9E2400EACB2B;
+			remoteInfo = LBUIProject;
+		};
+		4043EB28265F9E2700EACB2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4043EAF9265F9E2400EACB2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4043EB00265F9E2400EACB2B;
+			remoteInfo = LBUIProject;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProject_LBUIProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.debug.xcconfig"; sourceTree = "<group>"; };
+		3796D8BCDACC2F4D97B0EFE1 /* Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		400E3DE92695444B00C67D52 /* LBTestClassCacheMethodViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestClassCacheMethodViewController.h; sourceTree = "<group>"; };
+		400E3DEA2695444B00C67D52 /* LBTestClassCacheMethodViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestClassCacheMethodViewController.m; sourceTree = "<group>"; };
+		400E3DF326954EA800C67D52 /* LBTestLLDBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestLLDBViewController.h; sourceTree = "<group>"; };
+		400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestLLDBViewController.m; sourceTree = "<group>"; };
+		400E3E992695879A00C67D52 /* LBSegemtnScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBSegemtnScrollViewController.h; sourceTree = "<group>"; };
+		400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBSegemtnScrollViewController.m; sourceTree = "<group>"; };
+		401E9412272174D600F3BAB2 /* UIViewController+change1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+change1.h"; sourceTree = "<group>"; };
+		401E9413272174D600F3BAB2 /* UIViewController+change1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+change1.m"; sourceTree = "<group>"; };
+		4026540226846D9800472F4F /* LBTestFaceAwareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestFaceAwareController.h; sourceTree = "<group>"; };
+		4026540326846D9800472F4F /* LBTestFaceAwareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestFaceAwareController.m; sourceTree = "<group>"; };
+		40265416268470B300472F4F /* LBUIProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBUIProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		402654262684720A00472F4F /* TestSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwift.swift; sourceTree = "<group>"; };
+		402DEBA82796900600B051C5 /* LBStrategyModeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStrategyModeController.h; sourceTree = "<group>"; };
+		402DEBA92796900600B051C5 /* LBStrategyModeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStrategyModeController.m; sourceTree = "<group>"; };
+		402DEBB1279694C400B051C5 /* NSObject+LBCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBCategory.h"; sourceTree = "<group>"; };
+		402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBCategory.m"; sourceTree = "<group>"; };
+		402E3D2126BECAC60027CE64 /* LBBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBlockViewController.h; sourceTree = "<group>"; };
+		402E3D2226BECAC60027CE64 /* LBBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBlockViewController.m; sourceTree = "<group>"; };
+		4033915A26B2A23400259FC6 /* LBStretchImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStretchImageViewController.h; sourceTree = "<group>"; };
+		4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStretchImageViewController.m; sourceTree = "<group>"; };
+		4043EB01265F9E2400EACB2B /* LBUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4043EB04265F9E2400EACB2B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4043EB05265F9E2400EACB2B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4043EB0A265F9E2400EACB2B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4043EB0B265F9E2400EACB2B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4043EB0E265F9E2400EACB2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4043EB10265F9E2700EACB2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4043EB13265F9E2700EACB2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4043EB15265F9E2700EACB2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4043EB16265F9E2700EACB2B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4043EB1C265F9E2700EACB2B /* LBUIProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LBUIProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4043EB20265F9E2700EACB2B /* LBUIProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBUIProjectTests.m; sourceTree = "<group>"; };
+		4043EB22265F9E2700EACB2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LBUIProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4043EB2B265F9E2700EACB2B /* LBUIProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBUIProjectUITests.m; sourceTree = "<group>"; };
+		4043EB2D265F9E2700EACB2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4043EB51265FA2B300EACB2B /* LBTestAutoLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestAutoLayoutViewController.h; sourceTree = "<group>"; };
+		4043EB52265FA2B300EACB2B /* LBTestAutoLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestAutoLayoutViewController.m; sourceTree = "<group>"; };
+		4043EB5A265FA2C500EACB2B /* LBTestStackViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestStackViewViewController.h; sourceTree = "<group>"; };
+		4043EB5B265FA2C500EACB2B /* LBTestStackViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestStackViewViewController.m; sourceTree = "<group>"; };
+		4043EB64265FA45600EACB2B /* LBTestAutoLayoutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestAutoLayoutView.h; sourceTree = "<group>"; };
+		4043EB65265FA45600EACB2B /* LBTestAutoLayoutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestAutoLayoutView.m; sourceTree = "<group>"; };
+		40474AF3282E02B1002C0A95 /* LBTestChainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestChainViewController.h; sourceTree = "<group>"; };
+		40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestChainViewController.m; sourceTree = "<group>"; };
+		404B993A26831A5900B81861 /* LBFPSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBFPSManager.h; sourceTree = "<group>"; };
+		404B993B26831A5900B81861 /* LBFPSManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBFPSManager.m; sourceTree = "<group>"; };
+		40525F4926A7ED0200B6AEBA /* LBImageRecogineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBImageRecogineViewController.h; sourceTree = "<group>"; };
+		40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBImageRecogineViewController.m; sourceTree = "<group>"; };
+		40667D7626A5151100027791 /* LBGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBGCDViewController.h; sourceTree = "<group>"; };
+		40667D7726A5151100027791 /* LBGCDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBGCDViewController.m; sourceTree = "<group>"; };
+		40667D8026A5585A00027791 /* LBTestGestureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGestureView.h; sourceTree = "<group>"; };
+		40667D8126A5585A00027791 /* LBTestGestureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGestureView.m; sourceTree = "<group>"; };
+		4066CF3B269314BF001A323C /* LBSafirController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBSafirController.h; sourceTree = "<group>"; };
+		4066CF3C269314BF001A323C /* LBSafirController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBSafirController.m; sourceTree = "<group>"; };
+		4076039D2840693E0019EC69 /* LBTestRunloopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestRunloopViewController.h; sourceTree = "<group>"; };
+		4076039E2840693E0019EC69 /* LBTestRunloopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestRunloopViewController.m; sourceTree = "<group>"; };
+		407603A028406A0D0019EC69 /* LBCrashManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCrashManager.h; sourceTree = "<group>"; };
+		407603A128406A0D0019EC69 /* LBCrashManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBCrashManager.m; sourceTree = "<group>"; };
+		407603A4284077600019EC69 /* LBTestUnrecognizeSelectorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestUnrecognizeSelectorViewController.h; sourceTree = "<group>"; };
+		407603A5284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestUnrecognizeSelectorViewController.m; sourceTree = "<group>"; };
+		407603A7284077B90019EC69 /* LBForwordingTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBForwordingTarget.h; sourceTree = "<group>"; };
+		407603A8284077B90019EC69 /* LBForwordingTarget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBForwordingTarget.m; sourceTree = "<group>"; };
+		407603AA284078AC0019EC69 /* NSObject+UnRecognizeSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+UnRecognizeSelector.h"; sourceTree = "<group>"; };
+		407603AB284078AC0019EC69 /* NSObject+UnRecognizeSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+UnRecognizeSelector.m"; sourceTree = "<group>"; };
+		407603AE28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestTableViewSelectViewController.swift; sourceTree = "<group>"; };
+		40795CD32786BE7800E2A5B2 /* LBImageMemoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBImageMemoryController.swift; sourceTree = "<group>"; };
+		40795CD82786C39800E2A5B2 /* test_memory_image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_memory_image.jpeg; sourceTree = "<group>"; };
+		40795CDD2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBLoadAndInitializeSubClassController+Test3.h"; sourceTree = "<group>"; };
+		40795CDE2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LBLoadAndInitializeSubClassController+Test3.m"; sourceTree = "<group>"; };
+		40795CE32786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBLoadAndInitializeSubClassController+Test4.h"; sourceTree = "<group>"; };
+		40795CE42786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LBLoadAndInitializeSubClassController+Test4.m"; sourceTree = "<group>"; };
+		40795CEA2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestAvoidCrashViewController.h; sourceTree = "<group>"; };
+		40795CEB2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestAvoidCrashViewController.m; sourceTree = "<group>"; };
+		4085463A27434D8F00EEEC12 /* LBKVOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBKVOViewController.h; sourceTree = "<group>"; };
+		4085463B27434D8F00EEEC12 /* LBKVOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBKVOViewController.m; sourceTree = "<group>"; };
+		4085464127434F5000EEEC12 /* LBLoadAndInitializeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBLoadAndInitializeController.h; sourceTree = "<group>"; };
+		4085464227434F5000EEEC12 /* LBLoadAndInitializeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBLoadAndInitializeController.m; sourceTree = "<group>"; };
+		4085464827438ECF00EEEC12 /* LBKVCController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBKVCController.h; sourceTree = "<group>"; };
+		4085464927438ECF00EEEC12 /* LBKVCController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBKVCController.m; sourceTree = "<group>"; };
+		4085AC9C26A15E6000A0664F /* LLTextRecogineImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLTextRecogineImageView.h; sourceTree = "<group>"; };
+		4085AC9D26A15E6000A0664F /* LLTextRecogineImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLTextRecogineImageView.m; sourceTree = "<group>"; };
+		4086B7AD2845B941003CE2FF /* LLDoubleScrollViewPinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLDoubleScrollViewPinController.swift; sourceTree = "<group>"; };
+		4086B7AF2845B9DF003CE2FF /* LBRootScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRootScrollView.swift; sourceTree = "<group>"; };
+		4086B7B12845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLDoubleScrollViewPinController1.swift; sourceTree = "<group>"; };
+		4089872926B9130D0004BBA8 /* LBAffineTransformController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBAffineTransformController.h; sourceTree = "<group>"; };
+		4089872A26B9130D0004BBA8 /* LBAffineTransformController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBAffineTransformController.m; sourceTree = "<group>"; };
+		4089873926B9435D0004BBA8 /* LBAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBAnimationViewController.h; sourceTree = "<group>"; };
+		4089873A26B9435D0004BBA8 /* LBAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBAnimationViewController.m; sourceTree = "<group>"; };
+		4089874226B962380004BBA8 /* LBBezierpathViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBezierpathViewController.h; sourceTree = "<group>"; };
+		4089874326B962380004BBA8 /* LBBezierpathViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBezierpathViewController.m; sourceTree = "<group>"; };
+		409ACE4726BA614E0092A2DF /* LBTransitionAnimationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTransitionAnimationController.h; sourceTree = "<group>"; };
+		409ACE4826BA614E0092A2DF /* LBTransitionAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTransitionAnimationController.m; sourceTree = "<group>"; };
+		409ACE4D26BA72740092A2DF /* LBCloseDoorAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCloseDoorAnimationViewController.h; sourceTree = "<group>"; };
+		409ACE4E26BA72740092A2DF /* LBCloseDoorAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBCloseDoorAnimationViewController.m; sourceTree = "<group>"; };
+		409ACE7B26BA9D9E0092A2DF /* IMG_0568.HEIC */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_0568.HEIC; sourceTree = "<group>"; };
+		409C5BAB26A19988005B8344 /* NSObject+AutoProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoProperty.h"; sourceTree = "<group>"; };
+		409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoProperty.m"; sourceTree = "<group>"; };
+		40B11E13266DC9C600337CE4 /* LBTestOffScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestOffScreenController.h; sourceTree = "<group>"; };
+		40B11E14266DC9C600337CE4 /* LBTestOffScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestOffScreenController.m; sourceTree = "<group>"; };
+		40B206B12669F7770016A25C /* LBTestGestureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGestureViewController.h; sourceTree = "<group>"; };
+		40B206B22669F7770016A25C /* LBTestGestureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGestureViewController.m; sourceTree = "<group>"; };
+		40BD1F4526D8D1480002E493 /* LBChainElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBChainElement.h; sourceTree = "<group>"; };
+		40BD1F4626D8D1480002E493 /* LBChainElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBChainElement.m; sourceTree = "<group>"; };
+		40BE03702679F93B000D3A70 /* LBTableViewNoStickyStyleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTableViewNoStickyStyleController.h; sourceTree = "<group>"; };
+		40BE03712679F93B000D3A70 /* LBTableViewNoStickyStyleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTableViewNoStickyStyleController.m; sourceTree = "<group>"; };
+		40DD20B9269FE619001E691B /* LBTextRecogineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTextRecogineViewController.h; sourceTree = "<group>"; };
+		40DD20BA269FE619001E691B /* LBTextRecogineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTextRecogineViewController.m; sourceTree = "<group>"; };
+		40E19657267B4E32008207D5 /* LBShadowRaduisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBShadowRaduisViewController.h; sourceTree = "<group>"; };
+		40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBShadowRaduisViewController.m; sourceTree = "<group>"; };
+		40E1E5F02757235B00A8DBDB /* mainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainTest.m; sourceTree = "<group>"; };
+		40E1E6152757948C00A8DBDB /* mainTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainTest.cpp; sourceTree = "<group>"; };
+		40EABDDF26AFDD25007BD450 /* LBTransmitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTransmitView.h; sourceTree = "<group>"; };
+		40EABDE026AFDD25007BD450 /* LBTransmitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTransmitView.m; sourceTree = "<group>"; };
+		40F37AD126B7C48800009132 /* LBClockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBClockViewController.h; sourceTree = "<group>"; };
+		40F37AD226B7C48800009132 /* LBClockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBClockViewController.m; sourceTree = "<group>"; };
+		70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9262DFDBE987A362065D220A /* Pods-LBUIProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProjectTests.release.xcconfig"; path = "Target Support Files/Pods-LBUIProjectTests/Pods-LBUIProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		A96384251B0A56F6F37EC530 /* Pods-LBUIProject-LBUIProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32EB82D46265B8566D9B230 /* Pods-LBUIProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.release.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.release.xcconfig"; sourceTree = "<group>"; };
+		F5DBC08EC101493A4FA487AF /* Pods-LBUIProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProjectTests/Pods-LBUIProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4043EAFE265F9E2400EACB2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043EB19265F9E2700EACB2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043EB24265F9E2700EACB2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09BF6C6A1885141F37570A04 /* Pods_LBUIProject_LBUIProjectUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28D35F3F57528AC8BD5D8779 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */,
+				E32EB82D46265B8566D9B230 /* Pods-LBUIProject.release.xcconfig */,
+				3796D8BCDACC2F4D97B0EFE1 /* Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig */,
+				A96384251B0A56F6F37EC530 /* Pods-LBUIProject-LBUIProjectUITests.release.xcconfig */,
+				F5DBC08EC101493A4FA487AF /* Pods-LBUIProjectTests.debug.xcconfig */,
+				9262DFDBE987A362065D220A /* Pods-LBUIProjectTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		400E3DE82695443100C67D52 /* TestClassCacheMethod */ = {
+			isa = PBXGroup;
+			children = (
+				400E3DE92695444B00C67D52 /* LBTestClassCacheMethodViewController.h */,
+				400E3DEA2695444B00C67D52 /* LBTestClassCacheMethodViewController.m */,
+			);
+			path = TestClassCacheMethod;
+			sourceTree = "<group>";
+		};
+		400E3DF226954E9400C67D52 /* LBTestLLDB */ = {
+			isa = PBXGroup;
+			children = (
+				400E3DF326954EA800C67D52 /* LBTestLLDBViewController.h */,
+				400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */,
+			);
+			path = LBTestLLDB;
+			sourceTree = "<group>";
+		};
+		400E3E982695877900C67D52 /* 分段式滑动 */ = {
+			isa = PBXGroup;
+			children = (
+				400E3E992695879A00C67D52 /* LBSegemtnScrollViewController.h */,
+				400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */,
+			);
+			path = "分段式滑动";
+			sourceTree = "<group>";
+		};
+		401E940B2721749D00F3BAB2 /* MethodExchange */ = {
+			isa = PBXGroup;
+			children = (
+				401E9412272174D600F3BAB2 /* UIViewController+change1.h */,
+				401E9413272174D600F3BAB2 /* UIViewController+change1.m */,
+			);
+			path = MethodExchange;
+			sourceTree = "<group>";
+		};
+		4026540126846D6800472F4F /* LBTestFaceAware */ = {
+			isa = PBXGroup;
+			children = (
+				4026540226846D9800472F4F /* LBTestFaceAwareController.h */,
+				4026540326846D9800472F4F /* LBTestFaceAwareController.m */,
+			);
+			path = LBTestFaceAware;
+			sourceTree = "<group>";
+		};
+		402DEBA727968F9500B051C5 /* 策略模式代替If-else */ = {
+			isa = PBXGroup;
+			children = (
+				402DEBA82796900600B051C5 /* LBStrategyModeController.h */,
+				402DEBA92796900600B051C5 /* LBStrategyModeController.m */,
+				402DEBB1279694C400B051C5 /* NSObject+LBCategory.h */,
+				402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */,
+			);
+			path = "策略模式代替If-else";
+			sourceTree = "<group>";
+		};
+		402E3D1526BECA880027CE64 /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				402E3D2126BECAC60027CE64 /* LBBlockViewController.h */,
+				402E3D2226BECAC60027CE64 /* LBBlockViewController.m */,
+			);
+			path = Block;
+			sourceTree = "<group>";
+		};
+		4033915926B2A1F400259FC6 /* StretchImage */ = {
+			isa = PBXGroup;
+			children = (
+				4033915A26B2A23400259FC6 /* LBStretchImageViewController.h */,
+				4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */,
+			);
+			path = StretchImage;
+			sourceTree = "<group>";
+		};
+		4043EAF8265F9E2400EACB2B = {
+			isa = PBXGroup;
+			children = (
+				4043EB03265F9E2400EACB2B /* LBUIProject */,
+				4043EB1F265F9E2700EACB2B /* LBUIProjectTests */,
+				4043EB2A265F9E2700EACB2B /* LBUIProjectUITests */,
+				4043EB02265F9E2400EACB2B /* Products */,
+				28D35F3F57528AC8BD5D8779 /* Pods */,
+				83F0C6F792EF35BDEB2C0FBC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4043EB02265F9E2400EACB2B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4043EB01265F9E2400EACB2B /* LBUIProject.app */,
+				4043EB1C265F9E2700EACB2B /* LBUIProjectTests.xctest */,
+				4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
+			isa = PBXGroup;
+			children = (
+				4086B7AC2845B904003CE2FF /* 双UIScrollView吸顶 */,
+				407603AD28409E7D0019EC69 /* TableViewSelectCell */,
+				407603A3284077090019EC69 /* UnrecoginzeSelector */,
+				4076039C284069230019EC69 /* RunLoop */,
+				40474AF2282E0297002C0A95 /* 链式调用 */,
+				402DEBA727968F9500B051C5 /* 策略模式代替If-else */,
+				40795CE92786E9B300E2A5B2 /* AvoidCrash */,
+				40795CCC2786BE0B00E2A5B2 /* ImageMemory */,
+				4085464727438EB700EEEC12 /* KVC */,
+				4085464027434F2500EEEC12 /* LoadAndInitialize */,
+				4085463627434D7100EEEC12 /* KVO */,
+				401E940B2721749D00F3BAB2 /* MethodExchange */,
+				402E3D1526BECA880027CE64 /* Block */,
+				4089873826B943450004BBA8 /* Animation */,
+				4089872826B9129F0004BBA8 /* AffineTransform */,
+				40F37AD026B7C45300009132 /* Clock */,
+				4033915926B2A1F400259FC6 /* StretchImage */,
+				40667D7426A514E700027791 /* GCD */,
+				409C5BA926A19969005B8344 /* Category */,
+				40DD20B8269FE5AA001E691B /* TextRecognize */,
+				400E3E982695877900C67D52 /* 分段式滑动 */,
+				400E3DF226954E9400C67D52 /* LBTestLLDB */,
+				400E3DE82695443100C67D52 /* TestClassCacheMethod */,
+				4066CF3A269314A2001A323C /* SafirController */,
+				4026540126846D6800472F4F /* LBTestFaceAware */,
+				404B993926831A3E00B81861 /* LBFPSManager */,
+				40E19653267B4E07008207D5 /* 圆角带阴影mask */,
+				40BE036F2679F917000D3A70 /* TableViewNoStick */,
+				40B11E12266DC9A800337CE4 /* TestOffScreen */,
+				40B206B02669F7640016A25C /* TestGesture */,
+				4043EB50265FA1B200EACB2B /* TestStackView */,
+				4043EB3C265F9E9400EACB2B /* TestAutoLayout */,
+				4043EB04265F9E2400EACB2B /* AppDelegate.h */,
+				4043EB05265F9E2400EACB2B /* AppDelegate.m */,
+				4043EB0A265F9E2400EACB2B /* ViewController.h */,
+				4043EB0B265F9E2400EACB2B /* ViewController.m */,
+				4043EB0D265F9E2400EACB2B /* Main.storyboard */,
+				4043EB10265F9E2700EACB2B /* Assets.xcassets */,
+				4043EB12265F9E2700EACB2B /* LaunchScreen.storyboard */,
+				4043EB15265F9E2700EACB2B /* Info.plist */,
+				40E1E6152757948C00A8DBDB /* mainTest.cpp */,
+				40E1E5F02757235B00A8DBDB /* mainTest.m */,
+				4043EB16265F9E2700EACB2B /* main.m */,
+				40265416268470B300472F4F /* LBUIProject-Bridging-Header.h */,
+				402654262684720A00472F4F /* TestSwift.swift */,
+			);
+			path = LBUIProject;
+			sourceTree = "<group>";
+		};
+		4043EB1F265F9E2700EACB2B /* LBUIProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				4043EB20265F9E2700EACB2B /* LBUIProjectTests.m */,
+				4043EB22265F9E2700EACB2B /* Info.plist */,
+			);
+			path = LBUIProjectTests;
+			sourceTree = "<group>";
+		};
+		4043EB2A265F9E2700EACB2B /* LBUIProjectUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4043EB2B265F9E2700EACB2B /* LBUIProjectUITests.m */,
+				4043EB2D265F9E2700EACB2B /* Info.plist */,
+			);
+			path = LBUIProjectUITests;
+			sourceTree = "<group>";
+		};
+		4043EB3C265F9E9400EACB2B /* TestAutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				4043EB63265FA44200EACB2B /* View */,
+				4043EB51265FA2B300EACB2B /* LBTestAutoLayoutViewController.h */,
+				4043EB52265FA2B300EACB2B /* LBTestAutoLayoutViewController.m */,
+			);
+			path = TestAutoLayout;
+			sourceTree = "<group>";
+		};
+		4043EB50265FA1B200EACB2B /* TestStackView */ = {
+			isa = PBXGroup;
+			children = (
+				4043EB5A265FA2C500EACB2B /* LBTestStackViewViewController.h */,
+				4043EB5B265FA2C500EACB2B /* LBTestStackViewViewController.m */,
+			);
+			path = TestStackView;
+			sourceTree = "<group>";
+		};
+		4043EB63265FA44200EACB2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4043EB64265FA45600EACB2B /* LBTestAutoLayoutView.h */,
+				4043EB65265FA45600EACB2B /* LBTestAutoLayoutView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		40474AF2282E0297002C0A95 /* 链式调用 */ = {
+			isa = PBXGroup;
+			children = (
+				40474AF3282E02B1002C0A95 /* LBTestChainViewController.h */,
+				40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */,
+			);
+			path = "链式调用";
+			sourceTree = "<group>";
+		};
+		404B993926831A3E00B81861 /* LBFPSManager */ = {
+			isa = PBXGroup;
+			children = (
+				404B993A26831A5900B81861 /* LBFPSManager.h */,
+				404B993B26831A5900B81861 /* LBFPSManager.m */,
+			);
+			path = LBFPSManager;
+			sourceTree = "<group>";
+		};
+		40667D7426A514E700027791 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				40BD1F4426D8D12C0002E493 /* LBPromiseChain */,
+				40667D7526A514EF00027791 /* Controller */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
+		40667D7526A514EF00027791 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				40667D7626A5151100027791 /* LBGCDViewController.h */,
+				40667D7726A5151100027791 /* LBGCDViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		40667D7F26A5584000027791 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				40667D8026A5585A00027791 /* LBTestGestureView.h */,
+				40667D8126A5585A00027791 /* LBTestGestureView.m */,
+				40EABDDF26AFDD25007BD450 /* LBTransmitView.h */,
+				40EABDE026AFDD25007BD450 /* LBTransmitView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4066CF3A269314A2001A323C /* SafirController */ = {
+			isa = PBXGroup;
+			children = (
+				4066CF3B269314BF001A323C /* LBSafirController.h */,
+				4066CF3C269314BF001A323C /* LBSafirController.m */,
+			);
+			path = SafirController;
+			sourceTree = "<group>";
+		};
+		4076039C284069230019EC69 /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				4076039D2840693E0019EC69 /* LBTestRunloopViewController.h */,
+				4076039E2840693E0019EC69 /* LBTestRunloopViewController.m */,
+				407603A028406A0D0019EC69 /* LBCrashManager.h */,
+				407603A128406A0D0019EC69 /* LBCrashManager.m */,
+			);
+			path = RunLoop;
+			sourceTree = "<group>";
+		};
+		407603A3284077090019EC69 /* UnrecoginzeSelector */ = {
+			isa = PBXGroup;
+			children = (
+				407603A4284077600019EC69 /* LBTestUnrecognizeSelectorViewController.h */,
+				407603A5284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m */,
+				407603A7284077B90019EC69 /* LBForwordingTarget.h */,
+				407603A8284077B90019EC69 /* LBForwordingTarget.m */,
+				407603AA284078AC0019EC69 /* NSObject+UnRecognizeSelector.h */,
+				407603AB284078AC0019EC69 /* NSObject+UnRecognizeSelector.m */,
+			);
+			path = UnrecoginzeSelector;
+			sourceTree = "<group>";
+		};
+		407603AD28409E7D0019EC69 /* TableViewSelectCell */ = {
+			isa = PBXGroup;
+			children = (
+				407603AE28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift */,
+			);
+			path = TableViewSelectCell;
+			sourceTree = "<group>";
+		};
+		40795CCC2786BE0B00E2A5B2 /* ImageMemory */ = {
+			isa = PBXGroup;
+			children = (
+				40795CD82786C39800E2A5B2 /* test_memory_image.jpeg */,
+				40795CD32786BE7800E2A5B2 /* LBImageMemoryController.swift */,
+			);
+			path = ImageMemory;
+			sourceTree = "<group>";
+		};
+		40795CE92786E9B300E2A5B2 /* AvoidCrash */ = {
+			isa = PBXGroup;
+			children = (
+				40795CEA2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.h */,
+				40795CEB2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m */,
+			);
+			path = AvoidCrash;
+			sourceTree = "<group>";
+		};
+		4085463627434D7100EEEC12 /* KVO */ = {
+			isa = PBXGroup;
+			children = (
+				4085463A27434D8F00EEEC12 /* LBKVOViewController.h */,
+				4085463B27434D8F00EEEC12 /* LBKVOViewController.m */,
+			);
+			path = KVO;
+			sourceTree = "<group>";
+		};
+		4085464027434F2500EEEC12 /* LoadAndInitialize */ = {
+			isa = PBXGroup;
+			children = (
+				4085464127434F5000EEEC12 /* LBLoadAndInitializeController.h */,
+				4085464227434F5000EEEC12 /* LBLoadAndInitializeController.m */,
+				40795CDD2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.h */,
+				40795CDE2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m */,
+				40795CE32786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.h */,
+				40795CE42786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m */,
+			);
+			path = LoadAndInitialize;
+			sourceTree = "<group>";
+		};
+		4085464727438EB700EEEC12 /* KVC */ = {
+			isa = PBXGroup;
+			children = (
+				4085464827438ECF00EEEC12 /* LBKVCController.h */,
+				4085464927438ECF00EEEC12 /* LBKVCController.m */,
+			);
+			path = KVC;
+			sourceTree = "<group>";
+		};
+		4085AC9B26A15E4100A0664F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4085AC9C26A15E6000A0664F /* LLTextRecogineImageView.h */,
+				4085AC9D26A15E6000A0664F /* LLTextRecogineImageView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4086B7AC2845B904003CE2FF /* 双UIScrollView吸顶 */ = {
+			isa = PBXGroup;
+			children = (
+				4086B7AD2845B941003CE2FF /* LLDoubleScrollViewPinController.swift */,
+				4086B7AF2845B9DF003CE2FF /* LBRootScrollView.swift */,
+				4086B7B12845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift */,
+			);
+			path = "双UIScrollView吸顶";
+			sourceTree = "<group>";
+		};
+		4089872826B9129F0004BBA8 /* AffineTransform */ = {
+			isa = PBXGroup;
+			children = (
+				4089872926B9130D0004BBA8 /* LBAffineTransformController.h */,
+				4089872A26B9130D0004BBA8 /* LBAffineTransformController.m */,
+			);
+			path = AffineTransform;
+			sourceTree = "<group>";
+		};
+		4089873826B943450004BBA8 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				409ACE7B26BA9D9E0092A2DF /* IMG_0568.HEIC */,
+				4089873926B9435D0004BBA8 /* LBAnimationViewController.h */,
+				4089873A26B9435D0004BBA8 /* LBAnimationViewController.m */,
+				4089874226B962380004BBA8 /* LBBezierpathViewController.h */,
+				4089874326B962380004BBA8 /* LBBezierpathViewController.m */,
+				409ACE4726BA614E0092A2DF /* LBTransitionAnimationController.h */,
+				409ACE4826BA614E0092A2DF /* LBTransitionAnimationController.m */,
+				409ACE4D26BA72740092A2DF /* LBCloseDoorAnimationViewController.h */,
+				409ACE4E26BA72740092A2DF /* LBCloseDoorAnimationViewController.m */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		409C5BA926A19969005B8344 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				409C5BAA26A19970005B8344 /* NSObject */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		409C5BAA26A19970005B8344 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				409C5BAB26A19988005B8344 /* NSObject+AutoProperty.h */,
+				409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		40B11E12266DC9A800337CE4 /* TestOffScreen */ = {
+			isa = PBXGroup;
+			children = (
+				40B11E13266DC9C600337CE4 /* LBTestOffScreenController.h */,
+				40B11E14266DC9C600337CE4 /* LBTestOffScreenController.m */,
+			);
+			path = TestOffScreen;
+			sourceTree = "<group>";
+		};
+		40B206B02669F7640016A25C /* TestGesture */ = {
+			isa = PBXGroup;
+			children = (
+				40667D7F26A5584000027791 /* View */,
+				40B206B12669F7770016A25C /* LBTestGestureViewController.h */,
+				40B206B22669F7770016A25C /* LBTestGestureViewController.m */,
+			);
+			path = TestGesture;
+			sourceTree = "<group>";
+		};
+		40BD1F4426D8D12C0002E493 /* LBPromiseChain */ = {
+			isa = PBXGroup;
+			children = (
+				40BD1F4526D8D1480002E493 /* LBChainElement.h */,
+				40BD1F4626D8D1480002E493 /* LBChainElement.m */,
+			);
+			path = LBPromiseChain;
+			sourceTree = "<group>";
+		};
+		40BE036F2679F917000D3A70 /* TableViewNoStick */ = {
+			isa = PBXGroup;
+			children = (
+				40BE03702679F93B000D3A70 /* LBTableViewNoStickyStyleController.h */,
+				40BE03712679F93B000D3A70 /* LBTableViewNoStickyStyleController.m */,
+			);
+			path = TableViewNoStick;
+			sourceTree = "<group>";
+		};
+		40DD20B8269FE5AA001E691B /* TextRecognize */ = {
+			isa = PBXGroup;
+			children = (
+				4085AC9B26A15E4100A0664F /* View */,
+				40DD20B9269FE619001E691B /* LBTextRecogineViewController.h */,
+				40DD20BA269FE619001E691B /* LBTextRecogineViewController.m */,
+				40525F4926A7ED0200B6AEBA /* LBImageRecogineViewController.h */,
+				40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */,
+			);
+			path = TextRecognize;
+			sourceTree = "<group>";
+		};
+		40E19653267B4E07008207D5 /* 圆角带阴影mask */ = {
+			isa = PBXGroup;
+			children = (
+				40E19657267B4E32008207D5 /* LBShadowRaduisViewController.h */,
+				40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */,
+			);
+			path = "圆角带阴影mask";
+			sourceTree = "<group>";
+		};
+		40F37AD026B7C45300009132 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				40F37AD126B7C48800009132 /* LBClockViewController.h */,
+				40F37AD226B7C48800009132 /* LBClockViewController.m */,
+			);
+			path = Clock;
+			sourceTree = "<group>";
+		};
+		83F0C6F792EF35BDEB2C0FBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */,
+				2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */,
+				70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4043EB00265F9E2400EACB2B /* LBUIProject */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4043EB30265F9E2700EACB2B /* Build configuration list for PBXNativeTarget "LBUIProject" */;
+			buildPhases = (
+				8D487137F0324560BF3A6671 /* [CP] Check Pods Manifest.lock */,
+				4043EAFD265F9E2400EACB2B /* Sources */,
+				4043EAFE265F9E2400EACB2B /* Frameworks */,
+				4043EAFF265F9E2400EACB2B /* Resources */,
+				C46795D85CCCE1C8CF6D4E30 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LBUIProject;
+			productName = LBUIProject;
+			productReference = 4043EB01265F9E2400EACB2B /* LBUIProject.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4043EB1B265F9E2700EACB2B /* LBUIProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4043EB33265F9E2700EACB2B /* Build configuration list for PBXNativeTarget "LBUIProjectTests" */;
+			buildPhases = (
+				373448997CBAD9CF502EF90F /* [CP] Check Pods Manifest.lock */,
+				4043EB18265F9E2700EACB2B /* Sources */,
+				4043EB19265F9E2700EACB2B /* Frameworks */,
+				4043EB1A265F9E2700EACB2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4043EB1E265F9E2700EACB2B /* PBXTargetDependency */,
+			);
+			name = LBUIProjectTests;
+			productName = LBUIProjectTests;
+			productReference = 4043EB1C265F9E2700EACB2B /* LBUIProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4043EB26265F9E2700EACB2B /* LBUIProjectUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4043EB36265F9E2700EACB2B /* Build configuration list for PBXNativeTarget "LBUIProjectUITests" */;
+			buildPhases = (
+				E7C860CD68606F796F54C540 /* [CP] Check Pods Manifest.lock */,
+				4043EB23265F9E2700EACB2B /* Sources */,
+				4043EB24265F9E2700EACB2B /* Frameworks */,
+				4043EB25265F9E2700EACB2B /* Resources */,
+				BBF1B8DBCD3CB3C2DA45CEA9 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4043EB29265F9E2700EACB2B /* PBXTargetDependency */,
+			);
+			name = LBUIProjectUITests;
+			productName = LBUIProjectUITests;
+			productReference = 4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4043EAF9265F9E2400EACB2B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					4043EB00265F9E2400EACB2B = {
+						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
+					};
+					4043EB1B265F9E2700EACB2B = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 4043EB00265F9E2400EACB2B;
+					};
+					4043EB26265F9E2700EACB2B = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 4043EB00265F9E2400EACB2B;
+					};
+				};
+			};
+			buildConfigurationList = 4043EAFC265F9E2400EACB2B /* Build configuration list for PBXProject "LBUIProject" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4043EAF8265F9E2400EACB2B;
+			productRefGroup = 4043EB02265F9E2400EACB2B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4043EB00265F9E2400EACB2B /* LBUIProject */,
+				4043EB1B265F9E2700EACB2B /* LBUIProjectTests */,
+				4043EB26265F9E2700EACB2B /* LBUIProjectUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4043EAFF265F9E2400EACB2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				409ACE7F26BA9DF10092A2DF /* IMG_0568.HEIC in Resources */,
+				40795CD92786C39800E2A5B2 /* test_memory_image.jpeg in Resources */,
+				4043EB14265F9E2700EACB2B /* LaunchScreen.storyboard in Resources */,
+				4043EB11265F9E2700EACB2B /* Assets.xcassets in Resources */,
+				4043EB0F265F9E2400EACB2B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043EB1A265F9E2700EACB2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043EB25265F9E2700EACB2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		373448997CBAD9CF502EF90F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LBUIProjectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D487137F0324560BF3A6671 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LBUIProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBF1B8DBCD3CB3C2DA45CEA9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C46795D85CCCE1C8CF6D4E30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7C860CD68606F796F54C540 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LBUIProject-LBUIProjectUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4043EAFD265F9E2400EACB2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				401E9414272174D600F3BAB2 /* UIViewController+change1.m in Sources */,
+				4076039F2840693E0019EC69 /* LBTestRunloopViewController.m in Sources */,
+				402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */,
+				400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */,
+				4043EB5C265FA2C500EACB2B /* LBTestStackViewViewController.m in Sources */,
+				40B206B32669F7770016A25C /* LBTestGestureViewController.m in Sources */,
+				4043EB66265FA45600EACB2B /* LBTestAutoLayoutView.m in Sources */,
+				4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */,
+				40795CE52786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m in Sources */,
+				40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */,
+				4043EB0C265F9E2400EACB2B /* ViewController.m in Sources */,
+				4066CF3D269314BF001A323C /* LBSafirController.m in Sources */,
+				4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */,
+				40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */,
+				402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */,
+				40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */,
+				40795CD42786BE7800E2A5B2 /* LBImageMemoryController.swift in Sources */,
+				40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */,
+				40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */,
+				4043EB17265F9E2700EACB2B /* main.m in Sources */,
+				409ACE4F26BA72740092A2DF /* LBCloseDoorAnimationViewController.m in Sources */,
+				4086B7B02845B9DF003CE2FF /* LBRootScrollView.swift in Sources */,
+				40667D7826A5151100027791 /* LBGCDViewController.m in Sources */,
+				40DD20BB269FE619001E691B /* LBTextRecogineViewController.m in Sources */,
+				407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */,
+				407603AF28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift in Sources */,
+				402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */,
+				4085AC9E26A15E6000A0664F /* LLTextRecogineImageView.m in Sources */,
+				409ACE4926BA614E0092A2DF /* LBTransitionAnimationController.m in Sources */,
+				400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */,
+				407603A6284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m in Sources */,
+				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
+				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
+				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
+				4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */,
+				40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */,
+				40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */,
+				402654272684720A00472F4F /* TestSwift.swift in Sources */,
+				40795CDF2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m in Sources */,
+				4086B7B22845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift in Sources */,
+				407603A9284077B90019EC69 /* LBForwordingTarget.m in Sources */,
+				409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */,
+				4043EB53265FA2B300EACB2B /* LBTestAutoLayoutViewController.m in Sources */,
+				404B993C26831A5900B81861 /* LBFPSManager.m in Sources */,
+				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,
+				400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */,
+				407603AC284078AC0019EC69 /* NSObject+UnRecognizeSelector.m in Sources */,
+				40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */,
+				4086B7AE2845B941003CE2FF /* LLDoubleScrollViewPinController.swift in Sources */,
+				4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */,
+				40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */,
+				4085463C27434D8F00EEEC12 /* LBKVOViewController.m in Sources */,
+				4089873B26B9435D0004BBA8 /* LBAnimationViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043EB18265F9E2700EACB2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4043EB21265F9E2700EACB2B /* LBUIProjectTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043EB23265F9E2700EACB2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4043EB2C265F9E2700EACB2B /* LBUIProjectUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4043EB1E265F9E2700EACB2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4043EB00265F9E2400EACB2B /* LBUIProject */;
+			targetProxy = 4043EB1D265F9E2700EACB2B /* PBXContainerItemProxy */;
+		};
+		4043EB29265F9E2700EACB2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4043EB00265F9E2400EACB2B /* LBUIProject */;
+			targetProxy = 4043EB28265F9E2700EACB2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4043EB0D265F9E2400EACB2B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4043EB0E265F9E2400EACB2B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4043EB12265F9E2700EACB2B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4043EB13265F9E2700EACB2B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4043EB2E265F9E2700EACB2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4043EB2F265F9E2700EACB2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4043EB31265F9E2700EACB2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				EXCLUDED_ARCHS = "";
+				INFOPLIST_FILE = LBUIProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LBUIProject/LBUIProject-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4043EB32265F9E2700EACB2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E32EB82D46265B8566D9B230 /* Pods-LBUIProject.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				INFOPLIST_FILE = LBUIProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LBUIProject/LBUIProject-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4043EB34265F9E2700EACB2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5DBC08EC101493A4FA487AF /* Pods-LBUIProjectTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4G263MGGP;
+				INFOPLIST_FILE = LBUIProjectTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LBUIProject.app/LBUIProject";
+			};
+			name = Debug;
+		};
+		4043EB35265F9E2700EACB2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9262DFDBE987A362065D220A /* Pods-LBUIProjectTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4G263MGGP;
+				INFOPLIST_FILE = LBUIProjectTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LBUIProject.app/LBUIProject";
+			};
+			name = Release;
+		};
+		4043EB37265F9E2700EACB2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3796D8BCDACC2F4D97B0EFE1 /* Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4G263MGGP;
+				INFOPLIST_FILE = LBUIProjectUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProjectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LBUIProject;
+			};
+			name = Debug;
+		};
+		4043EB38265F9E2700EACB2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96384251B0A56F6F37EC530 /* Pods-LBUIProject-LBUIProjectUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4G263MGGP;
+				INFOPLIST_FILE = LBUIProjectUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProjectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LBUIProject;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4043EAFC265F9E2400EACB2B /* Build configuration list for PBXProject "LBUIProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4043EB2E265F9E2700EACB2B /* Debug */,
+				4043EB2F265F9E2700EACB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4043EB30265F9E2700EACB2B /* Build configuration list for PBXNativeTarget "LBUIProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4043EB31265F9E2700EACB2B /* Debug */,
+				4043EB32265F9E2700EACB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4043EB33265F9E2700EACB2B /* Build configuration list for PBXNativeTarget "LBUIProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4043EB34265F9E2700EACB2B /* Debug */,
+				4043EB35265F9E2700EACB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4043EB36265F9E2700EACB2B /* Build configuration list for PBXNativeTarget "LBUIProjectUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4043EB37265F9E2700EACB2B /* Debug */,
+				4043EB38265F9E2700EACB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4043EAF9265F9E2400EACB2B /* Project object */;
+}

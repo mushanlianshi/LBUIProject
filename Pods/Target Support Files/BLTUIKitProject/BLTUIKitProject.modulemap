@@ -1,0 +1,6 @@
+framework module BLTUIKitProject {
+  umbrella header "BLTUIKitProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
