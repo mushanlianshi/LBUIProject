@@ -68,6 +68,9 @@ PODS:
     - BLTUIKitProject/Header
     - SDWebImage
     - TZImagePickerController
+  - CHTCollectionViewWaterfallLayout (0.9.10):
+    - CHTCollectionViewWaterfallLayout/Swift (= 0.9.10)
+  - CHTCollectionViewWaterfallLayout/Swift (0.9.10)
   - FaceAware (2.1.0)
   - HandyJSON (5.0.2)
   - JXMarqueeView (0.0.9)
@@ -89,6 +92,7 @@ DEPENDENCIES:
   - BLTBasicUIKit
   - BLTSwiftUIKit
   - BLTUIKitProject
+  - CHTCollectionViewWaterfallLayout (= 0.9.10)
   - FaceAware
   - LookinServer (= 1.0.6)
   - Masonry (~> 1.1.0)
@@ -99,6 +103,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AliyunOSSiOS
     - AvoidCrash
+    - CHTCollectionViewWaterfallLayout
     - FaceAware
     - HandyJSON
     - JXMarqueeView
@@ -122,6 +127,7 @@ SPEC CHECKSUMS:
   BLTBasicUIKit: 1c520f6d376deb32b89498b331ed462a8ec2874e
   BLTSwiftUIKit: c05694cc4d48f45a4177f36bb71bc225af8e423f
   BLTUIKitProject: c82d6ef1324a2ed9508f321775d519588c00f53f
+  CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
   FaceAware: f1266b8719a1a90da3d763b8cb428554edf0fa61
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   JXMarqueeView: 0058108f80f149b25ff3bc3705c1af348fe7be8f
@@ -135,6 +141,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   TZImagePickerController: 943511626019431372cf908f24c114521e484f0e
 
-PODFILE CHECKSUM: 695606bff36f520d02a79d8908da30f9ea176701
+PODFILE CHECKSUM: c6eee88947c2b2c0d66a5058f65e314df3726b8a
 
 COCOAPODS: 1.11.2

@@ -4,6 +4,7 @@ ${BUILT_PRODUCTS_DIR}/AvoidCrash/AvoidCrash.framework
 ${BUILT_PRODUCTS_DIR}/BLTBasicUIKit/BLTBasicUIKit.framework
 ${BUILT_PRODUCTS_DIR}/BLTSwiftUIKit/BLTSwiftUIKit.framework
 ${BUILT_PRODUCTS_DIR}/BLTUIKitProject/BLTUIKitProject.framework
+${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework
 ${BUILT_PRODUCTS_DIR}/FaceAware/FaceAware.framework
 ${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
 ${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework

@@ -69,6 +69,7 @@
 		40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EABDE026AFDD25007BD450 /* LBTransmitView.m */; };
 		40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F37AD226B7C48800009132 /* LBClockViewController.m */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
+		BCAA9C30675EB2ABC4DBD121 /* Pods_LBUIProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCAA9C30675EB2ABC4DBD121 /* Pods_LBUIProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
