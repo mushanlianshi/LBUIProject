@@ -15,6 +15,7 @@ NSString *const CHTCollectionElementKindSectionFooter = @"CHTCollectionElementKi
 /// The delegate will point to collection view's delegate automatically.
 @property (nonatomic, weak) id <CHTCollectionViewDelegateWaterfallLayout> delegate;
 /// Array to store height for each column
+/// 保存每一个栏的高度 columnCount = 2  就是1、2
 @property (nonatomic, strong) NSMutableArray *columnHeights;
 /// Array of arrays. Each array stores item attributes for each section
 @property (nonatomic, strong) NSMutableArray *sectionItemAttributes;
@@ -290,6 +291,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
                                     headerHeight);
 
       self.headersAttribute[@(section)] = attributes;
+//        添加到所有itemAttributes的数组里
       [self.allItemAttributes addObject:attributes];
 
       top = CGRectGetMaxY(attributes.frame) + headerInset.bottom;
@@ -309,6 +311,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
     // Item will be put into shortest column.
     for (idx = 0; idx < itemCount; idx++) {
       NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:section];
+//        根据ColumnHeights数组里的保存的高度来找到应该排列的columnIndex
       NSUInteger columnIndex = [self nextColumnIndexForItem:idx inSection:section];
       CGFloat xOffset = sectionInset.left + (itemWidth + columnSpacing) * columnIndex;
       CGFloat yOffset = [self.columnHeights[section][columnIndex] floatValue];
@@ -322,22 +325,27 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
       attributes.frame = CGRectMake(xOffset, yOffset, itemWidth, itemHeight);
       [itemAttributes addObject:attributes];
       [self.allItemAttributes addObject:attributes];
+//        刷新最低位置的高度
       self.columnHeights[section][columnIndex] = @(CGRectGetMaxY(attributes.frame) + minimumInteritemSpacing);
     }
 
+//      把每一个section里item的attributes加进来 二位数组
     [self.sectionItemAttributes addObject:itemAttributes];
 
+      
     /*
      * 4. Section footer
      */
     CGFloat footerHeight;
+//      根据columnHeights数组里最高的位置来找columnIndex
     NSUInteger columnIndex = [self longestColumnIndexInSection:section];
+//      减去上面加的间距
     if (((NSArray *)self.columnHeights[section]).count > 0) {
       top = [self.columnHeights[section][columnIndex] floatValue] - minimumInteritemSpacing + sectionInset.bottom;
     } else {
-		  top = 0;
-	  }
-	  
+          top = 0;
+      }
+      
     if ([self.delegate respondsToSelector:@selector(collectionView:layout:heightForFooterInSection:)]) {
       footerHeight = [self.delegate collectionView:self.collectionView layout:self heightForFooterInSection:section];
     } else {
@@ -366,12 +374,14 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
       top = CGRectGetMaxY(attributes.frame) + footerInset.bottom;
     }
 
+//      到下一个section了  刷新columnHeights数组的高度   后面算collectionView的   contentSize用的
     for (idx = 0; idx < columnCount; idx++) {
       self.columnHeights[section][idx] = @(top);
     }
   } // end of for (NSInteger section = 0; section < numberOfSections; ++section)
 
   // Build union rects
+    //分层几个union rect来提高计算效率
   idx = 0;
   NSInteger itemCounts = [self.allItemAttributes count];
   while (idx < itemCounts) {
@@ -386,6 +396,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
 
     [self.unionRects addObject:[NSValue valueWithCGRect:unionRect]];
   }
+    NSLog(@"LBLog unionRects %@", self.unionRects);
 }
 
 - (CGSize)collectionViewContentSize {
@@ -425,6 +436,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
+    
   NSInteger i;
   NSInteger begin = 0, end = self.unionRects.count;
   NSMutableDictionary *cellAttrDict = [NSMutableDictionary dictionary];
@@ -444,6 +456,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
       break;
     }
   }
+//    按几个union rect来计算返回   提高效率  不是返回所有的allItemAttributes 的属性   当然返回所有的属性也是可以的  
   for (i = begin; i < end; i++) {
     UICollectionViewLayoutAttributes *attr = self.allItemAttributes[i];
     if (CGRectIntersectsRect(rect, attr.frame)) {

@@ -32,6 +32,14 @@
 		40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */; };
 		404B993C26831A5900B81861 /* LBFPSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B993B26831A5900B81861 /* LBFPSManager.m */; };
 		40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */; };
+		4063EF4E285ADDCD00335BA2 /* CHTCollectionViewWaterfallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF48285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.m */; };
+		4063EF4F285ADDCD00335BA2 /* CHTCollectionViewWaterfallFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF49285ADDCC00335BA2 /* CHTCollectionViewWaterfallFooter.m */; };
+		4063EF50285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF4B285ADDCC00335BA2 /* CHTCollectionViewWaterfallHeader.m */; };
+		4063EF53285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF51285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m */; };
+		4063EF59285AFC1000335BA2 /* cat1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4063EF55285AFC1000335BA2 /* cat1.jpg */; };
+		4063EF5A285AFC1000335BA2 /* cat2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4063EF56285AFC1000335BA2 /* cat2.jpg */; };
+		4063EF5B285AFC1000335BA2 /* cat3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4063EF57285AFC1000335BA2 /* cat3.jpg */; };
+		4063EF5C285AFC1000335BA2 /* cat4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4063EF58285AFC1000335BA2 /* cat4.jpg */; };
 		40667D7826A5151100027791 /* LBGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40667D7726A5151100027791 /* LBGCDViewController.m */; };
 		40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40667D8126A5585A00027791 /* LBTestGestureView.m */; };
 		4066CF3D269314BF001A323C /* LBSafirController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CF3C269314BF001A323C /* LBSafirController.m */; };
@@ -69,7 +77,6 @@
 		40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EABDE026AFDD25007BD450 /* LBTransmitView.m */; };
 		40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F37AD226B7C48800009132 /* LBClockViewController.m */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
-		BCAA9C30675EB2ABC4DBD121 /* Pods_LBUIProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +148,18 @@
 		404B993B26831A5900B81861 /* LBFPSManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBFPSManager.m; sourceTree = "<group>"; };
 		40525F4926A7ED0200B6AEBA /* LBImageRecogineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBImageRecogineViewController.h; sourceTree = "<group>"; };
 		40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBImageRecogineViewController.m; sourceTree = "<group>"; };
+		4063EF48285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallCell.m; sourceTree = "<group>"; };
+		4063EF49285ADDCC00335BA2 /* CHTCollectionViewWaterfallFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallFooter.m; sourceTree = "<group>"; };
+		4063EF4A285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallCell.h; sourceTree = "<group>"; };
+		4063EF4B285ADDCC00335BA2 /* CHTCollectionViewWaterfallHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallHeader.m; sourceTree = "<group>"; };
+		4063EF4C285ADDCD00335BA2 /* CHTCollectionViewWaterfallFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallFooter.h; sourceTree = "<group>"; };
+		4063EF4D285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallHeader.h; sourceTree = "<group>"; };
+		4063EF51285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCollectionDecoratoViewController.m; sourceTree = "<group>"; };
+		4063EF52285ADDDC00335BA2 /* LBCollectionDecoratoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCollectionDecoratoViewController.h; sourceTree = "<group>"; };
+		4063EF55285AFC1000335BA2 /* cat1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat1.jpg; sourceTree = "<group>"; };
+		4063EF56285AFC1000335BA2 /* cat2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat2.jpg; sourceTree = "<group>"; };
+		4063EF57285AFC1000335BA2 /* cat3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat3.jpg; sourceTree = "<group>"; };
+		4063EF58285AFC1000335BA2 /* cat4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat4.jpg; sourceTree = "<group>"; };
 		40667D7626A5151100027791 /* LBGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBGCDViewController.h; sourceTree = "<group>"; };
 		40667D7726A5151100027791 /* LBGCDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBGCDViewController.m; sourceTree = "<group>"; };
 		40667D8026A5585A00027791 /* LBTestGestureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGestureView.h; sourceTree = "<group>"; };
@@ -221,7 +240,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCAA9C30675EB2ABC4DBD121 /* Pods_LBUIProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +374,7 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				4063EF47285ADDB600335BA2 /* CollectionView */,
 				4086B7AC2845B904003CE2FF /* 双UIScrollView吸顶 */,
 				407603AD28409E7D0019EC69 /* TableViewSelectCell */,
 				407603A3284077090019EC69 /* UnrecoginzeSelector */,
@@ -392,6 +411,7 @@
 				4043EB05265F9E2400EACB2B /* AppDelegate.m */,
 				4043EB0A265F9E2400EACB2B /* ViewController.h */,
 				4043EB0B265F9E2400EACB2B /* ViewController.m */,
+				4063EF54285AFC1000335BA2 /* images */,
 				4043EB0D265F9E2400EACB2B /* Main.storyboard */,
 				4043EB10265F9E2700EACB2B /* Assets.xcassets */,
 				4043EB12265F9E2700EACB2B /* LaunchScreen.storyboard */,
@@ -467,6 +487,32 @@
 				404B993B26831A5900B81861 /* LBFPSManager.m */,
 			);
 			path = LBFPSManager;
+			sourceTree = "<group>";
+		};
+		4063EF47285ADDB600335BA2 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4063EF52285ADDDC00335BA2 /* LBCollectionDecoratoViewController.h */,
+				4063EF51285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m */,
+				4063EF4A285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.h */,
+				4063EF48285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.m */,
+				4063EF4C285ADDCD00335BA2 /* CHTCollectionViewWaterfallFooter.h */,
+				4063EF49285ADDCC00335BA2 /* CHTCollectionViewWaterfallFooter.m */,
+				4063EF4D285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.h */,
+				4063EF4B285ADDCC00335BA2 /* CHTCollectionViewWaterfallHeader.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		4063EF54285AFC1000335BA2 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				4063EF55285AFC1000335BA2 /* cat1.jpg */,
+				4063EF56285AFC1000335BA2 /* cat2.jpg */,
+				4063EF57285AFC1000335BA2 /* cat3.jpg */,
+				4063EF58285AFC1000335BA2 /* cat4.jpg */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		40667D7426A514E700027791 /* GCD */ = {
@@ -834,10 +880,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4063EF5A285AFC1000335BA2 /* cat2.jpg in Resources */,
 				409ACE7F26BA9DF10092A2DF /* IMG_0568.HEIC in Resources */,
+				4063EF5B285AFC1000335BA2 /* cat3.jpg in Resources */,
 				40795CD92786C39800E2A5B2 /* test_memory_image.jpeg in Resources */,
+				4063EF5C285AFC1000335BA2 /* cat4.jpg in Resources */,
 				4043EB14265F9E2700EACB2B /* LaunchScreen.storyboard in Resources */,
 				4043EB11265F9E2700EACB2B /* Assets.xcassets in Resources */,
+				4063EF59285AFC1000335BA2 /* cat1.jpg in Resources */,
 				4043EB0F265F9E2400EACB2B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -986,22 +1036,26 @@
 				40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */,
 				40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */,
 				4043EB17265F9E2700EACB2B /* main.m in Sources */,
+				4063EF4F285ADDCD00335BA2 /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				409ACE4F26BA72740092A2DF /* LBCloseDoorAnimationViewController.m in Sources */,
 				4086B7B02845B9DF003CE2FF /* LBRootScrollView.swift in Sources */,
 				40667D7826A5151100027791 /* LBGCDViewController.m in Sources */,
 				40DD20BB269FE619001E691B /* LBTextRecogineViewController.m in Sources */,
 				407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */,
 				407603AF28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift in Sources */,
+				4063EF53285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m in Sources */,
 				402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */,
 				4085AC9E26A15E6000A0664F /* LLTextRecogineImageView.m in Sources */,
 				409ACE4926BA614E0092A2DF /* LBTransitionAnimationController.m in Sources */,
 				400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */,
+				4063EF4E285ADDCD00335BA2 /* CHTCollectionViewWaterfallCell.m in Sources */,
 				407603A6284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m in Sources */,
 				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
 				4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */,
 				40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */,
+				4063EF50285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */,
 				402654272684720A00472F4F /* TestSwift.swift in Sources */,
 				40795CDF2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m in Sources */,
