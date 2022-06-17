@@ -238,6 +238,7 @@ static int  staticNum1;
             @{@"title" : @"cell选中", @"vcName" : @"LBTestTableViewSelectViewController"},
             @{@"title" : @"scrollView嵌套吸顶的", @"vcName" : @"LLDoubleScrollViewPinController"},
             @{@"title" : @"collectionView装饰视图", @"vcName" : @"LBCollectionDecoratoViewController"},
+            @{@"title" : @"pageViewController", @"vcName" : @"PagingNestCategoryViewController"},
         ];
     }
     return _dataSources;

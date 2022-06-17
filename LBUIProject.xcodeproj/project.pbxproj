@@ -17,6 +17,14 @@
 		402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBA92796900600B051C5 /* LBStrategyModeController.m */; };
 		402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */; };
 		402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402E3D2226BECAC60027CE64 /* LBBlockViewController.m */; };
+		40329B07285C2B5B007C4017 /* PagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40329B06285C2B5B007C4017 /* PagingViewController.m */; };
+		40329B0A285C2B80007C4017 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40329B08285C2B80007C4017 /* ListViewController.m */; };
+		40329B0D285C2B89007C4017 /* PagingViewTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40329B0B285C2B89007C4017 /* PagingViewTableHeaderView.m */; };
+		40329B10285C2D69007C4017 /* RefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40329B0F285C2D69007C4017 /* RefreshViewController.m */; };
+		40329B13285C2E62007C4017 /* PagingNestCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40329B12285C2E62007C4017 /* PagingNestCategoryViewController.m */; };
+		40329B15285C2E99007C4017 /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40329B14285C2E99007C4017 /* lufei.jpg */; };
+		40329B18285C4AD4007C4017 /* PagingNestCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40329B17285C4AD4007C4017 /* PagingNestCategoryListViewController.m */; };
+		40329B1B285C4AF4007C4017 /* TestNestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40329B1A285C4AF4007C4017 /* TestNestListBaseView.m */; };
 		4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */; };
 		4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB05265F9E2400EACB2B /* AppDelegate.m */; };
 		4043EB0C265F9E2400EACB2B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB0B265F9E2400EACB2B /* ViewController.m */; };
@@ -79,7 +87,6 @@
 		40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EABDE026AFDD25007BD450 /* LBTransmitView.m */; };
 		40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F37AD226B7C48800009132 /* LBClockViewController.m */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
-		66BDACFFCEE29E18ADD545E6 /* Pods_LBUIProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +128,21 @@
 		402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBCategory.m"; sourceTree = "<group>"; };
 		402E3D2126BECAC60027CE64 /* LBBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBlockViewController.h; sourceTree = "<group>"; };
 		402E3D2226BECAC60027CE64 /* LBBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBlockViewController.m; sourceTree = "<group>"; };
+		40329B05285C2B5B007C4017 /* PagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingViewController.h; sourceTree = "<group>"; };
+		40329B06285C2B5B007C4017 /* PagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingViewController.m; sourceTree = "<group>"; };
+		40329B08285C2B80007C4017 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		40329B09285C2B80007C4017 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		40329B0B285C2B89007C4017 /* PagingViewTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingViewTableHeaderView.m; sourceTree = "<group>"; };
+		40329B0C285C2B89007C4017 /* PagingViewTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingViewTableHeaderView.h; sourceTree = "<group>"; };
+		40329B0E285C2D69007C4017 /* RefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewController.h; sourceTree = "<group>"; };
+		40329B0F285C2D69007C4017 /* RefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshViewController.m; sourceTree = "<group>"; };
+		40329B11285C2E62007C4017 /* PagingNestCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingNestCategoryViewController.h; sourceTree = "<group>"; };
+		40329B12285C2E62007C4017 /* PagingNestCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryViewController.m; sourceTree = "<group>"; };
+		40329B14285C2E99007C4017 /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
+		40329B16285C4AD4007C4017 /* PagingNestCategoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingNestCategoryListViewController.h; sourceTree = "<group>"; };
+		40329B17285C4AD4007C4017 /* PagingNestCategoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryListViewController.m; sourceTree = "<group>"; };
+		40329B19285C4AF4007C4017 /* TestNestListBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNestListBaseView.h; sourceTree = "<group>"; };
+		40329B1A285C4AF4007C4017 /* TestNestListBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNestListBaseView.m; sourceTree = "<group>"; };
 		4033915A26B2A23400259FC6 /* LBStretchImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStretchImageViewController.h; sourceTree = "<group>"; };
 		4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStretchImageViewController.m; sourceTree = "<group>"; };
 		4043EB01265F9E2400EACB2B /* LBUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,7 +269,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66BDACFFCEE29E18ADD545E6 /* Pods_LBUIProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +369,28 @@
 			path = Block;
 			sourceTree = "<group>";
 		};
+		40329B01285C25A8007C4017 /* JXPagingViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				40329B14285C2E99007C4017 /* lufei.jpg */,
+				40329B19285C4AF4007C4017 /* TestNestListBaseView.h */,
+				40329B1A285C4AF4007C4017 /* TestNestListBaseView.m */,
+				40329B11285C2E62007C4017 /* PagingNestCategoryViewController.h */,
+				40329B12285C2E62007C4017 /* PagingNestCategoryViewController.m */,
+				40329B16285C4AD4007C4017 /* PagingNestCategoryListViewController.h */,
+				40329B17285C4AD4007C4017 /* PagingNestCategoryListViewController.m */,
+				40329B0E285C2D69007C4017 /* RefreshViewController.h */,
+				40329B0F285C2D69007C4017 /* RefreshViewController.m */,
+				40329B09285C2B80007C4017 /* ListViewController.h */,
+				40329B08285C2B80007C4017 /* ListViewController.m */,
+				40329B05285C2B5B007C4017 /* PagingViewController.h */,
+				40329B06285C2B5B007C4017 /* PagingViewController.m */,
+				40329B0C285C2B89007C4017 /* PagingViewTableHeaderView.h */,
+				40329B0B285C2B89007C4017 /* PagingViewTableHeaderView.m */,
+			);
+			path = JXPagingViewVC;
+			sourceTree = "<group>";
+		};
 		4033915926B2A1F400259FC6 /* StretchImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +425,7 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				40329B01285C25A8007C4017 /* JXPagingViewVC */,
 				4063EF47285ADDB600335BA2 /* CollectionView */,
 				4086B7AC2845B904003CE2FF /* 双UIScrollView吸顶 */,
 				407603AD28409E7D0019EC69 /* TableViewSelectCell */,
@@ -893,6 +937,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4063EF5A285AFC1000335BA2 /* cat2.jpg in Resources */,
+				40329B15285C2E99007C4017 /* lufei.jpg in Resources */,
 				409ACE7F26BA9DF10092A2DF /* IMG_0568.HEIC in Resources */,
 				4063EF5B285AFC1000335BA2 /* cat3.jpg in Resources */,
 				40795CD92786C39800E2A5B2 /* test_memory_image.jpeg in Resources */,
@@ -1034,16 +1079,19 @@
 				400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */,
 				4043EB5C265FA2C500EACB2B /* LBTestStackViewViewController.m in Sources */,
 				40B206B32669F7770016A25C /* LBTestGestureViewController.m in Sources */,
+				40329B07285C2B5B007C4017 /* PagingViewController.m in Sources */,
 				4043EB66265FA45600EACB2B /* LBTestAutoLayoutView.m in Sources */,
 				4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */,
 				40795CE52786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m in Sources */,
 				40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */,
+				40329B10285C2D69007C4017 /* RefreshViewController.m in Sources */,
 				4043EB0C265F9E2400EACB2B /* ViewController.m in Sources */,
 				4066CF3D269314BF001A323C /* LBSafirController.m in Sources */,
 				4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */,
 				40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */,
 				402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */,
 				40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */,
+				40329B13285C2E62007C4017 /* PagingNestCategoryViewController.m in Sources */,
 				40795CD42786BE7800E2A5B2 /* LBImageMemoryController.swift in Sources */,
 				40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */,
 				40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */,
@@ -1052,7 +1100,9 @@
 				409ACE4F26BA72740092A2DF /* LBCloseDoorAnimationViewController.m in Sources */,
 				4086B7B02845B9DF003CE2FF /* LBRootScrollView.swift in Sources */,
 				40667D7826A5151100027791 /* LBGCDViewController.m in Sources */,
+				40329B0D285C2B89007C4017 /* PagingViewTableHeaderView.m in Sources */,
 				40DD20BB269FE619001E691B /* LBTextRecogineViewController.m in Sources */,
+				40329B1B285C4AF4007C4017 /* TestNestListBaseView.m in Sources */,
 				407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */,
 				407603AF28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift in Sources */,
 				4063EF53285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m in Sources */,
@@ -1065,10 +1115,12 @@
 				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
+				40329B0A285C2B80007C4017 /* ListViewController.m in Sources */,
 				4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */,
 				4063EF62285B0AA900335BA2 /* LBCollectionDecoratorView.m in Sources */,
 				40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */,
 				4063EF50285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.m in Sources */,
+				40329B18285C4AD4007C4017 /* PagingNestCategoryListViewController.m in Sources */,
 				40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */,
 				4063EF65285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.m in Sources */,
 				402654272684720A00472F4F /* TestSwift.swift in Sources */,

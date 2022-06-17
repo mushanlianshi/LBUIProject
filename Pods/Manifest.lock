@@ -71,12 +71,14 @@ PODS:
   - CHTCollectionViewWaterfallLayout/ObjC (0.9.10)
   - FaceAware (2.1.0)
   - HandyJSON (5.0.2)
+  - JXCategoryView (1.6.0)
   - JXMarqueeView (0.0.9)
   - JXPagingView/Pager (2.1.2)
   - Kingfisher (4.10.1)
   - LookinServer (1.0.6)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
+  - MJRefresh (3.7.5)
   - MMKV (1.2.10):
     - MMKVCore (~> 1.2.10)
   - MMKVCore (1.2.10)
@@ -93,10 +95,12 @@ DEPENDENCIES:
   - BLTUIKitProject
   - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.10)
   - FaceAware
+  - JXCategoryView
   - JXPagingView/Pager
   - LookinServer (= 1.0.6)
   - Masonry (~> 1.1.0)
   - MBProgressHUD
+  - MJRefresh
   - MMKV
 
 SPEC REPOS:
@@ -106,12 +110,14 @@ SPEC REPOS:
     - CHTCollectionViewWaterfallLayout
     - FaceAware
     - HandyJSON
+    - JXCategoryView
     - JXMarqueeView
     - JXPagingView
     - Kingfisher
     - LookinServer
     - Masonry
     - MBProgressHUD
+    - MJRefresh
     - MMKV
     - MMKVCore
     - SDWebImage
@@ -131,18 +137,20 @@ SPEC CHECKSUMS:
   CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
   FaceAware: f1266b8719a1a90da3d763b8cb428554edf0fa61
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  JXCategoryView: 99c87854c67659f7e2ef1b43079656a46b36b398
   JXMarqueeView: 0058108f80f149b25ff3bc3705c1af348fe7be8f
   JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   LookinServer: 18155b1e4a08213c236a1dd6b7ca52328a70a1e3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   MMKV: 76033b9ace2006623308910a3afcc0e25eba3140
   MMKVCore: b00e7a09ec77a1b916aef336eedd3b99ec249978
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   TZImagePickerController: 943511626019431372cf908f24c114521e484f0e
 
-PODFILE CHECKSUM: a4ae0feeed1f473ea4652ca894703ab672c1f14a
+PODFILE CHECKSUM: d79872c77eb8f213e857503a88003790f80315f0
 
 COCOAPODS: 1.11.2
