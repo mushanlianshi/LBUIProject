@@ -100,6 +100,7 @@ class LBTestTableViewSelectViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(sureButton)
         deleteNilTest()
+        testFuncObject(t: self)
     }
     
     
@@ -177,5 +178,74 @@ extension LBTestTableViewSelectViewController: UITableViewDelegate, UITableViewD
         return indexPath
     }
     
+    private func testFuncObject(t: AnyObject){
+        local {
+            let titleLabel = UILabel()
+            titleLabel.text = "Title";
+            view.addSubview(titleLabel)
+        }
+        
+        do {
+            let titleLabel = UILabel()
+            titleLabel.text = "Title";
+            view.addSubview(titleLabel)
+        }
+        let item1 = TodoItem.init(uuid: "123", title: "title123")
+        let item2 = TodoItem.init(uuid: "123", title: "title321")
+        let item3 = TodoItem.init(uuid: "wewe", title: "ewewe")
+        if item1 == item2{
+            print("LBLog item1  equal ===")
+            debugPrint("LBLog item1  equal === debugPrint")
+        }
+        if item2 == item3{
+            print("LBLog item2  equal ===")
+            debugPrint("LBLog item1  equal === debugPrint")
+        }
+        
+        debugPrint("LBLog max int \(Int.max)   \(Int.min)")
+        
+        let dic = [String : Any]()
+        let item = dic["item"] as? [String : Any]
+        let pop = item?["haha"]
+        print("LBLOg pop \(pop)")
+        
+        BLTSwiftLog("hhhhh")
+        
+//        let int: NSNumber = 0
+//        int.objCType
+        
+#if DEBUG
+        //LB DEBUG TEST
+        print("lblooooooooooooooooo")
+#endif
+    
+    }
+    
+    func local(_ closure: ()->()) {
+        closure()
+    }
+
     
 }
+
+
+class TodoItem {
+   let uuid: String
+   var title: String
+   init(uuid: String, title: String) {
+       self.uuid = uuid
+       self.title = title
+} }
+extension TodoItem: Equatable {
+
+}
+
+//放分类里面也可以  标识分类equatable协议的方法   放在外面  类似自定义一个公用的==方法  方法参数是两个toDoItem的类型的方法
+func ==(lhs: TodoItem, rhs: TodoItem) -> Bool {
+   return lhs.uuid == rhs.uuid
+}
+
+
+//func ==(lhs: String, rhs: String) -> Bool {
+//    return lhs.count == rhs.count
+//}

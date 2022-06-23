@@ -182,6 +182,10 @@ static int  staticNum1;
             vc = [[LBTestTableViewSelectViewController alloc] init];
         }else if([dic[@"vcName"] isEqualToString:@"LLDoubleScrollViewPinController"]){
             vc = [[LLDoubleScrollViewPinController1 alloc] init];
+        }else if ([dic[@"vcName"] isEqualToString:@"LBNavigatorAlphaChangeController"]){
+            vc = [[LBNavigatorAlphaChangeController alloc] init];
+        }else if ([dic[@"vcName"] isEqualToString:@"LBNavigatorScrollHiddenController"]){
+            vc = [[LBNavigatorScrollHiddenController alloc] init];
         }
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -239,6 +243,10 @@ static int  staticNum1;
             @{@"title" : @"scrollView嵌套吸顶的", @"vcName" : @"LLDoubleScrollViewPinController"},
             @{@"title" : @"collectionView装饰视图", @"vcName" : @"LBCollectionDecoratoViewController"},
             @{@"title" : @"pageViewController", @"vcName" : @"PagingNestCategoryViewController"},
+            @{@"title" : @"按钮防止多次点击的", @"vcName" : @"LBPreventRepeatTouchUpInsideController"},
+            @{@"title" : @"导航栏渐变色", @"vcName" : @"LBNavigatorAlphaChangeController"},
+            @{@"title" : @"滚动隐藏导航栏", @"vcName" : @"LBNavigatorScrollHiddenController"},
+            @{@"title" : @"多代理", @"vcName" : @"LBMultipleDelegatesController"},
         ];
     }
     return _dataSources;

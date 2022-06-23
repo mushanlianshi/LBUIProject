@@ -11,6 +11,7 @@
 #import <MMKV/MMKV.h>
 #import <AvoidCrash/AvoidCrash.h>
 #import "LBLoadAndInitializeSubClassController+Test4.h"
+#import "LBBaseNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -25,7 +26,7 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     [self.window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
+    self.window.rootViewController = [[LBBaseNavigationController alloc] initWithRootViewController:[ViewController new]];
     [[UINavigationBar appearance] setTranslucent:NO];
 #ifdef DEBUG
     //动态变化的

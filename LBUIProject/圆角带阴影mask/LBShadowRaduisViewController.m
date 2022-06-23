@@ -29,6 +29,7 @@
     [self addMaskLayerView];
     [self addRasterizeView];
     [self addReciptView];
+    [self customCornerRaduis];
 }
 
 
@@ -246,6 +247,42 @@
     animation.fromValue = @(0);
     animation.toValue = @(M_PI * 2);
     [replicatorLayer addAnimation:animation forKey:@""];
+}
+
+- (void)customCornerRaduis{
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    customView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+    [self.verticalStackView addArrangedSubview:customView];
+    [customView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(200, 200));
+    }];
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:customView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake((10), 10)];
+    CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+    layer.frame = customView.bounds;
+    layer.path = path.CGPath;
+//    默认是black  所以我们用mask做遮罩的时候    layer 用path做遮罩的时候   可以不设置颜色  默认就是black
+//    layer.fillColor = [UIColor blackColor].CGColor;
+    customView.layer.mask = layer;
+    NSLog(@"LBLog layer background %@",layer.backgroundColor);
+    
+    UIView *customView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    customView2.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+    [self.verticalStackView addArrangedSubview:customView2];
+    [customView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(200, 200));
+    }];
+    
+    UIBezierPath *path2 = [UIBezierPath bezierPathWithRoundedRect:customView2.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake((10), 10)];
+    CAShapeLayer *layer2 = [[CAShapeLayer alloc] init];
+    layer2.frame = customView2.bounds;
+//    注意  不要设置layer的backgroundColor  不然layer的背景色没有圆角 就没效果了 会真个mask到下一层级 就没效果了  要用layer的fillColor去做
+//    layer2.cornerRadius = 10;
+    layer2.backgroundColor = [UIColor whiteColor].CGColor;
+//    layer2.fillColor = [UIColor clearColor].CGColor;
+    layer2.path = path2.CGPath;
+    customView2.layer.mask = layer2;
+    NSLog(@"LBLog layer background %@",layer2.backgroundColor);
 }
 
 

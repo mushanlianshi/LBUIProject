@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
+//xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m
+
 int main(int argc, char * argv[]) {
     printf("LBLog main ==============");
     NSString * appDelegateClassName;

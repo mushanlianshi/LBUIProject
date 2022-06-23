@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		09BF6C6A1885141F37570A04 /* Pods_LBUIProject_LBUIProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */; };
+		400A05BA28619CF0006574B5 /* LBHelper1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05B928619CF0006574B5 /* LBHelper1.swift */; };
+		400A05BE2861A386006574B5 /* UIControl+LBExtension1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05BD2861A386006574B5 /* UIControl+LBExtension1.swift */; };
+		400A05C12861A5AA006574B5 /* UIControl+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 400A05C02861A5AA006574B5 /* UIControl+LBExtension.m */; };
+		400A05C42861A703006574B5 /* LBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 400A05C32861A703006574B5 /* LBHelper.m */; };
+		400A05C82861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400A05C72861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m */; };
+		400A05CA2861B61B006574B5 /* UIIMage+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05C92861B61B006574B5 /* UIIMage+LBExtension.swift */; };
+		400A05CC2862F159006574B5 /* Array+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05CB2862F159006574B5 /* Array+LBExtension.swift */; };
+		400A05CE2862FB62006574B5 /* 栈溢出.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05CD2862FB62006574B5 /* 栈溢出.swift */; };
+		400A05D428630BFA006574B5 /* LBNavigatorAlphaChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05D328630BFA006574B5 /* LBNavigatorAlphaChangeController.swift */; };
+		400A05D628630C29006574B5 /* LBNavigationBarScrollChangeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05D528630C29006574B5 /* LBNavigationBarScrollChangeAnimator.swift */; };
+		400A05D82863237B006574B5 /* UIImage+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05D72863237B006574B5 /* UIImage+LBExtension.swift */; };
 		400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DEA2695444B00C67D52 /* LBTestClassCacheMethodViewController.m */; };
 		400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */; };
 		400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */; };
@@ -80,9 +91,18 @@
 		409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */; };
 		40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B11E14266DC9C600337CE4 /* LBTestOffScreenController.m */; };
 		40B206B32669F7770016A25C /* LBTestGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B206B22669F7770016A25C /* LBTestGestureViewController.m */; };
+		40B35B71286407FD0001FFE9 /* LBBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B70286407FD0001FFE9 /* LBBaseNavigationController.m */; };
+		40B35B7328640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7228640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift */; };
+		40B35B7528640E970001FFE9 /* LBNavigatorScrollHiddenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7428640E970001FFE9 /* LBNavigatorScrollHiddenController.swift */; };
+		40B35B79286441C00001FFE9 /* LBMultipleDelegatesContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B78286441C00001FFE9 /* LBMultipleDelegatesContainer.m */; };
+		40B35B7C286443DD0001FFE9 /* NSPointerArray+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7B286443DD0001FFE9 /* NSPointerArray+LBExtension.m */; };
+		40B35B7F28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7E28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m */; };
 		40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BD1F4626D8D1480002E493 /* LBChainElement.m */; };
 		40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BE03712679F93B000D3A70 /* LBTableViewNoStickyStyleController.m */; };
+		40D5B0522860721000E1CA97 /* LBTestTerminalExec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D5B0512860721000E1CA97 /* LBTestTerminalExec.swift */; };
 		40DD20BB269FE619001E691B /* LBTextRecogineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DD20BA269FE619001E691B /* LBTextRecogineViewController.m */; };
+		40DF356128646014008EE299 /* NSString+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF356028646014008EE299 /* NSString+LBExtension.m */; };
+		40DF3564286466A7008EE299 /* LBMultipleDelegatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */; };
 		40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */; };
 		40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EABDE026AFDD25007BD450 /* LBTransmitView.m */; };
 		40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F37AD226B7C48800009132 /* LBClockViewController.m */; };
@@ -110,6 +130,20 @@
 		2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProject_LBUIProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3796D8BCDACC2F4D97B0EFE1 /* Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		400A05B928619CF0006574B5 /* LBHelper1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBHelper1.swift; sourceTree = "<group>"; };
+		400A05BD2861A386006574B5 /* UIControl+LBExtension1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+LBExtension1.swift"; sourceTree = "<group>"; };
+		400A05BF2861A5AA006574B5 /* UIControl+LBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+LBExtension.h"; sourceTree = "<group>"; };
+		400A05C02861A5AA006574B5 /* UIControl+LBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+LBExtension.m"; sourceTree = "<group>"; };
+		400A05C22861A703006574B5 /* LBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBHelper.h; sourceTree = "<group>"; };
+		400A05C32861A703006574B5 /* LBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBHelper.m; sourceTree = "<group>"; };
+		400A05C62861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBPreventRepeatTouchUpInsideController.h; sourceTree = "<group>"; };
+		400A05C72861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBPreventRepeatTouchUpInsideController.m; sourceTree = "<group>"; };
+		400A05C92861B61B006574B5 /* UIIMage+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIMage+LBExtension.swift"; sourceTree = "<group>"; };
+		400A05CB2862F159006574B5 /* Array+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+LBExtension.swift"; sourceTree = "<group>"; };
+		400A05CD2862FB62006574B5 /* 栈溢出.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "栈溢出.swift"; sourceTree = "<group>"; };
+		400A05D328630BFA006574B5 /* LBNavigatorAlphaChangeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigatorAlphaChangeController.swift; sourceTree = "<group>"; };
+		400A05D528630C29006574B5 /* LBNavigationBarScrollChangeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigationBarScrollChangeAnimator.swift; sourceTree = "<group>"; };
+		400A05D72863237B006574B5 /* UIImage+LBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+LBExtension.swift"; sourceTree = "<group>"; };
 		400E3DE92695444B00C67D52 /* LBTestClassCacheMethodViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestClassCacheMethodViewController.h; sourceTree = "<group>"; };
 		400E3DEA2695444B00C67D52 /* LBTestClassCacheMethodViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestClassCacheMethodViewController.m; sourceTree = "<group>"; };
 		400E3DF326954EA800C67D52 /* LBTestLLDBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestLLDBViewController.h; sourceTree = "<group>"; };
@@ -143,6 +177,7 @@
 		40329B17285C4AD4007C4017 /* PagingNestCategoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryListViewController.m; sourceTree = "<group>"; };
 		40329B19285C4AF4007C4017 /* TestNestListBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNestListBaseView.h; sourceTree = "<group>"; };
 		40329B1A285C4AF4007C4017 /* TestNestListBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNestListBaseView.m; sourceTree = "<group>"; };
+		40329B1C285C8589007C4017 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4033915A26B2A23400259FC6 /* LBStretchImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStretchImageViewController.h; sourceTree = "<group>"; };
 		4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStretchImageViewController.m; sourceTree = "<group>"; };
 		4043EB01265F9E2400EACB2B /* LBUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,12 +277,28 @@
 		40B11E14266DC9C600337CE4 /* LBTestOffScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestOffScreenController.m; sourceTree = "<group>"; };
 		40B206B12669F7770016A25C /* LBTestGestureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGestureViewController.h; sourceTree = "<group>"; };
 		40B206B22669F7770016A25C /* LBTestGestureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGestureViewController.m; sourceTree = "<group>"; };
+		40B35B6F286407FD0001FFE9 /* LBBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBaseNavigationController.h; sourceTree = "<group>"; };
+		40B35B70286407FD0001FFE9 /* LBBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBaseNavigationController.m; sourceTree = "<group>"; };
+		40B35B7228640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigationBarScrollHiddenAnimator.swift; sourceTree = "<group>"; };
+		40B35B7428640E970001FFE9 /* LBNavigatorScrollHiddenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigatorScrollHiddenController.swift; sourceTree = "<group>"; };
+		40B35B77286441C00001FFE9 /* LBMultipleDelegatesContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBMultipleDelegatesContainer.h; sourceTree = "<group>"; };
+		40B35B78286441C00001FFE9 /* LBMultipleDelegatesContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBMultipleDelegatesContainer.m; sourceTree = "<group>"; };
+		40B35B7A286443DD0001FFE9 /* NSPointerArray+LBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSPointerArray+LBExtension.h"; sourceTree = "<group>"; };
+		40B35B7B286443DD0001FFE9 /* NSPointerArray+LBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+LBExtension.m"; sourceTree = "<group>"; };
+		40B35B7D28644EA60001FFE9 /* NSObject+LBMultipleDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBMultipleDelegate.h"; sourceTree = "<group>"; };
+		40B35B7E28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBMultipleDelegate.m"; sourceTree = "<group>"; };
 		40BD1F4526D8D1480002E493 /* LBChainElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBChainElement.h; sourceTree = "<group>"; };
 		40BD1F4626D8D1480002E493 /* LBChainElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBChainElement.m; sourceTree = "<group>"; };
 		40BE03702679F93B000D3A70 /* LBTableViewNoStickyStyleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTableViewNoStickyStyleController.h; sourceTree = "<group>"; };
 		40BE03712679F93B000D3A70 /* LBTableViewNoStickyStyleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTableViewNoStickyStyleController.m; sourceTree = "<group>"; };
+		40D5B0512860721000E1CA97 /* LBTestTerminalExec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestTerminalExec.swift; sourceTree = "<group>"; };
 		40DD20B9269FE619001E691B /* LBTextRecogineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTextRecogineViewController.h; sourceTree = "<group>"; };
 		40DD20BA269FE619001E691B /* LBTextRecogineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTextRecogineViewController.m; sourceTree = "<group>"; };
+		40DF355E28645E47008EE299 /* LBRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBRuntime.h; sourceTree = "<group>"; };
+		40DF355F28646014008EE299 /* NSString+LBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LBExtension.h"; sourceTree = "<group>"; };
+		40DF356028646014008EE299 /* NSString+LBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBExtension.m"; sourceTree = "<group>"; };
+		40DF3562286466A7008EE299 /* LBMultipleDelegatesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBMultipleDelegatesController.h; sourceTree = "<group>"; };
+		40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBMultipleDelegatesController.m; sourceTree = "<group>"; };
 		40E19657267B4E32008207D5 /* LBShadowRaduisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBShadowRaduisViewController.h; sourceTree = "<group>"; };
 		40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBShadowRaduisViewController.m; sourceTree = "<group>"; };
 		40E1E5F02757235B00A8DBDB /* mainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainTest.m; sourceTree = "<group>"; };
@@ -302,6 +353,48 @@
 				9262DFDBE987A362065D220A /* Pods-LBUIProjectTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		400A05B828619CBB006574B5 /* LBHelper */ = {
+			isa = PBXGroup;
+			children = (
+				400A05B928619CF0006574B5 /* LBHelper1.swift */,
+				400A05C22861A703006574B5 /* LBHelper.h */,
+				400A05C32861A703006574B5 /* LBHelper.m */,
+				400A05CD2862FB62006574B5 /* 栈溢出.swift */,
+			);
+			path = LBHelper;
+			sourceTree = "<group>";
+		};
+		400A05BC2861A350006574B5 /* UIControl */ = {
+			isa = PBXGroup;
+			children = (
+				400A05BD2861A386006574B5 /* UIControl+LBExtension1.swift */,
+				400A05BF2861A5AA006574B5 /* UIControl+LBExtension.h */,
+				400A05C02861A5AA006574B5 /* UIControl+LBExtension.m */,
+				400A05C92861B61B006574B5 /* UIIMage+LBExtension.swift */,
+			);
+			path = UIControl;
+			sourceTree = "<group>";
+		};
+		400A05C52861AABF006574B5 /* LBPreventRepeatTouchUpInside */ = {
+			isa = PBXGroup;
+			children = (
+				400A05C62861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.h */,
+				400A05C72861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m */,
+			);
+			path = LBPreventRepeatTouchUpInside;
+			sourceTree = "<group>";
+		};
+		400A05CF28630BAA006574B5 /* 导航栏渐变色 */ = {
+			isa = PBXGroup;
+			children = (
+				400A05D328630BFA006574B5 /* LBNavigatorAlphaChangeController.swift */,
+				400A05D528630C29006574B5 /* LBNavigationBarScrollChangeAnimator.swift */,
+				40B35B7228640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift */,
+				40B35B7428640E970001FFE9 /* LBNavigatorScrollHiddenController.swift */,
+			);
+			path = "导航栏渐变色";
 			sourceTree = "<group>";
 		};
 		400E3DE82695443100C67D52 /* TestClassCacheMethod */ = {
@@ -425,6 +518,10 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				40B35B76286441770001FFE9 /* 多代理的实现 */,
+				400A05CF28630BAA006574B5 /* 导航栏渐变色 */,
+				400A05C52861AABF006574B5 /* LBPreventRepeatTouchUpInside */,
+				400A05B828619CBB006574B5 /* LBHelper */,
 				40329B01285C25A8007C4017 /* JXPagingViewVC */,
 				4063EF47285ADDB600335BA2 /* CollectionView */,
 				4086B7AC2845B904003CE2FF /* 双UIScrollView吸顶 */,
@@ -461,6 +558,8 @@
 				4043EB3C265F9E9400EACB2B /* TestAutoLayout */,
 				4043EB04265F9E2400EACB2B /* AppDelegate.h */,
 				4043EB05265F9E2400EACB2B /* AppDelegate.m */,
+				40B35B6F286407FD0001FFE9 /* LBBaseNavigationController.h */,
+				40B35B70286407FD0001FFE9 /* LBBaseNavigationController.m */,
 				4043EB0A265F9E2400EACB2B /* ViewController.h */,
 				4043EB0B265F9E2400EACB2B /* ViewController.m */,
 				4063EF54285AFC1000335BA2 /* images */,
@@ -471,8 +570,10 @@
 				40E1E6152757948C00A8DBDB /* mainTest.cpp */,
 				40E1E5F02757235B00A8DBDB /* mainTest.m */,
 				4043EB16265F9E2700EACB2B /* main.m */,
+				40329B1C285C8589007C4017 /* main.cpp */,
 				40265416268470B300472F4F /* LBUIProject-Bridging-Header.h */,
 				402654262684720A00472F4F /* TestSwift.swift */,
+				40D5B0512860721000E1CA97 /* LBTestTerminalExec.swift */,
 			);
 			path = LBUIProject;
 			sourceTree = "<group>";
@@ -737,7 +838,12 @@
 		409C5BA926A19969005B8344 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				400A05D72863237B006574B5 /* UIImage+LBExtension.swift */,
+				400A05BC2861A350006574B5 /* UIControl */,
 				409C5BAA26A19970005B8344 /* NSObject */,
+				400A05CB2862F159006574B5 /* Array+LBExtension.swift */,
+				40DF355F28646014008EE299 /* NSString+LBExtension.h */,
+				40DF356028646014008EE299 /* NSString+LBExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -768,6 +874,22 @@
 				40B206B22669F7770016A25C /* LBTestGestureViewController.m */,
 			);
 			path = TestGesture;
+			sourceTree = "<group>";
+		};
+		40B35B76286441770001FFE9 /* 多代理的实现 */ = {
+			isa = PBXGroup;
+			children = (
+				40B35B77286441C00001FFE9 /* LBMultipleDelegatesContainer.h */,
+				40B35B78286441C00001FFE9 /* LBMultipleDelegatesContainer.m */,
+				40B35B7A286443DD0001FFE9 /* NSPointerArray+LBExtension.h */,
+				40B35B7B286443DD0001FFE9 /* NSPointerArray+LBExtension.m */,
+				40B35B7D28644EA60001FFE9 /* NSObject+LBMultipleDelegate.h */,
+				40B35B7E28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m */,
+				40DF355E28645E47008EE299 /* LBRuntime.h */,
+				40DF3562286466A7008EE299 /* LBMultipleDelegatesController.h */,
+				40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */,
+			);
+			path = "多代理的实现";
 			sourceTree = "<group>";
 		};
 		40BD1F4426D8D12C0002E493 /* LBPromiseChain */ = {
@@ -1088,29 +1210,42 @@
 				4043EB0C265F9E2400EACB2B /* ViewController.m in Sources */,
 				4066CF3D269314BF001A323C /* LBSafirController.m in Sources */,
 				4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */,
+				400A05BA28619CF0006574B5 /* LBHelper1.swift in Sources */,
 				40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */,
 				402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */,
+				40B35B7528640E970001FFE9 /* LBNavigatorScrollHiddenController.swift in Sources */,
 				40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */,
 				40329B13285C2E62007C4017 /* PagingNestCategoryViewController.m in Sources */,
 				40795CD42786BE7800E2A5B2 /* LBImageMemoryController.swift in Sources */,
 				40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */,
 				40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */,
+				400A05C12861A5AA006574B5 /* UIControl+LBExtension.m in Sources */,
 				4043EB17265F9E2700EACB2B /* main.m in Sources */,
 				4063EF4F285ADDCD00335BA2 /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				409ACE4F26BA72740092A2DF /* LBCloseDoorAnimationViewController.m in Sources */,
+				40B35B7C286443DD0001FFE9 /* NSPointerArray+LBExtension.m in Sources */,
 				4086B7B02845B9DF003CE2FF /* LBRootScrollView.swift in Sources */,
 				40667D7826A5151100027791 /* LBGCDViewController.m in Sources */,
 				40329B0D285C2B89007C4017 /* PagingViewTableHeaderView.m in Sources */,
 				40DD20BB269FE619001E691B /* LBTextRecogineViewController.m in Sources */,
+				400A05C42861A703006574B5 /* LBHelper.m in Sources */,
+				400A05C82861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m in Sources */,
 				40329B1B285C4AF4007C4017 /* TestNestListBaseView.m in Sources */,
+				40D5B0522860721000E1CA97 /* LBTestTerminalExec.swift in Sources */,
+				400A05CE2862FB62006574B5 /* 栈溢出.swift in Sources */,
 				407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */,
+				40B35B79286441C00001FFE9 /* LBMultipleDelegatesContainer.m in Sources */,
 				407603AF28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift in Sources */,
 				4063EF53285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m in Sources */,
 				402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */,
 				4085AC9E26A15E6000A0664F /* LLTextRecogineImageView.m in Sources */,
+				40DF3564286466A7008EE299 /* LBMultipleDelegatesController.m in Sources */,
 				409ACE4926BA614E0092A2DF /* LBTransitionAnimationController.m in Sources */,
+				400A05D428630BFA006574B5 /* LBNavigatorAlphaChangeController.swift in Sources */,
 				400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */,
 				4063EF4E285ADDCD00335BA2 /* CHTCollectionViewWaterfallCell.m in Sources */,
+				40B35B7328640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift in Sources */,
+				400A05D628630C29006574B5 /* LBNavigationBarScrollChangeAnimator.swift in Sources */,
 				407603A6284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m in Sources */,
 				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
@@ -1120,6 +1255,8 @@
 				4063EF62285B0AA900335BA2 /* LBCollectionDecoratorView.m in Sources */,
 				40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */,
 				4063EF50285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.m in Sources */,
+				40DF356128646014008EE299 /* NSString+LBExtension.m in Sources */,
+				40B35B71286407FD0001FFE9 /* LBBaseNavigationController.m in Sources */,
 				40329B18285C4AD4007C4017 /* PagingNestCategoryListViewController.m in Sources */,
 				40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */,
 				4063EF65285B0D6F00335BA2 /* LBCustomCollectionDecoratorViewLayout.m in Sources */,
@@ -1128,14 +1265,19 @@
 				4086B7B22845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift in Sources */,
 				407603A9284077B90019EC69 /* LBForwordingTarget.m in Sources */,
 				409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */,
+				40B35B7F28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m in Sources */,
 				4043EB53265FA2B300EACB2B /* LBTestAutoLayoutViewController.m in Sources */,
 				404B993C26831A5900B81861 /* LBFPSManager.m in Sources */,
+				400A05D82863237B006574B5 /* UIImage+LBExtension.swift in Sources */,
 				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,
+				400A05CC2862F159006574B5 /* Array+LBExtension.swift in Sources */,
 				400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */,
 				407603AC284078AC0019EC69 /* NSObject+UnRecognizeSelector.m in Sources */,
 				40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */,
 				4086B7AE2845B941003CE2FF /* LLDoubleScrollViewPinController.swift in Sources */,
+				400A05CA2861B61B006574B5 /* UIIMage+LBExtension.swift in Sources */,
 				4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */,
+				400A05BE2861A386006574B5 /* UIControl+LBExtension1.swift in Sources */,
 				40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */,
 				4085463C27434D8F00EEEC12 /* LBKVOViewController.m in Sources */,
 				4089873B26B9435D0004BBA8 /* LBAnimationViewController.m in Sources */,
@@ -1315,6 +1457,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = W7TC5X9L5S;
 				EXCLUDED_ARCHS = "";
@@ -1324,9 +1467,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NEW_SETTING = "";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LBUIProject/LBUIProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1343,6 +1489,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = W7TC5X9L5S;
 				INFOPLIST_FILE = LBUIProject/Info.plist;
@@ -1351,9 +1498,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NEW_SETTING = "";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = www.liubin.LBUIProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LBUIProject/LBUIProject-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

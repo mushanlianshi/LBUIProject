@@ -26,30 +26,30 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-    <key>NSCalendarsUsageDescription</key>
-    <string>请允许访问，你可以查看您每日的浏览记录</string>
-    <key>NSCameraUsageDescription</key>
-    <string>以便于您上传图片</string>
-    <key>NSContactsUsageDescription</key>
-    <string>方便你与人更快捷的沟通</string>
-    <key>NSLocalNetworkUsageDescription</key>
-    <string>以便于检测网络状态并为您提供合适的内容</string>
-    <key>NSLocalizedDescription</key>
-    <string>使用推送服务</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>以便于为您推荐附近好房</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>以便于为您推荐附近好房</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>以便于您发送语音消息</string>
-    <key>NSMotionUsageDescription</key>
-    <string>访问你的健康数据</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>以便于您保存图片</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>以便于您上传图片</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>使用语音，方便沟通</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>请允许访问，你可以查看您每日的浏览记录</string>
+	<key>NSCameraUsageDescription</key>
+	<string>以便于您上传图片</string>
+	<key>NSContactsUsageDescription</key>
+	<string>方便你与人更快捷的沟通</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>以便于检测网络状态并为您提供合适的内容</string>
+	<key>NSLocalizedDescription</key>
+	<string>使用推送服务</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>以便于为您推荐附近好房</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>以便于为您推荐附近好房</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>以便于您发送语音消息</string>
+	<key>NSMotionUsageDescription</key>
+	<string>访问你的健康数据</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>以便于您保存图片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>以便于您上传图片</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>使用语音，方便沟通</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

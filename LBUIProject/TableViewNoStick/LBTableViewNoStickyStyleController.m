@@ -54,7 +54,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSLog(@"LBLog scroll %@",@(scrollView.contentOffset));
     if (scrollView.contentOffset.y > 0) {
-        scrollView.contentInset  = UIEdgeInsetsMake(scrollView.contentOffset.y, 0, 0, 0);
+        scrollView.contentInset  = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
     }
 }
 

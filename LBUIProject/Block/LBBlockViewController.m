@@ -62,8 +62,41 @@
         });
     };
     self.testParamsBlock(self);
-    
+    [self testBlockType];
 }
+
+
+- (void)testBlockType{
+    __block NSInteger tmpValue = 100;
+    void(^block1)(void)= ^{
+        NSLog(@"LBLog block1 tmpValue %@",@(tmpValue));
+    };
+    
+//    全局block
+    void(^block2)(void) = ^{
+        
+    };
+    
+    __weak __typeof(self)weakSelf = self;
+    void(^block3)(void) = ^{
+        NSLog(@"LBLog block3 view %@",weakSelf.view);
+    };
+    
+    NSLog(@"LBLog block1 %@",block1);
+    NSLog(@"LBLog block2 %@",block2);
+    NSLog(@"LBLog block3 %@",block3);
+    NSLog(@"LBLog block4 %@",[self testStackBlock]);
+}
+
+//栈block
+- (dispatch_block_t)testStackBlock {
+    __block NSInteger i = 0;
+    dispatch_block_t block = ^() {
+        NSLog(@"%ld", ++i);
+    };
+    return block;
+}
+
 
 - (void)dealloc
 {

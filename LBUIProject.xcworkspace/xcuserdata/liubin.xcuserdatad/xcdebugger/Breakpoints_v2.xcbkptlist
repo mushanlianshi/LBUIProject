@@ -272,6 +272,70 @@
             endingLineNumber = "53"
             landmarkName = "+setupNoneSelClassStringsArr:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C99F1B79-8DB1-4B74-A15D-5C61ECB1E821 - 72dc7e02a4e7ae6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[NSObject(AvoidCrash) setupNoneSelClassStringsArr:]"
+                  moduleName = "AvoidCrash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/AvoidCrash/AvoidCrash/NSObject+AvoidCrash.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "C99F1B79-8DB1-4B74-A15D-5C61ECB1E821 - 72dc7e02a4e7ae6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[NSObject(AvoidCrash) setupNoneSelClassStringsArr:]"
+                  moduleName = "AvoidCrash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/AvoidCrash/AvoidCrash/NSObject+AvoidCrash.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE8A7739-B21E-40FA-8C10-22B9771AF2FA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/TableViewSelectCell/LBTestTableViewSelectViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "testFuncObject(t:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53D743C5-8AB3-4906-9A83-FAFA67D1D83A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/TableViewSelectCell/LBTestTableViewSelectViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "testFuncObject(t:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
