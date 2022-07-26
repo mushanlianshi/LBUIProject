@@ -24,7 +24,7 @@ class LBNavigatorAlphaChangeController: UIViewController {
         navigationItem.title = "导航栏渐变"
         self.view.addSubview(tableView)
         animator.scrollView = tableView
-        animator.delegate = self
+        animator.dataSources = self
     }
     
     override func viewDidLayoutSubviews() {

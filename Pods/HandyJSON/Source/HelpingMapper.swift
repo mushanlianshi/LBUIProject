@@ -47,7 +47,7 @@ struct MappingPath {
 }
 
 extension Dictionary where Key == String, Value: Any {
-
+//根据 map映射的path找到value
     func findValueBy(path: MappingPath) -> Any? {
         var currentDict: [String: Any]? = self
         var lastValue: Any?
@@ -83,7 +83,10 @@ public class MappingPropertyHandler {
 
 public class HelpingMapper {
     
+//    需要map映射的地址
     private var mappingHandlers = [Int: MappingPropertyHandler]()
+    
+//    排除属性的地址
     private var excludeProperties = [Int]()
     
     internal func getMappingHandler(key: Int) -> MappingPropertyHandler? {
@@ -143,7 +146,7 @@ infix operator <-- : LogicalConjunctionPrecedence
 public func <-- <T>(property: inout T, name: String) -> CustomMappingKeyValueTuple {
     return property <-- [name]
 }
-
+//返回一个地址 和mapper handler的元组
 public func <-- <T>(property: inout T, names: [String]) -> CustomMappingKeyValueTuple {
     let pointer = withUnsafePointer(to: &property, { return $0 })
     let key = Int(bitPattern: pointer)

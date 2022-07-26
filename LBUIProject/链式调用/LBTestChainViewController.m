@@ -6,6 +6,7 @@
 //
 
 #import "LBTestChainViewController.h"
+#import "LBResponseChainViewController.h"
 
 static NSString * const idcardCharacterSet = @"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -56,6 +57,12 @@ static NSString * const idcardCharacterSet = @"1234567890abcdefghijklmnopqrstuvw
     
     _limtCharacters = 18;
     [self.view addSubview:self.textField];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"责任链模式" style:UIBarButtonItemStyleDone target:self action:@selector(pushResponseChainVC)];
+}
+
+- (void)pushResponseChainVC{
+    LBResponseChainViewController *vc = [LBResponseChainViewController new];
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 - (instancetype)play{

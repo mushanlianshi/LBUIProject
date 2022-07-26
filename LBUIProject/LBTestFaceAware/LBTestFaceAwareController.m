@@ -16,8 +16,6 @@
 
 @property (nonatomic, strong) UIImageView *faceIV;
 
-@property (nonatomic, strong) BLTTagView *tagView;
-
 @end
 
 @implementation LBTestFaceAwareController
@@ -36,13 +34,6 @@
     [self.faceIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_offset(-40);
         make.top.bottom.width.mas_equalTo(self.originIV);
-    }];
-    
-    [self.view addSubview:self.tagView];
-    [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.width.height.mas_equalTo(40);
-        make.top.mas_offset(100);
     }];
 }
 
@@ -69,12 +60,6 @@
     return _faceIV;
 }
 
-- (BLTTagView *)tagView{
-    if (!_tagView) {
-        _tagView = [[BLTTagView alloc] init];
-    }
-    return _tagView;
-}
 
 /*
 #pragma mark - Navigation

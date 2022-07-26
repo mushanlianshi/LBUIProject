@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
+@property (nonatomic, strong) NSObject *testObj;
+
 @end
 
 @implementation LBGCDViewController
@@ -65,7 +67,47 @@
 //    _concurrentQueue = dispatch_queue_create("con queue", DISPATCH_QUEUE_CONCURRENT);
 //    _dic = [NSMutableDictionary new];
 //    [self testMutiReadSingleWrite];
-    [self testWeboInterviewQuestion];
+//    [self testWeboInterviewQuestion];
+//    局部变量不会触发release
+    [self testMutiThreadReleaseVariable];
+    [self testMutiThreadReleaseProperty];
+}
+
+//- (void)setTestObj:(NSObject *)testObj{
+//
+//}
+//
+- (NSObject *)testObj{
+    if(_testObj == nil){
+        _testObj = [[NSObject alloc] init];
+    }
+    return _testObj;
+}
+
+
+- (void)testMutiThreadReleaseProperty{
+//    for(int i = 0; i < 100; i++){
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//            self.testObj = [[NSObject alloc] init];
+//        });
+//    }
+    
+    for(int i = 0; i < 100; i++){
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSLog(@"LBLog obj is %@",self.testObj);
+        });
+    }
+    
+}
+
+- (void)testMutiThreadReleaseVariable{
+    for(int i = 0; i < 100; i++){
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            //    局部变量不会触发release   所以不会crash
+            NSObject *obj = [[NSObject alloc] init];
+            NSLog(@"LBLog obj is %@",obj);
+        });
+    }
 }
 
 

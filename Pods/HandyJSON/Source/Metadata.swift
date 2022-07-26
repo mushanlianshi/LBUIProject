@@ -50,12 +50,14 @@ protocol MetadataType : PointerType {
 
 extension MetadataType {
 
+//    获取是那种类型的方法 class struct 根据指针强转获取类型信息
     var kind: Metadata.Kind {
         return Metadata.Kind(flag: UnsafePointer<Int>(pointer).pointee)
     }
 
     init?(anyType: Any.Type) {
         self.init(pointer: unsafeBitCast(anyType, to: UnsafePointer<Int>.self))
+        print("LBLog kind \(type(of: self).kind)     \(self.kind)    \(self)   \(type(of: self))")
         if let kind = type(of: self).kind, kind != self.kind {
             return nil
         }
@@ -210,6 +212,8 @@ extension Metadata {
             return (result, instanceStart)
         }
 
+        
+//        获取属性的描述
         func propertyDescriptions() -> [Property.Description]? {
             let propsAndStp = _propertyDescriptionsAndStartPoint()
             if let firstInstanceStart = propsAndStp?.1,

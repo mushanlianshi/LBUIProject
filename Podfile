@@ -22,6 +22,17 @@ target 'LBUIProject' do
   pod 'JXPagingView/Pager'
   pod 'JXCategoryView'
   pod 'MJRefresh'
+#  骨架屏
+  pod 'SkeletonView'
+#  转场动画
+  pod 'Hero'
+#  动画框架
+  pod 'ViewAnimator'
+#  动画框架
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
+#  collectionView 卡片效果
+  pod 'AnimatedCollectionViewLayout'
+  pod 'FSPagerView', :git => 'https://github.com/WenchaoD/FSPagerView'
 #  pod 'WechatOpenSDK', '1.9.2'
 #  pod 'charts', :git => 'https://github.com/danielgindi/Charts.git', :tag => '3.6.0'
   target 'LBUIProjectTests' do

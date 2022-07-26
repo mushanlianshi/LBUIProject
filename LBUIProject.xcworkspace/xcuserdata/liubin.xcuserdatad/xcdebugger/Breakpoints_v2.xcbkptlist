@@ -156,54 +156,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "693FE636-0161-4087-8497-B3FD0F67CC15"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LBUIProject/&#x7b56;&#x7565;&#x6a21;&#x5f0f;&#x4ee3;&#x66ff;If-else/LBStrategyModeController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "-caculateDDD:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "05736066-2EF0-487F-8D73-F7AFF6D1C364"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LBUIProject/&#x7b56;&#x7565;&#x6a21;&#x5f0f;&#x4ee3;&#x66ff;If-else/LBStrategyModeController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-saveUserInfo"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DA769C07-8B3A-4740-814B-3285EFB0A746"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LBUIProject/&#x7b56;&#x7565;&#x6a21;&#x5f0f;&#x4ee3;&#x66ff;If-else/LBStrategyModeController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-pushWebVC:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
             uuid = "E96521E0-D540-4906-B6BA-A28651C170D9"
@@ -236,8 +188,8 @@
             filePath = "LBUIProject/GCD/Controller/LBGCDViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-testSemaphore"
             landmarkType = "7">
          </BreakpointContent>
@@ -272,38 +224,6 @@
             endingLineNumber = "53"
             landmarkName = "+setupNoneSelClassStringsArr:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C99F1B79-8DB1-4B74-A15D-5C61ECB1E821 - 72dc7e02a4e7ae6e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[NSObject(AvoidCrash) setupNoneSelClassStringsArr:]"
-                  moduleName = "AvoidCrash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/AvoidCrash/AvoidCrash/NSObject+AvoidCrash.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "C99F1B79-8DB1-4B74-A15D-5C61ECB1E821 - 72dc7e02a4e7ae6e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[NSObject(AvoidCrash) setupNoneSelClassStringsArr:]"
-                  moduleName = "AvoidCrash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/AvoidCrash/AvoidCrash/NSObject+AvoidCrash.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -335,6 +255,854 @@
             startingLineNumber = "212"
             endingLineNumber = "212"
             landmarkName = "testFuncObject(t:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB65EDF5-EA0A-4682-9231-2ABC86623B69"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "_transform(dict:to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AB65EDF5-EA0A-4682-9231-2ABC86623B69 - 3fe073b2b473bcca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._transform(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, to: inout &#x3c4;_0_0) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "AB65EDF5-EA0A-4682-9231-2ABC86623B69 - 3fe073b2b473bcca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._transform(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, to: inout &#x3c4;_0_0) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "268">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72D6648A-38A0-4DBA-B4B1-0A2A8404A30C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/HelpingMapper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getMappingHandler(key:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6750E39-E14F-45A0-9CF0-CCA51925A93D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/HelpingMapper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "propertyExcluded(key:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51220FBC-F3AD-479E-9956-D1B4F1036955"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "init(type:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "51220FBC-F3AD-479E-9956-D1B4F1036955 - 79e804622e8e2902"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.init(type: Any.Type) -&gt; HandyJSON.Metadata"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "51220FBC-F3AD-479E-9956-D1B4F1036955 - 79e804622e8e2902"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.init(type: Any.Type) -&gt; HandyJSON.Metadata"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0EFBF5D3-ACC0-42EC-9C4F-228CCFC9962C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "_propertyDescriptionsAndStartPoint()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0EFBF5D3-ACC0-42EC-9C4F-228CCFC9962C - e750c7da3d9f4dc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.Class._propertyDescriptionsAndStartPoint() -&gt; Swift.Optional&lt;(Swift.Array&lt;HandyJSON.Property.Description&gt;, Swift.Optional&lt;Swift.Int32&gt;)&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  uuid = "0EFBF5D3-ACC0-42EC-9C4F-228CCFC9962C - e750c7da3d9f4dc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.Class._propertyDescriptionsAndStartPoint() -&gt; Swift.Optional&lt;(Swift.Array&lt;HandyJSON.Property.Description&gt;, Swift.Optional&lt;Swift.Int32&gt;)&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "180">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51E163C8-C035-46C3-B13E-96493B8D07BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "init(flag:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C2DD235-DE5A-4182-A57D-85534BBBD112"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "kind"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E3CBAEF-5A74-4FF8-8955-92343100D4DE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "init(flag:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7E3CBAEF-5A74-4FF8-8955-92343100D4DE - ac29255edb66477a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.Kind.init(flag: Swift.Int) -&gt; HandyJSON.Metadata.Kind"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "740">
+               </Location>
+               <Location
+                  uuid = "7E3CBAEF-5A74-4FF8-8955-92343100D4DE - ac29255edb66475b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.Kind.init(flag: Swift.Int) -&gt; HandyJSON.Metadata.Kind"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "736">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "624FCEE5-E905-48EB-926C-89B32ABFD74B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "class_rw_t()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42379A22-190A-44BA-888C-E55E85059CED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "_transform(dict:to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "42379A22-190A-44BA-888C-E55E85059CED - 3fe073b2b473bdf3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._transform(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, to: inout &#x3c4;_0_0) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  uuid = "42379A22-190A-44BA-888C-E55E85059CED - 3fe073b2b473bdd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._transform(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, to: inout &#x3c4;_0_0) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "568">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79816A27-87F3-4063-9326-3AD43A860BD9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ContextDescriptorType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "numberOfFields"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6ED5911E-1E04-452F-8672-AED1B7FB7FFB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "propertyDescriptions()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDD968C6-1306-47D2-A2E8-DE2A8AD34875"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "init?(anyType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03B2E065-299C-4612-804E-28F62FAAD2B6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Properties.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "getProperties(forType:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0E4BFEA-4A79-443D-9827-EC4FE747684C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Properties.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "getProperties(forType:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF5C9C1B-E464-41F8-AF54-98555C4FEF39"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "vTableSize"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ECECE866-8413-4C3A-850F-F0190102F98E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Metadata.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "genericArgumentVector"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "022FB63D-9433-4E6C-951F-656E35D47140"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ContextDescriptorType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "numberOfFields"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "829FB9F2-68B1-49BE-9C11-A1BE70021564"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "getRawValueFrom(dict:property:mapper:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "829FB9F2-68B1-49BE-9C11-A1BE70021564 - 98512780a34035e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.getRawValueFrom(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, property: HandyJSON.PropertyInfo, mapper: HandyJSON.HelpingMapper) -&gt; Swift.Optional&lt;Any&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "829FB9F2-68B1-49BE-9C11-A1BE70021564 - 98512780a34035e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.getRawValueFrom(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, property: HandyJSON.PropertyInfo, mapper: HandyJSON.HelpingMapper) -&gt; Swift.Optional&lt;Any&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38B418C1-C278-4368-B2CF-4836FFF257A2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/HelpingMapper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "init(rawPaths:assignmentClosure:takeValueClosure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7F191708-31A9-47AC-AD76-0F0613FBE9AD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "_transform(dict:to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60EEAA06-834F-4937-9A11-B77A2B43D375"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "_transform(dict:to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "60EEAA06-834F-4937-9A11-B77A2B43D375 - 3fe073b2b473b84d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._transform(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, to: inout &#x3c4;_0_0) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "2788">
+               </Location>
+               <Location
+                  uuid = "60EEAA06-834F-4937-9A11-B77A2B43D375 - 3fe073b2b473b84d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._transform(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, to: inout &#x3c4;_0_0) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "2444">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD2AF96C-7A5E-4BD3-852A-67A95F3A37CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "assignProperty(convertedValue:instance:property:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "AD2AF96C-7A5E-4BD3-852A-67A95F3A37CF - b7a0cb25abf86d23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.assignProperty(convertedValue: Any, instance: HandyJSON._ExtendCustomModelType, property: HandyJSON.PropertyInfo) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "AD2AF96C-7A5E-4BD3-852A-67A95F3A37CF - b7a0cb25abf86d23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.assignProperty(convertedValue: Any, instance: HandyJSON._ExtendCustomModelType, property: HandyJSON.PropertyInfo) -&gt; ()"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3392678-1820-442E-A24A-5AB329DDD14B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/Transformable.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "transform(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "532EB88F-F024-42EB-844E-ACFD656E32C6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "_transform(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61D1C029-C523-48A8-B703-8CFE5D88C531"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "_transform(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "292B9B6A-6DED-47C5-B933-8B4ACED297EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "_transform(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "096B195B-AD65-4B08-9DF7-B6CAE36D41CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "_plainValue()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF95039A-4205-4BE3-92DE-476EC32F2F19"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "_transform(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC84914F-77F9-4B9E-8388-9EEA9F08CC32"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "_collectionTransform(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "247A44A8-C5FA-493F-925A-2EAB0FB5453C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "_transform(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "618AA293-37E4-4067-ACFF-89E45C108E4C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "_transform(dict:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF37D37A-9D25-4CE1-9906-559C70135EC5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "_serializeAny(object:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F46AD123-7860-4FD1-8483-7BFBAA00EBAD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/TextRecognize/LBImageRecogineViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-recognizeImage"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42D2D284-F5AD-4F7D-BFAD-510C52D2C04B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/TextRecognize/LBImageRecogineViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-recognizeByCoreML"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF1D7C1D-F036-4BAF-BD86-40885CD824FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/TextRecognize/LBImageRecogineViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-recognizeByCoreML"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A31B145C-FC98-472C-8B94-0A5E07CFBC26"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SDWebImage/SDWebImage/Core/SDImageIOAnimatedCoder.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "+canDecodeFromFormat:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

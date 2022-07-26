@@ -30,79 +30,80 @@
         make.left.top.right.equalTo(self.view);
         make.bottom.mas_offset(-60);
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        UILabel *label = [[UILabel alloc] init];
-        label.text = @"我念佛号玩覅和我划分为哈佛完返回我粉红晚饭后我饿哈佛我和佛号万佛湖万佛湖围殴回复沃尔夫后违法和我后方我发";
-        label.numberOfLines = 0;
-//        CGSize size = [label sizeThatFits:CGSizeMake(self.view.bounds.size.width, CGFLOAT_MAX)];
-//        label.frame = CGRectMake(0, 0, size.width, size.height);
-    //        [label systemLayoutSizeFittingSize:[UIView layoutFittingCompressedSize]]
-        _tableView.tableHeaderView = label;
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.width.equalTo(_tableView);
-                make.left.right.equalTo(self.view);
-    //            make.top.equalTo(self.view);
-        }];
-        NSLog(@"LBlog label before %@",@(label.frame));
-        [label layoutIfNeeded];
-        [_tableView reloadData];
-        NSLog(@"LBlog label after %@",@(label.frame));
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        UILabel *label = [[UILabel alloc] init];
+//        label.text = @"我念佛号玩覅和我划分为哈佛完返回我粉红晚饭后我饿哈佛我和佛号万佛湖万佛湖围殴回复沃尔夫后违法和我后方我发";
+//        label.numberOfLines = 0;
+////        CGSize size = [label sizeThatFits:CGSizeMake(self.view.bounds.size.width, CGFLOAT_MAX)];
+////        label.frame = CGRectMake(0, 0, size.width, size.height);
+//    //        [label systemLayoutSizeFittingSize:[UIView layoutFittingCompressedSize]]
 //        _tableView.tableHeaderView = label;
-    });
-    [self testYezhizhen];
-//    NSString *string = @"**波)";
-//    NSRange range = [string rangeOfString:@"^\\**[\u4E00-\u9FA5A-Za-z0-9_]\\)$" options:NSRegularExpressionSearch range:NSMakeRange(0, string.length) locale:nil];
-//    NSLog(@"LBlog range %zd   %zd ",range.location, range.length);
-//    NSLog(@"LBLog --- %@",[string substringWithRange:range]);
-    
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self testStaticView:0];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self testStaticView:2];
-        });
-    });
-    
-
-    
-    dispatch_queue_t queue0 = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL);
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        blt_dispatch_main_sync_safe(^{
-            NSLog(@"LBLog sync global thread 1111 %@",[NSThread currentThread]);
-        });
-//        并发队列  同步是可以开启新线程的
-        dispatch_sync(queue0, ^{
-            NSLog(@"LBLog sync global thread 00000 %@",[NSThread currentThread]);
-        });
-    });
-    
-    dispatch_queue_t queue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL);
-    dispatch_queue_t queue2 = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL);
-    
-    dispatch_async(queue, ^{
-        NSLog(@"LBLog sync queue thread 2222 %@",[NSThread currentThread]);
-        //虽然不会开启新线程  但可以执行   因为main_queue的主线程已经开启
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            NSLog(@"LBLog sync queue thread 3333 %@",[NSThread currentThread]);
-        });
-        //串行队列 同步不会开启新线程  还是queue的线程
-        dispatch_sync(queue2, ^{
-            NSLog(@"LBLog sync queue thread 4444 %@",[NSThread currentThread]);
-        });
-        NSLog(@"LBLog sync queue thread 5555 %@",[NSThread currentThread]);
-    });
-    [self testMemberKindOfClass];
-    
-//    atomic会保证 set和get的原子性   不会crash
-    NSLog(@"LBLog atomic ====================");
-    for (int i = 0; i < 10000; i++) {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//            self.name = [NSString stringWithFormat:@"的问候王宏伟和符合我饿后文化%d",i];
-//            如果复制的是常量区的或则tagpointer类型的  也不会crash  不需要release旧值  retain新值
-//            self.name = @"1";
-            self.name = [NSString stringWithFormat:@"1%d",i];
-        });
-    }
+//        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+////            make.width.equalTo(_tableView);
+//                make.left.right.equalTo(self.view);
+//    //            make.top.equalTo(self.view);
+//        }];
+//        NSLog(@"LBlog label before %@",@(label.frame));
+//        [label layoutIfNeeded];
+//        [_tableView reloadData];
+//        NSLog(@"LBlog label after %@",@(label.frame));
+////        _tableView.tableHeaderView = label;
+//    });
+//    [self testYezhizhen];
+////    NSString *string = @"**波)";
+////    NSRange range = [string rangeOfString:@"^\\**[\u4E00-\u9FA5A-Za-z0-9_]\\)$" options:NSRegularExpressionSearch range:NSMakeRange(0, string.length) locale:nil];
+////    NSLog(@"LBlog range %zd   %zd ",range.location, range.length);
+////    NSLog(@"LBLog --- %@",[string substringWithRange:range]);
+//    
+//    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self testStaticView:0];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self testStaticView:2];
+//        });
+//    });
+//    
+//
+//    
+//    dispatch_queue_t queue0 = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL);
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        blt_dispatch_main_sync_safe(^{
+//            NSLog(@"LBLog sync global thread 1111 %@",[NSThread currentThread]);
+//        });
+////        并发队列  同步是可以开启新线程的
+//        dispatch_sync(queue0, ^{
+//            NSLog(@"LBLog sync global thread 00000 %@",[NSThread currentThread]);
+//        });
+//    });
+//    
+//    dispatch_queue_t queue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL);
+//    dispatch_queue_t queue2 = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL);
+//    
+//    dispatch_async(queue, ^{
+//        NSLog(@"LBLog sync queue thread 2222 %@",[NSThread currentThread]);
+//        //虽然不会开启新线程  但可以执行   因为main_queue的主线程已经开启
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            NSLog(@"LBLog sync queue thread 3333 %@",[NSThread currentThread]);
+//        });
+//        //串行队列 同步不会开启新线程  还是queue的线程
+//        dispatch_sync(queue2, ^{
+//            NSLog(@"LBLog sync queue thread 4444 %@",[NSThread currentThread]);
+//        });
+//        NSLog(@"LBLog sync queue thread 5555 %@",[NSThread currentThread]);
+//    });
+//    [self testMemberKindOfClass];
+//    
+////    atomic会保证 set和get的原子性   不会crash
+//    NSLog(@"LBLog atomic ====================");
+//    for (int i = 0; i < 10000; i++) {
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+////            self.name = [NSString stringWithFormat:@"的问候王宏伟和符合我饿后文化%d",i];
+////            如果复制的是常量区的或则tagpointer类型的  也不会crash  不需要release旧值  retain新值
+////            self.name = @"1";
+//            self.name = [NSString stringWithFormat:@"1%d",i];
+//        });
+//    }
+//    
 }
 
 
@@ -178,14 +179,25 @@ static int  staticNum1;
 //        [self.navigationController pushViewController:vc animated:YES];
     }else{
         UIViewController *vc = [[NSClassFromString(dic[@"vcName"]) alloc] init];
-        if ([dic[@"vcName"] isEqualToString:@"LBTestTableViewSelectViewController"]) {
+        NSString *vcName = dic[@"vcName"];
+        if ([vcName isEqualToString:@"LBTestTableViewSelectViewController"]) {
             vc = [[LBTestTableViewSelectViewController alloc] init];
-        }else if([dic[@"vcName"] isEqualToString:@"LLDoubleScrollViewPinController"]){
+        }else if([vcName isEqualToString:@"LLDoubleScrollViewPinController"]){
             vc = [[LLDoubleScrollViewPinController1 alloc] init];
-        }else if ([dic[@"vcName"] isEqualToString:@"LBNavigatorAlphaChangeController"]){
+        }else if ([vcName isEqualToString:@"LBNavigatorAlphaChangeController"]){
             vc = [[LBNavigatorAlphaChangeController alloc] init];
-        }else if ([dic[@"vcName"] isEqualToString:@"LBNavigatorScrollHiddenController"]){
+        }else if ([vcName isEqualToString:@"LBNavigatorScrollHiddenController"]){
             vc = [[LBNavigatorScrollHiddenController alloc] init];
+        }else if ([vcName isEqualToString:@"LBDragDownNextPageViewController"]){
+            vc = [[LBDragDownNextPageViewController alloc] init];
+        }else if ([vcName isEqualToString:@"LBSkeletonViewController"]){
+            vc = [[LBSkeletonViewController alloc] init];
+        }else if ([vcName isEqualToString:@"LLTransitionAnimationController"]){
+            vc = [[LLTransitionAnimationController alloc] init];
+        }else if ([vcName isEqualToString:@"LBThirdPartAnimationController"]){
+            vc = [[LBThirdPartAnimationController alloc] init];
+        }else if ([vcName isEqualToString:@"LBCustomPageViewController"]){
+            vc = [[LBCustomPageViewController alloc] init];
         }
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -247,6 +259,11 @@ static int  staticNum1;
             @{@"title" : @"导航栏渐变色", @"vcName" : @"LBNavigatorAlphaChangeController"},
             @{@"title" : @"滚动隐藏导航栏", @"vcName" : @"LBNavigatorScrollHiddenController"},
             @{@"title" : @"多代理", @"vcName" : @"LBMultipleDelegatesController"},
+            @{@"title" : @"下拉翻页的", @"vcName" : @"LBDragDownNextPageViewController"},
+            @{@"title" : @"骨架屏", @"vcName" : @"LBSkeletonViewController"},
+            @{@"title" : @"转场动画", @"vcName" : @"LLTransitionAnimationController"},
+            @{@"title" : @"动画", @"vcName" : @"LBThirdPartAnimationController"},
+            @{@"title" : @"轮播图", @"vcName" : @"LBCustomPageViewController"}
         ];
     }
     return _dataSources;
@@ -280,7 +297,7 @@ static int  staticNum1;
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
     [super setHighlighted:highlighted animated:animated];
-    NSLog(@"LBLog cell hight %@",@(highlighted));
+//    NSLog(@"LBLog cell hight %@",@(highlighted));
 //    if (highlighted) {
         if ([self.contentView.layer animationForKey:@"animation"]) {
             return;
@@ -296,7 +313,7 @@ static int  staticNum1;
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    NSLog(@"LBLog animation %@",[self.contentView.layer animationForKey:@"animation"]);
+//    NSLog(@"LBLog animation %@",[self.contentView.layer animationForKey:@"animation"]);
 }
 
 @end

@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//一般用于textField和UIScrollView这样的多代理实现
 @interface LBMultipleDelegatesController : UIViewController
 
 @end

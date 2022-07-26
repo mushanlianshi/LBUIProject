@@ -45,7 +45,7 @@ public class LBNavigationBarScrollChangeAnimator: NSObject {
     
     private var reachZoreProgress = false
     private var reachOneProgress = false
-    weak var delegate: LBNavigationBarScrollDataSourcesProtocol?
+//    weak var delegate: LBNavigationBarScrollDataSourcesProtocol?
     
     weak var scrollView: UIScrollView?{
         didSet{ 
@@ -85,25 +85,23 @@ extension LBNavigationBarScrollChangeAnimator: UIScrollViewDelegate{
         
         self.reachZoreProgress = progress <= 0
         self.reachOneProgress = progress >= 1
-        guard let animatorDelegate = self.delegate else { return }
+        guard let animatorDelegate = self.dataSources else { return }
         
         
         let backgroundImage = animatorDelegate.backgroundImageOfAnimator(animator: self, progress: progress)
-        naviBar.setBackgroundImage(backgroundImage, for: .default)
+//        naviBar.setBackgroundImage(backgroundImage, for: .default)
         
         let shadowImage = animatorDelegate.shadowImageOfAnimator(animator: self, progress: progress)
-        naviBar.shadowImage = shadowImage
+//        naviBar.shadowImage = shadowImage
         
         let tintColor = animatorDelegate.tintColorOfAnimator(animator: self, progress: progress)
-        naviBar.tintColor = tintColor
+//        naviBar.tintColor = tintColor
         
         let titleViewTintColor = animatorDelegate.titleViewTintColorOfAnimator(animator: self, progress: progress)
-        var attribute = naviBar.titleTextAttributes ?? [NSAttributedString.Key : Any]()
-        attribute[.foregroundColor] = titleViewTintColor
-        naviBar.titleTextAttributes = attribute
         
         let barTintColor = animatorDelegate.barTintColorOfAnimator(animator: self, progress: progress)
-        naviBar.barTintColor = barTintColor
+//        naviBar.barTintColor = barTintColor
+        naviBar.refreshNaviBarTintColor(itemColor: tintColor!, titleColor: titleViewTintColor!, barTintColor: barTintColor, backgroundImage: backgroundImage, shadowImage: shadowImage)
     }
     
     

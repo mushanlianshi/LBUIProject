@@ -19,6 +19,14 @@ class LBNavigatorScrollHiddenController: UIViewController {
         tab.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         return tab
     }()
+    
+    var testView: UIView? = {
+       let view = UIView()
+        view.backgroundColor = .lightGray
+        view.frame = CGRect(x: 100, y: 100, width: 80, height: 40)
+        print("LBlog testView =======")
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +36,17 @@ class LBNavigatorScrollHiddenController: UIViewController {
         animator.animationBlock = {
             [weak self] animator, isHidden in
             self?.navigationController?.setNavigationBarHidden(isHidden, animated: true)
+        }
+        self.view.addSubview(testView!)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+            [weak self] in
+            self?.testView?.removeFromSuperview()
+            self?.testView = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                [weak self] in
+                print("lblog 2222 \(self?.testView)")
+            }
         }
     }
     

@@ -38,6 +38,9 @@
     [[[LBLoadAndInitializeSubClassController alloc] init] test];
     [MMKV initializeMMKV:nil];
     
+    
+    [self setNavigationBarAppearance];
+    
 //    [AvoidCrash makeAllEffective];
     
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -66,6 +69,29 @@
     return YES;
 }
 
+- (void)setNavigationBarAppearance{
+    if (@available(iOS 13.0, *)) {
+        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+        appearance.backgroundColor = [UIColor whiteColor];
+        [appearance configureWithOpaqueBackground];
+        
+        UIBarButtonItemAppearance *doneAppearance = [[UIBarButtonItemAppearance alloc] init];
+        doneAppearance.normal.titleTextAttributes = @{NSForegroundColorAttributeName : UIColor.blackColor};
+        
+        appearance.doneButtonAppearance = doneAppearance;
+        appearance.buttonAppearance = doneAppearance;
+        appearance.backButtonAppearance = doneAppearance;
+        
+        [UINavigationBar appearance].scrollEdgeAppearance = appearance;
+        [UINavigationBar appearance].standardAppearance = appearance;
+        [UINavigationBar appearance].tintColor = [UIColor blackColor];
+    } else {
+        // Fallback on earlier versions
+        [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+        [UINavigationBar appearance].tintColor = [UIColor blackColor];
+    }
+    
+}
 
 
 @end
