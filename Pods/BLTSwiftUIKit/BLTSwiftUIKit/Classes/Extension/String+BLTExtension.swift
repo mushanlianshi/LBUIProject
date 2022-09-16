@@ -6,9 +6,19 @@
 //
 
 import UIKit
-extension String: BLTNameSpaceCompatibleValue{}
+extension String: BLTNameSpaceCompatibleValue{
+}
 
 extension BLTNameSpace where Base == String{
+    public static let cancelTitle = "取消"
+    public static let sureTitle = "确定"
+    public static let IKnow = "我知道了"
+    public static let alertTipTitle = "温馨提示"
+    
+    public func toInt() -> Int? {
+        return Int(base)
+    }
+    
     public func rangeOfAll() -> NSRange{
         return NSRange(location: 0, length: base.count)
     }
@@ -64,6 +74,7 @@ extension BLTNameSpace where Base == String{
 
 // MARK: 富文本的分类
 extension BLTNameSpace where Base == String{
+    
     public func paragraphSpacingAttributeText(paragraphSpacing: CGFloat) -> NSAttributedString {
         let attributeString = NSMutableAttributedString.init(string: self.base)
         let style = NSMutableParagraphStyle()

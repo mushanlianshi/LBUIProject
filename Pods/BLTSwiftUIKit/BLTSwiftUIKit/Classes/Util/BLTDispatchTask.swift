@@ -46,3 +46,11 @@ public func BLTDispatchTaskCancel(_ task: BLTDispatchTask?) {
 }
 
 
+
+
+//加锁执行
+public func BLTSynchronized(_ lockObj: AnyObject, closure: () -> Void){
+    objc_sync_enter(lockObj)
+    closure()
+    objc_sync_exit(lockObj)
+}

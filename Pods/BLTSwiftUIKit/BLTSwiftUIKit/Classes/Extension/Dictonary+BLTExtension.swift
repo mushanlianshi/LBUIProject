@@ -10,6 +10,7 @@ import Foundation
 extension Dictionary: BLTNameSpaceCompatibleValue{}
 
 extension BLTNameSpace where Base == Dictionary<String, Any>{
+    
     public func toJsonString() -> String? {
         guard let data = try? JSONSerialization.data(withJSONObject: base,
                                                      options: []) else {

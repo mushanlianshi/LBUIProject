@@ -27,6 +27,7 @@ import SnapKit
 //    NSString *imageFullName = [NSString stringWithFormat:@"%@@%zdx",imageName, (NSInteger)[UIScreen mainScreen].scale];
 //    return [[UIImage imageWithContentsOfFile:[BLTUIKitBundle pathForResource:imageFullName ofType:@"png"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 //}
+
 public func imageFromSwiftUIKitBundle(_ imageName: String?) -> UIImage? {
     guard let imageN = imageName else { return nil }
     
@@ -41,6 +42,14 @@ public func imageFromSwiftUIKitBundle(_ imageName: String?) -> UIImage? {
 }
 
 public class BLTNoticeBarView: UIView {
+    
+    private static let shareInstance = BLTNoticeBarView()
+    
+    public override class func appearance() -> Self {
+        return shareInstance as! Self
+    }
+    
+    @objc public var customSensorDataBlock:((_ lookButton: UIButton?, _ closeButton: UIButton?, _ dismissControl: UIControl?) -> Void)?
     
     @objc public convenience init(content: String) {
         self.init(content: content, leftNoticeImage: imageFromSwiftUIKitBundle("blt_notice_bar_alarm"), type: .show, rightImage: imageFromSwiftUIKitBundle("blt_notice_bar_close"), rightActionTitle: nil, contentInsets: UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15))
@@ -125,13 +134,26 @@ public class BLTNoticeBarView: UIView {
     
     open override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        if let _ = newWindow {
-            self.appearanceConfigBlock?(self,leftImageView, self.contentLab, scrollLab, rightActionButton, rightCloseButton)
+        guard let _ = newWindow else { return }
+        if self.customSensorDataBlock == nil{
+            self.customSensorDataBlock = BLTNoticeBarView.shareInstance.customSensorDataBlock
         }
+        self.customSensorDataBlock?(rightActionButton, rightCloseButton, backgroundControl)
+        self.appearanceConfigBlock?(self,leftImageView, self.contentLab, scrollLab, rightActionButton, rightCloseButton)
     }
     
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let view = super.hitTest(point, with: event)
+        
+//        扩大stackView的响应区域
+        if let closeBtn = rightCloseButton{
+            let convertFrame = closeBtn.convert(closeBtn.bounds, to: self)
+            let newFrame = CGRectFromEdgeInsetsSwift(frame: convertFrame, insets: rightCloseButton!.responseAreaInsets)
+            if newFrame.contains(point){
+                return rightCloseButton
+            }
+        }
+//        点击stackView上  让control去响应
         if self.backgroundCanClick == true && view == stackView {
             return backgroundControl
         }
@@ -195,3 +217,8 @@ public class BLTNoticeBarView: UIView {
         self.barClickBlock?(.rightClose)
     }
 }
+
+
+
+
+

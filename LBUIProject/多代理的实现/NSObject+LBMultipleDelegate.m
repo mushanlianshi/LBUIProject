@@ -69,6 +69,7 @@
     
     [LBHelper executeBlock:^{
         
+//        原来的setDelegate方法
         IMP originalIMP = method_getImplementation(originalMethod);
         void (*originalSelectorIMP) (id, SEL , id) = (void(*)(id, SEL, id))originalIMP;
         

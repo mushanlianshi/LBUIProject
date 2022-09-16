@@ -19,18 +19,27 @@ private func BLTOldSwapElement<T>(a: inout T,b: inout T){
     b = tmp
 }
 
+public func isSimulator() -> Bool {
+#if targetEnvironment(simulator)
+    return true
+#else
+    return false
+#endif
+}
 
-
-public func BLTSwiftLog(_ content: Any, isDebugPrint: Bool = false){
+public func BLTSwiftLog(_ content: Any, isDebugPrint: Bool = false, file: String = #file, line: Int = #line, method: String = #function){
 #if DEBUG
     //LB DEBUG TEST
+    let outContent = "\((file as NSString).lastPathComponent)[\(line)], \(method): \(content)"
     if isDebugPrint{
-        debugPrint(content)
+        debugPrint(outContent)
     }else{
-        print(content)
+        print(outContent)
     }
 #endif
 }
+
+
 
 
 //类似OC里的KVC

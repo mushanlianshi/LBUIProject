@@ -9,13 +9,14 @@ import UIKit
 import BLTUIKitProject
 
 extension BLTNameSpace where Base: UICollectionView{
-    public func initFlowCollectionView(miniLineSpacing: CGFloat = 0, miniInterItemSpacing: CGFloat = 0, itemSize: CGSize = .zero, scrollDirection: UICollectionView.ScrollDirection = .vertical, delegate: UICollectionViewDelegate?, dataSource: UICollectionViewDataSource?) -> UICollectionView{
+    public static func initFlowCollectionView(miniLineSpacing: CGFloat = 0, miniInterItemSpacing: CGFloat = 0, itemSize: CGSize = .zero, scrollDirection: UICollectionView.ScrollDirection = .vertical, delegate: UICollectionViewDelegate?, dataSource: UICollectionViewDataSource?) -> UICollectionView{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = scrollDirection
         layout.itemSize = itemSize
         layout.minimumLineSpacing = miniLineSpacing
         layout.minimumInteritemSpacing = miniInterItemSpacing
         let collectionView = Base.init(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = delegate

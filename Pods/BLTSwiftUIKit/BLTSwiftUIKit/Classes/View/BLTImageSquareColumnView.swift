@@ -19,6 +19,14 @@ import SnapKit
 //九宫格展示图片的view
 @objc open class BLTImageSquareColumnView: UIView {
     
+    private static let shared = BLTImageSquareColumnView()
+    
+    open override class func appearance() -> Self {
+        return shared as! Self
+    }
+    
+    @objc public var customSensorDataBlock:((_ collectionView: UICollectionView) -> Void)?
+    
 //    展示图片的block
     public var configSquareImageCellBlock: ((_ imageCell: BLTImageCollectionViewCell, _ indexPath: IndexPath, _ imageArray: [Any]?) -> Void)?
 //    预览图片的block
@@ -63,6 +71,7 @@ import SnapKit
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
+        collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.register(BLTImageCollectionViewCell.self, forCellWithReuseIdentifier: BLTImageCollectionViewCell.blt_className)
         return collectionView
@@ -107,6 +116,15 @@ import SnapKit
             collectionView.frame = CGRect(origin: .zero, size: CGSize(width: collectionView.frame.width, height: totalH))
             self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.width, height: totalH))
         }
+    }
+    
+    open override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        guard let _ = newSuperview else { return }
+        if self.customSensorDataBlock == nil{
+            self.customSensorDataBlock = BLTImageSquareColumnView.appearance().customSensorDataBlock
+        }
+        self.customSensorDataBlock?(collectionView)
     }
     
 }

@@ -20,14 +20,10 @@ class LBNavigatorScrollHiddenController: UIViewController {
         return tab
     }()
     
-    var testView: UIView? = {
-       let view = UIView()
-        view.backgroundColor = .lightGray
-        view.frame = CGRect(x: 100, y: 100, width: 80, height: 40)
-        print("LBlog testView =======")
-        return view
-    }()
-
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "导航栏渐变"
@@ -37,22 +33,12 @@ class LBNavigatorScrollHiddenController: UIViewController {
             [weak self] animator, isHidden in
             self?.navigationController?.setNavigationBarHidden(isHidden, animated: true)
         }
-        self.view.addSubview(testView!)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-            [weak self] in
-            self?.testView?.removeFromSuperview()
-            self?.testView = nil
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                [weak self] in
-                print("lblog 2222 \(self?.testView)")
-            }
-        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = self.view.bounds
+        print("LBLog self.view frame \(self.view.frame)")
     }
     
 }

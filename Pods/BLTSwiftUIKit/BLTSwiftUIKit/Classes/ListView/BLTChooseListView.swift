@@ -15,6 +15,8 @@ public class BLTChooseListView: UIView {
         return instanceListView as! Self
     }
     
+    @objc public var customSensorDataBlock:((_ tableView: UITableView) -> Void)?
+    
     var itemH: CGFloat = 50;
     public var selectIndex: Int = 0{
         didSet{
@@ -63,6 +65,15 @@ public class BLTChooseListView: UIView {
     }
     
     
+    public override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        guard let _ = newSuperview else { return }
+        
+        if self.customSensorDataBlock == nil{
+            self.customSensorDataBlock = BLTChooseListView.appearance().customSensorDataBlock
+        }
+        self.customSensorDataBlock?(tableView)
+    }
     
     
     // 重写响应方法

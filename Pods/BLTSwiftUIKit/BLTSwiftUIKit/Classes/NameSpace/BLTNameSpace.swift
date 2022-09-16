@@ -20,10 +20,10 @@ public struct BLTNameSpace<Base>{
 
 //处理引用类型的
 public protocol BLTNameSpaceCompatible: AnyObject{
-    associatedtype CompatibleType
-    var blt: CompatibleType { set get }
+    associatedtype BLTCompatibleType
+    var blt: BLTCompatibleType { set get }
     
-    static var blt: CompatibleType.Type {set get}
+    static var blt: BLTCompatibleType.Type {set get}
 }
 
 public extension BLTNameSpaceCompatible{
@@ -45,15 +45,27 @@ public extension BLTNameSpaceCompatible{
 
 
 //处理值类型的
-public protocol BLTNameSpaceCompatibleValue{}
+public protocol BLTNameSpaceCompatibleValue{
+    associatedtype BLTCompatibleType
+    var blt: BLTCompatibleType { set get }
+    
+    static var blt: BLTCompatibleType.Type {set get}
+}
 
-extension BLTNameSpaceCompatibleValue{
-    public var blt: BLTNameSpace<Self>{
+public extension BLTNameSpaceCompatibleValue{
+    var blt: BLTNameSpace<Self>{
         get{
             return BLTNameSpace(self)
         }
         
         set {}
+    }
+    
+    static var blt: BLTNameSpace<Self>.Type{
+        get{
+            return BLTNameSpace<Self>.self
+        }
+        set{}
     }
 }
 

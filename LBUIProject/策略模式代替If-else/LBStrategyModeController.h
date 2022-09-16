@@ -5,7 +5,7 @@
 //  Created by liu bin on 2022/1/18.
 //
 
-#import "ViewController.h"
+#import "LBHomeViewController.h"
 
 @interface LBStrategyModeController : UIViewController
 

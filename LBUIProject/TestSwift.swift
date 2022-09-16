@@ -8,7 +8,15 @@
 import Foundation
 import HandyJSON
 
+protocol LBTestProtocol {
+    
+}
+
 class LBHandyJsonModel: NSObject, HandyJSON{
+    convenience init(obj: LBTestProtocol) {
+        self.init()
+        print("LBLog obj is \(obj)")
+    }
     var title: String = ""
     var number = 0
     var list: [LBHandyJsonItemModel]?
@@ -18,6 +26,7 @@ class LBHandyJsonModel: NSObject, HandyJSON{
     }
     
     @objc func testConvert(){
+        
         func dic() -> [String: Any]{
             return[
                 "tit" : "2班",

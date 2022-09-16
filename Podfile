@@ -16,12 +16,14 @@ target 'LBUIProject' do
 #  pod 'QMUIKit'
   pod 'MBProgressHUD'
   pod 'MMKV'
-  pod 'BLTSwiftUIKit'
+  pod 'BLTSwiftUIKit', '= 1.1.6'
   pod 'AvoidCrash', '~>2.5.2'
   pod 'CHTCollectionViewWaterfallLayout/ObjC', '= 0.9.10'
   pod 'JXPagingView/Pager'
   pod 'JXCategoryView'
   pod 'MJRefresh'
+  pod 'YYKit', '~> 1.0.9'
+  pod 'Dollar'
 #  骨架屏
   pod 'SkeletonView'
 #  转场动画
@@ -33,6 +35,12 @@ target 'LBUIProject' do
 #  collectionView 卡片效果
   pod 'AnimatedCollectionViewLayout'
   pod 'FSPagerView', :git => 'https://github.com/WenchaoD/FSPagerView'
+  
+#  检测卡顿的
+  pod 'Watchdog'
+  
+#  tabbar自定义的
+  pod 'CYLTabBarController'
 #  pod 'WechatOpenSDK', '1.9.2'
 #  pod 'charts', :git => 'https://github.com/danielgindi/Charts.git', :tag => '3.6.0'
   target 'LBUIProjectTests' do

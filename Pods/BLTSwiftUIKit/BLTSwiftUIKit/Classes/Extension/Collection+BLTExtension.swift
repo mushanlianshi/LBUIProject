@@ -9,12 +9,6 @@ import Foundation
 
 extension Collection{
     
-    public var blt: Self{
-        get{
-            return self
-        }
-    }
-    
     public func isNotEmpty() -> Bool{
         return !self.isEmpty
     }

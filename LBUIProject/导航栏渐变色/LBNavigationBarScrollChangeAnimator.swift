@@ -73,7 +73,7 @@ extension LBNavigationBarScrollChangeAnimator: UIScrollViewDelegate{
         guard let naviBar = navigationBar else { return }
         
         let progress = self.progress()
-        
+        print("LBLog progress \(progress)")
 //        已经达到0 就不在处理了
         if (progress <= 0 && self.reachZoreProgress){
             return

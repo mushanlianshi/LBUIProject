@@ -32,11 +32,11 @@
 
 @implementation UIViewController (change2)
 
-//+ (void)load{
-//    Method originalMethod = class_getInstanceMethod(self, @selector(viewWillAppear:));
-//    Method nowMethod = class_getInstanceMethod(self, @selector(A2_viewWillAppear:));
-//    method_exchangeImplementations(originalMethod, nowMethod);
-//}
++ (void)load{
+    Method originalMethod = class_getInstanceMethod(self, @selector(viewWillAppear:));
+    Method nowMethod = class_getInstanceMethod(self, @selector(A2_viewWillAppear:));
+    method_exchangeImplementations(originalMethod, nowMethod);
+}
 
 - (void)A2_viewWillAppear:(BOOL)animated{
     NSLog(@"LBLog A2 viewwillappear before");

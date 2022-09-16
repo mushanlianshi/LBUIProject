@@ -106,6 +106,7 @@ struct __AtAutoreleasePool {
 };
 
 #define __OFFSETOFIVAR__(TYPE, MEMBER) ((long long) &((TYPE *)0)->MEMBER)
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_wy_h49155494_xg87lxjnyc9rzr0000gp_T_main_3db56c_mi_0 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"wewfwfwef",9};
 
 
 
@@ -79795,8 +79796,15 @@ struct AppDelegate_IMPL {
 /* @end */
 
 
+
+
+typedef int* BBB;
+
+
+
 int main(int argc, char * argv[]) {
     printf("LBLog main ==============");
+    NSString *tst= (NSString *)&__NSConstantStringImpl__var_folders_wy_h49155494_xg87lxjnyc9rzr0000gp_T_main_3db56c_mi_0;
     NSString * appDelegateClassName;
     /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
 

@@ -6,12 +6,30 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "LBHomeViewController.h"
 #import "LBFPSManager.h"
 #import <MMKV/MMKV.h>
 #import <AvoidCrash/AvoidCrash.h>
 #import "LBLoadAndInitializeSubClassController+Test4.h"
 #import "LBBaseNavigationController.h"
+#import "LBUIProject-Swift.h"
+
+struct A{
+    int    a;
+    char   b;
+    short  c;
+};
+struct B{
+    char   b;
+    int    a;
+    short  c;
+};
+
+
+//extern "C" {
+//extern int __llvm_profile_set_filename(const char*);
+//extern int __llvm_profile_write_file(void);
+//}
 
 @interface AppDelegate ()
 
@@ -22,11 +40,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"LBLog didFinishLaunchingWithOptions ==============");
+    struct A a;
+    struct B b;
+    NSLog(@"LBLog a %@ ==============",@(sizeof(a)));
+    NSLog(@"LBLog b %@ ==============",@(sizeof(b)));
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     [self.window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[LBBaseNavigationController alloc] initWithRootViewController:[ViewController new]];
+    self.window.rootViewController = [LBTabbarController new];
+//    self.window.rootViewController = [LBHomeViewController new];
     [[UINavigationBar appearance] setTranslucent:NO];
 #ifdef DEBUG
     //动态变化的
@@ -66,8 +89,36 @@
     
     
     [[LBFPSManager sharedInstance] startFPSObserver];
+//    [self codeCoverageProfrawDump];
     return YES;
 }
+
+//- (void)codeCoverageProfrawDump{
+//    NSString *name = @"lb.profraw";
+//    NSError *error = nil;
+//    NSURL *url = [NSFileManager.defaultManager URLForDirectory:NSDocumentationDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:false error:&error];
+//    url = [url URLByAppendingPathComponent:name];
+////    char *fileName = url.absoluteString.UTF8String;
+//    __llvm_profile_set_filename(url.absoluteString.UTF8String);
+//    __llvm_profile_write_file();
+//}
+
+
+// MARK: - 代码覆盖率
+//func codeCoverageProfrawDump(fileName: String = "cc") {
+//    let name = "\(fileName).profraw"
+//    let fileManager = FileManager.default
+//    do {
+//        let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+//        let filePath: NSString = documentDirectory.appendingPathComponent(name).path as NSString
+//        __llvm_profile_set_filename(filePath.utf8String)
+//        print("File at: \(String(cString: __llvm_profile_get_filename()))")
+//        __llvm_profile_write_file()
+//    } catch {
+//        print(error)
+//    }
+//}
+
 
 - (void)setNavigationBarAppearance{
     if (@available(iOS 13.0, *)) {

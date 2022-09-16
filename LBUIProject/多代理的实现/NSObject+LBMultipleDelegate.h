@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL lb_multipleDelegatesEnable;
 
 //处理交换delegate方法 也可以手动添加方法支持多代理  只默认delegate多代理
-- (void)lb_registerDelegateWithSelector:(SEL)selector;
+//- (void)lb_registerDelegateWithSelector:(SEL)selector;
 
 - (void)lb_removeDelegate:(id)delegate;
 

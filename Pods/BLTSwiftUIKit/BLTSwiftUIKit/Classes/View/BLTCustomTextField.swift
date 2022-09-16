@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BLTCustomTextField: UITextField {
+open class BLTCustomTextField: UITextField {
     
     convenience init(contentInsets: UIEdgeInsets) {
         self.init()
@@ -21,14 +21,14 @@ class BLTCustomTextField: UITextField {
         }
     }
     
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
         guard let insets = contentInsets else {
             return super.textRect(forBounds: bounds)
         }
         return CGRectFromEdgeInsetsSwift(frame: bounds, insets: insets)
     }
     
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
         guard let insets = contentInsets else {
             return super.editingRect(forBounds: bounds)
         }

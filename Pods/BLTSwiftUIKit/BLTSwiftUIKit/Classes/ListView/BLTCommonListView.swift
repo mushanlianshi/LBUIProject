@@ -36,7 +36,21 @@ public protocol BLTCommonListViewDelegate: AnyObject {
     func didSelectItem<ItemType>(item: ItemType, index: Int)
 }
 
+
+public class BLTCommonListViewConfig: NSObject{
+    private static let shared = BLTCommonListViewConfig()
+    @objc public var customSensorDataBlock: ((_ tableView: UITableView) -> Void)?
+    public static func appearance() -> Self {
+        return shared as! Self
+    }
+}
+
 public class BLTCommonListView<ItemType, CellType: BLTCommonListCell<ItemType>>: UIView, UITableViewDelegate, UITableViewDataSource {
+    
+//    全局处理神策采集的，需要单独设置拿tableview去设置
+    lazy var config: BLTCommonListViewConfig = BLTCommonListViewConfig.appearance()
+    
+    @objc public var customSensorDataBlock: ((_ tableView: UITableView) -> Void)?
     
     private var refreshBlock: (() -> Void)?
     private var loadMoreBlock: (() -> Void)?
@@ -49,11 +63,13 @@ public class BLTCommonListView<ItemType, CellType: BLTCommonListCell<ItemType>>:
 
     public var tableView: UITableView
     public weak var delegate: BLTCommonListViewDelegate?
+    public var didSelectItemBlock: ((_ item: ItemType, _ index: Int) -> Void)?
 
     override init(frame: CGRect) {
         tableView = UITableView(frame: .zero, style: .plain)
         super.init(frame: frame)
         setupViews()
+        self.config.customSensorDataBlock?(tableView)
     }
     
     required init?(coder: NSCoder) {
@@ -90,6 +106,13 @@ public class BLTCommonListView<ItemType, CellType: BLTCommonListCell<ItemType>>:
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model: ItemType = self.itemList[indexPath.row]
         self.delegate?.didSelectItem(item: model, index: indexPath.row)
+    }
+    
+    public override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if let _ = newSuperview{
+            self.customSensorDataBlock?(tableView)
+        }
     }
 }
 
