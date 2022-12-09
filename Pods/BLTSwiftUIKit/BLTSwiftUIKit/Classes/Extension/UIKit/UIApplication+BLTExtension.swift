@@ -11,7 +11,7 @@ extension UIApplication: BLTNameSpaceCompatible{}
 
 public extension BLTNameSpace where Base: UIApplication{
     
-    static func blt_callMobile(_ mobile: String?){
+    static func callMobile(_ mobile: String?){
         guard var phone = mobile, phone.isEmpty == false else { return }
         let prefix = "tel://"
         if phone.contains(prefix) == false{

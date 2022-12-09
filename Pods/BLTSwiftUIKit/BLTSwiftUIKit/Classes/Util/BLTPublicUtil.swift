@@ -40,6 +40,22 @@ public func BLTSwiftLog(_ content: Any, isDebugPrint: Bool = false, file: String
 }
 
 
+///获取引用类型的地址
+public func getClassObjAddress(obj: AnyObject) -> String{
+    if Mirror.init(reflecting: obj).displayStyle == .class{
+        let opaquePointer = Unmanaged.passUnretained(obj as AnyObject).toOpaque()
+        let classPoint = UnsafeRawPointer(opaquePointer)
+        return classPoint.debugDescription
+    }
+    return ""
+}
+
+///获取值类型的地址
+public func getValueObjAddress<T>(obj: inout T) -> String {
+    let structPoint = withUnsafePointer(to: &obj) { $0 }
+    return structPoint.debugDescription
+}
+
 
 
 //类似OC里的KVC
@@ -58,4 +74,20 @@ public func BLTKVCValueFrom(_ object: Any, key: String) -> Any?{
 
 public func CGRectFromEdgeInsetsSwift(frame: CGRect, insets: UIEdgeInsets) -> CGRect{
     return CGRect(x: frame.origin.x + insets.left, y: frame.origin.y + insets.top, width: frame.size.width - insets.left - insets.right, height: frame.size.height - insets.top - insets.bottom)
+}
+
+
+@discardableResult
+public func swizzlingMethodSwift(_ objClass: AnyClass, _ originalSelector: Selector, _ swizzleSelector: Selector) -> Bool{
+    let originalMethod = class_getInstanceMethod(objClass, originalSelector)
+    let swizzleMethod = class_getInstanceMethod(objClass, swizzleSelector)
+    
+    guard let _ = originalMethod, let _ = swizzleMethod else { return false}
+    
+    if class_addMethod(objClass, originalSelector, method_getImplementation(swizzleMethod!), method_getTypeEncoding(swizzleMethod!)){
+        class_replaceMethod(objClass, swizzleSelector, method_getImplementation(originalMethod!), method_getTypeEncoding(originalMethod!))
+    }else{
+        method_exchangeImplementations(originalMethod!, swizzleMethod!)
+    }
+    return true
 }

@@ -16,7 +16,7 @@ target 'LBUIProject' do
 #  pod 'QMUIKit'
   pod 'MBProgressHUD'
   pod 'MMKV'
-  pod 'BLTSwiftUIKit', '= 1.1.6'
+  pod 'BLTSwiftUIKit', '= 1.2.1'
   pod 'AvoidCrash', '~>2.5.2'
   pod 'CHTCollectionViewWaterfallLayout/ObjC', '= 0.9.10'
   pod 'JXPagingView/Pager'
@@ -39,6 +39,8 @@ target 'LBUIProject' do
 #  检测卡顿的
   pod 'Watchdog'
   
+  pod 'RxSwift', '= 6.2.0'
+  pod 'RxCocoa', '= 6.2.0'
 #  tabbar自定义的
   pod 'CYLTabBarController'
 #  pod 'WechatOpenSDK', '1.9.2'

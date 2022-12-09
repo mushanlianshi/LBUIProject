@@ -86,6 +86,9 @@
 		40795CDF2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m in Sources */ = {isa = PBXBuildFile; fileRef = 40795CDE2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m */; };
 		40795CE52786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m in Sources */ = {isa = PBXBuildFile; fileRef = 40795CE42786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m */; };
 		40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40795CEB2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m */; };
+		407B84AF2940300400AEDAEC /* BLTReverseSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B84AE2940300400AEDAEC /* BLTReverseSequence.swift */; };
+		407B84B32940317500AEDAEC /* LBCustomReverseSequenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B84B22940317500AEDAEC /* LBCustomReverseSequenceController.swift */; };
+		407B84B6294031B500AEDAEC /* LBCustomOperatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B84B5294031B500AEDAEC /* LBCustomOperatorController.swift */; };
 		407DA97928A4CF93000B2BA8 /* LBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407DA97828A4CF93000B2BA8 /* LBTextView.swift */; };
 		407DA97B28A505A4000B2BA8 /* LBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407DA97A28A505A4000B2BA8 /* LBTextField.swift */; };
 		408045032891476F00600952 /* UIView+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408045022891476F00600952 /* UIView+LBExtension.swift */; };
@@ -313,6 +316,9 @@
 		40795CE42786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LBLoadAndInitializeSubClassController+Test4.m"; sourceTree = "<group>"; };
 		40795CEA2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestAvoidCrashViewController.h; sourceTree = "<group>"; };
 		40795CEB2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestAvoidCrashViewController.m; sourceTree = "<group>"; };
+		407B84AE2940300400AEDAEC /* BLTReverseSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLTReverseSequence.swift; sourceTree = "<group>"; };
+		407B84B22940317500AEDAEC /* LBCustomReverseSequenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomReverseSequenceController.swift; sourceTree = "<group>"; };
+		407B84B5294031B500AEDAEC /* LBCustomOperatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomOperatorController.swift; sourceTree = "<group>"; };
 		407DA97828A4CF93000B2BA8 /* LBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTextView.swift; sourceTree = "<group>"; };
 		407DA97A28A505A4000B2BA8 /* LBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTextField.swift; sourceTree = "<group>"; };
 		408045022891476F00600952 /* UIView+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LBExtension.swift"; sourceTree = "<group>"; };
@@ -639,6 +645,7 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				407B84B02940314300AEDAEC /* ThirdPartModule */,
 				409DCEBD28B76E1F00699E24 /* Util */,
 				407DA97528A4CF35000B2BA8 /* 自定义控件 */,
 				409B06BF2890D8B1004724EB /* 监测卡顿的 */,
@@ -913,6 +920,31 @@
 			path = AvoidCrash;
 			sourceTree = "<group>";
 		};
+		407B84B02940314300AEDAEC /* ThirdPartModule */ = {
+			isa = PBXGroup;
+			children = (
+				407B84B42940319F00AEDAEC /* CustomOperator */,
+				407B84B12940314F00AEDAEC /* CustomReverseSequence */,
+			);
+			path = ThirdPartModule;
+			sourceTree = "<group>";
+		};
+		407B84B12940314F00AEDAEC /* CustomReverseSequence */ = {
+			isa = PBXGroup;
+			children = (
+				407B84B22940317500AEDAEC /* LBCustomReverseSequenceController.swift */,
+			);
+			path = CustomReverseSequence;
+			sourceTree = "<group>";
+		};
+		407B84B42940319F00AEDAEC /* CustomOperator */ = {
+			isa = PBXGroup;
+			children = (
+				407B84B5294031B500AEDAEC /* LBCustomOperatorController.swift */,
+			);
+			path = CustomOperator;
+			sourceTree = "<group>";
+		};
 		407DA97528A4CF35000B2BA8 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1074,6 +1106,7 @@
 		409DCEBD28B76E1F00699E24 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				407B84AE2940300400AEDAEC /* BLTReverseSequence.swift */,
 				409DCEBE28B76E3C00699E24 /* CustomQueue */,
 			);
 			path = Util;
@@ -1523,16 +1556,19 @@
 				4043EB5C265FA2C500EACB2B /* LBTestStackViewViewController.m in Sources */,
 				40B206B32669F7770016A25C /* LBTestGestureViewController.m in Sources */,
 				40329B07285C2B5B007C4017 /* PagingViewController.m in Sources */,
+				407B84B6294031B500AEDAEC /* LBCustomOperatorController.swift in Sources */,
 				4043EB66265FA45600EACB2B /* LBTestAutoLayoutView.m in Sources */,
 				4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */,
 				40795CE52786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m in Sources */,
 				40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */,
 				40329B10285C2D69007C4017 /* RefreshViewController.m in Sources */,
+				407B84B32940317500AEDAEC /* LBCustomReverseSequenceController.swift in Sources */,
 				4043EB0C265F9E2400EACB2B /* LBHomeViewController.m in Sources */,
 				4066CF3D269314BF001A323C /* LBSafirController.m in Sources */,
 				4091DE4328AA48F000798E2A /* LBNotificationView.swift in Sources */,
 				4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */,
 				400A05BA28619CF0006574B5 /* LBHelper1.swift in Sources */,
+				407B84AF2940300400AEDAEC /* BLTReverseSequence.swift in Sources */,
 				40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */,
 				402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */,
 				40B35B7528640E970001FFE9 /* LBNavigatorScrollHiddenController.swift in Sources */,

@@ -17,6 +17,12 @@
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 
+@property (nonatomic, strong) UIImageView *gradientIV;
+
+@property (nonatomic, strong) UIImageView *gradientIV2;
+
+@property (nonatomic, strong) UIView *grandientView;
+
 @end
 
 @implementation LBStretchImageViewController
@@ -45,6 +51,43 @@
         make.size.mas_equalTo(CGSizeMake(self.backgroundImageView.image.size.width * 1.5, self.backgroundImageView.image.size.height));
         make.centerX.mas_equalTo(self.view);
     }];
+    
+    
+    [self.view addSubview:self.gradientIV];
+    [self.gradientIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(60);
+        make.top.equalTo(self.backgroundImageView.mas_bottom).offset(20);
+    }];
+    
+    
+    [self.view addSubview:self.gradientIV2];
+    [self.gradientIV2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(60);
+        make.top.equalTo(self.gradientIV.mas_bottom).offset(20);
+    }];
+    
+    [self.view addSubview:self.grandientView];
+    [self.grandientView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.gradientIV2.mas_bottom).offset(20);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(80, 30));
+    }];
+    
+    
+    __block BOOL _stop = true;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        _stop = NO;
+    });
+    while (_stop) {
+              [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate
+          distantFuture]];
+              NSLog(@"while循环中...");
+    }
+//    你需要执行的代码
+    _stop = YES;
+    NSLog(@"while循环没影响");
 }
 
 
@@ -80,6 +123,38 @@
         _backgroundImageView = [UIImageView blt_imageViewWithImage:image];
     }
     return _backgroundImageView;
+}
+
+
+- (UIImageView *)gradientIV{
+    if (!_gradientIV) {
+        UIImage *image = [UIImage imageNamed:@"gradient_image2"];
+        image = [image resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
+        _gradientIV = [[UIImageView alloc] init];
+        _gradientIV.image = image;
+    }
+    return _gradientIV;
+}
+
+
+- (UIImageView *)gradientIV2{
+    if (!_gradientIV2) {
+        UIImage *image = [UIImage imageNamed:@"gradient_image2"];
+        image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(image.size.height / 2 - 10, image.size.width / 2 - 10, image.size.height / 2 - 10, image.size.width / 2 - 10) resizingMode:UIImageResizingModeStretch];
+//        image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        _gradientIV2 = [[UIImageView alloc] init];
+//        _gradientIV2.tintColor = [UIColor yellowColor];
+        _gradientIV2.image = image;
+    }
+    return _gradientIV2;
+}
+
+- (UIView *)grandientView{
+    if (!_grandientView) {
+        _grandientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+        [_grandientView blt_addGrandientLayerStartColor:[[UIColor redColor] colorWithAlphaComponent:0.5] endColor:[[UIColor blueColor] colorWithAlphaComponent:0.9] direction:BLTGrandientLayerDirectionLeftToRight];
+    }
+    return _grandientView;
 }
 
 @end

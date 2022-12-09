@@ -75,11 +75,20 @@ class LBTabbarController: UITabBarController {
         serialQueue.async {
             print("LBLog queue is ====== \( serialQueue.qos) \(serialQueue.qos.relativePriority)")
         }
-        
+        testLineParams()
+    }
+    
+    func testLineParams() {
+        var mutableArray = [1,2,3]
+        for _ in mutableArray {
+            print(getValueObjAddress(obj: &mutableArray))
+            mutableArray.removeLast()
+        }
+        print("LBLog file is \(#file), line is \(#line), function is \(#function), column is \(#column)")
     }
     
     private func initSubControllers(){
-        let titleList = ["首页", "控件", "测试"]
+        let titleList = ["首页", "控件", "三方库"]
         let imageList = ["", "third_sdk", "mine"]
         let controllerList:[UIViewController] = [LBHomeViewController(), LBSecondViewController(), LBThirdSDKController()]
         var list = [UIViewController]()

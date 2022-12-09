@@ -70,15 +70,30 @@ extension BLTNameSpace where Base == String{
         return self.base.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributeDic, context: nil).size
     }
     
+    
+    ///是不是0金额
+    public func isZeroMoney() -> Bool{
+        if self.base.isEmpty{
+            return true
+        }
+        let number = NSDecimalNumber.init(string: self.base)
+        if number == NSDecimalNumber.zero{
+            return true
+        }
+        
+        return false
+    }
+    
 }
 
 // MARK: 富文本的分类
 extension BLTNameSpace where Base == String{
     
-    public func paragraphSpacingAttributeText(paragraphSpacing: CGFloat) -> NSAttributedString {
+    public func paragraphSpacingAttributeText(paragraphSpacing: CGFloat, lineSpacing: CGFloat = 0) -> NSMutableAttributedString {
         let attributeString = NSMutableAttributedString.init(string: self.base)
         let style = NSMutableParagraphStyle()
         style.paragraphSpacing = paragraphSpacing
+        style.lineSpacing = lineSpacing
         attributeString.addAttribute(.paragraphStyle, value: style, range: self.rangeOfAll())
         return attributeString
     }
@@ -91,6 +106,13 @@ extension BLTNameSpace where Base == String{
             let range = nsString.range(of: highLightText)
             attributeString.addAttributes(attrs, range: range)
         }
+        return attributeString
+    }
+    
+    public func middlelLineText() -> NSMutableAttributedString? {
+        let attributeString = NSMutableAttributedString.init(string: self.base)
+        let allRange = (self.base as NSString).range(of: self.base)
+        attributeString.addAttributes([.strikethroughStyle : 1], range: allRange)
         return attributeString
     }
     

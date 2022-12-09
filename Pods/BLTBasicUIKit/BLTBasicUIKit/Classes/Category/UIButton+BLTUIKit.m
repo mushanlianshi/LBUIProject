@@ -8,11 +8,52 @@
 
 #import "UIButton+BLTUIKit.h"
 #import <objc/message.h>
+#import "UIView+BLTUIKit.h"
+
 static NSString *kNoHightlightKey;
 
 static NSString *kButtonCustomType;
 
 @implementation UIButton (BLTUIKit)
+
++ (void)load{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        SEL originSelector = @selector(layoutSubviews);
+        SEL newSelector = @selector(blt_layoutSubviews);
+        Method oriMethod = class_getInstanceMethod(class, originSelector);
+        Method newMethod = class_getInstanceMethod(class, newSelector);
+        if (newMethod) {
+            BOOL isAddedMethod = class_addMethod(class, originSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+            if (isAddedMethod) {
+                IMP oriMethodIMP = method_getImplementation(oriMethod) ?: imp_implementationWithBlock(^(id selfObject) {});
+                const char *oriMethodTypeEncoding = method_getTypeEncoding(oriMethod) ?: "v@:";
+                class_replaceMethod(class, newSelector, oriMethodIMP, oriMethodTypeEncoding);
+            } else {
+                method_exchangeImplementations(oriMethod, newMethod);
+            }
+        }
+    });
+}
+
+
+- (void)blt_layoutSubviews{
+    [self blt_layoutSubviews];
+//    NSLog(@"LBLog blt_layoutSubviews ============");
+    CAGradientLayer *grandientLayer = objc_getAssociatedObject(self, @selector(blt_addGrandientLayerStartColor:endColor:direction:needAfterLayout:));
+    if (grandientLayer) {
+//        [UIView performWithoutAnimation:^{
+//            grandientLayer.frame = self.bounds;
+//        }];
+        
+//        消除layer的隐式动画
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        grandientLayer.frame = self.bounds;
+        [CATransaction commit];
+    }
+}
 
 /** 展示文字的按钮 */
 + (instancetype)blt_buttonWithTitle:(NSString *)title font:(UIFont *)font titleColor:(UIColor *)titleColor target:(id)target selector:(SEL)selector{

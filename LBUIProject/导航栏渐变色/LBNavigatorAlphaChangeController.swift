@@ -22,18 +22,65 @@ class LBNavigatorAlphaChangeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "导航栏渐变"
+        self.navigationController?.edgesForExtendedLayout = []
+        print("LBLog viewDidLoad 4444")
         self.view.addSubview(tableView)
+//        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         animator.scrollView = tableView
         animator.dataSources = self
+        scrollViewDidScroll(tableView)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isTranslucent = true
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithTransparentBackground()
+//            appearance.backgroundColor = UIColor.clear
+            appearance.backgroundImage = UIImage.imageWithTintColor(color: .clear)
+            appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
+            self.navigationController?.navigationBar.standardAppearance = appearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isTranslucent = true
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithTransparentBackground()
+//            appearance.backgroundColor = UIColor.clear
+            appearance.backgroundImage = UIImage.imageWithTintColor(color: .white)
+            appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
+            self.navigationController?.navigationBar.standardAppearance = appearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = self.view.bounds
+        if #available(iOS 11.0, *) {
+            print("LBLog tableView contentInset \(tableView.adjustedContentInset)")
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     
-//    preferredStatusBarStyle不被调用 是被NavigationController里拦截了  需要在naviController返回topController来响应这个事件
+//    preferredStatusBarStyle不被调用 是被NavigationController里拦截了  需要在naviController的childViewControllerForStatusBarStyle 返回topController来响应这个事件
     override var preferredStatusBarStyle: UIStatusBarStyle{
         print("LBLog animator progress \(self.animator.progress())")
         return self.animator.progress() > 0.25 ? .lightContent  : .default
@@ -46,7 +93,7 @@ extension LBNavigatorAlphaChangeController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as? UITableViewCell else { return UITableViewCell() }
         
-        cell.textLabel?.text = "indexPath row is \(indexPath.row)"
+        cell.textLabel?.text = "indexPath row is 222 \(indexPath.row)"
         return cell
     }
     
@@ -68,14 +115,18 @@ extension LBNavigatorAlphaChangeController: UITableViewDelegate, UITableViewData
 extension LBNavigatorAlphaChangeController: LBNavigationBarScrollDataSourcesProtocol{
     func backgroundImageOfAnimator(animator: LBNavigationBarScrollChangeAnimator, progress: CGFloat) -> UIImage? {
         self.setNeedsStatusBarAppearanceUpdate()
-        return UIImage.imageWithTintColor(color: UIColor.blue.withAlphaComponent(progress))
+//        return UIImage.imageWithTintColor(color: UIColor.blue.withAlphaComponent(progress))
+        return UIImage.imageWithTintColor(color: UIColor.white.withAlphaComponent(progress))
+        return UIImage.imageWithTintColor(color: UIColor.white.withAlphaComponent(progress))
     }
     
     func titleViewTintColorOfAnimator(animator: LBNavigationBarScrollChangeAnimator, progress: CGFloat) -> UIColor? {
-        return UIColor.blt.gradientColor(fromColor: UIColor.black, toColor: UIColor.white, progress: progress)
+//        return UIColor.red.withAlphaComponent(progress)
+        return UIColor.blt.gradientColor(fromColor: UIColor.black, toColor: UIColor.red, progress: progress)
     }
     
     func tintColorOfAnimator(animator: LBNavigationBarScrollChangeAnimator, progress: CGFloat) -> UIColor? {
-        return UIColor.blt.gradientColor(fromColor: UIColor.black, toColor: UIColor.white, progress: progress)
+//        return UIColor.blue.withAlphaComponent(progress)
+        return UIColor.blt.gradientColor(fromColor: UIColor.black, toColor: UIColor.blue, progress: progress)
     }
 }

@@ -69,6 +69,8 @@ class LBHandyJsonModel: NSObject, HandyJSON{
             self.title <-- ["tit"]
     }
     
+    
+    
     func didFinishMapping() {
         print("LBlog didFinishMapping")
     }

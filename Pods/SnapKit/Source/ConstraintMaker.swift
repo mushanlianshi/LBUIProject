@@ -146,21 +146,27 @@ public class ConstraintMaker {
     private let item: LayoutConstraintItem
     private var descriptions = [ConstraintDescription]()
     
+    ///初始化ConstraintMaker 并准备view的frame转约束设置为无效
     internal init(item: LayoutConstraintItem) {
         self.item = item
         self.item.prepare()
     }
     
     internal func makeExtendableWithAttributes(_ attributes: ConstraintAttributes) -> ConstraintMakerExtendable {
+        //获取约束的描述
         let description = ConstraintDescription(item: self.item, attributes: attributes)
         self.descriptions.append(description)
         return ConstraintMakerExtendable(description)
     }
     
+    ///解析block中的约束
     internal static func prepareConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) -> [Constraint] {
+        ///1.初始化约束的maker  准备工作
         let maker = ConstraintMaker(item: item)
+        ///2.执行block 添加约束
         closure(maker)
         var constraints: [Constraint] = []
+        ///3.获取前面block的约束
         for description in maker.descriptions {
             guard let constraint = description.constraint else {
                 continue
@@ -172,6 +178,7 @@ public class ConstraintMaker {
     
     internal static func makeConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) {
         let constraints = prepareConstraints(item: item, closure: closure)
+        ///执行约束 updatingExisting是不是更新   更新要找到相同的约束去更新掉
         for constraint in constraints {
             constraint.activateIfNeeded(updatingExisting: false)
         }

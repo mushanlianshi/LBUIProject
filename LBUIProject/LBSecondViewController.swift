@@ -66,11 +66,40 @@ class LBSecondViewController: UIViewController{
         print("LBLog swap a \(a) \(b)")
         testSwap(a: &a, b: &b)
         print("LBLog swap a \(a) \(b)")
+        testSort()
     }
     
     func testSwap(a: inout Int, b: inout Int){
         a = 200
         b = 400
+    }
+    
+    func testSort(){
+        let model1 = sortSuperModel.init(model: SortModel.init(age: 1))
+        let model2 = sortSuperModel.init(model: SortModel.init(age: 3))
+        let model3 = sortSuperModel.init(model: SortModel.init(age: 2))
+        let model4 = sortSuperModel.init(model: SortModel.init(age: 5))
+        let model5 = sortSuperModel.init(model: SortModel.init(age: 4))
+        let list = [model1, model2, model3, model4, model5]
+        
+        let sortList = list.sorted { sort1, sort2 in
+            guard let m1 = sort1.model, let m2 = sort2.model else { return false }
+            if m1.age < m2.age{
+                return true
+            }
+            return false
+        }
+        
+        print("LBLog sort list\(sortList)")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 }
 
@@ -143,4 +172,13 @@ class LBSecondColumnListCell: UICollectionViewCell{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+struct sortSuperModel {
+    var model: SortModel?
+}
+
+struct SortModel{
+    var age = 2
 }

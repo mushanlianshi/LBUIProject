@@ -32,43 +32,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self testAmbiguousLayout];
+//    [self testAmbiguousLayout];
+    [self testAutoLayout];
 }
 
 - (void)testAutoLayout{
     [self.view addSubview:self.layoutView];
-    [self.view addSubview:self.proView];
-    [self.view addSubview:self.renderIV];
-    [self.view addSubview:self.button1];
+//    [self.view addSubview:self.proView];
+//    [self.view addSubview:self.renderIV];
+//    [self.view addSubview:self.button1];
 //    [self.view addSubview:self.button2];
     
     [self.layoutView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(self.view);
 //        make.top.equalTo(self.view.mas_top).multipliedBy(1.5);
     }];
-    [self.layoutView layoutIfNeeded];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.layoutView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(15);
+            make.right.mas_equalTo(-25);
+            make.top.equalTo(self.view);
+    //        make.top.equalTo(self.view.mas_top).multipliedBy(1.5);
+        }];
+    });
+    
+//    [self.layoutView layoutIfNeeded];
     NSLog(@"LBLog ----layoutifneed %@",self.layoutView);
 //    self.extendedLayoutIncludesOpaqueBars = YES;
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        self.layoutView.testString = @"哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号";
 //    });
-    [self.proView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.layoutView.mas_centerX).priorityHigh();
-        make.left.equalTo(self.layoutView.mas_left).mas_offset(20).priorityMedium();
-        make.width.mas_lessThanOrEqualTo(100).priorityHigh();
-        make.height.mas_equalTo(self.proView.mas_width).multipliedBy(32.0/104.0);
-        make.top.mas_equalTo(self.layoutView.mas_bottom).mas_offset(20);
-    }];
-    
-    [self.renderIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.proView.mas_bottom).mas_offset(30);
-        make.centerX.equalTo(self.proView);
-    }];
-    
-    [self.button1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.renderIV.mas_bottom).mas_offset(30);
-        make.left.mas_offset(40);
-    }];
+//    [self.proView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.layoutView.mas_centerX).priorityHigh();
+//        make.left.equalTo(self.layoutView.mas_left).mas_offset(20).priorityMedium();
+//        make.width.mas_lessThanOrEqualTo(100).priorityHigh();
+//        make.height.mas_equalTo(self.proView.mas_width).multipliedBy(32.0/104.0);
+//        make.top.mas_equalTo(self.layoutView.mas_bottom).mas_offset(20);
+//    }];
+//
+//    [self.renderIV mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.proView.mas_bottom).mas_offset(30);
+//        make.centerX.equalTo(self.proView);
+//    }];
+//
+//    [self.button1 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.renderIV.mas_bottom).mas_offset(30);
+//        make.left.mas_offset(40);
+//    }];
     
 //    [self.button2 mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self.button1);
@@ -119,7 +130,7 @@
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-//    NSLog(@"LBLog viewdidlayoutsuviews %@",@(self.layoutView.frame));
+    NSLog(@"LBLog viewdidlayoutsuviews %@",@(self.layoutView.frame));
 }
 
 

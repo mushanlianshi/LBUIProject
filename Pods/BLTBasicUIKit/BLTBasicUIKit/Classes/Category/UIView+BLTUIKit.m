@@ -31,13 +31,44 @@ static const char *ActionHandlerTapGestureKey ;
                 method_exchangeImplementations(oriMethod, newMethod);
             }
         }
+        
+//        SEL originSelector11 = @selector(initWithFrame:);
+//        SEL newSelector11 = @selector(blt_initWithFrame:);
+//        Method oriMethod11 = class_getInstanceMethod(class, originSelector11);
+//        Method newMethod11 = class_getInstanceMethod(class, newSelector11);
+//        if (newMethod11) {
+//            BOOL isAddedMethod11 = class_addMethod(class, originSelector, method_getImplementation(newMethod11), method_getTypeEncoding(newMethod11));
+//            if (isAddedMethod11) {
+//                IMP oriMethodIMP11 = method_getImplementation(oriMethod11) ?: imp_implementationWithBlock(^(id selfObject) {});
+//                const char *oriMethodTypeEncoding = method_getTypeEncoding(oriMethod11) ?: "v@:";
+//                class_replaceMethod(class, newSelector11, oriMethodIMP11, oriMethodTypeEncoding);
+//            } else {
+//                method_exchangeImplementations(oriMethod11, newMethod11);
+//            }
+//        }
+    
+        
     });
+}
+
+
+- (instancetype)blt_initWithFrame:(CGRect)frame{
+    if ([self isKindOfClass:[UIButton class]]) {
+        NSLog(@"LBLog self is %@",[self class]);
+    }
+    return [self blt_initWithFrame:frame];
 }
 
 //渐变hook的方法
 - (void)blt_grandientLayoutSubviews{
     [self blt_grandientLayoutSubviews];
     CAGradientLayer *grandientLayer = objc_getAssociatedObject(self, @selector(blt_addGrandientLayerStartColor:endColor:direction:needAfterLayout:));
+    if ([self isKindOfClass:[UIButton class]] ) {
+//        NSLog(@"LBLog current button is %@",self);
+    }
+    if ([self isKindOfClass:[UIButton class]] && ((UIButton *)self).currentTitle.length > 8) {
+//        NSLog(@"LBLog current button is  22222 %@",self);
+    }
     if (grandientLayer) {
         grandientLayer.frame = self.bounds;
     }

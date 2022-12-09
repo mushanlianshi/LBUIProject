@@ -17,4 +17,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@interface LBTestAutoLayoutSubView : UIView
+
+- (void)refreshTitle:(NSString *)title;
+
+@end
+
+@interface LBTestAutoLayoutGrandientButton : UIButton
+
+@end
+
 NS_ASSUME_NONNULL_END

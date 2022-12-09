@@ -30,8 +30,19 @@
     [self addRasterizeView];
     [self addReciptView];
     [self customCornerRaduis];
+    [self dealTextNotHiddenBelowImage];
 }
 
+
+
+//1.类似哔哩哔哩弹幕不遮挡视频的   弹幕的mask是AI下发生成的任务图像的image  设置弹幕的mask是人物图片的imageView  不透明部分就会展示文字   任务透明部分就不会遮住弹幕了
+- (void)dealTextNotHiddenBelowImage{
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = UIImageNamed(@"face");
+    [self.view addSubview:imageView];
+    [self.view insertSubview:imageView atIndex:0];
+    imageView.frame = self.view.bounds;
+}
 
 - (void)addSubview{
     [self.view addSubview:self.scrollView];
@@ -101,6 +112,11 @@
 
 
 - (void)addMaskLayerView{
+    
+    UIView *testView = [[UIView alloc] init];
+    testView.backgroundColor = [UIColor lightGrayColor];
+    
+    
     //1.mask效果
     UIImageView *containerIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     containerIV.image = [UIImage imageNamed:@"face"];
@@ -109,12 +125,19 @@
     CALayer *layer = [[CALayer alloc] init];
     layer.frame = containerIV.bounds;
     layer.contents = (__bridge id _Nullable)([UIImage imageNamed:@"mask_five_star"].CGImage);
-    containerIV.layer.mask = layer;
+//    containerIV.layer.mask = layer;
+    testView.layer.mask = layer;
     
-    [self.verticalStackView addArrangedSubview:containerIV];
+    [self.verticalStackView addArrangedSubview:testView];
+    [testView addSubview:containerIV];
+    
+    [testView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(150);
+    }];
+    
     [containerIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(100);
-        make.centerX.mas_equalTo(self.view);
+        make.center.equalTo(testView);
     }];
     
     
