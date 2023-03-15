@@ -38,27 +38,24 @@
 
 - (void)testAutoLayout{
     [self.view addSubview:self.layoutView];
-//    [self.view addSubview:self.proView];
-//    [self.view addSubview:self.renderIV];
-//    [self.view addSubview:self.button1];
-//    [self.view addSubview:self.button2];
-    
     [self.layoutView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(self.view);
 //        make.top.equalTo(self.view.mas_top).multipliedBy(1.5);
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.layoutView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(15);
-            make.right.mas_equalTo(-25);
-            make.top.equalTo(self.view);
-    //        make.top.equalTo(self.view.mas_top).multipliedBy(1.5);
-        }];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.layoutView.testString = @"123";
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.layoutView.subView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(50);
+//            }];
+//        });
+//    });
     
 //    [self.layoutView layoutIfNeeded];
-    NSLog(@"LBLog ----layoutifneed %@",self.layoutView);
+    NSLog(@"LBLog ----layoutifneed %@ %@",self.layoutView, self.layoutView.subviews);
+    [self.layoutView layoutIfNeeded];
+    NSLog(@"LBLog ---222222-layoutifneed %@ %@",self.layoutView, self.layoutView.subviews);
 //    self.extendedLayoutIncludesOpaqueBars = YES;
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        self.layoutView.testString = @"哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号";
@@ -86,10 +83,10 @@
 //        make.left.equalTo(self.button1.mas_right).mas_offset(50);
 //    }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.button1 setTitle:@"1234大红花会" forState:UIControlStateNormal];
-//        [self.button2 setTitle:@"1234大欧委会" forState:UIControlStateNormal];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.button1 setTitle:@"1234大红花会" forState:UIControlStateNormal];
+////        [self.button2 setTitle:@"1234大欧委会" forState:UIControlStateNormal];
+//    });
 }
 
 - (void)testAmbiguousLayout{

@@ -11,8 +11,10 @@
 #import "LBUIProject-Swift.h"
 #import "Masonry.h"
 #import <YYKit/YYKit.h>
+#import <CoreTelephony/CTCellularData.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface LBHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface LBHomeViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -20,9 +22,26 @@
 
 @property (nonatomic, copy) NSString *name;
 
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
 @end
 
 @implementation LBHomeViewController
+
+- (CLLocationManager *)locationManager
+{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    return _locationManager;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +51,19 @@
         make.left.top.right.equalTo(self.view);
         make.bottom.mas_offset(-60);
     }];
+    [self getNetworkAuth];
+}
+
+- (void)getNetworkAuth{
+    CTCellularData *cellularData = [[CTCellularData alloc]init];
+    
+//    CTCellularDataRestrictedState state = cellularData.restrictedState;
+//    NSLog(@"LBLog state is %@",@(state));
+    cellularData.cellularDataRestrictionDidUpdateNotifier = ^(CTCellularDataRestrictedState state){
+    //状态改变时进行相关操作
+        NSLog(@"LBLog state update %@", @(state));
+    };
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -101,7 +133,21 @@
             vc = [[LBCustomPageViewController alloc] init];
         }else if ([vcName isEqualToString:@"LBWatchDogController"]){
             vc = [[LBWatchDogController alloc] init];
+        }else if ([vcName isEqualToString:@"LBGrayViewController"]){
+            vc = [[LBGrayViewController alloc] init];
+        }else if ([vcName isEqualToString:@"LBTestCacheViewController"]){
+            vc = [LBTestCacheViewController new];
+        }else if ([vcName isEqualToString:@"LBRxSwiftViewController"]){
+            vc = [LBRxSwiftViewController new];
+        }else if ([vcName isEqualToString:@"LBTestHitViewController"]){
+            vc = [LBTestHitViewController new];
+        }else if ([vcName isEqualToString:@"LBTestScrollVerticalHorizontalController"]){
+            vc = [LBTestScrollVerticalHorizontalController new];
+        }else if ([vcName isEqualToString:@"LBTestStructAndClassController"]){
+            vc = [LBTestStructAndClassController new];
         }
+        vc.view.backgroundColor = [UIColor whiteColor];
+        vc.navigationItem.title = dic[@"title"];
 //        [self.navigationController pushViewController:[UIViewController new] animated:NO];
 //        [self.navigationController pushViewController:vc animated:YES];
 //        [self.navigationController pushViewController:[UIViewController new] animated:YES];
@@ -172,6 +218,12 @@
             @{@"title" : @"动画", @"vcName" : @"LBThirdPartAnimationController"},
             @{@"title" : @"轮播图", @"vcName" : @"LBCustomPageViewController"},
             @{@"title" : @"检测卡顿", @"vcName" : @"LBWatchDogController"},
+            @{@"title" : @"页面或则控件置灰", @"vcName" : @"LBGrayViewController"},
+            @{@"title" : @"测试NSCache", @"vcName" : @"LBTestCacheViewController"},
+            @{@"title" : @"测试RxSwift", @"vcName" : @"LBRxSwiftViewController"},
+            @{@"title" : @"测试响应链", @"vcName" : @"LBTestHitViewController"},
+            @{@"title" : @"上下左右滚动", @"vcName" : @"LBTestScrollVerticalHorizontalController"},
+            @{@"title" : @"测试struct and class", @"vcName" : @"LBTestStructAndClassController"},
         ];
     }
     return _dataSources;

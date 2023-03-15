@@ -104,7 +104,8 @@ class LBTabbarController: UITabBarController {
             list.append(naviController)
         }
         self.viewControllers = list
-        print("LBlog different \(Dollar.difference([1, 2, 3, 4, 5], [5, 2, 10], inOrder: false) )")
+        print("LBlog different \(Dollar.difference([3, 2, 1, 4, 5], [5, 2, 10], inOrder: true) )")
+        print("LBlog different \(Dollar.difference([3, 2, 1, 4, 5], [5, 2, 10], inOrder: false) )")
     }
     
     private func addAnimateImageView(){

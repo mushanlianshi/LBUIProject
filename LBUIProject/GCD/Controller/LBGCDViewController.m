@@ -77,26 +77,26 @@
 //
 //}
 //
-- (NSObject *)testObj{
-    if(_testObj == nil){
-        _testObj = [[NSObject alloc] init];
-    }
-    return _testObj;
-}
+//- (NSObject *)testObj{
+//    if(_testObj == nil){
+//        _testObj = [[NSObject alloc] init];
+//    }
+//    return _testObj;
+//}
 
 
 - (void)testMutiThreadReleaseProperty{
-//    for(int i = 0; i < 100; i++){
-//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//            self.testObj = [[NSObject alloc] init];
-//        });
-//    }
-    
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < 1000; i++){
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSLog(@"LBLog obj is %@",self.testObj);
+            self.testObj = [[NSObject alloc] init];
         });
     }
+    
+//    for(int i = 0; i < 1000; i++){
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//            NSLog(@"LBLog obj is %@",self.testObj);
+//        });
+//    }
     
 }
 

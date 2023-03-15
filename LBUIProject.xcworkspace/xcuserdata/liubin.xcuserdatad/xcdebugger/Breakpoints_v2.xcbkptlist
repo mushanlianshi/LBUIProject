@@ -197,22 +197,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FFF717AF-DEDD-433D-A2A3-8AFB9EEFA820"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LBUIProject/RunLoop/LBCrashManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "catchExceptionHandler(exception)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "C99F1B79-8DB1-4B74-A15D-5C61ECB1E821"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1061,22 +1045,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DA8374D4-C393-4279-A431-D7ABF558BCA9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LBUIProject/TestAutoLayout/View/LBTestAutoLayoutView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-layoutSubviews"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9C14FE35-A465-4BBF-BB19-E8243EEA7D8C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1084,8 +1052,8 @@
             filePath = "LBUIProject/TestAutoLayout/LBTestAutoLayoutViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-viewDidLayoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
@@ -1093,16 +1061,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "40DB58C6-9FA7-4A5F-B439-FBBF0359ED08"
-            shouldBeEnabled = "No"
+            uuid = "A71D8C08-A689-4F97-9C9F-0BEE2409DB01"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LBUIProject/TestAutoLayout/View/LBTestAutoLayoutView.m"
+            filePath = "LBUIProject/&#x4e0a;&#x4e0b;&#x5de6;&#x53f3;&#x6ed1;&#x52a8;/LBTestScrollVerticalHorizontalController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "-layoutSubviews"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3FFB811D-8BAB-40DA-8DDE-D84EAC66C4EE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/LBThirdSDKController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

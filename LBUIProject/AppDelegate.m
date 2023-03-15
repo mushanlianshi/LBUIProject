@@ -41,6 +41,8 @@ struct B{
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) NSMutableArray      *mArray;
+
 @end
 
 @implementation AppDelegate
@@ -71,6 +73,24 @@ struct B{
     
     
     [self setNavigationBarAppearance];
+    self.mArray = [NSMutableArray new];
+    
+    NSMutableArray *arr = [NSMutableArray arrayWithObjects:@"1",@"2", nil];
+        self.mArray = arr;
+    //// 12343 NULL
+        void (^kcBlock)(void) = ^{
+            [arr addObject:@"3"];
+            [self.mArray addObject:@"a"];
+            NSLog(@"LBLog KC %@",arr);
+            NSLog(@"LBLog Cooci: %@",self.mArray);
+        };
+        [arr addObject:@"4"];
+        [self.mArray addObject:@"5"];
+        
+        arr = nil;
+        self.mArray = nil;
+        
+        kcBlock();
     
 //    [AvoidCrash makeAllEffective];
     

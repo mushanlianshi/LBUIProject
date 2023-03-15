@@ -8,6 +8,7 @@
 #import "LBShadowRaduisViewController.h"
 #import "Masonry.h"
 #import <BLTUIKitProject/BLTUI.h>
+#import "LBUIProject-Swift.h"
 
 
 //添加阴影的view的背景色一定不能是clearColor   不然展示不出来阴影
@@ -17,9 +18,23 @@
 
 @property (nonatomic, strong) UIStackView *verticalStackView;
 
+@property (nonatomic, strong) BLTCornerGradientShadowButton *cornerGradientShadowView;
+
 @end
 
 @implementation LBShadowRaduisViewController
+
+
+- (BLTCornerGradientShadowButton *)cornerGradientShadowView{
+    if (!_cornerGradientShadowView) {
+        _cornerGradientShadowView = [[BLTCornerGradientShadowButton alloc] init];
+        [_cornerGradientShadowView setGradientParams:[UIColor blueColor] :[UIColor redColor] startLocation:CGPointMake(0, 0.5) endLocation:CGPointMake(1, 0.5) locations:nil];
+        [_cornerGradientShadowView setShadowParams:[UIColor greenColor] shadowRadius:5 shadowOffset:CGSizeMake(0, 0) shadowOpacity:1 shadowPath:nil];
+        _cornerGradientShadowView.customCornerRadius = 24;
+        _cornerGradientShadowView.backgroundColor = [UIColor yellowColor];
+    }
+    return _cornerGradientShadowView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,6 +89,13 @@
         make.height.mas_equalTo(100);
     }];
     
+    
+    [self.view addSubview:self.cornerGradientShadowView];
+    [self.cornerGradientShadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view).mas_offset(-15);
+        make.size.mas_equalTo(CGSizeMake(100, 48));
+        make.centerY.equalTo(self.view);
+    }];
     
     
     UIView *view2 = [[UIView alloc] init];

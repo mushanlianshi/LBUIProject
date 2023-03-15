@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) UIButton *actionBtn;
 
-@property (nonatomic, strong) LBTestAutoLayoutSubView *subView;
+
 
 @end
 
@@ -67,20 +67,21 @@
         make.left.right.equalTo(self);
         make.top.equalTo(self.actionBtn.mas_bottom);
         make.bottom.equalTo(self);
+        make.height.mas_equalTo(80);
     }];
     
 //    [self.titleLab layoutIfNeeded];
 //    [self layoutIfNeeded];
     NSLog(@"LBLog layoutifneeded %@ %@",@(self.frame),@(self.titleLab.frame));
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.actionBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self);
-            make.height.mas_equalTo(80);
-            make.top.equalTo(self.control.mas_bottom);
-        }];
-        [self.subView refreshTitle:@"好恶化和我和\n红色耦合和我为服务费威锋网访问"];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.actionBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.left.right.equalTo(self);
+//            make.height.mas_equalTo(80);
+//            make.top.equalTo(self.control.mas_bottom);
+//        }];
+//        [self.subView refreshTitle:@"好恶化和我和\n红色耦合和我为服务费威锋网访问"];
+//    });
 }
 
 
@@ -182,10 +183,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addSubview:self.subButton];
-//        [self.subButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.bottom.equalTo(self);
-//            make.centerX.equalTo(self);
-//        }];
         [self.subButton blt_addGrandientLayerStartColor:[[UIColor greenColor] colorWithAlphaComponent:0.4] endColor:[[UIColor redColor] colorWithAlphaComponent:0.5] direction:BLTGrandientLayerDirectionLeftToRight needAfterLayout:true];
     }
     return self;
@@ -194,7 +191,9 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+//    self.blt_height = self.subButton.blt_height;
     NSLog(@"LBLog layout subviews %@ %@", NSStringFromClass([self class]), @(self.frame));
+//    self.frame.size.height = self.subButton.frame.size.height;
 //    NSLog(@"LBLog layout subButton %@", @(self.subButton.frame));
 //    self.subButton.layer.cornerRadius = self.subButton.bounds.size.height / 2;
 //    [self.subButton blt_addGrandientLayerStartColor:[[UIColor greenColor] colorWithAlphaComponent:0.4] endColor:[[UIColor redColor] colorWithAlphaComponent:0.5] direction:BLTGrandientLayerDirectionLeftToRight needAfterLayout:true];
@@ -252,7 +251,7 @@
 - (UIView *)yellowView{
     if (!_yellowView) {
         _yellowView = [[UIView alloc] init];
-        _yellowView.backgroundColor = [UIColor yellowColor];
+        _yellowView.backgroundColor = [UIColor systemPinkColor];
     }
     return _yellowView;
 }

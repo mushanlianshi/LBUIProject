@@ -34,6 +34,7 @@ class LBSecondViewController: UIViewController{
     
     lazy var dataSources = [
         LBListItemModel.init(title: "notificationView", vcClass: LBNotificationViewController.self),
+        LBListItemModel.init(title: "上下左右滑动控件", vcClass: LBTestScrollVerticalHorizontalController.self),
     ]
     
     var changeModel = LBListItemModel.init(title: "111", vcClass: NSString.self)

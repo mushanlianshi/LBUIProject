@@ -9,9 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class LBTestAutoLayoutSubView;
 @interface LBTestAutoLayoutView : UIView
 
 @property (nonatomic, copy) NSString *testString;
+
+@property (nonatomic, strong) LBTestAutoLayoutSubView *subView;
 
 - (void)setConstraints;
 
