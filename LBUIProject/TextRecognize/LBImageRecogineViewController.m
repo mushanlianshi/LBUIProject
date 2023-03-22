@@ -5,13 +5,15 @@
 //  Created by liu bin on 2021/7/21.
 //
 
+#import <CoreML/CoreML.h>
 #import "LBImageRecogineViewController.h"
 #import <Vision/Vision.h>
 #import "Masonry.h"
 #import <BLTUIKitProject/BLTUI.h>
 #import "TZImagePickerController.h"
 #import "NSObject+AutoProperty.h"
-#import "YOLOv3Tiny.h"
+#import "LBUIProject-Swift.h"
+//#import "YOLOv3Tiny.h"
 
 @interface LBImageRecogineViewController ()
 
@@ -96,12 +98,13 @@
             
             VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
 //            获取不到资源  直接alloc  init
-//            NSString *path = [[NSBundle mainBundle] pathForResource:@"YOLOv3Tiny" ofType:@"mlmodelc"];
-//            NSError *error = nil;
-//            MLModel *model = [MLModel modelWithContentsOfURL:[NSURL fileURLWithPath:path] error:&error];
-            YOLOv3Tiny *model = [[YOLOv3Tiny alloc] init];
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"YOLOv3Tiny" ofType:@"mlmodelc"];
+            NSError *error = nil;
+            MLModel *model = [MLModel modelWithContentsOfURL:[NSURL fileURLWithPath:path] error:&error];
+            
+//            YOLOv3Tiny *model = [[YOLOv3Tiny alloc] init];
             NSError *modelError = nil;
-            VNCoreMLModel *coreML = [VNCoreMLModel modelForMLModel:model.model error:&modelError];
+            VNCoreMLModel *coreML = [VNCoreMLModel modelForMLModel:model error:&modelError];
             VNCoreMLRequest *objectRequest = [[VNCoreMLRequest alloc] initWithModel:coreML completionHandler:^(VNRequest * _Nonnull request, NSError * _Nullable error) {
                 for (VNRecognizedObjectObservation *observation in request.results) {
                     dispatch_async(dispatch_get_main_queue(), ^{

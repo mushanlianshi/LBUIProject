@@ -8,6 +8,7 @@
 
 #import "AFURLSessionManager+BLTAPMNetworkDuration.h"
 #import "BLTAPMObserverHeader.h"
+#import <BLTUIKitProject/BLTUI.h>
 
 
 static NSInteger const kRequestTimeoutCode = -1001;

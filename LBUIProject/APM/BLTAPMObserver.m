@@ -6,12 +6,16 @@
 //  Copyright © 2021 baletu123. All rights reserved.
 //
 
+
+#import <Foundation/Foundation.h>
 #import "BLTAPMObserver.h"
-//#import "NSTimer+YYAdd.h"
+//#import <YKWoodpecker/YKWoodpecker.h>
+#import "NSTimer+YYAdd.h"
 #import "BLTAPMCPUManager.h"
 #import "BLTAPMMemoryManager.h"
 #import "BLTAPMNetworkManager.h"
 #import "BLTAPMFPSManager.h"
+#import <BLTUIKitProject/BLTUI.h>
 
 static CGFloat memoryUnit = (1024 * 1024);
 
@@ -32,7 +36,7 @@ static CGFloat memoryUnit = (1024 * 1024);
 
 static BLTAPMObserver *instance;
 
-extern CFAbsoluteTime  startAppTime;
+//extern CFAbsoluteTime  startAppTime;
 
 + (instancetype)sharedInstance{
     static dispatch_once_t onceToken;
@@ -61,7 +65,7 @@ extern CFAbsoluteTime  startAppTime;
         [self observerTimer];
     }
     
-    BLT_WS(weakSelf);
+    __weak __typeof(&*self)weakSelf = self;
     //3.网络
     if (options & BLTAPMObserverNetworkResponse) {
         [self.networkManager startNetworkWithOptions:BLTAPMNetworkOptionAll callback:^(NSDictionary *dic) {
@@ -80,14 +84,15 @@ extern CFAbsoluteTime  startAppTime;
 
 - (void)caculateStartAppTime{
     CFAbsoluteTime nowTime = CFAbsoluteTimeGetCurrent();
-    CFAbsoluteTime offsetTime = nowTime - startAppTime;
+//    CFAbsoluteTime offsetTime = nowTime - startAppTime;
+    CFAbsoluteTime offsetTime = nowTime - 0;
 //    DEF_DEBUG(@"LBLog caculate startAppTime %@",@(offsetTime));
-//    BLT_WS(weakSelf);
+    BLT_WS(weakSelf);
     if(self.observerBlock){
         NSMutableDictionary *resultDic = @{}.mutableCopy;
         [resultDic setValue:@(BLTAPMObserverStartApp) forKey:@"observerType"];
         [resultDic setValue:@(offsetTime) forKey:@"startAppTime"];
-//        [weakSelf p_callBackWithOption:BLTAPMObserverStartApp resultInfo:resultDic.copy];
+        [weakSelf p_callBackWithOption:BLTAPMObserverStartApp resultInfo:resultDic.copy];
     }
 }
 
@@ -98,7 +103,7 @@ extern CFAbsoluteTime  startAppTime;
     uint64_t memory = [BLTAPMMemoryManager getResidentMemory] / memoryUnit;
     uint64_t vitualMemory = [BLTAPMMemoryManager getDeviceUsedMemory] / memoryUnit;
     uint64_t totalPhysicalMemory = [BLTAPMMemoryManager getDeviceTotalPhysicalMemory] / memoryUnit;
-    DEF_DEBUG(@"LBLog observer cpu memory %@ %@ %@ %@",@(cpu), @(memory),@(vitualMemory),@(totalPhysicalMemory));
+//    DEF_DEBUG(@"LBLog observer cpu memory %@ %@ %@ %@",@(cpu), @(memory),@(vitualMemory),@(totalPhysicalMemory));
     BLT_WS(weakSelf);
     if(self.observerBlock){
         NSMutableDictionary *resultInfo = @{}.mutableCopy;

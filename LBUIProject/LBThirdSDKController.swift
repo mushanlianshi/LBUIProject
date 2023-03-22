@@ -32,14 +32,21 @@ class LBThirdSDKController: UIViewController {
                 [.title : "自定义反转Sequence", .controller : LBCustomReverseSequenceController.self],
                 [.title : "自定义操作符", .controller : LBCustomOperatorController.self],
                 [.title : "where操作符", .controller : LBTestWhereViewController.self],
-               ]
+                [.title : "JXPagingView", .controller : LBJXPagingViewController.self],
+                [.title : "pageView实现", .controller : LBPageScrollViewController.self],
+        ]
     }()
-
+    
     
     override func viewDidLoad() {
-//        super.viewDidLoad()
+        super.viewDidLoad()
+        print("LBLog viewDidLoad ====== ")
+        let card = CardType.allValues
+        let card1 = CardType.allValues
+        print("LBLog card \(card) ")
+        print("LBLog card11 \(card1) ")
         initTableView()
-        print("LBLog reduce is \(test(input: 1,2,3,4))")
+        print("LBLog reduce 2222 is \(test(input: 1,2,3,4))")
         let coke = Drinking.drinking(name: "Coke")
         print("LBLog color \(coke.color == .black)") // Black
         let beer = Drinking.drinking(name: "Beer")
@@ -53,6 +60,9 @@ class LBThirdSDKController: UIViewController {
         print("LBLog testSubProtocol \(drinking.testName())")   ///Drinking
         print("LBLog testSubProtocol \(drinking.testName2())")  ///LBTestProtocol 222
         //drinking 声明是 LBTestProtocolMethod类型 testName是肯定实现的 可以动态调用实际类型的testName方法  testName2方法不一定实现 调用编译器的LBTestProtocolMethod类型的方法  和继承有点区别  继承最终是实际类型的方法执行
+        let test: Array = [Any]()
+        
+        
     }
     
     func initTableView() {
@@ -101,7 +111,7 @@ class LBThirdSDKController: UIViewController {
         }
         return result
     }
-
+    
 }
 
 
@@ -113,7 +123,7 @@ fileprivate extension String{
 
 protocol LBTestProtocolMethod {
     func testName() -> String
-//    func testName2() -> String
+    //    func testName2() -> String
 }
 
 extension LBTestProtocolMethod{
@@ -137,13 +147,13 @@ class Drinking: LBTestProtocolMethod {
     class func drinking(name: String) -> Drinking
     {
         var drinking: Drinking
-        switch name
-        { case "Coke": drinking = Coke()
+            switch name
+        {   case "Coke": drinking = Coke()
             case "Beer": drinking = Beer()
             default: drinking = Drinking()
             
         }
-        return drinking
+            return drinking
     }
 }
 class Coke: Drinking {
@@ -152,20 +162,18 @@ class Beer: Drinking {
     override var color: LiquidColor { return .yellow } }
 
 
-extension String {
-    var MD5: String {
-        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-        if let data = data(using: .utf8)
-        { data.withUnsafeBytes
-            {
-                (bytes: UnsafePointer<UInt8>) -> Void in CC_MD5(bytes, CC_LONG(data.count), &digest) }
-        }
-        var digestHex = ""
-        for index in 0..<Int(CC_MD5_DIGEST_LENGTH)
-        {
-            digestHex += String(format: "%02x", digest[index])
-            
-        }
-        return digestHex
+protocol LBAllEnumValues{
+    static var allValues: [Self] { get }
+}
+
+enum CardType{
+    case hei
+    case hong
+}
+
+extension CardType: LBAllEnumValues{
+    static var allValues: [CardType]{
+        print("LBLog enumvalue is =======")
+        return [.hei, .hong]
     }
 }

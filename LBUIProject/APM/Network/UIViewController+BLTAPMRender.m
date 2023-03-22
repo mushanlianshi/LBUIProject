@@ -20,6 +20,7 @@
 + (void)initialize{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
 //        swizzleInstanceMethod([self class], @selector(viewDidLayoutSubviews), @selector(blt_apm_viewDidLayoutSubviews));
     });
 }

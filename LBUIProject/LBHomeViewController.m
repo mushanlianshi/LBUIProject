@@ -24,6 +24,8 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
+@property (nonatomic, strong) UIImageView *headerIV;
+
 @end
 
 @implementation LBHomeViewController
@@ -45,8 +47,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.headerIV];
+    [self.headerIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self.view);
+        make.height.mas_equalTo(200);
+    }];
     
+    [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.view);
         make.bottom.mas_offset(-60);
@@ -161,6 +168,9 @@
 ////    NSLog(@"LBLog cellheight %@",@(cell.bounds.size.height));
 //}
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"LBLog tableview content offset y is %@",@(self.tableView.contentOffset.y));
+}
 
 - (UITableView *)tableView{
     if (!_tableView) {
@@ -168,6 +178,8 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.estimatedRowHeight = 60;
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
         [_tableView registerClass:[LBCustomTableViewCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableView;
@@ -232,6 +244,16 @@
 
 - (BOOL)prefersHomeIndicatorAutoHidden{
     return YES;
+}
+
+- (UIImageView *)headerIV{
+    if (!_headerIV) {
+        _headerIV = [[UIImageView alloc] init];
+        _headerIV.image = UIImageNamed(@"pageView1");
+        _headerIV.contentMode = UIViewContentModeScaleAspectFill;
+        _headerIV.clipsToBounds = true;
+    }
+    return _headerIV;
 }
 
 @end

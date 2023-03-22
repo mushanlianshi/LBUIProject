@@ -7,7 +7,6 @@
 //
 
 #import "BLTAPMFPSManager.h"
-#import <UIKit/UIKit.h>
 //#import <CrashReporter/CrashReporter.h>
 //#import "BSBacktraceLogger.h"
 
@@ -17,12 +16,6 @@
 }
 
 @property (nonatomic, copy) void(^observerCallback)(NSDictionary *resultInfo);
-
-@property (nonatomic, strong) CADisplayLink *displayLink;
-
-@property (nonatomic, assign) NSTimeInterval lastTime;
-
-@property (nonatomic, assign) NSUInteger count;
 
 @end
 
@@ -125,22 +118,6 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
 //    });
 //    DEF_DEBUG(@"LBLog find kadun %@",report);
     
-}
-
-- (void)startMonitor:(CADisplayLink *)displayLink{
-    if (_lastTime == 0) {
-        _lastTime = displayLink.timestamp;
-        return;
-    }
-}
-
-
-- (CADisplayLink *)displayLink{
-    if (!_displayLink) {
-        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(startMonitor:)];
-        [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-    }
-    return _displayLink;
 }
 
 @end
