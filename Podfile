@@ -5,7 +5,9 @@ source 'ssh://git@1.117.247.154:7999/app/bltuikitspecrepo.git'
 target 'LBUIProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  pod 'Kingfisher', '~> 6.2.0'
+  pod 'KingfisherWebP', '= 1.3.0'
+  pod 'SnapKit', '= 4.2.0'
   # Pods for LBUIProject
   pod 'Masonry', '~> 1.1.0'
   pod 'FaceAware'
@@ -55,4 +57,15 @@ target 'LBUIProject' do
     # Pods for testing
   end
 
+end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+#    config.build_settings["BUILD_LIBRARY_FOR_DISTRIBUTION"] = true
+    end
+  end
 end

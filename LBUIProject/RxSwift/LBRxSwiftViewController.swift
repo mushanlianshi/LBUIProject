@@ -32,8 +32,10 @@ class LBRxSwiftViewController: UIViewController {
     private func testObservable(){
         
         let observableOne: Observable<String> = Observable.create { (observer) -> Disposable in
+            ///这个block执行的次数   跟订阅的次数一致
             let list = [true, false]
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                print("LBLog async execute ===========")
                 if (list.shuffled().first ?? true)  == true{
                     observer.onNext("first element")
                     observer.onCompleted()
@@ -48,10 +50,18 @@ class LBRxSwiftViewController: UIViewController {
         
         
         
-       
+//       订阅几次 订阅block就会执行几次
+        observableOne.subscribe { event in
+            print("LBLog event subscribe is 1111 \(String(describing: event.element))")
+        }.disposed(by: disposeBag)
+        
+        
+        observableOne.subscribe { event in
+            print("LBLog event subscribe is 2222 \(String(describing: event.element))")
+        }.disposed(by: disposeBag)
         
         observableOne.subscribe { result in
-            print("LBLog result is \(result)")
+            print("LBLog result is 3333 \(result)")
         } onError: { error in
             print("LBlog error is \(error)")
         } onCompleted: {
@@ -73,6 +83,7 @@ class LBRxSwiftViewController: UIViewController {
             single(.success(false))
             return Disposables.create()
         }
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             observable.bind(to: self.button.rx.isHidden).disposed(by: self.disposeBag)

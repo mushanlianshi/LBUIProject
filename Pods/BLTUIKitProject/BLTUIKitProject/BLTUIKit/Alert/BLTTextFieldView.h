@@ -28,7 +28,7 @@
 /** tiptitle 和 textView的间距 */
 @property (nonatomic, assign) CGFloat tipTitleSpacing;
 
-/** @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x999999),
+/** @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x999999),
  NSFontAttributeName:UIFontPFFontSize(14)
  }; */
 @property (nonatomic, copy) NSDictionary <NSString *, id> *placeHolderAttributes;

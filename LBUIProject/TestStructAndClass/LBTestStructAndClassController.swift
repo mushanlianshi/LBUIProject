@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import BLTSwiftUIKit
+import RxSwift
 
 private var extensionNameKey: Void?
 private var classExtensionNameKey: Void?
@@ -16,6 +18,38 @@ enum LBMutiEnum{
     case name(name: String)
     case student
     case teach
+}
+
+
+///泛型枚举
+//////Swift 4.2 中引入了一个新的语法@dynamicMemberLookup（动态成员查找）。使用@dynamicMemberLookup标记了目标（类、结构体、枚举、协议），实现subscript(dynamicMember member: String)方法后我们就可以访问到对象不存在的属性。
+@dynamicMemberLookup
+struct LBTestGenericStruct<T> {
+    public let pProperty: T
+    init(_ p: T){
+        self.pProperty = p
+    }
+    
+    func testFunc<LBProperty>(params: LBProperty) -> LBProperty {
+        print("LBLog test func ===== \(params)")
+        return params
+    }
+    /// ReferenceWritableKeyPath要求该参数必须是引用类型且可写的keypath。
+    public subscript<Property>(dynamicMember keyPath: ReferenceWritableKeyPath<T, Property>) -> Binder<Property> where T: AnyObject{
+        return Binder.init(self.pProperty) { base, value in
+            base[keyPath: keyPath] = value
+        }
+    }
+}
+
+///Swift 4.2 中引入了一个新的语法@dynamicMemberLookup（动态成员查找）。使用@dynamicMemberLookup标记了目标（类、结构体、枚举、协议），实现subscript(dynamicMember member: String)方法后我们就可以访问到对象不存在的属性。
+@dynamicMemberLookup
+class LBTestDynamicMemberClass: NSObject{
+    
+    public subscript(dynamicMember keyPath: String) -> String{
+        return "name"
+    }
+    
 }
 
 struct LBTestStruct {
@@ -55,7 +89,6 @@ extension LBTestClass{
     }
 }
 
-
 /// struct 是值类型  所以复制的时候是复制   新赋值的变量struct的属性如果改变  不影响老的变量属性
 /// 如果在数组中struct 如果struct被拿出来赋值  在改变新赋值变量的属性也是一样的   不影响原数组中的struct变量，但是如果我们不取出来复制  直接用索引的方式给struct属性赋值 是改变数组中的struct变量的属性的
 /// 结构体extension不能通过associate添加属性，类可以  可以用计算属性来计算
@@ -64,8 +97,20 @@ class LBTestStructAndClassController: UIViewController {
     var structList = [LBTestStruct]()
     var classList = [LBTestClass]()
     
+    lazy var tmpStruct = LBTestStruct.init(age: 111, name: "name 111")
+    
+    lazy var circleView: UIView = {
+        let view = UIView()
+//        circleView.backgroundColor = .red
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.circleView)
+        self.circleView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+
         for index in 1...10 {
             let struct1 = LBTestStruct.init(age: index, name: "name \(index)")
             let class1 = LBTestClass.init()
@@ -106,13 +151,25 @@ class LBTestStructAndClassController: UIViewController {
         }
         
         
-        var tmpStruct = LBTestStruct.init(age: 111, name: "name 111")
+        
         tmpStruct.age = 222
         print("LBLog tmpStruct age is \(tmpStruct.age)")
         
         var tmps = tmpStruct
-        tmpStruct.age = 555
-        print("LBLog tmpStruct age is \(tmpStruct.age)")
+        print("LBLog tmps address \(getValueObjAddress(obj: &tmps))")
+        tmps.age = 555
+        print("LBLog tmps address 222 \(getValueObjAddress(obj: &tmps))")
+        
+        print("LBLog tmpStruct age is \(tmpStruct.age) \(tmps.age)")
+        
+        let button = UIButton()
+        let tt = LBTestGenericStruct.init("123")
+        let result = tt.testFunc(params: 123)
+        print("LBLog result is \(result)")
+        
+        let dynamicClass = LBTestDynamicMemberClass()
+        print("LBLog dynamic class is \(dynamicClass.name)")
+        print("LBLog dynamic class is \(dynamicClass.haha)")
     }
 
 }

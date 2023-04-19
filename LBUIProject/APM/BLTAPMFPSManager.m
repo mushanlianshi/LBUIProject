@@ -7,12 +7,16 @@
 //
 
 #import "BLTAPMFPSManager.h"
+#import <mach/mach.h>
+//#import <sys/sysctl.h>
 //#import <CrashReporter/CrashReporter.h>
 //#import "BSBacktraceLogger.h"
 
 @interface BLTAPMFPSManager (){
     dispatch_semaphore_t semaphore;
     CFRunLoopActivity activity;
+    CFRunLoopObserverRef runloopObserver;
+    BOOL observerValid;
 }
 
 @property (nonatomic, copy) void(^observerCallback)(NSDictionary *resultInfo);
@@ -40,6 +44,7 @@ static BLTAPMFPSManager *instance;
     self = [super init];
     if(self){
         self.invalidInterval = 250;
+        observerValid = true;
     }
     return self;
 }
@@ -59,23 +64,24 @@ static BLTAPMFPSManager *instance;
     dispatch_once(&onceToken, ^{
         self.observerCallback = callback;
         CFRunLoopObserverContext context = {0,(__bridge void*)self,NULL,NULL};
-        CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
+        runloopObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
                                                                 kCFRunLoopAllActivities,
                                                                 YES,
                                                                 0,
                                                                 &runLoopObserverCallBack,
                                                                 &context);
-        CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
+        CFRunLoopAddObserver(CFRunLoopGetMain(), runloopObserver, kCFRunLoopCommonModes);
         // 创建信号
         semaphore = dispatch_semaphore_create(0);
         // 在子线程监控时长
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            while (YES)
+            while (self->observerValid)
             {
                 // 假定连续5次超时50ms认为卡顿(当然也包含了单次超时250ms)
                 long st = dispatch_semaphore_wait(self->semaphore, dispatch_time(DISPATCH_TIME_NOW, self.invalidInterval / intervalCount * NSEC_PER_MSEC));
                 if (st != 0)
                 {
+                    //如果一直在触发source0和接受mach_port的状态 不经历别的状态   说明卡顿了
 //                    实时计算 kCFRunLoopBeforeSources 和 kCFRunLoopAfterWaiting 两个状态区域之间的耗时是否超过某个阀值
                     if (self->activity == kCFRunLoopBeforeSources || self->activity == kCFRunLoopAfterWaiting)
                     {
@@ -94,8 +100,16 @@ static BLTAPMFPSManager *instance;
     });
 }
 
+- (void)endObserver{
+    CFRunLoopRemoveObserver(CFRunLoopGetMain(), runloopObserver, kCFRunLoopCommonModes);
+    CFRelease(runloopObserver);
+    runloopObserver = NULL;
+    observerValid = false;
+}
+
 static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info)
 {
+    NSLog(@"LBLog current thread %@  %@",[NSThread currentThread], @(activity), @(kCFRunLoopBeforeSources), @(kCFRunLoopAfterWaiting));
     instance->activity = activity;
     // 发送信号
     dispatch_semaphore_t semaphore = instance->semaphore;
@@ -103,7 +117,31 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
 }
 
 - (void)p_uploadUnnormalFPS{
-    
+    thread_act_array_t threads;
+        mach_msg_type_number_t threadCount = 0;
+        const task_t thisTask = mach_task_self();
+        kern_return_t kr = task_threads(thisTask, &threads, &threadCount);
+        if (kr != KERN_SUCCESS) {
+            return;
+        }
+        for (int i = 0; i < threadCount; i++) {
+            thread_info_data_t threadInfo;
+            thread_basic_info_t threadBaseInfo;
+            mach_msg_type_number_t threadInfoCount = THREAD_INFO_MAX;
+            if (thread_info((thread_act_t)threads[i], THREAD_BASIC_INFO, (thread_info_t)threadInfo, &threadInfoCount) == KERN_SUCCESS) {
+                threadBaseInfo = (thread_basic_info_t)threadInfo;
+                if (!(threadBaseInfo->flags & TH_FLAGS_IDLE)) {
+                    integer_t cpuUsage = threadBaseInfo->cpu_usage / 10;
+                    if (cpuUsage > 70) {
+                        //cup 消耗大于 70 时打印和记录堆栈
+//                        NSString *reStr = smStackOfThread(threads[i]);
+                        //记录数据库中
+    //                    [[[SMLagDB shareInstance] increaseWithStackString:reStr] subscribeNext:^(id x) {}];
+//                        NSLog(@"CPU useage overload thread stack：\n%@",reStr);
+                    }
+                }
+            }
+        }
 
 //    dispatch_async(dispatch_get_global_queue(0, 0), ^{
 //        NSString *string = [BSBacktraceLogger bs_backtraceOfMainThread];

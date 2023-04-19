@@ -17,13 +17,14 @@
 
 @implementation UIViewController (BLTAPMRender)
 
-+ (void)initialize{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-//        swizzleInstanceMethod([self class], @selector(viewDidLayoutSubviews), @selector(blt_apm_viewDidLayoutSubviews));
-    });
-}
+//+ (void)initialize{
+//    NSLog(@"LBLog UIViewController  initialize====");
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//
+////        swizzleInstanceMethod([self class], @selector(viewDidLayoutSubviews), @selector(blt_apm_viewDidLayoutSubviews));
+//    });
+//}
 
 - (void)blt_apm_viewDidLayoutSubviews{
     [self blt_apm_viewDidLayoutSubviews];

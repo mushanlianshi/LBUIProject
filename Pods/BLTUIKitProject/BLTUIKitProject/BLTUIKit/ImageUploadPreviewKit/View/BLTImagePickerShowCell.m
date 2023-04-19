@@ -52,6 +52,7 @@ static BLTImagePickerShowCellConfig *configAppearance;
     self.deleteImage = configAppearance.deleteImage;
     self.failedImage = configAppearance.failedImage;
     self.playImage = configAppearance.playImage;
+    self.customSensorDataBlock = configAppearance.customSensorDataBlock;
 }
 
 
@@ -82,6 +83,9 @@ static BLTImagePickerShowCellConfig *configAppearance;
         self.failedPlayButton.hidden = YES;
         self.playVideoButton.hidden = YES;
         self.deleteOrSelectButton.hidden = YES;
+        if (self.cellConfig.customSensorDataBlock) {
+            self.cellConfig.customSensorDataBlock(_deleteOrSelectButton, _failedPlayButton, _playVideoButton);
+        }
     }
     return self;
 }
@@ -170,6 +174,12 @@ static BLTImagePickerShowCellConfig *configAppearance;
         [self.progressView refreshBackgroundCircle];
     }
     self.progressView.hidden = NO;
+}
+
+- (void)setImageCornerRadius:(CGFloat)imageCornerRadius
+{
+    _imageCornerRadius = imageCornerRadius;
+    self.imageView.layer.cornerRadius = imageCornerRadius;
 }
 
 - (void)hiddenActionSubviews{
@@ -305,7 +315,7 @@ static BLTImagePickerShowCellConfig *configAppearance;
 - (BLTCircleProgressView *)progressView{
     if (!_progressView) {
         _progressView = [[BLTCircleProgressView alloc] init];
-        _progressView.backgroundCircleColor = BLTHEXCOLOR(0x333333);
+        _progressView.backgroundCircleColor = BLT_HEXCOLOR(0x333333);
         _progressView.progressCircleColor = [UIColor whiteColor];
         _progressView.circleWidth = 4;
         _progressView.circleRaduis = 15;

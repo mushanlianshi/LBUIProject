@@ -27,6 +27,15 @@
 
 @implementation BLTVideoPreviewController
 
+static BLTVideoPreviewController *previewVideoInstance;
++ (instancetype)appearance{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        previewVideoInstance = [[BLTVideoPreviewController alloc] init];
+    });
+    return  previewVideoInstance;
+}
+
 
 - (instancetype)initWithVideoUrl:(NSString *)videoUrl{
     self = [super init];
@@ -36,7 +45,17 @@
     return self;
 }
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        [self didInitialize];
+    }
+    return self;
+}
 
+- (void)didInitialize{
+    self.customSensorDataBlock = previewVideoInstance.customSensorDataBlock;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,6 +81,9 @@
     [self.view addSubview:_naviBar];
     [_naviBar addSubview:_backButton];
     
+    if (self.customSensorDataBlock) {
+        self.customSensorDataBlock(self, _backButton);
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BLTImagePreviewNaviBar.h"
 
 
 @class BLTImagePreviewController;
 @class BLTImagePreviewView;
+@class BLTImagePreviewNaviBar;
 
 @protocol BLTImagePreviewControllerDelegate <NSObject>
 @optional
@@ -20,7 +20,7 @@
 @end
 
 /// 图片预览的controller
-@interface BLTImagePreviewController : UIViewController
+@interface BLTImagePreviewController : UIViewController<UIAppearance>
 
 - (instancetype)initWithImages:(NSArray *)imageArray currentIndex:(NSInteger)currentIndex canDelete:(NSInteger)canDelete;
 
@@ -41,6 +41,8 @@
 @property (nonatomic, copy) UIImageView *(^endAnimatingImageView)(NSUInteger index);
 
 @property (nonatomic, strong) BLTImagePreviewView *imagePreviewView;
+
+@property (nonatomic, copy) void(^customSensorDataBlock) (BLTImagePreviewController *previewVC, UIButton *backButton, UIButton *deleteButton) UI_APPEARANCE_SELECTOR;
 
 @end
 

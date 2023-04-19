@@ -48,6 +48,23 @@ static NSString * const kBLTTableMenuCellIdentifier = @"kBLTTableMenuCellIdentif
 
 @implementation BLTTableMenuView
 
+static BLTTableMenuView *menuInstance;
++ (instancetype)appearance{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        menuInstance = [[BLTTableMenuView alloc] init];
+    });
+    return menuInstance;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.customSensorDataBlock = menuInstance.customSensorDataBlock;
+    }
+    return self;
+}
+
 #pragma mark - control
 - (void)initTableViews
 {
@@ -62,6 +79,9 @@ static NSString * const kBLTTableMenuCellIdentifier = @"kBLTTableMenuCellIdentif
                 tableView.selectedRow = -1;
                 tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
                 [tableViews addObject:tableView];
+                if (self.customSensorDataBlock) {
+                    self.customSensorDataBlock(tableView);
+                }
             }
         }
     }

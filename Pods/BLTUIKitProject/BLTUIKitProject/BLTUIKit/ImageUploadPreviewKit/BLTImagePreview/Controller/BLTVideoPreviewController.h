@@ -8,12 +8,12 @@
 #import <UIKit/UIKit.h>
 
 
-NS_ASSUME_NONNULL_BEGIN
 
-@interface BLTVideoPreviewController : UIViewController
+@interface BLTVideoPreviewController : UIViewController<UIAppearance>
 
 - (instancetype)initWithVideoUrl:(NSString *)videoUrl;
 
+@property (nonatomic, copy) void(^customSensorDataBlock) (BLTVideoPreviewController *videoVC, UIButton *backButton) UI_APPEARANCE_SELECTOR;
+
 @end
 
-NS_ASSUME_NONNULL_END

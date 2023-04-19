@@ -9,6 +9,7 @@
 #import "BLTImagePreviewController.h"
 #import "BLTImagePreviewView.h"
 #import "BLTImagePreviewControllerAnimator.h"
+#import "BLTImagePreviewNaviBar.h"
 
 @interface BLTImagePreviewController ()<BLTImagePreviewViewDelegate, BLTImagePreviewNaviBarDelegate, UIViewControllerTransitioningDelegate>
 
@@ -29,6 +30,16 @@
 
 @implementation BLTImagePreviewController
 
+static BLTImagePreviewController *previewInstance;
++ (instancetype)appearance{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        previewInstance = [[BLTImagePreviewController alloc] init];
+    });
+    return previewInstance;
+}
+
+
 - (instancetype)initWithImages:(NSArray *)imageArray currentIndex:(NSInteger)currentIndex canDelete:(NSInteger)canDelete{
     self = [self init];
     if (self) {
@@ -43,6 +54,7 @@
     self = [super init];
     if (self) {
         self.modalPresentationStyle = UIModalPresentationCustom;
+        self.customSensorDataBlock = previewInstance.customSensorDataBlock;
         [self transitonAnimator];
     }
     return self;
@@ -60,8 +72,12 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self.view addGestureRecognizer:self.tapGesture];
     [self.view addGestureRecognizer:self.panGesture];
-    [self.naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab) {
+    __weak typeof(self) weakSelf = self;
+    [self.naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab, UIButton *backButton) {
         deleteButton.hidden = !self.canDelete;
+        if (weakSelf.customSensorDataBlock) {
+            weakSelf.customSensorDataBlock(weakSelf, backButton, deleteButton);
+        }
     }];
 }
 
@@ -161,7 +177,7 @@
 - (void)refreshCurrentIndexTitle{
     NSInteger showIndex = MIN(self.currentIndex + 1, self.imagesArray.count);
     NSString *title = [NSString stringWithFormat:@"%ld/%ld",showIndex,self.imagesArray.count];
-    [self.naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab) {
+    [self.naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab, UIButton *backButton) {
         titleLab.text = title;
     }];
 }
@@ -199,7 +215,7 @@
 
 - (void)setCanDelete:(BOOL)canDelete{
     _canDelete = canDelete;
-    [self.naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab) {
+    [self.naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab, UIButton *backButton) {
         deleteButton.hidden = !canDelete;
     }];
 }

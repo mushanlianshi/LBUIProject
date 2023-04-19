@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface BLTTableMenuView : UIView
+@interface BLTTableMenuView : UIView<UIAppearance>
 
 @property (nonatomic, strong) UIView *headerView;
 
@@ -74,6 +74,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reloadColumn:(NSInteger)column;
 
 - (void)reloadAllColumn;
+
+
+@property (nonatomic, copy) void(^customSensorDataBlock)(UITableView *tableView) UI_APPEARANCE_SELECTOR;
 
 @end
 

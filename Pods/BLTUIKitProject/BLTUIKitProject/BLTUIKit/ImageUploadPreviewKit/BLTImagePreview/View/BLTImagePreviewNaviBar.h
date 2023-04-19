@@ -27,7 +27,7 @@
 
 @property (nonatomic, copy) dispatch_block_t backBlock;
 
-- (void)refreshNaviBarUIConfig:(void(^)(UIButton *deleteButton, UILabel *titleLab))config;
+- (void)refreshNaviBarUIConfig:(void(^)(UIButton *deleteButton, UILabel *titleLab, UIButton *backButton))config;
 
 @end
 

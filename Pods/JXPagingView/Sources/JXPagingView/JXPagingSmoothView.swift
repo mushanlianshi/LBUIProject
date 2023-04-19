@@ -162,6 +162,9 @@ open class JXPagingSmoothView: UIView {
         }
         currentListScrollView = scrollView
         let contentOffsetY = scrollView.contentOffset.y + heightForPagingHeaderContainerView
+        
+        print("LBLog content offset y \(contentOffsetY) \(scrollView.contentOffset.y) \(heightForPagingHeader)")
+        //header view还在视线内 移动pagingHeaderContainerView的Y值 看起来像是联动
         if contentOffsetY < heightForPagingHeader {
             isSyncListContentOffsetEnabled = true
             currentPagingHeaderContainerViewY = -contentOffsetY
@@ -176,6 +179,7 @@ open class JXPagingSmoothView: UIView {
                 header?.addSubview(pagingHeaderContainerView)
             }
         }else {
+            //headerview 移除视野   添加到self上
             if pagingHeaderContainerView.superview != self {
                 pagingHeaderContainerView.frame.origin.y = -heightForPagingHeader
                 addSubview(pagingHeaderContainerView)
@@ -322,6 +326,7 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
         listDidDisappear(at: indexPath.item)
     }
 
+    ///最外层collectionview横向滚动
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.pagingSmoothViewDidScroll?(scrollView)
         let indexPercent = scrollView.contentOffset.x/scrollView.bounds.size.width
@@ -330,7 +335,7 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
         if (indexPercent - CGFloat(index) == 0) && index != currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView?.contentOffset.y ?? 0 <= -heightForPinHeader {
             horizontalScrollDidEnd(at: index)
         }else {
-            //左右滚动的时候，就把listHeaderContainerView添加到self，达到悬浮在顶部的效果
+            //左右滚动的时候，就把listHeaderContainerView添加到self，达到悬浮在顶部的效果 滚动结束在添加到子tableview上
             if pagingHeaderContainerView.superview != self {
                 pagingHeaderContainerView.frame.origin.y = currentPagingHeaderContainerViewY
                 addSubview(pagingHeaderContainerView)

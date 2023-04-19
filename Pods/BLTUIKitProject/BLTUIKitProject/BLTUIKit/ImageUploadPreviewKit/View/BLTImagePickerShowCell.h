@@ -19,6 +19,8 @@
 @property (nonatomic, strong) UIImage *deleteImage;
 @property (nonatomic, strong) UIImage *failedImage;
 @property (nonatomic, strong) UIImage *playImage;
+//设置神策属性用的
+@property (nonatomic, copy) void(^customSensorDataBlock)(UIButton *selectButton, UIButton *retryButton, UIButton *playVideoButton);
 + (instancetype)appearance;
 
 @end
@@ -50,7 +52,8 @@
 //上传的进度
 @property (nonatomic, assign) CGFloat uploadProgress;
 
-
+/// 设置图片圆角，默认为0
+@property (nonatomic, assign) CGFloat imageCornerRadius;
 
 
 #pragma mark - appearance 外观展示修改的

@@ -1,0 +1,248 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - AliyunOSSiOS (2.10.13)
+  - AnimatedCollectionViewLayout (1.1.0)
+  - AvoidCrash (2.5.2)
+  - BLTBasicUIKit (0.2.4):
+    - Masonry (~> 1.1.0)
+  - BLTSwiftUIKit (1.2.1):
+    - BLTSwiftUIKit/Extension (= 1.2.1)
+    - BLTSwiftUIKit/ListView (= 1.2.1)
+    - BLTSwiftUIKit/NameSpace (= 1.2.1)
+    - BLTSwiftUIKit/Protocol (= 1.2.1)
+    - BLTSwiftUIKit/Util (= 1.2.1)
+    - BLTSwiftUIKit/View (= 1.2.1)
+  - BLTSwiftUIKit/Extension (1.2.1):
+    - BLTSwiftUIKit/NameSpace
+    - BLTSwiftUIKit/Protocol
+    - BLTSwiftUIKit/Util
+    - BLTUIKitProject
+  - BLTSwiftUIKit/ListView (1.2.1):
+    - BLTSwiftUIKit/Extension
+    - BLTSwiftUIKit/NameSpace
+    - BLTUIKitProject
+    - HandyJSON
+    - SnapKit
+  - BLTSwiftUIKit/NameSpace (1.2.1)
+  - BLTSwiftUIKit/Protocol (1.2.1)
+  - BLTSwiftUIKit/Util (1.2.1):
+    - HandyJSON
+  - BLTSwiftUIKit/View (1.2.1):
+    - BLTSwiftUIKit/Extension
+    - BLTSwiftUIKit/ListView
+    - BLTSwiftUIKit/NameSpace
+    - BLTSwiftUIKit/Util
+    - BLTUIKitProject
+    - JXMarqueeView
+    - Kingfisher
+    - SnapKit
+  - BLTUIKitProject (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Alert (= 1.8.2)
+    - BLTUIKitProject/BLTMenu (= 1.8.2)
+    - BLTUIKitProject/BLTTableViewCell (= 1.8.2)
+    - BLTUIKitProject/Category (= 1.8.2)
+    - BLTUIKitProject/Header (= 1.8.2)
+    - BLTUIKitProject/NotificationBarView (= 1.8.2)
+    - BLTUIKitProject/UploadImageKit (= 1.8.2)
+  - BLTUIKitProject/Alert (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+  - BLTUIKitProject/BLTMenu (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/BLTTableViewCell
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+    - Masonry
+  - BLTUIKitProject/BLTTableViewCell (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+    - Masonry
+  - BLTUIKitProject/Category (1.8.2):
+    - BLTBasicUIKit
+    - BLTUIKitProject/Header
+  - BLTUIKitProject/Header (1.8.2):
+    - BLTBasicUIKit
+  - BLTUIKitProject/NotificationBarView (1.8.2):
+    - BLTBasicUIKit
+  - BLTUIKitProject/UploadImageKit (1.8.2):
+    - AliyunOSSiOS
+    - BLTBasicUIKit
+    - BLTUIKitProject/Category
+    - BLTUIKitProject/Header
+    - SDWebImage
+    - TZImagePickerController
+  - CHTCollectionViewWaterfallLayout/ObjC (0.9.10)
+  - CYLTabBarController (1.29.2):
+    - CYLTabBarController/Core (= 1.29.2)
+  - CYLTabBarController/Core (1.29.2)
+  - Dollar (9.0.0)
+  - FaceAware (2.1.0)
+  - FSPagerView (0.8.3)
+  - HandyJSON (5.0.2)
+  - Hero (1.5.0)
+  - JXMarqueeView (0.0.9)
+  - JXPagingView/Paging (2.1.2)
+  - JXSegmentedView (1.2.7)
+  - Kingfisher (4.10.1)
+  - LookinServer (1.0.6)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MJRefresh (3.7.5)
+  - MMKV (1.2.10):
+    - MMKVCore (~> 1.2.10)
+  - MMKVCore (1.2.10)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
+  - SkeletonView (1.29.2)
+  - SnapKit (4.2.0)
+  - Spring (1.0.6)
+  - TZImagePickerController (3.8.1)
+  - ViewAnimator (3.1.0)
+  - Watchdog (5.2)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - AFNetworking (~> 4.0)
+  - AnimatedCollectionViewLayout
+  - AvoidCrash (~> 2.5.2)
+  - BLTBasicUIKit
+  - BLTSwiftUIKit (= 1.2.1)
+  - BLTUIKitProject
+  - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.10)
+  - CYLTabBarController
+  - Dollar
+  - FaceAware
+  - FSPagerView (from `https://github.com/WenchaoD/FSPagerView`)
+  - Hero
+  - JXPagingView/Paging (= 2.1.2)
+  - JXSegmentedView (= 1.2.7)
+  - LookinServer (= 1.0.6)
+  - Masonry (~> 1.1.0)
+  - MBProgressHUD
+  - MJRefresh
+  - MMKV
+  - RxCocoa (= 6.2.0)
+  - RxSwift (= 6.2.0)
+  - SkeletonView
+  - Spring (from `https://github.com/MengTo/Spring.git`)
+  - ViewAnimator
+  - Watchdog
+  - YYKit (~> 1.0.9)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - AliyunOSSiOS
+    - AnimatedCollectionViewLayout
+    - AvoidCrash
+    - CHTCollectionViewWaterfallLayout
+    - CYLTabBarController
+    - Dollar
+    - FaceAware
+    - HandyJSON
+    - Hero
+    - JXMarqueeView
+    - JXPagingView
+    - JXSegmentedView
+    - Kingfisher
+    - LookinServer
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - MMKV
+    - MMKVCore
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SDWebImage
+    - SkeletonView
+    - SnapKit
+    - TZImagePickerController
+    - ViewAnimator
+    - Watchdog
+    - YYKit
+  "ssh://git@1.117.247.154:7999/app/bltuikitspecrepo.git":
+    - BLTBasicUIKit
+    - BLTSwiftUIKit
+    - BLTUIKitProject
+
+EXTERNAL SOURCES:
+  FSPagerView:
+    :git: https://github.com/WenchaoD/FSPagerView
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  FSPagerView:
+    :commit: 968f0aaf120b8cb97d12c3a4447daa4926029f67
+    :git: https://github.com/WenchaoD/FSPagerView
+  Spring:
+    :commit: 50d92a5b9e08848387ae95bf44c6ad20834f7083
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  AliyunOSSiOS: 8469b21f375813e0da340d63cbae1dadbfb0f0bf
+  AnimatedCollectionViewLayout: 0c1a38c4be115c525c887be183fc91ef65737c5d
+  AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
+  BLTBasicUIKit: 1c520f6d376deb32b89498b331ed462a8ec2874e
+  BLTSwiftUIKit: af47bc6c200a3c5c55e491cf01ddeb26f609ac06
+  BLTUIKitProject: c82d6ef1324a2ed9508f321775d519588c00f53f
+  CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
+  CYLTabBarController: db44b5901a28693a8a4279e4721b3aafdd36c178
+  Dollar: 2fc9bdeeb2d3ae1f251461803240d5c93829ee0c
+  FaceAware: f1266b8719a1a90da3d763b8cb428554edf0fa61
+  FSPagerView: c96bcaff1f251d593c91df47f64a3b237568bcd1
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  JXMarqueeView: 0058108f80f149b25ff3bc3705c1af348fe7be8f
+  JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
+  JXSegmentedView: eb1cad21f57c2543c00c3e08b8fd3c7ca54f5acd
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  LookinServer: 18155b1e4a08213c236a1dd6b7ca52328a70a1e3
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  MMKV: 76033b9ace2006623308910a3afcc0e25eba3140
+  MMKVCore: b00e7a09ec77a1b916aef336eedd3b99ec249978
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+  TZImagePickerController: 943511626019431372cf908f24c114521e484f0e
+  ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
+  Watchdog: 622647e6bc5a55665e6dbae0b7831ad8d95abeab
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+PODFILE CHECKSUM: 4aaea08884a32a7323927c0dfcb5ca758821deb4
+
+COCOAPODS: 1.11.2

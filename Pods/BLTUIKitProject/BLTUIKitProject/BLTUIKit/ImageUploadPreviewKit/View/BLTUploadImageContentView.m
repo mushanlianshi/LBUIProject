@@ -61,6 +61,15 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
 
 @implementation BLTUploadImageContentView
 
+static BLTUploadImageContentView *uploadInstance;
++ (instancetype)appearance{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        uploadInstance = [[BLTUploadImageContentView alloc] init];
+    });
+    return uploadInstance;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
@@ -86,6 +95,13 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
         [self addSubview:_collectionView];
     }
     return self;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+    [super willMoveToSuperview:newSuperview];
+    if (self.customSensorDataBlock) {
+        self.customSensorDataBlock(_collectionView);
+    }
 }
 
 - (void)setStyle:(BLTUploadImageContentViewStyle)style{
@@ -120,6 +136,7 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
     _scaleToKBSize = 1024;
     _videoMaximumDuration = 2 * 60;
     _videoQuality = UIImagePickerControllerQualityTypeMedium;
+    self.customSensorDataBlock = uploadInstance.customSensorDataBlock;
 }
 
 #pragma mark - collection delegate
@@ -141,6 +158,7 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
     if (!cell) {
         cell = [[BLTImagePickerShowCell alloc] init];
     }
+    cell.imageCornerRadius = self.imageCornerRadius;
     cell.delegate = self;
     NSArray *imageArray = self.imagesArray[indexPath.section];
     BLTImagePickerShowModel *model = imageArray[indexPath.row];
@@ -209,7 +227,8 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
     if (model.isAddModel) {
         [self addModelClickAtIndexPath:indexPath addModel:model];
     }else if(model.isVideo){
-        [self imagePickerShowCellDidClickPlay:[collectionView cellForItemAtIndexPath:indexPath]];
+        BLTImagePickerShowCell *cell = (BLTImagePickerShowCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        [self imagePickerShowCellDidClickPlay:cell];
     }else{
         [self previewImageAtIndexPath:indexPath];
     }
@@ -454,7 +473,7 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
         UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
         pickerController.delegate = self;
         pickerController.sourceType = sourceType;
-        pickerController.videoQuality = nil;
+        pickerController.videoQuality = UIImagePickerControllerQualityTypeMedium;
         NSMutableArray *mediaTypes = [NSMutableArray array];
         if (takeVideo) {
             [mediaTypes addObject:(NSString *)kUTTypeMovie];
@@ -476,7 +495,7 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
     if ([type isEqualToString:@"public.image"]) {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        NSDictionary *meta = [info objectForKey:UIImagePickerControllerMediaMetadata];
+//        NSDictionary *meta = [info objectForKey:UIImagePickerControllerMediaMetadata];
         // save photo and get asset / 保存图片，获取到asset
         if (self.addImageSelectIndexPath && image) {
             BLT_WS(weakSelf);
@@ -753,6 +772,12 @@ static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSect
         }
     }];
     self.viewModel.dataSources = _imagesArray;
+    [self.collectionView reloadData];
+}
+
+- (void)setImageCornerRadius:(CGFloat)imageCornerRadius
+{
+    _imageCornerRadius = imageCornerRadius;
     [self.collectionView reloadData];
 }
 

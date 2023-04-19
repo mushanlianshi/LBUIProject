@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 //#import "MBProgressHUD"
 
-@interface UIViewController (PushPop)
+@interface UIViewController (BLTUIKit)
 
 /** 只保留自己栈之前的VC push一个新界面 */
 - (void)blt_keepBeforeSelfPushNewVC:(UIViewController *)newVC DEPRECATED_MSG_ATTRIBUTE("please use blt_keepBeforeSelfPushNewVC:animated: instead");
@@ -33,6 +33,9 @@
 /** pop到偏移当前栈位置的controller */
 - (void)blt_popToViewControllerOffsetIndex:(NSInteger)index DEPRECATED_MSG_ATTRIBUTE("please use blt_popToViewCOntrollerOffsetIndex:animated: instead");
 - (void)blt_popToViewControllerOffsetIndex:(NSInteger)index animated:(BOOL)animated;
+
+/// 替换当前VC为新的VC
+- (void)blt_replaceCurrentVCPushNewVC:(UIViewController *)newVC animated:(BOOL)animated;
 
 @end
 

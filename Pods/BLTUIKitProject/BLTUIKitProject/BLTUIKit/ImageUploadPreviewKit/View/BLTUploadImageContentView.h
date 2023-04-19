@@ -75,7 +75,7 @@ typedef NS_ENUM(NSInteger, BLTUploadImageContentViewStyle){
 @end
 
 /// 上传图片功能封装的view  针对一些不用controller处理的  封装到view层里
-@interface BLTUploadImageContentView : UIView
+@interface BLTUploadImageContentView : UIView<UIAppearance>
 
 //默认是上传的
 @property (nonatomic, assign) BLTUploadImageContentViewStyle style;
@@ -92,6 +92,9 @@ typedef NS_ENUM(NSInteger, BLTUploadImageContentViewStyle){
 
 //设置图片圆形数组   是否只是展示  控制可不可以删除的
 - (void)setPhotosArray:(NSArray<NSArray *> *)photosArray onlyShow:(BOOL)onlyShow;
+
+/// 设置图片圆角，默认为0
+@property (nonatomic, assign) CGFloat imageCornerRadius;
 
 //是否还有没有上传完的照片
 @property (nonatomic, assign, readonly) BOOL hasUnUploadImage;
@@ -136,6 +139,8 @@ typedef NS_ENUM(NSInteger, BLTUploadImageContentViewStyle){
 @property (assign, nonatomic) NSTimeInterval videoMaximumDuration;
 //视频的质量
 @property (nonatomic, assign) UIImagePickerControllerQualityType    videoQuality;
+
+@property (nonatomic, copy) void(^customSensorDataBlock)(UICollectionView *collectionView) UI_APPEARANCE_SELECTOR;
 
 @end
 

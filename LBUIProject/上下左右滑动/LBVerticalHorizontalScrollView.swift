@@ -108,6 +108,9 @@ class LBVerticalHorizontalScrollView: UIScrollView {
         self.delegate = self
         [leftTableView, rightScrollView].forEach(addSubview(_:))
         rightScrollView.addSubview(rightTableView)
+//        rightScrollView.isUserInteractionEnabled = false
+        
+        self.panGestureRecognizer.require(toFail: rightTableView.panGestureRecognizer)
     }
     
     required init?(coder: NSCoder) {
@@ -137,7 +140,7 @@ class LBVerticalHorizontalScrollView: UIScrollView {
 extension LBVerticalHorizontalScrollView: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        print("LBLog self.istracking \(scrollView.isTracking) \(scrollView.isDragging)")
+        print("LBLog istracking \(scrollView.isTracking) \(scrollView.isDragging) \(self.isDragging)")
         if scrollView == self {
             print("LBLog scroll is Self \(scrollView.contentOffset)")
         }else if scrollView == leftTableView{
@@ -251,6 +254,17 @@ extension LBVerticalHorizontalScrollView: UITableViewDelegate, UITableViewDataSo
         return lbDelegate?.lb_tableView(position: positionOfTableView(tableView), heightForHeaderInSection: section) ?? 0
     }
     
+}
+
+
+extension LBVerticalHorizontalScrollView: UIGestureRecognizerDelegate{
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
 }
 
 enum LBVerticalHorizontalScrollPosition: Int {

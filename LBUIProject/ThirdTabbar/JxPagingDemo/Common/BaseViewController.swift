@@ -126,6 +126,10 @@ class BaseViewController: UIViewController, JXSegmentedViewDelegate, JXPagingVie
         }
         return list
     }
+    
+    func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {
+
+    }
 }
 
 //extension BaseViewController:  {

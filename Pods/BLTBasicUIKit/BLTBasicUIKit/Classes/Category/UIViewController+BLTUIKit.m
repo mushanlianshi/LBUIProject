@@ -72,12 +72,13 @@
         [self.navigationController pushViewController:controller animated:YES];
         return;
     }
-    NSMutableArray *vcArray = [[NSMutableArray alloc] initWithCapacity:self.navigationController.viewControllers.count];
+    NSMutableArray *vcArray = self.navigationController.viewControllers.mutableCopy;
     [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[controller class]]) {
             [vcArray removeObject:obj];
         }
     }];
+    [vcArray addObject:controller];
     [self.navigationController setViewControllers:vcArray.copy animated:animated];
 }
 
@@ -130,6 +131,23 @@
     }else{
         [self.navigationController popToRootViewControllerAnimated:animated];
     }
+}
+
+/// 替换当前VC为新的VC
+- (void)blt_replaceCurrentVCPushNewVC:(UIViewController *)newVC animated:(BOOL)animated
+{
+    if (!newVC) {
+        return;
+    }
+    NSMutableArray *vcArray = @[].mutableCopy;
+    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[self class]]) {
+            [vcArray addObject:newVC];
+        }else{
+            [vcArray addObject:obj];
+        }
+    }];
+    [self.navigationController setViewControllers:vcArray.copy animated:animated];
 }
 
 @end

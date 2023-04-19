@@ -56,8 +56,8 @@ class LBJXPagingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var listCell: UITableViewCell?
-        if tableView.dequeueReusableCell(withIdentifier: "cell") == nil{
+        var listCell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if listCell == nil{
             listCell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
             listCell?.textLabel?.textColor = .black
         }

@@ -36,9 +36,9 @@
     return self;
 }
 
-- (void)refreshNaviBarUIConfig:(void(^)(UIButton *deleteButton, UILabel *titleLab))config{
+- (void)refreshNaviBarUIConfig:(void(^)(UIButton *deleteButton, UILabel *titleLab, UIButton *backButton))config{
     if (config) {
-        config(self.deleteBtn, self.titleLab);
+        config(self.deleteBtn, self.titleLab, self.backButton);
     }
 }
 

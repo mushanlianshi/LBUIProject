@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 //监控卡顿
 - (void)startObserverFPSCallBack:(void(^)(NSDictionary *resultInfo))callback;
 
+- (void)endObserver;
+
 //超过这个值 认为就是卡顿 默认250ms
 @property (nonatomic, assign) NSTimeInterval invalidInterval;
 

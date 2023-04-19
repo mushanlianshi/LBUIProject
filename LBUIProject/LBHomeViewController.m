@@ -13,6 +13,7 @@
 #import <YYKit/YYKit.h>
 #import <CoreTelephony/CTCellularData.h>
 #import <CoreLocation/CoreLocation.h>
+#import "BLTAPMFPSManager.h"
 
 @interface LBHomeViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @property (nonatomic, strong) UIImageView *headerIV;
+
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
 @end
 
@@ -59,6 +62,7 @@
         make.bottom.mas_offset(-60);
     }];
     [self getNetworkAuth];
+    [self testSemaphore];
 }
 
 - (void)getNetworkAuth{
@@ -168,8 +172,9 @@
 ////    NSLog(@"LBLog cellheight %@",@(cell.bounds.size.height));
 //}
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"LBLog tableview content offset y is %@",@(self.tableView.contentOffset.y));
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
 }
 
 - (UITableView *)tableView{
@@ -180,6 +185,12 @@
         _tableView.estimatedRowHeight = 60;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
+        _tableView.contentOffset = CGPointMake(0, -200);
+        if (@available(iOS 15.0, *)) {
+            _tableView.prefetchingEnabled = true;
+        } else {
+            // Fallback on earlier versions
+        }
         [_tableView registerClass:[LBCustomTableViewCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableView;
@@ -254,6 +265,27 @@
         _headerIV.clipsToBounds = true;
     }
     return _headerIV;
+}
+
+- (void)testSemaphore{
+//    [[BLTAPMFPSManager sharedInstance] startObserverFPSCallBack:^(NSDictionary * _Nonnull resultInfo) {
+//
+//    }];
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [[BLTAPMFPSManager sharedInstance] endObserver];
+//    });
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        _semaphore = dispatch_semaphore_create(1);
+//        dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+//        NSLog(@"LBLog semaphore count > 0");
+//    });
+//
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        dispatch_semaphore_signal(_semaphore);
+//    });
+    
 }
 
 @end

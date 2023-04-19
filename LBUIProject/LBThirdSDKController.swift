@@ -28,18 +28,36 @@ class LBThirdSDKController: UIViewController {
     }()
     
     lazy var listDataSources: [[String : Any]] = {
-        return [[.title : "RxSwift", .controller : LBThirdSDKController.self],
+        return [[.title : "RxSwift", .controller : LBRxSwiftPractiseViewController.self],
                 [.title : "自定义反转Sequence", .controller : LBCustomReverseSequenceController.self],
                 [.title : "自定义操作符", .controller : LBCustomOperatorController.self],
                 [.title : "where操作符", .controller : LBTestWhereViewController.self],
                 [.title : "JXPagingView", .controller : LBJXPagingViewController.self],
                 [.title : "pageView实现", .controller : LBPageScrollViewController.self],
+                [.title : "dynamicMemberLookup转发", .controller : LBTestDynamicMemberLookupController.self],
+                [.title : "银行卡格式TextField", .controller : LBBankFormatterTextFieldController.self],
         ]
     }()
     
+    lazy var imageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    lazy var imageView2: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         print("LBLog viewDidLoad ====== ")
         let card = CardType.allValues
         let card1 = CardType.allValues
@@ -63,6 +81,31 @@ class LBThirdSDKController: UIViewController {
         let test: Array = [Any]()
         
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            [weak self] in
+            //在走一遍viewWillAppear事件
+            self?.beginAppearanceTransition(true, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                //在走一遍vieWdidAppear事件
+                self?.endAppearanceTransition()
+            }
+        }
+        
+        self.view.addSubview(self.imageView)
+        self.view.addSubview(self.imageView2)
+        imageView.snp.makeConstraints { make in
+            make.top.left.equalToSuperview()
+            make.size.equalTo(CGSize(width: 200, height: 300))
+        }
+        
+        imageView2.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+            make.top.equalTo(imageView.snp_bottom)
+            make.size.equalTo(CGSize(width: 200, height: 300))
+        }
+        
+        imageView.kf.setImage(with: URL.init(string: "https://pic-test-1253618833.cos.ap-shanghai.myqcloud.com/Uploads/housephoto/6607/6606515/cos_3da20edd01824cbd.jpeg"))
+        imageView2.kf.setImage(with: URL.init(string: "https://cdn.baletoo.cn/Uploads/housephoto/6607/6606515/cos_3da20edd01824cbd.jpeg"))
     }
     
     func initTableView() {
@@ -78,9 +121,6 @@ class LBThirdSDKController: UIViewController {
             )
             return Disposables.create()
         }
-        
-        
-        
         
         items.bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self)){
             (row, element, cell) in
@@ -112,6 +152,21 @@ class LBThirdSDKController: UIViewController {
         return result
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("LBLog viewWillAppear ====")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("LBLog viewDidAppear ====")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("LBLog viewWillDisappear ====")
+    }
+    
 }
 
 
@@ -124,6 +179,7 @@ fileprivate extension String{
 protocol LBTestProtocolMethod {
     func testName() -> String
     //    func testName2() -> String
+    var testProtocolProperty: String { get set }
 }
 
 extension LBTestProtocolMethod{
@@ -136,6 +192,11 @@ extension LBTestProtocolMethod{
 }
 
 class Drinking: LBTestProtocolMethod {
+    var testProtocolProperty: String{
+        set{}
+        get{ return "" }
+    }
+    
     func testName() -> String{
         return " Drinking testName"
     }
@@ -177,3 +238,4 @@ extension CardType: LBAllEnumValues{
         return [.hei, .hong]
     }
 }
+

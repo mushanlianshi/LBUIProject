@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BLTAliOSSUploadManager.h"
 #import "BLTImagePreviewNaviBar.h"
 #import "BLTUploadImageContentView.h"
 #import "BLTImagePickerShowModel.h"
@@ -52,7 +51,7 @@
 @property (nonatomic, assign) BOOL uploadImageMode;
 
 //控制外观用的
-@property (nonatomic, copy) void(^uploadImageControllerConfigUI)(BLTImagePreviewNaviBar *naviBar,BLTUploadImageContentView *contentView, UICollectionView *collectionView,UIButton *sureButton);
+@property (nonatomic, copy) void(^uploadImageControllerConfigUI)(BLTImagePreviewNaviBar *naviBar,BLTUploadImageContentView *contentView, UICollectionView *collectionView,UIButton *sureButton) UI_APPEARANCE_SELECTOR;
 
 @end
 

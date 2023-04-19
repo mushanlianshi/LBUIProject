@@ -41,7 +41,6 @@ extension ConstraintView : LayoutConstraintItem {
 
 extension LayoutConstraintItem {
     
-    ///准备使用约束  translatesAutoresizingMaskIntoConstraints设置无效  不使用frame转成约束
     internal func prepare() {
         if let view = self as? ConstraintView {
             view.translatesAutoresizingMaskIntoConstraints = false

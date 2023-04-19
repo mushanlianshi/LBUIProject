@@ -13,11 +13,13 @@
 #import <objc/runtime.h>
 #import "BLTUIKitProject+Private.h"
 
-#define BLTHEXCOLOR(rgbValue)                                                                                             \
+#define BLT_HEXCOLOR(rgbValue) BLT_HEXCOLORA(rgbValue, 1.0)
+
+#define BLT_HEXCOLORA(rgbValue, a)                                                                                             \
 [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0                                               \
 green:((float)((rgbValue & 0xFF00) >> 8)) / 255.0                                                  \
 blue:((float)(rgbValue & 0xFF)) / 255.0                                                           \
-alpha:1.0]
+alpha:a]
 
 
 #ifdef DEBUG
@@ -198,6 +200,35 @@ CG_INLINE NSString *StringFromMoneyWithStyle(id money,LLMoneyStyleType styleType
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
     formatter.maximumFractionDigits = 2;
     formatter.minimumIntegerDigits = 1;
+    if (styleType == LLMoneyStyleTypeDefault) {
+        return originalMoney;
+    }else if (styleType == LLMoneyStyleTypeTwoPoint){
+        formatter.minimumFractionDigits = 2;
+        formatter.minimumIntegerDigits = 1;
+    }else if (styleType == LLMoneyStyleTypeDeleteLastZore){
+        
+//        return [number stringValue];
+    }
+    NSString *numberStr = [formatter stringFromNumber:number];
+    return numberStr;
+}
+
+/** 服务器返回的金钱转换*/
+CG_INLINE NSString *StringFromMoneyWithStyleWithFormatter(id money,LLMoneyStyleType styleType, NSNumberFormatterStyle style){
+    NSString *originalMoney = @"";
+    if ([money isKindOfClass:[NSString class]] && [money length]) {
+        originalMoney = money;
+    }else if ([money isKindOfClass:[NSNumber class]]){
+        originalMoney = [NSString stringWithFormat:@"%.3f",[money doubleValue]];
+    }else{
+        originalMoney = @"0";
+    }
+    
+    NSDecimalNumber *number = [NSDecimalNumber decimalNumberWithString:originalMoney];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+    formatter.maximumFractionDigits = 2;
+    formatter.minimumIntegerDigits = 1;
+    formatter.numberStyle = style;
     if (styleType == LLMoneyStyleTypeDefault) {
         return originalMoney;
     }else if (styleType == LLMoneyStyleTypeTwoPoint){

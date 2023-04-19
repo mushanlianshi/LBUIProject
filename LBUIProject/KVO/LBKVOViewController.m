@@ -18,10 +18,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     LBKVOObject *obj1 = [[LBKVOObject alloc] init];
     LBKVOObject *obj2 = [[LBKVOObject alloc] init];
+    ///ob1 和obj2 对象的内存地址不同，但他们的setAge方法指向的地址是相同的，他们的isa指针珍惜的都是类，类的方法地址是固定的，所以他们的setAge方法最终都指向了类的方法里，类方法最终都指向了元类的方法列表
     NSLog(@"LBLog kvo before obj1  %p",obj1);
     NSLog(@"LBLog kvo before obj2  %p",obj2);
     NSLog(@"LBLog kvo before method p1 %p and p2 %p",[obj1 methodForSelector:@selector(setAge:)],[obj2 methodForSelector:@selector(setAge:)]);
     
+    
+    ///而添加obserer之后  两个对象的setAge方法的地址就不同了，说明发生了变化，添加observer的setAge方法的地址指向了新的内存地址，
     [obj1 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     obj1.age = @"123";
     

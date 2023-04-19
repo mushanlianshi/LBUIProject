@@ -132,7 +132,7 @@
     CALayer *layer = [[CALayer alloc] init];
     layer.bounds = bounds;
     layer.position = CGPointMake(bounds.origin.x, bounds.origin.y);
-    layer.borderColor = BLTHEXCOLOR(0xffff44).CGColor;
+    layer.borderColor = BLT_HEXCOLOR(0xffff44).CGColor;
     layer.borderWidth = 1;
     return layer;
 }
@@ -142,7 +142,7 @@
     textLayer.string = identifier;
     textLayer.bounds = bounds;
     textLayer.position = CGPointMake(bounds.origin.x, bounds.origin.y);
-    textLayer.borderColor = BLTHEXCOLOR(0xffff44).CGColor;
+    textLayer.borderColor = BLT_HEXCOLOR(0xffff44).CGColor;
     textLayer.borderWidth = 1 ;
     return textLayer;
 }

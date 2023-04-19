@@ -19,7 +19,7 @@ class SmoothViewController: UIViewController {
         return JXSegmentedView()
     }()
     lazy var headerView: UIImageView = {
-        return UIImageView(image: UIImage(named: "lufei.jpg"))
+        return UIImageView(image: UIImage(named: "pageView1"))
     }()
     let dataSource = JXSegmentedTitleDataSource()
 
@@ -60,8 +60,8 @@ class SmoothViewController: UIViewController {
         dataSource.titles = ["第一", "第二", "第三"]
         dataSource.reloadData(selectedIndex: 1)
         segmentedView.defaultSelectedIndex = 1
-        paging.defaultSelectedIndex = 1
         segmentedView.reloadData()
+        paging.defaultSelectedIndex = 1
         paging.reloadData()
     }
 

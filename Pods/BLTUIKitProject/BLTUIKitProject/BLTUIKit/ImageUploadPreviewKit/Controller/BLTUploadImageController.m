@@ -62,7 +62,7 @@
         _naviBar = [[BLTImagePreviewNaviBar alloc] init];
         _naviBar.backgroundColor = [UIColor whiteColor];
         _naviBar.backImage = UIImageNamedFromBLTUIKItBundle(@"blt_upload_image_navi_back_black");
-        [_naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab) {
+        [_naviBar refreshNaviBarUIConfig:^(UIButton *deleteButton, UILabel *titleLab, UIButton *backButton) {
             deleteButton.hidden = YES;
             titleLab.text = self.naviTitle ? self.naviTitle : @"上传照片";
             titleLab.textColor = [UIColor blackColor];
@@ -195,7 +195,7 @@
         _sureButton = [[UIButton alloc] initWithFrame:CGRectMake(0, y, [UIScreen mainScreen].bounds.size.width, 44)];
         [_sureButton addTarget:self action:@selector(sureButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [_sureButton setTitle:@"确定" forState:UIControlStateNormal];
-        _sureButton.backgroundColor = BLTHEXCOLOR(0x4E8CEE);
+        _sureButton.backgroundColor = BLT_HEXCOLOR(0x4E8CEE);
     }
     return _sureButton;
 }

@@ -70,6 +70,11 @@ class ListViewController: UIViewController {
             self.tableView.mj_footer?.endRefreshing()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("LBLog list controller view will appear=======")
+    }
 }
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {

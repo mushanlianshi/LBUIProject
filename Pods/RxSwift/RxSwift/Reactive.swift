@@ -37,10 +37,15 @@ public struct Reactive<Base> {
 
     /// Automatically synthesized binder for a key path between the reactive
     /// base and one of its properties
+    /// ///ReferenceWritableKeyPath通过keypath的方式来获取值
+    ///Property需要声明泛型Property来和ReferenceWritableKeyPath对应   实际上是ReferenceWritableKeyPath的Base的keypath来获取对应的属性
+    ///在包装成一个binder<Property>来返回
+    ///使用subscript的方式  可以避免以前的写各种extension（extension Reactive where Base: UIView） 来实现各个属性   减少代码量等
     public subscript<Property>(dynamicMember keyPath: ReferenceWritableKeyPath<Base, Property>) -> Binder<Property> where Base: AnyObject {
-        Binder(self.base) { base, value in
+        let result = Binder(self.base) { base, value in
             base[keyPath: keyPath] = value
         }
+        return result
     }
 }
 

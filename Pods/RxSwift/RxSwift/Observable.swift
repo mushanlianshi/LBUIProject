@@ -9,6 +9,7 @@
 /// A type-erased `ObservableType`. 
 ///
 /// It represents a push style sequence.
+/// 发布者，遵守ObservableType协议  可以绑定到binder《Element》上   也可以订阅事件
 public class Observable<Element> : ObservableType {
     init() {
 #if TRACE_RESOURCES

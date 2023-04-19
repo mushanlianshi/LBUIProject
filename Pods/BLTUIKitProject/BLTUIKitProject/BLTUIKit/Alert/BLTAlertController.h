@@ -155,6 +155,10 @@ typedef NS_ENUM(NSInteger, BLTAlertControllerButtonDirection){
 //修改控件样式的回调  不建议用
 @property (nonatomic, copy) void(^alertControllerConfigUI) (UILabel *titleLab, UILabel *contentLab,UIView *maskView, UIView *containerView,UIView *wrapView, UIScrollView *headerScrollView, UIScrollView *buttonScrollView);
 
+//处理神策采集的
+@property (nonatomic, copy) void(^customSensorDataBlock) (UIViewController *alertVC, UIControl *backgroundControl) UI_APPEARANCE_SELECTOR;
+//处理神策事件的  addRightTopCloseButtonHandler会覆盖这里面设置的元素内容
+@property (nonatomic, copy) void(^customSensorCloseBtnBlock)(UIButton *button) UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, copy) dispatch_block_t didDisappearBlock;
 

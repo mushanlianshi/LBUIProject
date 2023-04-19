@@ -36,7 +36,7 @@
     if (!_titleLab) {
         _titleLab = [[BLTBaseLabel alloc] initWithContentInsets:UIEdgeInsetsMake(15, 0, 10, 0)];
         _titleLab.font = UIFontPFFontSize(14);
-        _titleLab.textColor = BLTHEXCOLOR(0x333333);
+        _titleLab.textColor = BLT_HEXCOLOR(0x333333);
         [self addSubview:_titleLab];
     }
     return _titleLab;

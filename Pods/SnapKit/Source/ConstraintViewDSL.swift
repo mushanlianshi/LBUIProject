@@ -91,7 +91,6 @@ public struct ConstraintViewDSL: ConstraintAttributesDSL {
         return self.view
     }
     
-    /// internal 只能在当前模块内访问
     internal let view: ConstraintView
     
     internal init(view: ConstraintView) {

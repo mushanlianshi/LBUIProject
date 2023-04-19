@@ -46,7 +46,7 @@ private enum AmbState {
 }
 
 final private class AmbObserver<Observer: ObserverType>: ObserverType {
-    typealias Element = Observer.Element 
+    typealias Element = Observer.Element
     typealias Parent = AmbSink<Observer>
     typealias This = AmbObserver<Observer>
     typealias Sink = (This, Event<Element>) -> Void

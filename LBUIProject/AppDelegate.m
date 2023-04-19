@@ -68,10 +68,12 @@ struct B{
     NSLog(@"LBLog injection ====");
     
 #endif
-    [[[LBLoadAndInitializeSubClassController alloc] init] test];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[[LBLoadAndInitializeSubClassController alloc] init] test];
+//    });
     [MMKV initializeMMKV:nil];
     
-    
+    [LYJInitSwiftManager initNeededSDK];
     [self setNavigationBarAppearance];
     self.mArray = [NSMutableArray new];
     

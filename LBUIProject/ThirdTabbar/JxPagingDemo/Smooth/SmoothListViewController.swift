@@ -18,7 +18,11 @@ import MJRefresh
 class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDelegate, UITableViewDataSource {
     weak var delegate: SmoothListViewControllerDelegate?
     lazy var tableView: UITableView = {
-        return UITableView(frame: CGRect.zero, style: .plain)
+        let tv = UITableView(frame: CGRect.zero, style: .plain)
+        tv.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
+            print("tv refresh ===")
+        })
+        return tv
     }()
     override func viewDidLoad() {
         super.viewDidLoad()

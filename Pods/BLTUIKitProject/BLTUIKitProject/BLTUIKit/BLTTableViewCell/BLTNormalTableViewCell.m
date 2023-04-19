@@ -80,6 +80,11 @@ static NSString * const kBLTRightArrowImageName = @"blt_right_arrow";
         make.height.mas_equalTo(0.5f);
     }];
     [self subTitleDefaultStyle];
+    
+    [self.titleLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [self.subTitleLabel setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+    [self.subTitleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
 }
 
 - (void)subTitleDefaultStyle
@@ -153,9 +158,14 @@ static NSString * const kBLTRightArrowImageName = @"blt_right_arrow";
     _customAccessoryView = customAccessoryView;
     if (_customAccessoryView) {
         [self.horizontalStackView addArrangedSubview:_customAccessoryView];
-        [_customAccessoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(_customAccessoryView.intrinsicContentSize);
-        }];
+        if (![_customAccessoryView isKindOfClass:[UITextField class]] && ![_customAccessoryView isKindOfClass:[UITextView class]]) {
+            [_customAccessoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_equalTo(_customAccessoryView.intrinsicContentSize);
+            }];
+        }
+        
+        [_customAccessoryView setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+        [_customAccessoryView setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     }
 }
 

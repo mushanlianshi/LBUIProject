@@ -24,6 +24,8 @@
 		400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */; };
 		401AA7E3288AB81C00A4C6DB /* LBThirdPartAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401AA7E2288AB81C00A4C6DB /* LBThirdPartAnimationController.swift */; };
 		401E9414272174D600F3BAB2 /* UIViewController+change1.m in Sources */ = {isa = PBXBuildFile; fileRef = 401E9413272174D600F3BAB2 /* UIViewController+change1.m */; };
+		4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022E72229CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift */; };
+		4022E72529CDACD300C4476F /* LBRxSwiftPractiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022E72429CDACD300C4476F /* LBRxSwiftPractiseViewController.swift */; };
 		4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4026540326846D9800472F4F /* LBTestFaceAwareController.m */; };
 		402654272684720A00472F4F /* TestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402654262684720A00472F4F /* TestSwift.swift */; };
 		402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBA92796900600B051C5 /* LBStrategyModeController.m */; };
@@ -69,6 +71,7 @@
 		40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40667D8126A5585A00027791 /* LBTestGestureView.m */; };
 		4066CF3D269314BF001A323C /* LBSafirController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CF3C269314BF001A323C /* LBSafirController.m */; };
 		406BF20C2984F03E00E2479A /* LBRxSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BF20B2984F03E00E2479A /* LBRxSwiftViewController.swift */; };
+		406EBD1C29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406EBD1B29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift */; };
 		4076039F2840693E0019EC69 /* LBTestRunloopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4076039E2840693E0019EC69 /* LBTestRunloopViewController.m */; };
 		407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 407603A128406A0D0019EC69 /* LBCrashManager.m */; };
 		407603A6284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407603A5284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m */; };
@@ -111,6 +114,8 @@
 		409B06C52891108F004724EB /* LBThirdSDKController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409B06C42891108F004724EB /* LBThirdSDKController.swift */; };
 		409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */; };
 		409DCEC028B76E5500699E24 /* LBCustomQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409DCEBF28B76E5500699E24 /* LBCustomQueueManager.swift */; };
+		40ABFE2529DC333E008114C5 /* UITextField+LBFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABFE2429DC333E008114C5 /* UITextField+LBFormatter.swift */; };
+		40ABFE2729DC37DB008114C5 /* String+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABFE2629DC37DB008114C5 /* String+LBExtension.swift */; };
 		40AE6FA929C80AE600C69932 /* BLTAPMFPSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6F9929C80AE600C69932 /* BLTAPMFPSManager.m */; };
 		40AE6FAA29C80AE600C69932 /* BLTAPMMemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6F9D29C80AE600C69932 /* BLTAPMMemoryManager.m */; };
 		40AE6FAB29C80AE600C69932 /* UIViewController+BLTAPMRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6F9E29C80AE600C69932 /* UIViewController+BLTAPMRender.m */; };
@@ -149,6 +154,7 @@
 		40AE700129C9A54F00C69932 /* LBMutiScrollTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE700029C9A54F00C69932 /* LBMutiScrollTableView.swift */; };
 		40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B11E14266DC9C600337CE4 /* LBTestOffScreenController.m */; };
 		40B206B32669F7770016A25C /* LBTestGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B206B22669F7770016A25C /* LBTestGestureViewController.m */; };
+		40B338E329EF74720035CFC3 /* LYJInitSwiftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B338E229EF74720035CFC3 /* LYJInitSwiftManager.swift */; };
 		40B35B71286407FD0001FFE9 /* LBBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B70286407FD0001FFE9 /* LBBaseNavigationController.m */; };
 		40B35B7328640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7228640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift */; };
 		40B35B7528640E970001FFE9 /* LBNavigatorScrollHiddenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7428640E970001FFE9 /* LBNavigatorScrollHiddenController.swift */; };
@@ -245,6 +251,8 @@
 		401AA7E2288AB81C00A4C6DB /* LBThirdPartAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBThirdPartAnimationController.swift; sourceTree = "<group>"; };
 		401E9412272174D600F3BAB2 /* UIViewController+change1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+change1.h"; sourceTree = "<group>"; };
 		401E9413272174D600F3BAB2 /* UIViewController+change1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+change1.m"; sourceTree = "<group>"; };
+		4022E72229CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestDynamicMemberLookupController.swift; sourceTree = "<group>"; };
+		4022E72429CDACD300C4476F /* LBRxSwiftPractiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftPractiseViewController.swift; sourceTree = "<group>"; };
 		4026540226846D9800472F4F /* LBTestFaceAwareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestFaceAwareController.h; sourceTree = "<group>"; };
 		4026540326846D9800472F4F /* LBTestFaceAwareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestFaceAwareController.m; sourceTree = "<group>"; };
 		40265416268470B300472F4F /* LBUIProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBUIProject-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -322,6 +330,7 @@
 		4066CF3B269314BF001A323C /* LBSafirController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBSafirController.h; sourceTree = "<group>"; };
 		4066CF3C269314BF001A323C /* LBSafirController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBSafirController.m; sourceTree = "<group>"; };
 		406BF20B2984F03E00E2479A /* LBRxSwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftViewController.swift; sourceTree = "<group>"; };
+		406EBD1B29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBankFormatterTextFieldController.swift; sourceTree = "<group>"; };
 		4076039D2840693E0019EC69 /* LBTestRunloopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestRunloopViewController.h; sourceTree = "<group>"; };
 		4076039E2840693E0019EC69 /* LBTestRunloopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestRunloopViewController.m; sourceTree = "<group>"; };
 		407603A028406A0D0019EC69 /* LBCrashManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCrashManager.h; sourceTree = "<group>"; };
@@ -382,6 +391,8 @@
 		409C5BAB26A19988005B8344 /* NSObject+AutoProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoProperty.h"; sourceTree = "<group>"; };
 		409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoProperty.m"; sourceTree = "<group>"; };
 		409DCEBF28B76E5500699E24 /* LBCustomQueueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomQueueManager.swift; sourceTree = "<group>"; };
+		40ABFE2429DC333E008114C5 /* UITextField+LBFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+LBFormatter.swift"; sourceTree = "<group>"; };
+		40ABFE2629DC37DB008114C5 /* String+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LBExtension.swift"; sourceTree = "<group>"; };
 		40AE6F9929C80AE600C69932 /* BLTAPMFPSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTAPMFPSManager.m; sourceTree = "<group>"; };
 		40AE6F9A29C80AE600C69932 /* BLTAPMObserverHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTAPMObserverHeader.h; sourceTree = "<group>"; };
 		40AE6F9B29C80AE600C69932 /* BLTAPMObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTAPMObserver.h; sourceTree = "<group>"; };
@@ -430,6 +441,7 @@
 		40B11E14266DC9C600337CE4 /* LBTestOffScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestOffScreenController.m; sourceTree = "<group>"; };
 		40B206B12669F7770016A25C /* LBTestGestureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGestureViewController.h; sourceTree = "<group>"; };
 		40B206B22669F7770016A25C /* LBTestGestureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGestureViewController.m; sourceTree = "<group>"; };
+		40B338E229EF74720035CFC3 /* LYJInitSwiftManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LYJInitSwiftManager.swift; sourceTree = "<group>"; };
 		40B35B6F286407FD0001FFE9 /* LBBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBaseNavigationController.h; sourceTree = "<group>"; };
 		40B35B70286407FD0001FFE9 /* LBBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBaseNavigationController.m; sourceTree = "<group>"; };
 		40B35B7228640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigationBarScrollHiddenAnimator.swift; sourceTree = "<group>"; };
@@ -939,6 +951,14 @@
 			path = RxSwift;
 			sourceTree = "<group>";
 		};
+		406EBD1A29DEA7EC00A6C06D /* 银行卡格式输入框 */ = {
+			isa = PBXGroup;
+			children = (
+				406EBD1B29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift */,
+			);
+			path = "银行卡格式输入框";
+			sourceTree = "<group>";
+		};
 		4076039C284069230019EC69 /* RunLoop */ = {
 			isa = PBXGroup;
 			children = (
@@ -1157,6 +1177,14 @@
 			path = "动画";
 			sourceTree = "<group>";
 		};
+		409AB69929D57D95005B81B2 /* RxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				4022E72429CDACD300C4476F /* LBRxSwiftPractiseViewController.swift */,
+			);
+			path = RxSwift;
+			sourceTree = "<group>";
+		};
 		409B06BF2890D8B1004724EB /* 监测卡顿的 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1175,6 +1203,8 @@
 				400A05CB2862F159006574B5 /* Array+LBExtension.swift */,
 				40DF355F28646014008EE299 /* NSString+LBExtension.h */,
 				40DF356028646014008EE299 /* NSString+LBExtension.m */,
+				40ABFE2429DC333E008114C5 /* UITextField+LBFormatter.swift */,
+				40ABFE2629DC37DB008114C5 /* String+LBExtension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1450,6 +1480,10 @@
 		40D2763F29C0754C005343E3 /* ThirdTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				40B338E229EF74720035CFC3 /* LYJInitSwiftManager.swift */,
+				406EBD1A29DEA7EC00A6C06D /* 银行卡格式输入框 */,
+				409AB69929D57D95005B81B2 /* RxSwift */,
+				4022E72229CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift */,
 				40D2764029C07580005343E3 /* LBTestWhereViewController.swift */,
 				40AE6FB429C8610100C69932 /* JxPagingDemo */,
 			);
@@ -1902,6 +1936,7 @@
 				408045032891476F00600952 /* UIView+LBExtension.swift in Sources */,
 				400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */,
 				40AE6FD929C8616600C69932 /* VCViewController.swift in Sources */,
+				40ABFE2529DC333E008114C5 /* UITextField+LBFormatter.swift in Sources */,
 				4063EF4E285ADDCD00335BA2 /* CHTCollectionViewWaterfallCell.m in Sources */,
 				40B35B7328640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift in Sources */,
 				400A05D628630C29006574B5 /* LBNavigationBarScrollChangeAnimator.swift in Sources */,
@@ -1913,10 +1948,12 @@
 				40AE6FE229C8616600C69932 /* UIWindow+JXSafeArea.swift in Sources */,
 				409B06C52891108F004724EB /* LBThirdSDKController.swift in Sources */,
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
+				406EBD1C29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift in Sources */,
 				40AE6FE729C8616600C69932 /* TestListBaseView.swift in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
 				403B24DE286565C80009D8E9 /* LBDragDownSecondPageView.swift in Sources */,
 				4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */,
+				4022E72529CDACD300C4476F /* LBRxSwiftPractiseViewController.swift in Sources */,
 				40D46FC6288E767A001A153A /* NSObject+LBResponseChain.m in Sources */,
 				401AA7E3288AB81C00A4C6DB /* LBThirdPartAnimationController.swift in Sources */,
 				4063EF62285B0AA900335BA2 /* LBCollectionDecoratorView.m in Sources */,
@@ -1946,6 +1983,7 @@
 				40D2764129C07580005343E3 /* LBTestWhereViewController.swift in Sources */,
 				407603A9284077B90019EC69 /* LBForwordingTarget.m in Sources */,
 				409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */,
+				40B338E329EF74720035CFC3 /* LYJInitSwiftManager.swift in Sources */,
 				406298EB288F8517006A3024 /* UINavigationBar+LBExtension.swift in Sources */,
 				40B35B7F28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m in Sources */,
 				4043EB53265FA2B300EACB2B /* LBTestAutoLayoutViewController.m in Sources */,
@@ -1955,6 +1993,7 @@
 				400A05D82863237B006574B5 /* UIImage+LBExtension.swift in Sources */,
 				40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */,
 				40AE6FD629C8616600C69932 /* CollectionViewViewController.swift in Sources */,
+				4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */,
 				40AE6FE129C8616600C69932 /* BaseViewController.swift in Sources */,
 				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,
 				400A05CC2862F159006574B5 /* Array+LBExtension.swift in Sources */,
@@ -1965,6 +2004,7 @@
 				40AE6FE829C8616600C69932 /* SmoothViewController.swift in Sources */,
 				40AE6FD729C8616600C69932 /* RefreshViewController.swift in Sources */,
 				4086B7AE2845B941003CE2FF /* LLDoubleScrollViewPinController.swift in Sources */,
+				40ABFE2729DC37DB008114C5 /* String+LBExtension.swift in Sources */,
 				40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */,
 				400A05CA2861B61B006574B5 /* UIIMage+LBExtension.swift in Sources */,
 				4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */,
@@ -2214,6 +2254,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -2221,8 +2262,9 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = W7TC5X9L5S;
 				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = LBUIProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2247,14 +2289,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = mar64;
 				INFOPLIST_FILE = LBUIProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2422,6 +2466,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -2430,7 +2475,7 @@
 				DEVELOPMENT_TEAM = W7TC5X9L5S;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = LBUIProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

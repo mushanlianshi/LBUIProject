@@ -54,9 +54,9 @@
     NSLog(@"LBlog subClass load ========");
 }
 
-//+ (void)initialize{
-//    NSLog(@"LBlog subClass initialize ========");
-//}
++ (void)initialize{
+    NSLog(@"LBlog subClass initialize ========");
+}
 
 - (void)test{
     NSLog(@"LBlog test");

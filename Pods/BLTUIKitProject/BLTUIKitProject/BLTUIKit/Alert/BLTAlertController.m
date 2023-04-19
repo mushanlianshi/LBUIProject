@@ -45,28 +45,28 @@ static BLTAlertController *  alertAppearanceInstance;
                                                          NSFontAttributeName:UIFontPFFontSize(17),
                                                          NSParagraphStyleAttributeName:[self defalutParagraphStyle]
                                                          };
-        alertAppearanceInstance.alertContentAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x666666),
+        alertAppearanceInstance.alertContentAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x666666),
                                                            NSFontAttributeName:UIFontPFFontSize(14),
                                                            NSParagraphStyleAttributeName:[self defalutParagraphStyle]
                                                            };
         alertAppearanceInstance.alertButtonHeight = 44;
         alertAppearanceInstance.alertContentRaduis = 4;
-        alertAppearanceInstance.alertMaskViewBackgroundColor = [BLTHEXCOLOR(0x777777) colorWithAlphaComponent:0.5];
-        alertAppearanceInstance.alertHeaderBackgroundColor = BLTHEXCOLOR(0xFFFFFF);
+        alertAppearanceInstance.alertMaskViewBackgroundColor = [BLT_HEXCOLOR(0x777777) colorWithAlphaComponent:0.5];
+        alertAppearanceInstance.alertHeaderBackgroundColor = BLT_HEXCOLOR(0xFFFFFF);
         alertAppearanceInstance.alertButtonBackgroundColor = [UIColor whiteColor];
         alertAppearanceInstance.alertActionDirection = BLTAlertControllerButtonDirectionAuto;
         alertAppearanceInstance.alertTitleContentSpacing = 8;
         alertAppearanceInstance.alertTextFieldFont = UIFontPFFontSize(14);
-        alertAppearanceInstance.alertTextFieldTextColor = BLTHEXCOLOR(0x333333);
+        alertAppearanceInstance.alertTextFieldTextColor = BLT_HEXCOLOR(0x333333);
         alertAppearanceInstance.alertTextFieldHeight = 44;
-        alertAppearanceInstance.alertSeparatorColor = BLTHEXCOLOR(0xC2C2C2);
-        alertAppearanceInstance.alertButtonAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x333333),
+        alertAppearanceInstance.alertSeparatorColor = BLT_HEXCOLOR(0xC2C2C2);
+        alertAppearanceInstance.alertButtonAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x333333),
                                                           NSFontAttributeName:UIFontPFFontSize(16)
                                                           };
-        alertAppearanceInstance.alertCancelButtonAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x333333),
+        alertAppearanceInstance.alertCancelButtonAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x333333),
                                                                 NSFontAttributeName:UIFontPFFontSize(16)
                                                                 };
-        alertAppearanceInstance.alertDestructiveButtonAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0xEE3943),
+        alertAppearanceInstance.alertDestructiveButtonAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0xEE3943),
                                                                      NSFontAttributeName:UIFontPFFontSize(16)
                                                                      };
         alertAppearanceInstance.alertTitleImageSpacing = 15;
@@ -78,9 +78,9 @@ static BLTAlertController *  alertAppearanceInstance;
         
         alertAppearanceInstance.feedAlertButtonHoriSpacing = 15;
         alertAppearanceInstance.feedAlertButtonVerticalSpacing = 10;
-        alertAppearanceInstance.feedAlertStartGradientColor = BLTHEXCOLOR(0xFF2A5C);
-        alertAppearanceInstance.feedAlertEndGradientColor = BLTHEXCOLOR(0xFF656C);
-        alertAppearanceInstance.feedAlertButtonAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x333333),
+        alertAppearanceInstance.feedAlertStartGradientColor = BLT_HEXCOLOR(0xFF2A5C);
+        alertAppearanceInstance.feedAlertEndGradientColor = BLT_HEXCOLOR(0xFF656C);
+        alertAppearanceInstance.feedAlertButtonAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x333333),
                                                               NSFontAttributeName:UIFontPFFontSize(16)
                                                               };
         alertAppearanceInstance.feedAlertDestrutiveButtonAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],
@@ -204,7 +204,8 @@ static BLTAlertController *  alertAppearanceInstance;
         self.alertActions = [[NSMutableArray alloc] init];
         self.alertTextFields = [[NSMutableArray alloc] init];
         self.maskView = [[UIControl alloc] init];
-        self.maskView.backgroundColor = [BLTHEXCOLOR(0xF5F5F9) colorWithAlphaComponent:0.5];
+        self.maskView.userInteractionEnabled = false;
+        self.maskView.backgroundColor = [BLT_HEXCOLOR(0xF5F5F9) colorWithAlphaComponent:0.5];
         [self.maskView addTarget:self action:@selector(maskViewClicked) forControlEvents:UIControlEventTouchUpInside];
         self.containerView = [[UIView alloc] init];
         if (style == BLTAlertControllerStyleActionSheet) {
@@ -248,6 +249,9 @@ static BLTAlertController *  alertAppearanceInstance;
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     NSAssert(_showing, @"LBLog please use showWithAnimated selector instead");
+    if (self.customSensorDataBlock) {
+        self.customSensorDataBlock(self, self.maskView);
+    }
 }
 
 /** 根据全局的样式初始化外观设置 */
@@ -287,6 +291,8 @@ static BLTAlertController *  alertAppearanceInstance;
         self.feedAlertButtonInsets = alertAppearanceInstance.feedAlertButtonInsets;
         self.autoActionClose = alertAppearanceInstance.autoActionClose;
         self.backgroundClickDismiss = alertAppearanceInstance.backgroundClickDismiss;
+        self.customSensorDataBlock = alertAppearanceInstance.customSensorDataBlock;
+        self.customSensorCloseBtnBlock = alertAppearanceInstance.customSensorCloseBtnBlock;
         self.transitioningDelegate = self.transitioningAnimator;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
@@ -666,6 +672,9 @@ static BLTAlertController *  alertAppearanceInstance;
         self.rightTopCloseButton.responseAreaInsets = UIEdgeInsetsMake(-15, -15, -15, -15);
         [self.headerScrollView addSubview:self.rightTopCloseButton];
         _rightTopCloseHandler = handler;
+        if (self.customSensorCloseBtnBlock) {
+            self.customSensorCloseBtnBlock(_rightTopCloseButton);
+        }
         if (closeButtonConfig) {
             closeButtonConfig(self.rightTopCloseButton);
         }
@@ -889,6 +898,11 @@ static BLTAlertController *  alertAppearanceInstance;
 
 
 #pragma mark - set property
+
+- (void)setBackgroundClickDismiss:(BOOL)backgroundClickDismiss{
+    _backgroundClickDismiss = backgroundClickDismiss;
+    self.maskView.userInteractionEnabled = backgroundClickDismiss;
+}
 
 - (void)setAlertTitle:(NSString *)alertTitle{
     _alertTitle = alertTitle;

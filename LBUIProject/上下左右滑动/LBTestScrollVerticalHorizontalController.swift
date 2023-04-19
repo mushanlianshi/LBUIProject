@@ -24,9 +24,9 @@ class LBTestScrollVerticalHorizontalController: UIViewController {
                 view.mj_header?.endRefreshing()
             }
         })
-        view.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
-            print("LBLog begin loadmore ========")
-        })
+//        view.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
+//            print("LBLog begin loadmore ========")
+//        })
         view.didScroll = {
             [weak self] point in
             self?.processScrollOffset(point)

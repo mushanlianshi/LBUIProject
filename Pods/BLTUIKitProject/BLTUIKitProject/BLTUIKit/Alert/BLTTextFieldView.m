@@ -33,16 +33,16 @@ static BLTTextFieldView * textViewInstance;
 + (void)initAppreance{
     if (!textViewInstance) {
         textViewInstance = [[BLTTextFieldView alloc] init];
-        textViewInstance.unitStringAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x333333),
+        textViewInstance.unitStringAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x333333),
                                                  NSFontAttributeName:UIFontPFFontSize(14)
                                                  };
-        textViewInstance.tipTitleAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x333333),
+        textViewInstance.tipTitleAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x333333),
                                                 NSFontAttributeName:UIFontPFFontSize(14)
                                                 };
-        textViewInstance.placeHolderAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x999999),
+        textViewInstance.placeHolderAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x999999),
                                                    NSFontAttributeName:UIFontPFFontSize(14)
                                                    };;
-        textViewInstance.textViewAttributes = @{NSForegroundColorAttributeName:BLTHEXCOLOR(0x333333),
+        textViewInstance.textViewAttributes = @{NSForegroundColorAttributeName:BLT_HEXCOLOR(0x333333),
                                                    NSFontAttributeName:UIFontPFFontSize(14)
                                                    };;
         textViewInstance.contentInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -229,7 +229,7 @@ static BLTTextFieldView * textViewInstance;
     if (!_textField) {
         _textField = [[BLTTextField alloc] init];
         _textField.returnKeyType = UIReturnKeyDone;
-        _textField.backgroundColor = BLTHEXCOLOR(0xF8F8F8);
+        _textField.backgroundColor = BLT_HEXCOLOR(0xF8F8F8);
     }
     return _textField;
 }
