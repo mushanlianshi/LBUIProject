@@ -36,6 +36,7 @@ class LBSecondViewController: UIViewController{
         LBListItemModel.init(title: "notificationView", vcClass: LBNotificationViewController.self),
         LBListItemModel.init(title: "上下左右滑动控件", vcClass: LBTestScrollVerticalHorizontalController.self),
         LBListItemModel.init(title: "翻卡片", vcClass: LBFlipCardViewController.self),
+        LBListItemModel.init(title: "折叠", vcClass: LBExpandCloseLabelController.self),
     ]
     
     var changeModel = LBListItemModel.init(title: "111", vcClass: NSString.self)

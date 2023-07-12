@@ -231,6 +231,8 @@
 		40C937FF299F0D7400EC434D /* LBTestScrollVerticalHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C937FE299F0D7400EC434D /* LBTestScrollVerticalHorizontalController.swift */; };
 		40D2764129C07580005343E3 /* LBTestWhereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D2764029C07580005343E3 /* LBTestWhereViewController.swift */; };
 		40D43CBF2A5D35B3001384BF /* 11111.flac in Resources */ = {isa = PBXBuildFile; fileRef = 40D43CBE2A5D3575001384BF /* 11111.flac */; };
+		40D43CC22A5E96A0001384BF /* LBExpandCloseLabelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D43CC12A5E96A0001384BF /* LBExpandCloseLabelController.swift */; };
+		40D43CC42A5E987C001384BF /* LBExpandCloseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D43CC32A5E987C001384BF /* LBExpandCloseLabel.swift */; };
 		40D46FBF288E7471001A153A /* LBResponseChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D46FBE288E7471001A153A /* LBResponseChainViewController.m */; };
 		40D46FC2288E7538001A153A /* LBResponseChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D46FC1288E7538001A153A /* LBResponseChain.m */; };
 		40D46FC6288E767A001A153A /* NSObject+LBResponseChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D46FC5288E767A001A153A /* NSObject+LBResponseChain.m */; };
@@ -628,6 +630,8 @@
 		40C937FE299F0D7400EC434D /* LBTestScrollVerticalHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestScrollVerticalHorizontalController.swift; sourceTree = "<group>"; };
 		40D2764029C07580005343E3 /* LBTestWhereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestWhereViewController.swift; sourceTree = "<group>"; };
 		40D43CBE2A5D3575001384BF /* 11111.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = 11111.flac; sourceTree = "<group>"; };
+		40D43CC12A5E96A0001384BF /* LBExpandCloseLabelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBExpandCloseLabelController.swift; sourceTree = "<group>"; };
+		40D43CC32A5E987C001384BF /* LBExpandCloseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBExpandCloseLabel.swift; sourceTree = "<group>"; };
 		40D46FBD288E7471001A153A /* LBResponseChainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBResponseChainViewController.h; sourceTree = "<group>"; };
 		40D46FBE288E7471001A153A /* LBResponseChainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBResponseChainViewController.m; sourceTree = "<group>"; };
 		40D46FC0288E7538001A153A /* LBResponseChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBResponseChain.h; sourceTree = "<group>"; };
@@ -1818,6 +1822,7 @@
 		40C149E728AB2F83005C9E00 /* SecondCustomController */ = {
 			isa = PBXGroup;
 			children = (
+				40D43CC02A5E9681001384BF /* 展开收起label */,
 				40C149E828AB2FBE005C9E00 /* LBNotificationViewController.swift */,
 			);
 			path = SecondCustomController;
@@ -1867,6 +1872,15 @@
 				40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */,
 			);
 			path = ThirdTabbar;
+			sourceTree = "<group>";
+		};
+		40D43CC02A5E9681001384BF /* 展开收起label */ = {
+			isa = PBXGroup;
+			children = (
+				40D43CC12A5E96A0001384BF /* LBExpandCloseLabelController.swift */,
+				40D43CC32A5E987C001384BF /* LBExpandCloseLabel.swift */,
+			);
+			path = "展开收起label";
 			sourceTree = "<group>";
 		};
 		40D46FBC288E741C001A153A /* 责任链模式 */ = {
@@ -2417,6 +2431,7 @@
 				400A05C82861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m in Sources */,
 				409FC3ED2A29CFC10053B88C /* BLTSwiftTaskViewController.swift in Sources */,
 				40D5B0522860721000E1CA97 /* LBTestTerminalExec.swift in Sources */,
+				40D43CC42A5E987C001384BF /* LBExpandCloseLabel.swift in Sources */,
 				400A05CE2862FB62006574B5 /* 栈溢出.swift in Sources */,
 				40C149E928AB2FBE005C9E00 /* LBNotificationViewController.swift in Sources */,
 				40F1CD0F2A317CBD00A8066C /* LBWidget.intentdefinition in Sources */,
@@ -2427,6 +2442,7 @@
 				406BF20C2984F03E00E2479A /* LBRxSwiftViewController.swift in Sources */,
 				40C20B4C298A0B8100B23342 /* BLTCornerGradientShadowButton.swift in Sources */,
 				40AE6FF329C98BDC00C69932 /* LBPageChildViewController.swift in Sources */,
+				40D43CC22A5E96A0001384BF /* LBExpandCloseLabelController.swift in Sources */,
 				40AE6FAB29C80AE600C69932 /* UIViewController+BLTAPMRender.m in Sources */,
 				409B06C12890D8DC004724EB /* LBWatchDogController.swift in Sources */,
 				40ACEE712A4960F10001BCAB /* LBAlertQueueManagerController.swift in Sources */,

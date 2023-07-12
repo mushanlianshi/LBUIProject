@@ -142,6 +142,8 @@ class LBThirdSDKController: UIViewController {
         //drinking 声明是 LBTestProtocolMethod类型 testName是肯定实现的 可以动态调用实际类型的testName方法  testName2方法不一定实现 调用编译器的LBTestProtocolMethod类型的方法  和继承有点区别  继承最终是实际类型的方法执行
         let test: Array = [Any]()
         
+//        UILabel().textVerticalAlignment
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             [weak self] in
