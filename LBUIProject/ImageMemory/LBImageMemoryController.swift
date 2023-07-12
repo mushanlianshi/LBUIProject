@@ -20,6 +20,41 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(imageView)
+        //21.9 -> 25 -> 25
+//        testImageNamedCache()
+        //21.9 -> 24.8 -> 22.2
+//        testFilePathNotCache()
+//        21.8 -> 22.4
+        testDownloadImage()
+    }
+    
+    
+    ///1.图片缓存的内存大小 最终和加载到imageView上的尺寸大小无关
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
+//        imageView.frame = view.bounds
+    }
+    
+    
+    
+    ///测试使用imageNamed 使用缓存的
+    func testImageNamedCache() {
+        let image = UIImage(named: "test_memory")
+        self.imageView.image = image
+    }
+    
+    
+    func testFilePathNotCache(){
+        let urlPath = Bundle.main.path(forResource: "test_memory_image.jpeg", ofType: nil)
+        let url = URL.init(fileURLWithPath: urlPath ?? "")
+        let image = UIImage.init(contentsOfFile: urlPath ?? "");
+        guard let img = image else { return }
+        imageView.image = img
+    }
+    
+    
+    func testDownloadImage() {
         let urlPath = Bundle.main.path(forResource: "test_memory_image.jpeg", ofType: nil)
         let url = URL.init(fileURLWithPath: urlPath ?? "")
         let image = UIImage.init(contentsOfFile: urlPath ?? "");
@@ -27,12 +62,6 @@ import UIKit
 //        imageView.image = UIImage(named: "test_memory")
 //        imageView.image = UIImage.init(contentsOfFile: urlPath ?? "")
         imageView.image = downsample(imageAt: url, to: CGSize(width: img.size.width, height: img.size.height), scale: UIScreen.main.scale)
-//        imageView.contentMode = .scaleAspectFill
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        imageView.frame = self.view.bounds
     }
     
     func downsample(imageAt imageURL: URL, to pointSize:CGSize, scale:CGFloat) ->UIImage {

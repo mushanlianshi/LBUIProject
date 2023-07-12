@@ -15,6 +15,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BLTAPMFPSManager.h"
 #import <IJKMediaFramework/IJKMediaFramework.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface LBHomeViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -29,6 +31,10 @@
 @property (nonatomic, strong) UIImageView *headerIV;
 
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
+
+@property (nonatomic, assign) NSInteger count;
+
+@property (nonatomic, strong) AVQueuePlayer *avPlayer;
 
 @end
 
@@ -64,6 +70,22 @@
     }];
     [self getNetworkAuth];
     [self testSemaphore];
+
+    LBHomeViewController *vc;
+    NSLog(@"LBLog vc count is %@",@(vc.count));
+    [self playMusic];
+}
+
+
+- (void)playMusic{
+//    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"11111" ofType:@"flac"];
+//        SystemSoundID soundID;
+//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:soundPath], &soundID);
+//        AudioServicesPlaySystemSound(soundID);
+    
+//    NSURL *url = [NSURL URLWithString:@"https://www.geektang.cn/alist/d/aliyun2/%E8%AE%B8%E5%B5%A9/%E4%B9%A6%E9%A6%99%E5%B9%B4%E5%8D%8E%20-%20%E8%AE%B8%E5%B5%A9%26%E5%AD%99%E6%B6%9B.flac?sign=a8DlMPnexmA0Vj2w4K7ZzLeNmwXbbG5w0YY9sExyGyA=:0"];
+//    _avPlayer = [[AVQueuePlayer alloc] initWithURL:url];
+//    [_avPlayer play];
 }
 
 - (void)getNetworkAuth{

@@ -12,9 +12,19 @@ import AudioToolbox
 class LBAVPlayerController: UIViewController {
     
     lazy var player: AVPlayer = {
-        let url = URL.init(string: "https://dh2.v.netease.com/2017/cg/fxtpty.mp4")
-        let p = AVPlayer(url: url!)
+//        let url = URL.init(string: "https://dh2.v.netease.com/2017/cg/fxtpty.mp4")
+//        let p = AVPlayer(url: url!)
+//        return p
+        
+        guard let path = Bundle.main.path(forResource: "butterfly", ofType: "avi") else{
+            return AVPlayer()
+        }
+        
+        let url = URL(fileURLWithPath: path)
+//        let url = URL.init(string: "https://dh2.v.netease.com/2017/cg/fxtpty.mp4")
+        let p = AVPlayer(url: url)
         return p
+            
     }()
 
     override func viewDidLoad() {
@@ -24,6 +34,54 @@ class LBAVPlayerController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "播放", style: .done, target: self, action: #selector(playOrPauseVideo))
         initAVPlayer()
         addCollectionPlayer()
+        //展示当前支持的音视频格式
+        let asset = AVURLAsset.audiovisualTypes()
+        print("LBLog asset \(asset)")
+//        AVURLAsset.isPlayableExtendedMIMEType("avi")
+        //打印asset可以得到（已经转过展示格式）
+//        asset type (
+//            "audio/aacp",
+//            "video/3gpp2",
+//            "audio/mpeg3",
+//            "audio/mp3",
+//            "audio/x-caf",
+//            "audio/mpeg",
+//            "video/quicktime",
+//            "audio/x-mpeg3",
+//            "video/mp4",
+//            "audio/wav",
+//            "video/avi",
+//            "audio/scpls",
+//            "audio/mp4",
+//            "audio/x-mpg",
+//            "video/x-m4v",
+//            "audio/x-wav",
+//            "audio/x-aiff",
+//            "application/vnd.apple.mpegurl",
+//            "video/3gpp",
+//            "text/vtt",
+//            "audio/x-mpeg",
+//            "audio/wave",
+//            "audio/x-m4r",
+//            "audio/x-mp3",
+//            "audio/AMR",
+//            "audio/aiff",
+//            "audio/3gpp2",
+//            "audio/aac",
+//            "audio/mpg",
+//            "audio/mpegurl",
+//            "audio/x-m4b",
+//            "application/mp4",
+//            "audio/x-m4p",
+//            "audio/x-scpls",
+//            "audio/x-mpegurl",
+//            "audio/x-aac",
+//            "audio/3gpp",
+//            "audio/basic",
+//            "audio/x-m4a",
+//            "application/x-mpegurl"
+//        )
+        
     }
    
 

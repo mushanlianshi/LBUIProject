@@ -96,6 +96,8 @@ class LBThirdSDKController: UIViewController {
                 [.title : "fold卡片", .controller : LBFoldCardViewController.self],
                 [.title : "Mayo网络库", .controller : LBTestMayoNetworkController.self],
                 [.title : "IJKPlayer 播放器", .controller : LBIJKPlayerController.self],
+                [.title : "设计模式", .controller : LBDesignPatternHomeController.self],
+                [.title : "SwiftEntryKit弹框", .controller : LBAlertQueueManagerController.self],
         ]
     }()
     

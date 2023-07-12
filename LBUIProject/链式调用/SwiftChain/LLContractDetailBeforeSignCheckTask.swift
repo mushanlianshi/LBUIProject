@@ -36,6 +36,10 @@ struct LLContractDetailSignBeforeModel: HandyJSON{
 
 /// 任务的基类  处理泛型用的
 class LLContractDetailBeforeSignCheckTask: NSObject, BLTTaskChainProtocol {
+    var needComplete: Bool{
+        return false
+    }
+    
     func receiveData(_ data: LLContractDetailSignBeforeModel, completeBlock: ((Error?) -> Void)?) {
 
     }

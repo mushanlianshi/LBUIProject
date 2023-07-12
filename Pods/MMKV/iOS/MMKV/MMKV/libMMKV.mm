@@ -70,6 +70,7 @@ static void ContentChangeHandler(const string &mmapID);
 static BOOL g_hasCalledInitializeMMKV = NO;
 
 + (NSString *)initializeMMKV:(nullable NSString *)rootDir logLevel:(MMKVLogLevel)logLevel handler:(id<MMKVHandler>)handler {
+    return @"";
     if (g_hasCalledInitializeMMKV) {
         MMKVWarning("already called +initializeMMKV before, ignore this request");
         return [self mmkvBasePath];

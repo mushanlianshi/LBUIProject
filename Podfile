@@ -50,8 +50,10 @@ target 'LBUIProject' do
   pod 'RxDataSources', '= 5.0.0'
   pod 'Alamofire', '= 5.7.1'
   pod 'Moya', '= 15.0.0'
+  pod 'Selene'
 #  tabbar自定义的
   pod 'CYLTabBarController'
+  pod 'SwiftEntryKit', '= 2.0.0'
 #  pod 'WechatOpenSDK', '1.9.2'
 #  pod 'charts', :git => 'https://github.com/danielgindi/Charts.git', :tag => '3.6.0'
   target 'LBUIProjectTests' do

@@ -21,6 +21,7 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <net/if.h>
+#import <Selene/Selene.h>
 
 struct A{
     int    a;
@@ -123,6 +124,11 @@ struct B{
 //    NSLog(@"LBlog getLocalIPAddress %@", [self getLocalIPAddress:false]);
 //    NSLog(@"LBlog getPublicIPAddress %@", [self getNetworkIPAddress]);
     return YES;
+}
+//performFetchWithCompletionHandler
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    printf("LBLog======");
+    [SLNScheduler startWithCompletion:completionHandler];
 }
 
 //- (void)codeCoverageProfrawDump{

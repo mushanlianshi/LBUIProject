@@ -468,6 +468,38 @@
             endingLineNumber = "169"
             landmarkName = "vTableSize"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "CF5C9C1B-E464-41F8-AF54-98555C4FEF39 - 58e05ddb1bf43b3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.Class.vTableSize.getter : Swift.Int"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "38">
+               </Location>
+               <Location
+                  uuid = "CF5C9C1B-E464-41F8-AF54-98555C4FEF39 - 58e05ddb1bf43b3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HandyJSON.Metadata.Class.vTableSize.getter : Swift.Int"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/Metadata.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -708,6 +740,38 @@
             endingLineNumber = "67"
             landmarkName = "_transform(from:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "532EB88F-F024-42EB-844E-ACFD656E32C6 - c659a7e78de778be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Swift.Bool._transform(from: Any) -&gt; Swift.Optional&lt;Swift.Bool&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/BuiltInBasicType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "95">
+               </Location>
+               <Location
+                  uuid = "532EB88F-F024-42EB-844E-ACFD656E32C6 - c659a7e78de778be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Swift.Bool._transform(from: Any) -&gt; Swift.Optional&lt;Swift.Bool&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/BuiltInBasicType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -724,6 +788,38 @@
             endingLineNumber = "127"
             landmarkName = "_transform(from:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "61D1C029-C523-48A8-B703-8CFE5D88C531 - 8dba47797c9ce8a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Swift.String._transform(from: Any) -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/BuiltInBasicType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "89">
+               </Location>
+               <Location
+                  uuid = "61D1C029-C523-48A8-B703-8CFE5D88C531 - 8dba47797c9ce8a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Swift.String._transform(from: Any) -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/BuiltInBasicType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -772,6 +868,38 @@
             endingLineNumber = "248"
             landmarkName = "_transform(from:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BF95039A-4205-4BE3-92DE-476EC32F2F19 - f2fc72cf20fe8df0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Swift.Dictionary._transform(from: Any) -&gt; Swift.Optional&lt;Swift.Dictionary&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/BuiltInBasicType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "449">
+               </Location>
+               <Location
+                  uuid = "BF95039A-4205-4BE3-92DE-476EC32F2F19 - f2fc72cf20fe8df0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Swift.Dictionary._transform(from: Any) -&gt; Swift.Optional&lt;Swift.Dictionary&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/BuiltInBasicType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "484">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -836,6 +964,38 @@
             endingLineNumber = "198"
             landmarkName = "_serializeAny(object:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BF37D37A-9D25-4CE1-9906-559C70135EC5 - a28845481ec56f18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._serializeAny(object: HandyJSON._Transformable) -&gt; Swift.Optional&lt;Any&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "534">
+               </Location>
+               <Location
+                  uuid = "BF37D37A-9D25-4CE1-9906-559C70135EC5 - a28845481ec56f18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static HandyJSON._ExtendCustomModelType._serializeAny(object: HandyJSON._Transformable) -&gt; Swift.Optional&lt;Any&gt;"
+                  moduleName = "HandyJSON"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/HandyJSON/Source/ExtendCustomModelType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "464">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -868,6 +1028,38 @@
             endingLineNumber = "116"
             landmarkName = "+canDecodeFromFormat:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A31B145C-FC98-472C-8B94-0A5E07CFBC26 - d43cf6d81f453dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[SDImageIOAnimatedCoder unclampedDelayTimeProperty]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SDWebImage/SDWebImage/Core/SDImageIOAnimatedCoder.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "A31B145C-FC98-472C-8B94-0A5E07CFBC26 - d43cf6d81f453dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[SDImageIOAnimatedCoder unclampedDelayTimeProperty]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SDWebImage/SDWebImage/Core/SDImageIOAnimatedCoder.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -900,6 +1092,38 @@
             endingLineNumber = "59"
             landmarkName = "swizzleInstanceMethod(cls, originSelector, swizzleSelector)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "C3D3A897-5100-4A6B-90F9-C46CC3D6F294 - e17928a3ae96a58f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "swizzleInstanceMethod"
+                  moduleName = "BLTUIKitProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/BLTUIKitProject/BLTUIKitProject/BLTUIKit/Header/BLTUICommonDefines.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  uuid = "C3D3A897-5100-4A6B-90F9-C46CC3D6F294 - e17928a3ae96a58f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "swizzleInstanceMethod"
+                  moduleName = "BLTUIKitProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/BLTUIKitProject/BLTUIKitProject/BLTUIKit/Header/BLTUICommonDefines.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -946,6 +1170,36 @@
                   startingLineNumber = "6"
                   endingLineNumber = "6"
                   offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "ED80BD1E-CBFB-43F6-8E65-55F5D7521C47 - 2235406faa42ac54"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Dollar.Dollar.bind&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;(f: (&#x3c4;_0_0) -&gt; &#x3c4;_0_1, _: &#x3c4;_0_0) -&gt; () -&gt; &#x3c4;_0_1"
+                  moduleName = "Dollar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/Dollar/Sources/AutoBind.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "6"
+                  endingLineNumber = "6"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  uuid = "ED80BD1E-CBFB-43F6-8E65-55F5D7521C47 - 4353a1b147212705"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &#x3c4;_0_1 in static Dollar.Dollar.bind&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;(f: (&#x3c4;_0_0) -&gt; &#x3c4;_0_1, _: &#x3c4;_0_0) -&gt; () -&gt; &#x3c4;_0_1"
+                  moduleName = "Dollar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/Dollar/Sources/AutoBind.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "6"
+                  endingLineNumber = "6"
+                  offsetFromSymbolStart = "72">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -994,6 +1248,36 @@
                   startingLineNumber = "11"
                   endingLineNumber = "11"
                   offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "93E636CD-BDCF-4899-841A-BDF3F5F9DFAD - 8e01db1aef758909"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Dollar.Dollar.bind&lt;&#x3c4;_0_0, &#x3c4;_0_1, &#x3c4;_0_2&gt;(f: (&#x3c4;_0_0, &#x3c4;_0_1) -&gt; &#x3c4;_0_2, _: &#x3c4;_0_0, _: &#x3c4;_0_1) -&gt; () -&gt; &#x3c4;_0_2"
+                  moduleName = "Dollar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/Dollar/Sources/AutoBind.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  uuid = "93E636CD-BDCF-4899-841A-BDF3F5F9DFAD - 8413da10e5480f3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &#x3c4;_0_2 in static Dollar.Dollar.bind&lt;&#x3c4;_0_0, &#x3c4;_0_1, &#x3c4;_0_2&gt;(f: (&#x3c4;_0_0, &#x3c4;_0_1) -&gt; &#x3c4;_0_2, _: &#x3c4;_0_0, _: &#x3c4;_0_1) -&gt; () -&gt; &#x3c4;_0_2"
+                  moduleName = "Dollar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/Dollar/Sources/AutoBind.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1250,6 +1534,51 @@
                   endingLineNumber = "262"
                   offsetFromSymbolStart = "588">
                </Location>
+               <Location
+                  uuid = "34531103-61D9-4606-A157-F6B202CE719A - c4f56fd5da6ee5a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXPagingView.JXPagingSmoothView.horizontalScrollDidEnd(at: Swift.Int) -&gt; ()"
+                  moduleName = "JXPagingView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/JXPagingView/Sources/JXPagingView/JXPagingSmoothView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "34531103-61D9-4606-A157-F6B202CE719A - c4f56fd5da6ee5a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXPagingView.JXPagingSmoothView.horizontalScrollDidEnd(at: Swift.Int) -&gt; ()"
+                  moduleName = "JXPagingView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/JXPagingView/Sources/JXPagingView/JXPagingSmoothView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "34531103-61D9-4606-A157-F6B202CE719A - c4f56fd5da6ee5a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXPagingView.JXPagingSmoothView.horizontalScrollDidEnd(at: Swift.Int) -&gt; ()"
+                  moduleName = "JXPagingView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/JXPagingView/Sources/JXPagingView/JXPagingSmoothView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "592">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1315,6 +1644,38 @@
             endingLineNumber = "179"
             landmarkName = "listDidScroll(scrollView:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C84D5944-A6E7-45FD-A4BE-4A6BD0905189 - 9a3ce9522b9d542f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXPagingView.JXPagingSmoothView.listDidScroll(scrollView: __C.UIScrollView) -&gt; ()"
+                  moduleName = "JXPagingView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/JXPagingView/Sources/JXPagingView/JXPagingSmoothView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "179"
+                  endingLineNumber = "179"
+                  offsetFromSymbolStart = "3085">
+               </Location>
+               <Location
+                  uuid = "C84D5944-A6E7-45FD-A4BE-4A6BD0905189 - 9a3ce9522b9d542f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXPagingView.JXPagingSmoothView.listDidScroll(scrollView: __C.UIScrollView) -&gt; ()"
+                  moduleName = "JXPagingView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/JXPagingView/Sources/JXPagingView/JXPagingSmoothView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "179"
+                  endingLineNumber = "179"
+                  offsetFromSymbolStart = "2392">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1331,6 +1692,38 @@
             endingLineNumber = "185"
             landmarkName = "listDidScroll(scrollView:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "09F74121-FC3C-40BE-B827-CD781B8CBD41 - 9a3ce9522b9d55e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXPagingView.JXPagingSmoothView.listDidScroll(scrollView: __C.UIScrollView) -&gt; ()"
+                  moduleName = "JXPagingView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/JXPagingView/Sources/JXPagingView/JXPagingSmoothView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "3994">
+               </Location>
+               <Location
+                  uuid = "09F74121-FC3C-40BE-B827-CD781B8CBD41 - 9a3ce9522b9d55e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JXPagingView.JXPagingSmoothView.listDidScroll(scrollView: __C.UIScrollView) -&gt; ()"
+                  moduleName = "JXPagingView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/JXPagingView/Sources/JXPagingView/JXPagingSmoothView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "3032">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1571,6 +1964,38 @@
             endingLineNumber = "415"
             landmarkName = "WebPDataCreateWithAnimatedImageInfo(imageInfo, isLossy, quality)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "B19EC9D5-0A8B-4E72-BF56-ED7710E006B7 - 815a8e4c5d5ed764"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebPDataCreateWithAnimatedImageInfo"
+                  moduleName = "KingfisherWebP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/KingfisherWebP/Sources/CGImage+WebP.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "415"
+                  endingLineNumber = "415"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "B19EC9D5-0A8B-4E72-BF56-ED7710E006B7 - 815a8e4c5d5ed764"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebPDataCreateWithAnimatedImageInfo"
+                  moduleName = "KingfisherWebP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/KingfisherWebP/Sources/CGImage+WebP.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "415"
+                  endingLineNumber = "415"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1617,6 +2042,36 @@
                   startingLineNumber = "80"
                   endingLineNumber = "80"
                   offsetFromSymbolStart = "1109">
+               </Location>
+               <Location
+                  uuid = "2A54D78E-D6D6-4545-B1B6-8ACAE789511F - ed82f188d611ca03"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Kingfisher.KingfisherWrapper&lt;&#x3c4;_0_0 where &#x3c4;_0_0: __C.UIImage&gt;.image(webpData: Foundation.Data, scale: CoreGraphics.CGFloat, onlyFirstFrame: Swift.Bool) -&gt; Swift.Optional&lt;__C.UIImage&gt;"
+                  moduleName = "KingfisherWebP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/KingfisherWebP/Sources/Image+WebP.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "676">
+               </Location>
+               <Location
+                  uuid = "2A54D78E-D6D6-4545-B1B6-8ACAE789511F - ed82f188d611ca03"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Kingfisher.KingfisherWrapper&lt;&#x3c4;_0_0 where &#x3c4;_0_0: __C.UIImage&gt;.image(webpData: Foundation.Data, scale: CoreGraphics.CGFloat, onlyFirstFrame: Swift.Bool) -&gt; Swift.Optional&lt;__C.UIImage&gt;"
+                  moduleName = "KingfisherWebP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/KingfisherWebP/Sources/Image+WebP.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "764">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1713,6 +2168,38 @@
             endingLineNumber = "344"
             landmarkName = "WebPAnimatedImageInfoCreateWithData(webpData)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "AF96D294-2EFF-4858-BFF7-EA2FCCB259BD - db7365678bb56383"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebPAnimatedImageInfoCreateWithData"
+                  moduleName = "KingfisherWebP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/KingfisherWebP/Sources/CGImage+WebP.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "AF96D294-2EFF-4858-BFF7-EA2FCCB259BD - db7365678bb56383"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebPAnimatedImageInfoCreateWithData"
+                  moduleName = "KingfisherWebP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/KingfisherWebP/Sources/CGImage+WebP.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1958,22 +2445,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2DB2145F-9C41-4630-AD74-552E47257F6B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LBUIProject/ThirdTabbar/JxPagingDemo/PagingVC/LBPageChildViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "childScrollViewDidScroll(callBack:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9463F44B-AC41-44DC-996D-B4136070A21C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1985,6 +2456,38 @@
             endingLineNumber = "480"
             landmarkName = "reloadData()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9463F44B-AC41-44DC-996D-B4136070A21C - 3f7e63efe0304b31"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSPagerView.FSPagerView.reloadData() -&gt; ()"
+                  moduleName = "FSPagerView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/FSPagerView/Sources/FSPagerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "480"
+                  endingLineNumber = "480"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  uuid = "9463F44B-AC41-44DC-996D-B4136070A21C - 3f7e63efe0304b31"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSPagerView.FSPagerView.reloadData() -&gt; ()"
+                  moduleName = "FSPagerView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/FSPagerView/Sources/FSPagerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "480"
+                  endingLineNumber = "480"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2054,33 +2557,320 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "786DF7E9-3EA2-47D7-950E-AD53A364CCBB"
+            uuid = "239402C7-7ECB-4BE3-BB68-97AB339A4A19"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LBUIProject/ThirdTabbar/IJKPlayer/LBVideoPlayerView.swift"
+            filePath = "LBUIProject/ThirdTabbar/IJKPlayer/LBAVPlayerController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "addVideoPlayer()"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "288DB185-EE38-44FA-A2C8-CA3415809B24"
+            uuid = "68355E4A-0A26-4358-9482-3260F83086D7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LBUIProject/ThirdTabbar/IJKPlayer/LBVideoPlayerView.swift"
+            filePath = "Pods/SwiftEntryKit/Source/SwiftEntryKit.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "addVideoPlayer()"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "display(entry:using:presentInsideKeyWindow:rollbackWindow:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "68355E4A-0A26-4358-9482-3260F83086D7 - 1b84450c8724b369"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static SwiftEntryKit.SwiftEntryKit.display(entry: __C.UIViewController, using: SwiftEntryKit.EKAttributes, presentInsideKeyWindow: Swift.Bool, rollbackWindow: SwiftEntryKit.SwiftEntryKit.RollbackWindow) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/SwiftEntryKit.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "68355E4A-0A26-4358-9482-3260F83086D7 - c881c99a3afd4a72"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in static SwiftEntryKit.SwiftEntryKit.display(entry: __C.UIViewController, using: SwiftEntryKit.EKAttributes, presentInsideKeyWindow: Swift.Bool, rollbackWindow: SwiftEntryKit.SwiftEntryKit.RollbackWindow) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/SwiftEntryKit.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B06F7D87-554B-456B-AB88-660A3F6ECF0F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "display(entryView:using:presentInsideKeyWindow:rollbackWindow:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B06F7D87-554B-456B-AB88-660A3F6ECF0F - 5510544e7ce3fa48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKWindowProvider.display(entryView: SwiftEntryKit.EKEntryView, using: SwiftEntryKit.EKAttributes, presentInsideKeyWindow: Swift.Bool, rollbackWindow: SwiftEntryKit.SwiftEntryKit.RollbackWindow) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "B06F7D87-554B-456B-AB88-660A3F6ECF0F - 5510544e7ce3fa48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKWindowProvider.display(entryView: SwiftEntryKit.EKEntryView, using: SwiftEntryKit.EKAttributes, presentInsideKeyWindow: Swift.Bool, rollbackWindow: SwiftEntryKit.SwiftEntryKit.RollbackWindow) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A833DF92-9EA5-4FF1-BA9B-F2486D7FA9C2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "show(entryView:presentInsideKeyWindow:rollbackWindow:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A833DF92-9EA5-4FF1-BA9B-F2486D7FA9C2 - 463ccd03352e4c4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKWindowProvider.show(entryView: SwiftEntryKit.EKEntryView, presentInsideKeyWindow: Swift.Bool, rollbackWindow: SwiftEntryKit.SwiftEntryKit.RollbackWindow) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "225"
+                  endingLineNumber = "225"
+                  offsetFromSymbolStart = "964">
+               </Location>
+               <Location
+                  uuid = "A833DF92-9EA5-4FF1-BA9B-F2486D7FA9C2 - 463ccd03352e4c4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKWindowProvider.show(entryView: SwiftEntryKit.EKEntryView, presentInsideKeyWindow: Swift.Bool, rollbackWindow: SwiftEntryKit.SwiftEntryKit.RollbackWindow) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "225"
+                  endingLineNumber = "225"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10FC0521-D295-4F45-B7F9-EE29150846BC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "displayPendingEntryOrRollbackWindow(dismissCompletionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "10FC0521-D295-4F45-B7F9-EE29150846BC - f0e33cb84b5e4414"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKWindowProvider.displayPendingEntryOrRollbackWindow(dismissCompletionHandler: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "176"
+                  endingLineNumber = "176"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "10FC0521-D295-4F45-B7F9-EE29150846BC - f0e33cb84b5e47d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKWindowProvider.displayPendingEntryOrRollbackWindow(dismissCompletionHandler: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "10FC0521-D295-4F45-B7F9-EE29150846BC - f0e33cb84b5e47d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKWindowProvider.displayPendingEntryOrRollbackWindow(dismissCompletionHandler: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKWindowProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "97">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9789029E-C237-4D97-BB56-958EC303006F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SwiftEntryKit/Source/Infra/EKContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
+            landmarkName = "removeFromSuperview(keepWindow:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9789029E-C237-4D97-BB56-958EC303006F - b33833490ee6ab36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKContentView.removeFromSuperview(keepWindow: Swift.Bool) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "470"
+                  endingLineNumber = "470"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "9789029E-C237-4D97-BB56-958EC303006F - b33833490ee6ab36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKContentView.removeFromSuperview(keepWindow: Swift.Bool) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "470"
+                  endingLineNumber = "470"
+                  offsetFromSymbolStart = "114">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19C6EC15-4117-49B4-AA53-C368AC882087"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SwiftEntryKit/Source/Infra/EKContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
+            landmarkName = "removePromptly(keepWindow:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "19C6EC15-4117-49B4-AA53-C368AC882087 - a87346c31b218c0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKContentView.removePromptly(keepWindow: Swift.Bool) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "463"
+                  endingLineNumber = "463"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "19C6EC15-4117-49B4-AA53-C368AC882087 - a87346c31b218c0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftEntryKit.EKContentView.removePromptly(keepWindow: Swift.Bool) -&gt; ()"
+                  moduleName = "SwiftEntryKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liubin/Desktop/private/2021Demo/LBUIProject/Pods/SwiftEntryKit/Source/Infra/EKContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "463"
+                  endingLineNumber = "463"
+                  offsetFromSymbolStart = "180">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

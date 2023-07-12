@@ -151,6 +151,7 @@ PODS:
   - SDWebImage (5.15.8):
     - SDWebImage/Core (= 5.15.8)
   - SDWebImage/Core (5.15.8)
+  - Selene (2.0.0)
   - SkeletonView (1.30.4)
   - SnapKit (4.2.0)
   - Spring (1.0.6)
@@ -164,6 +165,7 @@ PODS:
     - Masonry
     - SDWebImage
     - TXLiteAVSDK_Player
+  - SwiftEntryKit (2.0.0)
   - TXLiteAVSDK_Player (11.1.14143)
   - TZImagePickerController (3.8.3):
     - TZImagePickerController/Basic (= 3.8.3)
@@ -204,10 +206,12 @@ DEPENDENCIES:
   - RxCocoa (= 6.2.0)
   - RxDataSources (= 5.0.0)
   - RxSwift (= 6.2.0)
+  - Selene
   - SkeletonView
   - SnapKit (= 4.2.0)
   - Spring (from `https://github.com/MengTo/Spring.git`)
   - SuperPlayer
+  - SwiftEntryKit (= 2.0.0)
   - TXLiteAVSDK_Player
   - ViewAnimator
   - Watchdog
@@ -244,9 +248,11 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - Selene
     - SkeletonView
     - SnapKit
     - SuperPlayer
+    - SwiftEntryKit
     - TXLiteAVSDK_Player
     - TZImagePickerController
     - ViewAnimator
@@ -307,16 +313,18 @@ SPEC CHECKSUMS:
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
+  Selene: 225ff0c91a7cce2c8fb44542d4a0bf92758b36c9
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SuperPlayer: de156983387d154c68f6fb460f963eadd670d9a5
+  SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   TXLiteAVSDK_Player: 946dae329da9b31e24a417a47089af2f5fccea95
   TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   Watchdog: 622647e6bc5a55665e6dbae0b7831ad8d95abeab
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 39bbcf8885070701a24e545d2375eb2aaa35da5c
+PODFILE CHECKSUM: c27e440b50fcd0a2838be873f84de106198a466c
 
 COCOAPODS: 1.11.2

@@ -27,4 +27,8 @@ class LLContractDetailMutiContractCheckTask: LLContractDetailBeforeSignCheckTask
         }, tapBackDismiss: false)
     }
     
+    
+//    override var needComplete: Bool{
+//        return true
+//    }
 }
