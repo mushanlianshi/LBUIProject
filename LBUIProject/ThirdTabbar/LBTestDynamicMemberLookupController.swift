@@ -32,6 +32,7 @@ class LBTestDynamicMemberStruct{
     var structName = "member look up struct"
 }
 
+
 ///swift 动态查找
 class LBTestDynamicMemberLookupController: UIViewController {
     
@@ -58,6 +59,7 @@ class LBTestDynamicMemberLookupController: UIViewController {
         print("LBLog memStructBase.structName \(memStructBase.structName)")
         memStruct.structName = "change struct name"
         print("LBLog memStructBase.structName \(memStructBase.structName)")
+//        print("LBLog key path is \(self[keyPath: title])")
         
     }
 

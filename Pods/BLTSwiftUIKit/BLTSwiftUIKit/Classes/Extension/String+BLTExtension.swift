@@ -9,6 +9,7 @@ import UIKit
 extension String: BLTNameSpaceCompatibleValue{
 }
 
+
 extension BLTNameSpace where Base == String{
     public static let cancelTitle = "取消"
     public static let sureTitle = "确定"
@@ -23,35 +24,83 @@ extension BLTNameSpace where Base == String{
         return NSRange(location: 0, length: base.count)
     }
     
-    public func subscriptToIndex(to index: Int) -> String? {
-        var realIndex = index
-        if index >= base.count {
-            realIndex = base.count
-        }
-        let endIndex = base.index(base.startIndex, offsetBy: realIndex)
-        return String(base[base.startIndex ..< endIndex])
+    ///截取字符串到from
+    public func subString(from: Int) -> String{
+        return self.subString(from: from, to: base.count)
     }
     
-    public func subscriptFromIndex(from index: Int) -> String? {
-        if index >= base.count {
+    ///截取字符串 从to开始截取到结尾
+    public func subString(to: Int) -> String{
+        return self.subString(from: 0, to: to)
+    }
+    
+    public func subString(from: Int, to: Int) -> String{
+        if from > base.count{
+            return ""
+        }
+        
+        var endIndex = base.endIndex
+        if to < base.count{
+            endIndex = base.index(endIndex, offsetBy: to - base.count )
+        }
+        let startIndex = base.index(base.startIndex, offsetBy: from)
+        return String(base[ startIndex ..< endIndex])
+    }
+    
+    ///截取字符串startIndex - endIndex之间
+    public func subscriptInRange(_ startIndex: Int, _ endIndex: Int) -> String? {
+        if startIndex > endIndex || startIndex >= base.count || endIndex > base.count {
             return nil
         }
-        let startIndex = base.index(base.startIndex, offsetBy: index)
-        return String(base[startIndex ..< base.endIndex])
+        
+        let sIndex = base.index(base.startIndex, offsetBy: startIndex)
+        let eIndex = base.index(sIndex, offsetBy: endIndex - startIndex)
+        return String(base[sIndex ..< eIndex])
     }
     
-//    trim去除字符串的
+    ///trim去除字符串的 默认是去除空格
     public func trimStringWithText(_ text: String? = nil) -> String {
         let characterSet = CharacterSet(charactersIn: text ?? " ")
         return base.trimmingCharacters(in: characterSet)
     }
     
+    ///是不是0金额
+    public func isZeroMoney() -> Bool{
+        if self.base.isEmpty{
+            return true
+        }
+        let number = NSDecimalNumber.init(string: self.base)
+        if number == NSDecimalNumber.zero{
+            return true
+        }
+        
+        return false
+    }
+    
+    
+    public static func randomIntString(length: Int) -> String{
+        var result = ""
+        var list = [Int](0...9)
+        for _ in 1...length {
+            list.shuffle()
+            result.append(String(list.first!))
+        }
+        return result
+    }
+    
+    
+}
+
+
+
+//计算文本宽高的
+extension BLTNameSpace where Base == String{
     public func widthOfFont(font: UIFont) -> CGFloat{
-        return self.sizeOfFont(font: font, size: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
+        return self.sizeOfFont(font: font, size: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width + 1.0
     }
     
     public func heightOfFont(font: UIFont, maxWidth: CGFloat, lineBreakMode: NSLineBreakMode = .byWordWrapping) -> CGFloat{
-        return self.sizeOfFont(font: font, size: CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)).height
+        return self.sizeOfFont(font: font, size: CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)).height + 1.0
     }
     
     public func sizeOfFont(font: UIFont, size: CGSize, lineBreakMode: NSLineBreakMode = .byWordWrapping) -> CGSize {
@@ -67,24 +116,14 @@ extension BLTNameSpace where Base == String{
             attributeDic[.paragraphStyle] = paragraph
         }
         
-        return self.base.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributeDic, context: nil).size
+        var resultSize = self.base.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributeDic, context: nil).size
+        resultSize.width += 1.0
+        resultSize.height += 1.0
+        return resultSize
     }
-    
-    
-    ///是不是0金额
-    public func isZeroMoney() -> Bool{
-        if self.base.isEmpty{
-            return true
-        }
-        let number = NSDecimalNumber.init(string: self.base)
-        if number == NSDecimalNumber.zero{
-            return true
-        }
-        
-        return false
-    }
-    
 }
+
+
 
 // MARK: 富文本的分类
 extension BLTNameSpace where Base == String{

@@ -39,13 +39,14 @@ extension BLTNameSpace where Base == Array<Any>{
             }
             return result
         }
-//        set {
-//            for (index, i) in input.enumerated(){
-//                assert(i < self.base.count, "LBLog index out of range")
-//                self.base[i] = newValue[index]
-//            }
-//        }
     }
+    
+//    public subscript<T>(safe index: Int) -> T?{
+//        guard (base.startIndex ..< base.endIndex).contains(index) else{
+//            return nil
+//        }
+//        return base[index] as? T
+//    }
 }
 
 

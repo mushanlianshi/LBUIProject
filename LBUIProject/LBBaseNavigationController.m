@@ -33,6 +33,22 @@
     CGRect frame = self.tabBarController.tabBar.frame;
     frame.origin.y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
     self.tabBarController.tabBar.frame = frame;
+    
+    
+    id array = [NSMutableArray new];
+    dispatch_block_t blk = [^(){
+            [array addObject:@"11"];
+            NSLog(@"array count = %ld",[array count]);
+    } copy];
+    
+//    id array2 = [NSMutableArray new];
+//    UINavigationItem *item = self.navigationItem;
+//    dispatch_block_t blk2 = [^(){
+//        item.title = @"";
+//        item = [UINavigationItem new];
+//        [array2 = [NSMutableArray new];
+//            NSLog(@"array count = %ld",[array count]);
+//    } copy];
 }
 
 //set的时候隐藏tabbar

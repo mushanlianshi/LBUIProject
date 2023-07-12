@@ -23,8 +23,30 @@ extension BLTNameSpace where Base: CAShapeLayer{
         shaperLayer.lineDashPattern = dashPattern
         let path = UIBezierPath()
         path.move(to: .zero)
-        path.addLine(to: CGPoint(x: frame.width, y: frame.height))
+        ///画线 调整这头到那头  偏一点高度或则宽度的
+        if frame.height > frame.width {
+            path.addLine(to: CGPoint(x: 0, y: frame.height))
+        }else{
+            path.addLine(to: CGPoint(x: frame.width, y: 0))
+        }
         shaperLayer.path = path.cgPath
         return shaperLayer
     }
+    
+    //    初始化一个间隔线的layer
+        public func drawDottedLine(dashPattern: [NSNumber], strokeColor: UIColor, lineWidth: CGFloat = 1, lineJoin: CAShapeLayerLineJoin = .round){
+            base.strokeColor = strokeColor.cgColor
+            base.lineWidth = lineWidth
+    //        虚线间距的宽度
+            base.lineDashPattern = dashPattern
+            let path = UIBezierPath()
+            path.move(to: .zero)
+            ///画线 调整这头到那头  偏一点高度或则宽度的
+            if base.frame.height > base.frame.width {
+                path.addLine(to: CGPoint(x: 0, y: base.frame.height))
+            }else{
+                path.addLine(to: CGPoint(x: base.frame.width, y: 0))
+            }
+            base.path = path.cgPath
+        }
 }

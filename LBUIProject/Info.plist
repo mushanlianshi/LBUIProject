@@ -20,12 +20,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>请允许访问，你可以查看您每日的浏览记录</string>
 	<key>NSCameraUsageDescription</key>
@@ -50,6 +44,12 @@
 	<string>以便于您上传图片</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>使用语音，方便沟通</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

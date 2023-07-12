@@ -28,7 +28,8 @@
 - (BLTCornerGradientShadowButton *)cornerGradientShadowView{
     if (!_cornerGradientShadowView) {
         _cornerGradientShadowView = [[BLTCornerGradientShadowButton alloc] init];
-        [_cornerGradientShadowView setGradientParams:[UIColor blueColor] :[UIColor redColor] startLocation:CGPointMake(0, 0.5) endLocation:CGPointMake(1, 0.5) locations:nil];
+//        [_cornerGradientShadowView setGradientParams:[UIColor blueColor] :[UIColor redColor] startLocation:CGPointMake(0, 0.5) endLocation:CGPointMake(1, 0.5) locations:nil];
+        [_cornerGradientShadowView setGradientParams:[UIColor blueColor] :[UIColor redColor] direction:BLTGradientDirectionLeftToRight locations:nil];
         [_cornerGradientShadowView setShadowParams:[UIColor greenColor] shadowRadius:5 shadowOffset:CGSizeMake(0, 0) shadowOpacity:1 shadowPath:nil];
         _cornerGradientShadowView.customCornerRadius = 24;
         _cornerGradientShadowView.backgroundColor = [UIColor yellowColor];

@@ -14,33 +14,43 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - Alamofire (5.7.1)
   - AnimatedCollectionViewLayout (1.1.0)
   - AvoidCrash (2.5.2)
+  - BLTAlertEventQueue (1.1.2)
   - BLTBasicUIKit (0.2.7):
     - Masonry (~> 1.1.0)
-  - BLTSwiftUIKit (1.2.1):
-    - BLTSwiftUIKit/Extension (= 1.2.1)
-    - BLTSwiftUIKit/ListView (= 1.2.1)
-    - BLTSwiftUIKit/NameSpace (= 1.2.1)
-    - BLTSwiftUIKit/Protocol (= 1.2.1)
-    - BLTSwiftUIKit/Util (= 1.2.1)
-    - BLTSwiftUIKit/View (= 1.2.1)
-  - BLTSwiftUIKit/Extension (1.2.1):
+  - BLTSwiftUIKit (1.3.4):
+    - BLTSwiftUIKit/Alert (= 1.3.4)
+    - BLTSwiftUIKit/Extension (= 1.3.4)
+    - BLTSwiftUIKit/ListView (= 1.3.4)
+    - BLTSwiftUIKit/NameSpace (= 1.3.4)
+    - BLTSwiftUIKit/Protocol (= 1.3.4)
+    - BLTSwiftUIKit/Util (= 1.3.4)
+    - BLTSwiftUIKit/View (= 1.3.4)
+  - BLTSwiftUIKit/Alert (1.3.4):
+    - BLTSwiftUIKit/Extension
+  - BLTSwiftUIKit/Extension (1.3.4):
     - BLTSwiftUIKit/NameSpace
     - BLTSwiftUIKit/Protocol
     - BLTSwiftUIKit/Util
     - BLTUIKitProject
-  - BLTSwiftUIKit/ListView (1.2.1):
+    - SnapKit
+  - BLTSwiftUIKit/ListView (1.3.4):
     - BLTSwiftUIKit/Extension
     - BLTSwiftUIKit/NameSpace
     - BLTUIKitProject
     - HandyJSON
     - SnapKit
-  - BLTSwiftUIKit/NameSpace (1.2.1)
-  - BLTSwiftUIKit/Protocol (1.2.1)
-  - BLTSwiftUIKit/Util (1.2.1):
+  - BLTSwiftUIKit/NameSpace (1.3.4):
+    - BLTSwiftUIKit/Util
+  - BLTSwiftUIKit/Protocol (1.3.4)
+  - BLTSwiftUIKit/Util (1.3.4):
+    - BLTSwiftUIKit/Protocol
+    - BLTUIKitProject
     - HandyJSON
-  - BLTSwiftUIKit/View (1.2.1):
+    - SnapKit
+  - BLTSwiftUIKit/View (1.3.4):
     - BLTSwiftUIKit/Extension
     - BLTSwiftUIKit/ListView
     - BLTSwiftUIKit/NameSpace
@@ -95,6 +105,7 @@ PODS:
   - CYLTabBarController (1.29.2):
     - CYLTabBarController/Core (= 1.29.2)
   - CYLTabBarController/Core (1.29.2)
+  - Differentiator (5.0.0)
   - Dollar (9.0.0)
   - FaceAware (2.1.0)
   - FSPagerView (0.8.3)
@@ -120,21 +131,40 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
-  - MMKV (1.2.15):
-    - MMKVCore (~> 1.2.15)
-  - MMKVCore (1.2.15)
+  - MMKV (1.2.16):
+    - MMKVCore (~> 1.2.16)
+  - MMKVCore (1.2.16)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
-  - SDWebImage (5.15.4):
-    - SDWebImage/Core (= 5.15.4)
-  - SDWebImage/Core (5.15.4)
+  - SDWebImage (5.15.8):
+    - SDWebImage/Core (= 5.15.8)
+  - SDWebImage/Core (5.15.8)
   - SkeletonView (1.30.4)
   - SnapKit (4.2.0)
   - Spring (1.0.6)
+  - SuperPlayer (3.7.2):
+    - AFNetworking
+    - Masonry
+    - SDWebImage
+    - SuperPlayer/Player (= 3.7.2)
+  - SuperPlayer/Player (3.7.2):
+    - AFNetworking
+    - Masonry
+    - SDWebImage
+    - TXLiteAVSDK_Player
+  - TXLiteAVSDK_Player (11.1.14143)
   - TZImagePickerController (3.8.3):
     - TZImagePickerController/Basic (= 3.8.3)
     - TZImagePickerController/Location (= 3.8.3)
@@ -148,10 +178,12 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
+  - Alamofire (= 5.7.1)
   - AnimatedCollectionViewLayout
   - AvoidCrash (~> 2.5.2)
+  - BLTAlertEventQueue
   - BLTBasicUIKit
-  - BLTSwiftUIKit (= 1.2.1)
+  - BLTSwiftUIKit (= 1.3.4)
   - BLTUIKitProject
   - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.10)
   - CYLTabBarController
@@ -168,11 +200,15 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - MMKV
+  - Moya (= 15.0.0)
   - RxCocoa (= 6.2.0)
+  - RxDataSources (= 5.0.0)
   - RxSwift (= 6.2.0)
   - SkeletonView
   - SnapKit (= 4.2.0)
   - Spring (from `https://github.com/MengTo/Spring.git`)
+  - SuperPlayer
+  - TXLiteAVSDK_Player
   - ViewAnimator
   - Watchdog
   - YYKit (~> 1.0.9)
@@ -180,10 +216,12 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - Alamofire
     - AnimatedCollectionViewLayout
     - AvoidCrash
     - CHTCollectionViewWaterfallLayout
     - CYLTabBarController
+    - Differentiator
     - Dollar
     - FaceAware
     - HandyJSON
@@ -200,17 +238,22 @@ SPEC REPOS:
     - MJRefresh
     - MMKV
     - MMKVCore
+    - Moya
     - RxCocoa
+    - RxDataSources
     - RxRelay
     - RxSwift
     - SDWebImage
     - SkeletonView
     - SnapKit
+    - SuperPlayer
+    - TXLiteAVSDK_Player
     - TZImagePickerController
     - ViewAnimator
     - Watchdog
     - YYKit
   "ssh://git@1.117.247.154:7999/app/bltuikitspecrepo.git":
+    - BLTAlertEventQueue
     - BLTBasicUIKit
     - BLTSwiftUIKit
     - BLTUIKitProject
@@ -231,13 +274,16 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   AnimatedCollectionViewLayout: 0c1a38c4be115c525c887be183fc91ef65737c5d
   AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
+  BLTAlertEventQueue: 6cc2a229b8c3c7c7c1a33bdc026692cd02525667
   BLTBasicUIKit: aaa19d32d9a2781a20b30883ad245dd0d8dea69e
-  BLTSwiftUIKit: af47bc6c200a3c5c55e491cf01ddeb26f609ac06
+  BLTSwiftUIKit: 5dfd0bc61710ed0189c1d614136989dcd58f7489
   BLTUIKitProject: 743bbfa6aa21060e7bbbdb4fb4c77ad7ceef0141
   CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
   CYLTabBarController: db44b5901a28693a8a4279e4721b3aafdd36c178
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Dollar: 2fc9bdeeb2d3ae1f251461803240d5c93829ee0c
   FaceAware: f1266b8719a1a90da3d763b8cb428554edf0fa61
   FSPagerView: c96bcaff1f251d593c91df47f64a3b237568bcd1
@@ -253,20 +299,24 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
-  MMKV: 7f34558bbb5a33b0eaefae2de4b6a20a2ffdad6f
-  MMKVCore: ddf41b9d9262f058419f9ba7598719af56c02cd3
+  MMKV: 784471ce430a2e2d16afef9053d63fab1b357d9e
+  MMKVCore: 9cfef4c48c6c46f66226fc2e4634d78490206a48
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
-  SDWebImage: 1c39de67663e5eebb2f41324d5d580eeea12dd4c
+  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+  SuperPlayer: de156983387d154c68f6fb460f963eadd670d9a5
+  TXLiteAVSDK_Player: 946dae329da9b31e24a417a47089af2f5fccea95
   TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   Watchdog: 622647e6bc5a55665e6dbae0b7831ad8d95abeab
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 64484fb08dd3f03d84fbc278862902fd70f308c2
+PODFILE CHECKSUM: 39bbcf8885070701a24e545d2375eb2aaa35da5c
 
 COCOAPODS: 1.11.2

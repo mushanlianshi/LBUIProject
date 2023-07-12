@@ -1,12 +1,15 @@
 ${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.framework
 ${BUILT_PRODUCTS_DIR}/AvoidCrash/AvoidCrash.framework
+${BUILT_PRODUCTS_DIR}/BLTAlertEventQueue/BLTAlertEventQueue.framework
 ${BUILT_PRODUCTS_DIR}/BLTBasicUIKit/BLTBasicUIKit.framework
 ${BUILT_PRODUCTS_DIR}/BLTSwiftUIKit/BLTSwiftUIKit.framework
 ${BUILT_PRODUCTS_DIR}/BLTUIKitProject/BLTUIKitProject.framework
 ${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework
 ${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework
+${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/Dollar/Dollar.framework
 ${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework
 ${BUILT_PRODUCTS_DIR}/FaceAware/FaceAware.framework
@@ -23,7 +26,9 @@ ${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
 ${BUILT_PRODUCTS_DIR}/MMKV/MMKV.framework
 ${BUILT_PRODUCTS_DIR}/MMKVCore/MMKVCore.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
+${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework
 ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
@@ -35,3 +40,5 @@ ${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework
 ${BUILT_PRODUCTS_DIR}/Watchdog/Watchdog.framework
 ${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework
 ${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXSoundTouch.framework/TXSoundTouch
+${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXFFmpeg.framework/TXFFmpeg

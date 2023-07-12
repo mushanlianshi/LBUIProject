@@ -1,0 +1,2 @@
+${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXSoundTouch.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXFFmpeg.framework

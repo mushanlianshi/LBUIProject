@@ -7,6 +7,7 @@
 
 #import "LBTestChainViewController.h"
 #import "LBResponseChainViewController.h"
+#import "LBUIProject-Swift.h"
 
 static NSString * const idcardCharacterSet = @"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -61,7 +62,7 @@ static NSString * const idcardCharacterSet = @"1234567890abcdefghijklmnopqrstuvw
 }
 
 - (void)pushResponseChainVC{
-    LBResponseChainViewController *vc = [LBResponseChainViewController new];
+    BLTSwiftTaskViewController *vc = [BLTSwiftTaskViewController new];
     [self.navigationController pushViewController:vc animated:true];
 }
 

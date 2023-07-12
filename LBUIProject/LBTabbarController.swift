@@ -88,9 +88,9 @@ class LBTabbarController: UITabBarController {
     }
     
     private func initSubControllers(){
-        let titleList = ["首页", "控件", "三方库"]
-        let imageList = ["", "third_sdk", "mine"]
-        let controllerList:[UIViewController] = [LBHomeViewController(), LBSecondViewController(), LBThirdSDKController()]
+        let titleList = ["首页", "控件", "三方库", "验证"]
+        let imageList = ["", "third_sdk", "mine", "mine"]
+        let controllerList:[UIViewController] = [LBHomeViewController(), LBSecondViewController(), LBThirdSDKController(), LBVerifyViewController()]
         var list = [UIViewController]()
         for (index, title) in titleList.enumerated() {
             let controller = controllerList[index]

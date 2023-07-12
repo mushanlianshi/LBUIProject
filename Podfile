@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '9.0'
+ platform :ios, '13.0'
 source 'https://github.com/CocoaPods/Specs.git'
 source 'ssh://git@1.117.247.154:7999/app/bltuikitspecrepo.git'
 target 'LBUIProject' do
@@ -18,7 +18,7 @@ target 'LBUIProject' do
 #  pod 'QMUIKit'
   pod 'MBProgressHUD'
   pod 'MMKV'
-  pod 'BLTSwiftUIKit', '= 1.2.1'
+  pod 'BLTSwiftUIKit', '= 1.3.4'
   pod 'AvoidCrash', '~>2.5.2'
   pod 'CHTCollectionViewWaterfallLayout/ObjC', '= 0.9.10'
   pod 'JXPagingView/Paging', '= 2.1.2'
@@ -27,6 +27,9 @@ target 'LBUIProject' do
   pod 'YYKit', '~> 1.0.9'
   pod 'Dollar'
   pod 'AFNetworking', '~> 4.0'
+  pod 'TXLiteAVSDK_Player', :modular_headers => true
+  pod 'SuperPlayer', :modular_headers => true
+  pod 'BLTAlertEventQueue'
 #  骨架屏
   pod 'SkeletonView'
 #  转场动画
@@ -44,6 +47,9 @@ target 'LBUIProject' do
   
   pod 'RxSwift', '= 6.2.0'
   pod 'RxCocoa', '= 6.2.0'
+  pod 'RxDataSources', '= 5.0.0'
+  pod 'Alamofire', '= 5.7.1'
+  pod 'Moya', '= 15.0.0'
 #  tabbar自定义的
   pod 'CYLTabBarController'
 #  pod 'WechatOpenSDK', '1.9.2'
@@ -61,6 +67,11 @@ end
 
 
 post_install do |installer|
+  
+  installer.pods_project.build_configuration_list.build_configurations.each do |configuration|
+    configuration.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+  end
+  
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
     config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
@@ -68,4 +79,5 @@ post_install do |installer|
 #    config.build_settings["BUILD_LIBRARY_FOR_DISTRIBUTION"] = true
     end
   end
+  
 end

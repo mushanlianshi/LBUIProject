@@ -55,6 +55,9 @@ class LBTestDynamicMemberClass: NSObject{
 struct LBTestStruct {
     var age = 0
     var name = ""
+    //    var sex: Int
+
+    lazy var testStructLazy: String = "12313"
 }
 
 
@@ -112,7 +115,11 @@ class LBTestStructAndClassController: UIViewController {
         self.circleView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
 
         for index in 1...10 {
-            let struct1 = LBTestStruct.init(age: index, name: "name \(index)")
+            var struct1 = LBTestStruct.init(age: index, name: "name \(index)")
+            struct1.testStructLazy.toPrintBLTLog()
+            
+            struct1.age = 21212
+            
             let class1 = LBTestClass.init()
             class1.age = index
             class1.name = "name \(index)"
@@ -123,6 +130,7 @@ class LBTestStructAndClassController: UIViewController {
         print("LBLog structlist fisrt age name \(structList.first!.age) \(structList.first!.name)")
         print("LBLog classList fisrt age name \(classList.first!.age) \(classList.first!.name)")
 //        print("LLBog \(&classExtensionNameKey)")
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             [weak self] in
             self?.structList[0].age = 100

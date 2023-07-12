@@ -38,22 +38,22 @@ class BLTReverseIterator<T>: IteratorProtocol {
 //            print("LBLog obj is \(obj)")
 //        }
 //    }
-struct BLTReverseSequence<T>: Sequence {
-    typealias Iterator = BLTReverseIterator
-    
-    typealias Element = T
-    
-    var array: [T]
-    init(array: [T]){
-        self.array = array
-    }
-    
-    ///实现方法 返回一个反转迭代器
-    func makeIterator() -> Iterator<T> {
-        return BLTReverseIterator(array: self.array)
-    }
-    
-}
+//struct BLTReverseSequence<T>: Sequence {
+//    typealias Iterator = BLTReverseIterator
+//    
+//    typealias Element = T
+//    
+//    var array: [T]
+//    init(array: [T]){
+//        self.array = array
+//    }
+//    
+//    ///实现方法 返回一个反转迭代器
+//    func makeIterator() -> Iterator<T> {
+//        return BLTReverseIterator(array: self.array)
+//    }
+//    
+//}
 
 
 

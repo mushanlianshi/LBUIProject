@@ -28,6 +28,8 @@ class LBCustomPageViewController: UIViewController {
                                                                       .coverFlow,
                                                                       .cubic]
     
+    var currentAnimationIndex = 0
+    
     lazy var pageView: FSPagerView = {
         let view = FSPagerView()
         view.register(FSPagerViewCell.self, forCellWithReuseIdentifier: FSPagerViewCell.blt_className)
@@ -60,6 +62,11 @@ class LBCustomPageViewController: UIViewController {
         view.addSubview(tableView)
         pageView.addSubview(pageControl)
         setConstraints()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "自定义", style: .done, target: self, action: #selector(pushCustomPageVC))
+    }
+    
+    @objc private func pushCustomPageVC(){
+        self.navigationController?.pushViewController(LBTestPageViewController(), animated: true)
     }
     
     private func setConstraints(){
@@ -145,7 +152,8 @@ extension LBCustomPageViewController: UITableViewDelegate, UITableViewDataSource
             cell.sliderView.value = Float(self.pageView.interitemSpacing / 20)
             cell.valueChanged = {
                 [weak self] progress, slider in
-                self?.progressItemMargin(progress: progress)
+                self?.pageView.interitemSpacing = -200
+//                self?.progressItemMargin(progress: progress)
             }
             return cell
         case 4:
@@ -228,7 +236,10 @@ extension LBCustomPageViewController{
     
 //    随机动画
     func progressAnimation()  {
-        let typeIndex = Int(arc4random_uniform(UInt32(transformerTypes.count)))
+        currentAnimationIndex += 1;
+        
+        let typeIndex = currentAnimationIndex % transformerTypes.count
+        
         let type = self.transformerTypes[typeIndex]
         print("LBLog animation type \(type.rawValue) \(typeIndex)")
         self.pageView.transformer = FSPagerViewTransformer(type:type)

@@ -23,6 +23,19 @@ extension BLTNameSpace where Base: UIViewController{
         base.present(alertVC, animated: true, completion: nil)
     }
 
+    ///设置内容是富文本的
+    public func presentAttributeTextAlert(title: String?, titleAttribute: NSAttributedString? = nil, attributeContent: NSAttributedString?, style: BLTAlertControllerStyle = .alert, cancelTitle: String? = nil, cancelBlock: ((_ action: BLTAlertAction?) -> Void)? = nil, sureTitle: String?, sureBlock: ((_ action: BLTAlertAction?) -> Void)? , tapBackDismiss: Bool = false) {
+        let alertVC = BLTAlertController.init(title: title, mesage: attributeContent?.string ?? "", style: style, cancelTitle: cancelTitle, cancel: cancelBlock, sureTitle: sureTitle, sureBlock: sureBlock)!
+        alertVC.backgroundClickDismiss = tapBackDismiss
+        if let text = attributeContent{
+            alertVC.alertContentAttributeString = text
+        }
+        if let text = titleAttribute{
+            alertVC.alertTitleAttributeString = text
+        }
+        base.present(alertVC, animated: true, completion: nil)
+    }
+    
 
     public func previewImage(currentIndex: Int, imageArray: [Any], canDelete: Int = 0) {
         let previewVC = BLTImagePreviewController.init(images: imageArray, currentIndex: currentIndex, canDelete: canDelete)!

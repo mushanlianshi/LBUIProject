@@ -11,6 +11,62 @@ import RxRelay
 import RxCocoa
 import CommonCrypto
 
+class LBTextOutputStreamModel: TextOutputStream {
+    func write(_ string: String) {
+        
+    }
+}
+
+//这两种写法的区别在于第二种写法中的 `TextOutputStream` 是作为泛型类型的参数名，而不是传递的参数类型。正确的写法是第一种写法，其中的 `Target` 表示泛型类型参数。它的作用是使代码更为灵活，可以接受任何实现了 `TextOutputStream` 协议的类型作为参数，并且符合泛型编程的设计理念。同时，通过 `where` 关键字的限制条件，也保证了实际使用的泛型类型必须实现了 `TextOutputStream` 协议。
+// 第三种 虽然和第一种是一样  但不是泛型了  第一种还可以扩展遵守承别的协议   第三种只能重写方法了
+//
+//而第二种写法中的 `TextOutputStream` 是作为泛型参数名，这个名字只是一个标识符，并没有实际的含义。该方法在使用的时候，相当于声明了一个泛型类型参数 `Target`，但是要求泛型类型 `Target` 的名称必须是 `TextOutputStream`，这显然是不合法的。
+//
+//因此，正确的写法是第一种写法。
+func writeOne<Target>(to target: inout Target) where Target : TextOutputStream{
+    print("LBLog writeOne")
+}
+///这TextOutputStream已经不是类型了  而是变成了泛型 导致实际传入的对象可以不是遵守TextOutputStream协议的
+func writeTwo<TextOutputStream>(to target: inout TextOutputStream){
+    print("LBLog writeTwo")
+}
+///参数是TextOutputStream类型的
+func writeThree(to target: inout TextOutputStream){
+    print("LBLog writeTwo")
+}
+
+func writeThree(to target: inout LBThirdSDKController){
+    print("LBLog writeTwo")
+}
+
+
+class LLLClass<Equatable>{
+    func testPrint() {
+        print("LBLog testPrint Equatable")
+    }
+}
+
+extension LLLClass<String>{
+    func testPrint() {
+        print("LBLog testPrint string")
+    }
+}
+
+class LBGenericClass<T>: NSObject {
+}
+
+extension LBGenericClass where T: Equatable{
+    func testPrint() {
+        print("LBLog LBGenericClass Equatable")
+    }
+}
+
+extension LBGenericClass where T == String{
+    func testPrint() {
+        print("LBLog LBGenericClass string")
+    }
+}
+
 class LBThirdSDKController: UIViewController {
     
     lazy var disposeBag = DisposeBag()
@@ -28,7 +84,7 @@ class LBThirdSDKController: UIViewController {
     }()
     
     lazy var listDataSources: [[String : Any]] = {
-        return [[.title : "RxSwift", .controller : LBRxSwiftPractiseViewController.self],
+        return [[.title : "RxSwift", .controller : LBRxSwiftHomeViewController.self],
                 [.title : "自定义反转Sequence", .controller : LBCustomReverseSequenceController.self],
                 [.title : "自定义操作符", .controller : LBCustomOperatorController.self],
                 [.title : "where操作符", .controller : LBTestWhereViewController.self],
@@ -36,6 +92,10 @@ class LBThirdSDKController: UIViewController {
                 [.title : "pageView实现", .controller : LBPageScrollViewController.self],
                 [.title : "dynamicMemberLookup转发", .controller : LBTestDynamicMemberLookupController.self],
                 [.title : "银行卡格式TextField", .controller : LBBankFormatterTextFieldController.self],
+                [.title : "本地化", .controller : LBLocaleViewController.self],
+                [.title : "fold卡片", .controller : LBFoldCardViewController.self],
+                [.title : "Mayo网络库", .controller : LBTestMayoNetworkController.self],
+                [.title : "IJKPlayer 播放器", .controller : LBIJKPlayerController.self],
         ]
     }()
     
@@ -55,8 +115,8 @@ class LBThirdSDKController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+//        UIImageView().kf.setImage(with: <#T##Source?#>)
+//        let label = UILabel.blt.initWithFont(font: UIFontPFFontSize(12)), textColor: .blt.threeThreeBlackColor())
         
         print("LBLog viewDidLoad ====== ")
         let card = CardType.allValues
@@ -104,8 +164,23 @@ class LBThirdSDKController: UIViewController {
             make.size.equalTo(CGSize(width: 200, height: 300))
         }
         
-        imageView.kf.setImage(with: URL.init(string: "https://pic-test-1253618833.cos.ap-shanghai.myqcloud.com/Uploads/housephoto/6607/6606515/cos_3da20edd01824cbd.jpeg"))
-        imageView2.kf.setImage(with: URL.init(string: "https://cdn.baletoo.cn/Uploads/housephoto/6607/6606515/cos_3da20edd01824cbd.jpeg"))
+        ///Webp
+//        imageView.kf.setImage(with: URL.init(string: "https://pic-test-1253618833.cos.ap-shanghai.myqcloud.com/Uploads/housephoto/6607/6606515/cos_3da20edd01824cbd.jpeg"))
+//        imageView2.kf.setImage(with: URL.init(string: "https://cdn.baletoo.cn/Uploads/housephoto/6607/6606515/cos_3da20edd01824cbd.jpeg"))
+        var one = LBTextOutputStreamModel()
+        var two = LBThirdSDKController()
+        
+        writeOne(to: &one)
+        writeTwo(to: &two)
+        testGeneric()
+    }
+    
+    func testGeneric() {
+        LLLClass<Int>().testPrint()
+        LLLClass<String>().testPrint()
+        
+        LBGenericClass<Int>().testPrint()
+        LBGenericClass<String>().testPrint()
     }
     
     func initTableView() {
@@ -141,7 +216,6 @@ class LBThirdSDKController: UIViewController {
         vc.view.backgroundColor = .white
         vc.title = info[.title] as? String
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func test(input: Int...) -> Int{

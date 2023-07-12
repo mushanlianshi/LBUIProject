@@ -1,0 +1,6 @@
+framework module BLTAlertEventQueue {
+  umbrella header "BLTAlertEventQueue-umbrella.h"
+
+  export *
+  module * { export * }
+}

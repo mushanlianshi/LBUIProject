@@ -26,6 +26,17 @@ class LBRxSwiftViewController: UIViewController {
         self.view.addSubview(button)
         testObservable()
         testObservableAndObserver()
+        let ob = Observable<String>.create { ob in
+            print("LBLog ob ========")
+            ob.onNext("")
+            return Disposables.create {
+            }
+        }.share(replay: 1)
+        let t = self.navigationItem.rx.title
+        let tt = UITextView().rx.text
+        
+        let o = ob.bind(to: tt).disposed(by: disposeBag)
+        let oo = ob.bind(to: t).disposed(by: disposeBag)
     }
     
     ///1.可观察序列
@@ -86,6 +97,7 @@ class LBRxSwiftViewController: UIViewController {
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//            let isHidd = self.button.rx.isHidden
             observable.bind(to: self.button.rx.isHidden).disposed(by: self.disposeBag)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {

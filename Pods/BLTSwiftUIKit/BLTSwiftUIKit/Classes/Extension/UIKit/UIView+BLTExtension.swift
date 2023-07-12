@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+private struct AssociatedKeys {
+    static var autoLayoutGradientLayerKey = "autoLayoutGradientLayerKey"
+}
+
 extension UIView: BLTNameSpaceCompatible{}
 
 public enum BLTUIViewGradientLayerDirection: Int {
@@ -50,7 +54,14 @@ extension BLTNameSpace where Base: UIView{
         return nil
     }
     
-    
+    public func removeAnchorConstraints(){
+        self.base.removeConstraints(self.base.constraints)
+    }
+}
+
+
+///处理渐变色   圆角   形状的常用方法
+extension BLTNameSpace where Base: UIView{
     ///渐变色背景 可以autolayout之后的
     public func addGradientLayer(_ startColor: UIColor, _ endColor: UIColor, _ direction: BLTUIViewGradientLayerDirection = .leftToRight, autoLayout: Bool = false){
         
@@ -91,10 +102,11 @@ extension BLTNameSpace where Base: UIView{
                 self.base.layer.insertSublayer(gradientLayer!, at: 0)
             }
             
-            if autoLayout{
-                objc_setAssociatedObject(self.base, &gradientLayerKey, gradientLayer, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
+            objc_setAssociatedObject(self.base, &gradientLayerKey, gradientLayer, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            
         }
+        
+        self.base.blt_autoLayoutGradientLayer = autoLayout
         
         if autoLayout{
             var objClass: AnyClass = UIView.self
@@ -110,6 +122,7 @@ extension BLTNameSpace where Base: UIView{
             }, onceIdentifier: "\(objClass.description()) addGradientLayer")
             
         }
+        
         refreshGradientLayer()
     }
     
@@ -174,9 +187,6 @@ extension BLTNameSpace where Base: UIView{
         
         return path
     }
-    
-    
-    
 }
 
 
@@ -186,9 +196,21 @@ extension BLTNameSpace where Base: UIView{
 
 
 
+fileprivate extension UIView{
+    var blt_autoLayoutGradientLayer: Bool{
+        get{
+            return (objc_getAssociatedObject(self, &AssociatedKeys.autoLayoutGradientLayerKey) as? Bool) ?? false
+        }
+        set{
+            return objc_setAssociatedObject(self, &AssociatedKeys.autoLayoutGradientLayerKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
 
 
-//渐变色用的
+
+
+///渐变色用的
 fileprivate extension UIView{
     
     static func exchangeLayoutSubviewsMethod(){
@@ -197,6 +219,10 @@ fileprivate extension UIView{
     
     @objc func blt_layoutSubviews(){
         self.blt_layoutSubviews()
+        
+        guard blt_autoLayoutGradientLayer else {
+            return
+        }
         guard let gradientLayer = objc_getAssociatedObject(self, &gradientLayerKey) as? CAGradientLayer else { return }
         
         //        消除layer的隐式动画 UIView performWithoutAnimation消除不了 使用事务
@@ -207,6 +233,9 @@ fileprivate extension UIView{
     }
 }
 
+
+
+
 fileprivate extension UIButton{
     
     static func exchangeButtonLayoutSubviewsMethod(){
@@ -215,6 +244,11 @@ fileprivate extension UIButton{
     
     @objc func blt_ButtonLayoutSubviews(){
         self.blt_ButtonLayoutSubviews()
+        
+        guard blt_autoLayoutGradientLayer else {
+            return
+        }
+        
         guard let gradientLayer = objc_getAssociatedObject(self, &gradientLayerKey) as? CAGradientLayer else { return }
         
         //        消除layer的隐式动画 UIView performWithoutAnimation消除不了 使用事务

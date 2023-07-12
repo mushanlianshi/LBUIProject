@@ -27,18 +27,6 @@ public func isSimulator() -> Bool {
 #endif
 }
 
-public func BLTSwiftLog(_ content: Any, isDebugPrint: Bool = false, file: String = #file, line: Int = #line, method: String = #function){
-#if DEBUG
-    //LB DEBUG TEST
-    let outContent = "\((file as NSString).lastPathComponent)[\(line)], \(method): \(content)"
-    if isDebugPrint{
-        debugPrint(outContent)
-    }else{
-        print(outContent)
-    }
-#endif
-}
-
 
 ///获取引用类型的地址
 public func getClassObjAddress(obj: AnyObject) -> String{
@@ -74,6 +62,22 @@ public func BLTKVCValueFrom(_ object: Any, key: String) -> Any?{
 
 public func CGRectFromEdgeInsetsSwift(frame: CGRect, insets: UIEdgeInsets) -> CGRect{
     return CGRect(x: frame.origin.x + insets.left, y: frame.origin.y + insets.top, width: frame.size.width - insets.left - insets.right, height: frame.size.height - insets.top - insets.bottom)
+}
+
+
+///判断一个可选的字符串 是不是空字符串
+public func checkOptionalStringIsEmpty(text: String?) -> Bool{
+    guard let value = text, value.isEmpty == false else { return true }
+    return false
+}
+
+
+@discardableResult
+public func BLTDump<T>(_ value: T, name: String? = nil, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T{
+#if DEBUG
+    return dump(value, name: name, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
+#endif
+    return value
 }
 
 

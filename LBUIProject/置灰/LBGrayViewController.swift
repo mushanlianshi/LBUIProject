@@ -61,7 +61,7 @@ class LBGrayViewController: UIViewController {
     private func testEqual(){
         let obj1 = LBTestEqualObject()
         let obj2 = obj1
-        ///这个class没有集成NSObject  所以默认没有实现==（equal） 但可以用===来判断两个对象是否相等
+        ///这个class没有继承NSObject  所以默认没有实现==（equal） 但可以用===来判断两个对象是否相等
 //        if obj1 == obj2{
 //            print("LBLog obj1 = obj2 1111")
 //        }

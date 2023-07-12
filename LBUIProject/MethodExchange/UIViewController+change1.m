@@ -20,9 +20,9 @@
 }
 
 - (void)A1_viewWillAppear:(BOOL)animated{
-    NSLog(@"LBLog A1 viewwillappear before");
+//    NSLog(@"LBLog A1 viewwillappear before");
     [self A1_viewWillAppear:animated];
-    NSLog(@"LBLog A1 viewwillappear after");
+//    NSLog(@"LBLog A1 viewwillappear after");
 }
 
 @end
@@ -39,9 +39,9 @@
 }
 
 - (void)A2_viewWillAppear:(BOOL)animated{
-    NSLog(@"LBLog A2 viewwillappear before");
+//    NSLog(@"LBLog A2 viewwillappear before");
     [self A2_viewWillAppear:animated];
-    NSLog(@"LBLog A2 viewwillappear after");
+//    NSLog(@"LBLog A2 viewwillappear after");
 }
 
 @end

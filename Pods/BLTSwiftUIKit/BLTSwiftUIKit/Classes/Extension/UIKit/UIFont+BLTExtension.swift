@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UIFont: BLTNameSpaceCompatibleValue{}
+extension UIFont: BLTNameSpaceCompatible{}
 
 extension BLTNameSpace where Base: UIFont{
     public static func normalFont(_ size: CGFloat) -> UIFont{

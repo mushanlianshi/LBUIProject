@@ -58,7 +58,7 @@
 
 - (void)didChangeValueForKey:(NSString *)key{
     NSLog(@"LBLog kvo didChangeValueForKey begin");
-    [super didChangeValueForKey:key];
+//    [super didChangeValueForKey:key];
     NSLog(@"LBLog kvo didChangeValueForKey end");
 }
 

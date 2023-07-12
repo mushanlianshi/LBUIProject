@@ -211,6 +211,7 @@ extension SessionDelegate: URLSessionDataDelegate {
                 result = .failure(KingfisherError.responseError(reason: .dataModifyingFailed(task: sessionTask)))
             }
         }
+        print("LBLog task url \(task.currentRequest?.url)")
         onCompleted(task: task, result: result)
     }
 
