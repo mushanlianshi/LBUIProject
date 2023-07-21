@@ -13,10 +13,11 @@ class LBExpandCloseLabelController: UIViewController {
     lazy var expandLab: LBExpandCloseLabel = {
         let label = LBExpandCloseLabel.init(foldContent: .init(expandAttris: [.foregroundColor : UIColor.red, .font : UIFont.blt.mediumFont(14)]))
         label.preferredMaxLayoutWidth = self.view.bounds.width - 40
+        label.foldNumberOfLines = 3
         label.foldChangeBlock = {
             [weak self] expand in
             label.sizeToFit()
-            print("LBLog expand \(expand) \(label.size)")
+            print("LBLog expand \(expand) \(label.size) \(label.isExpand)")
         }
         return label
     }()

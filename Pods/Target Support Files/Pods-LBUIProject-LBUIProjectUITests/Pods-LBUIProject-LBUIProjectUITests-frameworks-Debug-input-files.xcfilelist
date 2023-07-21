@@ -9,12 +9,16 @@ ${BUILT_PRODUCTS_DIR}/BLTSwiftUIKit/BLTSwiftUIKit.framework
 ${BUILT_PRODUCTS_DIR}/BLTUIKitProject/BLTUIKitProject.framework
 ${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework
 ${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework
+${BUILT_PRODUCTS_DIR}/DSScrollKit/DSScrollKit.framework
+${BUILT_PRODUCTS_DIR}/DiffableDataSources/DiffableDataSources.framework
+${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/Dollar/Dollar.framework
 ${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework
 ${BUILT_PRODUCTS_DIR}/FaceAware/FaceAware.framework
 ${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
 ${BUILT_PRODUCTS_DIR}/Hero/Hero.framework
+${BUILT_PRODUCTS_DIR}/IBPCollectionViewCompositionalLayout/IBPCollectionViewCompositionalLayout.framework
 ${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework
 ${BUILT_PRODUCTS_DIR}/JXPagingView/JXPagingView.framework
 ${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework

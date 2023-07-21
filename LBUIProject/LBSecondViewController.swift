@@ -16,7 +16,7 @@ struct LBListItemModel: Equatable {
     }
     
     var title: String
-    var vcClass: AnyClass
+    var vcClass: AnyClass?
     
     mutating func changeTitle(title: String)  {
         self.title = title
@@ -37,6 +37,8 @@ class LBSecondViewController: UIViewController{
         LBListItemModel.init(title: "上下左右滑动控件", vcClass: LBTestScrollVerticalHorizontalController.self),
         LBListItemModel.init(title: "翻卡片", vcClass: LBFlipCardViewController.self),
         LBListItemModel.init(title: "折叠", vcClass: LBExpandCloseLabelController.self),
+        LBListItemModel.init(title: "stackview嵌套ScrollView", vcClass: UIStackViewInScrollViewController.self),
+        LBListItemModel.init(title: "tableView滚动动画", vcClass: LBScrollViewAnimatingExampleController.self),
     ]
     
     var changeModel = LBListItemModel.init(title: "111", vcClass: NSString.self)

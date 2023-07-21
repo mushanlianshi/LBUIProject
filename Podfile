@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '13.0'
+platform :ios, '14.0'
 source 'https://github.com/CocoaPods/Specs.git'
 source 'ssh://git@1.117.247.154:7999/app/bltuikitspecrepo.git'
 target 'LBUIProject' do
@@ -42,6 +42,9 @@ target 'LBUIProject' do
   pod 'AnimatedCollectionViewLayout'
   pod 'FSPagerView', :git => 'https://github.com/WenchaoD/FSPagerView'
   
+  pod 'IBPCollectionViewCompositionalLayout', '= 0.6.9'
+  pod 'DiffableDataSources', '= 0.5.0'
+  
 #  检测卡顿的
   pod 'Watchdog'
   
@@ -53,8 +56,13 @@ target 'LBUIProject' do
   pod 'Selene'
 #  tabbar自定义的
   pod 'CYLTabBarController'
+  #各种弹框样式的
   pod 'SwiftEntryKit', '= 2.0.0'
   pod 'YYKit', '= 1.0.9'
+  #SwiftUI 滚动列表的
+  pod 'DSScrollKit', '= 0.3.0'
+  #加载 转圈动画的
+  pod 'NVActivityIndicatorView', '= 5.1.1'
 #  pod 'WechatOpenSDK', '1.9.2'
 #  pod 'charts', :git => 'https://github.com/danielgindi/Charts.git', :tag => '3.6.0'
   target 'LBUIProjectTests' do
@@ -78,7 +86,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
     config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
 #    config.build_settings["BUILD_LIBRARY_FOR_DISTRIBUTION"] = true
     end
   end

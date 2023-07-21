@@ -1,0 +1,6 @@
+framework module DSScrollKit {
+  umbrella header "DSScrollKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

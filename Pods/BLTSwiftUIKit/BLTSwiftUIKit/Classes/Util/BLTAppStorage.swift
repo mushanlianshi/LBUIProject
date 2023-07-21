@@ -56,7 +56,7 @@ public struct BLTAppStorage<T: Codable> {
 public struct BLTCategoryStore<T>{
     private let object: Any
     private let key: UnsafeRawPointer
-    private let defaultValue: T
+    private let defaultValue: T?
     private let policy: objc_AssociationPolicy
     
     init(object: Any, key: UnsafeRawPointer, defaultValue: T, policy: objc_AssociationPolicy) {
@@ -66,7 +66,7 @@ public struct BLTCategoryStore<T>{
         self.policy = policy
     }
     
-    public var wrappedValue: T {
+    public var wrappedValue: T? {
         get{
             return (objc_getAssociatedObject(self, key) as? T) ?? defaultValue
         }
