@@ -80,6 +80,8 @@
 		404B993C26831A5900B81861 /* LBFPSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B993B26831A5900B81861 /* LBFPSManager.m */; };
 		40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */; };
 		405430D428AA358200CD3596 /* LBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405430D328AA358200CD3596 /* LBNotification.swift */; };
+		405820672A6E2580004252CB /* LBLivePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820662A6E2580004252CB /* LBLivePreviewViewController.swift */; };
+		4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */; };
 		406298EB288F8517006A3024 /* UINavigationBar+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */; };
 		406298EE288FBD28006A3024 /* LBCustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */; };
 		406298F0288FC18B006A3024 /* LBSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EF288FC18B006A3024 /* LBSliderTableCell.swift */; };
@@ -455,6 +457,8 @@
 		40525F4926A7ED0200B6AEBA /* LBImageRecogineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBImageRecogineViewController.h; sourceTree = "<group>"; };
 		40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBImageRecogineViewController.m; sourceTree = "<group>"; };
 		405430D328AA358200CD3596 /* LBNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNotification.swift; sourceTree = "<group>"; };
+		405820662A6E2580004252CB /* LBLivePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLivePreviewViewController.swift; sourceTree = "<group>"; };
+		405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LBLivePreview.swift"; sourceTree = "<group>"; };
 		406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+LBExtension.swift"; sourceTree = "<group>"; };
 		406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomPageViewController.swift; sourceTree = "<group>"; };
 		406298EF288FC18B006A3024 /* LBSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSliderTableCell.swift; sourceTree = "<group>"; };
@@ -1167,6 +1171,22 @@
 			path = LBNotificationView;
 			sourceTree = "<group>";
 		};
+		405820652A6E2566004252CB /* LivePreview */ = {
+			isa = PBXGroup;
+			children = (
+				405820662A6E2580004252CB /* LBLivePreviewViewController.swift */,
+			);
+			path = LivePreview;
+			sourceTree = "<group>";
+		};
+		405820682A6E47B9004252CB /* LivePreview */ = {
+			isa = PBXGroup;
+			children = (
+				405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */,
+			);
+			path = LivePreview;
+			sourceTree = "<group>";
+		};
 		406298EC288FBD05006A3024 /* 自定义轮播图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1540,6 +1560,7 @@
 		409C5BA926A19969005B8344 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				405820682A6E47B9004252CB /* LivePreview */,
 				40C149EA28AB4960005C9E00 /* UIView */,
 				400A05D72863237B006574B5 /* UIImage+LBExtension.swift */,
 				400A05BC2861A350006574B5 /* UIControl */,
@@ -1608,6 +1629,7 @@
 		40ABA5892A1DA86800B84488 /* 验证 */ = {
 			isa = PBXGroup;
 			children = (
+				405820652A6E2566004252CB /* LivePreview */,
 				40D43D242A6A7F65001384BF /* AwaitAsync */,
 				40ACEE7B2A4D67F90001BCAB /* ResponderTransfor */,
 				40F1CD172A3180EE00A8066C /* Widget */,
@@ -2667,6 +2689,7 @@
 				408F681A288A873A0019F47D /* LBSkeletonViewController.swift in Sources */,
 				407603A6284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m in Sources */,
 				40D43CDF2A6003A3001384BF /* UIStackViewInScrollViewController.m in Sources */,
+				4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */,
 				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
 				40AE6FAC29C80AE600C69932 /* AFURLSessionManager+BLTAPMNetworkDuration.m in Sources */,
 				40AE6FE229C8616600C69932 /* UIWindow+JXSafeArea.swift in Sources */,
@@ -2756,6 +2779,7 @@
 				400A05CA2861B61B006574B5 /* UIIMage+LBExtension.swift in Sources */,
 				4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */,
 				40ABA5902A1DA98B00B84488 /* LBVerifyListController.swift in Sources */,
+				405820672A6E2580004252CB /* LBLivePreviewViewController.swift in Sources */,
 				409DCEC028B76E5500699E24 /* LBCustomQueueManager.swift in Sources */,
 				40C20B4A298A095500B23342 /* LBTestHitViewController.swift in Sources */,
 				400A05BE2861A386006574B5 /* UIControl+LBExtension1.swift in Sources */,

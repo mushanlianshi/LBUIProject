@@ -21,7 +21,8 @@ class LBVerifyViewController: UIViewController {
         LBListItemModel.init(title: "验证BaseListVC", vcClass: LBVerifyListController.self),
         LBListItemModel.init(title: "Widget数据更新", vcClass: LBWidgetUpdateController.self),
         LBListItemModel.init(title: "跨层级响应传递", vcClass: LBResponderTransferController.self),
-        LBListItemModel.init(title: "Await Async 异步函数", vcClass: LBAwaitAsyncViewController.self)
+        LBListItemModel.init(title: "Await Async 异步函数", vcClass: LBAwaitAsyncViewController.self),
+        LBListItemModel.init(title: "UIKit借助SwiftUI实现实时预览", vcClass: LBLivePreviewViewController.self)
     ]
     
     override func viewDidLoad() {
