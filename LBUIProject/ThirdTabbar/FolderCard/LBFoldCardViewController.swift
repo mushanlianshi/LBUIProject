@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SuperPlayer
 
 let colorList: [UIColor] = {
     var list = [UIColor]()

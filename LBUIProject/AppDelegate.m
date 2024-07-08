@@ -123,6 +123,10 @@ struct B{
 //    [self codeCoverageProfrawDump];
 //    NSLog(@"LBlog getLocalIPAddress %@", [self getLocalIPAddress:false]);
 //    NSLog(@"LBlog getPublicIPAddress %@", [self getNetworkIPAddress]);
+    
+    NSURL *url = [[NSURL alloc] initWithString:@"http://jscss.baletoo.com/Public/app/wanjian/map@3x.png"];
+    NSLog(@"lblog ----");
+    
     return YES;
 }
 //performFetchWithCompletionHandler

@@ -8,7 +8,7 @@
 import Foundation
 
 public struct BLTNameSpace<Base>{
-    public var base: Base
+    public let base: Base
 //    public var BASE: Self.Type
     
     public init(_ base: Base){
@@ -24,9 +24,6 @@ public protocol BLTNameSpaceCompatible: AnyObject{
     var blt: BLTCompatibleType { set get }
     
     static var blt: BLTCompatibleType.Type {set get}
-    
-    ///打印log的方法
-    func toPrintBLTLog(_ prefix: String?)
 }
 
 public extension BLTNameSpaceCompatible{
@@ -45,9 +42,6 @@ public extension BLTNameSpaceCompatible{
         set{}
     }
     
-    func toPrintBLTLog(_ prefix: String? = "BLTLog") {
-        BLTSwiftLog("\(prefix ?? "")  \(self)")
-    }
 }
 
 
@@ -58,7 +52,6 @@ public protocol BLTNameSpaceCompatibleValue{
     
     static var blt: BLTCompatibleType.Type {set get}
     
-    func toPrintBLTLog(_ prefix: String?)
 }
 
 public extension BLTNameSpaceCompatibleValue{
@@ -75,10 +68,6 @@ public extension BLTNameSpaceCompatibleValue{
             return BLTNameSpace<Self>.self
         }
         set{}
-    }
-    
-    func toPrintBLTLog(_ prefix: String? = "BLTLog") {
-        BLTSwiftLog("\(prefix ?? "")  \(self)")
     }
 }
 

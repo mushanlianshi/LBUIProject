@@ -88,9 +88,9 @@ extension LBListScrollAnimatingController: UIScrollViewDelegate{
                 }
                 
                 self.headerView.titleLab.frame = CGRect(x: 0, y:min(self.currentTitleLabY + offsetY, 0), width: self.view.bounds.width, height: self.headerView.titleLab.height)
-                if self.headerView.titleLab.frame.origin.y >= 0{
-                    self.hasPin = true
-                }
+//                if self.headerView.titleLab.frame.origin.y >= 0{
+//                    self.hasPin = true
+//                }
             }
         }
         

@@ -333,6 +333,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         let index = indexPath.item
         self.dequeingSection = indexPath.section
         let cell = self.dataSource!.pagerView(self, cellForItemAt: index)
+        print("LBLOg self frame \(collectionView.frame)")
+        print("LBLOg self bounds \(collectionView.bounds)")
         return cell
     }
     

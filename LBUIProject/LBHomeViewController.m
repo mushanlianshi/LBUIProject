@@ -40,6 +40,14 @@
 
 @implementation LBHomeViewController
 
++ (void)testClassFunc{
+    NSLog(@"LBLog %@ -----------", NSStringFromSelector(_cmd));
+}
+
+- (void)testInstanceFunc{
+    NSLog(@"LBLog %@ -----------", NSStringFromSelector(_cmd));
+}
+
 - (CLLocationManager *)locationManager
 {
     if (!_locationManager) {
@@ -222,7 +230,6 @@
 - (NSArray *)dataSources{
     if (!_dataSources) {
         _dataSources = @[
-            @{@"title" : @"UIStackView",@"vcName":@"LBTestStackViewViewController"},
             @{@"title" : @"autoLayout",@"vcName":@"LBTestAutoLayoutViewController"},
             @{@"title" : @"gesture",@"vcName":@"LBTestGestureViewController"},
             @{@"title" : @"离屏渲染",@"vcName":@"LBTestOffScreenController"},

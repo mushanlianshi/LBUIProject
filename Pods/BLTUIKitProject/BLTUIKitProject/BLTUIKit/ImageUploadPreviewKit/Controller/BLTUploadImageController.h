@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BLTImagePreviewNaviBar.h"
 #import "BLTUploadImageContentView.h"
 #import "BLTImagePickerShowModel.h"
 //typedef n <#new#>;

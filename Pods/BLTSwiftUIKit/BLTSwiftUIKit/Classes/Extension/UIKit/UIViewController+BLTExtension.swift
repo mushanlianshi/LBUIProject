@@ -37,10 +37,6 @@ extension BLTNameSpace where Base: UIViewController{
     }
     
 
-    public func previewImage(currentIndex: Int, imageArray: [Any], canDelete: Int = 0) {
-        let previewVC = BLTImagePreviewController.init(images: imageArray, currentIndex: currentIndex, canDelete: canDelete)!
-        base.present(previewVC, animated: true, completion: nil)
-    }
     
 }
 

@@ -38,11 +38,11 @@
 }
 
 
-- (void)setCustomActionBlock:(void (^)(id, LLCustomActionType))customActionBlock{
+- (void)setCustomActionBlock:(void (^)(id, int))customActionBlock{
     objc_setAssociatedObject(self, @selector(customActionBlock), customActionBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void (^)(id, LLCustomActionType))customActionBlock{
+- (void (^)(id, int))customActionBlock{
     return objc_getAssociatedObject(self, _cmd);
 }
 

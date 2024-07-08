@@ -165,7 +165,7 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
             print("LBLog supplementaryViewProvider \(indexPath.section) \(kind)");
             let model = self.viewModel.dataSources[indexPath.section]
             print("LBLog model name \(model.name) \(model.type)");
-            if checkOptionalStringIsEmpty(text: model.name) == false , let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BLTCollectionSectionHeaderTextView.blt_className, for: indexPath) as? BLTCollectionSectionHeaderTextView{
+            if bltCheckStringIsEmpty(model.name) == false , let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BLTCollectionSectionHeaderTextView.blt_className, for: indexPath) as? BLTCollectionSectionHeaderTextView{
                 header.titleLab.text = model.name
                 return header
             }

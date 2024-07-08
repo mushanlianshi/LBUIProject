@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		09BF6C6A1885141F37570A04 /* Pods_LBUIProject_LBUIProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */; };
+		4006777B2AB19DBA0032F96E /* LBVerifyVCDisappearController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006777A2AB19DBA0032F96E /* LBVerifyVCDisappearController.swift */; };
+		4006777F2AB7EBD40032F96E /* LBSwiftUIAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006777E2AB7EBD40032F96E /* LBSwiftUIAnimationView.swift */; };
 		4009FC3A2A05159100221887 /* LBCollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4009FC392A05159100221887 /* LBCollectionViewExtension.swift */; };
 		400A05BA28619CF0006574B5 /* LBHelper1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05B928619CF0006574B5 /* LBHelper1.swift */; };
 		400A05BE2861A386006574B5 /* UIControl+LBExtension1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05BD2861A386006574B5 /* UIControl+LBExtension1.swift */; };
@@ -30,6 +32,7 @@
 		400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DEA2695444B00C67D52 /* LBTestClassCacheMethodViewController.m */; };
 		400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */; };
 		400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */; };
+		40140EEC2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 40140EEB2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		4014676F2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4014676E2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift */; };
 		401AA7E3288AB81C00A4C6DB /* LBThirdPartAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401AA7E2288AB81C00A4C6DB /* LBThirdPartAnimationController.swift */; };
 		401BEE8B2A259E0900F28892 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401BEE8A2A259E0900F28892 /* IJKMediaFramework.framework */; };
@@ -50,12 +53,16 @@
 		401E9414272174D600F3BAB2 /* UIViewController+change1.m in Sources */ = {isa = PBXBuildFile; fileRef = 401E9413272174D600F3BAB2 /* UIViewController+change1.m */; };
 		4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022E72229CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift */; };
 		4022E72529CDACD300C4476F /* LBRxSwiftPractiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022E72429CDACD300C4476F /* LBRxSwiftPractiseViewController.swift */; };
+		4023B0692AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023B0682AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift */; };
 		402412942A0B7E9000011588 /* LBRxSwiftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402412932A0B7E9000011588 /* LBRxSwiftTableViewController.swift */; };
 		4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4026540326846D9800472F4F /* LBTestFaceAwareController.m */; };
 		402654272684720A00472F4F /* TestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402654262684720A00472F4F /* TestSwift.swift */; };
 		4028B5242A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028B5232A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift */; };
+		4028C6072C3B7CF9004E86F3 /* LBFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028C6062C3B7CF9004E86F3 /* LBFullScreenViewController.swift */; };
+		4028C6092C3B80FA004E86F3 /* LBPresentFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */; };
 		402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBA92796900600B051C5 /* LBStrategyModeController.m */; };
 		402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */; };
+		402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */; };
 		402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402E3D2226BECAC60027CE64 /* LBBlockViewController.m */; };
 		4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */; };
 		40356F78286BE89700561E00 /* MessageFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40356F77286BE89700561E00 /* MessageFilterExtension.swift */; };
@@ -72,16 +79,22 @@
 		4043EB21265F9E2700EACB2B /* LBUIProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB20265F9E2700EACB2B /* LBUIProjectTests.m */; };
 		4043EB2C265F9E2700EACB2B /* LBUIProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB2B265F9E2700EACB2B /* LBUIProjectUITests.m */; };
 		4043EB53265FA2B300EACB2B /* LBTestAutoLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB52265FA2B300EACB2B /* LBTestAutoLayoutViewController.m */; };
-		4043EB5C265FA2C500EACB2B /* LBTestStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB5B265FA2C500EACB2B /* LBTestStackViewViewController.m */; };
 		4043EB66265FA45600EACB2B /* LBTestAutoLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB65265FA45600EACB2B /* LBTestAutoLayoutView.m */; };
 		40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40441762299F4F17000F567F /* LBVerticalHorizontalScrollView.swift */; };
 		40441766299F4F28000F567F /* SYVerticalHorizontalTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40441764299F4F28000F567F /* SYVerticalHorizontalTableView.m */; };
 		40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */; };
+		404B1B782A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B772A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift */; };
+		404B1B7E2A7B985E002B46BB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B7A2A7B985E002B46BB /* UIColor+Extension.swift */; };
+		404B1B7F2A7B985E002B46BB /* FoldAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B7B2A7B985E002B46BB /* FoldAnimationView.swift */; };
+		404B1B802A7B985E002B46BB /* FoldClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B7C2A7B985E002B46BB /* FoldClockView.swift */; };
+		404B1B812A7B985E002B46BB /* FoldClockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B7D2A7B985E002B46BB /* FoldClockItem.swift */; };
 		404B993C26831A5900B81861 /* LBFPSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B993B26831A5900B81861 /* LBFPSManager.m */; };
 		40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40525F4A26A7ED0200B6AEBA /* LBImageRecogineViewController.m */; };
 		405430D428AA358200CD3596 /* LBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405430D328AA358200CD3596 /* LBNotification.swift */; };
 		405820672A6E2580004252CB /* LBLivePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820662A6E2580004252CB /* LBLivePreviewViewController.swift */; };
 		4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */; };
+		40616F202BFB385E00FEF9A1 /* vlc-hls.m3u8-.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 40616F1F2BFB378600FEF9A1 /* vlc-hls.m3u8-.mp4 */; };
+		40616F222BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40616F212BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift */; };
 		406298EB288F8517006A3024 /* UINavigationBar+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */; };
 		406298EE288FBD28006A3024 /* LBCustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */; };
 		406298F0288FC18B006A3024 /* LBSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EF288FC18B006A3024 /* LBSliderTableCell.swift */; };
@@ -121,6 +134,8 @@
 		407DA97B28A505A4000B2BA8 /* LBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407DA97A28A505A4000B2BA8 /* LBTextField.swift */; };
 		407E700A29824B270003E997 /* LBTestCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E700929824B270003E997 /* LBTestCacheViewController.swift */; };
 		408045032891476F00600952 /* UIView+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408045022891476F00600952 /* UIView+LBExtension.swift */; };
+		4080FEBA2AD8DCD700FF79FC /* LBDrawImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080FEB92AD8DCD700FF79FC /* LBDrawImageController.swift */; };
+		4080FEBC2AD8DD5300FF79FC /* LBDrawImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080FEBB2AD8DD5300FF79FC /* LBDrawImageUtil.swift */; };
 		4081A45329B182B400B476C8 /* LBTestStructAndClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4081A45229B182B400B476C8 /* LBTestStructAndClassController.swift */; };
 		4085463C27434D8F00EEEC12 /* LBKVOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4085463B27434D8F00EEEC12 /* LBKVOViewController.m */; };
 		4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4085464227434F5000EEEC12 /* LBLoadAndInitializeController.m */; };
@@ -145,6 +160,10 @@
 		409B06C12890D8DC004724EB /* LBWatchDogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409B06C02890D8DC004724EB /* LBWatchDogController.swift */; };
 		409B06C328910FE7004724EB /* LBTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409B06C228910FE7004724EB /* LBTabbarController.swift */; };
 		409B06C52891108F004724EB /* LBThirdSDKController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409B06C42891108F004724EB /* LBThirdSDKController.swift */; };
+		409C16E62A821440006EB24D /* LLPropertyWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409C16E52A821440006EB24D /* LLPropertyWrapperViewController.swift */; };
+		409C16E92A860BB5006EB24D /* LBBlueSwiftUIPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409C16E82A860BB5006EB24D /* LBBlueSwiftUIPage.swift */; };
+		409C16EC2A8631D8006EB24D /* LBExpandArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409C16EB2A8631D8006EB24D /* LBExpandArea.swift */; };
+		409C16EE2A8632A9006EB24D /* LBBlueToothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409C16ED2A8632A9006EB24D /* LBBlueToothManager.swift */; };
 		409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */; };
 		409D39172A3993F10063DA08 /* butterfly2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 409D39162A3993F10063DA08 /* butterfly2.mp4 */; };
 		409DCEC028B76E5500699E24 /* LBCustomQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409DCEBF28B76E5500699E24 /* LBCustomQueueManager.swift */; };
@@ -160,6 +179,10 @@
 		409FC3FC2A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC3F92A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift */; };
 		40A20A052A15B22C00353135 /* Pods_LBUIProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; };
 		40A20A062A15B22C00353135 /* Pods_LBUIProject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		40A743652A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A743642A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift */; };
+		40A743682A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A743672A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift */; };
+		40A7436B2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A7436A2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift */; };
+		40A7436E2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A7436D2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift */; };
 		40ABA5822A1C9D3500B84488 /* LBTestMayoNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA5812A1C9D3500B84488 /* LBTestMayoNetworkController.swift */; };
 		40ABA5842A1C9DD300B84488 /* LBUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA5832A1C9DD300B84488 /* LBUserInfoService.swift */; };
 		40ABA5862A1CA74600B84488 /* LBBaseMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA5852A1CA74600B84488 /* LBBaseMoyaProvider.swift */; };
@@ -224,6 +247,12 @@
 		40B35B79286441C00001FFE9 /* LBMultipleDelegatesContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B78286441C00001FFE9 /* LBMultipleDelegatesContainer.m */; };
 		40B35B7C286443DD0001FFE9 /* NSPointerArray+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7B286443DD0001FFE9 /* NSPointerArray+LBExtension.m */; };
 		40B35B7F28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7E28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m */; };
+		40B4A0BE2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0BD2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift */; };
+		40B4A0C22A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0C12A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift */; };
+		40B4A0C42A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0C32A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift */; };
+		40B4A0CD2A7210A000D02BB4 /* LBResponderTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0CC2A7210A000D02BB4 /* LBResponderTransferViewController.swift */; };
+		40B4A0D12A73D00A00D02BB4 /* LBPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0D02A73D00A00D02BB4 /* LBPreviewImageViewController.swift */; };
+		40B4A0D42A73D05D00D02BB4 /* BLTPreviewImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0D32A73D05D00D02BB4 /* BLTPreviewImageManager.m */; };
 		40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BD1F4626D8D1480002E493 /* LBChainElement.m */; };
 		40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BE03712679F93B000D3A70 /* LBTableViewNoStickyStyleController.m */; };
 		40C149E928AB2FBE005C9E00 /* LBNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C149E828AB2FBE005C9E00 /* LBNotificationViewController.swift */; };
@@ -348,6 +377,8 @@
 		30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3131954787990370DAC18C5B /* Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig"; sourceTree = "<group>"; };
 		3796D8BCDACC2F4D97B0EFE1 /* Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4006777A2AB19DBA0032F96E /* LBVerifyVCDisappearController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBVerifyVCDisappearController.swift; sourceTree = "<group>"; };
+		4006777E2AB7EBD40032F96E /* LBSwiftUIAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwiftUIAnimationView.swift; sourceTree = "<group>"; };
 		4009FC392A05159100221887 /* LBCollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCollectionViewExtension.swift; sourceTree = "<group>"; };
 		400A05B928619CF0006574B5 /* LBHelper1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBHelper1.swift; sourceTree = "<group>"; };
 		400A05BD2861A386006574B5 /* UIControl+LBExtension1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+LBExtension1.swift"; sourceTree = "<group>"; };
@@ -382,6 +413,8 @@
 		400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestLLDBViewController.m; sourceTree = "<group>"; };
 		400E3E992695879A00C67D52 /* LBSegemtnScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBSegemtnScrollViewController.h; sourceTree = "<group>"; };
 		400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBSegemtnScrollViewController.m; sourceTree = "<group>"; };
+		40140EEA2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		40140EEB2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		4014676E2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftOperatorsViewController.swift; sourceTree = "<group>"; };
 		401AA7E2288AB81C00A4C6DB /* LBThirdPartAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBThirdPartAnimationController.swift; sourceTree = "<group>"; };
 		401BEE8A2A259E0900F28892 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
@@ -403,16 +436,20 @@
 		401E9413272174D600F3BAB2 /* UIViewController+change1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+change1.m"; sourceTree = "<group>"; };
 		4022E72229CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestDynamicMemberLookupController.swift; sourceTree = "<group>"; };
 		4022E72429CDACD300C4476F /* LBRxSwiftPractiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftPractiseViewController.swift; sourceTree = "<group>"; };
+		4023B0682AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAlphaAndOpacityViewController.swift; sourceTree = "<group>"; };
 		402412932A0B7E9000011588 /* LBRxSwiftTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftTableViewController.swift; sourceTree = "<group>"; };
 		4026540226846D9800472F4F /* LBTestFaceAwareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestFaceAwareController.h; sourceTree = "<group>"; };
 		4026540326846D9800472F4F /* LBTestFaceAwareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestFaceAwareController.m; sourceTree = "<group>"; };
 		40265416268470B300472F4F /* LBUIProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LBUIProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		402654262684720A00472F4F /* TestSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwift.swift; sourceTree = "<group>"; };
 		4028B5232A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftSchedulersViewController.swift; sourceTree = "<group>"; };
+		4028C6062C3B7CF9004E86F3 /* LBFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFullScreenViewController.swift; sourceTree = "<group>"; };
+		4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBPresentFullScreenController.swift; sourceTree = "<group>"; };
 		402DEBA82796900600B051C5 /* LBStrategyModeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStrategyModeController.h; sourceTree = "<group>"; };
 		402DEBA92796900600B051C5 /* LBStrategyModeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStrategyModeController.m; sourceTree = "<group>"; };
 		402DEBB1279694C400B051C5 /* NSObject+LBCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBCategory.h"; sourceTree = "<group>"; };
 		402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBCategory.m"; sourceTree = "<group>"; };
+		402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawRectController.swift; sourceTree = "<group>"; };
 		402E3D2126BECAC60027CE64 /* LBBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBlockViewController.h; sourceTree = "<group>"; };
 		402E3D2226BECAC60027CE64 /* LBBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBlockViewController.m; sourceTree = "<group>"; };
 		40329B1C285C8589007C4017 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -442,8 +479,6 @@
 		4043EB2D265F9E2700EACB2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4043EB51265FA2B300EACB2B /* LBTestAutoLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestAutoLayoutViewController.h; sourceTree = "<group>"; };
 		4043EB52265FA2B300EACB2B /* LBTestAutoLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestAutoLayoutViewController.m; sourceTree = "<group>"; };
-		4043EB5A265FA2C500EACB2B /* LBTestStackViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestStackViewViewController.h; sourceTree = "<group>"; };
-		4043EB5B265FA2C500EACB2B /* LBTestStackViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestStackViewViewController.m; sourceTree = "<group>"; };
 		4043EB64265FA45600EACB2B /* LBTestAutoLayoutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestAutoLayoutView.h; sourceTree = "<group>"; };
 		4043EB65265FA45600EACB2B /* LBTestAutoLayoutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestAutoLayoutView.m; sourceTree = "<group>"; };
 		40441762299F4F17000F567F /* LBVerticalHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBVerticalHorizontalScrollView.swift; sourceTree = "<group>"; };
@@ -451,6 +486,11 @@
 		40441765299F4F28000F567F /* SYVerticalHorizontalTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVerticalHorizontalTableView.h; sourceTree = "<group>"; };
 		40474AF3282E02B1002C0A95 /* LBTestChainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestChainViewController.h; sourceTree = "<group>"; };
 		40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestChainViewController.m; sourceTree = "<group>"; };
+		404B1B772A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCutDownNumberAnimationController.swift; sourceTree = "<group>"; };
+		404B1B7A2A7B985E002B46BB /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		404B1B7B2A7B985E002B46BB /* FoldAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldAnimationView.swift; sourceTree = "<group>"; };
+		404B1B7C2A7B985E002B46BB /* FoldClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldClockView.swift; sourceTree = "<group>"; };
+		404B1B7D2A7B985E002B46BB /* FoldClockItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldClockItem.swift; sourceTree = "<group>"; };
 		404B993A26831A5900B81861 /* LBFPSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBFPSManager.h; sourceTree = "<group>"; };
 		404B993B26831A5900B81861 /* LBFPSManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBFPSManager.m; sourceTree = "<group>"; };
 		40506D712A592F5F006A41E6 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
@@ -459,6 +499,8 @@
 		405430D328AA358200CD3596 /* LBNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNotification.swift; sourceTree = "<group>"; };
 		405820662A6E2580004252CB /* LBLivePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLivePreviewViewController.swift; sourceTree = "<group>"; };
 		405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LBLivePreview.swift"; sourceTree = "<group>"; };
+		40616F1F2BFB378600FEF9A1 /* vlc-hls.m3u8-.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "vlc-hls.m3u8-.mp4"; sourceTree = "<group>"; };
+		40616F212BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSJVideoPlayerController.swift; sourceTree = "<group>"; };
 		406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+LBExtension.swift"; sourceTree = "<group>"; };
 		406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomPageViewController.swift; sourceTree = "<group>"; };
 		406298EF288FC18B006A3024 /* LBSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSliderTableCell.swift; sourceTree = "<group>"; };
@@ -517,6 +559,8 @@
 		407DA97A28A505A4000B2BA8 /* LBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTextField.swift; sourceTree = "<group>"; };
 		407E700929824B270003E997 /* LBTestCacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestCacheViewController.swift; sourceTree = "<group>"; };
 		408045022891476F00600952 /* UIView+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LBExtension.swift"; sourceTree = "<group>"; };
+		4080FEB92AD8DCD700FF79FC /* LBDrawImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawImageController.swift; sourceTree = "<group>"; };
+		4080FEBB2AD8DD5300FF79FC /* LBDrawImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawImageUtil.swift; sourceTree = "<group>"; };
 		4081A45229B182B400B476C8 /* LBTestStructAndClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestStructAndClassController.swift; sourceTree = "<group>"; };
 		4085463A27434D8F00EEEC12 /* LBKVOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBKVOViewController.h; sourceTree = "<group>"; };
 		4085463B27434D8F00EEEC12 /* LBKVOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBKVOViewController.m; sourceTree = "<group>"; };
@@ -550,6 +594,10 @@
 		409B06C02890D8DC004724EB /* LBWatchDogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBWatchDogController.swift; sourceTree = "<group>"; };
 		409B06C228910FE7004724EB /* LBTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTabbarController.swift; sourceTree = "<group>"; };
 		409B06C42891108F004724EB /* LBThirdSDKController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBThirdSDKController.swift; sourceTree = "<group>"; };
+		409C16E52A821440006EB24D /* LLPropertyWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLPropertyWrapperViewController.swift; sourceTree = "<group>"; };
+		409C16E82A860BB5006EB24D /* LBBlueSwiftUIPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBlueSwiftUIPage.swift; sourceTree = "<group>"; };
+		409C16EB2A8631D8006EB24D /* LBExpandArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBExpandArea.swift; sourceTree = "<group>"; };
+		409C16ED2A8632A9006EB24D /* LBBlueToothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBlueToothManager.swift; sourceTree = "<group>"; };
 		409C5BAB26A19988005B8344 /* NSObject+AutoProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoProperty.h"; sourceTree = "<group>"; };
 		409C5BAC26A19988005B8344 /* NSObject+AutoProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoProperty.m"; sourceTree = "<group>"; };
 		409D39162A3993F10063DA08 /* butterfly2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = butterfly2.mp4; sourceTree = "<group>"; };
@@ -566,6 +614,10 @@
 		409FC3F92A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLContractDetailMutiContractCheckTask.swift; sourceTree = "<group>"; };
 		40A20A012A15B20100353135 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = Pods/TXLiteAVSDK_Player/TXLiteAVSDK_Player/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		40A20A072A15B25C00353135 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = Pods/TXLiteAVSDK_Player/TXLiteAVSDK_Player/TXSoundTouch.xcframework; sourceTree = "<group>"; };
+		40A743642A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAnimationHomeListViewController.swift; sourceTree = "<group>"; };
+		40A743672A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAnimationRandomFadeTextController.swift; sourceTree = "<group>"; };
+		40A7436A2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBaseCollectionViewController.swift; sourceTree = "<group>"; };
+		40A7436D2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRandomFadeAnimationLabel.swift; sourceTree = "<group>"; };
 		40ABA5812A1C9D3500B84488 /* LBTestMayoNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestMayoNetworkController.swift; sourceTree = "<group>"; };
 		40ABA5832A1C9DD300B84488 /* LBUserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUserInfoService.swift; sourceTree = "<group>"; };
 		40ABA5852A1CA74600B84488 /* LBBaseMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBaseMoyaProvider.swift; sourceTree = "<group>"; };
@@ -644,6 +696,13 @@
 		40B35B7B286443DD0001FFE9 /* NSPointerArray+LBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+LBExtension.m"; sourceTree = "<group>"; };
 		40B35B7D28644EA60001FFE9 /* NSObject+LBMultipleDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBMultipleDelegate.h"; sourceTree = "<group>"; };
 		40B35B7E28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBMultipleDelegate.m"; sourceTree = "<group>"; };
+		40B4A0BD2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCollectionDecorationStickViewController.swift; sourceTree = "<group>"; };
+		40B4A0C12A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTCollectionDecorationFlowLayout.swift; sourceTree = "<group>"; };
+		40B4A0C32A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTCollectionDecorationFlowLayoutDelegate.swift; sourceTree = "<group>"; };
+		40B4A0CC2A7210A000D02BB4 /* LBResponderTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBResponderTransferViewController.swift; sourceTree = "<group>"; };
+		40B4A0D02A73D00A00D02BB4 /* LBPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBPreviewImageViewController.swift; sourceTree = "<group>"; };
+		40B4A0D22A73D05D00D02BB4 /* BLTPreviewImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLTPreviewImageManager.h; sourceTree = "<group>"; };
+		40B4A0D32A73D05D00D02BB4 /* BLTPreviewImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLTPreviewImageManager.m; sourceTree = "<group>"; };
 		40BD1F4526D8D1480002E493 /* LBChainElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBChainElement.h; sourceTree = "<group>"; };
 		40BD1F4626D8D1480002E493 /* LBChainElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBChainElement.m; sourceTree = "<group>"; };
 		40BE03702679F93B000D3A70 /* LBTableViewNoStickyStyleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTableViewNoStickyStyleController.h; sourceTree = "<group>"; };
@@ -805,6 +864,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		400677792AB19D9C0032F96E /* VCDisappear */ = {
+			isa = PBXGroup;
+			children = (
+				4006777A2AB19DBA0032F96E /* LBVerifyVCDisappearController.swift */,
+			);
+			path = VCDisappear;
+			sourceTree = "<group>";
+		};
+		4006777D2AB7EBA60032F96E /* SwiftUIAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				4006777E2AB7EBD40032F96E /* LBSwiftUIAnimationView.swift */,
+			);
+			path = SwiftUIAnimation;
+			sourceTree = "<group>";
+		};
 		400A05B828619CBB006574B5 /* LBHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,9 +967,19 @@
 			path = "分段式滑动";
 			sourceTree = "<group>";
 		};
+		40140EE92A9F408C00B7E093 /* FDFullscreenPopGesture */ = {
+			isa = PBXGroup;
+			children = (
+				40140EEA2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.h */,
+				40140EEB2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m */,
+			);
+			path = FDFullscreenPopGesture;
+			sourceTree = "<group>";
+		};
 		401BEEA72A25A24D00F28892 /* IJKPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				40616F1F2BFB378600FEF9A1 /* vlc-hls.m3u8-.mp4 */,
 				409D39162A3993F10063DA08 /* butterfly2.mp4 */,
 				40F1CD212A31EB2300A8066C /* butterfly.avi */,
 				40F1CD1F2A31E6D000A8066C /* output.mkv */,
@@ -918,6 +1003,14 @@
 			path = MethodExchange;
 			sourceTree = "<group>";
 		};
+		4023B0672AA5E31800A55675 /* Alpha和opacity */ = {
+			isa = PBXGroup;
+			children = (
+				4023B0682AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift */,
+			);
+			path = "Alpha和opacity";
+			sourceTree = "<group>";
+		};
 		4026540126846D6800472F4F /* LBTestFaceAware */ = {
 			isa = PBXGroup;
 			children = (
@@ -925,6 +1018,15 @@
 				4026540326846D9800472F4F /* LBTestFaceAwareController.m */,
 			);
 			path = LBTestFaceAware;
+			sourceTree = "<group>";
+		};
+		4028C6052C3B7CD1004E86F3 /* FullScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4028C6062C3B7CF9004E86F3 /* LBFullScreenViewController.swift */,
+				4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */,
+			);
+			path = FullScreen;
 			sourceTree = "<group>";
 		};
 		402DEBA727968F9500B051C5 /* 策略模式代替If-else */ = {
@@ -936,6 +1038,14 @@
 				402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */,
 			);
 			path = "策略模式代替If-else";
+			sourceTree = "<group>";
+		};
+		402E3A632AA1E3920039C6F5 /* DrawRect */ = {
+			isa = PBXGroup;
+			children = (
+				402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */,
+			);
+			path = DrawRect;
 			sourceTree = "<group>";
 		};
 		402E3D1526BECA880027CE64 /* Block */ = {
@@ -1004,6 +1114,10 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				4080FEB72AD8DCA600FF79FC /* SecondTabbar */,
+				40A743692A8CDC08002B90BD /* Base */,
+				40A743632A8CDAEF002B90BD /* 动画 */,
+				40B4A0BB2A6FD32D00D02BB4 /* FirstTabbarVC */,
 				40D43D0D2A67EE33001384BF /* SwiftUIModule */,
 				40F1CD1A2A31A46600A8066C /* LBUIProject.entitlements */,
 				40744D032A2F11310096F399 /* 设计模式 */,
@@ -1012,57 +1126,21 @@
 				400A4FA02A04B24500C7A51B /* 本地化 */,
 				40AE6F9829C80AE600C69932 /* APM */,
 				40D2763F29C0754C005343E3 /* ThirdTabbar */,
-				4081A45129B1829A00B476C8 /* TestStructAndClass */,
-				40C937FD299F0D5100EC434D /* 上下左右滑动 */,
-				40C20B48298A094000B23342 /* 响应链 */,
-				406BF20A2984F02600E2479A /* RxSwift */,
-				407E700829822CBA0003E997 /* 测试NSCache */,
-				40EA1883294728280003F457 /* 置灰 */,
 				407B84B02940314300AEDAEC /* ThirdPartModule */,
 				409DCEBD28B76E1F00699E24 /* Util */,
 				407DA97528A4CF35000B2BA8 /* 自定义控件 */,
-				409B06BF2890D8B1004724EB /* 监测卡顿的 */,
-				406298EC288FBD05006A3024 /* 自定义轮播图 */,
-				408F6820288AB77C0019F47D /* 动画 */,
-				408F681D288AA0490019F47D /* 转场动画 */,
-				408F6818288A871B0019F47D /* 骨架屏 */,
-				403B24D72865624B0009D8E9 /* 下拉下一页 */,
-				40B35B76286441770001FFE9 /* 多代理的实现 */,
-				400A05CF28630BAA006574B5 /* 导航栏渐变色 */,
 				400A05C52861AABF006574B5 /* LBPreventRepeatTouchUpInside */,
 				400A05B828619CBB006574B5 /* LBHelper */,
 				4063EF47285ADDB600335BA2 /* CollectionView */,
-				4086B7AC2845B904003CE2FF /* 双UIScrollView吸顶 */,
-				407603AD28409E7D0019EC69 /* TableViewSelectCell */,
 				407603A3284077090019EC69 /* UnrecoginzeSelector */,
 				4076039C284069230019EC69 /* RunLoop */,
-				40474AF2282E0297002C0A95 /* 链式调用 */,
 				402DEBA727968F9500B051C5 /* 策略模式代替If-else */,
-				40795CE92786E9B300E2A5B2 /* AvoidCrash */,
 				40795CCC2786BE0B00E2A5B2 /* ImageMemory */,
-				4085464727438EB700EEEC12 /* KVC */,
 				4085464027434F2500EEEC12 /* LoadAndInitialize */,
-				4085463627434D7100EEEC12 /* KVO */,
 				401E940B2721749D00F3BAB2 /* MethodExchange */,
-				402E3D1526BECA880027CE64 /* Block */,
-				4089873826B943450004BBA8 /* Animation */,
-				4089872826B9129F0004BBA8 /* AffineTransform */,
-				40F37AD026B7C45300009132 /* Clock */,
-				4033915926B2A1F400259FC6 /* StretchImage */,
-				40667D7426A514E700027791 /* GCD */,
 				409C5BA926A19969005B8344 /* Category */,
-				40DD20B8269FE5AA001E691B /* TextRecognize */,
-				400E3E982695877900C67D52 /* 分段式滑动 */,
-				400E3DF226954E9400C67D52 /* LBTestLLDB */,
-				400E3DE82695443100C67D52 /* TestClassCacheMethod */,
-				4066CF3A269314A2001A323C /* SafirController */,
-				4026540126846D6800472F4F /* LBTestFaceAware */,
 				404B993926831A3E00B81861 /* LBFPSManager */,
-				40E19653267B4E07008207D5 /* 圆角带阴影mask */,
 				40BE036F2679F917000D3A70 /* TableViewNoStick */,
-				40B11E12266DC9A800337CE4 /* TestOffScreen */,
-				40B206B02669F7640016A25C /* TestGesture */,
-				4043EB50265FA1B200EACB2B /* TestStackView */,
 				4043EB3C265F9E9400EACB2B /* TestAutoLayout */,
 				4043EB04265F9E2400EACB2B /* AppDelegate.h */,
 				4043EB05265F9E2400EACB2B /* AppDelegate.m */,
@@ -1123,15 +1201,6 @@
 			path = TestAutoLayout;
 			sourceTree = "<group>";
 		};
-		4043EB50265FA1B200EACB2B /* TestStackView */ = {
-			isa = PBXGroup;
-			children = (
-				4043EB5A265FA2C500EACB2B /* LBTestStackViewViewController.h */,
-				4043EB5B265FA2C500EACB2B /* LBTestStackViewViewController.m */,
-			);
-			path = TestStackView;
-			sourceTree = "<group>";
-		};
 		4043EB63265FA44200EACB2B /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1151,6 +1220,26 @@
 				408045022891476F00600952 /* UIView+LBExtension.swift */,
 			);
 			path = "链式调用";
+			sourceTree = "<group>";
+		};
+		404B1B762A7B957A002B46BB /* 倒计时动画 */ = {
+			isa = PBXGroup;
+			children = (
+				404B1B792A7B985E002B46BB /* View */,
+				404B1B772A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift */,
+			);
+			path = "倒计时动画";
+			sourceTree = "<group>";
+		};
+		404B1B792A7B985E002B46BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				404B1B7A2A7B985E002B46BB /* UIColor+Extension.swift */,
+				404B1B7B2A7B985E002B46BB /* FoldAnimationView.swift */,
+				404B1B7C2A7B985E002B46BB /* FoldClockView.swift */,
+				404B1B7D2A7B985E002B46BB /* FoldClockItem.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		404B993926831A3E00B81861 /* LBFPSManager */ = {
@@ -1386,6 +1475,8 @@
 		407DA97528A4CF35000B2BA8 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
+				40A7436C2A8DB5E8002B90BD /* 随机渐变fadeLabel */,
+				40B4A0C02A6FD6C000D02BB4 /* CollectionViewFlowLayout */,
 				405430D228AA356900CD3596 /* LBNotificationView */,
 				407DA97728A4CF47000B2BA8 /* LBTextField */,
 				407DA97628A4CF3E000B2BA8 /* LBTextView */,
@@ -1415,6 +1506,23 @@
 				407E700929824B270003E997 /* LBTestCacheViewController.swift */,
 			);
 			path = "测试NSCache";
+			sourceTree = "<group>";
+		};
+		4080FEB72AD8DCA600FF79FC /* SecondTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				4080FEB82AD8DCC600FF79FC /* DrawImage */,
+			);
+			path = SecondTabbar;
+			sourceTree = "<group>";
+		};
+		4080FEB82AD8DCC600FF79FC /* DrawImage */ = {
+			isa = PBXGroup;
+			children = (
+				4080FEB92AD8DCD700FF79FC /* LBDrawImageController.swift */,
+				4080FEBB2AD8DD5300FF79FC /* LBDrawImageUtil.swift */,
+			);
+			path = DrawImage;
 			sourceTree = "<group>";
 		};
 		4081A45129B1829A00B476C8 /* TestStructAndClass */ = {
@@ -1557,6 +1665,31 @@
 			path = "监测卡顿的";
 			sourceTree = "<group>";
 		};
+		409C16E42A821423006EB24D /* PropertyWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				409C16E52A821440006EB24D /* LLPropertyWrapperViewController.swift */,
+			);
+			path = PropertyWrapper;
+			sourceTree = "<group>";
+		};
+		409C16E72A860B99006EB24D /* BlueTooth */ = {
+			isa = PBXGroup;
+			children = (
+				409C16E82A860BB5006EB24D /* LBBlueSwiftUIPage.swift */,
+				409C16ED2A8632A9006EB24D /* LBBlueToothManager.swift */,
+			);
+			path = BlueTooth;
+			sourceTree = "<group>";
+		};
+		409C16EA2A86317E006EB24D /* OnTap空白区域无效的 */ = {
+			isa = PBXGroup;
+			children = (
+				409C16EB2A8631D8006EB24D /* LBExpandArea.swift */,
+			);
+			path = "OnTap空白区域无效的";
+			sourceTree = "<group>";
+		};
 		409C5BA926A19969005B8344 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,6 +1721,7 @@
 		409DCEBD28B76E1F00699E24 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				40140EE92A9F408C00B7E093 /* FDFullscreenPopGesture */,
 				401BEE8A2A259E0900F28892 /* IJKMediaFramework.framework */,
 				407B84AE2940300400AEDAEC /* BLTReverseSequence.swift */,
 				409DCEBE28B76E3C00699E24 /* CustomQueue */,
@@ -1615,6 +1749,39 @@
 			path = SwiftChain;
 			sourceTree = "<group>";
 		};
+		40A743632A8CDAEF002B90BD /* 动画 */ = {
+			isa = PBXGroup;
+			children = (
+				40A743662A8CDB30002B90BD /* 文字随机渐入渐出动画 */,
+				40A743642A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift */,
+			);
+			path = "动画";
+			sourceTree = "<group>";
+		};
+		40A743662A8CDB30002B90BD /* 文字随机渐入渐出动画 */ = {
+			isa = PBXGroup;
+			children = (
+				40A743672A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift */,
+			);
+			path = "文字随机渐入渐出动画";
+			sourceTree = "<group>";
+		};
+		40A743692A8CDC08002B90BD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				40A7436A2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		40A7436C2A8DB5E8002B90BD /* 随机渐变fadeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				40A7436D2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift */,
+			);
+			path = "随机渐变fadeLabel";
+			sourceTree = "<group>";
+		};
 		40ABA5802A1C9D1400B84488 /* Moya网络库 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1629,6 +1796,12 @@
 		40ABA5892A1DA86800B84488 /* 验证 */ = {
 			isa = PBXGroup;
 			children = (
+				4028C6052C3B7CD1004E86F3 /* FullScreen */,
+				400677792AB19D9C0032F96E /* VCDisappear */,
+				4023B0672AA5E31800A55675 /* Alpha和opacity */,
+				402E3A632AA1E3920039C6F5 /* DrawRect */,
+				409C16E72A860B99006EB24D /* BlueTooth */,
+				409C16E42A821423006EB24D /* PropertyWrapper */,
 				405820652A6E2566004252CB /* LivePreview */,
 				40D43D242A6A7F65001384BF /* AwaitAsync */,
 				40ACEE7B2A4D67F90001BCAB /* ResponderTransfor */,
@@ -1874,6 +2047,83 @@
 			path = "多代理的实现";
 			sourceTree = "<group>";
 		};
+		40B4A0BB2A6FD32D00D02BB4 /* FirstTabbarVC */ = {
+			isa = PBXGroup;
+			children = (
+				40E19653267B4E07008207D5 /* 圆角带阴影mask */,
+				40DD20B8269FE5AA001E691B /* TextRecognize */,
+				40B206B02669F7640016A25C /* TestGesture */,
+				40B11E12266DC9A800337CE4 /* TestOffScreen */,
+				402E3D1526BECA880027CE64 /* Block */,
+				4089873826B943450004BBA8 /* Animation */,
+				4089872826B9129F0004BBA8 /* AffineTransform */,
+				40F37AD026B7C45300009132 /* Clock */,
+				4033915926B2A1F400259FC6 /* StretchImage */,
+				40667D7426A514E700027791 /* GCD */,
+				400E3E982695877900C67D52 /* 分段式滑动 */,
+				400E3DF226954E9400C67D52 /* LBTestLLDB */,
+				40B35B76286441770001FFE9 /* 多代理的实现 */,
+				400E3DE82695443100C67D52 /* TestClassCacheMethod */,
+				4066CF3A269314A2001A323C /* SafirController */,
+				4026540126846D6800472F4F /* LBTestFaceAware */,
+				4085463627434D7100EEEC12 /* KVO */,
+				40474AF2282E0297002C0A95 /* 链式调用 */,
+				40795CE92786E9B300E2A5B2 /* AvoidCrash */,
+				4085464727438EB700EEEC12 /* KVC */,
+				4081A45129B1829A00B476C8 /* TestStructAndClass */,
+				40C937FD299F0D5100EC434D /* 上下左右滑动 */,
+				40C20B48298A094000B23342 /* 响应链 */,
+				406BF20A2984F02600E2479A /* RxSwift */,
+				407E700829822CBA0003E997 /* 测试NSCache */,
+				40EA1883294728280003F457 /* 置灰 */,
+				409B06BF2890D8B1004724EB /* 监测卡顿的 */,
+				406298EC288FBD05006A3024 /* 自定义轮播图 */,
+				408F6820288AB77C0019F47D /* 动画 */,
+				408F681D288AA0490019F47D /* 转场动画 */,
+				408F6818288A871B0019F47D /* 骨架屏 */,
+				403B24D72865624B0009D8E9 /* 下拉下一页 */,
+				400A05CF28630BAA006574B5 /* 导航栏渐变色 */,
+				4086B7AC2845B904003CE2FF /* 双UIScrollView吸顶 */,
+				407603AD28409E7D0019EC69 /* TableViewSelectCell */,
+			);
+			path = FirstTabbarVC;
+			sourceTree = "<group>";
+		};
+		40B4A0BC2A6FD62400D02BB4 /* CollectionView装饰悬停的 */ = {
+			isa = PBXGroup;
+			children = (
+				40B4A0BD2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift */,
+			);
+			path = "CollectionView装饰悬停的";
+			sourceTree = "<group>";
+		};
+		40B4A0C02A6FD6C000D02BB4 /* CollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				40B4A0C12A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift */,
+				40B4A0C32A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift */,
+			);
+			path = CollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
+		40B4A0CB2A72107E00D02BB4 /* 跨多层传递响应的 */ = {
+			isa = PBXGroup;
+			children = (
+				40B4A0CC2A7210A000D02BB4 /* LBResponderTransferViewController.swift */,
+			);
+			path = "跨多层传递响应的";
+			sourceTree = "<group>";
+		};
+		40B4A0CF2A73CFF300D02BB4 /* 图片预览 */ = {
+			isa = PBXGroup;
+			children = (
+				40B4A0D02A73D00A00D02BB4 /* LBPreviewImageViewController.swift */,
+				40B4A0D22A73D05D00D02BB4 /* BLTPreviewImageManager.h */,
+				40B4A0D32A73D05D00D02BB4 /* BLTPreviewImageManager.m */,
+			);
+			path = "图片预览";
+			sourceTree = "<group>";
+		};
 		40BD1F4426D8D12C0002E493 /* LBPromiseChain */ = {
 			isa = PBXGroup;
 			children = (
@@ -1895,6 +2145,10 @@
 		40C149E728AB2F83005C9E00 /* SecondCustomController */ = {
 			isa = PBXGroup;
 			children = (
+				404B1B762A7B957A002B46BB /* 倒计时动画 */,
+				40B4A0CF2A73CFF300D02BB4 /* 图片预览 */,
+				40B4A0CB2A72107E00D02BB4 /* 跨多层传递响应的 */,
+				40B4A0BC2A6FD62400D02BB4 /* CollectionView装饰悬停的 */,
 				40D43CEF2A614906001384BF /* ScrollAnimating */,
 				40D43CDC2A60036C001384BF /* StackViewAndScrollView */,
 				40D43CC02A5E9681001384BF /* 展开收起label */,
@@ -1946,6 +2200,7 @@
 				40D2764029C07580005343E3 /* LBTestWhereViewController.swift */,
 				40AE6FB429C8610100C69932 /* JxPagingDemo */,
 				40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */,
+				40616F212BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift */,
 			);
 			path = ThirdTabbar;
 			sourceTree = "<group>";
@@ -2034,6 +2289,8 @@
 		40D43D0D2A67EE33001384BF /* SwiftUIModule */ = {
 			isa = PBXGroup;
 			children = (
+				4006777D2AB7EBA60032F96E /* SwiftUIAnimation */,
+				409C16EA2A86317E006EB24D /* OnTap空白区域无效的 */,
 				40D43D202A6932AB001384BF /* TestSwiftUI */,
 				40D43D1B2A69083F001384BF /* ScrollList */,
 				40D43D102A67EED6001384BF /* ChartView */,
@@ -2349,6 +2606,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40616F202BFB385E00FEF9A1 /* vlc-hls.m3u8-.mp4 in Resources */,
 				40D43CBF2A5D35B3001384BF /* 11111.flac in Resources */,
 				409D39172A3993F10063DA08 /* butterfly2.mp4 in Resources */,
 				40F1CD202A31E74200A8066C /* output.mkv in Resources */,
@@ -2562,14 +2820,17 @@
 			files = (
 				401E9414272174D600F3BAB2 /* UIViewController+change1.m in Sources */,
 				409FC3DE2A25F7560053B88C /* LBVideoPlayerBottomActionToolBar.swift in Sources */,
+				4080FEBC2AD8DD5300FF79FC /* LBDrawImageUtil.swift in Sources */,
 				40AE6FDD29C8616600C69932 /* HeightChangeViewController.swift in Sources */,
+				40A7436B2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift in Sources */,
 				40AE6FAE29C80AE600C69932 /* BLTAPMNetworkManager.m in Sources */,
+				4023B0692AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift in Sources */,
 				40AE6FA929C80AE600C69932 /* BLTAPMFPSManager.m in Sources */,
+				4028C6092C3B80FA004E86F3 /* LBPresentFullScreenController.swift in Sources */,
 				400A4F9A2A03AD0800C7A51B /* LBRxSwiftOrEmptyShareController.swift in Sources */,
 				4076039F2840693E0019EC69 /* LBTestRunloopViewController.m in Sources */,
 				402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */,
 				400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */,
-				4043EB5C265FA2C500EACB2B /* LBTestStackViewViewController.m in Sources */,
 				401BEEA92A25A27300F28892 /* LBIJKPlayerController.swift in Sources */,
 				40B206B32669F7770016A25C /* LBTestGestureViewController.m in Sources */,
 				407B84B6294031B500AEDAEC /* LBCustomOperatorController.swift in Sources */,
@@ -2578,18 +2839,21 @@
 				4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */,
 				40795CE52786E6EC00E2A5B2 /* LBLoadAndInitializeSubClassController+Test4.m in Sources */,
 				40AE6FAF29C80AE600C69932 /* BLTAPMObserver.m in Sources */,
+				40B4A0C42A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift in Sources */,
 				40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */,
 				407B84B32940317500AEDAEC /* LBCustomReverseSequenceController.swift in Sources */,
 				4043EB0C265F9E2400EACB2B /* LBHomeViewController.m in Sources */,
 				40D43D012A667AA9001384BF /* UIView+LBColor.m in Sources */,
 				4066CF3D269314BF001A323C /* LBSafirController.m in Sources */,
 				4091DE4328AA48F000798E2A /* LBNotificationView.swift in Sources */,
+				40B4A0D42A73D05D00D02BB4 /* BLTPreviewImageManager.m in Sources */,
 				40ABA59C2A1F4F3C00B84488 /* LBMoyaTargetTypeProtocol.swift in Sources */,
 				40ABA5882A1CAA7000B84488 /* LBMoyaProviderResult.swift in Sources */,
 				4091F4B62A13908F00F29C06 /* LBFoldCardViewController.swift in Sources */,
 				4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */,
 				400A05BA28619CF0006574B5 /* LBHelper1.swift in Sources */,
 				40AE6FDF29C8616600C69932 /* NestViewController.swift in Sources */,
+				4080FEBA2AD8DCD700FF79FC /* LBDrawImageController.swift in Sources */,
 				40AE6FDB29C8616600C69932 /* HeightChangeAnimationTableHeaderView.swift in Sources */,
 				40D43D062A67DC12001384BF /* LBScrollViewAnimatingExampleController.swift in Sources */,
 				407B84AF2940300400AEDAEC /* BLTReverseSequence.swift in Sources */,
@@ -2600,6 +2864,7 @@
 				409FC3E52A274BE70053B88C /* LBAVPlayerController.swift in Sources */,
 				40B35B7528640E970001FFE9 /* LBNavigatorScrollHiddenController.swift in Sources */,
 				40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */,
+				40616F222BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift in Sources */,
 				40D46FC9288E7792001A153A /* LBResponseChainManager.m in Sources */,
 				40795CD42786BE7800E2A5B2 /* LBImageMemoryController.swift in Sources */,
 				409FC3FA2A2A010D0053B88C /* LLContractDetailBeforeSignCheckTask.swift in Sources */,
@@ -2633,6 +2898,7 @@
 				400A05C82861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m in Sources */,
 				409FC3ED2A29CFC10053B88C /* BLTSwiftTaskViewController.swift in Sources */,
 				40D5B0522860721000E1CA97 /* LBTestTerminalExec.swift in Sources */,
+				404B1B782A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift in Sources */,
 				40D43CC42A5E987C001384BF /* LBExpandCloseLabel.swift in Sources */,
 				400A05CE2862FB62006574B5 /* 栈溢出.swift in Sources */,
 				40C149E928AB2FBE005C9E00 /* LBNotificationViewController.swift in Sources */,
@@ -2652,6 +2918,7 @@
 				407603AF28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift in Sources */,
 				405430D428AA358200CD3596 /* LBNotification.swift in Sources */,
 				40AE6FB329C860B700C69932 /* LBJXPagingViewController.swift in Sources */,
+				409C16EE2A8632A9006EB24D /* LBBlueToothManager.swift in Sources */,
 				40D43D262A6A7F7D001384BF /* LBAwaitAsyncViewController.swift in Sources */,
 				4063EF53285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m in Sources */,
 				402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */,
@@ -2664,6 +2931,7 @@
 				40DF3564286466A7008EE299 /* LBMultipleDelegatesController.m in Sources */,
 				40ABA5A32A1F535B00B84488 /* UIViewController+LBList.swift in Sources */,
 				40ABA5862A1CA74600B84488 /* LBBaseMoyaProvider.swift in Sources */,
+				40A7436E2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift in Sources */,
 				40D43D162A67EED6001384BF /* LBChartMutiCurveMarkView.swift in Sources */,
 				403B24DC2865629C0009D8E9 /* LBDragDownNextPageViewController.swift in Sources */,
 				407DA97928A4CF93000B2BA8 /* LBTextView.swift in Sources */,
@@ -2671,8 +2939,10 @@
 				409B06C328910FE7004724EB /* LBTabbarController.swift in Sources */,
 				409FC3EB2A29C80A0053B88C /* BLTTaskChainManager.swift in Sources */,
 				40AE6FE929C8616600C69932 /* SmoothListViewController.swift in Sources */,
+				404B1B802A7B985E002B46BB /* FoldClockView.swift in Sources */,
 				409ACE4926BA614E0092A2DF /* LBTransitionAnimationController.m in Sources */,
 				40744D082A2F16660096F399 /* LBDecoratorModelViewController.swift in Sources */,
+				4006777B2AB19DBA0032F96E /* LBVerifyVCDisappearController.swift in Sources */,
 				400A05D428630BFA006574B5 /* LBNavigatorAlphaChangeController.swift in Sources */,
 				40D43D1F2A690DE2001384BF /* LBScrollListView.swift in Sources */,
 				408045032891476F00600952 /* UIView+LBExtension.swift in Sources */,
@@ -2680,6 +2950,7 @@
 				400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */,
 				40AE6FD929C8616600C69932 /* VCViewController.swift in Sources */,
 				40ABFE2529DC333E008114C5 /* UITextField+LBFormatter.swift in Sources */,
+				40A743682A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift in Sources */,
 				4063EF4E285ADDCD00335BA2 /* CHTCollectionViewWaterfallCell.m in Sources */,
 				40B35B7328640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift in Sources */,
 				40D43CF32A614A4D001384BF /* LBListScrollAnimatingHeaderView.swift in Sources */,
@@ -2696,10 +2967,13 @@
 				409B06C52891108F004724EB /* LBThirdSDKController.swift in Sources */,
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
 				406EBD1C29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift in Sources */,
+				40B4A0BE2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift in Sources */,
 				40AE6FE729C8616600C69932 /* TestListBaseView.swift in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
 				403B24DE286565C80009D8E9 /* LBDragDownSecondPageView.swift in Sources */,
+				402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */,
 				4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */,
+				40B4A0D12A73D00A00D02BB4 /* LBPreviewImageViewController.swift in Sources */,
 				4022E72529CDACD300C4476F /* LBRxSwiftPractiseViewController.swift in Sources */,
 				40D46FC6288E767A001A153A /* NSObject+LBResponseChain.m in Sources */,
 				40D43CCD2A5FCFA7001384BF /* LBCollectionCompositionLayoutViewController.swift in Sources */,
@@ -2710,11 +2984,16 @@
 				40D43CF12A61492E001384BF /* LBListScrollAnimatingController.swift in Sources */,
 				406298EE288FBD28006A3024 /* LBCustomPageViewController.swift in Sources */,
 				40C149ED28AB497A005C9E00 /* UIView+LBExtension.m in Sources */,
+				404B1B7F2A7B985E002B46BB /* FoldAnimationView.swift in Sources */,
 				40DF356128646014008EE299 /* NSString+LBExtension.m in Sources */,
+				409C16E62A821440006EB24D /* LLPropertyWrapperViewController.swift in Sources */,
 				407DA97B28A505A4000B2BA8 /* LBTextField.swift in Sources */,
+				404B1B812A7B985E002B46BB /* FoldClockItem.swift in Sources */,
 				40D43D182A67EED6001384BF /* LBChartView.swift in Sources */,
 				40B35B71286407FD0001FFE9 /* LBBaseNavigationController.m in Sources */,
+				409C16E92A860BB5006EB24D /* LBBlueSwiftUIPage.swift in Sources */,
 				40AE6FEE29C9859C00C69932 /* LBPageScrollViewController.swift in Sources */,
+				404B1B7E2A7B985E002B46BB /* UIColor+Extension.swift in Sources */,
 				40AE6FE529C8616600C69932 /* PagingViewTableHeaderView.swift in Sources */,
 				402412942A0B7E9000011588 /* LBRxSwiftTableViewController.swift in Sources */,
 				40AE6FEA29C8616600C69932 /* ZoomViewController.swift in Sources */,
@@ -2732,6 +3011,7 @@
 				408F681F288AA0830019F47D /* LLTransitionAnimationController.swift in Sources */,
 				400A4FBB2A04EA4600C7A51B /* LBTestPageViewController.swift in Sources */,
 				40D46FC2288E7538001A153A /* LBResponseChain.m in Sources */,
+				40140EEC2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				4086B7B22845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift in Sources */,
 				40D43D1A2A67EF11001384BF /* LBChartTabView.swift in Sources */,
 				40D2764129C07580005343E3 /* LBTestWhereViewController.swift in Sources */,
@@ -2744,16 +3024,19 @@
 				40B35B7F28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m in Sources */,
 				40D43D222A6932BC001384BF /* LBTestSwiftUI.swift in Sources */,
 				4043EB53265FA2B300EACB2B /* LBTestAutoLayoutViewController.m in Sources */,
+				40A743652A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift in Sources */,
 				404B993C26831A5900B81861 /* LBFPSManager.m in Sources */,
 				40C937FF299F0D7400EC434D /* LBTestScrollVerticalHorizontalController.swift in Sources */,
 				40AE6FE429C8616600C69932 /* ListCollectionViewController.swift in Sources */,
 				40D43CD52A5FE251001384BF /* LBCollectionCompositionLayoutViewModel.swift in Sources */,
 				400A05D82863237B006574B5 /* UIImage+LBExtension.swift in Sources */,
 				40ABA5A52A205EC600B84488 /* Dictionary+LBExtension.swift in Sources */,
+				4028C6072C3B7CF9004E86F3 /* LBFullScreenViewController.swift in Sources */,
 				400A4F982A038C2300C7A51B /* LBRxSwiftHomeViewController.swift in Sources */,
 				40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */,
 				40AE6FD629C8616600C69932 /* CollectionViewViewController.swift in Sources */,
 				40D43D1D2A690B0A001384BF /* LBScrollKitHomeView.swift in Sources */,
+				409C16EC2A8631D8006EB24D /* LBExpandArea.swift in Sources */,
 				4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */,
 				400A4FA22A04B25C00C7A51B /* LBLocaleViewController.swift in Sources */,
 				40AE6FE129C8616600C69932 /* BaseViewController.swift in Sources */,
@@ -2761,6 +3044,7 @@
 				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,
 				400A05CC2862F159006574B5 /* Array+LBExtension.swift in Sources */,
 				40ACEE732A49A0340001BCAB /* EKAttributes+LBExtension.swift in Sources */,
+				40B4A0C22A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift in Sources */,
 				400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */,
 				400A4FB92A04D9EC00C7A51B /* LBFlipCardViewController.swift in Sources */,
 				40ABA5982A1F00EC00B84488 /* UIColorLBExtension.swift in Sources */,
@@ -2781,11 +3065,13 @@
 				40ABA5902A1DA98B00B84488 /* LBVerifyListController.swift in Sources */,
 				405820672A6E2580004252CB /* LBLivePreviewViewController.swift in Sources */,
 				409DCEC028B76E5500699E24 /* LBCustomQueueManager.swift in Sources */,
+				40B4A0CD2A7210A000D02BB4 /* LBResponderTransferViewController.swift in Sources */,
 				40C20B4A298A095500B23342 /* LBTestHitViewController.swift in Sources */,
 				400A05BE2861A386006574B5 /* UIControl+LBExtension1.swift in Sources */,
 				40AE6FDE29C8616600C69932 /* NestSubjectViewController.swift in Sources */,
 				409FC3FC2A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift in Sources */,
 				40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */,
+				4006777F2AB7EBD40032F96E /* LBSwiftUIAnimationView.swift in Sources */,
 				40AE6FDA29C8616600C69932 /* VCListViewController.swift in Sources */,
 				4085463C27434D8F00EEEC12 /* LBKVOViewController.m in Sources */,
 				40D43D152A67EED6001384BF /* LBChartLineMarkView.swift in Sources */,

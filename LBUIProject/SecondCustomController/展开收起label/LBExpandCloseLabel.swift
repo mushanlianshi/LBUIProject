@@ -71,7 +71,7 @@ class LBExpandCloseLabel: YYLabel {
     
     ///判断是否需要添加展开按钮
     private func addExpandBtnIfNeeded(){
-        if(checkOptionalStringIsEmpty(text: attributedText?.string) && checkOptionalStringIsEmpty(text: text)){
+        if(bltCheckStringIsEmpty(attributedText?.string) && bltCheckStringIsEmpty(text)){
             return
         }
         

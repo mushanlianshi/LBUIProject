@@ -6,52 +6,55 @@
 //
 
 import UIKit
+import SwiftUI
 
-class LBVerifyViewController: UIViewController {
+class LBVerifyViewController: LBBaseCollectionViewController {
 
-    lazy var collectionView: UICollectionView = {
-        let width = view.bounds.width / 3
-        let size = CGSize(width: width, height: width * 0.65)
-        let collectionV = UICollectionView.blt.initFlowCollectionView(miniLineSpacing: 0, miniInterItemSpacing: 0, itemSize: size, scrollDirection: .vertical, delegate: self, dataSource: self)
-        collectionV.register(LBSecondColumnListCell.self, forCellWithReuseIdentifier: LBSecondColumnListCell.blt_className)
-        return collectionV
-    }()
     
-    lazy var dataSources = [
-        LBListItemModel.init(title: "验证BaseListVC", vcClass: LBVerifyListController.self),
-        LBListItemModel.init(title: "Widget数据更新", vcClass: LBWidgetUpdateController.self),
-        LBListItemModel.init(title: "跨层级响应传递", vcClass: LBResponderTransferController.self),
-        LBListItemModel.init(title: "Await Async 异步函数", vcClass: LBAwaitAsyncViewController.self),
-        LBListItemModel.init(title: "UIKit借助SwiftUI实现实时预览", vcClass: LBLivePreviewViewController.self)
-    ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(collectionView)
+    override var dataSources: [LBListItemModel]{
+        set{}
+        get{
+            [
+                LBListItemModel.init(title: "验证BaseListVC", vcClass: LBVerifyListController.self),
+                LBListItemModel.init(title: "Widget数据更新", vcClass: LBWidgetUpdateController.self),
+                LBListItemModel.init(title: "跨层级响应传递", vcClass: LBResponderTransferController.self),
+                LBListItemModel.init(title: "Await Async 异步函数", vcClass: LBAwaitAsyncViewController.self),
+                LBListItemModel.init(title: "UIKit借助SwiftUI实现实时预览", vcClass: LBLivePreviewViewController.self),
+                LBListItemModel.init(title: "属性包装器", vcClass: LLPropertyWrapperViewController.self),
+                LBListItemModel.init(title: "蓝牙", vcClass: nil),
+                LBListItemModel.init(title: "drawRect", vcClass: LBDrawRectController.self),
+                LBListItemModel.init(title: "alpha  And opacity", vcClass: LBAlphaAndOpacityViewController.self),
+                LBListItemModel.init(title: "VC disappear方法", vcClass: LBVerifyVCDisappearController.self),
+                LBListItemModel.init(title: "全屏", vcClass: LBFullScreenViewController.self),
+                LBListItemModel.init(title: "present全屏", vcClass: LBPresentFullScreenController.self)
+            ]
+        }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
+    override var shouldAutorotate: Bool{
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .portrait
     }
 
 }
 
 
-extension LBVerifyViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSources.count
-    }
+extension LBVerifyViewController{
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.blt.dequeueReusableCell(LBSecondColumnListCell.self, indexPath: indexPath)
-        cell.title = dataSources[indexPath.row].title
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = dataSources[indexPath.row]
+        
+        if item.title == "蓝牙"{
+            self.navigationController?.pushViewController(UIHostingController(rootView: LBBluetoothSwiftUIPage()), animated: true)
+            return
+        }else if item.title == "present全屏"{
+            self.present(LBPresentFullScreenController(), animated: true)
+            return
+        }
+        
         guard let vcClass = item.vcClass as? UIViewController.Type else {
             return
         }

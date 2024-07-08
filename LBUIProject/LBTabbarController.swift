@@ -23,7 +23,7 @@ public extension LBTestNameSpaceProtocol {
     }
 }
 
-/// 不借助一个机构体  就要每个分类都实现下lb属性
+/// 不借助一个结构体  就要每个分类都实现下lb属性
 extension LBTabbarController: LBTestNameSpaceProtocol{
     typealias ItemType = UIViewController
     
@@ -31,6 +31,8 @@ extension LBTabbarController: LBTestNameSpaceProtocol{
         return self
     }
 }
+
+
 
 enum LBTabbarAnimatingState {
     case up
@@ -60,7 +62,7 @@ class LBTabbarController: UITabBarController {
         initSubControllers()
         addAnimateImageView()
         startAnimating()
-        let string = "巴乐兔业务员正在准备为您建租【金蝶测试小区6635室】，当前租金调整为500.00元/月（原价为1199.00元/月）,戳https://m.baletu.com/tui/fd/index.html?action_type=contract_order_confirm反馈是否同意该价格"
+        var string = "巴乐兔业务员正在准备为您建租【金蝶测试小区6635室】，当前租金调整为500.00元/月（原价为1199.00元/月）,戳https://m.baletu.com/tui/fd/index.html?action_type=contract_order_confirm反馈是否同意该价格"
         print("LBLog string count \(string.count)")
 //        self.view.addSubview(testView)
 //        testView.frame = CGRect(x: 100, y: 200, width: 200, height: 100)
@@ -173,6 +175,21 @@ class LBTabbarController: UITabBarController {
             self.animatingState = .down
         }
         homeAnimatingImageView.layer.add(animation, forKey: nil)
+    }
+    
+    
+    
+    /// 处理push支持子controller 横竖屏的
+    override var shouldAutorotate: Bool{
+        return self.selectedViewController?.shouldAutorotate ?? false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return self.selectedViewController?.supportedInterfaceOrientations ?? .portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        return self.selectedViewController?.preferredInterfaceOrientationForPresentation ?? .portrait
     }
     
 }
