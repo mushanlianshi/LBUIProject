@@ -73,6 +73,8 @@ target 'LBUIProject' do
    #横幅播放音乐 点击全屏  收缩的
    pod  'LNPopupController'
    pod "SJVideoPlayer"
+   #日期处理库
+   pod 'SwiftDate', '6.3.1'
 
 
 

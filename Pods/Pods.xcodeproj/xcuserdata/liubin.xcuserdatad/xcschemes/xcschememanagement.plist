@@ -382,68 +382,75 @@
 			<key>orderHint</key>
 			<integer>56</integer>
 		</dict>
-		<key>SwiftEntryKit.xcscheme</key>
+		<key>SwiftDate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>57</integer>
 		</dict>
-		<key>SwipeTableView.xcscheme</key>
+		<key>SwiftEntryKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>58</integer>
 		</dict>
-		<key>TXLiteAVSDK_Player.xcscheme</key>
+		<key>SwipeTableView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>59</integer>
 		</dict>
-		<key>TZImagePickerController.xcscheme</key>
+		<key>TXLiteAVSDK_Player.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>60</integer>
 		</dict>
-		<key>ViewAnimator.xcscheme</key>
+		<key>TZImagePickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>61</integer>
 		</dict>
-		<key>Watchdog.xcscheme</key>
+		<key>ViewAnimator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>62</integer>
 		</dict>
-		<key>WechatOpenSDK.xcscheme</key>
+		<key>Watchdog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>63</integer>
 		</dict>
-		<key>YYKit.xcscheme</key>
+		<key>WechatOpenSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>64</integer>
 		</dict>
-		<key>YYModel.xcscheme</key>
+		<key>YYKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>65</integer>
+		</dict>
+		<key>YYModel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>66</integer>
 		</dict>
 		<key>libwebp.xcscheme</key>
 		<dict>

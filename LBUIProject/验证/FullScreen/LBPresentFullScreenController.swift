@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 /// present 类型竖屏
 class LBPresentFullScreenController: UIViewController{
@@ -48,6 +49,7 @@ class LBPresentFullScreenController: UIViewController{
             make.left.equalTo(0)
             make.top.equalTo(0)
         }
+        testDate()
     }
     
     override var shouldAutorotate: Bool{
@@ -72,5 +74,22 @@ class LBPresentFullScreenController: UIViewController{
 //        changeFullOrientationButtonClicked()
         self.dismiss(animated: false)
     }
+    
+    func testDate(){
+        let date = Date()
+        print("LBLog date \(date)  \(date.hour) \(date.minute)")
+        let time = "2024-07-08 00:58:19"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        guard let date2 = dateFormatter.date(from: time) else {
+            return
+        }
+        
+        print("LBLog date \(date2)  \(date2.hour) \(date2.minute)")
+        
+        let date3 = DateInRegion("2019-06-27 14:30:30")!
+         print("LBLogdate3:\(date3.date) \(date3.hour) \(date3.minute)")
+    }
+    
 
 }

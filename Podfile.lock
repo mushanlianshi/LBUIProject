@@ -254,6 +254,7 @@ PODS:
     - Masonry
     - SDWebImage
     - TXLiteAVSDK_Player
+  - SwiftDate (6.3.1)
   - SwiftEntryKit (2.0.0)
   - SwipeTableView (0.2.6)
   - TXLiteAVSDK_Player (11.1.14143)
@@ -311,6 +312,7 @@ DEPENDENCIES:
   - SnapKit (= 4.2.0)
   - Spring (from `https://github.com/MengTo/Spring.git`)
   - SuperPlayer
+  - SwiftDate (= 6.3.1)
   - SwiftEntryKit (= 2.0.0)
   - SwipeTableView (= 0.2.6)
   - TXLiteAVSDK_Player
@@ -366,6 +368,7 @@ SPEC REPOS:
     - SkeletonView
     - SnapKit
     - SuperPlayer
+    - SwiftDate
     - SwiftEntryKit
     - SwipeTableView
     - TXLiteAVSDK_Player
@@ -447,6 +450,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SuperPlayer: de156983387d154c68f6fb460f963eadd670d9a5
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   SwipeTableView: 67d8a2e6e18bd38c188fd4fabda0b278eaa08d2f
   TXLiteAVSDK_Player: 946dae329da9b31e24a417a47089af2f5fccea95
@@ -457,6 +461,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 95d297c9706072d8f54e865a674ba4e931d60182
+PODFILE CHECKSUM: f38777f9d5f676090cc710f4df726cc641d6cefb
 
 COCOAPODS: 1.15.2
