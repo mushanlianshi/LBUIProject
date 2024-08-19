@@ -117,7 +117,6 @@ extension LBNavigatorAlphaChangeController: LBNavigationBarScrollDataSourcesProt
         self.setNeedsStatusBarAppearanceUpdate()
 //        return UIImage.imageWithTintColor(color: UIColor.blue.withAlphaComponent(progress))
         return UIImage.imageWithTintColor(color: UIColor.white.withAlphaComponent(progress))
-        return UIImage.imageWithTintColor(color: UIColor.white.withAlphaComponent(progress))
     }
     
     func titleViewTintColorOfAnimator(animator: LBNavigationBarScrollChangeAnimator, progress: CGFloat) -> UIColor? {

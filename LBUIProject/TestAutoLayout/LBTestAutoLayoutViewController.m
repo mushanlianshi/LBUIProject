@@ -32,61 +32,92 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-//    [self testAmbiguousLayout];
+    //    [self testAmbiguousLayout];
     [self testAutoLayout];
+    [self testAutoLayout2];
 }
 
 - (void)testAutoLayout{
     [self.view addSubview:self.layoutView];
     [self.layoutView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(self.view);
-//        make.top.equalTo(self.view.mas_top).multipliedBy(1.5);
+        //        make.top.equalTo(self.view.mas_top).multipliedBy(1.5);
     }];
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        self.layoutView.testString = @"123";
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self.layoutView.subView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                make.height.mas_equalTo(50);
-//            }];
-//        });
-//    });
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //        self.layoutView.testString = @"123";
+    //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //            [self.layoutView.subView mas_updateConstraints:^(MASConstraintMaker *make) {
+    //                make.height.mas_equalTo(50);
+    //            }];
+    //        });
+    //    });
     
-//    [self.layoutView layoutIfNeeded];
+    //    [self.layoutView layoutIfNeeded];
     NSLog(@"LBLog ----layoutifneed %@ %@",self.layoutView, self.layoutView.subviews);
     [self.layoutView layoutIfNeeded];
     NSLog(@"LBLog ---222222-layoutifneed %@ %@",self.layoutView, self.layoutView.subviews);
-//    self.extendedLayoutIncludesOpaqueBars = YES;
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        self.layoutView.testString = @"哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号";
-//    });
-//    [self.proView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(self.layoutView.mas_centerX).priorityHigh();
-//        make.left.equalTo(self.layoutView.mas_left).mas_offset(20).priorityMedium();
-//        make.width.mas_lessThanOrEqualTo(100).priorityHigh();
-//        make.height.mas_equalTo(self.proView.mas_width).multipliedBy(32.0/104.0);
-//        make.top.mas_equalTo(self.layoutView.mas_bottom).mas_offset(20);
-//    }];
-//
-//    [self.renderIV mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.proView.mas_bottom).mas_offset(30);
-//        make.centerX.equalTo(self.proView);
-//    }];
-//
-//    [self.button1 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.renderIV.mas_bottom).mas_offset(30);
-//        make.left.mas_offset(40);
-//    }];
+    //    self.extendedLayoutIncludesOpaqueBars = YES;
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //        self.layoutView.testString = @"哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号哈儿of后卫和佛号";
+    //    });
+    //    [self.proView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.right.equalTo(self.layoutView.mas_centerX).priorityHigh();
+    //        make.left.equalTo(self.layoutView.mas_left).mas_offset(20).priorityMedium();
+    //        make.width.mas_lessThanOrEqualTo(100).priorityHigh();
+    //        make.height.mas_equalTo(self.proView.mas_width).multipliedBy(32.0/104.0);
+    //        make.top.mas_equalTo(self.layoutView.mas_bottom).mas_offset(20);
+    //    }];
+    //
+    //    [self.renderIV mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(self.proView.mas_bottom).mas_offset(30);
+    //        make.centerX.equalTo(self.proView);
+    //    }];
+    //
+    //    [self.button1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(self.renderIV.mas_bottom).mas_offset(30);
+    //        make.left.mas_offset(40);
+    //    }];
     
-//    [self.button2 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.button1);
-//        make.left.equalTo(self.button1.mas_right).mas_offset(50);
-//    }];
+    //    [self.button2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(self.button1);
+    //        make.left.equalTo(self.button1.mas_right).mas_offset(50);
+    //    }];
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.button1 setTitle:@"1234大红花会" forState:UIControlStateNormal];
-////        [self.button2 setTitle:@"1234大欧委会" forState:UIControlStateNormal];
-//    });
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //        [self.button1 setTitle:@"1234大红花会" forState:UIControlStateNormal];
+    ////        [self.button2 setTitle:@"1234大欧委会" forState:UIControlStateNormal];
+    //    });
+}
+
+- (void)testAutoLayout2{
+    UILabel *label = [UILabel blt_labelWithTitle:@"label1" font:[UIFont systemFontOfSize:16] textColor:[UIColor blackColor]];
+    label.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+    [self.view addSubview:label];
+    
+    UILabel *label2 = [UILabel blt_labelWithTitle:@"label2 \n label2" font:[UIFont systemFontOfSize:16] textColor:[UIColor blackColor]];
+    label2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
+    label2.numberOfLines = 0;
+    [self.view addSubview:label2];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_centerY);
+        make.left.equalTo(self.view.mas_centerX).offset(-40);
+    }];
+    
+    [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_centerY);
+        make.left.equalTo(label.mas_right).offset(20);
+    }];
+    
+    UIView *bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.greaterThanOrEqualTo(label.mas_bottom).mas_offset(20);
+        make.top.greaterThanOrEqualTo(label2.mas_bottom).mas_offset(20);
+        make.width.height.mas_equalTo(60);
+    }];
 }
 
 - (void)testAmbiguousLayout{

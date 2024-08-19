@@ -15,7 +15,7 @@ public extension UINavigationBar{
         if #available(iOS 13.0, *) {
             self.tintColor = itemColor
             
-            let appearance = self.scrollEdgeAppearance ?? UINavigationBarAppearance()
+            let appearance = self.standardAppearance
             if let _ = backgroundImage{
                 appearance.backgroundImage = backgroundImage
             }
@@ -38,8 +38,8 @@ public extension UINavigationBar{
             appearance.buttonAppearance = itemAppearance
             appearance.backButtonAppearance = itemAppearance
             
-            self.scrollEdgeAppearance = appearance
-            self.standardAppearance = appearance
+//            self.scrollEdgeAppearance = appearance
+//            self.standardAppearance = appearance
             
         } else {
             // Fallback on earlier versions
