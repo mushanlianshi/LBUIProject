@@ -147,6 +147,8 @@
 		4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089872A26B9130D0004BBA8 /* LBAffineTransformController.m */; };
 		4089873B26B9435D0004BBA8 /* LBAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089873A26B9435D0004BBA8 /* LBAnimationViewController.m */; };
 		4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089874326B962380004BBA8 /* LBBezierpathViewController.m */; };
+		408DE8D92C74393E00B19350 /* LBDrawerSwiperAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */; };
+		408DE8DB2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */; };
 		408F681A288A873A0019F47D /* LBSkeletonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F6819288A873A0019F47D /* LBSkeletonViewController.swift */; };
 		408F681C288A87820019F47D /* LBSkeletonListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F681B288A87820019F47D /* LBSkeletonListCell.swift */; };
 		408F681F288AA0830019F47D /* LLTransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F681E288AA0830019F47D /* LLTransitionAnimationController.swift */; };
@@ -579,6 +581,8 @@
 		4089873A26B9435D0004BBA8 /* LBAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBAnimationViewController.m; sourceTree = "<group>"; };
 		4089874226B962380004BBA8 /* LBBezierpathViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBezierpathViewController.h; sourceTree = "<group>"; };
 		4089874326B962380004BBA8 /* LBBezierpathViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBezierpathViewController.m; sourceTree = "<group>"; };
+		408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationController.swift; sourceTree = "<group>"; };
+		408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationView.swift; sourceTree = "<group>"; };
 		408F6819288A873A0019F47D /* LBSkeletonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSkeletonViewController.swift; sourceTree = "<group>"; };
 		408F681B288A87820019F47D /* LBSkeletonListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSkeletonListCell.swift; sourceTree = "<group>"; };
 		408F681E288AA0830019F47D /* LLTransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLTransitionAnimationController.swift; sourceTree = "<group>"; };
@@ -1609,6 +1613,15 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		408DE8D72C7438AE00B19350 /* 抽屉效果 */ = {
+			isa = PBXGroup;
+			children = (
+				408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */,
+				408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */,
+			);
+			path = "抽屉效果";
+			sourceTree = "<group>";
+		};
 		408F6818288A871B0019F47D /* 骨架屏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2145,6 +2158,7 @@
 		40C149E728AB2F83005C9E00 /* SecondCustomController */ = {
 			isa = PBXGroup;
 			children = (
+				408DE8D72C7438AE00B19350 /* 抽屉效果 */,
 				404B1B762A7B957A002B46BB /* 倒计时动画 */,
 				40B4A0CF2A73CFF300D02BB4 /* 图片预览 */,
 				40B4A0CB2A72107E00D02BB4 /* 跨多层传递响应的 */,
@@ -2906,6 +2920,7 @@
 				407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */,
 				40ACEE782A4C1ADA0001BCAB /* LBAlertEntity.swift in Sources */,
 				4091DE4628AA4FD000798E2A /* LBSecondViewController.swift in Sources */,
+				408DE8DB2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift in Sources */,
 				40B35B79286441C00001FFE9 /* LBMultipleDelegatesContainer.m in Sources */,
 				406BF20C2984F03E00E2479A /* LBRxSwiftViewController.swift in Sources */,
 				40C20B4C298A0B8100B23342 /* BLTCornerGradientShadowButton.swift in Sources */,
@@ -2937,6 +2952,7 @@
 				407DA97928A4CF93000B2BA8 /* LBTextView.swift in Sources */,
 				40D46FBF288E7471001A153A /* LBResponseChainViewController.m in Sources */,
 				409B06C328910FE7004724EB /* LBTabbarController.swift in Sources */,
+				408DE8D92C74393E00B19350 /* LBDrawerSwiperAnimationController.swift in Sources */,
 				409FC3EB2A29C80A0053B88C /* BLTTaskChainManager.swift in Sources */,
 				40AE6FE929C8616600C69932 /* SmoothListViewController.swift in Sources */,
 				404B1B802A7B985E002B46BB /* FoldClockView.swift in Sources */,

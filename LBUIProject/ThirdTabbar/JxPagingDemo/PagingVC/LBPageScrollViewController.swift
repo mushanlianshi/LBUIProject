@@ -8,6 +8,14 @@
 import UIKit
 import MJRefresh
 
+let BLT_SCREEN_HEIGHT = UIScreen.main.bounds.height
+
+let BLT_SCREEN_WIDTH = UIScreen.main.bounds.width
+
+let BLT_SCREEN_STATUS_BAR_HEIGHT = UIApplication.shared.statusBarFrame.size.height
+
+let BLT_SCREEN_NAVI_HEIGHT = BLT_SCREEN_STATUS_BAR_HEIGHT + 44
+
 func BLT_SCREEN_BOTTOM_SAFE_OFFSET() -> CGFloat{
     if #available(iOS 11.0, *) {
         if let window = UIApplication.shared.delegate?.window {

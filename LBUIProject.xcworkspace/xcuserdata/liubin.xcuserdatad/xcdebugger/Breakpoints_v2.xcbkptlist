@@ -827,8 +827,8 @@
             filePath = "LBUIProject/ThirdTabbar/JxPagingDemo/PagingVC/LBPageScrollViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "processMainTableViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -843,8 +843,8 @@
             filePath = "LBUIProject/ThirdTabbar/JxPagingDemo/PagingVC/LBPageScrollViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "processMainTableViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -859,8 +859,8 @@
             filePath = "LBUIProject/ThirdTabbar/JxPagingDemo/PagingVC/LBPageScrollViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "processChildListViewDidScroll(scrollView:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1581,6 +1581,22 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1700BE11-6802-4C09-BFEE-6510B39CC787"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/FirstTabbarVC/&#x53cc;UIScrollView&#x5438;&#x9876;/LLDoubleScrollViewPinController1.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "childScrollViewDidScroll(scrollView:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
