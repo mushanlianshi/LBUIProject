@@ -28,18 +28,6 @@ class LBDrawerSwiperAnimationView: UIView {
         super.init(frame: frame)
         addSubview(tableView)
         tableView.frame = .init(x: 0, y: BLT_SCREEN_HEIGHT - BLT_SCREEN_NAVI_HEIGHT - 400, width: UIScreen.main.bounds.width, height: 400)
-        addSwiperGestures()
-    }
-    
-    private func addSwiperGestures(){
-        let pan = UIPanGestureRecognizer()
-        pan.addTarget(self, action: #selector(panGestureRecognized(_:)))
-        self.addGestureRecognizer(pan)
-        
-//        let tap = UITapGestureRecognizer()
-//        tap.require(toFail: pan)
-//        tap.addTarget(self, action: #selector(tapGestureRecognized))
-//        self.addGestureRecognizer(tap)
     }
     
     required init?(coder: NSCoder) {

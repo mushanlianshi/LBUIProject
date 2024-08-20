@@ -149,6 +149,7 @@
 		4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089874326B962380004BBA8 /* LBBezierpathViewController.m */; };
 		408DE8D92C74393E00B19350 /* LBDrawerSwiperAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */; };
 		408DE8DB2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */; };
+		408DE8DD2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8DC2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift */; };
 		408F681A288A873A0019F47D /* LBSkeletonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F6819288A873A0019F47D /* LBSkeletonViewController.swift */; };
 		408F681C288A87820019F47D /* LBSkeletonListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F681B288A87820019F47D /* LBSkeletonListCell.swift */; };
 		408F681F288AA0830019F47D /* LLTransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F681E288AA0830019F47D /* LLTransitionAnimationController.swift */; };
@@ -583,6 +584,7 @@
 		4089874326B962380004BBA8 /* LBBezierpathViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBezierpathViewController.m; sourceTree = "<group>"; };
 		408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationController.swift; sourceTree = "<group>"; };
 		408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationView.swift; sourceTree = "<group>"; };
+		408DE8DC2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationView2.swift; sourceTree = "<group>"; };
 		408F6819288A873A0019F47D /* LBSkeletonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSkeletonViewController.swift; sourceTree = "<group>"; };
 		408F681B288A87820019F47D /* LBSkeletonListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSkeletonListCell.swift; sourceTree = "<group>"; };
 		408F681E288AA0830019F47D /* LLTransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLTransitionAnimationController.swift; sourceTree = "<group>"; };
@@ -1618,6 +1620,7 @@
 			children = (
 				408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */,
 				408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */,
+				408DE8DC2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift */,
 			);
 			path = "抽屉效果";
 			sourceTree = "<group>";
@@ -3019,6 +3022,7 @@
 				402654272684720A00472F4F /* TestSwift.swift in Sources */,
 				40AE6FE629C8616600C69932 /* BaseNavigationController.swift in Sources */,
 				408F681C288A87820019F47D /* LBSkeletonListCell.swift in Sources */,
+				408DE8DD2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift in Sources */,
 				40795CDF2786E69300E2A5B2 /* LBLoadAndInitializeSubClassController+Test3.m in Sources */,
 				40744D0A2A2F185E0096F399 /* LBDecoratorProduct.swift in Sources */,
 				4081A45329B182B400B476C8 /* LBTestStructAndClassController.swift in Sources */,

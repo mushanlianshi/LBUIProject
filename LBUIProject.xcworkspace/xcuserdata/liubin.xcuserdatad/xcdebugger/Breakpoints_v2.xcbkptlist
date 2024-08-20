@@ -99,21 +99,12 @@
          BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
             uuid = "E96521E0-D540-4906-B6BA-A28651C170D9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "UIViewAlertForUnsatisfiableConstraints"
             moduleName = "">
             <Locations>
-               <Location
-                  uuid = "E96521E0-D540-4906-B6BA-A28651C170D9 - ba3ad5676a792f38"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UIViewAlertForUnsatisfiableConstraints"
-                  moduleName = "UIKitCore"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,7 +128,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C99F1B79-8DB1-4B74-A15D-5C61ECB1E821"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/AvoidCrash/AvoidCrash/NSObject+AvoidCrash.m"
@@ -169,7 +160,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "53D743C5-8AB3-4906-9A83-FAFA67D1D83A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LBUIProject/TableViewSelectCell/LBTestTableViewSelectViewController.swift"
@@ -361,7 +352,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CF5C9C1B-E464-41F8-AF54-98555C4FEF39"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/HandyJSON/Source/Metadata.swift"
@@ -505,7 +496,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "532EB88F-F024-42EB-844E-ACFD656E32C6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
@@ -521,7 +512,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "61D1C029-C523-48A8-B703-8CFE5D88C531"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
@@ -569,7 +560,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BF95039A-4205-4BE3-92DE-476EC32F2F19"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/HandyJSON/Source/BuiltInBasicType.swift"
@@ -1596,6 +1587,22 @@
             startingLineNumber = "149"
             endingLineNumber = "149"
             landmarkName = "childScrollViewDidScroll(scrollView:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A33FD321-D06A-4379-A9CB-7C73569CEA17"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBUIProject/SecondCustomController/&#x62bd;&#x5c49;&#x6548;&#x679c;/LBDrawerSwiperAnimationView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "panGestureRecognized(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
