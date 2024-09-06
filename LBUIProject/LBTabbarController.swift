@@ -11,6 +11,19 @@ import Dollar
 import BLTSwiftUIKit
 
 
+struct LBTestStructProperty {
+    var name = ""
+}
+
+extension LBTestStructProperty{
+//    var testName = ""
+    var testProperty: String{
+        get{
+            return ""
+        }
+        set{}
+    }
+}
 
 public protocol LBTestNameSpaceProtocol {
     associatedtype CompatibleType

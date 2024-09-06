@@ -314,6 +314,7 @@
 		40F1CD202A31E74200A8066C /* output.mkv in Resources */ = {isa = PBXBuildFile; fileRef = 40F1CD1F2A31E6D000A8066C /* output.mkv */; };
 		40F1CD222A31EB2300A8066C /* butterfly.avi in Resources */ = {isa = PBXBuildFile; fileRef = 40F1CD212A31EB2300A8066C /* butterfly.avi */; };
 		40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F37AD226B7C48800009132 /* LBClockViewController.m */; };
+		40F38D202C8AA1AE0046E4E5 /* LLImageClipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D1F2C8AA1AE0046E4E5 /* LLImageClipController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -785,6 +786,7 @@
 		40F1CD212A31EB2300A8066C /* butterfly.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = butterfly.avi; sourceTree = "<group>"; };
 		40F37AD126B7C48800009132 /* LBClockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBClockViewController.h; sourceTree = "<group>"; };
 		40F37AD226B7C48800009132 /* LBClockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBClockViewController.m; sourceTree = "<group>"; };
+		40F38D1F2C8AA1AE0046E4E5 /* LLImageClipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLImageClipController.swift; sourceTree = "<group>"; };
 		40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwiftHeader.swift; sourceTree = "<group>"; };
 		661A7F3507F09E41EDA38CB7 /* Pods-LBUIProject.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.custom_debug.xcconfig"; sourceTree = "<group>"; };
 		70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1517,6 +1519,7 @@
 		4080FEB72AD8DCA600FF79FC /* SecondTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				40F38D1E2C8AA1910046E4E5 /* ImageClip */,
 				4080FEB82AD8DCC600FF79FC /* DrawImage */,
 			);
 			path = SecondTabbar;
@@ -2429,6 +2432,14 @@
 			path = Clock;
 			sourceTree = "<group>";
 		};
+		40F38D1E2C8AA1910046E4E5 /* ImageClip */ = {
+			isa = PBXGroup;
+			children = (
+				40F38D1F2C8AA1AE0046E4E5 /* LLImageClipController.swift */,
+			);
+			path = ImageClip;
+			sourceTree = "<group>";
+		};
 		83F0C6F792EF35BDEB2C0FBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3006,6 +3017,7 @@
 				404B1B7F2A7B985E002B46BB /* FoldAnimationView.swift in Sources */,
 				40DF356128646014008EE299 /* NSString+LBExtension.m in Sources */,
 				409C16E62A821440006EB24D /* LLPropertyWrapperViewController.swift in Sources */,
+				40F38D202C8AA1AE0046E4E5 /* LLImageClipController.swift in Sources */,
 				407DA97B28A505A4000B2BA8 /* LBTextField.swift in Sources */,
 				404B1B812A7B985E002B46BB /* FoldClockItem.swift in Sources */,
 				40D43D182A67EED6001384BF /* LBChartView.swift in Sources */,

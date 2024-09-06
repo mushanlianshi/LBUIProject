@@ -313,7 +313,7 @@
 - (void)useSemaphoreControlThreadCount{
     __block NSInteger i = 0;
 //    控制最大线程数为2
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(2);
     while (i < 10) {
         NSLog(@"LBLog i is before %zd , %@",i, [NSThread currentThread]);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);

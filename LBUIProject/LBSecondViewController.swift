@@ -25,6 +25,7 @@ class LBSecondViewController: LBBaseCollectionViewController{
                 LBListItemModel.init(title: "动画合集", vcClass: LBAnimationHomeListViewController.self),
                 LBListItemModel.init(title: "画图片", vcClass: LBDrawImageController.self),
                 LBListItemModel.init(title: "抽屉效果", vcClass: LBDrawerSwiperAnimationController.self),
+                LBListItemModel.init(title: "图片旋转", vcClass: LLImageClipController.self),
             ]
         }
         set{}

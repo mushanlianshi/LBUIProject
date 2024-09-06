@@ -35,10 +35,10 @@
 - (void)testOffScreen{
     _offScreenBtnOne = [UIButton buttonWithType:UIButtonTypeCustom];
     //1.图片一个图层
-    [_offScreenBtnOne setImage:[UIImage imageNamed:@"public_icon"] forState:UIControlStateNormal];
+//    [_offScreenBtnOne setImage:[UIImage imageNamed:@"public_icon"] forState:UIControlStateNormal];
     _offScreenBtnOne.frame = CGRectMake(100, 100, 200, 44);
     //2.背景色一个图层
-    _offScreenBtnOne.backgroundColor = [UIColor whiteColor];
+    _offScreenBtnOne.backgroundColor = [UIColor redColor];
     //当切圆角的时候有两个图层，苹果无法一起切   只能一个一个图层处理，所以就会在离屏缓冲区进行处理  导致离屏渲染  如果背景色没有  就一个图层就不需要离屏渲染了
     _offScreenBtnOne.layer.cornerRadius = 20;
     _offScreenBtnOne.layer.masksToBounds = YES;
