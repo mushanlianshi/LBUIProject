@@ -21,6 +21,8 @@ ${BUILT_PRODUCTS_DIR}/GKSliderView/GKSliderView.framework
 ${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
 ${BUILT_PRODUCTS_DIR}/Hero/Hero.framework
 ${BUILT_PRODUCTS_DIR}/IBPCollectionViewCompositionalLayout/IBPCollectionViewCompositionalLayout.framework
+${BUILT_PRODUCTS_DIR}/IGListDiffKit/IGListDiffKit.framework
+${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework
 ${BUILT_PRODUCTS_DIR}/JPSuspensionEntrance/JPSuspensionEntrance.framework
 ${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework
 ${BUILT_PRODUCTS_DIR}/JXPagingView/JXPagingView.framework

@@ -315,6 +315,13 @@
 		40F1CD222A31EB2300A8066C /* butterfly.avi in Resources */ = {isa = PBXBuildFile; fileRef = 40F1CD212A31EB2300A8066C /* butterfly.avi */; };
 		40F37AD326B7C48800009132 /* LBClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F37AD226B7C48800009132 /* LBClockViewController.m */; };
 		40F38D202C8AA1AE0046E4E5 /* LLImageClipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D1F2C8AA1AE0046E4E5 /* LLImageClipController.swift */; };
+		40F38D232C8AD96B0046E4E5 /* LBIGListKitDecorationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D222C8AD96B0046E4E5 /* LBIGListKitDecorationViewController.swift */; };
+		40F38D252C8AD9A80046E4E5 /* LBDecorationCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D242C8AD9A80046E4E5 /* LBDecorationCollectionViewLayout.swift */; };
+		40F38D272C8ADACC0046E4E5 /* SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D262C8ADACC0046E4E5 /* SelectionModel.swift */; };
+		40F38D292C8ADAFA0046E4E5 /* SelfSizingSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D282C8ADAFA0046E4E5 /* SelfSizingSectionController.swift */; };
+		40F38D2B2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2A2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift */; };
+		40F38D2D2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2C2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift */; };
+		40F38D2F2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2E2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -787,6 +794,13 @@
 		40F37AD126B7C48800009132 /* LBClockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBClockViewController.h; sourceTree = "<group>"; };
 		40F37AD226B7C48800009132 /* LBClockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBClockViewController.m; sourceTree = "<group>"; };
 		40F38D1F2C8AA1AE0046E4E5 /* LLImageClipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLImageClipController.swift; sourceTree = "<group>"; };
+		40F38D222C8AD96B0046E4E5 /* LBIGListKitDecorationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBIGListKitDecorationViewController.swift; sourceTree = "<group>"; };
+		40F38D242C8AD9A80046E4E5 /* LBDecorationCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDecorationCollectionViewLayout.swift; sourceTree = "<group>"; };
+		40F38D262C8ADACC0046E4E5 /* SelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionModel.swift; sourceTree = "<group>"; };
+		40F38D282C8ADAFA0046E4E5 /* SelfSizingSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfSizingSectionController.swift; sourceTree = "<group>"; };
+		40F38D2A2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuallySelfSizingCell.swift; sourceTree = "<group>"; };
+		40F38D2C2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullWidthSelfSizingCell.swift; sourceTree = "<group>"; };
+		40F38D2E2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomDecorationLayoutAttributes.swift; sourceTree = "<group>"; };
 		40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwiftHeader.swift; sourceTree = "<group>"; };
 		661A7F3507F09E41EDA38CB7 /* Pods-LBUIProject.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.custom_debug.xcconfig"; sourceTree = "<group>"; };
 		70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1519,6 +1533,7 @@
 		4080FEB72AD8DCA600FF79FC /* SecondTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				40F38D212C8AD94D0046E4E5 /* IGListKitDecoration */,
 				40F38D1E2C8AA1910046E4E5 /* ImageClip */,
 				4080FEB82AD8DCC600FF79FC /* DrawImage */,
 			);
@@ -2440,6 +2455,20 @@
 			path = ImageClip;
 			sourceTree = "<group>";
 		};
+		40F38D212C8AD94D0046E4E5 /* IGListKitDecoration */ = {
+			isa = PBXGroup;
+			children = (
+				40F38D2C2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift */,
+				40F38D2A2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift */,
+				40F38D282C8ADAFA0046E4E5 /* SelfSizingSectionController.swift */,
+				40F38D262C8ADACC0046E4E5 /* SelectionModel.swift */,
+				40F38D222C8AD96B0046E4E5 /* LBIGListKitDecorationViewController.swift */,
+				40F38D242C8AD9A80046E4E5 /* LBDecorationCollectionViewLayout.swift */,
+				40F38D2E2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift */,
+			);
+			path = IGListKitDecoration;
+			sourceTree = "<group>";
+		};
 		83F0C6F792EF35BDEB2C0FBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2930,6 +2959,7 @@
 				40D43CC42A5E987C001384BF /* LBExpandCloseLabel.swift in Sources */,
 				400A05CE2862FB62006574B5 /* 栈溢出.swift in Sources */,
 				40C149E928AB2FBE005C9E00 /* LBNotificationViewController.swift in Sources */,
+				40F38D252C8AD9A80046E4E5 /* LBDecorationCollectionViewLayout.swift in Sources */,
 				40F1CD0F2A317CBD00A8066C /* LBWidget.intentdefinition in Sources */,
 				407603A228406A0D0019EC69 /* LBCrashManager.m in Sources */,
 				40ACEE782A4C1ADA0001BCAB /* LBAlertEntity.swift in Sources */,
@@ -2952,6 +2982,7 @@
 				4063EF53285ADDDC00335BA2 /* LBCollectionDecoratoViewController.m in Sources */,
 				402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */,
 				4085AC9E26A15E6000A0664F /* LLTextRecogineImageView.m in Sources */,
+				40F38D2F2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift in Sources */,
 				40AE6FE329C8616600C69932 /* DetailViewController.swift in Sources */,
 				40AE6FDC29C8616600C69932 /* HeightChangeAnimationViewController.swift in Sources */,
 				40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */,
@@ -2985,6 +3016,7 @@
 				40B35B7328640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift in Sources */,
 				40D43CF32A614A4D001384BF /* LBListScrollAnimatingHeaderView.swift in Sources */,
 				40ABA58B2A1DA87B00B84488 /* LBVerifyViewController.swift in Sources */,
+				40F38D232C8AD96B0046E4E5 /* LBIGListKitDecorationViewController.swift in Sources */,
 				400A05D628630C29006574B5 /* LBNavigationBarScrollChangeAnimator.swift in Sources */,
 				40AE6FD829C8616600C69932 /* ListRefreshViewController.swift in Sources */,
 				408F681A288A873A0019F47D /* LBSkeletonViewController.swift in Sources */,
@@ -2993,6 +3025,7 @@
 				4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */,
 				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
 				40AE6FAC29C80AE600C69932 /* AFURLSessionManager+BLTAPMNetworkDuration.m in Sources */,
+				40F38D2D2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift in Sources */,
 				40AE6FE229C8616600C69932 /* UIWindow+JXSafeArea.swift in Sources */,
 				409B06C52891108F004724EB /* LBThirdSDKController.swift in Sources */,
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
@@ -3050,7 +3083,9 @@
 				4091F4B82A1390B600F29C06 /* CarouselFlowLayout.swift in Sources */,
 				407603A9284077B90019EC69 /* LBForwordingTarget.m in Sources */,
 				409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */,
+				40F38D2B2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift in Sources */,
 				40B338E329EF74720035CFC3 /* LYJInitSwiftManager.swift in Sources */,
+				40F38D292C8ADAFA0046E4E5 /* SelfSizingSectionController.swift in Sources */,
 				406298EB288F8517006A3024 /* UINavigationBar+LBExtension.swift in Sources */,
 				40D43CFC2A66749A001384BF /* LBLaunchViewController.swift in Sources */,
 				40B35B7F28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m in Sources */,
@@ -3080,6 +3115,7 @@
 				400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */,
 				400A4FB92A04D9EC00C7A51B /* LBFlipCardViewController.swift in Sources */,
 				40ABA5982A1F00EC00B84488 /* UIColorLBExtension.swift in Sources */,
+				40F38D272C8ADACC0046E4E5 /* SelectionModel.swift in Sources */,
 				409FC3FB2A2A010D0053B88C /* LLContractDetailChanQuanCheckTask.swift in Sources */,
 				407603AC284078AC0019EC69 /* NSObject+UnRecognizeSelector.m in Sources */,
 				40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */,

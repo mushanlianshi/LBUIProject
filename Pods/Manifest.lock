@@ -136,6 +136,9 @@ PODS:
   - HandyJSON (5.0.2)
   - Hero (1.6.2)
   - IBPCollectionViewCompositionalLayout (0.6.9)
+  - IGListDiffKit (5.0.0)
+  - IGListKit (5.0.0):
+    - IGListDiffKit (= 5.0.0)
   - JPSuspensionEntrance (1.0.1)
   - JXMarqueeView (0.0.9)
   - JXPagingView/Paging (2.1.2)
@@ -290,6 +293,7 @@ DEPENDENCIES:
   - GKPhotoBrowser (= 2.6.3)
   - Hero
   - IBPCollectionViewCompositionalLayout (= 0.6.9)
+  - IGListKit (= 5.0.0)
   - JPSuspensionEntrance
   - JXPagingView/Paging (= 2.1.2)
   - JXSegmentedView (= 1.2.7)
@@ -340,6 +344,8 @@ SPEC REPOS:
     - HandyJSON
     - Hero
     - IBPCollectionViewCompositionalLayout
+    - IGListDiffKit
+    - IGListKit
     - JPSuspensionEntrance
     - JXMarqueeView
     - JXPagingView
@@ -421,6 +427,8 @@ SPEC CHECKSUMS:
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Hero: c69009dbc9e2f0472e081adc644dba05fcedae72
   IBPCollectionViewCompositionalLayout: bbb29e39ac564666a8c3cdb6633ed944b6feb55b
+  IGListDiffKit: 02d937d7e714d6f558771f284ed80668d483b522
+  IGListKit: baf7e87b4c2262cd569c380e46ca5667a4a82c82
   JPSuspensionEntrance: 4df667eadc37a4b6da254db4e6d2d7b51356be17
   JXMarqueeView: 0058108f80f149b25ff3bc3705c1af348fe7be8f
   JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
@@ -461,6 +469,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: f38777f9d5f676090cc710f4df726cc641d6cefb
+PODFILE CHECKSUM: d146bb599d6aa2cd2104663256b8deb8bbee7442
 
 COCOAPODS: 1.15.2

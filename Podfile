@@ -75,6 +75,7 @@ target 'LBUIProject' do
    pod "SJVideoPlayer"
    #日期处理库
    pod 'SwiftDate', '6.3.1'
+   pod 'IGListKit', '5.0.0'
 
 
 
