@@ -1,0 +1,33 @@
+{
+  "name": "BLTBasicUIKit",
+  "version": "0.3.1",
+  "summary": "A short description of BLTBasicUIKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/liu bin/BLTBasicUIKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "liu bin": "liu_bin_home@163.com"
+  },
+  "source": {
+    "git": "git@github.com:mushanlianshi/BLTBasicUIKit.git",
+    "tag": "0.3.1"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "BLTBasicUIKit/Classes/*.{h,m}",
+  "dependencies": {
+    "Masonry": [
+
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "Category",
+      "source_files": "BLTBasicUIKit/Classes/Category/*.{h,m}"
+    }
+  ]
+}

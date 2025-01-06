@@ -1,0 +1,145 @@
+{
+  "name": "BLTSwiftUIKit",
+  "version": "1.3.8",
+  "summary": "Baletu Swift UIKit Framework",
+  "description": "this is Baletu UIKit, make coding convenience",
+  "homepage": "https://github.com/mushanlianshi/BLTSwiftUIKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "mushanlianshi": "liu_bin_home@163.com"
+  },
+  "source": {
+    "git": "ssh://git@1.117.247.154:7999/ios/bltswiftuikit.git",
+    "tag": "1.3.8"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "swift_versions": [
+    "4.2",
+    "5"
+  ],
+  "resources": "BLTSwiftUIKit/Resources/BLTSwiftUIKit.bundle",
+  "subspecs": [
+    {
+      "name": "NameSpace",
+      "source_files": "BLTSwiftUIKit/Classes/NameSpace/*.swift"
+    },
+    {
+      "name": "Protocol",
+      "source_files": "BLTSwiftUIKit/Classes/Protocol/*.swift"
+    },
+    {
+      "name": "Extension",
+      "source_files": [
+        "BLTSwiftUIKit/Classes/Extension/*.swift",
+        "BLTSwiftUIKit/Classes/Extension/UIKit/*.swift"
+      ],
+      "dependencies": {
+        "BLTSwiftUIKit/NameSpace": [
+
+        ],
+        "BLTSwiftUIKit/Protocol": [
+
+        ],
+        "BLTSwiftUIKit/Util": [
+
+        ],
+        "BLTUIKitProject": [
+
+        ],
+        "SnapKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "Util",
+      "source_files": "BLTSwiftUIKit/Classes/Util/*.swift",
+      "dependencies": {
+        "BLTSwiftUIKit/Protocol": [
+
+        ],
+        "BLTUIKitProject": [
+
+        ],
+        "SnapKit": [
+
+        ],
+        "HandyJSON": [
+
+        ],
+        "BLTSwiftUIKit/NameSpace": [
+
+        ]
+      }
+    },
+    {
+      "name": "ListView",
+      "source_files": "BLTSwiftUIKit/Classes/ListView/*.swift",
+      "dependencies": {
+        "BLTSwiftUIKit/NameSpace": [
+
+        ],
+        "BLTSwiftUIKit/Extension": [
+
+        ],
+        "BLTUIKitProject": [
+
+        ],
+        "SnapKit": [
+
+        ],
+        "HandyJSON": [
+
+        ]
+      }
+    },
+    {
+      "name": "View",
+      "source_files": [
+        "BLTSwiftUIKit/Classes/View/*.swift",
+        "BLTSwiftUIKit/Classes/View/NoticeBar/*.swift"
+      ],
+      "dependencies": {
+        "BLTSwiftUIKit/NameSpace": [
+
+        ],
+        "BLTSwiftUIKit/Extension": [
+
+        ],
+        "BLTSwiftUIKit/Util": [
+
+        ],
+        "BLTSwiftUIKit/ListView": [
+
+        ],
+        "BLTUIKitProject": [
+
+        ],
+        "JXMarqueeView": [
+
+        ],
+        "SnapKit": [
+
+        ],
+        "Kingfisher": [
+
+        ]
+      }
+    },
+    {
+      "name": "Alert",
+      "source_files": "BLTSwiftUIKit/Classes/Alert/*.swift",
+      "dependencies": {
+        "BLTSwiftUIKit/Extension": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5"
+}

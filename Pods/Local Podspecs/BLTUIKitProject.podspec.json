@@ -1,0 +1,127 @@
+{
+  "name": "BLTUIKitProject",
+  "version": "1.9.2",
+  "summary": "BLTUIKitProject is ui kit",
+  "description": "this is baletu UIKit , has common alert, noticebar ...",
+  "homepage": "http://liubin@120.55.38.138:7990/scm/app/bltuikitframework",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "mushanlianshi": "liu_bin_home@163.com"
+  },
+  "source": {
+    "git": "git@github.com:mushanlianshi/BLTUIKitProject.git",
+    "tag": "1.9.2",
+    "submodules": true
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "BLTUIKitProject/BLTUIKit/BLTUI.h",
+  "dependencies": {
+    "BLTBasicUIKit": [
+
+    ]
+  },
+  "resources": "BLTUIKitProject/Resources/BLTUIKitBundle.bundle",
+  "subspecs": [
+    {
+      "name": "Header",
+      "source_files": "BLTUIKitProject/BLTUIKit/Header/*.{h,m}"
+    },
+    {
+      "name": "Util",
+      "dependencies": {
+        "BLTUIKitProject/Header": [
+
+        ]
+      },
+      "source_files": "BLTUIKitProject/BLTUIKit/Util/*.{h,m}"
+    },
+    {
+      "name": "Category",
+      "dependencies": {
+        "GKPhotoBrowser": [
+          "~> 2.6.3"
+        ],
+        "BLTUIKitProject/Header": [
+
+        ],
+        "BLTUIKitProject/Util": [
+
+        ]
+      },
+      "source_files": "BLTUIKitProject/BLTUIKit/Category/*.{h,m}"
+    },
+    {
+      "name": "NotificationBarView",
+      "source_files": "BLTUIKitProject/BLTUIKit/NotificationBarView/*.{h,m}"
+    },
+    {
+      "name": "Alert",
+      "dependencies": {
+        "BLTUIKitProject/Category": [
+
+        ],
+        "BLTUIKitProject/Header": [
+
+        ]
+      },
+      "source_files": "BLTUIKitProject/BLTUIKit/Alert/*.{h,m}"
+    },
+    {
+      "name": "UploadImageKit",
+      "dependencies": {
+        "BLTUIKitProject/Category": [
+
+        ],
+        "BLTUIKitProject/Header": [
+
+        ],
+        "TZImagePickerController": [
+
+        ]
+      },
+      "source_files": "BLTUIKitProject/BLTUIKit/ImageUploadPreviewKit/**/*.{h,m}"
+    },
+    {
+      "name": "BLTTableViewCell",
+      "dependencies": {
+        "BLTUIKitProject/Category": [
+
+        ],
+        "BLTUIKitProject/Header": [
+
+        ],
+        "Masonry": [
+
+        ]
+      },
+      "resources": "BLTUIKitProject/BLTUIKit/BLTTableViewCell/Source/BLTTableViewCellSource.bundle",
+      "source_files": "BLTUIKitProject/BLTUIKit/BLTTableViewCell/*.{h,m}"
+    },
+    {
+      "name": "BLTMenu",
+      "dependencies": {
+        "BLTUIKitProject/Category": [
+
+        ],
+        "BLTUIKitProject/Header": [
+
+        ],
+        "BLTUIKitProject/BLTTableViewCell": [
+
+        ],
+        "Masonry": [
+
+        ]
+      },
+      "source_files": [
+        "BLTUIKitProject/BLTUIKit/BLTMenu/*.{h,m}",
+        "BLTUIKitProject/BLTUIKit/BLTMenu/BLTTableMenu/*.{h,m}"
+      ]
+    }
+  ]
+}

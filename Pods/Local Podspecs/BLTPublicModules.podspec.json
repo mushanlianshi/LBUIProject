@@ -1,0 +1,27 @@
+{
+  "name": "BLTPublicModules",
+  "version": "0.3.6",
+  "summary": "A short description of BLTPublicModules.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/liu bin/BLTPublicModules",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "liu bin": "liu_bin_home@163.com"
+  },
+  "source": {
+    "git": "https://github.com/liu bin/BLTPublicModules.git",
+    "tag": "0.3.6"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "BLTPublicModules/Classes/**/*",
+  "dependencies": {
+    "MBProgressHUD": [
+
+    ]
+  }
+}

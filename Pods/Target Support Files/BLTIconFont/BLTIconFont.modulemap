@@ -1,0 +1,6 @@
+framework module BLTIconFont {
+  umbrella header "BLTIconFont-umbrella.h"
+
+  export *
+  module * { export * }
+}
