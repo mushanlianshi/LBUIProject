@@ -11,7 +11,6 @@ import JXPagingView
 import JXSegmentedView
 
 extension JXPagingListContainerView: JXSegmentedViewListContainer  {}
-
 class BaseViewController: UIViewController, JXSegmentedViewDelegate, JXPagingViewDelegate {
     lazy var pagingView: JXPagingView = preferredPagingView()
     lazy var userHeaderView: PagingViewTableHeaderView = preferredTableHeaderView()

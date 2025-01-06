@@ -34,11 +34,11 @@ class LBIJKPlayerController: UIViewController {
             make.height.equalTo(220)
         }
         
-        view.addSubview(webView)
-        webView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(playerView.snp_bottom)
-        }
+//        view.addSubview(webView)
+//        webView.snp.makeConstraints { make in
+//            make.left.right.bottom.equalToSuperview()
+//            make.top.equalTo(playerView.snp_bottom)
+//        }
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "AVPlayer", style: .done, target: self, action: #selector(pushAVPlayerVC))
     }

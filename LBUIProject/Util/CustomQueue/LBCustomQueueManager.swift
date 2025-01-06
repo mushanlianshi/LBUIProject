@@ -8,7 +8,7 @@
 import Foundation
 
 
-///自定义队列来处理异步任务   防止无线使用global线程导致 线程优先级变化，main thread优先级下降 的
+///自定义队列来处理异步任务   防止无限使用global线程导致 线程优先级变化，main thread优先级下降 的
 ///priority 主线程的默认47 等级最高  但系统也会调度动态降低优先级  最低也是 29  尤其在低性能手机上   内核少   更明显
 ///main thread priority 47 
 ///userInteractive 46

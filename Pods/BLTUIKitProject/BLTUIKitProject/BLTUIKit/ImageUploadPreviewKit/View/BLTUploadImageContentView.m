@@ -7,7 +7,6 @@
 //
 
 #import "BLTUploadImageContentView.h"
-#import "BLTImagePreviewController.h"
 #import "BLTImagePickerShowCell.h"
 #import "BLTImagePickerShowModel.h"
 #import "BLTImagePickerSectionHeaderView.h"
@@ -20,10 +19,11 @@
 #import "BLTVideoPreviewController.h"
 //#import "TZImagePreviewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "UIViewController+BLTPreviewImage.h"
 
 static NSString * const kUploadImageCellIdentifier = @"kUploadImageCellIdentifier";
 static NSString * const kUploadImageSectionHeaderIdentifier = @"kUploadImageSectionHeaderIdentifier";
-@interface BLTUploadImageContentView ()<UICollectionViewDelegate, UICollectionViewDataSource, BLTImagePickerShowCellDelegate, BLTImagePreviewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
+@interface BLTUploadImageContentView ()<UICollectionViewDelegate, UICollectionViewDataSource, BLTImagePickerShowCellDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
     NSMutableArray <NSMutableArray <BLTImagePickerShowModel *>*>* _imagesArray;
     BOOL hasAddObserver;
 }
@@ -645,39 +645,18 @@ static BLTUploadImageContentView *uploadInstance;
 
     BLT_WS(weakSelf);
     [self.viewModel previewImagesAtIndexPath:indexPath successBlock:^(NSArray *imageArray, NSInteger currentIndex, BOOL hasVideo) {
-        //有视频不可以删除  不知道混排中间插了多少视频
-        BOOL canDelete = !hasVideo;
-        if (self.style == BLTUploadImageContentViewStyleShow) {
-            canDelete = NO;
-        }
-        BLTImagePreviewController *previewVC = [[BLTImagePreviewController alloc] initWithImages:imageArray currentIndex:currentIndex canDelete:canDelete];
-        previewVC.delegate = weakSelf;
-        previewVC.startAnimatingImageView = ^UIImageView *{
-            BLTImagePickerShowCell *cell = (BLTImagePickerShowCell *)[weakSelf.collectionView cellForItemAtIndexPath:indexPath];
-            return cell.imageView;
-        };
-        previewVC.endAnimatingImageView = ^UIImageView *(NSUInteger index) {
-            NSInteger offset = firstModel.isAddModel ? 1 : 0;
-            NSIndexPath *endIndexPath = [NSIndexPath indexPathForRow:index + offset inSection:indexPath.section];
-            BLTImagePickerShowCell *cell = (BLTImagePickerShowCell *)[weakSelf.collectionView cellForItemAtIndexPath:endIndexPath];
-            if (cell) {
-                return cell.imageView;
-            }
-            return nil;
-        };
-        NSAssert(weakSelf.currentVC,@"LBLog uploadImageContentview currentVC cannot be nil");
-        [weakSelf.currentVC presentViewController:previewVC animated:YES completion:nil];
+        [weakSelf.currentVC blt_previewImage:imageArray currentIndex:currentIndex];
     }];
 }
 
-- (void)imagePreviewController:(BLTImagePreviewController *)imagePreviewController didDeleteAtIndex:(NSInteger)index{
-    NSArray <BLTImagePickerShowModel *>*sectionArray = self.imagesArray[self.previewCurrentIndexPath.section];
-    NSInteger row = sectionArray.firstObject.isAddModel ? index + 1 : index ;
-    NSIndexPath *deleteIndexPath = [NSIndexPath indexPathForRow:row inSection:self.previewCurrentIndexPath.section];
-    BLTImagePickerShowModel *deleteModel = [self.viewModel deletePhotoAtIndexPath:deleteIndexPath];
-    [self.collectionView deleteItemsAtIndexPaths:@[deleteIndexPath]];
-    [self p_didDeleteAtIndexPath:deleteIndexPath deleteModel:deleteModel];
-}
+//- (void)imagePreviewController:(BLTImagePreviewController *)imagePreviewController didDeleteAtIndex:(NSInteger)index{
+//    NSArray <BLTImagePickerShowModel *>*sectionArray = self.imagesArray[self.previewCurrentIndexPath.section];
+//    NSInteger row = sectionArray.firstObject.isAddModel ? index + 1 : index ;
+//    NSIndexPath *deleteIndexPath = [NSIndexPath indexPathForRow:row inSection:self.previewCurrentIndexPath.section];
+//    BLTImagePickerShowModel *deleteModel = [self.viewModel deletePhotoAtIndexPath:deleteIndexPath];
+//    [self.collectionView deleteItemsAtIndexPaths:@[deleteIndexPath]];
+//    [self p_didDeleteAtIndexPath:deleteIndexPath deleteModel:deleteModel];
+//}
 
 #pragma mark - cell click delegate
 //点击选择图片

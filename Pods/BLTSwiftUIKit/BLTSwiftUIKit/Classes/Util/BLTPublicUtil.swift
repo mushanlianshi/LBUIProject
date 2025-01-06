@@ -19,14 +19,6 @@ private func BLTOldSwapElement<T>(a: inout T,b: inout T){
     b = tmp
 }
 
-public func isSimulator() -> Bool {
-#if targetEnvironment(simulator)
-    return true
-#else
-    return false
-#endif
-}
-
 
 ///获取引用类型的地址
 public func getClassObjAddress(obj: AnyObject) -> String{
@@ -64,12 +56,6 @@ public func CGRectFromEdgeInsetsSwift(frame: CGRect, insets: UIEdgeInsets) -> CG
     return CGRect(x: frame.origin.x + insets.left, y: frame.origin.y + insets.top, width: frame.size.width - insets.left - insets.right, height: frame.size.height - insets.top - insets.bottom)
 }
 
-
-///判断一个可选的字符串 是不是空字符串
-public func checkOptionalStringIsEmpty(text: String?) -> Bool{
-    guard let value = text, value.isEmpty == false else { return true }
-    return false
-}
 
 
 @discardableResult

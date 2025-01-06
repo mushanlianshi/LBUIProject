@@ -261,6 +261,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
         #endif
     }
     
+    ///调整当前显示的位置   如果是无限循环的  就移到section是sections/2的位置  collectionView的bounds的x,y在一直变   bounds相对的是自己  所以一直在变
     fileprivate func adjustCollectionViewBounds() {
         guard let collectionView = self.collectionView, let pagerView = self.pagerView else {
             return

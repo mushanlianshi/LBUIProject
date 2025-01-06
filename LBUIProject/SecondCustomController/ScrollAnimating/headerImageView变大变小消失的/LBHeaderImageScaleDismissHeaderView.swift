@@ -7,6 +7,8 @@
 
 import UIKit
 
+///原理 往上滑时  在阈值范围内 修改headerView中的imageView的y值，使其位置一直在视线内，就像变小了一样，
+///大于等于阈值时 不做处理  让header自然上去
 class LBHeaderImageScaleDismissHeaderView: UIView {
     var imageViewFrame: CGRect = .zero
     

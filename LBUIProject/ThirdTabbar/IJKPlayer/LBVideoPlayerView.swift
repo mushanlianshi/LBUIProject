@@ -29,8 +29,12 @@ class LBVideoPlayerView: UIView {
     }
     
     func addVideoPlayer() {
+//        let path = Bundle.main.path(forResource: "vlc-record-2024-05-20-15h25m17s-hls.m3u8-.mp4", ofType: nil) ?? ""
+        let path = Bundle.main.path(forResource: "butterfly2.mp4", ofType: nil) ?? ""
+        
         let options = IJKFFOptions.init()
-        guard let url = URL.init(string: "https://dh2.v.netease.com/2017/cg/fxtpty.mp4") else { return }
+        guard let url = URL.init(string: path) else { return }
+//        guard let url = URL.init(string: "http://121.37.68.98:10080/rtp/31011500011320001339_31011500011320001339/hls.m3u8") else { return }
         
         self.player = IJKAVMoviePlayerController.init(contentURL: url)
         self.player?.view.backgroundColor = .black
@@ -79,6 +83,6 @@ class LBVideoPlayerView: UIView {
     
     private func getCurrentPlayerState(){
         let state = self.player!.playbackState
-        print("LBLog state \(state)")
+//        print("LBLog state \(state)")
     }
 }

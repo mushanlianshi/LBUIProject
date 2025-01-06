@@ -8,8 +8,6 @@
 #ifndef BLTImageKitHeader_h
 #define BLTImageKitHeader_h
 
-#import "BLTImagePreviewController.h"
-#import "BLTImagePreviewView.h"
 #import "BLTImagePreviewNaviBar.h"
 #import "BLTSystemPermissionManager.h"
 #import "BLTImagePickerShowCell.h"

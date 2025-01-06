@@ -24,7 +24,7 @@ public class BLTPreviewFileManager: NSObject{
     
 //    预览文件 currentVC导航  willStartPreviewHandler如果为空  默认处理导航的方式
     @objc public func previewFile(url: URL, currentVC: UINavigationController?, willStartPreviewHandler: (() -> Void)? = nil, didEndPreviewHandler: (() -> Void)? = nil) {
-        if isSimulator(){
+        if bltCheckIsSimulator(){
             assert(false, "LBLog not support simulator")
         }
         guard let vc = currentVC else { return }

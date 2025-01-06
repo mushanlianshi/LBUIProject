@@ -6,7 +6,12 @@
 //
 
 import UIKit
+
 extension String: BLTNameSpaceCompatibleValue{
+    public func toPrintBLTLog(_ prefix: String?) {
+        
+    }
+    
 }
 
 
@@ -22,6 +27,10 @@ extension BLTNameSpace where Base == String{
     
     public func rangeOfAll() -> NSRange{
         return NSRange(location: 0, length: base.count)
+    }
+    
+    public func rangeOfString(_ text: String) -> NSRange{
+        return (base as NSString).range(of: text)
     }
     
     ///截取字符串到from

@@ -83,6 +83,26 @@ class LBThirdSDKController: UIViewController {
         return view
     }()
     
+    lazy var shadowBtn: UIButton = {
+       let button = UIButton.blt.initWithTitle(title: "test", font: .blt.normalFont(16), color: .white)
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        gradient.frame = button.bounds
+        button.layer.insertSublayer(gradient, at: 0)
+
+        button.layer.cornerRadius = 20
+        button.layer.borderWidth = 5
+        button.layer.borderColor = UIColor.red.cgColor
+
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 1
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        return button
+    }()
+    
     lazy var listDataSources: [[String : Any]] = {
         return [[.title : "RxSwift", .controller : LBRxSwiftHomeViewController.self],
                 [.title : "自定义反转Sequence", .controller : LBCustomReverseSequenceController.self],
@@ -96,6 +116,7 @@ class LBThirdSDKController: UIViewController {
                 [.title : "fold卡片", .controller : LBFoldCardViewController.self],
                 [.title : "Mayo网络库", .controller : LBTestMayoNetworkController.self],
                 [.title : "IJKPlayer 播放器", .controller : LBIJKPlayerController.self],
+                [.title : "JVideoPlayer 播放器", .controller : LBSJVideoPlayerController.self],
                 [.title : "设计模式", .controller : LBDesignPatternHomeController.self],
                 [.title : "SwiftEntryKit弹框", .controller : LBAlertQueueManagerController.self],
                 [.title : "UICollectionViewCompositionalLayout布局", .controller : LBCollectionCompositionLayoutViewController.self],
@@ -141,7 +162,7 @@ class LBThirdSDKController: UIViewController {
         print("LBLog testSubProtocol \(drinking.testName())")   ///Drinking
         print("LBLog testSubProtocol \(drinking.testName2())")  ///LBTestProtocol 222
         //drinking 声明是 LBTestProtocolMethod类型 testName是肯定实现的 可以动态调用实际类型的testName方法  testName2方法不一定实现 调用编译器的LBTestProtocolMethod类型的方法  和继承有点区别  继承最终是实际类型的方法执行
-        let test: Array = [Any]()
+//        let test: Array = [Any]()
         
 //        UILabel().textVerticalAlignment
         
@@ -178,7 +199,15 @@ class LBThirdSDKController: UIViewController {
         writeOne(to: &one)
         writeTwo(to: &two)
         testGeneric()
+//        self.view.addSubview(shadowBtn)
+//        shadowBtn.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//            make.width.equalTo(80)
+//            make.height.equalTo(40)
+//        }
     }
+    
+    
     
     func testGeneric() {
         LLLClass<Int>().testPrint()

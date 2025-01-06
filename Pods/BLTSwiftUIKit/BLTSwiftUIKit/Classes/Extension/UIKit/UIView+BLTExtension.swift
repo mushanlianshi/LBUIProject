@@ -24,10 +24,24 @@ private var gradientLayerKey: Bool = false
 private var cornerBorderLayerKey: Bool = false
 
 
+
+///快速初始化的
 extension BLTNameSpace where Base: UIView{
     
+    public static func initWithBackgroundColor(color: UIColor = .white,  cornerRadius: CGFloat? = nil) -> Base{
+        let view = Base()
+        view.backgroundColor = color
+        if let radius = cornerRadius {
+            view.layer.cornerRadius = radius
+            view.layer.masksToBounds = true
+        }
+        return view
+    }
     
-    
+}
+
+
+extension BLTNameSpace where Base: UIView{
     //    设置优先级
     public func setCompressHugging(lowPriorityViews: [UIView], highPriorityViews: [UIView], direction: NSLayoutConstraint.Axis = .horizontal) {
         for lowView in lowPriorityViews {

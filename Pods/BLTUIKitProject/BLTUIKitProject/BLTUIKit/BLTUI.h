@@ -21,6 +21,7 @@
 #import "BLTInputTableViewCell.h"
 #import "UILabel+YBAttributeTextTapAction.h"
 #import "UIView+BLTCatetory.h"
+#import "UIViewController+BLTPreviewImage.h"
 #import "BLTOnceManager.h"
 
 #import "BLTMenu.h"

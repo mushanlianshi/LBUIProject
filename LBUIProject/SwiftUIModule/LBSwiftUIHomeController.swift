@@ -8,50 +8,48 @@
 import UIKit
 import SwiftUI
 
-class LBSwiftUIHomeController: UIViewController {
+class LBSwiftUIHomeController: LBBaseCollectionViewController {
     
-    private lazy var collectionView: UICollectionView = {
-        let width = view.bounds.width / 3
-        let size = CGSize(width: width, height: width * 0.65)
-        let collectionV = UICollectionView.blt.initFlowCollectionView(miniLineSpacing: 0, miniInterItemSpacing: 0, itemSize: size, scrollDirection: .vertical, delegate: self, dataSource: self)
-        collectionV.register(LBSecondColumnListCell.self, forCellWithReuseIdentifier: LBSecondColumnListCell.blt_className)
-        return collectionV
-    }()
-    
-    private lazy var dataSources: [LBSwiftUIExampleType] = [
+    private lazy var swiftUIDataList: [LBSwiftUIExampleType] = [
         .chart,
         .ScrollKit
     ]
     
+    private lazy var swiftUIDataList22: [(type: LBSwiftUIExampleType, view: AnyView)] = [
+        (.chart, AnyView(LBChartTabView())),
+        (.ScrollKit, AnyView(LBScrollKitHomeView())),
+        (.swiftUIAnimation, AnyView(LBSwiftUIAnimationView()))
+    ]
+    
     override func viewDidLoad() {
+        collectionView.blt.registerReusableCell(cell: LBBaseColumnListCell.self)
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
     }
 
 }
 
 
-extension LBSwiftUIHomeController: UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSources.count
+extension LBSwiftUIHomeController{
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return swiftUIDataList22.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.blt.dequeueReusableCell(LBSecondColumnListCell.self, indexPath: indexPath)
-        cell.title = dataSources[indexPath.row].rawValue
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.blt.dequeueReusableCell(LBBaseColumnListCell.self, indexPath: indexPath)
+        cell.title = swiftUIDataList22[indexPath.row].type.rawValue
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dataSources[indexPath.row]
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ///获取swiftUI展示的controller
 //        let hostVC: UIHostingController<<#Content: View#>>!
 //        var swiftView: any View
-        let type = self.dataSources[indexPath.row]
+        let view = self.swiftUIDataList22[indexPath.row].view
+        self.navigationController?.pushViewController(UIHostingController(rootView: view), animated: true)
+        return
+        
+        let type = self.swiftUIDataList[indexPath.row]
         switch type {
         case .chart:
             self.navigationController?.pushViewController(UIHostingController(rootView: LBChartTabView()), animated: true)
@@ -70,4 +68,5 @@ extension LBSwiftUIHomeController: UICollectionViewDelegate, UICollectionViewDat
 enum LBSwiftUIExampleType: String {
     case chart = "图表Chart iOS16"
     case ScrollKit = "ScrollKit 列表"
+    case swiftUIAnimation = "swiftUI动画"
 }

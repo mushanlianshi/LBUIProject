@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SnapKit
+import BLTUIKitProject
 
 @objc public enum BLTImageSquareColumnAutoSizeType: Int{
     case none
@@ -163,7 +164,8 @@ extension BLTImageSquareColumnView: UICollectionViewDelegate, UICollectionViewDa
             array = imageArray
         }
         guard let imageList = array else { return }
-        vc.blt.previewImage(currentIndex: indexPath.row, imageArray: imageList)
+        vc.blt_previewImage(imageList, currentIndex: indexPath.row)
+//        vc.blt.previewImage(currentIndex: indexPath.row, imageArray: imageList)
     }
     
 }

@@ -44,50 +44,6 @@ class LBLivePreviewViewController: UIViewController {
 }
 
 
-//#if DEBUG
-//extension UIViewController{
-//    @available(iOS 13, *)
-//    private struct Preview: UIViewControllerRepresentable {
-//        // 用于注入当前的viewcontroller
-//        let viewController: UIViewController
-//
-//        func makeUIViewController(context: Context) -> UIViewController {
-//            return viewController
-//        }
-//
-//        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-//            //
-//        }
-//    }
-//
-//    @available(iOS 13, *)
-//    func showPreview() -> some View {
-//        Preview(viewController: self)
-//    }
-//
-//}
-//
-//
-//extension UIView{
-//    @available(iOS 13, *)
-//    private struct Preview: UIViewRepresentable {
-//        typealias UIViewType = UIView
-//        let view: UIView
-//        func makeUIView(context: Context) -> UIView {
-//            return view
-//        }
-//        
-//        func updateUIView(_ uiView: UIView, context: Context) {}
-//    }
-//
-//    @available(iOS 13, *)
-//    func showPreview() -> some View {
-//        // inject self (the current UIView) for the preview
-//        Preview(view: self)
-//    }
-//}
-//#endif
-
 
 #if DEBUG
 @available(iOS 13, *)

@@ -108,8 +108,17 @@ class LBAVPlayerController: UIViewController {
         ///必须addChildVC才可以播放
         addChild(vc)
         vc.view.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 300)
-//        self.player.play()
+        self.player.play()
+        checkError()
+    }
     
+    private func checkError(){
+        print("LBLog error \(self.player.status)")
+        print("LBLog error \(self.player.error)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            [weak self] in
+            self?.checkError()
+        })
     }
     
     
@@ -150,7 +159,7 @@ extension LBAVPlayerController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.blt.dequeueReusableCell(LBAVPlayerCollectionCell.self, indexPath: indexPath)
         if indexPath.row == 0{
-            cell.videoUrl = "https://1500004543.vod2.myqcloud.com/a2771c87vodtranssh1500004543/e6326b55243791579892500153/v.f1425612.mp4?t=64781f45&sign=3f2a54e017c164b95a10060539f7fbbf"
+            cell.videoUrl = "https://www.geektang.cn/proxy_mehaha/1-1%E5%BC%80%E5%AD%A6%E5%85%B8%E7%A4%BC%E5%8F%8A%E8%AF%BE%E7%A8%8B%E6%A6%82%E8%BF%B0%20-%20%E6%89%94%E7%89%A9%E7%BA%BF.mp4?targetUrl=https%3A%2F%2Fwww.geektang.cn%2Falist%2Fd%2Faliyun2%2Fandroid%2F%E6%89%94%E7%89%A9%E7%BA%BF%2FO3q7Hb507UUiaTqLCsxzDiLo1C2xgKWS2o1ch09Q77QXS8GpuOeV7lQ3TfGwW3pJPWyD.tf%3Fsign%3DCi3e5i6bl8NZ0bIIAzPBl2qV_ShnEf5_fByC_IwYDjI%3D%3A0&decrypt=1"
         }else if indexPath.row == 1{
             cell.videoUrl = "https://1500004543.vod2.myqcloud.com/a2771c87vodtranssh1500004543/de22f9e3243791579956583623/v.f1425612.mp4?t=64781f86&sign=cbd6fd97ed8f7329774be76e18cc5bd5"
         }else if indexPath.row == 2{
