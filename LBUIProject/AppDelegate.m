@@ -62,6 +62,10 @@ struct B{
     self.window.rootViewController = [LBTabbarController new];
 //    self.window.rootViewController = [LBHomeViewController new];
     [[UINavigationBar appearance] setTranslucent:NO];
+    
+    NSString *env = [[NSProcessInfo processInfo] environment][@"runEnvironment"];
+    NSLog(@"LBLog env is %@", env);
+    
 #ifdef DEBUG
     //动态变化的
     // for iOS

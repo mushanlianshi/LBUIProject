@@ -75,11 +75,6 @@ class LBTabbarController: UITabBarController {
         initSubControllers()
         addAnimateImageView()
         startAnimating()
-        var string = "巴乐兔业务员正在准备为您建租【金蝶测试小区6635室】，当前租金调整为500.00元/月（原价为1199.00元/月）,戳https://m.baletu.com/tui/fd/index.html?action_type=contract_order_confirm反馈是否同意该价格"
-        print("LBLog string count \(string.count)")
-//        self.view.addSubview(testView)
-//        testView.frame = CGRect(x: 100, y: 200, width: 200, height: 100)
-//        testView.lbWith()
         
         let queue = DispatchQueue.init(label: "concurrent", qos: DispatchQoS.utility, attributes: DispatchQueue.Attributes.concurrent)
         queue.async {

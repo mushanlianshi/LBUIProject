@@ -241,7 +241,7 @@ static BLTUploadImageContentView *uploadInstance;
     CGFloat height = 0;
     if (self.flowLayout.scrollDirection == UICollectionViewScrollDirectionVertical) {
         CGFloat itemSpacing = self.flowLayout.minimumLineSpacing;
-        width = (CGRectGetWidth(collectionView.frame) - UIEdgeInsetsGetHorizontalValue(self.collectionView.contentInset) - itemSpacing * (row - 1)) / row;
+        width = (CGRectGetWidth(collectionView.frame) - BLTUIEdgeInsetsGetHorizontalValue(self.collectionView.contentInset) - itemSpacing * (row - 1)) / row;
         height = width/_imageProportion;
     }else{
         height = CGRectGetHeight(self.collectionView.frame);

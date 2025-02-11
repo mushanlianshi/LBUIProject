@@ -9,7 +9,6 @@
 import UIKit
 import Kingfisher
 import SnapKit
-import BLTUIKitProject
 
 @objc public enum BLTImageSquareColumnAutoSizeType: Int{
     case none
@@ -21,6 +20,9 @@ import BLTUIKitProject
 @objc open class BLTImageSquareColumnView: UIView {
     
     private static let shared = BLTImageSquareColumnView()
+    
+    /// 预览图片默认的展示block
+    public static var previewImageDefaultBlock:((_ imageList: [Any], _ currentIndex: Int) -> Void)?
     
     open override class func appearance() -> Self {
         return shared as! Self
@@ -150,13 +152,6 @@ extension BLTImageSquareColumnView: UICollectionViewDelegate, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let previewBlock = previewImageBlock{
-            previewBlock(indexPath.row, imageArray)
-            return
-        }
-        
-        guard let vc = self.blt.currentViewController() else { return }
-        
         var array: [Any]?
         if let highQualityImageArray = previewHighQualityImageArray{
             array = highQualityImageArray
@@ -164,8 +159,15 @@ extension BLTImageSquareColumnView: UICollectionViewDelegate, UICollectionViewDa
             array = imageArray
         }
         guard let imageList = array else { return }
-        vc.blt_previewImage(imageList, currentIndex: indexPath.row)
-//        vc.blt.previewImage(currentIndex: indexPath.row, imageArray: imageList)
+        
+        if let previewBlock = previewImageBlock{
+            previewBlock(indexPath.row, imageList)
+            return
+        }
+        
+        /// 默认预览图片的
+        guard let previewImageDefaultBlock = BLTImageSquareColumnView.previewImageDefaultBlock else { return }
+        previewImageDefaultBlock(imageList, indexPath.row)
     }
     
 }

@@ -34,6 +34,9 @@ fileprivate struct LBWrapperStruct{
     var height: Int
     @LBMaxNumberWrapper(wrappedValue: 0, maxValue: 50)
     var width: Int
+    
+//    @LBStringToIntDefaultZero
+//    var testStringToInt: Int
 }
 
 
@@ -60,6 +63,9 @@ class LLPropertyWrapperViewController: UIViewController {
         dump(struct2)
         print("LBLog struct \(struct1.width) \(struct1.height)")
         print("LBLog struct2 \(struct2.width) \(struct2.height)")
+        
+        //        try JSONDecoder().decode(DataModel.self, from: $0.data) })
+        
     }
 
 }

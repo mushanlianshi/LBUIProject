@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import HandyJSON
-import BLTUIKitProject
 
-open class BLTImageContentModel: HandyJSON{
+fileprivate let lineHeight = 1 / UIScreen.main.scale
+
+open class BLTImageContentModel{
     public var title: String = ""
     public var desc: String?
     public var extraData: Any?
@@ -53,15 +53,15 @@ open class BLTImageContentCell: BLTCommonListCell<BLTImageContentModel> {
                 make.left.equalToSuperview().offset(lineInset.left)
                 make.right.equalToSuperview().offset(lineInset.right)
                 make.bottom.equalToSuperview().offset(lineInset.bottom)
-                make.height.equalTo(BLTLineViewHeight())
+                make.height.equalTo(lineHeight)
             }
         }
     }
     
-    var stackView = UIStackView.blt_stackView(withSpacing: 15, distribution: .fill, alignment: .center)!
-    var verticalStackView = UIStackView.blt_stackView(withSpacing: 5, distribution: .fill, alignment: .fill, axis: .vertical)!
-    var titleLab = UILabel.blt_label(withTitle: "", font: UIFontPFFontSize(15), textColor: UIColor.blt.threeThreeBlackColor())!
-    var contentLab = UILabel.blt_label(withTitle: "", font: UIFontPFFontSize(13), textColor: UIColor.blt.ninenineBlackColor())!
+    var stackView = UIStackView.blt.initStackView(spacing: 15, axis: .horizontal, distribution: .fill, alignment: .center)
+    var verticalStackView = UIStackView.blt.initStackView(spacing: 5, axis: .vertical, distribution: .fill, alignment: .fill)
+    var titleLab = UILabel.blt.initWithText(text: "", font: .blt.normalFont(15), textColor: .blt.threeThreeBlackColor())
+    var contentLab = UILabel.blt.initWithText(text: "", font: .blt.normalFont(13), textColor: .blt.ninenineBlackColor())
     var arrowIV = UIImageView()
     
     
@@ -72,7 +72,7 @@ open class BLTImageContentCell: BLTCommonListCell<BLTImageContentModel> {
     }
     
     func setupViews() {
-        arrowIV.image = UIImageNamed("public_right_arrow")
+        arrowIV.image = UIImage(named: "public_right_arrow")
         contentView.backgroundColor = .white
         contentView.addSubview(stackView)
         contentLab.numberOfLines = 0;
@@ -95,7 +95,7 @@ open class BLTImageContentCell: BLTCommonListCell<BLTImageContentModel> {
             make.left.equalToSuperview().offset(lineInset.left)
             make.right.equalToSuperview().offset(lineInset.right)
             make.bottom.equalToSuperview().offset(lineInset.bottom)
-            make.height.equalTo(BLTLineViewHeight())
+            make.height.equalTo(lineHeight)
         }
         
         arrowIV.setContentHuggingPriority(.required, for: .horizontal)

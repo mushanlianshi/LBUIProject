@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import BLTUIKitProject
-
+fileprivate let lineHeight = 1 / UIScreen.main.scale
 public class BLTChooseListView: UIView {
     private static let instanceListView = BLTChooseListView()
     public override class func appearance() -> Self {
@@ -33,7 +32,8 @@ public class BLTChooseListView: UIView {
                 assert(titles.count != 0, "titles connot be nil")
             }
             self.tableView.reloadData()
-            self.blt_height = itemH * CGFloat(titles.count)
+            let height = itemH * CGFloat(titles.count)
+            self.frame = .init(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: height)
         }
     }
     
@@ -74,22 +74,7 @@ public class BLTChooseListView: UIView {
         }
         self.customSensorDataBlock?(tableView)
     }
-    
-    
-    // 重写响应方法
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "contentSize" {
-//            if let new = change?[NSKeyValueChangeKey.newKey] {
-//                if let size = new as? CGSize {
-//                    self.blt_height = size.height;
-//                }
-//             }
-//        }
-//    }
-    
-//    deinit {
-//        tableView.removeObserver(self, forKeyPath: "contentSize")
-//    }
+
 }
 
 
@@ -132,7 +117,7 @@ class BLTChooseListCell: UITableViewCell {
     }
     var checkBtn = UIButton()
     
-    var titleLab = UILabel.blt_label(with: UIFontPFFontSize(15), textColor: UIColor.blt.sixsixBlackColor())!
+    var titleLab = UILabel.blt.initWithFont(font: .blt.normalFont(15), textColor: .blt.sixsixBlackColor())
     var checked = false{
         didSet{
             self.checkBtn.isSelected = checked

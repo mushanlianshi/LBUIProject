@@ -81,7 +81,6 @@
 
     LBHomeViewController *vc;
     NSLog(@"LBLog vc count is %@",@(vc.count));
-    [self playMusic];
 }
 
 
@@ -98,7 +97,6 @@
 
 - (void)getNetworkAuth{
     CTCellularData *cellularData = [[CTCellularData alloc]init];
-    
 //    CTCellularDataRestrictedState state = cellularData.restrictedState;
 //    NSLog(@"LBLog state is %@",@(state));
     cellularData.cellularDataRestrictionDidUpdateNotifier = ^(CTCellularDataRestrictedState state){
@@ -109,9 +107,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    NSLog(@"LBLog viewwillappear  before ==========");
     [super viewWillAppear:animated];
-    NSLog(@"LBLog viewwillappear  after ==========");
 }
 
 //访问野指针是没有问题的   使用的时候会crash

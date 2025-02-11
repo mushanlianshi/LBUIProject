@@ -22,10 +22,12 @@ struct LBSwiftUIAnimationView: View {
 }
 
 
+
+
+
 ///第一种使用全局函数withAnimation来实现的
 fileprivate struct LBSwiftUIAnimationByWithAnimationView: View {
     @State private var x1: CGFloat = 0
-    
     var body: some View {
         Circle()
             .frame(width: 64, height: 64)

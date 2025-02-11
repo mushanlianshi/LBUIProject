@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import BLTUIKitProject
 
 extension BLTNameSpace where Base: UICollectionView{
     

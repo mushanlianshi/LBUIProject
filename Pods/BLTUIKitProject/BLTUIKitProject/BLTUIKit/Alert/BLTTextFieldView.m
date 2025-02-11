@@ -102,13 +102,13 @@ static BLTTextFieldView * textViewInstance;
     CGFloat contentX = self.contentInsets.left;
     if (self.tipTitle.length > 0) {
         CGSize fitSize = [self.tipTitleLab sizeThatFits:CGSizeMake(CGFLOAT_MAX, totalContentH)];
-        self.tipTitleLab.frame = CGRectMake(self.contentInsets.left, self.contentInsets.top, fitSize.width, totalContentH - UIEdgeInsetsGetVerticalValue(self.contentInsets));
+        self.tipTitleLab.frame = CGRectMake(self.contentInsets.left, self.contentInsets.top, fitSize.width, totalContentH - BLTUIEdgeInsetsGetVerticalValue(self.contentInsets));
         contentX += fitSize.width + self.tipTitleSpacing;
     }
     
-    self.textField.frame = CGRectMake(contentX, self.contentInsets.top, totalContentW - self.contentInsets.right - contentX, totalContentH - UIEdgeInsetsGetVerticalValue(self.contentInsets));
+    self.textField.frame = CGRectMake(contentX, self.contentInsets.top, totalContentW - self.contentInsets.right - contentX, totalContentH - BLTUIEdgeInsetsGetVerticalValue(self.contentInsets));
     
-    CGFloat textFieldContentH = totalContentH - UIEdgeInsetsGetVerticalValue(self.contentInsets) - UIEdgeInsetsGetVerticalValue(self.textFieldContentInsets);
+    CGFloat textFieldContentH = totalContentH - BLTUIEdgeInsetsGetVerticalValue(self.contentInsets) - BLTUIEdgeInsetsGetVerticalValue(self.textFieldContentInsets);
     if (self.unitString.length > 0) {
         CGSize fitSize = [self.unitLab sizeThatFits:CGSizeMake(CGFLOAT_MAX, textFieldContentH)];
         self.unitLab.frame = CGRectMake(0, 0, fitSize.width, fitSize.height);
@@ -241,7 +241,7 @@ static BLTTextFieldView * textViewInstance;
 @implementation BLTTextField
 
 - (CGRect)textRectForBounds:(CGRect)bounds{
-    bounds = CGRectFromUIEdgeInsets(bounds, self.contentInsets);
+    bounds = BLTCGRectFromUIEdgeInsets(bounds, self.contentInsets);
     if ([self rightViewShowing]) {
         bounds = CGRectMake(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetWidth(bounds) -  - 5, CGRectGetHeight(bounds));
     }
@@ -260,7 +260,7 @@ static BLTTextFieldView * textViewInstance;
 
 /** 编辑状态下的rect */
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    bounds = CGRectFromUIEdgeInsets(bounds, self.contentInsets);
+    bounds = BLTCGRectFromUIEdgeInsets(bounds, self.contentInsets);
     return [super editingRectForBounds:bounds];
 }
 

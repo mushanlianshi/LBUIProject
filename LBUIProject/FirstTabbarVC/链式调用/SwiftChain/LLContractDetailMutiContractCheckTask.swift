@@ -20,11 +20,11 @@ class LLContractDetailMutiContractCheckTask: LLContractDetailBeforeSignCheckTask
             return
         }
         
-        self.currentVC?.blt.presentAlert(title: .blt.alertTipTitle, content: "该房源已有租约，请仔细核对租约信息哦~ ", style: .alert, cancelTitle: "查看其他租约", cancelBlock: { [weak self] action in
-            self?.lookOtherContractBlock?()
-        }, sureTitle: "确认签署", sureBlock: { action in
-            completeBlock?(nil)
-        }, tapBackDismiss: false)
+//        self.currentVC?.blt.presentAlert(title: .blt.alertTipTitle, content: "该房源已有租约，请仔细核对租约信息哦~ ", style: .alert, cancelTitle: "查看其他租约", cancelBlock: { [weak self] action in
+//            self?.lookOtherContractBlock?()
+//        }, sureTitle: "确认签署", sureBlock: { action in
+//            completeBlock?(nil)
+//        }, tapBackDismiss: false)
     }
     
     

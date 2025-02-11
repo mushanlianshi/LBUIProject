@@ -26,7 +26,8 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "alpha  And opacity", vcClass: LBAlphaAndOpacityViewController.self),
                 LBListItemModel.init(title: "VC disappear方法", vcClass: LBVerifyVCDisappearController.self),
                 LBListItemModel.init(title: "全屏", vcClass: LBFullScreenViewController.self),
-                LBListItemModel.init(title: "present全屏", vcClass: LBPresentFullScreenController.self)
+                LBListItemModel.init(title: "present全屏", vcClass: LBPresentFullScreenController.self),
+                LBListItemModel.init(title: "更换应用图标无弹框", vcClass: LBChangeIconWithoutAlertController.self),
             ]
         }
     }

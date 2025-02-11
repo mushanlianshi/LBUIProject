@@ -9,7 +9,7 @@ import Foundation
 
 extension Dictionary: BLTNameSpaceCompatibleValue{}
 
-extension BLTNameSpace where Base == Dictionary<String, Any>{
+extension BLTNameSpace where Base == Dictionary<AnyHashable, Any>{
     
     public func toJsonString() -> String? {
         guard let data = try? JSONSerialization.data(withJSONObject: base,
@@ -22,9 +22,9 @@ extension BLTNameSpace where Base == Dictionary<String, Any>{
         return str
     }
     
-    public func addEntriesFromDic(dic: Dictionary<String, Any>?) -> [String: Any]{
-        var result = [String: Any]()
-        guard let fromDic = dic else { return result }
+    public func addEntriesFromDic(dic: Dictionary<AnyHashable, Any>?) -> [AnyHashable: Any]{
+        var result = [AnyHashable: Any]()
+        guard let fromDic = dic else { return self.base }
         self.base.forEach { (key, value) in
             result[key] = value
         }

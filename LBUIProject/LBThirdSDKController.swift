@@ -139,14 +139,6 @@ class LBThirdSDKController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UIImageView().kf.setImage(with: <#T##Source?#>)
-//        let label = UILabel.blt.initWithFont(font: UIFontPFFontSize(12)), textColor: .blt.threeThreeBlackColor())
-        
-        print("LBLog viewDidLoad ====== ")
-        let card = CardType.allValues
-        let card1 = CardType.allValues
-        print("LBLog card \(card) ")
-        print("LBLog card11 \(card1) ")
         initTableView()
         print("LBLog reduce 2222 is \(test(input: 1,2,3,4))")
         let coke = Drinking.drinking(name: "Coke")
@@ -162,9 +154,6 @@ class LBThirdSDKController: UIViewController {
         print("LBLog testSubProtocol \(drinking.testName())")   ///Drinking
         print("LBLog testSubProtocol \(drinking.testName2())")  ///LBTestProtocol 222
         //drinking 声明是 LBTestProtocolMethod类型 testName是肯定实现的 可以动态调用实际类型的testName方法  testName2方法不一定实现 调用编译器的LBTestProtocolMethod类型的方法  和继承有点区别  继承最终是实际类型的方法执行
-//        let test: Array = [Any]()
-        
-//        UILabel().textVerticalAlignment
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -199,12 +188,6 @@ class LBThirdSDKController: UIViewController {
         writeOne(to: &one)
         writeTwo(to: &two)
         testGeneric()
-//        self.view.addSubview(shadowBtn)
-//        shadowBtn.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//            make.width.equalTo(80)
-//            make.height.equalTo(40)
-//        }
     }
     
     
@@ -330,20 +313,8 @@ class Coke: Drinking {
 class Beer: Drinking {
     override var color: LiquidColor { return .yellow } }
 
-
-protocol LBAllEnumValues{
-    static var allValues: [Self] { get }
-}
-
-enum CardType{
+enum CardType: CaseIterable{
     case hei
     case hong
-}
-
-extension CardType: LBAllEnumValues{
-    static var allValues: [CardType]{
-        print("LBLog enumvalue is =======")
-        return [.hei, .hong]
-    }
 }
 

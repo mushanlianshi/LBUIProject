@@ -189,7 +189,7 @@ extension LBDrawerSwiperAnimationView2: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.blt.dequeueReusableCell(indexPath: indexPath)
+        let cell = tableView.blt.dequeueReusableCell(UITableViewCell.self, indexPath: indexPath)
         cell.textLabel?.text = String(dataSources[indexPath.row])
         return cell
     }

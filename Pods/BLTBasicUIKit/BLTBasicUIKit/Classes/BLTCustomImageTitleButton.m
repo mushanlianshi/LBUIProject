@@ -46,46 +46,46 @@
     CGSize titleTotalSize = CGSizeZero;
     CGFloat spacingBetweenImageTitle = hasImage && hasTitle ? self.imageTitleInnerMargin : 0;
     CGSize resultSize = CGSizeZero;
-    CGSize contentLimitSize = CGSizeMake(size.width - UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets), size.height - UIEdgeInsetsGetVerticalValue(self.contentEdgeInsets));
+    CGSize contentLimitSize = CGSizeMake(size.width - BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets), size.height - BLTUIEdgeInsetsGetVerticalValue(self.contentEdgeInsets));
     
     switch (self.imagePosition) {
         case BLTCustomButtonImagePositionTop:
         case BLTCustomButtonImagePositionBottom:{
             if (hasImage) {
-                CGFloat imageLimitWidth = contentLimitSize.width - UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets);
+                CGFloat imageLimitWidth = contentLimitSize.width - BLTUIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets);
                 CGSize imageSize = self.currentImage.size;
                 imageSize.width = fmin(imageSize.width, imageLimitWidth);
-                imageTotalSize = CGSizeMake(imageSize.width + UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
+                imageTotalSize = CGSizeMake(imageSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + BLTUIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
             }
             
             if (hasTitle) {
-                CGSize titleLimitSize = CGSizeMake(contentLimitSize.width - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentLimitSize.height - imageTotalSize.height - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+                CGSize titleLimitSize = CGSizeMake(contentLimitSize.width - BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentLimitSize.height - imageTotalSize.height - BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
                 CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
                 titleSize.height = fmin(titleSize.height, titleLimitSize.height);
-                titleTotalSize = CGSizeMake(titleSize.width + UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+                titleTotalSize = CGSizeMake(titleSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
             }
-            resultSize.width = UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + fmax(imageTotalSize.width, titleTotalSize.width);
-            resultSize.height = UIEdgeInsetsGetVerticalValue(self.contentEdgeInsets) + imageTotalSize.height + spacingBetweenImageTitle + titleTotalSize.height;
+            resultSize.width = BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + fmax(imageTotalSize.width, titleTotalSize.width);
+            resultSize.height = BLTUIEdgeInsetsGetVerticalValue(self.contentEdgeInsets) + imageTotalSize.height + spacingBetweenImageTitle + titleTotalSize.height;
         }
             break;
         case BLTCustomButtonImagePositionLeft:
         case BLTCustomButtonImagePositionRight:
         {
             if (hasImage) {
-                CGFloat imageLimitHeight = contentLimitSize.height - UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets);
+                CGFloat imageLimitHeight = contentLimitSize.height - BLTUIEdgeInsetsGetVerticalValue(self.imageEdgeInsets);
                 CGSize imageSize = self.currentImage.size;
                 imageSize.height = fmin(imageSize.height, imageLimitHeight);
-                imageTotalSize = CGSizeMake(imageSize.width + UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
+                imageTotalSize = CGSizeMake(imageSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + BLTUIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
             }
             
             if (hasTitle) {
-                CGSize titleLimitSize = CGSizeMake(contentLimitSize.width - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets) - spacingBetweenImageTitle - imageTotalSize.width, contentLimitSize.height - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+                CGSize titleLimitSize = CGSizeMake(contentLimitSize.width - BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets) - spacingBetweenImageTitle - imageTotalSize.width, contentLimitSize.height - BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
                 CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
                 titleSize.height = fmin(titleSize.height, titleLimitSize.height);
-                titleTotalSize = CGSizeMake(titleSize.width + UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+                titleTotalSize = CGSizeMake(titleSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
             }
-            resultSize.width = UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + imageTotalSize.width + spacingBetweenImageTitle + titleTotalSize.width;
-            resultSize.height = UIEdgeInsetsGetVerticalValue(self.contentEdgeInsets) + fmax(imageTotalSize.height, titleTotalSize.height);
+            resultSize.width = BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + imageTotalSize.width + spacingBetweenImageTitle + titleTotalSize.width;
+            resultSize.height = BLTUIEdgeInsetsGetVerticalValue(self.contentEdgeInsets) + fmax(imageTotalSize.height, titleTotalSize.height);
         }
             break;
     }
@@ -112,56 +112,56 @@
     CGRect imageFrame = CGRectZero;
     CGRect titleFrame = CGRectZero;
     //内容的大小
-    CGSize contentSize = CGSizeMake(CGRectGetWidth(self.bounds) - UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets), CGRectGetHeight(self.bounds) - UIEdgeInsetsGetVerticalValue(self.contentEdgeInsets));
+    CGSize contentSize = CGSizeMake(CGRectGetWidth(self.bounds) - BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets), CGRectGetHeight(self.bounds) - BLTUIEdgeInsetsGetVerticalValue(self.contentEdgeInsets));
     
     if (hasImage) {
-        imageLimitSize = CGSizeMake(contentSize.width - UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), contentSize.height - UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
+        imageLimitSize = CGSizeMake(contentSize.width - BLTUIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), contentSize.height - BLTUIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
         CGSize imageSize = [self.imageView sizeThatFits:imageLimitSize];
         imageSize.width = fmin(imageLimitSize.width, imageSize.width);
         imageSize.height = fmin(imageLimitSize.height, imageSize.height);
         imageFrame = CGRectMake(0, 0, imageSize.width, imageSize.height);
-        imageTotalSize = CGSizeMake(imageSize.width + UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
+        imageTotalSize = CGSizeMake(imageSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + BLTUIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
     }
     
     //图片是上下位置的
     if (self.imagePosition == BLTCustomButtonImagePositionTop || self.imagePosition == BLTCustomButtonImagePositionBottom) {
         if (hasTitle) {
-            titleLimitSize = CGSizeMake(contentSize.width - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentSize.height - imageTotalSize.height - spacingBetweenImageTitle - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+            titleLimitSize = CGSizeMake(contentSize.width - BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentSize.height - imageTotalSize.height - spacingBetweenImageTitle - BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
             CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
             titleSize.width = fmin(titleLimitSize.width, titleSize.width);
             titleSize.height = fmin(titleLimitSize.height, titleSize.height);
             titleFrame = CGRectMake(0, 0, titleSize.width, titleSize.height);
-            titleTotalSize = CGSizeMake(titleSize.width + UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+            titleTotalSize = CGSizeMake(titleSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
         }
         //1.判断水平方向
         switch (self.contentHorizontalAlignment) {
             case UIControlContentHorizontalAlignmentCenter:
             {
-                imageFrame = hasImage ? CGRectSetX(imageFrame, CGRectGetCenterStartValue(imageLimitSize.width, CGRectGetWidth(imageFrame)) + self.contentEdgeInsets.left + self.imageEdgeInsets.left) : imageFrame;
-                titleFrame = hasTitle ? CGRectSetX(titleFrame, CGRectGetCenterStartValue(titleLimitSize.width, CGRectGetWidth(titleFrame)) + self.contentEdgeInsets.left + self.titleEdgeInsets.left) : titleFrame;
+                imageFrame = hasImage ? BLTCGRectSetX(imageFrame, BLTCGRectGetCenterStartValue(imageLimitSize.width, CGRectGetWidth(imageFrame)) + self.contentEdgeInsets.left + self.imageEdgeInsets.left) : imageFrame;
+                titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, BLTCGRectGetCenterStartValue(titleLimitSize.width, CGRectGetWidth(titleFrame)) + self.contentEdgeInsets.left + self.titleEdgeInsets.left) : titleFrame;
             }
                 break;
             case UIControlContentHorizontalAlignmentLeft:
             {
-                imageFrame = hasImage ? CGRectSetX(imageFrame, self.contentEdgeInsets.left + self.imageEdgeInsets.left) : imageFrame;
-                titleFrame = hasTitle ? CGRectSetX(titleFrame, self.contentEdgeInsets.left + self.titleEdgeInsets.left) : titleFrame;
+                imageFrame = hasImage ? BLTCGRectSetX(imageFrame, self.contentEdgeInsets.left + self.imageEdgeInsets.left) : imageFrame;
+                titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, self.contentEdgeInsets.left + self.titleEdgeInsets.left) : titleFrame;
             }
                 break;
             case UIControlContentHorizontalAlignmentRight:
             {
-                imageFrame = hasImage ? CGRectSetX(imageFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.imageEdgeInsets.right - CGRectGetWidth(imageFrame)) : imageFrame;
-                titleFrame = hasTitle ? CGRectSetX(titleFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.titleEdgeInsets.right - CGRectGetWidth(titleFrame)) : titleFrame;
+                imageFrame = hasImage ? BLTCGRectSetX(imageFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.imageEdgeInsets.right - CGRectGetWidth(imageFrame)) : imageFrame;
+                titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.titleEdgeInsets.right - CGRectGetWidth(titleFrame)) : titleFrame;
             }
                 break;
             case UIControlContentHorizontalAlignmentFill:
             {
                 CGFloat imageScale = 0;
-                CGFloat imageW = (UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets) + CGRectGetWidth(imageFrame));
+                CGFloat imageW = (BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + BLTUIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets) + CGRectGetWidth(imageFrame));
                 if (imageW != 0) {
                     imageScale = CGRectGetWidth(self.bounds) / imageW;
                 }
-                imageFrame = hasImage ? CGRectSetX(imageFrame, imageScale * (self.contentEdgeInsets.left + self.imageEdgeInsets.left)) : imageFrame;
-                imageFrame = hasImage ? CGRectSetWidth(imageFrame, imageScale * CGRectGetWidth(imageFrame)) : imageFrame;
+                imageFrame = hasImage ? BLTCGRectSetX(imageFrame, imageScale * (self.contentEdgeInsets.left + self.imageEdgeInsets.left)) : imageFrame;
+                imageFrame = hasImage ? BLTCGRectSetWidth(imageFrame, imageScale * CGRectGetWidth(imageFrame)) : imageFrame;
             }
                 break;
         }
@@ -172,33 +172,33 @@
                 case UIControlContentVerticalAlignmentCenter:
                 {
                     CGFloat contentH = imageTotalSize.height + titleTotalSize.height + spacingBetweenImageTitle;
-                    CGFloat minY = CGRectGetCenterStartValue(contentSize.height, contentH) + self.contentEdgeInsets.top;
-                    imageFrame = hasImage ? CGRectSetY(imageFrame, minY + self.imageEdgeInsets.top) : imageFrame;
-                    titleFrame = hasTitle ? CGRectSetY(titleFrame, minY + imageTotalSize.height + spacingBetweenImageTitle + self.titleEdgeInsets.top) : titleFrame;
+                    CGFloat minY = BLTCGRectGetCenterStartValue(contentSize.height, contentH) + self.contentEdgeInsets.top;
+                    imageFrame = hasImage ? BLTCGRectSetY(imageFrame, minY + self.imageEdgeInsets.top) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, minY + imageTotalSize.height + spacingBetweenImageTitle + self.titleEdgeInsets.top) : titleFrame;
                 }
                     break;
                 case UIControlContentVerticalAlignmentTop:
                 {
-                    imageFrame = hasImage ? CGRectSetY(imageFrame, self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
-                    titleFrame = hasTitle ? CGRectSetY(titleFrame, self.contentEdgeInsets.top + imageTotalSize.height + spacingBetweenImageTitle) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetY(imageFrame, self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, self.contentEdgeInsets.top + imageTotalSize.height + spacingBetweenImageTitle) : titleFrame;
                 }
                     break;
                 case UIControlContentVerticalAlignmentBottom:{
-                    titleFrame = hasTitle ? CGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.titleEdgeInsets.bottom - CGRectGetHeight(titleFrame)) : titleFrame;
-                    imageFrame = hasTitle ? CGRectSetY(imageFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - spacingBetweenImageTitle - titleTotalSize.height - self.imageEdgeInsets.bottom) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.titleEdgeInsets.bottom - CGRectGetHeight(titleFrame)) : titleFrame;
+                    imageFrame = hasTitle ? BLTCGRectSetY(imageFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - spacingBetweenImageTitle - titleTotalSize.height - self.imageEdgeInsets.bottom) : imageFrame;
                 }
                     break;
                 case UIControlContentVerticalAlignmentFill:
                 {
                     CGFloat scale = 0;
-                    CGFloat contentH = imageTotalSize.height + titleTotalSize.height + spacingBetweenImageTitle + UIEdgeInsetsGetVerticalValue(self.contentEdgeInsets);
+                    CGFloat contentH = imageTotalSize.height + titleTotalSize.height + spacingBetweenImageTitle + BLTUIEdgeInsetsGetVerticalValue(self.contentEdgeInsets);
                     if (contentH > 0) {
                         scale = CGRectGetHeight(self.bounds) / contentH;
                     }
-                    imageFrame = CGRectSetY(imageFrame, (self.contentEdgeInsets.top + self.imageEdgeInsets.top) * scale);
-                    imageFrame = CGRectSetHeight(imageFrame, CGRectGetHeight(imageFrame) * scale);
-                    titleFrame = CGRectSetY(titleFrame, (imageTotalSize.height + self.contentEdgeInsets.top + spacingBetweenImageTitle + self.titleEdgeInsets.top) * scale);
-                    titleFrame = CGRectSetHeight(titleFrame, CGRectGetHeight(titleFrame) * scale);
+                    imageFrame = BLTCGRectSetY(imageFrame, (self.contentEdgeInsets.top + self.imageEdgeInsets.top) * scale);
+                    imageFrame = BLTCGRectSetHeight(imageFrame, CGRectGetHeight(imageFrame) * scale);
+                    titleFrame = BLTCGRectSetY(titleFrame, (imageTotalSize.height + self.contentEdgeInsets.top + spacingBetweenImageTitle + self.titleEdgeInsets.top) * scale);
+                    titleFrame = BLTCGRectSetHeight(titleFrame, CGRectGetHeight(titleFrame) * scale);
                 }
                     break;
             }
@@ -209,39 +209,39 @@
                 case UIControlContentVerticalAlignmentCenter:
                 {
                     CGFloat contentH = imageTotalSize.height + titleTotalSize.height + spacingBetweenImageTitle;
-                    CGFloat minY = CGRectGetCenterStartValue(contentSize.height, contentH) + self.contentEdgeInsets.top;
-                    titleFrame = hasTitle ? CGRectSetY(titleFrame, minY + self.titleEdgeInsets.top) : titleFrame;
-                    imageFrame = hasImage ? CGRectSetY(imageFrame, minY + titleTotalSize.height + spacingBetweenImageTitle + self.imageEdgeInsets.top) : imageFrame;
+                    CGFloat minY = BLTCGRectGetCenterStartValue(contentSize.height, contentH) + self.contentEdgeInsets.top;
+                    titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, minY + self.titleEdgeInsets.top) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetY(imageFrame, minY + titleTotalSize.height + spacingBetweenImageTitle + self.imageEdgeInsets.top) : imageFrame;
                     
                 }
                     break;
                 case UIControlContentVerticalAlignmentTop:
                 {
-                    titleFrame = hasTitle ? CGRectSetY(titleFrame, self.contentEdgeInsets.top + self.titleEdgeInsets.top) : titleFrame;
-                    imageFrame = hasImage ? CGRectSetY(imageFrame, self.contentEdgeInsets.top + titleLimitSize.height + spacingBetweenImageTitle + self.imageEdgeInsets.top) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, self.contentEdgeInsets.top + self.titleEdgeInsets.top) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetY(imageFrame, self.contentEdgeInsets.top + titleLimitSize.height + spacingBetweenImageTitle + self.imageEdgeInsets.top) : imageFrame;
                     
                 }
                     break;
                 case UIControlContentVerticalAlignmentBottom:{
-                    imageFrame = hasTitle ? CGRectSetY(imageFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.imageEdgeInsets.bottom - CGRectGetHeight(imageFrame)) : imageFrame;
-                    titleFrame = hasTitle ? CGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - imageTotalSize.height - spacingBetweenImageTitle - self.titleEdgeInsets.bottom) : titleFrame;
+                    imageFrame = hasTitle ? BLTCGRectSetY(imageFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.imageEdgeInsets.bottom - CGRectGetHeight(imageFrame)) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - imageTotalSize.height - spacingBetweenImageTitle - self.titleEdgeInsets.bottom) : titleFrame;
                     
-                    titleFrame = hasTitle ? CGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.titleEdgeInsets.bottom - CGRectGetHeight(titleFrame)) : titleFrame;
-                    imageFrame = hasTitle ? CGRectSetY(imageFrame, CGRectGetMinY(titleFrame) - spacingBetweenImageTitle - CGRectGetHeight(imageFrame)) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.titleEdgeInsets.bottom - CGRectGetHeight(titleFrame)) : titleFrame;
+                    imageFrame = hasTitle ? BLTCGRectSetY(imageFrame, CGRectGetMinY(titleFrame) - spacingBetweenImageTitle - CGRectGetHeight(imageFrame)) : imageFrame;
                 }
                     break;
                 case UIControlContentVerticalAlignmentFill:
                 {
                     CGFloat scale = 0;
-                    CGFloat contentH = imageTotalSize.height + titleTotalSize.height + spacingBetweenImageTitle + UIEdgeInsetsGetVerticalValue(self.contentEdgeInsets);
+                    CGFloat contentH = imageTotalSize.height + titleTotalSize.height + spacingBetweenImageTitle + BLTUIEdgeInsetsGetVerticalValue(self.contentEdgeInsets);
                     if (contentH > 0) {
                         scale = CGRectGetHeight(self.bounds) / contentH;
                     }
-                    titleFrame = CGRectSetY(titleFrame, (self.contentEdgeInsets.top + self.titleEdgeInsets.top) * scale);
-                    titleFrame = CGRectSetHeight(titleFrame, CGRectGetHeight(titleFrame) * scale);
+                    titleFrame = BLTCGRectSetY(titleFrame, (self.contentEdgeInsets.top + self.titleEdgeInsets.top) * scale);
+                    titleFrame = BLTCGRectSetHeight(titleFrame, CGRectGetHeight(titleFrame) * scale);
                     
-                    imageFrame = CGRectSetY(imageFrame, (self.contentEdgeInsets.top + titleTotalSize.height + spacingBetweenImageTitle + self.imageEdgeInsets.top) * scale);
-                    imageFrame = CGRectSetHeight(imageFrame, CGRectGetHeight(imageFrame) * scale);
+                    imageFrame = BLTCGRectSetY(imageFrame, (self.contentEdgeInsets.top + titleTotalSize.height + spacingBetweenImageTitle + self.imageEdgeInsets.top) * scale);
+                    imageFrame = BLTCGRectSetHeight(imageFrame, CGRectGetHeight(imageFrame) * scale);
                     
                     //                    if (hasImage && hasTitle) {
                     //                        imageFrame = CGRectSetY(imageFrame, (self.contentEdgeInsets.top + self.imageEdgeInsets.top) * scale);
@@ -263,45 +263,45 @@
     //图片左右的
     if (self.imagePosition == BLTCustomButtonImagePositionLeft || self.imagePosition == BLTCustomButtonImagePositionRight) {
         if (hasTitle) {
-            titleLimitSize = CGSizeMake(contentSize.width - imageTotalSize.width - spacingBetweenImageTitle - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentSize.height - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+            titleLimitSize = CGSizeMake(contentSize.width - imageTotalSize.width - spacingBetweenImageTitle - BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentSize.height - BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
             CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
             titleSize.width = fmin(titleLimitSize.width, titleSize.width);
             titleSize.height = fmin(titleLimitSize.height, titleSize.height);
             titleFrame = CGRectMake(0, 0, titleSize.width, titleSize.height);
-            titleTotalSize = CGSizeMake(titleSize.width + UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
+            titleTotalSize = CGSizeMake(titleSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + BLTUIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
         }
         
         switch (self.contentVerticalAlignment) {
             case UIControlContentVerticalAlignmentCenter:
             {
-                imageFrame = hasImage ? CGRectSetY(imageFrame, CGRectGetCenterStartValue(contentSize.height, CGRectGetHeight(imageFrame)) + self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
-                titleFrame = hasTitle ? CGRectSetY(titleFrame, CGRectGetCenterStartValue(contentSize.height, CGRectGetHeight(titleFrame)) + self.contentEdgeInsets.top + self.titleEdgeInsets.top) : titleFrame;
+                imageFrame = hasImage ? BLTCGRectSetY(imageFrame, BLTCGRectGetCenterStartValue(contentSize.height, CGRectGetHeight(imageFrame)) + self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
+                titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, BLTCGRectGetCenterStartValue(contentSize.height, CGRectGetHeight(titleFrame)) + self.contentEdgeInsets.top + self.titleEdgeInsets.top) : titleFrame;
             }
                 break;
                 
             case UIControlContentVerticalAlignmentTop:
             {
-                imageFrame = hasImage ? CGRectSetY(imageFrame, self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
-                titleFrame = hasTitle ? CGRectSetY(titleFrame, self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
+                imageFrame = hasImage ? BLTCGRectSetY(imageFrame, self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
+                titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, self.contentEdgeInsets.top + self.imageEdgeInsets.top) : imageFrame;
             }
                 break;
             case UIControlContentVerticalAlignmentBottom:
             {
-                imageFrame = hasImage ? CGRectSetY(imageFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.imageEdgeInsets.bottom - CGRectGetHeight(imageFrame)) : imageFrame;
-                titleFrame = hasTitle ? CGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.titleEdgeInsets.bottom - CGRectGetHeight(titleFrame)) : titleFrame;
+                imageFrame = hasImage ? BLTCGRectSetY(imageFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.imageEdgeInsets.bottom - CGRectGetHeight(imageFrame)) : imageFrame;
+                titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, CGRectGetHeight(self.bounds) - self.contentEdgeInsets.bottom - self.titleEdgeInsets.bottom - CGRectGetHeight(titleFrame)) : titleFrame;
             }
                 break;
             case UIControlContentVerticalAlignmentFill:
             {
                 CGFloat scale = 0;
-                CGFloat contentW = UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + imageTotalSize.width + titleTotalSize.height + spacingBetweenImageTitle;
+                CGFloat contentW = BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + imageTotalSize.width + titleTotalSize.height + spacingBetweenImageTitle;
                 if (contentW > 0) {
                     scale = CGRectGetWidth(self.bounds) / contentW;
                 }
-                imageFrame = hasImage ? CGRectSetY(imageFrame, (self.contentEdgeInsets.top + self.imageEdgeInsets.top) * scale) : imageFrame;
-                imageFrame = hasImage ? CGRectSetHeight(imageFrame, CGRectGetHeight(imageFrame) * scale) : imageFrame;
-                titleFrame = hasTitle ? CGRectSetY(titleFrame, (self.contentEdgeInsets.top + self.titleEdgeInsets.top) * scale) : titleFrame;
-                titleFrame = hasTitle ? CGRectSetHeight(titleFrame, CGRectGetHeight(titleFrame) * scale) : titleFrame;
+                imageFrame = hasImage ? BLTCGRectSetY(imageFrame, (self.contentEdgeInsets.top + self.imageEdgeInsets.top) * scale) : imageFrame;
+                imageFrame = hasImage ? BLTCGRectSetHeight(imageFrame, CGRectGetHeight(imageFrame) * scale) : imageFrame;
+                titleFrame = hasTitle ? BLTCGRectSetY(titleFrame, (self.contentEdgeInsets.top + self.titleEdgeInsets.top) * scale) : titleFrame;
+                titleFrame = hasTitle ? BLTCGRectSetHeight(titleFrame, CGRectGetHeight(titleFrame) * scale) : titleFrame;
             }
                 break;
         }
@@ -311,32 +311,32 @@
                 case UIControlContentHorizontalAlignmentCenter:
                 {
                     CGFloat contentW = imageTotalSize.width + spacingBetweenImageTitle + titleTotalSize.width;
-                    CGFloat minX = CGRectGetCenterStartValue(contentSize.width, contentW) + self.contentEdgeInsets.left;
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, minX + self.imageEdgeInsets.left) : imageFrame;
-                    titleFrame = hasTitle ? CGRectSetX(titleFrame, CGRectGetMaxX(imageFrame) + self.titleEdgeInsets.left + spacingBetweenImageTitle) : titleFrame;
+                    CGFloat minX = BLTCGRectGetCenterStartValue(contentSize.width, contentW) + self.contentEdgeInsets.left;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, minX + self.imageEdgeInsets.left) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, CGRectGetMaxX(imageFrame) + self.titleEdgeInsets.left + spacingBetweenImageTitle) : titleFrame;
                 }
                     break;
                 case UIControlContentHorizontalAlignmentLeft:
                 {
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, self.contentEdgeInsets.left + self.imageEdgeInsets.left) : imageFrame;
-                    titleFrame = hasTitle ? CGRectSetX(titleFrame, self.contentEdgeInsets.left + imageTotalSize.width + spacingBetweenImageTitle + self.titleEdgeInsets.left) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, self.contentEdgeInsets.left + self.imageEdgeInsets.left) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, self.contentEdgeInsets.left + imageTotalSize.width + spacingBetweenImageTitle + self.titleEdgeInsets.left) : titleFrame;
                 }
                     break;
                 case UIControlContentHorizontalAlignmentRight:
-                    titleFrame = hasTitle ? CGRectSetX(titleFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.titleEdgeInsets.right - CGRectGetWidth(titleFrame)) : titleFrame;
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, CGRectGetMinX(titleFrame) - spacingBetweenImageTitle - self.titleEdgeInsets.left - self.imageEdgeInsets.right - spacingBetweenImageTitle) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.titleEdgeInsets.right - CGRectGetWidth(titleFrame)) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, CGRectGetMinX(titleFrame) - spacingBetweenImageTitle - self.titleEdgeInsets.left - self.imageEdgeInsets.right - spacingBetweenImageTitle) : imageFrame;
                     break;
                 case UIControlContentHorizontalAlignmentFill:
                 {
                     CGFloat scale = 0;
-                    CGFloat contentW = titleTotalSize.width + imageTotalSize.width + UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + spacingBetweenImageTitle;
+                    CGFloat contentW = titleTotalSize.width + imageTotalSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + spacingBetweenImageTitle;
                     if (contentW > 0) {
                         scale = CGRectGetWidth(self.bounds) / contentW;
                     }
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, (self.contentEdgeInsets.left + self.imageEdgeInsets.left) * scale) : imageFrame;
-                    imageFrame = hasImage ? CGRectSetWidth(imageFrame, CGRectGetWidth(imageFrame) * scale) : imageFrame;
-                    titleFrame = hasTitle ? CGRectSetX(titleFrame, (self.contentEdgeInsets.left + imageTotalSize.width + spacingBetweenImageTitle + self.titleEdgeInsets.left)) : titleFrame;
-                    titleFrame = hasTitle ? CGRectSetWidth(titleFrame, CGRectGetWidth(titleFrame)) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, (self.contentEdgeInsets.left + self.imageEdgeInsets.left) * scale) : imageFrame;
+                    imageFrame = hasImage ? BLTCGRectSetWidth(imageFrame, CGRectGetWidth(imageFrame) * scale) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, (self.contentEdgeInsets.left + imageTotalSize.width + spacingBetweenImageTitle + self.titleEdgeInsets.left)) : titleFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetWidth(titleFrame, CGRectGetWidth(titleFrame)) : titleFrame;
                     
                 }
                     break;
@@ -348,32 +348,32 @@
                 case UIControlContentHorizontalAlignmentCenter:
                 {
                     CGFloat contentW = imageTotalSize.width + spacingBetweenImageTitle + titleTotalSize.width;
-                    CGFloat minX = CGRectGetCenterStartValue(contentSize.width, contentW) + self.contentEdgeInsets.left;
-                    titleFrame = hasTitle ? CGRectSetX(titleFrame, minX + self.titleEdgeInsets.left) : titleFrame;
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, CGRectGetMaxX(titleFrame) + self.titleEdgeInsets.right + spacingBetweenImageTitle + self.imageEdgeInsets.left) : imageFrame;
+                    CGFloat minX = BLTCGRectGetCenterStartValue(contentSize.width, contentW) + self.contentEdgeInsets.left;
+                    titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, minX + self.titleEdgeInsets.left) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, CGRectGetMaxX(titleFrame) + self.titleEdgeInsets.right + spacingBetweenImageTitle + self.imageEdgeInsets.left) : imageFrame;
                 }
                     break;
                 case UIControlContentHorizontalAlignmentLeft:
                 {
-                    titleFrame = hasTitle ? CGRectSetX(titleFrame, self.contentEdgeInsets.left + self.titleEdgeInsets.left) : titleFrame;
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, CGRectGetMaxX(titleFrame) + self.titleEdgeInsets.right + spacingBetweenImageTitle) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, self.contentEdgeInsets.left + self.titleEdgeInsets.left) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, CGRectGetMaxX(titleFrame) + self.titleEdgeInsets.right + spacingBetweenImageTitle) : imageFrame;
                 }
                     break;
                 case UIControlContentHorizontalAlignmentRight:
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.imageEdgeInsets.right - CGRectGetWidth(imageFrame)) : imageFrame;
-                    titleFrame = hasTitle ? CGRectSetX(titleFrame, CGRectGetMinX(imageFrame) - self.imageEdgeInsets.left - spacingBetweenImageTitle - self.titleEdgeInsets.right - CGRectGetWidth(titleFrame)) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.imageEdgeInsets.right - CGRectGetWidth(imageFrame)) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(titleFrame, CGRectGetMinX(imageFrame) - self.imageEdgeInsets.left - spacingBetweenImageTitle - self.titleEdgeInsets.right - CGRectGetWidth(titleFrame)) : titleFrame;
                     break;
                 case UIControlContentHorizontalAlignmentFill:
                 {
                     CGFloat scale = 0;
-                    CGFloat contentW = titleTotalSize.width + imageTotalSize.width + UIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + spacingBetweenImageTitle;
+                    CGFloat contentW = titleTotalSize.width + imageTotalSize.width + BLTUIEdgeInsetsGetHorizontalValue(self.contentEdgeInsets) + spacingBetweenImageTitle;
                     if (contentW > 0) {
                         scale = CGRectGetWidth(self.bounds) / contentW;
                     }
-                    titleFrame = hasTitle ? CGRectSetX(imageFrame, (self.contentEdgeInsets.left + self.titleEdgeInsets.left) * scale) : titleFrame;
-                    titleFrame = hasTitle ? CGRectSetX(imageFrame, CGRectGetWidth(titleFrame) * scale) : titleFrame;
-                    imageFrame = hasImage ? CGRectSetX(imageFrame, (self.contentEdgeInsets.left + titleTotalSize.width + spacingBetweenImageTitle + self.imageEdgeInsets.left) * scale) : imageFrame;
-                    imageFrame = hasImage ? CGRectSetWidth(imageFrame, CGRectGetWidth(imageFrame) * scale) : imageFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(imageFrame, (self.contentEdgeInsets.left + self.titleEdgeInsets.left) * scale) : titleFrame;
+                    titleFrame = hasTitle ? BLTCGRectSetX(imageFrame, CGRectGetWidth(titleFrame) * scale) : titleFrame;
+                    imageFrame = hasImage ? BLTCGRectSetX(imageFrame, (self.contentEdgeInsets.left + titleTotalSize.width + spacingBetweenImageTitle + self.imageEdgeInsets.left) * scale) : imageFrame;
+                    imageFrame = hasImage ? BLTCGRectSetWidth(imageFrame, CGRectGetWidth(imageFrame) * scale) : imageFrame;
                     
                 }
                     break;

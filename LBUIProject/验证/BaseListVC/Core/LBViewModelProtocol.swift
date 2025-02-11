@@ -83,7 +83,7 @@ extension LBListViewModelProtocol{
         }
         
         var totalParams = [String : Any]()
-        totalParams = totalParams.blt.addEntriesFromDic(dic: extraTotalParams)
+        totalParams = totalParams.blt.addEntries(from: extraTotalParams)
         totalParams["P"] = self.page
         totalParams["S"] = self.count
         

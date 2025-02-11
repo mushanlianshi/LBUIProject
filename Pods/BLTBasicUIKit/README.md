@@ -1,6 +1,6 @@
 # BLTBasicUIKit
 
-[![CI Status](https://img.shields.io/travis/mushanlianshi/BLTBasicUIKit.svg?style=flat)](https://travis-ci.org/mushanlianshi/BLTBasicUIKit)
+[![CI Status](https://img.shields.io/travis/liu bin/BLTBasicUIKit.svg?style=flat)](https://travis-ci.org/liu bin/BLTBasicUIKit)
 [![Version](https://img.shields.io/cocoapods/v/BLTBasicUIKit.svg?style=flat)](https://cocoapods.org/pods/BLTBasicUIKit)
 [![License](https://img.shields.io/cocoapods/l/BLTBasicUIKit.svg?style=flat)](https://cocoapods.org/pods/BLTBasicUIKit)
 [![Platform](https://img.shields.io/cocoapods/p/BLTBasicUIKit.svg?style=flat)](https://cocoapods.org/pods/BLTBasicUIKit)
@@ -22,7 +22,7 @@ pod 'BLTBasicUIKit'
 
 ## Author
 
-mushanlianshi, liu_bin_home@163.com
+liu bin, liu_bin_home@163.com
 
 ## License
 

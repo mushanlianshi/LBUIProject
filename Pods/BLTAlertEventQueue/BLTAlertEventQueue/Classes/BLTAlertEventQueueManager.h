@@ -2,7 +2,7 @@
 //  BLTAlertQueueManager.h
 //  Baletu
 //
-//  Created by 尹星 on 2019/11/5.
+//  Created by 尹星 on 2019/11/5 .
 //  Copyright © 2019 朱 亮亮. All rights reserved.
 //
 
@@ -60,7 +60,7 @@
                     animated:(BOOL)animated
                   completion:(dispatch_block_t)completion;
 
-/// 隐藏当前弹窗，并跳转页面
+/// 隐藏当前弹窗，并跳转页面 (提示：如果不通过传入vc present，而是外部自己present，务必将外部present的代码写在该方法后面)
 /// - Parameters:
 ///   - vc: 跳转的页面（present）
 ///   - animated: present 动画

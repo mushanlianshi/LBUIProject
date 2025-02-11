@@ -7,7 +7,7 @@
 
 #import "BLTHorizontalRankView.h"
 #import "BLTUIKitFrameHeader.h"
-#import "Masonry.h"
+#import <Masonry/Masonry.h>
 
 @interface BLTHorizontalRankView ()
 
@@ -33,6 +33,7 @@ static BLTHorizontalRankView *rankViewAppearance ;
     BLTHorizontalRankView *rankView = [[self alloc] init];
     rankView.rankSubViews = subViews;
     rankView.spacing = spacing;
+    rankView.contentInsets = contentInsets;
     return rankView;
 }
 

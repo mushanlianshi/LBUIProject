@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import BLTBasicUIKit
 
 ///只是文本展示的textView
 public class BLTCollectionSectionHeaderTextView: UICollectionReusableView{
     
-    public lazy var titleLab: BLTContentInsetLabel = {
-        let label = BLTContentInsetLabel.blt_label(with: .blt.mediumFont(16), textColor: UIColor.blt.sixsixBlackColor())!
-        label.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    public lazy var titleLab: UILabel = {
+        let label = UILabel.blt.initWithText(text: nil, font: .blt.mediumFont(16), textColor: .blt.sixsixBlackColor())
         label.numberOfLines = 0
         return label
     }()
@@ -30,7 +28,9 @@ public class BLTCollectionSectionHeaderTextView: UICollectionReusableView{
         }
         
         if let inset = contentInset{
-            titleLab.contentEdgeInsets = inset
+            titleLab.snp.remakeConstraints { make in
+                make.edges.equalTo(inset)
+            }
         }
     }
     

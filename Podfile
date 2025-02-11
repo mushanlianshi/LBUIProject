@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '14.0'
 source 'https://github.com/CocoaPods/Specs.git'
-source 'ssh://git@1.117.247.154:7999/app/bltuikitspecrepo.git'
+source 'git@github.com:mushanlianshi/LBUIKitSpecRepo.git'
 target 'LBUIProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -15,12 +15,13 @@ target 'LBUIProject' do
   pod 'FaceAware'
 #  升级到1.0.6 处理M1芯片电脑  不支持arm64模拟器的
   pod 'LookinServer', '= 1.0.6', :configurations => ['Debug']
-  pod 'BLTBasicUIKit'
-  pod 'BLTUIKitProject', '= 1.9.0'
+  pod 'BLTBasicUIKit', '0.3.1'
+#  pod 'BLTUIKitProject', :git => 'git@github.com:mushanlianshi/BLTUIKitProject.git', :tag => '= 1.9.3'
+  pod 'BLTUIKitProject', '= 1.9.3'
 #  pod 'QMUIKit'
   pod 'MBProgressHUD'
   pod 'MMKV'
-  pod 'BLTSwiftUIKit', '= 1.3.7'
+  pod 'BLTSwiftUIKit', '= 1.5.0'
   pod 'AvoidCrash', '~>2.5.2'
   pod 'CHTCollectionViewWaterfallLayout/ObjC', '= 0.9.10'
   pod 'JXPagingView/Paging', '= 2.1.2'
@@ -31,7 +32,7 @@ target 'LBUIProject' do
   pod 'AFNetworking', '~> 4.0'
   pod 'TXLiteAVSDK_Player', :modular_headers => true
   pod 'SuperPlayer', :modular_headers => true
-  pod 'BLTAlertEventQueue'
+  pod 'BLTAlertEventQueue', '1.1.7'
 #  骨架屏
   pod 'SkeletonView'
 #  转场动画
@@ -76,6 +77,7 @@ target 'LBUIProject' do
    #日期处理库
    pod 'SwiftDate', '6.3.1'
    pod 'IGListKit', '5.0.0'
+   pod 'HandyJSON', '5.0.2'
 
 
 

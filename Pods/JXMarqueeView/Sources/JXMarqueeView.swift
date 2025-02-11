@@ -36,7 +36,7 @@ public enum JXMarqueeType {
 public class JXMarqueeView: UIView {
     public var marqueeType: JXMarqueeType = .left
     public var contentMargin: CGFloat = 12                     //两个视图之间的间隔
-    public var frameInterval: Int = 1                          //多少帧回调一次，一帧时间1/60秒
+    public var preferredFramesPerSecond: Int = 0                          //多少帧回调一次，普通设备是一帧时间1/60秒，高刷频设备默认为设备自身的刷新率
     public var pointsPerFrame: CGFloat = 0.5                   //每次回调移动多少点
     public var contentView: UIView? {
         didSet {
@@ -106,7 +106,10 @@ public class JXMarqueeView: UIView {
                 otherContentView.frame = CGRect(x: validContentView.bounds.size.width + contentMargin, y: 0, width: validContentView.bounds.size.width, height: self.bounds.size.height)
                 containerView.addSubview(otherContentView)
             }
-            self.startMarquee()
+
+            if self.bounds.size.width != 0 {
+                self.startMarquee()
+            }
         }else {
             if contentViewFrameConfigWhenCantMarquee != nil {
                 contentViewFrameConfigWhenCantMarquee!(validContentView)
@@ -131,7 +134,7 @@ public class JXMarqueeView: UIView {
         }
 
         self.marqueeDisplayLink = CADisplayLink.init(target: self, selector: #selector(processMarquee))
-        self.marqueeDisplayLink?.frameInterval = self.frameInterval
+        self.marqueeDisplayLink?.preferredFramesPerSecond = self.preferredFramesPerSecond
         self.marqueeDisplayLink?.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
     }
 

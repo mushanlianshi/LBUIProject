@@ -15,16 +15,11 @@ extension BLTNameSpace where Base: UITableView{
         return tableView
     }
     
-    public func registerReusableCell222<T: UITableViewCell>() -> T{
-        base.register(T.self, forCellReuseIdentifier: T.blt_className)
-        return T()
-    }
-    
     public func registerReusableCell<T: UITableViewCell>(cell: T.Type){
         base.register(T.self, forCellReuseIdentifier: T.blt_className)
     }
     
-    public func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T{
+    public func dequeueReusableCell<T: UITableViewCell>(_ type: T.Type, indexPath: IndexPath) -> T{
         guard let cell = base.dequeueReusableCell(withIdentifier: T.blt_className, for: indexPath) as? T else {
             fatalError(.dequeueCellFailedMsg)
         }
@@ -35,7 +30,7 @@ extension BLTNameSpace where Base: UITableView{
         base.register(T.self, forHeaderFooterViewReuseIdentifier: T.blt_className)
     }
     
-    public func dequeueReusableHeaderFooter<T: UITableViewHeaderFooterView>() -> T{
+    public func dequeueReusableHeaderFooter<T: UITableViewHeaderFooterView>(_ type: T.Type) -> T{
         guard let view = base.dequeueReusableHeaderFooterView(withIdentifier: T.blt_className)  as? T else {
             fatalError(.dequeueHeaderFooterFailedMsg)
         }

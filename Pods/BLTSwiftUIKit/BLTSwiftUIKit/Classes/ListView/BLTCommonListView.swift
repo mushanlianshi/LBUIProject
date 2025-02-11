@@ -11,9 +11,9 @@ import SnapKit
 
 
 open class BLTCommonListCell<ItemType>: UITableViewCell {
-    public lazy var lineView = UIView.blt_view(withBackgroundColor: UIColor.blt.eeColor())!
+    public lazy var lineView = UIView.blt.initWithBackgroundColor(color: .blt.eeColor())
     
-    public lazy var containerView = UIView.blt_view(withBackgroundColor: .white)!
+    public lazy var containerView = UIView.blt.initWithBackgroundColor(color: .white)
     
     open var itemModel: ItemType?
     required public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

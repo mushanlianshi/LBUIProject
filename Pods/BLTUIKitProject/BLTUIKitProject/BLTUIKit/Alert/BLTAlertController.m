@@ -349,11 +349,11 @@ static BLTAlertController *  alertAppearanceInstance;
     CGFloat contentOffsetBottom = (hasTitle || hasMessage) ? self.alertHeaderInsets.bottom : 0;
     //内容最大的宽度不得超过alertContentMaxWidth
     CGFloat contentMaxWidth = (self.style == BLTAlertControllerStyleAlert || self.style == BLTAlertControllerStyleFeedAlert) ?
-    fmin(self.alertContentMaxWidth, CGRectGetWidth(self.view.frame) - UIEdgeInsetsGetHorizontalValue(self.alertContentInsets)) :
-    fmin(self.actionSheetContentMaxWidth, CGRectGetWidth(self.view.frame) - UIEdgeInsetsGetHorizontalValue(self.alertContentInsets));
+    fmin(self.alertContentMaxWidth, CGRectGetWidth(self.view.frame) - BLTUIEdgeInsetsGetHorizontalValue(self.alertContentInsets)) :
+    fmin(self.actionSheetContentMaxWidth, CGRectGetWidth(self.view.frame) - BLTUIEdgeInsetsGetHorizontalValue(self.alertContentInsets));
     
-    self.containerView.frame = CGRectSetWidth(self.containerView.frame, contentMaxWidth);
-    self.wrapView.frame = CGRectSetWidth(self.wrapView.frame, CGRectGetWidth(self.containerView.frame));
+    self.containerView.frame = BLTCGRectSetWidth(self.containerView.frame, contentMaxWidth);
+    self.wrapView.frame = BLTCGRectSetWidth(self.wrapView.frame, CGRectGetWidth(self.containerView.frame));
     
     verticalY = contentOffsetTop;
     
@@ -367,7 +367,7 @@ static BLTAlertController *  alertAppearanceInstance;
             verticalY = 0;
         }
         self.headerImageView.frame = CGRectMake(0, verticalY, image.size.width, image.size.height);
-        self.headerImageView.frame = CGRectSetX(self.headerImageView.frame, CGRectGetWidth(self.containerView.bounds) / 2 - image.size.width / 2);
+        self.headerImageView.frame = BLTCGRectSetX(self.headerImageView.frame, CGRectGetWidth(self.containerView.bounds) / 2 - image.size.width / 2);
         verticalY += CGRectGetHeight(self.headerImageView.frame);
         verticalY += self.alertTitleImageSpacing;
     }
@@ -432,7 +432,7 @@ static BLTAlertController *  alertAppearanceInstance;
                     buttonVerticalY += self.actionSheetButtonHeight;
                 }
                 [self p_updateActionButtonAppreance];
-                self.buttonScrollView.frame = CGRectSetHeight(self.buttonScrollView.frame, buttonVerticalY);
+                self.buttonScrollView.frame = BLTCGRectSetHeight(self.buttonScrollView.frame, buttonVerticalY);
                 self.buttonScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.headerScrollView.frame), buttonVerticalY);
                 if (self.cancelAction) {
                     buttonVerticalY += self.actionSheetCancelButtonSpacing;
@@ -465,30 +465,30 @@ static BLTAlertController *  alertAppearanceInstance;
         CGFloat buttonH = fmin(CGRectGetHeight(self.buttonScrollView.frame), screenHeight / 2);
         
         if (contentH >= screenHeight / 2 && buttonH >= screenHeight / 2) {
-            self.headerScrollView.frame = CGRectSetHeight(self.headerScrollView.frame, screenHeight / 2);
-            self.buttonScrollView.frame = CGRectSetHeight(self.buttonScrollView.frame, screenHeight - contentH);
-            self.buttonScrollView.frame = CGRectSetY(self.buttonScrollView.frame, CGRectGetMaxY(self.headerScrollView.frame));
+            self.headerScrollView.frame = BLTCGRectSetHeight(self.headerScrollView.frame, screenHeight / 2);
+            self.buttonScrollView.frame = BLTCGRectSetHeight(self.buttonScrollView.frame, screenHeight - contentH);
+            self.buttonScrollView.frame = BLTCGRectSetY(self.buttonScrollView.frame, CGRectGetMaxY(self.headerScrollView.frame));
         }else if (contentH < screenHeight / 2){
-            self.headerScrollView.frame = CGRectSetHeight(self.headerScrollView.frame, contentH);
-            self.buttonScrollView.frame = CGRectSetHeight(self.buttonScrollView.frame, screenHeight - contentH);
-            self.buttonScrollView.frame = CGRectSetY(self.buttonScrollView.frame, CGRectGetMaxY(self.headerScrollView.frame));
+            self.headerScrollView.frame = BLTCGRectSetHeight(self.headerScrollView.frame, contentH);
+            self.buttonScrollView.frame = BLTCGRectSetHeight(self.buttonScrollView.frame, screenHeight - contentH);
+            self.buttonScrollView.frame = BLTCGRectSetY(self.buttonScrollView.frame, CGRectGetMaxY(self.headerScrollView.frame));
         }else if (buttonH < screenHeight / 2){
-            self.headerScrollView.frame = CGRectSetHeight(self.headerScrollView.frame, screenHeight - buttonH);
-            self.buttonScrollView.frame = CGRectSetHeight(self.buttonScrollView.frame, buttonH);
-            self.buttonScrollView.frame = CGRectSetY(self.buttonScrollView.frame, CGRectGetMaxY(self.headerScrollView.frame));
+            self.headerScrollView.frame = BLTCGRectSetHeight(self.headerScrollView.frame, screenHeight - buttonH);
+            self.buttonScrollView.frame = BLTCGRectSetHeight(self.buttonScrollView.frame, buttonH);
+            self.buttonScrollView.frame = BLTCGRectSetY(self.buttonScrollView.frame, CGRectGetMaxY(self.headerScrollView.frame));
         }
         
         contentTotalHeight = CGRectGetHeight(self.headerScrollView.frame) + CGRectGetHeight(self.buttonScrollView.frame);
         //如果是actionSheet
         if (self.style == BLTAlertControllerStyleActionSheet && self.cancelAction.actionButton) {
-            self.cancelAction.actionButton.frame = CGRectSetY(self.cancelAction.actionButton.frame, CGRectGetMaxY(self.buttonScrollView.frame) + self.actionSheetCancelButtonSpacing);
+            self.cancelAction.actionButton.frame = BLTCGRectSetY(self.cancelAction.actionButton.frame, CGRectGetMaxY(self.buttonScrollView.frame) + self.actionSheetCancelButtonSpacing);
             contentTotalHeight = CGRectGetMaxY(self.cancelAction.actionButton.frame);
         }
         
         
     }
     
-    self.wrapView.frame = CGRectSetHeight(self.wrapView.frame, contentTotalHeight);
+    self.wrapView.frame = BLTCGRectSetHeight(self.wrapView.frame, contentTotalHeight);
     if (self.style == BLTAlertControllerStyleAlert || self.style == BLTAlertControllerStyleFeedAlert) {
         self.containerView.frame = CGRectMake(CGRectGetWidth(self.view.frame) / 2 - CGRectGetWidth(self.containerView.frame) / 2, CGRectGetHeight(self.view.frame) / 2 - contentTotalHeight / 2, CGRectGetWidth(self.containerView.frame), contentTotalHeight);
     }else{
@@ -516,8 +516,8 @@ static BLTAlertController *  alertAppearanceInstance;
     //如果是feedAlert样式  按钮位置和内容距离边框距离一样
     if (self.style == BLTAlertControllerStyleFeedAlert) {
         buttonVerticalY = self.feedAlertButtonInsets.top;
-        halfWidth = (CGRectGetWidth(self.buttonScrollView.frame) - UIEdgeInsetsGetHorizontalValue(self.feedAlertButtonInsets) - horiSpacing) / 2;
-        buttonW -= UIEdgeInsetsGetHorizontalValue(self.feedAlertButtonInsets);
+        halfWidth = (CGRectGetWidth(self.buttonScrollView.frame) - BLTUIEdgeInsetsGetHorizontalValue(self.feedAlertButtonInsets) - horiSpacing) / 2;
+        buttonW -= BLTUIEdgeInsetsGetHorizontalValue(self.feedAlertButtonInsets);
     }
     
     if (self.alertActions.count == 2 && self.alertActionDirection == BLTAlertControllerButtonDirectionAuto) {
@@ -549,7 +549,7 @@ static BLTAlertController *  alertAppearanceInstance;
         buttonVerticalY += self.feedAlertButtonInsets.bottom;
     }
     [self p_updateActionButtonAppreance];
-    self.buttonScrollView.frame = CGRectSetHeight(self.buttonScrollView.frame, buttonVerticalY);
+    self.buttonScrollView.frame = BLTCGRectSetHeight(self.buttonScrollView.frame, buttonVerticalY);
     self.buttonScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.headerScrollView.frame), buttonVerticalY);
 }
 

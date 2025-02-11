@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import BLTUIKitProject
 import UIKit
 
 public class BLTTableViewSectionHeaderTextView: UITableViewHeaderFooterView{
-    public lazy var titleLab: BLTContentInsetLabel = {
-        let label = BLTContentInsetLabel.blt_label(with: UIFontPFMediumFontSize(16), textColor: UIColor.blt.sixsixBlackColor())!
-        label.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    public lazy var titleLab: UILabel = {
+        let label = UILabel.blt.initWithText(text: nil, font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
         label.numberOfLines = 0
         return label
     }()
@@ -29,7 +27,9 @@ public class BLTTableViewSectionHeaderTextView: UITableViewHeaderFooterView{
         }
         
         if let inset = contentInset{
-            titleLab.contentEdgeInsets = inset
+            titleLab.snp.remakeConstraints { make in
+                make.edges.equalTo(inset)
+            }
         }
         
     }
@@ -38,7 +38,7 @@ public class BLTTableViewSectionHeaderTextView: UITableViewHeaderFooterView{
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(titleLab)
         titleLab.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15))
         }
     }
     

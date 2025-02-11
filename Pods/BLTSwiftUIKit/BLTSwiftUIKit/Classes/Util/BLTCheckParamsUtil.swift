@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import BLTUIKitProject
 
 ///检测一些必传接口参数的， 检测到异常就弹框提示
 ///处理一些后台配置的组件化路由少了参数，测试人员测试发现跳转正常，就没有在看也没其他操作如提交、获取等需要调接口的是否正常
@@ -17,6 +16,8 @@ import BLTUIKitProject
 ///checkSuperParams 是否检测父类的属性  默认false
 ///通过反射Mirror反射获取当前对象的属性
 public class BLTCheckParamsUtil {
+    /// 检测到参数为空，是否弹框展示的block，有就展示， 没有不展示
+    public static var alertEmptyParamBlock:((_ content: String) -> Void)?
     
     public static func checkRequiredParams(_ nameList: [String], _ currentObj: Any, ignoreZeroInt: Bool = false, checkSuperParams: Bool = false, currentVC: UIViewController? = nil){
         
@@ -70,6 +71,7 @@ public class BLTCheckParamsUtil {
     
     
     private static func alertEmptyParamList(nameList: [String], currentVC: UIViewController? = nil){
+        guard let alertEmptyParamBlock = alertEmptyParamBlock else { return }
         var tmpVC = currentVC
         if tmpVC == nil {
             tmpVC = UIApplication.shared.keyWindow?.rootViewController
@@ -79,10 +81,7 @@ public class BLTCheckParamsUtil {
             return
         }
         let content = "必传参数：" + nameList.joined(separator: "、") + "不能为空" + "\n" + "请找开发确认原因"
-        guard let alertVC = BLTAlertController.init(title: "错误提示", mesage: content, style: .alert, sureTitle: "这就去", sureBlock: nil) else {
-            return
-        }
-        tmpVC.present(alertVC, animated: true, completion: nil)
+        alertEmptyParamBlock(content)
     }
 
     

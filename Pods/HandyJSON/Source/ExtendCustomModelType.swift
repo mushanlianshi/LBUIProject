@@ -36,7 +36,6 @@ fileprivate func convertKeyIfNeeded(dict: [String: Any]) -> [String: Any] {
 
 fileprivate func getRawValueFrom(dict: [String: Any], property: PropertyInfo, mapper: HelpingMapper) -> Any? {
     let address = Int(bitPattern: property.address)
-//    如果有mapper 映射  根据映射去找
     if let mappingHandler = mapper.getMappingHandler(key: address) {
         if let mappingPaths = mappingHandler.mappingPaths, mappingPaths.count > 0 {
             for mappingPath in mappingPaths {
@@ -53,7 +52,6 @@ fileprivate func getRawValueFrom(dict: [String: Any], property: PropertyInfo, ma
     return dict[property.key]
 }
 
-//转换value
 fileprivate func convertValue(rawValue: Any, property: PropertyInfo, mapper: HelpingMapper) -> Any? {
     if rawValue is NSNull { return nil }
     if let mappingHandler = mapper.getMappingHandler(key: Int(bitPattern: property.address)), let transformer = mappingHandler.assignmentClosure {
@@ -69,7 +67,7 @@ fileprivate func convertValue(rawValue: Any, property: PropertyInfo, mapper: Hel
 fileprivate func assignProperty(convertedValue: Any, instance: _ExtendCustomModelType, property: PropertyInfo) {
     if property.bridged {
         (instance as! NSObject).setValue(convertedValue, forKey: property.key)
-    } else {//写入值
+    } else {
         extensions(of: property.type).write(convertedValue, to: property.address)
     }
 }
@@ -171,11 +169,8 @@ extension _ExtendCustomModelType {
             let propertyDetail = PropertyInfo(key: property.key, type: property.type, address: propAddr, bridged: isBridgedProperty)
             InternalLogger.logVerbose("field: ", property.key, "  offset: ", property.offset, "  isBridgeProperty: ", isBridgedProperty)
 
-            
-            //从mapper中获取rawValue
             if let rawValue = getRawValueFrom(dict: _dict, property: propertyDetail, mapper: mapper) {
                 if let convertedValue = convertValue(rawValue: rawValue, property: propertyDetail, mapper: mapper) {
-//                    给属性赋值
                     assignProperty(convertedValue: convertedValue, instance: instance, property: propertyDetail)
                     continue
                 }

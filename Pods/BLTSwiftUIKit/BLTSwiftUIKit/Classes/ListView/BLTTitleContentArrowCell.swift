@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import HandyJSON
 import UIKit
-import BLTUIKitProject
 import SnapKit
 
-open class BLTTitleContentArrowModel: NSObject, HandyJSON{
+fileprivate let lineHeight = 1 / UIScreen.main.scale
+
+open class BLTTitleContentArrowModel: NSObject{
     public var title: String?
     public var content: String?
     public var extraData: Any?
@@ -45,14 +45,14 @@ open class BLTTitleContentArrowCell: BLTCommonListCell<BLTTitleContentArrowModel
                 make.left.equalToSuperview().offset(lineInset.left)
                 make.right.equalToSuperview().offset(lineInset.right)
                 make.bottom.equalToSuperview().offset(lineInset.bottom)
-                make.height.equalTo(BLTLineViewHeight())
+                make.height.equalTo(lineHeight)
             }
         }
     }
     
-    public var stackView = UIStackView.blt_stackView(withSpacing: 10, distribution: .fill, alignment: .center)!
-    public var titleLab = UILabel.blt_label(withTitle: "", font: UIFontPFFontSize(15), textColor: UIColor.blt.threeThreeBlackColor())!
-    public var contentLab = UILabel.blt_label(withTitle: "", font: UIFontPFFontSize(15), textColor: UIColor.blt.ninenineBlackColor())!
+    public var stackView = UIStackView.blt.initStackView(spacing: 10, axis: .horizontal, distribution: .fill, alignment: .center)
+    public var titleLab = UILabel.blt.initWithText(text: "", font: .blt.normalFont(15), textColor: .blt.threeThreeBlackColor())
+    public var contentLab = UILabel.blt.initWithText(text: "", font: .blt.normalFont(15), textColor: .blt.ninenineBlackColor())
     public var arrowIV = UIImageView()
     
     public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -61,7 +61,7 @@ open class BLTTitleContentArrowCell: BLTCommonListCell<BLTTitleContentArrowModel
     }
     
     func setupViews() {
-        arrowIV.image = UIImageNamed("public_right_arrow")
+        arrowIV.image = UIImage(named: "public_right_arrow")
         self.contentView.backgroundColor = .white
         self.contentView.addSubview(stackView)
         contentLab.numberOfLines = 0;
@@ -96,7 +96,7 @@ open class BLTTitleContentArrowCell: BLTCommonListCell<BLTTitleContentArrowModel
             make.left.equalToSuperview().offset(lineInset.left)
             make.right.equalToSuperview().offset(lineInset.right)
             make.bottom.equalToSuperview().offset(lineInset.bottom)
-            make.height.equalTo(BLTLineViewHeight())
+            make.height.equalTo(lineHeight)
         }
         
         arrowIV.setContentHuggingPriority(.required, for: .horizontal)

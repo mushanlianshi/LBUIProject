@@ -63,6 +63,9 @@
 /// 是否为单利初始化
 @property (nonatomic, assign, getter=isIntranceCreat) BOOL              intranceCreat;
 
+/// 处理hiddenCurrentAlertAndSkipPage方法在外面自己push或者present页面的特殊情况
+@property (nonatomic, assign, getter=isCurrentalertDismiss) BOOL currentAlertDismiss;
+
 @end
 
 @implementation BLTAlertEventQueueManager
@@ -276,6 +279,10 @@
     self.presentVC = YES;
     self.currentAlertModel.alert = nil;
     
+    if (!vc || ![vc isKindOfClass:[UIViewController class]]) {
+        return;
+    }
+    
     // 处理present时，页面vc.modalPresentationStyle != UIModalPresentationFullScreen时，关闭页面无法触发manager持有者的viewWillAppear
     __weak typeof(self) weakSelf = self;
     if (!isPush) {
@@ -319,38 +326,48 @@
     
     // 处理present时，页面vc.modalPresentationStyle != UIModalPresentationFullScreen时，关闭页面无法触发manager持有者的viewWillAppear
     __weak typeof(self) weakSelf = self;
-    if ([vc isKindOfClass:[UINavigationController class]] && ((UINavigationController *)vc).viewControllers.count > 0) {
-        for (UIViewController *vController in ((UINavigationController *)vc).viewControllers) {
-            vController.aqm_dismissBlock = ^{
+    if (vc && [vc isKindOfClass:[UIViewController class]]) {
+        if ([vc isKindOfClass:[UINavigationController class]] && ((UINavigationController *)vc).viewControllers.count > 0) {
+            for (UIViewController *vController in ((UINavigationController *)vc).viewControllers) {
+                vController.aqm_dismissBlock = ^{
+                    [weakSelf controllerViewWillAppear];
+                };
+            }
+            
+            // 处理vc push vc时，如果直接dismiss，无法触发 controllerViewWillAppear 的问题
+            ((UINavigationController *)vc).aqm_qushBlock = ^(UIViewController *vController) {
+                vController.aqm_dismissBlock = ^{
+                    [weakSelf controllerViewWillAppear];
+                };
+            };
+        }else {
+            vc.aqm_dismissBlock = ^{
                 [weakSelf controllerViewWillAppear];
             };
         }
         
-        // 处理vc push vc时，如果直接dismiss，无法触发 controllerViewWillAppear 的问题
-        ((UINavigationController *)vc).aqm_qushBlock = ^(UIViewController *vController) {
-            vController.aqm_dismissBlock = ^{
-                [weakSelf controllerViewWillAppear];
-            };
-        };
-    }else {
-        vc.aqm_dismissBlock = ^{
-            [weakSelf controllerViewWillAppear];
+        vc.aqm_presentBlock = ^(UIViewController *vc) {
+            [weakSelf controllerViewWillDisappear];
         };
     }
     
-    vc.aqm_presentBlock = ^(UIViewController *vc) {
-        [weakSelf controllerViewWillDisappear];
-    };
-    
     if ([self.currentAlertModel.alert isKindOfClass:[UIView class]]) {
         ((UIView *)self.currentAlertModel.alert).hidden = self.hiddenCurrentAlert;
-        [self.viewController presentViewController:vc
-                                          animated:animated
-                                        completion:completion];
+        if (vc && [vc isKindOfClass:[UIViewController class]]) {
+            [self.viewController presentViewController:vc
+                                              animated:animated
+                                            completion:completion];
+        }
     }else if ([self.currentAlertModel.alert isKindOfClass:[UIViewController class]]) { // 直接使用 alert 去 present vc，无需隐藏alert
-        [((UIViewController *)self.currentAlertModel.alert) presentViewController:vc
-                                                                         animated:animated
-                                                                       completion:completion];
+        if (!vc || ![vc isKindOfClass:[UIViewController class]]) {
+            self.currentAlertDismiss = YES;
+            [((UIViewController *)self.currentAlertModel.alert) dismissViewControllerAnimated:NO
+                                                                                   completion:nil];
+        }else {
+            [((UIViewController *)self.currentAlertModel.alert) presentViewController:vc
+                                                                             animated:animated
+                                                                           completion:completion];
+        }
     }
 }
 
@@ -363,6 +380,12 @@
         self.hiddenCurrentAlert = NO;
         if ([self.currentAlertModel.alert isKindOfClass:[UIView class]]) {
             ((UIView *)self.currentAlertModel.alert).hidden = self.hiddenCurrentAlert;
+        }else if ([self.currentAlertModel.alert isKindOfClass:[UIViewController class]] && self.isCurrentalertDismiss) {
+            UIViewController *vc = (UIViewController *)self.currentAlertModel.alert;
+            vc.view.alpha = 1.0;
+            vc.view.hidden = NO;
+            [self.viewController presentViewController:vc animated:YES completion:nil];
+            self.currentAlertDismiss = NO;
         }
     }else if (self.isPresentVC) { // 点击弹窗，跳转页面，返回之后执行
         self.parentVCWillDisappear = NO;

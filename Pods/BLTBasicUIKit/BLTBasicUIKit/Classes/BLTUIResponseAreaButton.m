@@ -23,7 +23,7 @@
     if (UIEdgeInsetsEqualToEdgeInsets(self.responseAreaInsets, UIEdgeInsetsZero)) {
         return [super pointInside:point withEvent:event];
     }else{
-        CGRect nowFrame = CGRectFromUIEdgeInsets(self.bounds, self.responseAreaInsets);
+        CGRect nowFrame = BLTCGRectFromUIEdgeInsets(self.bounds, self.responseAreaInsets);
         return CGRectContainsPoint(nowFrame, point);
     }
 }

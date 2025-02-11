@@ -40,8 +40,7 @@ extension LBResponderTransferViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: LBResponderTransferListCell = tableView.blt.dequeueReusableCell(indexPath: indexPath)
-//        let cell = tableView.blt.dequeueReusableCell(LBResponderTransferListCell.self, indexPath: indexPath)
+        let cell = tableView.blt.dequeueReusableCell(LBResponderTransferListCell.self, indexPath: indexPath)
         cell.indexPath = indexPath
         return cell
     }
