@@ -60,6 +60,7 @@
 		4028B5242A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028B5232A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift */; };
 		4028C6072C3B7CF9004E86F3 /* LBFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028C6062C3B7CF9004E86F3 /* LBFullScreenViewController.swift */; };
 		4028C6092C3B80FA004E86F3 /* LBPresentFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */; };
+		402922342D5ECE820081AD17 /* LBSelectListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402922332D5ECE820081AD17 /* LBSelectListPage.swift */; };
 		402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBA92796900600B051C5 /* LBStrategyModeController.m */; };
 		402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */; };
 		402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */; };
@@ -263,6 +264,9 @@
 		40B4A0D42A73D05D00D02BB4 /* BLTPreviewImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0D32A73D05D00D02BB4 /* BLTPreviewImageManager.m */; };
 		40BB0A5A2D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB0A592D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift */; };
 		40BB0A5C2D5ADAEC00DFE362 /* LBAlphaAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB0A5B2D5ADAEC00DFE362 /* LBAlphaAlertController.swift */; };
+		40BB0A682D5B1FCC00DFE362 /* Font+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB0A672D5B1FCC00DFE362 /* Font+LBExtension.swift */; };
+		40BB0A6A2D5B204B00DFE362 /* Color+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB0A692D5B204B00DFE362 /* Color+LBExtension.swift */; };
+		40BB0A6E2D5B236000DFE362 /* LBCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB0A6D2D5B236000DFE362 /* LBCardView.swift */; };
 		40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BD1F4626D8D1480002E493 /* LBChainElement.m */; };
 		40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BE03712679F93B000D3A70 /* LBTableViewNoStickyStyleController.m */; };
 		40C149E928AB2FBE005C9E00 /* LBNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C149E828AB2FBE005C9E00 /* LBNotificationViewController.swift */; };
@@ -466,6 +470,7 @@
 		4028B5232A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftSchedulersViewController.swift; sourceTree = "<group>"; };
 		4028C6062C3B7CF9004E86F3 /* LBFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFullScreenViewController.swift; sourceTree = "<group>"; };
 		4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBPresentFullScreenController.swift; sourceTree = "<group>"; };
+		402922332D5ECE820081AD17 /* LBSelectListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectListPage.swift; sourceTree = "<group>"; };
 		402DEBA82796900600B051C5 /* LBStrategyModeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStrategyModeController.h; sourceTree = "<group>"; };
 		402DEBA92796900600B051C5 /* LBStrategyModeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStrategyModeController.m; sourceTree = "<group>"; };
 		402DEBB1279694C400B051C5 /* NSObject+LBCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBCategory.h"; sourceTree = "<group>"; };
@@ -734,6 +739,9 @@
 		40B4A0D32A73D05D00D02BB4 /* BLTPreviewImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLTPreviewImageManager.m; sourceTree = "<group>"; };
 		40BB0A592D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBChangeIconWithoutAlertController.swift; sourceTree = "<group>"; };
 		40BB0A5B2D5ADAEC00DFE362 /* LBAlphaAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAlphaAlertController.swift; sourceTree = "<group>"; };
+		40BB0A672D5B1FCC00DFE362 /* Font+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+LBExtension.swift"; sourceTree = "<group>"; };
+		40BB0A692D5B204B00DFE362 /* Color+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+LBExtension.swift"; sourceTree = "<group>"; };
+		40BB0A6D2D5B236000DFE362 /* LBCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCardView.swift; sourceTree = "<group>"; };
 		40BD1F4526D8D1480002E493 /* LBChainElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBChainElement.h; sourceTree = "<group>"; };
 		40BD1F4626D8D1480002E493 /* LBChainElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBChainElement.m; sourceTree = "<group>"; };
 		40BE03702679F93B000D3A70 /* LBTableViewNoStickyStyleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTableViewNoStickyStyleController.h; sourceTree = "<group>"; };
@@ -1069,6 +1077,14 @@
 				4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */,
 			);
 			path = FullScreen;
+			sourceTree = "<group>";
+		};
+		402922322D5ECE6F0081AD17 /* SelectList */ = {
+			isa = PBXGroup;
+			children = (
+				402922332D5ECE820081AD17 /* LBSelectListPage.swift */,
+			);
+			path = SelectList;
 			sourceTree = "<group>";
 		};
 		402DEBA727968F9500B051C5 /* 策略模式代替If-else */ = {
@@ -2218,6 +2234,16 @@
 			path = ChangeIconWithoutAlert;
 			sourceTree = "<group>";
 		};
+		40BB0A662D5B1FAF00DFE362 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				40BB0A672D5B1FCC00DFE362 /* Font+LBExtension.swift */,
+				40BB0A692D5B204B00DFE362 /* Color+LBExtension.swift */,
+				40BB0A6D2D5B236000DFE362 /* LBCardView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		40BD1F4426D8D12C0002E493 /* LBPromiseChain */ = {
 			isa = PBXGroup;
 			children = (
@@ -2384,6 +2410,8 @@
 		40D43D0D2A67EE33001384BF /* SwiftUIModule */ = {
 			isa = PBXGroup;
 			children = (
+				402922322D5ECE6F0081AD17 /* SelectList */,
+				40BB0A662D5B1FAF00DFE362 /* Extension */,
 				406B18732D2E4639003ED486 /* Combine */,
 				408400252D2E16FB004A58CC /* MixSwiftUIView */,
 				4006777D2AB7EBA60032F96E /* SwiftUIAnimation */,
@@ -2939,6 +2967,7 @@
 			files = (
 				401E9414272174D600F3BAB2 /* UIViewController+change1.m in Sources */,
 				409FC3DE2A25F7560053B88C /* LBVideoPlayerBottomActionToolBar.swift in Sources */,
+				40BB0A682D5B1FCC00DFE362 /* Font+LBExtension.swift in Sources */,
 				4080FEBC2AD8DD5300FF79FC /* LBDrawImageUtil.swift in Sources */,
 				40AE6FDD29C8616600C69932 /* HeightChangeViewController.swift in Sources */,
 				40A7436B2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift in Sources */,
@@ -3015,6 +3044,7 @@
 				40667D7826A5151100027791 /* LBGCDViewController.m in Sources */,
 				40DD20BB269FE619001E691B /* LBTextRecogineViewController.m in Sources */,
 				408400272D2E1727004A58CC /* LBMixSwiftUIViewController.swift in Sources */,
+				40BB0A6E2D5B236000DFE362 /* LBCardView.swift in Sources */,
 				400A05C42861A703006574B5 /* LBHelper.m in Sources */,
 				400A05C82861AACB006574B5 /* LBPreventRepeatTouchUpInsideController.m in Sources */,
 				409FC3ED2A29CFC10053B88C /* BLTSwiftTaskViewController.swift in Sources */,
@@ -3033,6 +3063,7 @@
 				40B35B79286441C00001FFE9 /* LBMultipleDelegatesContainer.m in Sources */,
 				406BF20C2984F03E00E2479A /* LBRxSwiftViewController.swift in Sources */,
 				40C20B4C298A0B8100B23342 /* BLTCornerGradientShadowButton.swift in Sources */,
+				40BB0A6A2D5B204B00DFE362 /* Color+LBExtension.swift in Sources */,
 				40AE6FF329C98BDC00C69932 /* LBPageChildViewController.swift in Sources */,
 				40D43CC22A5E96A0001384BF /* LBExpandCloseLabelController.swift in Sources */,
 				40C2EFC12D5303B2003DFBC9 /* LBStringToIntDecoder.swift in Sources */,
@@ -3195,6 +3226,7 @@
 				40AE6FE829C8616600C69932 /* SmoothViewController.swift in Sources */,
 				40AE6FD729C8616600C69932 /* RefreshViewController.swift in Sources */,
 				4086B7AE2845B941003CE2FF /* LLDoubleScrollViewPinController.swift in Sources */,
+				402922342D5ECE820081AD17 /* LBSelectListPage.swift in Sources */,
 				40ACEE762A4C1A9D0001BCAB /* LBAlertQueueManager.swift in Sources */,
 				40D43D172A67EED6001384BF /* LBChartBarMarkView.swift in Sources */,
 				4009FC3A2A05159100221887 /* LBCollectionViewExtension.swift in Sources */,
