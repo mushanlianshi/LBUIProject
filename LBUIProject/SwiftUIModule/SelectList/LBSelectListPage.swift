@@ -45,8 +45,7 @@ struct LBSelectListPage: View {
     @ObservedObject var viewModel = ItemViewModel()
     var body: some View {
         List {
-            ForEach(viewModel.items) { item in
-                
+            ForEach(viewModel.items) { item in                
                 Button(action: {
                     viewModel.toggleSelection(at: viewModel.items.firstIndex(where: { $0.id == item.id}) ?? 0)
 //                    item.isSelected.toggle()

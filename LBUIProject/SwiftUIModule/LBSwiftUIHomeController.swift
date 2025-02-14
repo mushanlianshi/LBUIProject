@@ -17,6 +17,7 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.mixSwiftUIView, LBMixSwiftUIViewController.self),
         (.mixSwiftUIView, LBCombineViewController.self),
         (.selectList, AnyView(LBSelectListPage())),
+        (.addUIKitView, AnyView(LBAddUIKitViewPage())),
     ]
 
     
@@ -67,4 +68,5 @@ enum LBSwiftUIExampleType: String {
     case swiftUIAnimation = "swiftUI动画"
     case mixSwiftUIView = "内嵌SwiftUI view"
     case selectList = "列表点击选中"
+    case addUIKitView = "加载UIKit中的控件"
 }

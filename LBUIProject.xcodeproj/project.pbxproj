@@ -61,6 +61,8 @@
 		4028C6072C3B7CF9004E86F3 /* LBFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028C6062C3B7CF9004E86F3 /* LBFullScreenViewController.swift */; };
 		4028C6092C3B80FA004E86F3 /* LBPresentFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */; };
 		402922342D5ECE820081AD17 /* LBSelectListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402922332D5ECE820081AD17 /* LBSelectListPage.swift */; };
+		402922372D5ED1C20081AD17 /* LBAddUIKitViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402922362D5ED1C20081AD17 /* LBAddUIKitViewPage.swift */; };
+		402922392D5ED2470081AD17 /* LBUIKitGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402922382D5ED2470081AD17 /* LBUIKitGridView.swift */; };
 		402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBA92796900600B051C5 /* LBStrategyModeController.m */; };
 		402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */; };
 		402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */; };
@@ -471,6 +473,8 @@
 		4028C6062C3B7CF9004E86F3 /* LBFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFullScreenViewController.swift; sourceTree = "<group>"; };
 		4028C6082C3B80FA004E86F3 /* LBPresentFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBPresentFullScreenController.swift; sourceTree = "<group>"; };
 		402922332D5ECE820081AD17 /* LBSelectListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectListPage.swift; sourceTree = "<group>"; };
+		402922362D5ED1C20081AD17 /* LBAddUIKitViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAddUIKitViewPage.swift; sourceTree = "<group>"; };
+		402922382D5ED2470081AD17 /* LBUIKitGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUIKitGridView.swift; sourceTree = "<group>"; };
 		402DEBA82796900600B051C5 /* LBStrategyModeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStrategyModeController.h; sourceTree = "<group>"; };
 		402DEBA92796900600B051C5 /* LBStrategyModeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStrategyModeController.m; sourceTree = "<group>"; };
 		402DEBB1279694C400B051C5 /* NSObject+LBCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBCategory.h"; sourceTree = "<group>"; };
@@ -1085,6 +1089,15 @@
 				402922332D5ECE820081AD17 /* LBSelectListPage.swift */,
 			);
 			path = SelectList;
+			sourceTree = "<group>";
+		};
+		402922352D5ED19A0081AD17 /* AddUIKitView */ = {
+			isa = PBXGroup;
+			children = (
+				402922362D5ED1C20081AD17 /* LBAddUIKitViewPage.swift */,
+				402922382D5ED2470081AD17 /* LBUIKitGridView.swift */,
+			);
+			path = AddUIKitView;
 			sourceTree = "<group>";
 		};
 		402DEBA727968F9500B051C5 /* 策略模式代替If-else */ = {
@@ -2410,6 +2423,7 @@
 		40D43D0D2A67EE33001384BF /* SwiftUIModule */ = {
 			isa = PBXGroup;
 			children = (
+				402922352D5ED19A0081AD17 /* AddUIKitView */,
 				402922322D5ECE6F0081AD17 /* SelectList */,
 				40BB0A662D5B1FAF00DFE362 /* Extension */,
 				406B18732D2E4639003ED486 /* Combine */,
@@ -3204,6 +3218,7 @@
 				400A4F982A038C2300C7A51B /* LBRxSwiftHomeViewController.swift in Sources */,
 				40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */,
 				40AE6FD629C8616600C69932 /* CollectionViewViewController.swift in Sources */,
+				402922392D5ED2470081AD17 /* LBUIKitGridView.swift in Sources */,
 				40D43D1D2A690B0A001384BF /* LBScrollKitHomeView.swift in Sources */,
 				409C16EC2A8631D8006EB24D /* LBExpandArea.swift in Sources */,
 				4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */,
@@ -3221,6 +3236,7 @@
 				40F38D272C8ADACC0046E4E5 /* SelectionModel.swift in Sources */,
 				409FC3FB2A2A010D0053B88C /* LLContractDetailChanQuanCheckTask.swift in Sources */,
 				407603AC284078AC0019EC69 /* NSObject+UnRecognizeSelector.m in Sources */,
+				402922372D5ED1C20081AD17 /* LBAddUIKitViewPage.swift in Sources */,
 				40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */,
 				403B5CFE286D50D00069CBD1 /* LBImageRecognizeTagView.swift in Sources */,
 				40AE6FE829C8616600C69932 /* SmoothViewController.swift in Sources */,

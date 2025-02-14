@@ -18,7 +18,7 @@ target 'LBUIProject' do
   pod 'BLTBasicUIKit', '0.3.1'
 #  pod 'BLTUIKitProject', :git => 'git@github.com:mushanlianshi/BLTUIKitProject.git', :tag => '= 1.9.3'
   pod 'BLTUIKitProject', '= 1.9.3'
-#  pod 'QMUIKit'
+  pod 'QMUIKit', '4.8.0'
   pod 'MBProgressHUD'
   pod 'MMKV'
   pod 'BLTSwiftUIKit', '= 1.5.0'
