@@ -6,7 +6,7 @@
 //
 
 import QMUIKit
-import SwiftUI
+import SwiftUI 
 
 // SwiftUI和UIKit桥梁搭建  SwiftUI包装器
 struct LBUIKitGridView: UIViewRepresentable {
