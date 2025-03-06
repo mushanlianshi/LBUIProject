@@ -28,6 +28,7 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "全屏", vcClass: LBFullScreenViewController.self),
                 LBListItemModel.init(title: "present全屏", vcClass: LBPresentFullScreenController.self),
                 LBListItemModel.init(title: "更换应用图标无弹框", vcClass: LBChangeIconWithoutAlertController.self),
+                LBListItemModel.init(title: "codable模型转换", vcClass: LBCodableController.self),
             ]
         }
     }
