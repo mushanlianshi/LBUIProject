@@ -34,6 +34,13 @@ class ItemViewModel: ObservableObject {
         }
     }
     
+    func selectItem(_ item: ItemModel) {
+            for index in items.indices {
+                items[index].isSelected = (items[index].id == item.id)
+//                items[index].changeName(items[index].name + "\(index)")
+            }
+        }
+    
     func toggleSelection(at index: Int) {
         items[index].isSelected.toggle()
         items[index].changeName(items[index].name + "\(index)")
@@ -45,9 +52,10 @@ struct LBSelectListPage: View {
     @ObservedObject var viewModel = ItemViewModel()
     var body: some View {
         List {
-            ForEach(viewModel.items) { item in                
+            ForEach(viewModel.items) { item in
                 Button(action: {
-                    viewModel.toggleSelection(at: viewModel.items.firstIndex(where: { $0.id == item.id}) ?? 0)
+                    viewModel.selectItem(item)
+//                    viewModel.toggleSelection(at: viewModel.items.firstIndex(where: { $0.id == item.id}) ?? 0)
 //                    item.isSelected.toggle()
                 }) {
                     Text(item.name + "")

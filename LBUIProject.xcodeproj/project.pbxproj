@@ -86,6 +86,10 @@
 		40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40441762299F4F17000F567F /* LBVerticalHorizontalScrollView.swift */; };
 		40441766299F4F28000F567F /* SYVerticalHorizontalTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40441764299F4F28000F567F /* SYVerticalHorizontalTableView.m */; };
 		40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */; };
+		404B0EA42D8D37FD0070447D /* LBTabAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0EA32D8D37FD0070447D /* LBTabAnimatedViewController.swift */; };
+		404B0EA62D8D39450070447D /* LBTabAnimatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0EA52D8D39450070447D /* LBTabAnimatedCell.swift */; };
+		404B0EA92D8D40440070447D /* LBTabAnimatedOCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B0EA82D8D40440070447D /* LBTabAnimatedOCCell.m */; };
+		404B0EAF2D8D68950070447D /* LBTabAnimatedCardOCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B0EAE2D8D68950070447D /* LBTabAnimatedCardOCCell.m */; };
 		404B1B782A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B772A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift */; };
 		404B1B7E2A7B985E002B46BB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B7A2A7B985E002B46BB /* UIColor+Extension.swift */; };
 		404B1B7F2A7B985E002B46BB /* FoldAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B1B7B2A7B985E002B46BB /* FoldAnimationView.swift */; };
@@ -517,6 +521,12 @@
 		40441765299F4F28000F567F /* SYVerticalHorizontalTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVerticalHorizontalTableView.h; sourceTree = "<group>"; };
 		40474AF3282E02B1002C0A95 /* LBTestChainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestChainViewController.h; sourceTree = "<group>"; };
 		40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestChainViewController.m; sourceTree = "<group>"; };
+		404B0EA32D8D37FD0070447D /* LBTabAnimatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTabAnimatedViewController.swift; sourceTree = "<group>"; };
+		404B0EA52D8D39450070447D /* LBTabAnimatedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTabAnimatedCell.swift; sourceTree = "<group>"; };
+		404B0EA72D8D40440070447D /* LBTabAnimatedOCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTabAnimatedOCCell.h; sourceTree = "<group>"; };
+		404B0EA82D8D40440070447D /* LBTabAnimatedOCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTabAnimatedOCCell.m; sourceTree = "<group>"; };
+		404B0EAD2D8D68950070447D /* LBTabAnimatedCardOCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTabAnimatedCardOCCell.h; sourceTree = "<group>"; };
+		404B0EAE2D8D68950070447D /* LBTabAnimatedCardOCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTabAnimatedCardOCCell.m; sourceTree = "<group>"; };
 		404B1B772A7B95A3002B46BB /* LBCutDownNumberAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCutDownNumberAnimationController.swift; sourceTree = "<group>"; };
 		404B1B7A2A7B985E002B46BB /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		404B1B7B2A7B985E002B46BB /* FoldAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldAnimationView.swift; sourceTree = "<group>"; };
@@ -1294,6 +1304,19 @@
 				408045022891476F00600952 /* UIView+LBExtension.swift */,
 			);
 			path = "链式调用";
+			sourceTree = "<group>";
+		};
+		404B0EA22D8D37D10070447D /* LBTabAnimated */ = {
+			isa = PBXGroup;
+			children = (
+				404B0EA32D8D37FD0070447D /* LBTabAnimatedViewController.swift */,
+				404B0EA52D8D39450070447D /* LBTabAnimatedCell.swift */,
+				404B0EA72D8D40440070447D /* LBTabAnimatedOCCell.h */,
+				404B0EA82D8D40440070447D /* LBTabAnimatedOCCell.m */,
+				404B0EAD2D8D68950070447D /* LBTabAnimatedCardOCCell.h */,
+				404B0EAE2D8D68950070447D /* LBTabAnimatedCardOCCell.m */,
+			);
+			path = LBTabAnimated;
 			sourceTree = "<group>";
 		};
 		404B1B762A7B957A002B46BB /* 倒计时动画 */ = {
@@ -2325,6 +2348,7 @@
 		40D2763F29C0754C005343E3 /* ThirdTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				404B0EA22D8D37D10070447D /* LBTabAnimated */,
 				40D43CCB2A5FCF81001384BF /* UICollectionViewCompositionalLayout */,
 				40ACEE6F2A49608E0001BCAB /* AlertQueueManager */,
 				401BEEA72A25A24D00F28892 /* IJKPlayer */,
@@ -3016,6 +3040,7 @@
 				406B18772D2E467C003ED486 /* LBCombineView.swift in Sources */,
 				40B11E15266DC9C600337CE4 /* LBTestOffScreenController.m in Sources */,
 				407B84B32940317500AEDAEC /* LBCustomReverseSequenceController.swift in Sources */,
+				404B0EA62D8D39450070447D /* LBTabAnimatedCell.swift in Sources */,
 				4043EB0C265F9E2400EACB2B /* LBHomeViewController.m in Sources */,
 				40D43D012A667AA9001384BF /* UIView+LBColor.m in Sources */,
 				4066CF3D269314BF001A323C /* LBSafirController.m in Sources */,
@@ -3201,6 +3226,7 @@
 				408F681F288AA0830019F47D /* LLTransitionAnimationController.swift in Sources */,
 				400A4FBB2A04EA4600C7A51B /* LBTestPageViewController.swift in Sources */,
 				40D46FC2288E7538001A153A /* LBResponseChain.m in Sources */,
+				404B0EAF2D8D68950070447D /* LBTabAnimatedCardOCCell.m in Sources */,
 				40140EEC2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				4086B7B22845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift in Sources */,
 				40D43D1A2A67EF11001384BF /* LBChartTabView.swift in Sources */,
@@ -3223,6 +3249,7 @@
 				40AE6FE429C8616600C69932 /* ListCollectionViewController.swift in Sources */,
 				40D43CD52A5FE251001384BF /* LBCollectionCompositionLayoutViewModel.swift in Sources */,
 				400A05D82863237B006574B5 /* UIImage+LBExtension.swift in Sources */,
+				404B0EA42D8D37FD0070447D /* LBTabAnimatedViewController.swift in Sources */,
 				40ABA5A52A205EC600B84488 /* Dictionary+LBExtension.swift in Sources */,
 				4028C6072C3B7CF9004E86F3 /* LBFullScreenViewController.swift in Sources */,
 				406B187B2D2E46BD003ED486 /* LBCombineViewModel.swift in Sources */,
@@ -3232,6 +3259,7 @@
 				40AE6FD629C8616600C69932 /* CollectionViewViewController.swift in Sources */,
 				402922392D5ED2470081AD17 /* LBUIKitGridView.swift in Sources */,
 				40D43D1D2A690B0A001384BF /* LBScrollKitHomeView.swift in Sources */,
+				404B0EA92D8D40440070447D /* LBTabAnimatedOCCell.m in Sources */,
 				409C16EC2A8631D8006EB24D /* LBExpandArea.swift in Sources */,
 				4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */,
 				400A4FA22A04B25C00C7A51B /* LBLocaleViewController.swift in Sources */,

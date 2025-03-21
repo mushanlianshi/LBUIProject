@@ -8,5 +8,7 @@
 #import "UIView+LBExtension.h"
 #import "UIStackViewInScrollViewController.h"
 #import "BLTPreviewImageManager.h"
+#import "LBTabAnimatedOCCell.h"
+#import "LBTabAnimatedCardOCCell.h"
 //#import <TXLiteAVSDK_Player/TXLiteAVSDK.h>
 //#import <SuperPlayer/SuperPlayer.h>

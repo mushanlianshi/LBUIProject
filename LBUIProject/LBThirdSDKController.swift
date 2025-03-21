@@ -120,6 +120,7 @@ class LBThirdSDKController: UIViewController {
                 [.title : "设计模式", .controller : LBDesignPatternHomeController.self],
                 [.title : "SwiftEntryKit弹框", .controller : LBAlertQueueManagerController.self],
                 [.title : "UICollectionViewCompositionalLayout布局", .controller : LBCollectionCompositionLayoutViewController.self],
+                [.title : "骨架屏", .controller : LBTabAnimatedViewController.self],
         ]
     }()
     

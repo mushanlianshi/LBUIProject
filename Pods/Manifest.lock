@@ -573,6 +573,7 @@ PODS:
   - SwiftDate (6.3.1)
   - SwiftEntryKit (2.0.0)
   - SwipeTableView (0.2.6)
+  - TABAnimated (2.6.6)
   - TXLiteAVSDK_Player (11.1.14143)
   - TZImagePickerController (3.8.8):
     - TZImagePickerController/Basic (= 3.8.8)
@@ -634,6 +635,7 @@ DEPENDENCIES:
   - SwiftDate (= 6.3.1)
   - SwiftEntryKit (= 2.0.0)
   - SwipeTableView (= 0.2.6)
+  - TABAnimated
   - TXLiteAVSDK_Player
   - ViewAnimator
   - Watchdog
@@ -698,6 +700,7 @@ SPEC REPOS:
     - SwiftDate
     - SwiftEntryKit
     - SwipeTableView
+    - TABAnimated
     - TXLiteAVSDK_Player
     - TZImagePickerController
     - ViewAnimator
@@ -778,6 +781,7 @@ SPEC CHECKSUMS:
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   SwipeTableView: 67d8a2e6e18bd38c188fd4fabda0b278eaa08d2f
+  TABAnimated: 75fece541a774193565697c7a11539d3c6f631b3
   TXLiteAVSDK_Player: 946dae329da9b31e24a417a47089af2f5fccea95
   TZImagePickerController: d084a7b97c82d387e7669dd86dc9a9057500aacf
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
@@ -786,6 +790,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 115c51c55f072b7f8484b120270f4c8f09ae08de
+PODFILE CHECKSUM: 50bdfe50f0af4586fbe2500fc6b83d39e3c2fffb
 
 COCOAPODS: 1.15.2

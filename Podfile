@@ -78,6 +78,7 @@ target 'LBUIProject' do
    pod 'SwiftDate', '6.3.1'
    pod 'IGListKit', '5.0.0'
    pod 'HandyJSON', '5.0.2'
+   pod 'TABAnimated'
 
 
 
