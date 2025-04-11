@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 import UIKit
 import BLTBasicUIKit
 

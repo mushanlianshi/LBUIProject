@@ -8,7 +8,7 @@
 import UIKit
 import BLTUIKitProject
 import Dollar
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 
 struct LBTestStructProperty {

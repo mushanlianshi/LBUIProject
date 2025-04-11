@@ -24,6 +24,8 @@
 
 @property (nonatomic,strong) UILabel *descLab;
 
+@property (nonatomic,strong) UILabel *rightBottomLab;
+
 @end
 
 @implementation LBTabAnimatedCardOCCell
@@ -32,7 +34,7 @@
               reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 10, BLT_DEF_SCREEN_WIDTH - 10*2, 120)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 5, BLT_DEF_SCREEN_WIDTH - 10*2, 140)];
         view.layer.cornerRadius = 10;
         view.backgroundColor = [UIColor lightTextColor];
         // 给bgView边框设置阴影
@@ -54,6 +56,7 @@
     [self.containerView addSubview:self.titleLab];
     [self.containerView addSubview:self.timeLab];
     [self.containerView addSubview:self.descLab];
+    [self.containerView addSubview:self.rightBottomLab];
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(10, 10, 10, 10));
@@ -80,6 +83,12 @@
     [_descLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.timeLab.mas_bottom).offset(8);
         make.left.mas_equalTo(self.titleLab);
+        make.bottom.mas_equalTo(-10);
+    }];
+    
+    [_rightBottomLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_offset(-10);
+        make.top.equalTo(_descLab.mas_bottom);
         make.bottom.mas_equalTo(-10);
     }];
     
@@ -127,6 +136,14 @@
         [_timeLab setFont:UIFontPFFontSize(12)];
     }
     return _timeLab;
+}
+
+- (UILabel *)rightBottomLab {
+    if (!_rightBottomLab) {
+        _rightBottomLab = [[UILabel alloc] init];
+        [_rightBottomLab setFont:UIFontPFFontSize(12)];
+    }
+    return _rightBottomLab;
 }
 
 @end

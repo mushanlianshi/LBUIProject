@@ -8,7 +8,7 @@
 import Foundation
 import BLTUIKitProject
 import UIKit
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 struct LBListItemModel: Equatable {
     static func == (lhs: LBListItemModel, rhs: LBListItemModel) -> Bool {

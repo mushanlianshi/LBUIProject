@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 extension BLTResponderEvent{
     static let clickEvent = BLTResponderEvent(rawValue: 1)
@@ -51,7 +51,7 @@ extension LBResponderTransferViewController: UITableViewDelegate, UITableViewDat
 
 
 extension LBResponderTransferViewController: BLTResponderTransferProtocol{
-    func receiveEvent(_ eventType: BLTSwiftUIKit.BLTResponderEvent, obj: Any?) {
+    func receiveEvent(_ eventType: SMSwiftBasicKit.BLTResponderEvent, obj: Any?) {
         print("LBLog event type \(eventType)  \(String(describing: obj))")
     }
     

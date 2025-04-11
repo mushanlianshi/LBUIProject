@@ -7,7 +7,7 @@
 
 import UIKit
 import BLTUIKitProject
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 class LBTestTableViewSelectListModel{
     var selected: Bool = false

@@ -25,7 +25,7 @@ class LBSkeletonViewController: UIViewController{
 //        table.rowHeight = UITableView.automaticDimension
 //        tableview.sectionHeaderHeight = UITableView.automaticDimension
 //        tableview.sectionFooterHeight = UITableView.automaticDimension
-        table.estimatedRowHeight = 120.0
+        table.estimatedRowHeight = 150.0
 //        tableview.estimatedSectionFooterHeight = 20.0
 //        tableview.estimatedSectionHeaderHeight = 20.0
         return table
@@ -42,7 +42,7 @@ class LBSkeletonViewController: UIViewController{
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             for index in 0...60{
-                let model = LBSkeletonListModel.init(title: "title + \(index)", content: "问候为合法欧文哈佛我饿哈佛我和佛为回复我腹黑我合肥我发好哦维护费我哈佛我饿粉红我耳环佛为合肥和违法我腹黑我二号房+ \(index)")
+                let model = LBSkeletonListModel.init(title: "title + \(index)", content: "问候为合法欧文哈佛我饿哈佛我和佛为回复费我哈佛我饿粉红我耳环佛为合肥和违法我腹黑我二号房+ \(index)")
                 self.dataSources.append(model)
             }
 //            隐藏掉效果

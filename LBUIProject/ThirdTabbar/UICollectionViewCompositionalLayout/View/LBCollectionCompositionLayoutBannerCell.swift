@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 class LBCollectionCompositionLayoutBannerCell: UICollectionViewCell {
     let imageView = UIImageView.blt_imageView(with: nil, mode: .scaleAspectFill)!

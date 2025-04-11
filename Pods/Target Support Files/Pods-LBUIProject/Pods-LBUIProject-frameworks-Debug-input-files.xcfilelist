@@ -5,11 +5,13 @@ ${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.
 ${BUILT_PRODUCTS_DIR}/AvoidCrash/AvoidCrash.framework
 ${BUILT_PRODUCTS_DIR}/BLTAlertEventQueue/BLTAlertEventQueue.framework
 ${BUILT_PRODUCTS_DIR}/BLTBasicUIKit/BLTBasicUIKit.framework
-${BUILT_PRODUCTS_DIR}/BLTSwiftUIKit/BLTSwiftUIKit.framework
+${BUILT_PRODUCTS_DIR}/BLTIconFont/BLTIconFont.framework
 ${BUILT_PRODUCTS_DIR}/BLTUIKitProject/BLTUIKitProject.framework
 ${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework
+${BUILT_PRODUCTS_DIR}/CLPopoverManager/CLPopoverManager.framework
 ${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework
 ${BUILT_PRODUCTS_DIR}/DSScrollKit/DSScrollKit.framework
+${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework
 ${BUILT_PRODUCTS_DIR}/DiffableDataSources/DiffableDataSources.framework
 ${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
@@ -47,6 +49,7 @@ ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SJBaseVideoPlayer/SJBaseVideoPlayer.framework
 ${BUILT_PRODUCTS_DIR}/SJUIKit/SJUIKit.framework
 ${BUILT_PRODUCTS_DIR}/SJVideoPlayer/SJVideoPlayer.framework
+${BUILT_PRODUCTS_DIR}/SMSwiftBasicKit/SMSwiftBasicKit.framework
 ${BUILT_PRODUCTS_DIR}/Selene/Selene.framework
 ${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
@@ -56,10 +59,12 @@ ${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework
 ${BUILT_PRODUCTS_DIR}/SwipeTableView/SwipeTableView.framework
 ${BUILT_PRODUCTS_DIR}/TABAnimated/TABAnimated.framework
 ${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework
+${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework
 ${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework
 ${BUILT_PRODUCTS_DIR}/Watchdog/Watchdog.framework
 ${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework
 ${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework
 ${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework
+${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXSoundTouch.framework/TXSoundTouch
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXFFmpeg.framework/TXFFmpeg

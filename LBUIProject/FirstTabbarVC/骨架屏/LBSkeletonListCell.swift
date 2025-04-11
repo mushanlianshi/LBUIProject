@@ -21,6 +21,7 @@ class LBSkeletonListCell: UITableViewCell {
         didSet{
             titleLab.text = listModel?.title
             contentLab.text = listModel?.content
+            descLab.text = "desccccc"
         }
     }
     
@@ -43,8 +44,13 @@ class LBSkeletonListCell: UITableViewCell {
     }()
     
     lazy var contentLab: UILabel = {
-        let label = UILabel.blt_label(with: UIFontPFFontSize(16), textColor: UIColor.blt.hexColor(0x999999))!
+        let label = UILabel.blt_label(with: UIFontPFFontSize(14), textColor: UIColor.blt.hexColor(0x999999))!
         label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var descLab: UILabel = {
+        let label = UILabel.blt_label(with: UIFontPFFontSize(12), textColor: UIColor.black)!
         return label
     }()
     
@@ -56,8 +62,7 @@ class LBSkeletonListCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.addSubview(iconIV)
         containerView.addSubview(stackView)
-        stackView.addArrangedSubview(titleLab)
-        stackView.addArrangedSubview(contentLab)
+        [titleLab, contentLab, descLab].forEach(stackView.addArrangedSubview(_:))
         setConstraints()
         setSkeletonConfig()
     }
@@ -73,14 +78,17 @@ class LBSkeletonListCell: UITableViewCell {
         iconIV.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.top.equalTo(15)
-            make.width.height.equalTo(50)
+            make.width.equalTo(100)
+            make.bottom.equalTo(-10)
+//            make.bottom.lessThanOrEqualToSuperview().offset(-10)
         }
         
         stackView.snp.makeConstraints { make in
             make.left.equalTo(iconIV.snp_right).offset(15)
             make.right.equalTo(-15)
             make.top.equalTo(15)
-            make.bottom.equalTo(-15)
+//            make.bottom.equalTo(-15)
+            make.bottom.lessThanOrEqualToSuperview().offset(-10)
         }
     }
     
@@ -91,8 +99,18 @@ class LBSkeletonListCell: UITableViewCell {
         iconIV.isSkeletonable = true
         titleLab.isSkeletonable = true
         contentLab.isSkeletonable = true
+//        contentLab.ske
 //        渲染两行
         contentLab.skeletonTextNumberOfLines = 2
+        descLab.isSkeletonable = true
+//        descLab.skeletonTextLineHeight = 14
+        titleLab.skeletonPaddingInsets = .init(top: 25, left: 0, bottom: 0, right: 0)
+//        titleLab.skeletonTextLineHeight = .fixed(20)
+        contentLab.skeletonPaddingInsets = .init(top: 35, left: 0, bottom: 0, right: 40)
+//        titleLab.skeletonTextLineHeight = .fixed(18)
+        descLab.skeletonPaddingInsets = .init(top: 55, left: 0, bottom: 0, right: 60)
+//        titleLab.skeletonTextLineHeight = .fixed(16)
+
     }
     
     

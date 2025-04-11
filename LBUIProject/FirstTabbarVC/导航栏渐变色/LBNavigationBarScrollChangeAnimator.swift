@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 //导航栏滑动渐变色的 controller
 public protocol LBNavigationBarScrollDataSourcesProtocol: AnyObject{

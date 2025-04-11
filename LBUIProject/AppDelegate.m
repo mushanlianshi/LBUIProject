@@ -101,35 +101,14 @@ struct B{
     
 //    [AvoidCrash makeAllEffective];
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        CFTimeInterval startTime = CACurrentMediaTime();
-//        for (int i = 0; i < 10000; i ++ ) {
-//            MMKV *mmkv = [MMKV defaultMMKV];
-//            [mmkv setInt32:32 forKey:[NSString stringWithFormat:@"%d",i]];
-//        }
-//        CFTimeInterval endTime = CACurrentMediaTime();
-//        CFTimeInterval consumingTime = endTime - startTime;
-//        NSLog(@"LBLog mmkv 耗时：%@", @(consumingTime));
-//        
-//        
-//        CFTimeInterval startTime22 = CACurrentMediaTime();
-//        for (int i = 0; i < 10000; i ++ ) {
-//            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-//            [userDef setObject:@(32) forKey:[NSString stringWithFormat:@"u%d",i]];
-//        }
-//        CFTimeInterval endTime22 = CACurrentMediaTime();
-//        CFTimeInterval consumingTime22 = endTime22 - startTime22;
-//        NSLog(@"LBLog nsuserdefault 耗时：%@", @(consumingTime22));
-//    });
-    
-    
 //    [[LBFPSManager sharedInstance] startFPSObserver];
 //    [self codeCoverageProfrawDump];
 //    NSLog(@"LBlog getLocalIPAddress %@", [self getLocalIPAddress:false]);
 //    NSLog(@"LBlog getPublicIPAddress %@", [self getNetworkIPAddress]);
     
     NSURL *url = [[NSURL alloc] initWithString:@"http://jscss.baletoo.com/Public/app/wanjian/map@3x.png"];
-    NSLog(@"lblog ----");
+    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSLog(@"lblog ---- %@", idfv);
     
     return YES;
 }

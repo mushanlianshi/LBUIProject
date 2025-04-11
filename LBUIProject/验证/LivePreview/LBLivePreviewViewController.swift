@@ -7,7 +7,7 @@
 
 import UIKit
 import SwiftUI
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 import PhotosUI
 
 ///UIKit 借用swiftUI来实现实时预览

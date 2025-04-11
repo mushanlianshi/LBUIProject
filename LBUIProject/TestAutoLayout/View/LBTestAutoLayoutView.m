@@ -41,6 +41,8 @@
     return self;
 }
 
+
+
 - (void)setConstraints{
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_offset(UIEdgeInsetsMake(20, 15, 0, 15));

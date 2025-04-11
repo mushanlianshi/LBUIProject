@@ -51,9 +51,9 @@ struct LBBluetoothSwiftUIPage: View {
                     Divider()
                 }
                 ///不用系统的  系统的点击空白区域无效
-                .onTapExpandArea {
-                    self.bluetoothManager.connectPeripheral(peripheral)
-                }
+//                .onTapExpandArea {
+//                    self.bluetoothManager.connectPeripheral(peripheral)
+//                }
             }
             ///去掉listitem 的间距
         }.listRowInsets(EdgeInsets())
@@ -77,9 +77,9 @@ struct LBBluetoothSwiftUIPage: View {
                     Divider()
                 }
                 ///不用系统的  系统的点击空白区域无效
-                .onTapExpandArea {
-                    self.bluetoothManager.connectPeripheral(peripheral)
-                }
+//                .onTapExpandArea {
+//                    self.bluetoothManager.connectPeripheral(peripheral)
+//                }
             }
         }
     }

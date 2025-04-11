@@ -8,7 +8,7 @@
 import Foundation
 import BLTUIKitProject
 import UIKit
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 class LBSecondViewController: LBBaseCollectionViewController{
     
@@ -27,6 +27,7 @@ class LBSecondViewController: LBBaseCollectionViewController{
                 LBListItemModel.init(title: "抽屉效果", vcClass: LBDrawerSwiperAnimationController.self),
                 LBListItemModel.init(title: "图片旋转", vcClass: LLImageClipController.self),
                 LBListItemModel.init(title: "IGListKit装饰视图", vcClass: LBIGListKitDecorationViewController.self),
+                LBListItemModel.init(title: "测试响应区域", vcClass: LBResponseInsetViewController.self),
             ]
         }
         set{}

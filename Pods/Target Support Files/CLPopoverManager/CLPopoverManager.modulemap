@@ -1,0 +1,6 @@
+framework module CLPopoverManager {
+  umbrella header "CLPopoverManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

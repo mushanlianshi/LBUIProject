@@ -7,7 +7,7 @@
 
 import UIKit
 import SwipeTableView
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 import BLTUIKitProject
 
 ///自定义UICollectionLayout  装饰视图的  悬停的

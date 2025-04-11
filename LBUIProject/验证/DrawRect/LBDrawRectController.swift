@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 class LBDrawRectController2: UIViewController {
     var refreshBlock: BLTEmptyBlock?

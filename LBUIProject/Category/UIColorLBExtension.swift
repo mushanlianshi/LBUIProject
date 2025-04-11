@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 
 public let lb_randomColorList: [UIColor] = [

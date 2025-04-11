@@ -18,7 +18,7 @@ class LBTabAnimatedViewController: UIViewController {
         tab.delegate = self
         tab.dataSource = self
         ///  使用约束需要设置这两行
-        tab.estimatedRowHeight = 120;
+        tab.estimatedRowHeight = 150;
         tab.rowHeight = UITableView.automaticDimension;
         
         tab.blt.registerReusableCell(cell: LBTabAnimatedCell.self)
@@ -27,18 +27,19 @@ class LBTabAnimatedViewController: UIViewController {
         
 //        tab.tabAnimated = TABTableAnimated(cellClass: LBTabAnimatedOCCell.self, cellHeight: 120)
         // 卡片样式
-        tab.tabAnimated = TABTableAnimated(cellClass: LBTabAnimatedCardOCCell.self, cellHeight: 140)
+        tab.tabAnimated = TABTableAnimated(cellClass: LBTabAnimatedCardOCCell.self, cellHeight: 150)
         tab.tabAnimated?.canLoadAgain = true
 //        tab.tabAnimated?.cellHeight = 100
         tab.tabAnimated?.superAnimationType = .shimmer
         tab.tabAnimated?.adjustBlock = {
             manager in
             /// 设置索引为0的第一个元素 往上移5， 高度100
-            manager.animation()?(0)?.up()(5)?.height()(100);
+            manager.animation()?(0)?.up()(0)?.height()(120);
             /// 设置索引为1的第er个元素 往上移5，宽度铺满， 1行，高度18
             manager.animation()?(1)?.reducedWidth()(1)?.line()(1)?.height()(18);
             manager.animation()?(2)?.up()(0)?.reducedWidth()(80)?.height()(18);
             manager.animation()?(3)?.line()(1)?.reducedWidth()(120)?.height()(16);
+            manager.animation()?(4)?.line()(1)?.up()(0)?.height()(16);
         }
         return tab
     }()
@@ -60,7 +61,7 @@ class LBTabAnimatedViewController: UIViewController {
     }
 
     @objc private func startAnimated() {
-        tableView.tabAnimated?.canLoadAgain = true
+//        tableView.tabAnimated?.canLoadAgain = true
         tableView.tab_startAnimation {
             // 请求数据
             DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {

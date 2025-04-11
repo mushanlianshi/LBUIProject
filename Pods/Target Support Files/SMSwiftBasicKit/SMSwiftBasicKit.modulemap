@@ -1,0 +1,6 @@
+framework module SMSwiftBasicKit {
+  umbrella header "SMSwiftBasicKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 import BLTUIKitProject
 import SwiftEntryKit
 

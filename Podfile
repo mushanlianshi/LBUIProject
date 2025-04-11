@@ -2,6 +2,8 @@
 platform :ios, '14.0'
 source 'https://github.com/CocoaPods/Specs.git'
 source 'git@github.com:mushanlianshi/LBUIKitSpecRepo.git'
+source 'http://git.ethank.com.cn/liubin/xinlimeiprivaterepo.git'
+
 target 'LBUIProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -21,7 +23,7 @@ target 'LBUIProject' do
   pod 'QMUIKit', '4.8.0'
   pod 'MBProgressHUD'
   pod 'MMKV'
-  pod 'BLTSwiftUIKit', '= 1.5.0'
+#  pod 'SMSwiftBasicKit', '= 1.5.0'
   pod 'AvoidCrash', '~>2.5.2'
   pod 'CHTCollectionViewWaterfallLayout/ObjC', '= 0.9.10'
   pod 'JXPagingView/Paging', '= 2.1.2'
@@ -47,6 +49,7 @@ target 'LBUIProject' do
   
   pod 'IBPCollectionViewCompositionalLayout', '= 0.6.9'
   pod 'DiffableDataSources', '= 0.5.0'
+  pod 'UITableView+FDTemplateLayoutCell', '= 1.6'
   
 #  检测卡顿的
   pod 'Watchdog'
@@ -79,7 +82,12 @@ target 'LBUIProject' do
    pod 'IGListKit', '5.0.0'
    pod 'HandyJSON', '5.0.2'
    pod 'TABAnimated'
-
+   #弹框队列
+   pod 'CLPopoverManager', '0.0.1'
+   pod 'DateToolsSwift'
+   pod 'SMSwiftBasicKit', '0.1.5'
+   pod 'lottie-ios'
+   pod 'BLTIconFont', :git => 'git@github.com:mushanlianshi/BLTIconFont.git'
 
 
 

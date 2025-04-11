@@ -29,6 +29,10 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "present全屏", vcClass: LBPresentFullScreenController.self),
                 LBListItemModel.init(title: "更换应用图标无弹框", vcClass: LBChangeIconWithoutAlertController.self),
                 LBListItemModel.init(title: "codable模型转换", vcClass: LBCodableController.self),
+                LBListItemModel.init(title: "formatter格式化", vcClass: LBFormatterController.self),
+                LBListItemModel.init(title: "combine响应式", vcClass: LBCombineSampleListController.self),
+                LBListItemModel.init(title: "弹框队列", vcClass: LBAlertQueueViewController.self),
+                LBListItemModel.init(title: "测试self", vcClass: LBTestSelfController.self),
             ]
         }
     }

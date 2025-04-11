@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BLTSwiftUIKit
+import SMSwiftBasicKit
 
 class LLContractDetailMutiContractCheckTask: LLContractDetailBeforeSignCheckTask {
     
