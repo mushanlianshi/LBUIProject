@@ -63,6 +63,7 @@ extension ListCollectionViewController: UICollectionViewDataSource, UICollection
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.listViewDidScrollCallback?(scrollView)
+//        print("LBLog 子scrollView did scrollview \(scrollView.contentOffset.y)")
     }
 }
 

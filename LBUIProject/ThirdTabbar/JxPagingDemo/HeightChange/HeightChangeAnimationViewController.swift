@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeightChangeAnimationViewController: BaseViewController {
+class HeightChangeAnimationViewController: JXPagingBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

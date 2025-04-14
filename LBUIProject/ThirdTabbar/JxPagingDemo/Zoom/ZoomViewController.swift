@@ -9,7 +9,7 @@
 import UIKit
 import JXPagingView
 
-class ZoomViewController: BaseViewController {
+class ZoomViewController: JXPagingBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

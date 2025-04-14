@@ -56,6 +56,7 @@ class LBCombineBindController: UIViewController{
 //        testCombineFinished()
 //        testCombineModel()
         testSendMoreError()
+        testMapThread()
     }
     
     func changeUserInfoAgain()  {
@@ -193,7 +194,7 @@ class LBCombineBindController: UIViewController{
     // 模拟网络请求返回的发布者
     private func fetchData(isFirst: Bool) -> PassthroughSubject<String, LBInterfaceError> {
         let subject = PassthroughSubject<String, LBInterfaceError>()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if isFirst{
                 let resultName = "first 请求回来了 name = liubin "
                 subject.send(resultName)  // 发送结果
@@ -223,4 +224,32 @@ class LBCombineBindController: UIViewController{
     deinit {
         print("LBLog LBCombineBindController de init \(self.description)")
     }
+    
+    @Published var value1: String = ""
+
+    var validatedValue1: AnyPublisher<String?, Never> {
+        return $value1.map { value1  in
+            print("LBLog currentThread is ------ \(Thread.current) \(value1)")
+            guard value1.count > 2 else {
+                DispatchQueue.main.async {
+                    print("LBlog -------")
+                }
+                return nil
+            }
+            DispatchQueue.main.async {
+                
+            }
+            return value1
+        }.eraseToAnyPublisher()
+    }
+    
+    func testMapThread() {
+        self.validatedValue1.sink { result in
+            
+        } receiveValue: { value in
+            print("LBLog testMapThread value is \(value)")
+            print("LBLog testMapThread value is \(Thread.current)")
+        }.store(in: &cancellables)
+    }
+    
 }

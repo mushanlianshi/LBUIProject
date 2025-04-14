@@ -10,17 +10,18 @@ import UIKit
 import JXPagingView
 import JXSegmentedView
 
-class ListRefreshViewController: BaseViewController {
+class ListRefreshViewController: JXPagingBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.isNeedHeader = true
+        self.isNeedFooter = true
         dataSource.titles = ["1111","2222","3333"]
     }
 
     override func preferredPagingView() -> JXPagingView {
-        return JXPagingListRefreshView(delegate: self)
+        return JXPagingListRefreshView(delegate: self, listContainerType: .scrollView)
     }
 
     //用于测试每次点击segment切换，都触发子列表的下拉刷新

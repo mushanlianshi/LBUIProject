@@ -10,7 +10,7 @@ import UIKit
 import JXPagingView
 import MJRefresh
 
-class RefreshViewController: BaseViewController {
+class RefreshViewController: JXPagingBaseViewController {
     var isHeaderRefreshed = false
 
     override func viewDidLoad() {

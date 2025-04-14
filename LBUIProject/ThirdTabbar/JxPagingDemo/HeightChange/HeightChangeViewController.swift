@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeightChangeViewController: BaseViewController {
+class HeightChangeViewController: JXPagingBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,7 +9,7 @@
 import UIKit
 import JXSegmentedView
 
-class NestSubjectViewController: BaseViewController, JXSegmentedListContainerViewListDelegate {
+class NestSubjectViewController: JXPagingBaseViewController, JXSegmentedListContainerViewListDelegate {
     weak var nestContentScrollView: UIScrollView?    //嵌套demo使用
 
     override func viewDidLoad() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderPositionViewController: BaseViewController {
+class HeaderPositionViewController: JXPagingBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

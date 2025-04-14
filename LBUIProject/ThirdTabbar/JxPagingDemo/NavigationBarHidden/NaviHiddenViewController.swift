@@ -9,7 +9,7 @@
 import UIKit
 import JXPagingView
 
-class NaviHiddenViewController: BaseViewController {
+class NaviHiddenViewController: JXPagingBaseViewController {
     lazy var naviBGView: UIView = UIView()
 
     override func viewDidLoad() {

@@ -37,6 +37,7 @@ class ListViewController: UIViewController {
         }
         beginFirstRefresh()
     }
+    
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

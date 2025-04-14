@@ -33,6 +33,7 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "combine响应式", vcClass: LBCombineSampleListController.self),
                 LBListItemModel.init(title: "弹框队列", vcClass: LBAlertQueueViewController.self),
                 LBListItemModel.init(title: "测试self", vcClass: LBTestSelfController.self),
+                LBListItemModel.init(title: "ScrollView嵌套Scrollview", vcClass: LBScrollViewInScrollViewController.self),
             ]
         }
     }

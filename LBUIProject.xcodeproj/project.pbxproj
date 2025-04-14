@@ -85,6 +85,11 @@
 		4043EB66265FA45600EACB2B /* LBTestAutoLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB65265FA45600EACB2B /* LBTestAutoLayoutView.m */; };
 		40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40441762299F4F17000F567F /* LBVerticalHorizontalScrollView.swift */; };
 		40441766299F4F28000F567F /* SYVerticalHorizontalTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40441764299F4F28000F567F /* SYVerticalHorizontalTableView.m */; };
+		4044D2242DAC9C8E0012CD6D /* LBInnerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044D2232DAC9C8E0012CD6D /* LBInnerScrollView.swift */; };
+		4044D2272DACF5360012CD6D /* LBCustomPropertyCombineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044D2262DACF5360012CD6D /* LBCustomPropertyCombineController.swift */; };
+		4044D2292DACF5590012CD6D /* LBCustomPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044D2282DACF5590012CD6D /* LBCustomPropertyView.swift */; };
+		4044D22B2DACF5A30012CD6D /* LBButtonValidState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044D22A2DACF5A30012CD6D /* LBButtonValidState.swift */; };
+		4044D22D2DAD10750012CD6D /* LBCustomPropertyCombineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044D22C2DAD10750012CD6D /* LBCustomPropertyCombineViewModel.swift */; };
 		40474AF5282E02B1002C0A95 /* LBTestChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */; };
 		404B0EA42D8D37FD0070447D /* LBTabAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0EA32D8D37FD0070447D /* LBTabAnimatedViewController.swift */; };
 		404B0EA62D8D39450070447D /* LBTabAnimatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0EA52D8D39450070447D /* LBTabAnimatedCell.swift */; };
@@ -106,6 +111,7 @@
 		406298EB288F8517006A3024 /* UINavigationBar+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */; };
 		406298EE288FBD28006A3024 /* LBCustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */; };
 		406298F0288FC18B006A3024 /* LBSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EF288FC18B006A3024 /* LBSliderTableCell.swift */; };
+		4063BEAB2DA925B5008B0D57 /* LBScrollViewInScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4063BEAA2DA925B5008B0D57 /* LBScrollViewInScrollViewController.swift */; };
 		4063EF4E285ADDCD00335BA2 /* CHTCollectionViewWaterfallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF48285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.m */; };
 		4063EF4F285ADDCD00335BA2 /* CHTCollectionViewWaterfallFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF49285ADDCC00335BA2 /* CHTCollectionViewWaterfallFooter.m */; };
 		4063EF50285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4063EF4B285ADDCC00335BA2 /* CHTCollectionViewWaterfallHeader.m */; };
@@ -294,7 +300,7 @@
 		40AE6FDE29C8616600C69932 /* NestSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC229C8616600C69932 /* NestSubjectViewController.swift */; };
 		40AE6FDF29C8616600C69932 /* NestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC329C8616600C69932 /* NestViewController.swift */; };
 		40AE6FE029C8616600C69932 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC529C8616600C69932 /* ListViewController.swift */; };
-		40AE6FE129C8616600C69932 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC629C8616600C69932 /* BaseViewController.swift */; };
+		40AE6FE129C8616600C69932 /* JXPagingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC629C8616600C69932 /* JXPagingBaseViewController.swift */; };
 		40AE6FE229C8616600C69932 /* UIWindow+JXSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC729C8616600C69932 /* UIWindow+JXSafeArea.swift */; };
 		40AE6FE329C8616600C69932 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC829C8616600C69932 /* DetailViewController.swift */; };
 		40AE6FE429C8616600C69932 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE6FC929C8616600C69932 /* ListCollectionViewController.swift */; };
@@ -575,6 +581,11 @@
 		40441762299F4F17000F567F /* LBVerticalHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBVerticalHorizontalScrollView.swift; sourceTree = "<group>"; };
 		40441764299F4F28000F567F /* SYVerticalHorizontalTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVerticalHorizontalTableView.m; sourceTree = "<group>"; };
 		40441765299F4F28000F567F /* SYVerticalHorizontalTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVerticalHorizontalTableView.h; sourceTree = "<group>"; };
+		4044D2232DAC9C8E0012CD6D /* LBInnerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBInnerScrollView.swift; sourceTree = "<group>"; };
+		4044D2262DACF5360012CD6D /* LBCustomPropertyCombineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomPropertyCombineController.swift; sourceTree = "<group>"; };
+		4044D2282DACF5590012CD6D /* LBCustomPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomPropertyView.swift; sourceTree = "<group>"; };
+		4044D22A2DACF5A30012CD6D /* LBButtonValidState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButtonValidState.swift; sourceTree = "<group>"; };
+		4044D22C2DAD10750012CD6D /* LBCustomPropertyCombineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomPropertyCombineViewModel.swift; sourceTree = "<group>"; };
 		40474AF3282E02B1002C0A95 /* LBTestChainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestChainViewController.h; sourceTree = "<group>"; };
 		40474AF4282E02B1002C0A95 /* LBTestChainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestChainViewController.m; sourceTree = "<group>"; };
 		404B0EA32D8D37FD0070447D /* LBTabAnimatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTabAnimatedViewController.swift; sourceTree = "<group>"; };
@@ -602,6 +613,7 @@
 		406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+LBExtension.swift"; sourceTree = "<group>"; };
 		406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomPageViewController.swift; sourceTree = "<group>"; };
 		406298EF288FC18B006A3024 /* LBSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSliderTableCell.swift; sourceTree = "<group>"; };
+		4063BEAA2DA925B5008B0D57 /* LBScrollViewInScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBScrollViewInScrollViewController.swift; sourceTree = "<group>"; };
 		4063EF48285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallCell.m; sourceTree = "<group>"; };
 		4063EF49285ADDCC00335BA2 /* CHTCollectionViewWaterfallFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallFooter.m; sourceTree = "<group>"; };
 		4063EF4A285ADDCC00335BA2 /* CHTCollectionViewWaterfallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallCell.h; sourceTree = "<group>"; };
@@ -828,7 +840,7 @@
 		40AE6FC229C8616600C69932 /* NestSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestSubjectViewController.swift; sourceTree = "<group>"; };
 		40AE6FC329C8616600C69932 /* NestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestViewController.swift; sourceTree = "<group>"; };
 		40AE6FC529C8616600C69932 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		40AE6FC629C8616600C69932 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		40AE6FC629C8616600C69932 /* JXPagingBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingBaseViewController.swift; sourceTree = "<group>"; };
 		40AE6FC729C8616600C69932 /* UIWindow+JXSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+JXSafeArea.swift"; sourceTree = "<group>"; };
 		40AE6FC829C8616600C69932 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		40AE6FC929C8616600C69932 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1407,6 +1419,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4044D2252DACF5230012CD6D /* CustomProperty */ = {
+			isa = PBXGroup;
+			children = (
+				4044D2262DACF5360012CD6D /* LBCustomPropertyCombineController.swift */,
+				4044D2282DACF5590012CD6D /* LBCustomPropertyView.swift */,
+				4044D22A2DACF5A30012CD6D /* LBButtonValidState.swift */,
+				4044D22C2DAD10750012CD6D /* LBCustomPropertyCombineViewModel.swift */,
+			);
+			path = CustomProperty;
+			sourceTree = "<group>";
+		};
 		40474AF2282E0297002C0A95 /* 链式调用 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1503,6 +1526,15 @@
 				4009FC392A05159100221887 /* LBCollectionViewExtension.swift */,
 			);
 			path = "自定义轮播图";
+			sourceTree = "<group>";
+		};
+		4063BEA92DA9259E008B0D57 /* ScrollInScroll */ = {
+			isa = PBXGroup;
+			children = (
+				4063BEAA2DA925B5008B0D57 /* LBScrollViewInScrollViewController.swift */,
+				4044D2232DAC9C8E0012CD6D /* LBInnerScrollView.swift */,
+			);
+			path = ScrollInScroll;
 			sourceTree = "<group>";
 		};
 		4063EF47285ADDB600335BA2 /* CollectionView */ = {
@@ -2056,6 +2088,7 @@
 		40ABA5892A1DA86800B84488 /* 验证 */ = {
 			isa = PBXGroup;
 			children = (
+				4063BEA92DA9259E008B0D57 /* ScrollInScroll */,
 				40ABEB772DA3BE3900199320 /* LBTestSelfController.swift */,
 				40ABEB4D2DA3BE3500199320 /* AlertQueueController */,
 				40ABEB0F2DA3BE1A00199320 /* Combine */,
@@ -2126,6 +2159,7 @@
 		40ABEB0F2DA3BE1A00199320 /* Combine */ = {
 			isa = PBXGroup;
 			children = (
+				4044D2252DACF5230012CD6D /* CustomProperty */,
 				40ABEB842DA3C81900199320 /* Bind */,
 				40ABEB0A2DA3BE1A00199320 /* Login */,
 				40ABEB0C2DA3BE1A00199320 /* Search */,
@@ -2450,7 +2484,7 @@
 			isa = PBXGroup;
 			children = (
 				40AE6FC529C8616600C69932 /* ListViewController.swift */,
-				40AE6FC629C8616600C69932 /* BaseViewController.swift */,
+				40AE6FC629C8616600C69932 /* JXPagingBaseViewController.swift */,
 				40AE6FC729C8616600C69932 /* UIWindow+JXSafeArea.swift */,
 				40AE6FC829C8616600C69932 /* DetailViewController.swift */,
 				40AE6FC929C8616600C69932 /* ListCollectionViewController.swift */,
@@ -3510,6 +3544,7 @@
 				4085AC9E26A15E6000A0664F /* LLTextRecogineImageView.m in Sources */,
 				40ABEB5E2DA3BE3500199320 /* CLPopupDataPickerController.swift in Sources */,
 				40ABEB152DA3BE1A00199320 /* LBCombineSampleListViewModel.swift in Sources */,
+				4044D2242DAC9C8E0012CD6D /* LBInnerScrollView.swift in Sources */,
 				40F38D2F2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift in Sources */,
 				40AE6FE329C8616600C69932 /* DetailViewController.swift in Sources */,
 				40AE6FDC29C8616600C69932 /* HeightChangeAnimationViewController.swift in Sources */,
@@ -3562,7 +3597,9 @@
 				40D43CDF2A6003A3001384BF /* UIStackViewInScrollViewController.m in Sources */,
 				4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */,
 				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
+				4044D22B2DACF5A30012CD6D /* LBButtonValidState.swift in Sources */,
 				40AE6FAC29C80AE600C69932 /* AFURLSessionManager+BLTAPMNetworkDuration.m in Sources */,
+				4044D2292DACF5590012CD6D /* LBCustomPropertyView.swift in Sources */,
 				40F38D2D2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift in Sources */,
 				40AE6FE229C8616600C69932 /* UIWindow+JXSafeArea.swift in Sources */,
 				409B06C52891108F004724EB /* LBThirdSDKController.swift in Sources */,
@@ -3570,6 +3607,7 @@
 				406EBD1C29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift in Sources */,
 				40B4A0BE2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift in Sources */,
 				40AE6FE729C8616600C69932 /* TestListBaseView.swift in Sources */,
+				4044D2272DACF5360012CD6D /* LBCustomPropertyCombineController.swift in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
 				403B24DE286565C80009D8E9 /* LBDragDownSecondPageView.swift in Sources */,
 				402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */,
@@ -3582,6 +3620,7 @@
 				401AA7E3288AB81C00A4C6DB /* LBThirdPartAnimationController.swift in Sources */,
 				4063EF62285B0AA900335BA2 /* LBCollectionDecoratorView.m in Sources */,
 				40BE03722679F93B000D3A70 /* LBTableViewNoStickyStyleController.m in Sources */,
+				4044D22D2DAD10750012CD6D /* LBCustomPropertyCombineViewModel.swift in Sources */,
 				4063EF50285ADDCD00335BA2 /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				40D43CF12A61492E001384BF /* LBListScrollAnimatingController.swift in Sources */,
 				406298EE288FBD28006A3024 /* LBCustomPageViewController.swift in Sources */,
@@ -3598,6 +3637,7 @@
 				40B35B71286407FD0001FFE9 /* LBBaseNavigationController.m in Sources */,
 				409C16E92A860BB5006EB24D /* LBBlueSwiftUIPage.swift in Sources */,
 				40AE6FEE29C9859C00C69932 /* LBPageScrollViewController.swift in Sources */,
+				4063BEAB2DA925B5008B0D57 /* LBScrollViewInScrollViewController.swift in Sources */,
 				404B1B7E2A7B985E002B46BB /* UIColor+Extension.swift in Sources */,
 				40AE6FE529C8616600C69932 /* PagingViewTableHeaderView.swift in Sources */,
 				40ABEB102DA3BE1A00199320 /* LBLoginCombineContentView.swift in Sources */,
@@ -3667,7 +3707,7 @@
 				409C16EC2A8631D8006EB24D /* LBExpandArea.swift in Sources */,
 				4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */,
 				400A4FA22A04B25C00C7A51B /* LBLocaleViewController.swift in Sources */,
-				40AE6FE129C8616600C69932 /* BaseViewController.swift in Sources */,
+				40AE6FE129C8616600C69932 /* JXPagingBaseViewController.swift in Sources */,
 				40ABEB6F2DA3BE3500199320 /* CLPopoverManager+Extension.swift in Sources */,
 				40ABA5822A1C9D3500B84488 /* LBTestMayoNetworkController.swift in Sources */,
 				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,

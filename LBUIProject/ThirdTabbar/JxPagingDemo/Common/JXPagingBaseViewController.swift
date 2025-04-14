@@ -1,5 +1,5 @@
 //
-//  BaseViewController.swift
+//  JXPagingBaseViewController.swift
 //  JXPagingView
 //
 //  Created by jiaxin on 2018/8/10.
@@ -11,7 +11,7 @@ import JXPagingView
 import JXSegmentedView
 
 extension JXPagingListContainerView: JXSegmentedViewListContainer  {}
-class BaseViewController: UIViewController, JXSegmentedViewDelegate, JXPagingViewDelegate {
+class JXPagingBaseViewController: UIViewController, JXSegmentedViewDelegate, JXPagingViewDelegate {
     lazy var pagingView: JXPagingView = preferredPagingView()
     lazy var userHeaderView: PagingViewTableHeaderView = preferredTableHeaderView()
     let dataSource: JXSegmentedTitleDataSource = JXSegmentedTitleDataSource()
@@ -131,12 +131,12 @@ class BaseViewController: UIViewController, JXSegmentedViewDelegate, JXPagingVie
     }
 }
 
-//extension BaseViewController:  {
+//extension JXPagingBaseViewController:  {
 //
 //
 //}
 
-extension BaseViewController: JXPagingMainTableViewGestureDelegate {
+extension JXPagingBaseViewController: JXPagingMainTableViewGestureDelegate {
     func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         //禁止segmentedView左右滑动的时候，上下和左右都可以滚动
         if otherGestureRecognizer == segmentedView.collectionView.panGestureRecognizer {

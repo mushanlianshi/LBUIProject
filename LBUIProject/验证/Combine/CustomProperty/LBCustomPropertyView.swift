@@ -1,0 +1,75 @@
+//
+//  LBCustomPropertyView.swift
+//  LBUIProject
+//
+//  Created by liu bin on 2025/4/14.
+//
+
+import Foundation
+import Combine
+import SMSwiftBasicKit
+
+// 扩展 UIButton，添加绑定函数
+extension BLTNameSpace where Base: UIButton {
+    
+    func bindValidSelectResult<P: Publisher>(_ publisher: P) -> AnyCancellable where P.Output == LBButtonValidState, P.Failure == Never {
+        return publisher
+            .receive(on: DispatchQueue.main)
+            .sink { result in
+//                guard let self = self else { return }
+                switch result {
+                case .ok(let message):
+                    self.base.setTitle(message, for: .normal)
+                    self.base.setTitleColor(.red, for: .normal)
+                case .empty(let message):
+                    self.base.setTitle(message, for: .normal)
+                    self.base.setTitleColor(.black, for: .normal)
+                }
+            }
+    }
+}
+
+extension BLTNameSpace where Base: LBCustomPropertyView{
+    
+    func bindCustomModel<P: Publisher>(_ publisher: P) -> AnyCancellable where P.Output == LBCombinePropertyModel?, P.Failure == Never{
+        return publisher
+            .receive(on: DispatchQueue.main)
+            .sink { model in
+                guard let model else{
+                    return
+                }
+                self.base.nameLab.text = model.name
+                self.base.ageLab.text = "\(model.age)"
+            }
+    }
+    
+}
+
+
+class LBCustomPropertyView: LBBaseView{
+    
+    private lazy var stackView = UIStackView.blt.initStackView(spacing: 10, axis: .vertical)
+    
+    fileprivate lazy var nameLab = UILabel.blt.initWithText(text: "name", font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
+    
+    fileprivate lazy var ageLab = UILabel.blt.initWithText(text: "0", font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
+    
+    lazy var button: UIButton = {
+       let button = UIButton()
+        button.setTitle("button", for: .normal)
+        return button
+    }()
+    
+    override func initSubView() {
+        addSubview(stackView)
+        [nameLab, ageLab, button].forEach(stackView.addArrangedSubview(_:))
+        setConstraints()
+    }
+    
+    private func setConstraints(){
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+}
