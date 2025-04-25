@@ -8,7 +8,7 @@
 import Foundation
 
 enum LBCollectionCompositionLayoutSectionType {
-    case banner, group, list
+    case banner, group, list, waterFlow
     
 }
 
@@ -33,7 +33,14 @@ struct LBCollectionCompositionLayoutViewModel {
             "2. There are restrictions on characters allowed in paths.",
             "1. Injection does not work with Whole Module Optimization."
         ].map{LBCollectionCompositionLayoutItemModel.init(listText: $0)}, name: "1. Injection does not work with Whole Module Optimization.1. Injection does not work with Whole Module Optimization.1. Injection does not work with Whole Module Optimization.")
-        dataSources.append(contentsOf: [banner, group, list])
+        
+        let group2 = LBCollectionCompositionLayoutSectionModel.init(type: .group, list:nil, name: "hori group")
+        
+        let waterFlow = LBCollectionCompositionLayoutSectionModel.init(type: .waterFlow, list: [
+            "11", "22", "33", "44", "55", "66", "77", "88"
+        ].map{LBCollectionCompositionLayoutItemModel.init(listText: $0)}, name: "waterFlow")
+        
+        dataSources.append(contentsOf: [banner, group, list, group2, waterFlow])
         
         dataSources.forEach { model in
             snapshot.appendSections([model])

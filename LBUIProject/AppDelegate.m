@@ -65,7 +65,7 @@ struct B{
     
     NSString *env = [[NSProcessInfo processInfo] environment][@"runEnvironment"];
     NSLog(@"LBLog env is %@", env);
-    
+    [[NSRunLoop currentRunLoop] addPort:<#(nonnull NSPort *)#> forMode:<#(nonnull NSRunLoopMode)#>];
 #ifdef DEBUG
     //动态变化的
     // for iOS

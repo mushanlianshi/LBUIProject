@@ -34,6 +34,8 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "弹框队列", vcClass: LBAlertQueueViewController.self),
                 LBListItemModel.init(title: "测试self", vcClass: LBTestSelfController.self),
                 LBListItemModel.init(title: "ScrollView嵌套Scrollview", vcClass: LBScrollViewInScrollViewController.self),
+                LBListItemModel.init(title: "Swift方法派发种类", vcClass: LBFuctionTypeController.self),
+                LBListItemModel.init(title: "自动连接wifi", vcClass: LBConnectWifiAutoController.self),
             ]
         }
     }

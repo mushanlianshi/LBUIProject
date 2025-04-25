@@ -16,7 +16,6 @@ import MJRefresh
 }
 
 
-
 private var lbTableViewKey: Void?
 private var lbCollectionViewKey: Void?
 private var lbCollectionLayoutKey: Void?

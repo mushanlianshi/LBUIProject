@@ -1,0 +1,1575 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import UIKit
+
+@_inheritsConvenienceInitializers @objc @MainActor class LBImageMemoryController : UIViewController {
+  @MainActor @_hasStorage @_hasInitialValue private final let imageView: UIImageView { get }
+  @MainActor override dynamic func viewDidLoad()
+  @MainActor override dynamic func viewDidLayoutSubviews()
+  @MainActor func testImageNamedCache()
+  @MainActor func testFilePathNotCache()
+  @MainActor func testDownloadImage()
+  @MainActor func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat) -> UIImage
+  @objc deinit
+  @MainActor override dynamic init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+  @MainActor required dynamic init?(coder: NSCoder)
+}
+
+// kCGImageSourceShouldCache
+// clang name: kCGImageSourceShouldCache
+sil_global public_external [let] @kCGImageSourceShouldCache : $CFString
+
+// kCGImageSourceCreateThumbnailFromImageAlways
+// clang name: kCGImageSourceCreateThumbnailFromImageAlways
+sil_global public_external [let] @kCGImageSourceCreateThumbnailFromImageAlways : $CFString
+
+// kCGImageSourceShouldCacheImmediately
+// clang name: kCGImageSourceShouldCacheImmediately
+sil_global public_external [let] @kCGImageSourceShouldCacheImmediately : $CFString
+
+// kCGImageSourceCreateThumbnailWithTransform
+// clang name: kCGImageSourceCreateThumbnailWithTransform
+sil_global public_external [let] @kCGImageSourceCreateThumbnailWithTransform : $CFString
+
+// kCGImageSourceThumbnailMaxPixelSize
+// clang name: kCGImageSourceThumbnailMaxPixelSize
+sil_global public_external [let] @kCGImageSourceThumbnailMaxPixelSize : $CFString
+
+// main
+sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
+bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
+  %2 = integer_literal $Builtin.Int32, 0          // user: %3
+  %3 = struct $Int32 (%2 : $Builtin.Int32)        // user: %4
+  return %3 : $Int32                              // id: %4
+} // end sil function 'main'
+
+// variable initialization expression of LBImageMemoryController.imageView
+sil hidden [transparent] @$s23LBImageMemoryControllerAAC9imageView33_F2E149D7FEBFB9AE715DF34FF4F42759LLSo07UIImageE0Cvpfi : $@convention(thin) () -> @owned UIImageView {
+bb0:
+  %0 = metatype $@thick UIImageView.Type          // user: %2
+  // function_ref UIImageView.__allocating_init()
+  %1 = function_ref @$sSo11UIImageViewCABycfC : $@convention(method) (@thick UIImageView.Type) -> @owned UIImageView // user: %2
+  %2 = apply %1(%0) : $@convention(method) (@thick UIImageView.Type) -> @owned UIImageView // user: %3
+  return %2 : $UIImageView                        // id: %3
+} // end sil function '$s23LBImageMemoryControllerAAC9imageView33_F2E149D7FEBFB9AE715DF34FF4F42759LLSo07UIImageE0Cvpfi'
+
+// UIImageView.__allocating_init()
+sil shared [available 2.0] @$sSo11UIImageViewCABycfC : $@convention(method) (@thick UIImageView.Type) -> @owned UIImageView {
+// %0 "$metatype"                                 // user: %1
+bb0(%0 : $@thick UIImageView.Type):
+  %1 = thick_to_objc_metatype %0 : $@thick UIImageView.Type to $@objc_metatype UIImageView.Type // user: %2
+  %2 = alloc_ref_dynamic [objc] %1 : $@objc_metatype UIImageView.Type, $UIImageView // user: %4
+  // function_ref @nonobjc UIImageView.init()
+  %3 = function_ref @$sSo11UIImageViewCABycfcTO : $@convention(method) (@owned UIImageView) -> @owned UIImageView // user: %4
+  %4 = apply %3(%2) : $@convention(method) (@owned UIImageView) -> @owned UIImageView // user: %5
+  return %4 : $UIImageView                        // id: %5
+} // end sil function '$sSo11UIImageViewCABycfC'
+
+// LBImageMemoryController.viewDidLoad()
+sil hidden @$s23LBImageMemoryControllerAAC11viewDidLoadyyF : $@convention(method) (@guaranteed LBImageMemoryController) -> () {
+// %0 "self"                                      // users: %4, %9, %8, %3, %2, %44, %43, %35, %1
+bb0(%0 : $LBImageMemoryController):
+  debug_value %0 : $LBImageMemoryController, let, name "self", argno 1, implicit // id: %1
+  strong_retain %0 : $LBImageMemoryController     // id: %2
+  %3 = upcast %0 : $LBImageMemoryController to $UIViewController // users: %7, %6
+  %4 = unchecked_ref_cast %0 : $LBImageMemoryController to $LBImageMemoryController // user: %5
+  %5 = objc_super_method %4 : $LBImageMemoryController, #UIViewController.viewDidLoad!foreign : (UIViewController) -> () -> (), $@convention(objc_method) (UIViewController) -> () // user: %6
+  %6 = apply %5(%3) : $@convention(objc_method) (UIViewController) -> ()
+  strong_release %3 : $UIViewController           // id: %7
+  strong_retain %0 : $LBImageMemoryController     // id: %8
+  %9 = upcast %0 : $LBImageMemoryController to $UIViewController // users: %12, %10, %11
+  %10 = objc_method %9 : $UIViewController, #UIViewController.view!getter.foreign : (UIViewController) -> () -> UIView?, $@convention(objc_method) (UIViewController) -> @autoreleased Optional<UIView> // user: %11
+  %11 = apply %10(%9) : $@convention(objc_method) (UIViewController) -> @autoreleased Optional<UIView> // user: %13
+  strong_release %9 : $UIViewController           // id: %12
+  switch_enum %11 : $Optional<UIView>, case #Optional.some!enumelt: bb2, case #Optional.none!enumelt: bb1 // id: %13
+
+bb1:                                              // Preds: bb0
+  %14 = string_literal utf8 "LBImageMemoryController/LBImageMemoryController.swift" // user: %21
+  %15 = integer_literal $Builtin.Word, 53         // user: %22
+  %16 = string_literal utf8 "Unexpectedly found nil while implicitly unwrapping an Optional value" // user: %18
+  %17 = integer_literal $Builtin.Word, 68         // user: %20
+  %18 = builtin "ptrtoint_Word"(%16 : $Builtin.RawPointer) : $Builtin.Word // user: %20
+  %19 = integer_literal $Builtin.Int8, 2          // users: %22, %29, %20
+  %20 = struct $StaticString (%18 : $Builtin.Word, %17 : $Builtin.Word, %19 : $Builtin.Int8) // user: %32
+  %21 = builtin "ptrtoint_Word"(%14 : $Builtin.RawPointer) : $Builtin.Word // user: %22
+  %22 = struct $StaticString (%21 : $Builtin.Word, %15 : $Builtin.Word, %19 : $Builtin.Int8) // user: %32
+  %23 = integer_literal $Builtin.Int64, 23        // user: %24
+  %24 = struct $UInt (%23 : $Builtin.Int64)       // user: %32
+  %25 = integer_literal $Builtin.Int32, 0         // user: %30
+  %26 = string_literal utf8 "Fatal error"         // user: %28
+  %27 = integer_literal $Builtin.Word, 11         // user: %29
+  %28 = builtin "ptrtoint_Word"(%26 : $Builtin.RawPointer) : $Builtin.Word // user: %29
+  %29 = struct $StaticString (%28 : $Builtin.Word, %27 : $Builtin.Word, %19 : $Builtin.Int8) // user: %32
+  %30 = struct $UInt32 (%25 : $Builtin.Int32)     // user: %32
+  // function_ref _assertionFailure(_:_:file:line:flags:)
+  %31 = function_ref @$ss17_assertionFailure__4file4line5flagss5NeverOs12StaticStringV_A2HSus6UInt32VtF : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never // user: %32
+  %32 = apply %31(%29, %20, %22, %24, %30) : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never
+  unreachable                                     // id: %33
+
+// %34                                            // users: %42, %40, %39
+bb2(%34 : $UIView):                               // Preds: bb0
+  %35 = ref_element_addr %0 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %36
+  %36 = load %35 : $*UIImageView                  // users: %38, %37
+  strong_retain %36 : $UIImageView                // id: %37
+  %38 = upcast %36 : $UIImageView to $UIView      // users: %41, %40
+  %39 = objc_method %34 : $UIView, #UIView.addSubview!foreign : (UIView) -> (UIView) -> (), $@convention(objc_method) (UIView, UIView) -> () // user: %40
+  %40 = apply %39(%38, %34) : $@convention(objc_method) (UIView, UIView) -> ()
+  strong_release %38 : $UIView                    // id: %41
+  strong_release %34 : $UIView                    // id: %42
+  %43 = class_method %0 : $LBImageMemoryController, #LBImageMemoryController.testDownloadImage : (LBImageMemoryController) -> () -> (), $@convention(method) (@guaranteed LBImageMemoryController) -> () // user: %44
+  %44 = apply %43(%0) : $@convention(method) (@guaranteed LBImageMemoryController) -> ()
+  %45 = tuple ()                                  // user: %46
+  return %45 : $()                                // id: %46
+} // end sil function '$s23LBImageMemoryControllerAAC11viewDidLoadyyF'
+
+// _diagnoseUnexpectedNilOptional(_filenameStart:_filenameLength:_filenameIsASCII:_line:_isImplicitUnwrap:)
+sil public_external [transparent] @$ss30_diagnoseUnexpectedNilOptional14_filenameStart01_E6Length01_E7IsASCII5_line17_isImplicitUnwrapyBp_BwBi1_BwBi1_tF : $@convention(thin) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, Builtin.Word, Builtin.Int1) -> () {
+// %0                                             // users: %34, %11
+// %1                                             // users: %40, %17
+// %2                                             // users: %35, %12
+// %3                                             // users: %41, %18
+// %4                                             // user: %5
+bb0(%0 : $Builtin.RawPointer, %1 : $Builtin.Word, %2 : $Builtin.Int1, %3 : $Builtin.Word, %4 : $Builtin.Int1):
+  cond_br %4, bb5, bb1                            // id: %5
+
+bb1:                                              // Preds: bb0
+  %6 = string_literal utf8 "Unexpectedly found nil while unwrapping an Optional value" // user: %8
+  %7 = integer_literal $Builtin.Word, 57          // user: %10
+  %8 = builtin "ptrtoint_Word"(%6 : $Builtin.RawPointer) : $Builtin.Word // user: %10
+  %9 = integer_literal $Builtin.Int8, 2           // users: %24, %15, %10
+  %10 = struct $StaticString (%8 : $Builtin.Word, %7 : $Builtin.Word, %9 : $Builtin.Int8) // user: %27
+  %11 = builtin "ptrtoint_Word"(%0 : $Builtin.RawPointer) : $Builtin.Word // user: %17
+  cond_br %2, bb3, bb2                            // id: %12
+
+bb2:                                              // Preds: bb1
+  %13 = integer_literal $Builtin.Int8, 0          // user: %14
+  br bb4(%13 : $Builtin.Int8)                     // id: %14
+
+bb3:                                              // Preds: bb1
+  br bb4(%9 : $Builtin.Int8)                      // id: %15
+
+// %16                                            // user: %17
+bb4(%16 : $Builtin.Int8):                         // Preds: bb2 bb3
+  %17 = struct $StaticString (%11 : $Builtin.Word, %1 : $Builtin.Word, %16 : $Builtin.Int8) // user: %27
+  %18 = builtin "zextOrBitCast_Word_Int64"(%3 : $Builtin.Word) : $Builtin.Int64 // user: %19
+  %19 = struct $UInt (%18 : $Builtin.Int64)       // user: %27
+  %20 = integer_literal $Builtin.Int32, 0         // user: %25
+  %21 = string_literal utf8 "Fatal error"         // user: %23
+  %22 = integer_literal $Builtin.Word, 11         // user: %24
+  %23 = builtin "ptrtoint_Word"(%21 : $Builtin.RawPointer) : $Builtin.Word // user: %24
+  %24 = struct $StaticString (%23 : $Builtin.Word, %22 : $Builtin.Word, %9 : $Builtin.Int8) // user: %27
+  %25 = struct $UInt32 (%20 : $Builtin.Int32)     // user: %27
+  // function_ref _assertionFailure(_:_:file:line:flags:)
+  %26 = function_ref @$ss17_assertionFailure__4file4line5flagss5NeverOs12StaticStringV_A2HSus6UInt32VtF : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never // user: %27
+  %27 = apply %26(%24, %10, %17, %19, %25) : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never
+  unreachable                                     // id: %28
+
+bb5:                                              // Preds: bb0
+  %29 = string_literal utf8 "Unexpectedly found nil while implicitly unwrapping an Optional value" // user: %31
+  %30 = integer_literal $Builtin.Word, 68         // user: %33
+  %31 = builtin "ptrtoint_Word"(%29 : $Builtin.RawPointer) : $Builtin.Word // user: %33
+  %32 = integer_literal $Builtin.Int8, 2          // users: %47, %38, %33
+  %33 = struct $StaticString (%31 : $Builtin.Word, %30 : $Builtin.Word, %32 : $Builtin.Int8) // user: %50
+  %34 = builtin "ptrtoint_Word"(%0 : $Builtin.RawPointer) : $Builtin.Word // user: %40
+  cond_br %2, bb7, bb6                            // id: %35
+
+bb6:                                              // Preds: bb5
+  %36 = integer_literal $Builtin.Int8, 0          // user: %37
+  br bb8(%36 : $Builtin.Int8)                     // id: %37
+
+bb7:                                              // Preds: bb5
+  br bb8(%32 : $Builtin.Int8)                     // id: %38
+
+// %39                                            // user: %40
+bb8(%39 : $Builtin.Int8):                         // Preds: bb6 bb7
+  %40 = struct $StaticString (%34 : $Builtin.Word, %1 : $Builtin.Word, %39 : $Builtin.Int8) // user: %50
+  %41 = builtin "zextOrBitCast_Word_Int64"(%3 : $Builtin.Word) : $Builtin.Int64 // user: %42
+  %42 = struct $UInt (%41 : $Builtin.Int64)       // user: %50
+  %43 = integer_literal $Builtin.Int32, 0         // user: %48
+  %44 = string_literal utf8 "Fatal error"         // user: %46
+  %45 = integer_literal $Builtin.Word, 11         // user: %47
+  %46 = builtin "ptrtoint_Word"(%44 : $Builtin.RawPointer) : $Builtin.Word // user: %47
+  %47 = struct $StaticString (%46 : $Builtin.Word, %45 : $Builtin.Word, %32 : $Builtin.Int8) // user: %50
+  %48 = struct $UInt32 (%43 : $Builtin.Int32)     // user: %50
+  // function_ref _assertionFailure(_:_:file:line:flags:)
+  %49 = function_ref @$ss17_assertionFailure__4file4line5flagss5NeverOs12StaticStringV_A2HSus6UInt32VtF : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never // user: %50
+  %50 = apply %49(%47, %33, %40, %42, %48) : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never
+  unreachable                                     // id: %51
+} // end sil function '$ss30_diagnoseUnexpectedNilOptional14_filenameStart01_E6Length01_E7IsASCII5_line17_isImplicitUnwrapyBp_BwBi1_BwBi1_tF'
+
+// @objc LBImageMemoryController.viewDidLoad()
+sil private [thunk] @$s23LBImageMemoryControllerAAC11viewDidLoadyyFTo : $@convention(objc_method) (LBImageMemoryController) -> () {
+// %0                                             // users: %4, %3, %1
+bb0(%0 : $LBImageMemoryController):
+  strong_retain %0 : $LBImageMemoryController     // id: %1
+  // function_ref LBImageMemoryController.viewDidLoad()
+  %2 = function_ref @$s23LBImageMemoryControllerAAC11viewDidLoadyyF : $@convention(method) (@guaranteed LBImageMemoryController) -> () // user: %3
+  %3 = apply %2(%0) : $@convention(method) (@guaranteed LBImageMemoryController) -> () // user: %5
+  strong_release %0 : $LBImageMemoryController    // id: %4
+  return %3 : $()                                 // id: %5
+} // end sil function '$s23LBImageMemoryControllerAAC11viewDidLoadyyFTo'
+
+// LBImageMemoryController.viewDidLayoutSubviews()
+sil hidden @$s23LBImageMemoryControllerAAC21viewDidLayoutSubviewsyyF : $@convention(method) (@guaranteed LBImageMemoryController) -> () {
+// %0 "self"                                      // users: %4, %3, %2, %8, %1
+bb0(%0 : $LBImageMemoryController):
+  debug_value %0 : $LBImageMemoryController, let, name "self", argno 1, implicit // id: %1
+  strong_retain %0 : $LBImageMemoryController     // id: %2
+  %3 = upcast %0 : $LBImageMemoryController to $UIViewController // users: %7, %6
+  %4 = unchecked_ref_cast %0 : $LBImageMemoryController to $LBImageMemoryController // user: %5
+  %5 = objc_super_method %4 : $LBImageMemoryController, #UIViewController.viewDidLayoutSubviews!foreign : (UIViewController) -> () -> (), $@convention(objc_method) (UIViewController) -> () // user: %6
+  %6 = apply %5(%3) : $@convention(objc_method) (UIViewController) -> ()
+  strong_release %3 : $UIViewController           // id: %7
+  %8 = ref_element_addr %0 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %9
+  %9 = load %8 : $*UIImageView                    // users: %11, %10
+  strong_retain %9 : $UIImageView                 // id: %10
+  %11 = upcast %9 : $UIImageView to $UIView       // users: %30, %29, %28
+  %12 = integer_literal $Builtin.Int64, 0         // user: %13
+  %13 = struct $Int (%12 : $Builtin.Int64)        // user: %21
+  %14 = integer_literal $Builtin.Int64, 0         // user: %15
+  %15 = struct $Int (%14 : $Builtin.Int64)        // user: %22
+  %16 = integer_literal $Builtin.Int64, 200       // user: %17
+  %17 = struct $Int (%16 : $Builtin.Int64)        // user: %24
+  %18 = integer_literal $Builtin.Int64, 300       // user: %19
+  %19 = struct $Int (%18 : $Builtin.Int64)        // user: %25
+  // function_ref specialized CGFloat.init<A>(_:)
+  %20 = function_ref @$s12CoreGraphics7CGFloatVyACxcSzRzlufCSi_Tgmq5 : $@convention(thin) (Int) -> CGFloat // users: %25, %24, %22, %21
+  %21 = apply %20(%13) : $@convention(thin) (Int) -> CGFloat // user: %23
+  %22 = apply %20(%15) : $@convention(thin) (Int) -> CGFloat // user: %23
+  %23 = struct $CGPoint (%21 : $CGFloat, %22 : $CGFloat) // user: %27
+  %24 = apply %20(%17) : $@convention(thin) (Int) -> CGFloat // user: %26
+  %25 = apply %20(%19) : $@convention(thin) (Int) -> CGFloat // user: %26
+  %26 = struct $CGSize (%24 : $CGFloat, %25 : $CGFloat) // user: %27
+  %27 = struct $CGRect (%23 : $CGPoint, %26 : $CGSize) // user: %29
+  %28 = objc_method %11 : $UIView, #UIView.frame!setter.foreign : (UIView) -> (CGRect) -> (), $@convention(objc_method) (CGRect, UIView) -> () // user: %29
+  %29 = apply %28(%27, %11) : $@convention(objc_method) (CGRect, UIView) -> ()
+  strong_release %11 : $UIView                    // id: %30
+  %31 = tuple ()                                  // user: %32
+  return %31 : $()                                // id: %32
+} // end sil function '$s23LBImageMemoryControllerAAC21viewDidLayoutSubviewsyyF'
+
+// Int.init(_builtinIntegerLiteral:)
+sil public_external [transparent] @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int {
+// %0                                             // user: %2
+bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Int.Type):
+  %2 = builtin "s_to_s_checked_trunc_IntLiteral_Int64"(%0 : $Builtin.IntLiteral) : $(Builtin.Int64, Builtin.Int1) // user: %3
+  %3 = tuple_extract %2 : $(Builtin.Int64, Builtin.Int1), 0 // user: %4
+  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
+  return %4 : $Int                                // id: %5
+} // end sil function '$sSi22_builtinIntegerLiteralSiBI_tcfC'
+
+// CGRect.init(x:y:width:height:)
+sil public_external [transparent] @$sSo6CGRectV12CoreGraphicsE1x1y5width6heightABSi_S3itcfC : $@convention(method) (Int, Int, Int, Int, @thin CGRect.Type) -> CGRect {
+// %0                                             // user: %6
+// %1                                             // user: %7
+// %2                                             // user: %9
+// %3                                             // user: %10
+bb0(%0 : $Int, %1 : $Int, %2 : $Int, %3 : $Int, %4 : $@thin CGRect.Type):
+  // function_ref specialized CGFloat.init<A>(_:)
+  %5 = function_ref @$s12CoreGraphics7CGFloatVyACxcSzRzlufCSi_Tgmq5 : $@convention(thin) (Int) -> CGFloat // users: %10, %9, %7, %6
+  %6 = apply %5(%0) : $@convention(thin) (Int) -> CGFloat // user: %8
+  %7 = apply %5(%1) : $@convention(thin) (Int) -> CGFloat // user: %8
+  %8 = struct $CGPoint (%6 : $CGFloat, %7 : $CGFloat) // user: %12
+  %9 = apply %5(%2) : $@convention(thin) (Int) -> CGFloat // user: %11
+  %10 = apply %5(%3) : $@convention(thin) (Int) -> CGFloat // user: %11
+  %11 = struct $CGSize (%9 : $CGFloat, %10 : $CGFloat) // user: %12
+  %12 = struct $CGRect (%8 : $CGPoint, %11 : $CGSize) // user: %13
+  return %12 : $CGRect                            // id: %13
+} // end sil function '$sSo6CGRectV12CoreGraphicsE1x1y5width6heightABSi_S3itcfC'
+
+// @objc LBImageMemoryController.viewDidLayoutSubviews()
+sil private [thunk] @$s23LBImageMemoryControllerAAC21viewDidLayoutSubviewsyyFTo : $@convention(objc_method) (LBImageMemoryController) -> () {
+// %0                                             // users: %4, %3, %1
+bb0(%0 : $LBImageMemoryController):
+  strong_retain %0 : $LBImageMemoryController     // id: %1
+  // function_ref LBImageMemoryController.viewDidLayoutSubviews()
+  %2 = function_ref @$s23LBImageMemoryControllerAAC21viewDidLayoutSubviewsyyF : $@convention(method) (@guaranteed LBImageMemoryController) -> () // user: %3
+  %3 = apply %2(%0) : $@convention(method) (@guaranteed LBImageMemoryController) -> () // user: %5
+  strong_release %0 : $LBImageMemoryController    // id: %4
+  return %3 : $()                                 // id: %5
+} // end sil function '$s23LBImageMemoryControllerAAC21viewDidLayoutSubviewsyyFTo'
+
+// LBImageMemoryController.testImageNamedCache()
+sil hidden @$s23LBImageMemoryControllerAAC19testImageNamedCacheyyF : $@convention(method) (@guaranteed LBImageMemoryController) -> () {
+// %0 "self"                                      // users: %12, %1
+bb0(%0 : $LBImageMemoryController):
+  debug_value %0 : $LBImageMemoryController, let, name "self", argno 1, implicit // id: %1
+  %2 = metatype $@thick UIImage.Type              // user: %10
+  %3 = string_literal utf8 "test_memory"          // user: %8
+  %4 = integer_literal $Builtin.Word, 11          // user: %8
+  %5 = integer_literal $Builtin.Int1, -1          // user: %8
+  %6 = metatype $@thin String.Type                // user: %8
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %7 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %8
+  %8 = apply %7(%3, %4, %5, %6) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %10
+  // function_ref @nonobjc UIImage.__allocating_init(named:)
+  %9 = function_ref @$sSo7UIImageC5namedABSgSS_tcfCTO : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> // user: %10
+  %10 = apply %9(%8, %2) : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> // users: %18, %11, %16
+  debug_value %10 : $Optional<UIImage>, let, name "image" // id: %11
+  %12 = ref_element_addr %0 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %13
+  %13 = load %12 : $*UIImageView                  // users: %17, %15, %16, %14
+  strong_retain %13 : $UIImageView                // id: %14
+  %15 = objc_method %13 : $UIImageView, #UIImageView.image!setter.foreign : (UIImageView) -> (UIImage?) -> (), $@convention(objc_method) (Optional<UIImage>, UIImageView) -> () // user: %16
+  %16 = apply %15(%10, %13) : $@convention(objc_method) (Optional<UIImage>, UIImageView) -> ()
+  strong_release %13 : $UIImageView               // id: %17
+  release_value %10 : $Optional<UIImage>          // id: %18
+  %19 = tuple ()                                  // user: %20
+  return %19 : $()                                // id: %20
+} // end sil function '$s23LBImageMemoryControllerAAC19testImageNamedCacheyyF'
+
+// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+sil [always_inline] [readonly] [_semantics "string.makeUTF8"] @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
+
+// @nonobjc UIImage.__allocating_init(named:)
+sil shared [thunk] [available 2.0] @$sSo7UIImageC5namedABSgSS_tcfCTO : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> {
+// %0 "name"                                      // users: %8, %3
+// %1 "self"                                      // user: %4
+bb0(%0 : $String, %1 : $@thick UIImage.Type):
+  // function_ref String._bridgeToObjectiveC()
+  %2 = function_ref @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString // user: %3
+  %3 = apply %2(%0) : $@convention(method) (@guaranteed String) -> @owned NSString // users: %7, %6
+  %4 = thick_to_objc_metatype %1 : $@thick UIImage.Type to $@objc_metatype UIImage.Type // users: %6, %5
+  %5 = objc_method %4 : $@objc_metatype UIImage.Type, #UIImage.init!allocator.foreign : (UIImage.Type) -> (String) -> UIImage?, $@convention(objc_method) (NSString, @objc_metatype UIImage.Type) -> @autoreleased Optional<UIImage> // user: %6
+  %6 = apply %5(%3, %4) : $@convention(objc_method) (NSString, @objc_metatype UIImage.Type) -> @autoreleased Optional<UIImage> // user: %9
+  strong_release %3 : $NSString                   // id: %7
+  release_value %0 : $String                      // id: %8
+  return %6 : $Optional<UIImage>                  // id: %9
+} // end sil function '$sSo7UIImageC5namedABSgSS_tcfCTO'
+
+// String._bridgeToObjectiveC()
+sil [available 8.0] [_semantics "convertToObjectiveC"] @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString
+
+// LBImageMemoryController.testFilePathNotCache()
+sil hidden @$s23LBImageMemoryControllerAAC20testFilePathNotCacheyyF : $@convention(method) (@guaranteed LBImageMemoryController) -> () {
+// %0 "self"                                      // users: %92, %1
+bb0(%0 : $LBImageMemoryController):
+  debug_value %0 : $LBImageMemoryController, let, name "self", argno 1, implicit // id: %1
+  %2 = metatype $@objc_metatype Bundle.Type       // users: %4, %3
+  %3 = objc_method %2 : $@objc_metatype Bundle.Type, #Bundle.main!getter.foreign : (Bundle.Type) -> () -> Bundle, $@convention(objc_method) (@objc_metatype Bundle.Type) -> @autoreleased Bundle // user: %4
+  %4 = apply %3(%2) : $@convention(objc_method) (@objc_metatype Bundle.Type) -> @autoreleased Bundle // users: %19, %17, %16
+  %5 = string_literal utf8 "test_memory_image.jpeg" // user: %10
+  %6 = integer_literal $Builtin.Word, 22          // user: %10
+  %7 = integer_literal $Builtin.Int1, -1          // user: %10
+  %8 = metatype $@thin String.Type                // user: %10
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %9 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %10
+  %10 = apply %9(%5, %6, %7, %8) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %14, %12
+  // function_ref String._bridgeToObjectiveC()
+  %11 = function_ref @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString // user: %12
+  %12 = apply %11(%10) : $@convention(method) (@guaranteed String) -> @owned NSString // user: %13
+  %13 = enum $Optional<NSString>, #Optional.some!enumelt, %12 : $NSString // users: %18, %17
+  release_value %10 : $String                     // id: %14
+  %15 = enum $Optional<NSString>, #Optional.none!enumelt // user: %17
+  %16 = objc_method %4 : $Bundle, #Bundle.path!foreign : (Bundle) -> (String?, String?) -> String?, $@convention(objc_method) (Optional<NSString>, Optional<NSString>, Bundle) -> @autoreleased Optional<NSString> // user: %17
+  %17 = apply %16(%13, %15, %4) : $@convention(objc_method) (Optional<NSString>, Optional<NSString>, Bundle) -> @autoreleased Optional<NSString> // user: %20
+  release_value %13 : $Optional<NSString>         // id: %18
+  strong_release %4 : $Bundle                     // id: %19
+  switch_enum %17 : $Optional<NSString>, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %20
+
+// %21                                            // user: %23
+bb1(%21 : $NSString):                             // Preds: bb0
+  // function_ref static String._unconditionallyBridgeFromObjectiveC(_:)
+  %22 = function_ref @$sSS10FoundationE36_unconditionallyBridgeFromObjectiveCySSSo8NSStringCSgFZ : $@convention(method) (@guaranteed Optional<NSString>, @thin String.Type) -> @owned String // user: %25
+  %23 = enum $Optional<NSString>, #Optional.some!enumelt, %21 : $NSString // users: %27, %25
+  %24 = metatype $@thin String.Type               // user: %25
+  %25 = apply %22(%23, %24) : $@convention(method) (@guaranteed Optional<NSString>, @thin String.Type) -> @owned String // user: %26
+  %26 = enum $Optional<String>, #Optional.some!enumelt, %25 : $String // user: %28
+  release_value %23 : $Optional<NSString>         // id: %27
+  br bb3(%26 : $Optional<String>)                 // id: %28
+
+bb2:                                              // Preds: bb0
+  %29 = enum $Optional<String>, #Optional.none!enumelt // user: %30
+  br bb3(%29 : $Optional<String>)                 // id: %30
+
+// %31                                            // users: %110, %105, %64, %37, %32
+bb3(%31 : $Optional<String>):                     // Preds: bb2 bb1
+  debug_value %31 : $Optional<String>, let, name "urlPath" // id: %32
+  %33 = alloc_stack [lexical] $URL, let, name "url" // users: %104, %103, %109, %108, %58
+  %34 = metatype $@thin URL.Type                  // user: %58
+  %35 = alloc_stack $String                       // users: %56, %52, %43, %60
+  %36 = alloc_stack [lexical] $Optional<String>   // users: %39, %37, %55
+  store %31 to %36 : $*Optional<String>           // id: %37
+  %38 = alloc_stack $Optional<String>             // users: %40, %53, %44, %41, %39
+  copy_addr %36 to [init] %38 : $*Optional<String> // id: %39
+  switch_enum_addr %38 : $*Optional<String>, case #Optional.some!enumelt: bb4, case #Optional.none!enumelt: bb5 // id: %40
+
+bb4:                                              // Preds: bb3
+  %41 = unchecked_take_enum_data_addr %38 : $*Optional<String>, #Optional.some!enumelt // user: %42
+  %42 = load %41 : $*String                       // user: %43
+  store %42 to %35 : $*String                     // id: %43
+  dealloc_stack %38 : $*Optional<String>          // id: %44
+  br bb6                                          // id: %45
+
+bb5:                                              // Preds: bb3
+  %46 = string_literal utf8 ""                    // user: %51
+  %47 = integer_literal $Builtin.Word, 0          // user: %51
+  %48 = integer_literal $Builtin.Int1, -1         // user: %51
+  %49 = metatype $@thin String.Type               // user: %51
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %50 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %51
+  %51 = apply %50(%46, %47, %48, %49) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %52
+  store %51 to %35 : $*String                     // id: %52
+  dealloc_stack %38 : $*Optional<String>          // id: %53
+  br bb6                                          // id: %54
+
+bb6:                                              // Preds: bb5 bb4
+  dealloc_stack %36 : $*Optional<String>          // id: %55
+  %56 = load %35 : $*String                       // users: %59, %58
+  // function_ref URL.init(fileURLWithPath:)
+  %57 = function_ref @$s10Foundation3URLV15fileURLWithPathACSSh_tcfC : $@convention(method) (@guaranteed String, @thin URL.Type) -> @out URL // user: %58
+  %58 = apply %57(%33, %56, %34) : $@convention(method) (@guaranteed String, @thin URL.Type) -> @out URL
+  release_value %56 : $String                     // id: %59
+  dealloc_stack %35 : $*String                    // id: %60
+  %61 = metatype $@thick UIImage.Type             // user: %85
+  %62 = alloc_stack $String                       // users: %83, %79, %70, %86
+  %63 = alloc_stack [lexical] $Optional<String>   // users: %66, %64, %82
+  store %31 to %63 : $*Optional<String>           // id: %64
+  %65 = alloc_stack $Optional<String>             // users: %67, %80, %71, %68, %66
+  copy_addr %63 to [init] %65 : $*Optional<String> // id: %66
+  switch_enum_addr %65 : $*Optional<String>, case #Optional.some!enumelt: bb7, case #Optional.none!enumelt: bb8 // id: %67
+
+bb7:                                              // Preds: bb6
+  %68 = unchecked_take_enum_data_addr %65 : $*Optional<String>, #Optional.some!enumelt // user: %69
+  %69 = load %68 : $*String                       // user: %70
+  store %69 to %62 : $*String                     // id: %70
+  dealloc_stack %65 : $*Optional<String>          // id: %71
+  br bb9                                          // id: %72
+
+bb8:                                              // Preds: bb6
+  %73 = string_literal utf8 ""                    // user: %78
+  %74 = integer_literal $Builtin.Word, 0          // user: %78
+  %75 = integer_literal $Builtin.Int1, -1         // user: %78
+  %76 = metatype $@thin String.Type               // user: %78
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %77 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %78
+  %78 = apply %77(%73, %74, %75, %76) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %79
+  store %78 to %62 : $*String                     // id: %79
+  dealloc_stack %65 : $*Optional<String>          // id: %80
+  br bb9                                          // id: %81
+
+bb9:                                              // Preds: bb8 bb7
+  dealloc_stack %63 : $*Optional<String>          // id: %82
+  %83 = load %62 : $*String                       // user: %85
+  // function_ref UIImage.__allocating_init(contentsOfFile:)
+  %84 = function_ref @$sSo7UIImageC14contentsOfFileABSgSS_tcfC : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> // user: %85
+  %85 = apply %84(%83, %61) : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> // users: %107, %102, %89, %88, %87
+  dealloc_stack %62 : $*String                    // id: %86
+  debug_value %85 : $Optional<UIImage>, let, name "image" // id: %87
+  retain_value %85 : $Optional<UIImage>           // id: %88
+  switch_enum %85 : $Optional<UIImage>, case #Optional.some!enumelt: bb10, case #Optional.none!enumelt: bb11 // id: %89
+
+// %90                                            // users: %101, %96, %95, %91
+bb10(%90 : $UIImage):                             // Preds: bb9
+  debug_value %90 : $UIImage, let, name "img"     // id: %91
+  %92 = ref_element_addr %0 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %93
+  %93 = load %92 : $*UIImageView                  // users: %100, %97, %98, %94
+  strong_retain %93 : $UIImageView                // id: %94
+  strong_retain %90 : $UIImage                    // id: %95
+  %96 = enum $Optional<UIImage>, #Optional.some!enumelt, %90 : $UIImage // users: %99, %98
+  %97 = objc_method %93 : $UIImageView, #UIImageView.image!setter.foreign : (UIImageView) -> (UIImage?) -> (), $@convention(objc_method) (Optional<UIImage>, UIImageView) -> () // user: %98
+  %98 = apply %97(%96, %93) : $@convention(objc_method) (Optional<UIImage>, UIImageView) -> ()
+  release_value %96 : $Optional<UIImage>          // id: %99
+  strong_release %93 : $UIImageView               // id: %100
+  strong_release %90 : $UIImage                   // id: %101
+  release_value %85 : $Optional<UIImage>          // id: %102
+  destroy_addr %33 : $*URL                        // id: %103
+  dealloc_stack %33 : $*URL                       // id: %104
+  release_value %31 : $Optional<String>           // id: %105
+  br bb12                                         // id: %106
+
+bb11:                                             // Preds: bb9
+  release_value %85 : $Optional<UIImage>          // id: %107
+  destroy_addr %33 : $*URL                        // id: %108
+  dealloc_stack %33 : $*URL                       // id: %109
+  release_value %31 : $Optional<String>           // id: %110
+  br bb12                                         // id: %111
+
+bb12:                                             // Preds: bb10 bb11
+  %112 = tuple ()                                 // user: %113
+  return %112 : $()                               // id: %113
+} // end sil function '$s23LBImageMemoryControllerAAC20testFilePathNotCacheyyF'
+
+// static String._unconditionallyBridgeFromObjectiveC(_:)
+sil [available 8.0] [readonly] @$sSS10FoundationE36_unconditionallyBridgeFromObjectiveCySSSo8NSStringCSgFZ : $@convention(method) (@guaranteed Optional<NSString>, @thin String.Type) -> @owned String
+
+// implicit closure #1 in LBImageMemoryController.testFilePathNotCache()
+sil private [transparent] @$s23LBImageMemoryControllerAAC20testFilePathNotCacheyyFSSyKXEfu_ : $@convention(thin) @substituted <τ_0_0> () -> (@out τ_0_0, @error any Error) for <String> {
+// %0 "$return_value"                             // user: %8
+bb0(%0 : $*String):
+  debug_value undef : $any Error, var, name "$error", argno 1 // id: %1
+  %2 = string_literal utf8 ""                     // user: %7
+  %3 = integer_literal $Builtin.Word, 0           // user: %7
+  %4 = integer_literal $Builtin.Int1, -1          // user: %7
+  %5 = metatype $@thin String.Type                // user: %7
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %6 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %7
+  %7 = apply %6(%2, %3, %4, %5) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %8
+  store %7 to %0 : $*String                       // id: %8
+  %9 = tuple ()                                   // user: %10
+  return %9 : $()                                 // id: %10
+} // end sil function '$s23LBImageMemoryControllerAAC20testFilePathNotCacheyyFSSyKXEfu_'
+
+// ?? infix<A>(_:_:)
+sil public_external [transparent] @$ss2qqoiyxxSg_xyKXKtKlF : $@convention(thin) <T> (@in_guaranteed Optional<T>, @guaranteed @noescape @callee_guaranteed @substituted <τ_0_0> () -> (@out τ_0_0, @error any Error) for <T>) -> (@out T, @error any Error) {
+// %0                                             // users: %14, %6
+// %1                                             // user: %4
+// %2                                             // user: %6
+bb0(%0 : $*T, %1 : $*Optional<T>, %2 : $@noescape @callee_guaranteed @substituted <τ_0_0> () -> (@out τ_0_0, @error any Error) for <T>):
+  %3 = alloc_stack $Optional<T>                   // users: %15, %13, %11, %8, %5, %4
+  copy_addr %1 to [init] %3 : $*Optional<T>       // id: %4
+  switch_enum_addr %3 : $*Optional<T>, case #Optional.some!enumelt: bb4, case #Optional.none!enumelt: bb1 // id: %5
+
+bb1:                                              // Preds: bb0
+  try_apply %2(%0) : $@noescape @callee_guaranteed @substituted <τ_0_0> () -> (@out τ_0_0, @error any Error) for <T>, normal bb3, error bb2 // id: %6
+
+// %7                                             // user: %9
+bb2(%7 : $any Error):                             // Preds: bb1
+  dealloc_stack %3 : $*Optional<T>                // id: %8
+  throw %7 : $any Error                           // id: %9
+
+bb3(%10 : $()):                                   // Preds: bb1
+  dealloc_stack %3 : $*Optional<T>                // id: %11
+  br bb5                                          // id: %12
+
+bb4:                                              // Preds: bb0
+  %13 = unchecked_take_enum_data_addr %3 : $*Optional<T>, #Optional.some!enumelt // user: %14
+  copy_addr [take] %13 to [init] %0 : $*T         // id: %14
+  dealloc_stack %3 : $*Optional<T>                // id: %15
+  br bb5                                          // id: %16
+
+bb5:                                              // Preds: bb4 bb3
+  %17 = tuple ()                                  // user: %18
+  return %17 : $()                                // id: %18
+} // end sil function '$ss2qqoiyxxSg_xyKXKtKlF'
+
+// URL.init(fileURLWithPath:)
+sil [available 8.0] @$s10Foundation3URLV15fileURLWithPathACSSh_tcfC : $@convention(method) (@guaranteed String, @thin URL.Type) -> @out URL
+
+// implicit closure #2 in LBImageMemoryController.testFilePathNotCache()
+sil private [transparent] @$s23LBImageMemoryControllerAAC20testFilePathNotCacheyyFSSyKXEfu0_ : $@convention(thin) @substituted <τ_0_0> () -> (@out τ_0_0, @error any Error) for <String> {
+// %0 "$return_value"                             // user: %8
+bb0(%0 : $*String):
+  debug_value undef : $any Error, var, name "$error", argno 1 // id: %1
+  %2 = string_literal utf8 ""                     // user: %7
+  %3 = integer_literal $Builtin.Word, 0           // user: %7
+  %4 = integer_literal $Builtin.Int1, -1          // user: %7
+  %5 = metatype $@thin String.Type                // user: %7
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %6 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %7
+  %7 = apply %6(%2, %3, %4, %5) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %8
+  store %7 to %0 : $*String                       // id: %8
+  %9 = tuple ()                                   // user: %10
+  return %9 : $()                                 // id: %10
+} // end sil function '$s23LBImageMemoryControllerAAC20testFilePathNotCacheyyFSSyKXEfu0_'
+
+// UIImage.__allocating_init(contentsOfFile:)
+sil shared [available 2.0] @$sSo7UIImageC14contentsOfFileABSgSS_tcfC : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> {
+// %0 "path"                                      // user: %5
+// %1 "$metatype"                                 // user: %2
+bb0(%0 : $String, %1 : $@thick UIImage.Type):
+  %2 = thick_to_objc_metatype %1 : $@thick UIImage.Type to $@objc_metatype UIImage.Type // user: %3
+  %3 = alloc_ref_dynamic [objc] %2 : $@objc_metatype UIImage.Type, $UIImage // user: %5
+  // function_ref @nonobjc UIImage.init(contentsOfFile:)
+  %4 = function_ref @$sSo7UIImageC14contentsOfFileABSgSS_tcfcTO : $@convention(method) (@owned String, @owned UIImage) -> @owned Optional<UIImage> // user: %5
+  %5 = apply %4(%0, %3) : $@convention(method) (@owned String, @owned UIImage) -> @owned Optional<UIImage> // user: %6
+  return %5 : $Optional<UIImage>                  // id: %6
+} // end sil function '$sSo7UIImageC14contentsOfFileABSgSS_tcfC'
+
+// LBImageMemoryController.testDownloadImage()
+sil hidden @$s23LBImageMemoryControllerAAC17testDownloadImageyyF : $@convention(method) (@guaranteed LBImageMemoryController) -> () {
+// %0 "self"                                      // users: %109, %108, %92, %1
+bb0(%0 : $LBImageMemoryController):
+  debug_value %0 : $LBImageMemoryController, let, name "self", argno 1, implicit // id: %1
+  %2 = metatype $@objc_metatype Bundle.Type       // users: %4, %3
+  %3 = objc_method %2 : $@objc_metatype Bundle.Type, #Bundle.main!getter.foreign : (Bundle.Type) -> () -> Bundle, $@convention(objc_method) (@objc_metatype Bundle.Type) -> @autoreleased Bundle // user: %4
+  %4 = apply %3(%2) : $@convention(objc_method) (@objc_metatype Bundle.Type) -> @autoreleased Bundle // users: %19, %17, %16
+  %5 = string_literal utf8 "test_memory_image.jpeg" // user: %10
+  %6 = integer_literal $Builtin.Word, 22          // user: %10
+  %7 = integer_literal $Builtin.Int1, -1          // user: %10
+  %8 = metatype $@thin String.Type                // user: %10
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %9 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %10
+  %10 = apply %9(%5, %6, %7, %8) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %14, %12
+  // function_ref String._bridgeToObjectiveC()
+  %11 = function_ref @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString // user: %12
+  %12 = apply %11(%10) : $@convention(method) (@guaranteed String) -> @owned NSString // user: %13
+  %13 = enum $Optional<NSString>, #Optional.some!enumelt, %12 : $NSString // users: %18, %17
+  release_value %10 : $String                     // id: %14
+  %15 = enum $Optional<NSString>, #Optional.none!enumelt // user: %17
+  %16 = objc_method %4 : $Bundle, #Bundle.path!foreign : (Bundle) -> (String?, String?) -> String?, $@convention(objc_method) (Optional<NSString>, Optional<NSString>, Bundle) -> @autoreleased Optional<NSString> // user: %17
+  %17 = apply %16(%13, %15, %4) : $@convention(objc_method) (Optional<NSString>, Optional<NSString>, Bundle) -> @autoreleased Optional<NSString> // user: %20
+  release_value %13 : $Optional<NSString>         // id: %18
+  strong_release %4 : $Bundle                     // id: %19
+  switch_enum %17 : $Optional<NSString>, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %20
+
+// %21                                            // user: %23
+bb1(%21 : $NSString):                             // Preds: bb0
+  // function_ref static String._unconditionallyBridgeFromObjectiveC(_:)
+  %22 = function_ref @$sSS10FoundationE36_unconditionallyBridgeFromObjectiveCySSSo8NSStringCSgFZ : $@convention(method) (@guaranteed Optional<NSString>, @thin String.Type) -> @owned String // user: %25
+  %23 = enum $Optional<NSString>, #Optional.some!enumelt, %21 : $NSString // users: %27, %25
+  %24 = metatype $@thin String.Type               // user: %25
+  %25 = apply %22(%23, %24) : $@convention(method) (@guaranteed Optional<NSString>, @thin String.Type) -> @owned String // user: %26
+  %26 = enum $Optional<String>, #Optional.some!enumelt, %25 : $String // user: %28
+  release_value %23 : $Optional<NSString>         // id: %27
+  br bb3(%26 : $Optional<String>)                 // id: %28
+
+bb2:                                              // Preds: bb0
+  %29 = enum $Optional<String>, #Optional.none!enumelt // user: %30
+  br bb3(%29 : $Optional<String>)                 // id: %30
+
+// %31                                            // users: %124, %119, %64, %37, %32
+bb3(%31 : $Optional<String>):                     // Preds: bb2 bb1
+  debug_value %31 : $Optional<String>, let, name "urlPath" // id: %32
+  %33 = alloc_stack [lexical] $URL, let, name "url" // users: %118, %117, %109, %123, %122, %58
+  %34 = metatype $@thin URL.Type                  // user: %58
+  %35 = alloc_stack $String                       // users: %56, %52, %43, %60
+  %36 = alloc_stack [lexical] $Optional<String>   // users: %39, %37, %55
+  store %31 to %36 : $*Optional<String>           // id: %37
+  %38 = alloc_stack $Optional<String>             // users: %40, %53, %44, %41, %39
+  copy_addr %36 to [init] %38 : $*Optional<String> // id: %39
+  switch_enum_addr %38 : $*Optional<String>, case #Optional.some!enumelt: bb4, case #Optional.none!enumelt: bb5 // id: %40
+
+bb4:                                              // Preds: bb3
+  %41 = unchecked_take_enum_data_addr %38 : $*Optional<String>, #Optional.some!enumelt // user: %42
+  %42 = load %41 : $*String                       // user: %43
+  store %42 to %35 : $*String                     // id: %43
+  dealloc_stack %38 : $*Optional<String>          // id: %44
+  br bb6                                          // id: %45
+
+bb5:                                              // Preds: bb3
+  %46 = string_literal utf8 ""                    // user: %51
+  %47 = integer_literal $Builtin.Word, 0          // user: %51
+  %48 = integer_literal $Builtin.Int1, -1         // user: %51
+  %49 = metatype $@thin String.Type               // user: %51
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %50 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %51
+  %51 = apply %50(%46, %47, %48, %49) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %52
+  store %51 to %35 : $*String                     // id: %52
+  dealloc_stack %38 : $*Optional<String>          // id: %53
+  br bb6                                          // id: %54
+
+bb6:                                              // Preds: bb5 bb4
+  dealloc_stack %36 : $*Optional<String>          // id: %55
+  %56 = load %35 : $*String                       // users: %59, %58
+  // function_ref URL.init(fileURLWithPath:)
+  %57 = function_ref @$s10Foundation3URLV15fileURLWithPathACSSh_tcfC : $@convention(method) (@guaranteed String, @thin URL.Type) -> @out URL // user: %58
+  %58 = apply %57(%33, %56, %34) : $@convention(method) (@guaranteed String, @thin URL.Type) -> @out URL
+  release_value %56 : $String                     // id: %59
+  dealloc_stack %35 : $*String                    // id: %60
+  %61 = metatype $@thick UIImage.Type             // user: %85
+  %62 = alloc_stack $String                       // users: %83, %79, %70, %86
+  %63 = alloc_stack [lexical] $Optional<String>   // users: %66, %64, %82
+  store %31 to %63 : $*Optional<String>           // id: %64
+  %65 = alloc_stack $Optional<String>             // users: %67, %80, %71, %68, %66
+  copy_addr %63 to [init] %65 : $*Optional<String> // id: %66
+  switch_enum_addr %65 : $*Optional<String>, case #Optional.some!enumelt: bb7, case #Optional.none!enumelt: bb8 // id: %67
+
+bb7:                                              // Preds: bb6
+  %68 = unchecked_take_enum_data_addr %65 : $*Optional<String>, #Optional.some!enumelt // user: %69
+  %69 = load %68 : $*String                       // user: %70
+  store %69 to %62 : $*String                     // id: %70
+  dealloc_stack %65 : $*Optional<String>          // id: %71
+  br bb9                                          // id: %72
+
+bb8:                                              // Preds: bb6
+  %73 = string_literal utf8 ""                    // user: %78
+  %74 = integer_literal $Builtin.Word, 0          // user: %78
+  %75 = integer_literal $Builtin.Int1, -1         // user: %78
+  %76 = metatype $@thin String.Type               // user: %78
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %77 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %78
+  %78 = apply %77(%73, %74, %75, %76) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %79
+  store %78 to %62 : $*String                     // id: %79
+  dealloc_stack %65 : $*Optional<String>          // id: %80
+  br bb9                                          // id: %81
+
+bb9:                                              // Preds: bb8 bb7
+  dealloc_stack %63 : $*Optional<String>          // id: %82
+  %83 = load %62 : $*String                       // user: %85
+  // function_ref UIImage.__allocating_init(contentsOfFile:)
+  %84 = function_ref @$sSo7UIImageC14contentsOfFileABSgSS_tcfC : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> // user: %85
+  %85 = apply %84(%83, %61) : $@convention(method) (@owned String, @thick UIImage.Type) -> @owned Optional<UIImage> // users: %121, %116, %89, %88, %87
+  dealloc_stack %62 : $*String                    // id: %86
+  debug_value %85 : $Optional<UIImage>, let, name "image" // id: %87
+  retain_value %85 : $Optional<UIImage>           // id: %88
+  switch_enum %85 : $Optional<UIImage>, case #Optional.some!enumelt: bb10, case #Optional.none!enumelt: bb11 // id: %89
+
+// %90                                            // users: %115, %91, %95, %96, %98, %99
+bb10(%90 : $UIImage):                             // Preds: bb9
+  debug_value %90 : $UIImage, let, name "img"     // id: %91
+  %92 = ref_element_addr %0 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %93
+  %93 = load %92 : $*UIImageView                  // users: %114, %111, %112, %94
+  strong_retain %93 : $UIImageView                // id: %94
+  %95 = objc_method %90 : $UIImage, #UIImage.size!getter.foreign : (UIImage) -> () -> CGSize, $@convention(objc_method) (UIImage) -> CGSize // user: %96
+  %96 = apply %95(%90) : $@convention(objc_method) (UIImage) -> CGSize // user: %97
+  %97 = struct_extract %96 : $CGSize, #CGSize.width // user: %101
+  %98 = objc_method %90 : $UIImage, #UIImage.size!getter.foreign : (UIImage) -> () -> CGSize, $@convention(objc_method) (UIImage) -> CGSize // user: %99
+  %99 = apply %98(%90) : $@convention(objc_method) (UIImage) -> CGSize // user: %100
+  %100 = struct_extract %99 : $CGSize, #CGSize.height // user: %101
+  %101 = struct $CGSize (%97 : $CGFloat, %100 : $CGFloat) // user: %109
+  %102 = metatype $@objc_metatype UIScreen.Type   // users: %104, %103
+  %103 = objc_method %102 : $@objc_metatype UIScreen.Type, #UIScreen.main!getter.foreign : (UIScreen.Type) -> () -> UIScreen, $@convention(objc_method) (@objc_metatype UIScreen.Type) -> @autoreleased UIScreen // user: %104
+  %104 = apply %103(%102) : $@convention(objc_method) (@objc_metatype UIScreen.Type) -> @autoreleased UIScreen // users: %107, %105, %106
+  %105 = objc_method %104 : $UIScreen, #UIScreen.scale!getter.foreign : (UIScreen) -> () -> CGFloat, $@convention(objc_method) (UIScreen) -> CGFloat // user: %106
+  %106 = apply %105(%104) : $@convention(objc_method) (UIScreen) -> CGFloat // user: %109
+  strong_release %104 : $UIScreen                 // id: %107
+  %108 = class_method %0 : $LBImageMemoryController, #LBImageMemoryController.downsample : (LBImageMemoryController) -> (URL, CGSize, CGFloat) -> UIImage, $@convention(method) (@in_guaranteed URL, CGSize, CGFloat, @guaranteed LBImageMemoryController) -> @owned UIImage // user: %109
+  %109 = apply %108(%33, %101, %106, %0) : $@convention(method) (@in_guaranteed URL, CGSize, CGFloat, @guaranteed LBImageMemoryController) -> @owned UIImage // user: %110
+  %110 = enum $Optional<UIImage>, #Optional.some!enumelt, %109 : $UIImage // users: %113, %112
+  %111 = objc_method %93 : $UIImageView, #UIImageView.image!setter.foreign : (UIImageView) -> (UIImage?) -> (), $@convention(objc_method) (Optional<UIImage>, UIImageView) -> () // user: %112
+  %112 = apply %111(%110, %93) : $@convention(objc_method) (Optional<UIImage>, UIImageView) -> ()
+  release_value %110 : $Optional<UIImage>         // id: %113
+  strong_release %93 : $UIImageView               // id: %114
+  strong_release %90 : $UIImage                   // id: %115
+  release_value %85 : $Optional<UIImage>          // id: %116
+  destroy_addr %33 : $*URL                        // id: %117
+  dealloc_stack %33 : $*URL                       // id: %118
+  release_value %31 : $Optional<String>           // id: %119
+  br bb12                                         // id: %120
+
+bb11:                                             // Preds: bb9
+  release_value %85 : $Optional<UIImage>          // id: %121
+  destroy_addr %33 : $*URL                        // id: %122
+  dealloc_stack %33 : $*URL                       // id: %123
+  release_value %31 : $Optional<String>           // id: %124
+  br bb12                                         // id: %125
+
+bb12:                                             // Preds: bb10 bb11
+  %126 = tuple ()                                 // user: %127
+  return %126 : $()                               // id: %127
+} // end sil function '$s23LBImageMemoryControllerAAC17testDownloadImageyyF'
+
+// implicit closure #1 in LBImageMemoryController.testDownloadImage()
+sil private [transparent] @$s23LBImageMemoryControllerAAC17testDownloadImageyyFSSyKXEfu_ : $@convention(thin) @substituted <τ_0_0> () -> (@out τ_0_0, @error any Error) for <String> {
+// %0 "$return_value"                             // user: %8
+bb0(%0 : $*String):
+  debug_value undef : $any Error, var, name "$error", argno 1 // id: %1
+  %2 = string_literal utf8 ""                     // user: %7
+  %3 = integer_literal $Builtin.Word, 0           // user: %7
+  %4 = integer_literal $Builtin.Int1, -1          // user: %7
+  %5 = metatype $@thin String.Type                // user: %7
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %6 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %7
+  %7 = apply %6(%2, %3, %4, %5) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %8
+  store %7 to %0 : $*String                       // id: %8
+  %9 = tuple ()                                   // user: %10
+  return %9 : $()                                 // id: %10
+} // end sil function '$s23LBImageMemoryControllerAAC17testDownloadImageyyFSSyKXEfu_'
+
+// implicit closure #2 in LBImageMemoryController.testDownloadImage()
+sil private [transparent] @$s23LBImageMemoryControllerAAC17testDownloadImageyyFSSyKXEfu0_ : $@convention(thin) @substituted <τ_0_0> () -> (@out τ_0_0, @error any Error) for <String> {
+// %0 "$return_value"                             // user: %8
+bb0(%0 : $*String):
+  debug_value undef : $any Error, var, name "$error", argno 1 // id: %1
+  %2 = string_literal utf8 ""                     // user: %7
+  %3 = integer_literal $Builtin.Word, 0           // user: %7
+  %4 = integer_literal $Builtin.Int1, -1          // user: %7
+  %5 = metatype $@thin String.Type                // user: %7
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %6 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %7
+  %7 = apply %6(%2, %3, %4, %5) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %8
+  store %7 to %0 : $*String                       // id: %8
+  %9 = tuple ()                                   // user: %10
+  return %9 : $()                                 // id: %10
+} // end sil function '$s23LBImageMemoryControllerAAC17testDownloadImageyyFSSyKXEfu0_'
+
+// CGSize.init(width:height:)
+sil shared [transparent] @$sSo6CGSizeV5width6heightAB12CoreGraphics7CGFloatV_AGtcfC : $@convention(method) (CGFloat, CGFloat, @thin CGSize.Type) -> CGSize {
+// %0 "$implicit_value"                           // user: %3
+// %1 "$implicit_value"                           // user: %3
+// %2 "$metatype"
+bb0(%0 : $CGFloat, %1 : $CGFloat, %2 : $@thin CGSize.Type):
+  %3 = struct $CGSize (%0 : $CGFloat, %1 : $CGFloat) // user: %4
+  return %3 : $CGSize                             // id: %4
+} // end sil function '$sSo6CGSizeV5width6heightAB12CoreGraphics7CGFloatV_AGtcfC'
+
+// LBImageMemoryController.downsample(imageAt:to:scale:)
+sil hidden @$s23LBImageMemoryControllerAAC10downsample7imageAt2to5scaleSo7UIImageC10Foundation3URLV_So6CGSizeV12CoreGraphics7CGFloatVtF : $@convention(method) (@in_guaranteed URL, CGSize, CGFloat, @guaranteed LBImageMemoryController) -> @owned UIImage {
+// %0 "imageURL"                                  // users: %39, %9
+// %1 "pointSize"                                 // users: %79, %76, %10
+// %2 "scale"                                     // users: %89, %11
+// %3 "self"                                      // user: %12
+bb0(%0 : $*URL, %1 : $CGSize, %2 : $CGFloat, %3 : $LBImageMemoryController):
+  %4 = global_addr @kCGImageSourceThumbnailMaxPixelSize : $*CFString // user: %137
+  %5 = global_addr @kCGImageSourceCreateThumbnailWithTransform : $*CFString // user: %126
+  %6 = global_addr @kCGImageSourceShouldCacheImmediately : $*CFString // user: %115
+  %7 = global_addr @kCGImageSourceCreateThumbnailFromImageAlways : $*CFString // user: %104
+  %8 = global_addr @kCGImageSourceShouldCache : $*CFString // user: %21
+  debug_value %0 : $*URL, let, name "imageURL", argno 1, expr op_deref // id: %9
+  debug_value %1 : $CGSize, let, name "pointSize", argno 2 // id: %10
+  debug_value %2 : $CGFloat, let, name "scale", argno 3 // id: %11
+  debug_value %3 : $LBImageMemoryController, let, name "self", argno 4, implicit // id: %12
+  %13 = integer_literal $Builtin.Word, 1          // user: %15
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %14 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %15
+  %15 = apply %14<(CFString, Bool)>(%13) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %17, %16
+  %16 = tuple_extract %15 : $(Array<(CFString, Bool)>, Builtin.RawPointer), 0 // user: %28
+  %17 = tuple_extract %15 : $(Array<(CFString, Bool)>, Builtin.RawPointer), 1 // user: %18
+  %18 = pointer_to_address %17 : $Builtin.RawPointer to [strict] $*(CFString, Bool) // users: %20, %19
+  %19 = tuple_element_addr %18 : $*(CFString, Bool), 0 // user: %23
+  %20 = tuple_element_addr %18 : $*(CFString, Bool), 1 // user: %26
+  %21 = load %8 : $*CFString                      // users: %23, %22
+  strong_retain %21 : $CFString                   // id: %22
+  store %21 to %19 : $*CFString                   // id: %23
+  %24 = integer_literal $Builtin.Int1, 0          // user: %25
+  %25 = struct $Bool (%24 : $Builtin.Int1)        // user: %26
+  store %25 to %20 : $*Bool                       // id: %26
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %27 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %28
+  %28 = apply %27<(CFString, Bool)>(%16) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %31
+  %29 = metatype $@thin Dictionary<CFString, Bool>.Type // user: %31
+  // function_ref Dictionary.init(dictionaryLiteral:)
+  %30 = function_ref @$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfC : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@owned Array<(τ_0_0, τ_0_1)>, @thin Dictionary<τ_0_0, τ_0_1>.Type) -> @owned Dictionary<τ_0_0, τ_0_1> // user: %31
+  %31 = apply %30<CFString, Bool>(%28, %29) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@owned Array<(τ_0_0, τ_0_1)>, @thin Dictionary<τ_0_0, τ_0_1>.Type) -> @owned Dictionary<τ_0_0, τ_0_1> // users: %37, %33
+  // function_ref Dictionary._bridgeToObjectiveC()
+  %32 = function_ref @$sSD10FoundationE19_bridgeToObjectiveCSo12NSDictionaryCyF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@guaranteed Dictionary<τ_0_0, τ_0_1>) -> @owned NSDictionary // user: %33
+  %33 = apply %32<CFString, Bool>(%31) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@guaranteed Dictionary<τ_0_0, τ_0_1>) -> @owned NSDictionary // user: %34
+  %34 = unchecked_ref_cast %33 : $NSDictionary to $CFDictionary // user: %35
+  %35 = unchecked_ref_cast %34 : $CFDictionary to $CFDictionary // users: %190, %45, %44, %36
+  debug_value %35 : $CFDictionary, let, name "imageSourcesOptions" // id: %36
+  release_value %31 : $Dictionary<CFString, Bool> // id: %37
+  %38 = alloc_stack $URL                          // users: %51, %50, %41, %39
+  copy_addr %0 to [init] %38 : $*URL              // id: %39
+  // function_ref URL._bridgeToObjectiveC()
+  %40 = function_ref @$s10Foundation3URLV19_bridgeToObjectiveCSo5NSURLCyF : $@convention(method) (@in_guaranteed URL) -> @owned NSURL // user: %41
+  %41 = apply %40(%38) : $@convention(method) (@in_guaranteed URL) -> @owned NSURL // user: %42
+  %42 = unchecked_ref_cast %41 : $NSURL to $CFURL // user: %43
+  %43 = unchecked_ref_cast %42 : $CFURL to $CFURL // users: %49, %47
+  strong_retain %35 : $CFDictionary               // id: %44
+  %45 = enum $Optional<CFDictionary>, #Optional.some!enumelt, %35 : $CFDictionary // users: %48, %47
+  // function_ref CGImageSourceCreateWithURL
+  %46 = function_ref @CGImageSourceCreateWithURL : $@convention(c) (CFURL, Optional<CFDictionary>) -> @owned Optional<CGImageSource> // user: %47
+  %47 = apply %46(%43, %45) : $@convention(c) (CFURL, Optional<CFDictionary>) -> @owned Optional<CGImageSource> // user: %52
+  release_value %45 : $Optional<CFDictionary>     // id: %48
+  strong_release %43 : $CFURL                     // id: %49
+  destroy_addr %38 : $*URL                        // id: %50
+  dealloc_stack %38 : $*URL                       // id: %51
+  switch_enum %47 : $Optional<CGImageSource>, case #Optional.some!enumelt: bb2, case #Optional.none!enumelt: bb1 // id: %52
+
+bb1:                                              // Preds: bb0
+  %53 = string_literal utf8 "LBImageMemoryController/LBImageMemoryController.swift" // user: %60
+  %54 = integer_literal $Builtin.Word, 53         // user: %61
+  %55 = string_literal utf8 "Unexpectedly found nil while unwrapping an Optional value" // user: %57
+  %56 = integer_literal $Builtin.Word, 57         // user: %59
+  %57 = builtin "ptrtoint_Word"(%55 : $Builtin.RawPointer) : $Builtin.Word // user: %59
+  %58 = integer_literal $Builtin.Int8, 2          // users: %61, %68, %59
+  %59 = struct $StaticString (%57 : $Builtin.Word, %56 : $Builtin.Word, %58 : $Builtin.Int8) // user: %71
+  %60 = builtin "ptrtoint_Word"(%53 : $Builtin.RawPointer) : $Builtin.Word // user: %61
+  %61 = struct $StaticString (%60 : $Builtin.Word, %54 : $Builtin.Word, %58 : $Builtin.Int8) // user: %71
+  %62 = integer_literal $Builtin.Int64, 71        // user: %63
+  %63 = struct $UInt (%62 : $Builtin.Int64)       // user: %71
+  %64 = integer_literal $Builtin.Int32, 0         // user: %69
+  %65 = string_literal utf8 "Fatal error"         // user: %67
+  %66 = integer_literal $Builtin.Word, 11         // user: %68
+  %67 = builtin "ptrtoint_Word"(%65 : $Builtin.RawPointer) : $Builtin.Word // user: %68
+  %68 = struct $StaticString (%67 : $Builtin.Word, %66 : $Builtin.Word, %58 : $Builtin.Int8) // user: %71
+  %69 = struct $UInt32 (%64 : $Builtin.Int32)     // user: %71
+  // function_ref _assertionFailure(_:_:file:line:flags:)
+  %70 = function_ref @$ss17_assertionFailure__4file4line5flagss5NeverOs12StaticStringV_A2HSus6UInt32VtF : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never // user: %71
+  %71 = apply %70(%68, %59, %61, %63, %69) : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never
+  unreachable                                     // id: %72
+
+// %73                                            // users: %189, %74, %158
+bb2(%73 : $CGImageSource):                        // Preds: bb0
+  debug_value %73 : $CGImageSource, let, name "imageSource" // id: %74
+  %75 = alloc_stack $CGFloat                      // users: %86, %94, %83
+  %76 = struct_extract %1 : $CGSize, #CGSize.width // user: %78
+  %77 = alloc_stack $CGFloat                      // users: %78, %85, %83
+  store %76 to %77 : $*CGFloat                    // id: %78
+  %79 = struct_extract %1 : $CGSize, #CGSize.height // user: %81
+  %80 = alloc_stack $CGFloat                      // users: %81, %84, %83
+  store %79 to %80 : $*CGFloat                    // id: %81
+  // function_ref max<A>(_:_:)
+  %82 = function_ref @$ss3maxyxx_xtSLRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Comparable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> @out τ_0_0 // user: %83
+  %83 = apply %82<CGFloat>(%75, %77, %80) : $@convention(thin) <τ_0_0 where τ_0_0 : Comparable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> @out τ_0_0
+  dealloc_stack %80 : $*CGFloat                   // id: %84
+  dealloc_stack %77 : $*CGFloat                   // id: %85
+  %86 = load %75 : $*CGFloat                      // user: %87
+  %87 = struct_extract %86 : $CGFloat, #CGFloat.native // user: %88
+  %88 = struct_extract %87 : $Double, #Double._value // user: %91
+  %89 = struct_extract %2 : $CGFloat, #CGFloat.native // user: %90
+  %90 = struct_extract %89 : $Double, #Double._value // user: %91
+  %91 = builtin "fmul_FPIEEE64"(%88 : $Builtin.FPIEEE64, %90 : $Builtin.FPIEEE64) : $Builtin.FPIEEE64 // user: %92
+  %92 = struct $Double (%91 : $Builtin.FPIEEE64)  // user: %93
+  %93 = struct $CGFloat (%92 : $Double)           // users: %141, %95
+  dealloc_stack %75 : $*CGFloat                   // id: %94
+  debug_value %93 : $CGFloat, let, name "maxDimensionInPixels" // id: %95
+  %96 = integer_literal $Builtin.Word, 4          // user: %98
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %97 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %98
+  %98 = apply %97<(CFString, Any)>(%96) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %100, %99
+  %99 = tuple_extract %98 : $(Array<(CFString, Any)>, Builtin.RawPointer), 0 // user: %143
+  %100 = tuple_extract %98 : $(Array<(CFString, Any)>, Builtin.RawPointer), 1 // user: %101
+  %101 = pointer_to_address %100 : $Builtin.RawPointer to [strict] $*(CFString, Any) // users: %134, %123, %112, %103, %102
+  %102 = tuple_element_addr %101 : $*(CFString, Any), 0 // user: %106
+  %103 = tuple_element_addr %101 : $*(CFString, Any), 1 // user: %109
+  %104 = load %7 : $*CFString                     // users: %106, %105
+  strong_retain %104 : $CFString                  // id: %105
+  store %104 to %102 : $*CFString                 // id: %106
+  %107 = integer_literal $Builtin.Int1, -1        // user: %108
+  %108 = struct $Bool (%107 : $Builtin.Int1)      // user: %110
+  %109 = init_existential_addr %103 : $*Any, $Bool // user: %110
+  store %108 to %109 : $*Bool                     // id: %110
+  %111 = integer_literal $Builtin.Word, 1         // user: %112
+  %112 = index_addr %101 : $*(CFString, Any), %111 : $Builtin.Word // users: %114, %113
+  %113 = tuple_element_addr %112 : $*(CFString, Any), 0 // user: %117
+  %114 = tuple_element_addr %112 : $*(CFString, Any), 1 // user: %120
+  %115 = load %6 : $*CFString                     // users: %117, %116
+  strong_retain %115 : $CFString                  // id: %116
+  store %115 to %113 : $*CFString                 // id: %117
+  %118 = integer_literal $Builtin.Int1, -1        // user: %119
+  %119 = struct $Bool (%118 : $Builtin.Int1)      // user: %121
+  %120 = init_existential_addr %114 : $*Any, $Bool // user: %121
+  store %119 to %120 : $*Bool                     // id: %121
+  %122 = integer_literal $Builtin.Word, 2         // user: %123
+  %123 = index_addr %101 : $*(CFString, Any), %122 : $Builtin.Word // users: %125, %124
+  %124 = tuple_element_addr %123 : $*(CFString, Any), 0 // user: %128
+  %125 = tuple_element_addr %123 : $*(CFString, Any), 1 // user: %131
+  %126 = load %5 : $*CFString                     // users: %128, %127
+  strong_retain %126 : $CFString                  // id: %127
+  store %126 to %124 : $*CFString                 // id: %128
+  %129 = integer_literal $Builtin.Int1, -1        // user: %130
+  %130 = struct $Bool (%129 : $Builtin.Int1)      // user: %132
+  %131 = init_existential_addr %125 : $*Any, $Bool // user: %132
+  store %130 to %131 : $*Bool                     // id: %132
+  %133 = integer_literal $Builtin.Word, 3         // user: %134
+  %134 = index_addr %101 : $*(CFString, Any), %133 : $Builtin.Word // users: %136, %135
+  %135 = tuple_element_addr %134 : $*(CFString, Any), 0 // user: %139
+  %136 = tuple_element_addr %134 : $*(CFString, Any), 1 // user: %140
+  %137 = load %4 : $*CFString                     // users: %139, %138
+  strong_retain %137 : $CFString                  // id: %138
+  store %137 to %135 : $*CFString                 // id: %139
+  %140 = init_existential_addr %136 : $*Any, $CGFloat // user: %141
+  store %93 to %140 : $*CGFloat                   // id: %141
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %142 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %143
+  %143 = apply %142<(CFString, Any)>(%99) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %146
+  %144 = metatype $@thin Dictionary<CFString, Any>.Type // user: %146
+  // function_ref Dictionary.init(dictionaryLiteral:)
+  %145 = function_ref @$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfC : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@owned Array<(τ_0_0, τ_0_1)>, @thin Dictionary<τ_0_0, τ_0_1>.Type) -> @owned Dictionary<τ_0_0, τ_0_1> // user: %146
+  %146 = apply %145<CFString, Any>(%143, %144) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@owned Array<(τ_0_0, τ_0_1)>, @thin Dictionary<τ_0_0, τ_0_1>.Type) -> @owned Dictionary<τ_0_0, τ_0_1> // users: %152, %148
+  // function_ref Dictionary._bridgeToObjectiveC()
+  %147 = function_ref @$sSD10FoundationE19_bridgeToObjectiveCSo12NSDictionaryCyF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@guaranteed Dictionary<τ_0_0, τ_0_1>) -> @owned NSDictionary // user: %148
+  %148 = apply %147<CFString, Any>(%146) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@guaranteed Dictionary<τ_0_0, τ_0_1>) -> @owned NSDictionary // user: %149
+  %149 = unchecked_ref_cast %148 : $NSDictionary to $CFDictionary // user: %150
+  %150 = unchecked_ref_cast %149 : $CFDictionary to $CFDictionary // users: %188, %156, %155, %151
+  debug_value %150 : $CFDictionary, let, name "downsampleOptions" // id: %151
+  release_value %146 : $Dictionary<CFString, Any> // id: %152
+  %153 = integer_literal $Builtin.Int64, 0        // user: %154
+  %154 = struct $Int (%153 : $Builtin.Int64)      // user: %158
+  strong_retain %150 : $CFDictionary              // id: %155
+  %156 = enum $Optional<CFDictionary>, #Optional.some!enumelt, %150 : $CFDictionary // users: %159, %158
+  // function_ref CGImageSourceCreateThumbnailAtIndex
+  %157 = function_ref @CGImageSourceCreateThumbnailAtIndex : $@convention(c) (CGImageSource, Int, Optional<CFDictionary>) -> @owned Optional<CGImage> // user: %158
+  %158 = apply %157(%73, %154, %156) : $@convention(c) (CGImageSource, Int, Optional<CFDictionary>) -> @owned Optional<CGImage> // user: %160
+  release_value %156 : $Optional<CFDictionary>    // id: %159
+  switch_enum %158 : $Optional<CGImage>, case #Optional.some!enumelt: bb4, case #Optional.none!enumelt: bb3 // id: %160
+
+bb3:                                              // Preds: bb2
+  %161 = string_literal utf8 "LBImageMemoryController/LBImageMemoryController.swift" // user: %168
+  %162 = integer_literal $Builtin.Word, 53        // user: %169
+  %163 = string_literal utf8 "Unexpectedly found nil while unwrapping an Optional value" // user: %165
+  %164 = integer_literal $Builtin.Word, 57        // user: %167
+  %165 = builtin "ptrtoint_Word"(%163 : $Builtin.RawPointer) : $Builtin.Word // user: %167
+  %166 = integer_literal $Builtin.Int8, 2         // users: %169, %176, %167
+  %167 = struct $StaticString (%165 : $Builtin.Word, %164 : $Builtin.Word, %166 : $Builtin.Int8) // user: %179
+  %168 = builtin "ptrtoint_Word"(%161 : $Builtin.RawPointer) : $Builtin.Word // user: %169
+  %169 = struct $StaticString (%168 : $Builtin.Word, %162 : $Builtin.Word, %166 : $Builtin.Int8) // user: %179
+  %170 = integer_literal $Builtin.Int64, 79       // user: %171
+  %171 = struct $UInt (%170 : $Builtin.Int64)     // user: %179
+  %172 = integer_literal $Builtin.Int32, 0        // user: %177
+  %173 = string_literal utf8 "Fatal error"        // user: %175
+  %174 = integer_literal $Builtin.Word, 11        // user: %176
+  %175 = builtin "ptrtoint_Word"(%173 : $Builtin.RawPointer) : $Builtin.Word // user: %176
+  %176 = struct $StaticString (%175 : $Builtin.Word, %174 : $Builtin.Word, %166 : $Builtin.Int8) // user: %179
+  %177 = struct $UInt32 (%172 : $Builtin.Int32)   // user: %179
+  // function_ref _assertionFailure(_:_:file:line:flags:)
+  %178 = function_ref @$ss17_assertionFailure__4file4line5flagss5NeverOs12StaticStringV_A2HSus6UInt32VtF : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never // user: %179
+  %179 = apply %178(%176, %167, %169, %171, %177) : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never
+  unreachable                                     // id: %180
+
+// %181                                           // users: %187, %186, %184, %182
+bb4(%181 : $CGImage):                             // Preds: bb2
+  debug_value %181 : $CGImage, let, name "downsampledImage" // id: %182
+  %183 = metatype $@thick UIImage.Type            // user: %186
+  strong_retain %181 : $CGImage                   // id: %184
+  // function_ref UIImage.__allocating_init(cgImage:)
+  %185 = function_ref @$sSo7UIImageC7cgImageABSo10CGImageRefa_tcfC : $@convention(method) (@owned CGImage, @thick UIImage.Type) -> @owned UIImage // user: %186
+  %186 = apply %185(%181, %183) : $@convention(method) (@owned CGImage, @thick UIImage.Type) -> @owned UIImage // user: %191
+  strong_release %181 : $CGImage                  // id: %187
+  strong_release %150 : $CFDictionary             // id: %188
+  strong_release %73 : $CGImageSource             // id: %189
+  strong_release %35 : $CFDictionary              // id: %190
+  return %186 : $UIImage                          // id: %191
+} // end sil function '$s23LBImageMemoryControllerAAC10downsample7imageAt2to5scaleSo7UIImageC10Foundation3URLV_So6CGSizeV12CoreGraphics7CGFloatVtF'
+
+// _allocateUninitializedArray<A>(_:)
+sil [always_inline] [_semantics "array.uninitialized_intrinsic"] @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer)
+
+// Bool.init(_builtinBooleanLiteral:)
+sil public_external [transparent] @$sSb22_builtinBooleanLiteralSbBi1__tcfC : $@convention(method) (Builtin.Int1, @thin Bool.Type) -> Bool {
+// %0                                             // user: %2
+bb0(%0 : $Builtin.Int1, %1 : $@thin Bool.Type):
+  %2 = struct $Bool (%0 : $Builtin.Int1)          // user: %3
+  return %2 : $Bool                               // id: %3
+} // end sil function '$sSb22_builtinBooleanLiteralSbBi1__tcfC'
+
+// _finalizeUninitializedArray<A>(_:)
+sil shared [readnone] [_semantics "array.finalize_intrinsic"] @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <Element> (@owned Array<Element>) -> @owned Array<Element> {
+[%0: escape! v** => %r.v**, escape! v**.c*.v** => %r.v**.c*.v**]
+// %0                                             // user: %2
+bb0(%0 : $Array<Element>):
+  %1 = alloc_stack $Array<Element>                // users: %6, %5, %4, %2
+  store %0 to %1 : $*Array<Element>               // id: %2
+  // function_ref Array._endMutation()
+  %3 = function_ref @$sSa12_endMutationyyF : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> () // user: %4
+  %4 = apply %3<Element>(%1) : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> ()
+  %5 = load %1 : $*Array<Element>                 // user: %7
+  dealloc_stack %1 : $*Array<Element>             // id: %6
+  return %5 : $Array<Element>                     // id: %7
+} // end sil function '$ss27_finalizeUninitializedArrayySayxGABnlF'
+
+// Dictionary.init(dictionaryLiteral:)
+sil [_semantics "optimize.sil.specialize.generic.size.never"] @$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfC : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@owned Array<(τ_0_0, τ_0_1)>, @thin Dictionary<τ_0_0, τ_0_1>.Type) -> @owned Dictionary<τ_0_0, τ_0_1>
+
+// Dictionary._bridgeToObjectiveC()
+sil [available 8.0] [_semantics "convertToObjectiveC"] @$sSD10FoundationE19_bridgeToObjectiveCSo12NSDictionaryCyF : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : Hashable> (@guaranteed Dictionary<τ_0_0, τ_0_1>) -> @owned NSDictionary
+
+// URL._bridgeToObjectiveC()
+sil [available 8.0] [_semantics "convertToObjectiveC"] @$s10Foundation3URLV19_bridgeToObjectiveCSo5NSURLCyF : $@convention(method) (@in_guaranteed URL) -> @owned NSURL
+
+// CGImageSourceCreateWithURL
+// clang name: CGImageSourceCreateWithURL
+sil [available 4.0] [clang CGImageSourceCreateWithURL] @CGImageSourceCreateWithURL : $@convention(c) (CFURL, Optional<CFDictionary>) -> @owned Optional<CGImageSource>
+
+// max<A>(_:_:)
+sil @$ss3maxyxx_xtSLRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Comparable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> @out τ_0_0
+
+// static CGFloat.* infix(_:_:)
+sil public_external [transparent] [available 2.0] @$s12CoreGraphics7CGFloatV1moiyA2C_ACtFZ : $@convention(method) (CGFloat, CGFloat, @thin CGFloat.Type) -> CGFloat {
+// %0                                             // user: %3
+// %1                                             // user: %5
+bb0(%0 : $CGFloat, %1 : $CGFloat, %2 : $@thin CGFloat.Type):
+  %3 = struct_extract %0 : $CGFloat, #CGFloat.native // user: %4
+  %4 = struct_extract %3 : $Double, #Double._value // user: %7
+  %5 = struct_extract %1 : $CGFloat, #CGFloat.native // user: %6
+  %6 = struct_extract %5 : $Double, #Double._value // user: %7
+  %7 = builtin "fmul_FPIEEE64"(%4 : $Builtin.FPIEEE64, %6 : $Builtin.FPIEEE64) : $Builtin.FPIEEE64 // user: %8
+  %8 = struct $Double (%7 : $Builtin.FPIEEE64)    // user: %9
+  %9 = struct $CGFloat (%8 : $Double)             // user: %10
+  return %9 : $CGFloat                            // id: %10
+} // end sil function '$s12CoreGraphics7CGFloatV1moiyA2C_ACtFZ'
+
+// CGImageSourceCreateThumbnailAtIndex
+// clang name: CGImageSourceCreateThumbnailAtIndex
+sil [available 4.0] [clang CGImageSourceCreateThumbnailAtIndex] @CGImageSourceCreateThumbnailAtIndex : $@convention(c) (CGImageSource, Int, Optional<CFDictionary>) -> @owned Optional<CGImage>
+
+// UIImage.__allocating_init(cgImage:)
+sil shared [available 2.0] @$sSo7UIImageC7cgImageABSo10CGImageRefa_tcfC : $@convention(method) (@owned CGImage, @thick UIImage.Type) -> @owned UIImage {
+// %0 "cgImage"                                   // user: %5
+// %1 "$metatype"                                 // user: %2
+bb0(%0 : $CGImage, %1 : $@thick UIImage.Type):
+  %2 = thick_to_objc_metatype %1 : $@thick UIImage.Type to $@objc_metatype UIImage.Type // user: %3
+  %3 = alloc_ref_dynamic [objc] %2 : $@objc_metatype UIImage.Type, $UIImage // user: %5
+  // function_ref @nonobjc UIImage.init(cgImage:)
+  %4 = function_ref @$sSo7UIImageC7cgImageABSo10CGImageRefa_tcfcTO : $@convention(method) (@owned CGImage, @owned UIImage) -> @owned UIImage // user: %5
+  %5 = apply %4(%0, %3) : $@convention(method) (@owned CGImage, @owned UIImage) -> @owned UIImage // user: %6
+  return %5 : $UIImage                            // id: %6
+} // end sil function '$sSo7UIImageC7cgImageABSo10CGImageRefa_tcfC'
+
+// LBImageMemoryController.__deallocating_deinit
+sil hidden @$s23LBImageMemoryControllerAACfD : $@convention(method) (@owned LBImageMemoryController) -> () {
+// %0 "self"                                      // users: %2, %35, %34, %1
+bb0(%0 : $LBImageMemoryController):
+  debug_value %0 : $LBImageMemoryController, let, name "self", argno 1, implicit // id: %1
+  %2 = ref_element_addr %0 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %3
+  %3 = load %2 : $*UIImageView                    // users: %8, %6, %7, %4
+  strong_retain %3 : $UIImageView                 // id: %4
+  %5 = enum $Optional<UIImage>, #Optional.none!enumelt // user: %7
+  %6 = objc_method %3 : $UIImageView, #UIImageView.image!setter.foreign : (UIImageView) -> (UIImage?) -> (), $@convention(objc_method) (Optional<UIImage>, UIImageView) -> () // user: %7
+  %7 = apply %6(%5, %3) : $@convention(objc_method) (Optional<UIImage>, UIImageView) -> ()
+  strong_release %3 : $UIImageView                // id: %8
+  %9 = integer_literal $Builtin.Word, 1           // user: %11
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %10 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %11
+  %11 = apply %10<Any>(%9) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %13, %12
+  %12 = tuple_extract %11 : $(Array<Any>, Builtin.RawPointer), 0 // user: %24
+  %13 = tuple_extract %11 : $(Array<Any>, Builtin.RawPointer), 1 // user: %14
+  %14 = pointer_to_address %13 : $Builtin.RawPointer to [strict] $*Any // user: %21
+  %15 = string_literal utf8 "LBLog image memory controller dealloc" // user: %20
+  %16 = integer_literal $Builtin.Word, 37         // user: %20
+  %17 = integer_literal $Builtin.Int1, -1         // user: %20
+  %18 = metatype $@thin String.Type               // user: %20
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %19 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %20
+  %20 = apply %19(%15, %16, %17, %18) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %22
+  %21 = init_existential_addr %14 : $*Any, $String // user: %22
+  store %20 to %21 : $*String                     // id: %22
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %23 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %24
+  %24 = apply %23<Any>(%12) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %33, %30
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %25 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String // user: %26
+  %26 = apply %25() : $@convention(thin) () -> @owned String // users: %32, %30
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %27 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String // user: %28
+  %28 = apply %27() : $@convention(thin) () -> @owned String // users: %31, %30
+  // function_ref print(_:separator:terminator:)
+  %29 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %30
+  %30 = apply %29(%24, %26, %28) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %28 : $String                     // id: %31
+  release_value %26 : $String                     // id: %32
+  release_value %24 : $Array<Any>                 // id: %33
+  %34 = objc_super_method %0 : $LBImageMemoryController, #UIViewController.deinit!deallocator.foreign : (UIViewController) -> () -> (), $@convention(objc_method) (UIViewController) -> () // user: %36
+  %35 = upcast %0 : $LBImageMemoryController to $UIViewController // user: %36
+  %36 = apply %34(%35) : $@convention(objc_method) (UIViewController) -> ()
+  %37 = tuple ()                                  // user: %38
+  return %37 : $()                                // id: %38
+} // end sil function '$s23LBImageMemoryControllerAACfD'
+
+// default argument 1 of print(_:separator:terminator:)
+sil shared @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 " "                    // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function '$ss5print_9separator10terminatoryypd_S2StFfA0_'
+
+// default argument 2 of print(_:separator:terminator:)
+sil shared @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 "\n"                   // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function '$ss5print_9separator10terminatoryypd_S2StFfA1_'
+
+// print(_:separator:terminator:)
+sil @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+
+// @objc LBImageMemoryController.__deallocating_deinit
+sil private [thunk] @$s23LBImageMemoryControllerAACfDTo : $@convention(objc_method) (LBImageMemoryController) -> () {
+// %0                                             // users: %3, %1
+bb0(%0 : $LBImageMemoryController):
+  strong_retain %0 : $LBImageMemoryController     // id: %1
+  // function_ref LBImageMemoryController.__deallocating_deinit
+  %2 = function_ref @$s23LBImageMemoryControllerAACfD : $@convention(method) (@owned LBImageMemoryController) -> () // user: %3
+  %3 = apply %2(%0) : $@convention(method) (@owned LBImageMemoryController) -> () // user: %4
+  return %3 : $()                                 // id: %4
+} // end sil function '$s23LBImageMemoryControllerAACfDTo'
+
+// @objc LBImageMemoryController.__ivar_destroyer
+sil hidden @$s23LBImageMemoryControllerAACfETo : $@convention(objc_method) (LBImageMemoryController) -> () {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $LBImageMemoryController):
+  debug_value %0 : $LBImageMemoryController, let, name "self", argno 1, implicit // id: %1
+  %2 = ref_element_addr %0 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %3
+  %3 = begin_access [deinit] [static] %2 : $*UIImageView // users: %5, %4
+  destroy_addr %3 : $*UIImageView                 // id: %4
+  end_access %3 : $*UIImageView                   // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+} // end sil function '$s23LBImageMemoryControllerAACfETo'
+
+// LBImageMemoryController.__allocating_init(nibName:bundle:)
+sil hidden @$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfC : $@convention(method) (@owned Optional<String>, @owned Optional<Bundle>, @thick LBImageMemoryController.Type) -> @owned LBImageMemoryController {
+// %0 "nibNameOrNil"                              // user: %5
+// %1 "nibBundleOrNil"                            // users: %17, %16
+// %2 "$metatype"                                 // user: %3
+bb0(%0 : $Optional<String>, %1 : $Optional<Bundle>, %2 : $@thick LBImageMemoryController.Type):
+  %3 = thick_to_objc_metatype %2 : $@thick LBImageMemoryController.Type to $@objc_metatype LBImageMemoryController.Type // user: %4
+  %4 = alloc_ref_dynamic [objc] %3 : $@objc_metatype LBImageMemoryController.Type, $LBImageMemoryController // users: %15, %16
+  switch_enum %0 : $Optional<String>, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %5
+
+// %6                                             // users: %10, %8
+bb1(%6 : $String):                                // Preds: bb0
+  // function_ref String._bridgeToObjectiveC()
+  %7 = function_ref @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString // user: %8
+  %8 = apply %7(%6) : $@convention(method) (@guaranteed String) -> @owned NSString // user: %9
+  %9 = enum $Optional<NSString>, #Optional.some!enumelt, %8 : $NSString // user: %11
+  release_value %6 : $String                      // id: %10
+  br bb3(%9 : $Optional<NSString>)                // id: %11
+
+bb2:                                              // Preds: bb0
+  %12 = enum $Optional<NSString>, #Optional.none!enumelt // user: %13
+  br bb3(%12 : $Optional<NSString>)               // id: %13
+
+// %14                                            // users: %18, %16
+bb3(%14 : $Optional<NSString>):                   // Preds: bb2 bb1
+  %15 = objc_method %4 : $LBImageMemoryController, #LBImageMemoryController.init!initializer.foreign : (LBImageMemoryController.Type) -> (String?, Bundle?) -> LBImageMemoryController, $@convention(objc_method) (Optional<NSString>, Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController // user: %16
+  %16 = apply %15(%14, %1, %4) : $@convention(objc_method) (Optional<NSString>, Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController // user: %19
+  release_value %1 : $Optional<Bundle>            // id: %17
+  release_value %14 : $Optional<NSString>         // id: %18
+  return %16 : $LBImageMemoryController           // id: %19
+} // end sil function '$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfC'
+
+// dynamic LBImageMemoryController.init(nibName:bundle:)
+sil shared [transparent] [thunk] @$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfcTD : $@convention(method) (@owned Optional<String>, @owned Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController {
+// %0 "nibNameOrNil"                              // user: %3
+// %1 "nibBundleOrNil"                            // users: %15, %14
+// %2 "self"                                      // users: %14, %13
+bb0(%0 : $Optional<String>, %1 : $Optional<Bundle>, %2 : $LBImageMemoryController):
+  switch_enum %0 : $Optional<String>, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %3
+
+// %4                                             // users: %8, %6
+bb1(%4 : $String):                                // Preds: bb0
+  // function_ref String._bridgeToObjectiveC()
+  %5 = function_ref @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString // user: %6
+  %6 = apply %5(%4) : $@convention(method) (@guaranteed String) -> @owned NSString // user: %7
+  %7 = enum $Optional<NSString>, #Optional.some!enumelt, %6 : $NSString // user: %9
+  release_value %4 : $String                      // id: %8
+  br bb3(%7 : $Optional<NSString>)                // id: %9
+
+bb2:                                              // Preds: bb0
+  %10 = enum $Optional<NSString>, #Optional.none!enumelt // user: %11
+  br bb3(%10 : $Optional<NSString>)               // id: %11
+
+// %12                                            // users: %16, %14
+bb3(%12 : $Optional<NSString>):                   // Preds: bb2 bb1
+  %13 = objc_method %2 : $LBImageMemoryController, #LBImageMemoryController.init!initializer.foreign : (LBImageMemoryController.Type) -> (String?, Bundle?) -> LBImageMemoryController, $@convention(objc_method) (Optional<NSString>, Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController // user: %14
+  %14 = apply %13(%12, %1, %2) : $@convention(objc_method) (Optional<NSString>, Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController // user: %17
+  release_value %1 : $Optional<Bundle>            // id: %15
+  release_value %12 : $Optional<NSString>         // id: %16
+  return %14 : $LBImageMemoryController           // id: %17
+} // end sil function '$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfcTD'
+
+// LBImageMemoryController.init(nibName:bundle:)
+sil hidden @$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfc : $@convention(method) (@owned Optional<String>, @owned Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController {
+// %0 "nibNameOrNil"                              // users: %35, %17, %16, %4
+// %1 "nibBundleOrNil"                            // users: %34, %29, %5
+// %2 "self"                                      // users: %13, %8, %7, %6
+bb0(%0 : $Optional<String>, %1 : $Optional<Bundle>, %2 : $LBImageMemoryController):
+  %3 = alloc_stack [lexical] $LBImageMemoryController, let, name "self", implicit // users: %33, %14, %7, %36, %37
+  debug_value %0 : $Optional<String>, let, name "nibNameOrNil", argno 1, implicit // id: %4
+  debug_value %1 : $Optional<Bundle>, let, name "nibBundleOrNil", argno 2, implicit // id: %5
+  strong_retain %2 : $LBImageMemoryController     // id: %6
+  store %2 to %3 : $*LBImageMemoryController      // id: %7
+  %8 = ref_element_addr %2 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %12
+  %9 = metatype $@thick UIImageView.Type          // user: %11
+  // function_ref UIImageView.__allocating_init()
+  %10 = function_ref @$sSo11UIImageViewCABycfC : $@convention(method) (@thick UIImageView.Type) -> @owned UIImageView // user: %11
+  %11 = apply %10(%9) : $@convention(method) (@thick UIImageView.Type) -> @owned UIImageView // user: %12
+  store %11 to %8 : $*UIImageView                 // id: %12
+  strong_release %2 : $LBImageMemoryController    // id: %13
+  %14 = load %3 : $*LBImageMemoryController       // users: %27, %15
+  %15 = upcast %14 : $LBImageMemoryController to $UIViewController // user: %29
+  retain_value %0 : $Optional<String>             // id: %16
+  switch_enum %0 : $Optional<String>, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %17
+
+// %18                                            // users: %22, %20
+bb1(%18 : $String):                               // Preds: bb0
+  // function_ref String._bridgeToObjectiveC()
+  %19 = function_ref @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString // user: %20
+  %20 = apply %19(%18) : $@convention(method) (@guaranteed String) -> @owned NSString // user: %21
+  %21 = enum $Optional<NSString>, #Optional.some!enumelt, %20 : $NSString // user: %23
+  release_value %18 : $String                     // id: %22
+  br bb3(%21 : $Optional<NSString>)               // id: %23
+
+bb2:                                              // Preds: bb0
+  %24 = enum $Optional<NSString>, #Optional.none!enumelt // user: %25
+  br bb3(%24 : $Optional<NSString>)               // id: %25
+
+// %26                                            // users: %30, %29
+bb3(%26 : $Optional<NSString>):                   // Preds: bb2 bb1
+  %27 = unchecked_ref_cast %14 : $LBImageMemoryController to $LBImageMemoryController // user: %28
+  %28 = objc_super_method %27 : $LBImageMemoryController, #UIViewController.init!initializer.foreign : (UIViewController.Type) -> (String?, Bundle?) -> UIViewController, $@convention(objc_method) (Optional<NSString>, Optional<Bundle>, @owned UIViewController) -> @owned UIViewController // user: %29
+  %29 = apply %28(%26, %1, %15) : $@convention(objc_method) (Optional<NSString>, Optional<Bundle>, @owned UIViewController) -> @owned UIViewController // user: %31
+  release_value %26 : $Optional<NSString>         // id: %30
+  %31 = unchecked_ref_cast %29 : $UIViewController to $LBImageMemoryController // users: %33, %38, %32
+  strong_retain %31 : $LBImageMemoryController    // id: %32
+  store %31 to %3 : $*LBImageMemoryController     // id: %33
+  release_value %1 : $Optional<Bundle>            // id: %34
+  release_value %0 : $Optional<String>            // id: %35
+  destroy_addr %3 : $*LBImageMemoryController     // id: %36
+  dealloc_stack %3 : $*LBImageMemoryController    // id: %37
+  return %31 : $LBImageMemoryController           // id: %38
+} // end sil function '$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfc'
+
+// @objc LBImageMemoryController.init(nibName:bundle:)
+sil private [thunk] @$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfcTo : $@convention(objc_method) (Optional<NSString>, Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController {
+// %0                                             // users: %5, %3
+// %1                                             // users: %18, %4
+// %2                                             // user: %18
+bb0(%0 : $Optional<NSString>, %1 : $Optional<Bundle>, %2 : $LBImageMemoryController):
+  retain_value %0 : $Optional<NSString>           // id: %3
+  retain_value %1 : $Optional<Bundle>             // id: %4
+  switch_enum %0 : $Optional<NSString>, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %5
+
+// %6                                             // user: %8
+bb1(%6 : $NSString):                              // Preds: bb0
+  // function_ref static String._unconditionallyBridgeFromObjectiveC(_:)
+  %7 = function_ref @$sSS10FoundationE36_unconditionallyBridgeFromObjectiveCySSSo8NSStringCSgFZ : $@convention(method) (@guaranteed Optional<NSString>, @thin String.Type) -> @owned String // user: %10
+  %8 = enum $Optional<NSString>, #Optional.some!enumelt, %6 : $NSString // users: %12, %10
+  %9 = metatype $@thin String.Type                // user: %10
+  %10 = apply %7(%8, %9) : $@convention(method) (@guaranteed Optional<NSString>, @thin String.Type) -> @owned String // user: %11
+  %11 = enum $Optional<String>, #Optional.some!enumelt, %10 : $String // user: %13
+  release_value %8 : $Optional<NSString>          // id: %12
+  br bb3(%11 : $Optional<String>)                 // id: %13
+
+bb2:                                              // Preds: bb0
+  %14 = enum $Optional<String>, #Optional.none!enumelt // user: %15
+  br bb3(%14 : $Optional<String>)                 // id: %15
+
+// %16                                            // user: %18
+bb3(%16 : $Optional<String>):                     // Preds: bb2 bb1
+  // function_ref LBImageMemoryController.init(nibName:bundle:)
+  %17 = function_ref @$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfc : $@convention(method) (@owned Optional<String>, @owned Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController // user: %18
+  %18 = apply %17(%16, %1, %2) : $@convention(method) (@owned Optional<String>, @owned Optional<Bundle>, @owned LBImageMemoryController) -> @owned LBImageMemoryController // user: %19
+  return %18 : $LBImageMemoryController           // id: %19
+} // end sil function '$s23LBImageMemoryControllerAAC7nibName6bundleABSSSg_So8NSBundleCSgtcfcTo'
+
+// LBImageMemoryController.__allocating_init(coder:)
+sil hidden @$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfC : $@convention(method) (@owned NSCoder, @thick LBImageMemoryController.Type) -> @owned Optional<LBImageMemoryController> {
+// %0 "coder"                                     // users: %6, %5
+// %1 "$metatype"                                 // user: %2
+bb0(%0 : $NSCoder, %1 : $@thick LBImageMemoryController.Type):
+  %2 = thick_to_objc_metatype %1 : $@thick LBImageMemoryController.Type to $@objc_metatype LBImageMemoryController.Type // user: %3
+  %3 = alloc_ref_dynamic [objc] %2 : $@objc_metatype LBImageMemoryController.Type, $LBImageMemoryController // users: %4, %5
+  %4 = objc_method %3 : $LBImageMemoryController, #LBImageMemoryController.init!initializer.foreign : (LBImageMemoryController.Type) -> (NSCoder) -> LBImageMemoryController?, $@convention(objc_method) (NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> // user: %5
+  %5 = apply %4(%0, %3) : $@convention(objc_method) (NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> // user: %7
+  strong_release %0 : $NSCoder                    // id: %6
+  return %5 : $Optional<LBImageMemoryController>  // id: %7
+} // end sil function '$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfC'
+
+// dynamic LBImageMemoryController.init(coder:)
+sil shared [transparent] [thunk] @$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfcTD : $@convention(method) (@owned NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> {
+// %0 "coder"                                     // users: %4, %3
+// %1 "self"                                      // users: %3, %2
+bb0(%0 : $NSCoder, %1 : $LBImageMemoryController):
+  %2 = objc_method %1 : $LBImageMemoryController, #LBImageMemoryController.init!initializer.foreign : (LBImageMemoryController.Type) -> (NSCoder) -> LBImageMemoryController?, $@convention(objc_method) (NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> // user: %3
+  %3 = apply %2(%0, %1) : $@convention(objc_method) (NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> // user: %5
+  strong_release %0 : $NSCoder                    // id: %4
+  return %3 : $Optional<LBImageMemoryController>  // id: %5
+} // end sil function '$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfcTD'
+
+// LBImageMemoryController.init(coder:)
+sil hidden @$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfc : $@convention(method) (@owned NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> {
+// %0 "coder"                                     // users: %31, %22, %16, %3
+// %1 "self"                                      // users: %11, %6, %5, %4
+bb0(%0 : $NSCoder, %1 : $LBImageMemoryController):
+  %2 = alloc_stack [lexical] $LBImageMemoryController, let, name "self", implicit // users: %29, %12, %5, %32, %33, %23
+  debug_value %0 : $NSCoder, let, name "coder", argno 1, implicit // id: %3
+  strong_retain %1 : $LBImageMemoryController     // id: %4
+  store %1 to %2 : $*LBImageMemoryController      // id: %5
+  %6 = ref_element_addr %1 : $LBImageMemoryController, #LBImageMemoryController.imageView // user: %10
+  %7 = metatype $@thick UIImageView.Type          // user: %9
+  // function_ref UIImageView.__allocating_init()
+  %8 = function_ref @$sSo11UIImageViewCABycfC : $@convention(method) (@thick UIImageView.Type) -> @owned UIImageView // user: %9
+  %9 = apply %8(%7) : $@convention(method) (@thick UIImageView.Type) -> @owned UIImageView // user: %10
+  store %9 to %6 : $*UIImageView                  // id: %10
+  strong_release %1 : $LBImageMemoryController    // id: %11
+  %12 = load %2 : $*LBImageMemoryController       // users: %14, %13
+  %13 = upcast %12 : $LBImageMemoryController to $UIViewController // user: %16
+  %14 = unchecked_ref_cast %12 : $LBImageMemoryController to $LBImageMemoryController // user: %15
+  %15 = objc_super_method %14 : $LBImageMemoryController, #UIViewController.init!initializer.foreign : (UIViewController.Type) -> (NSCoder) -> UIViewController?, $@convention(objc_method) (NSCoder, @owned UIViewController) -> @owned Optional<UIViewController> // user: %16
+  %16 = apply %15(%0, %13) : $@convention(objc_method) (NSCoder, @owned UIViewController) -> @owned Optional<UIViewController> // users: %21, %26, %19
+  %17 = integer_literal $Builtin.Int1, -1         // user: %19
+  %18 = integer_literal $Builtin.Int1, 0          // user: %19
+  %19 = select_enum %16 : $Optional<UIViewController>, case #Optional.some!enumelt: %17, default %18 : $Builtin.Int1 // user: %20
+  cond_br %19, bb2, bb1                           // id: %20
+
+bb1:                                              // Preds: bb0
+  release_value %16 : $Optional<UIViewController> // id: %21
+  strong_release %0 : $NSCoder                    // id: %22
+  dealloc_stack %2 : $*LBImageMemoryController    // id: %23
+  %24 = enum $Optional<LBImageMemoryController>, #Optional.none!enumelt // user: %25
+  br bb3(%24 : $Optional<LBImageMemoryController>) // id: %25
+
+bb2:                                              // Preds: bb0
+  %26 = unchecked_enum_data %16 : $Optional<UIViewController>, #Optional.some!enumelt // user: %27
+  %27 = unchecked_ref_cast %26 : $UIViewController to $LBImageMemoryController // users: %29, %30, %28
+  strong_retain %27 : $LBImageMemoryController    // id: %28
+  store %27 to %2 : $*LBImageMemoryController     // id: %29
+  %30 = enum $Optional<LBImageMemoryController>, #Optional.some!enumelt, %27 : $LBImageMemoryController // user: %34
+  strong_release %0 : $NSCoder                    // id: %31
+  destroy_addr %2 : $*LBImageMemoryController     // id: %32
+  dealloc_stack %2 : $*LBImageMemoryController    // id: %33
+  br bb3(%30 : $Optional<LBImageMemoryController>) // id: %34
+
+// %35                                            // user: %36
+bb3(%35 : $Optional<LBImageMemoryController>):    // Preds: bb2 bb1
+  return %35 : $Optional<LBImageMemoryController> // id: %36
+} // end sil function '$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfc'
+
+// @objc LBImageMemoryController.init(coder:)
+sil private [thunk] @$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfcTo : $@convention(objc_method) (NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> {
+// %0                                             // users: %4, %2
+// %1                                             // user: %4
+bb0(%0 : $NSCoder, %1 : $LBImageMemoryController):
+  strong_retain %0 : $NSCoder                     // id: %2
+  // function_ref LBImageMemoryController.init(coder:)
+  %3 = function_ref @$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfc : $@convention(method) (@owned NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> // user: %4
+  %4 = apply %3(%0, %1) : $@convention(method) (@owned NSCoder, @owned LBImageMemoryController) -> @owned Optional<LBImageMemoryController> // user: %5
+  return %4 : $Optional<LBImageMemoryController>  // id: %5
+} // end sil function '$s23LBImageMemoryControllerAAC5coderABSgSo7NSCoderC_tcfcTo'
+
+// @nonobjc UIImageView.init()
+sil shared [thunk] [available 2.0] @$sSo11UIImageViewCABycfcTO : $@convention(method) (@owned UIImageView) -> @owned UIImageView {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $UIImageView):
+  %1 = objc_method %0 : $UIImageView, #UIImageView.init!initializer.foreign : (UIImageView.Type) -> () -> UIImageView, $@convention(objc_method) (@owned UIImageView) -> @owned UIImageView // user: %2
+  %2 = apply %1(%0) : $@convention(objc_method) (@owned UIImageView) -> @owned UIImageView // user: %3
+  return %2 : $UIImageView                        // id: %3
+} // end sil function '$sSo11UIImageViewCABycfcTO'
+
+// @nonobjc UIImage.init(contentsOfFile:)
+sil shared [thunk] [available 2.0] @$sSo7UIImageC14contentsOfFileABSgSS_tcfcTO : $@convention(method) (@owned String, @owned UIImage) -> @owned Optional<UIImage> {
+// %0 "path"                                      // users: %7, %3
+// %1 "self"                                      // users: %5, %4
+bb0(%0 : $String, %1 : $UIImage):
+  // function_ref String._bridgeToObjectiveC()
+  %2 = function_ref @$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF : $@convention(method) (@guaranteed String) -> @owned NSString // user: %3
+  %3 = apply %2(%0) : $@convention(method) (@guaranteed String) -> @owned NSString // users: %6, %5
+  %4 = objc_method %1 : $UIImage, #UIImage.init!initializer.foreign : (UIImage.Type) -> (String) -> UIImage?, $@convention(objc_method) (NSString, @owned UIImage) -> @owned Optional<UIImage> // user: %5
+  %5 = apply %4(%3, %1) : $@convention(objc_method) (NSString, @owned UIImage) -> @owned Optional<UIImage> // user: %8
+  strong_release %3 : $NSString                   // id: %6
+  release_value %0 : $String                      // id: %7
+  return %5 : $Optional<UIImage>                  // id: %8
+} // end sil function '$sSo7UIImageC14contentsOfFileABSgSS_tcfcTO'
+
+// @nonobjc UIImage.init(cgImage:)
+sil shared [thunk] [available 2.0] @$sSo7UIImageC7cgImageABSo10CGImageRefa_tcfcTO : $@convention(method) (@owned CGImage, @owned UIImage) -> @owned UIImage {
+// %0 "cgImage"                                   // users: %4, %3
+// %1 "self"                                      // users: %3, %2
+bb0(%0 : $CGImage, %1 : $UIImage):
+  %2 = objc_method %1 : $UIImage, #UIImage.init!initializer.foreign : (UIImage.Type) -> (CGImage) -> UIImage, $@convention(objc_method) (CGImage, @owned UIImage) -> @owned UIImage // user: %3
+  %3 = apply %2(%0, %1) : $@convention(objc_method) (CGImage, @owned UIImage) -> @owned UIImage // user: %5
+  strong_release %0 : $CGImage                    // id: %4
+  return %3 : $UIImage                            // id: %5
+} // end sil function '$sSo7UIImageC7cgImageABSo10CGImageRefa_tcfcTO'
+
+// protocol witness for Hashable.hashValue.getter in conformance CFStringRef
+sil shared [transparent] [thunk] @$sSo11CFStringRefaSHSCSH9hashValueSivgTW : $@convention(witness_method: Hashable) <τ_0_0 where τ_0_0 : CFString> (@in_guaranteed τ_0_0) -> Int {
+// %0                                             // user: %1
+bb0(%0 : $*τ_0_0):
+  %1 = load %0 : $*τ_0_0                          // user: %3
+  // function_ref _CFObject.hashValue.getter
+  %2 = function_ref @$s14CoreFoundation9_CFObjectPAAE9hashValueSivg : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@guaranteed τ_0_0) -> Int // user: %3
+  %3 = apply %2<τ_0_0>(%1) : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@guaranteed τ_0_0) -> Int // user: %4
+  return %3 : $Int                                // id: %4
+} // end sil function '$sSo11CFStringRefaSHSCSH9hashValueSivgTW'
+
+// _CFObject.hashValue.getter
+sil @$s14CoreFoundation9_CFObjectPAAE9hashValueSivg : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@guaranteed τ_0_0) -> Int
+
+// protocol witness for Hashable.hash(into:) in conformance CFStringRef
+sil shared [transparent] [thunk] @$sSo11CFStringRefaSHSCSH4hash4intoys6HasherVz_tFTW : $@convention(witness_method: Hashable) <τ_0_0 where τ_0_0 : CFString> (@inout Hasher, @in_guaranteed τ_0_0) -> () {
+// %0                                             // user: %4
+// %1                                             // user: %2
+bb0(%0 : $*Hasher, %1 : $*τ_0_0):
+  %2 = load %1 : $*τ_0_0                          // user: %4
+  // function_ref _CFObject.hash(into:)
+  %3 = function_ref @$s14CoreFoundation9_CFObjectPAAE4hash4intoys6HasherVz_tF : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@inout Hasher, @guaranteed τ_0_0) -> () // user: %4
+  %4 = apply %3<τ_0_0>(%0, %2) : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@inout Hasher, @guaranteed τ_0_0) -> ()
+  %5 = tuple ()                                   // user: %6
+  return %5 : $()                                 // id: %6
+} // end sil function '$sSo11CFStringRefaSHSCSH4hash4intoys6HasherVz_tFTW'
+
+// _CFObject.hash(into:)
+sil @$s14CoreFoundation9_CFObjectPAAE4hash4intoys6HasherVz_tF : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@inout Hasher, @guaranteed τ_0_0) -> ()
+
+// protocol witness for Hashable._rawHashValue(seed:) in conformance CFStringRef
+sil shared [transparent] [thunk] [always_inline] @$sSo11CFStringRefaSHSCSH13_rawHashValue4seedS2i_tFTW : $@convention(witness_method: Hashable) <τ_0_0 where τ_0_0 : CFString> (Int, @in_guaranteed τ_0_0) -> Int {
+// %0                                             // user: %3
+// %1                                             // user: %3
+bb0(%0 : $Int, %1 : $*τ_0_0):
+  // function_ref Hashable._rawHashValue(seed:)
+  %2 = function_ref @$sSHsE13_rawHashValue4seedS2i_tF : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (Int, @in_guaranteed τ_0_0) -> Int // user: %3
+  %3 = apply %2<τ_0_0>(%0, %1) : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (Int, @in_guaranteed τ_0_0) -> Int // user: %4
+  return %3 : $Int                                // id: %4
+} // end sil function '$sSo11CFStringRefaSHSCSH13_rawHashValue4seedS2i_tFTW'
+
+// Hashable._rawHashValue(seed:)
+sil [always_inline] @$sSHsE13_rawHashValue4seedS2i_tF : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (Int, @in_guaranteed τ_0_0) -> Int
+
+// protocol witness for static Equatable.== infix(_:_:) in conformance CFStringRef
+sil shared [transparent] [thunk] @$sSo11CFStringRefaSQSCSQ2eeoiySbx_xtFZTW : $@convention(witness_method: Equatable) <τ_0_0 where τ_0_0 : CFString> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool {
+// %0                                             // user: %3
+// %1                                             // user: %4
+// %2                                             // user: %6
+bb0(%0 : $*τ_0_0, %1 : $*τ_0_0, %2 : $@thick τ_0_0.Type):
+  %3 = load %0 : $*τ_0_0                          // user: %6
+  %4 = load %1 : $*τ_0_0                          // user: %6
+  // function_ref static _CFObject.== infix(_:_:)
+  %5 = function_ref @$s14CoreFoundation9_CFObjectPAAE2eeoiySbx_xtFZ : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@guaranteed τ_0_0, @guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool // user: %6
+  %6 = apply %5<τ_0_0>(%3, %4, %2) : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@guaranteed τ_0_0, @guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool // user: %7
+  return %6 : $Bool                               // id: %7
+} // end sil function '$sSo11CFStringRefaSQSCSQ2eeoiySbx_xtFZTW'
+
+// static _CFObject.== infix(_:_:)
+sil @$s14CoreFoundation9_CFObjectPAAE2eeoiySbx_xtFZ : $@convention(method) <τ_0_0 where τ_0_0 : _CFObject> (@guaranteed τ_0_0, @guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool
+
+// _assertionFailure(_:_:file:line:flags:)
+sil [noinline] [_semantics "programtermination_point"] @$ss17_assertionFailure__4file4line5flagss5NeverOs12StaticStringV_A2HSus6UInt32VtF : $@convention(thin) (StaticString, StaticString, StaticString, UInt, UInt32) -> Never
+
+// specialized CGFloat.init<A>(_:)
+sil shared @$s12CoreGraphics7CGFloatVyACxcSzRzlufCSi_Tgmq5 : $@convention(thin) (Int) -> CGFloat {
+// %0                                             // user: %1
+bb0(%0 : $Int):
+  %1 = struct_extract %0 : $Int, #Int._value      // user: %2
+  %2 = builtin "sitofp_Int64_FPIEEE64"(%1 : $Builtin.Int64) : $Builtin.FPIEEE64 // user: %3
+  %3 = struct $Double (%2 : $Builtin.FPIEEE64)    // user: %4
+  %4 = struct $CGFloat (%3 : $Double)             // user: %5
+  return %4 : $CGFloat                            // id: %5
+} // end sil function '$s12CoreGraphics7CGFloatVyACxcSzRzlufCSi_Tgmq5'
+
+// Array._endMutation()
+sil shared [_semantics "array.end_mutation"] @$sSa12_endMutationyyF : $@convention(method) <Element> (@inout Array<Element>) -> () {
+[%0: noescape! **]
+// %0                                             // users: %9, %1
+bb0(%0 : $*Array<Element>):
+  %1 = struct_element_addr %0 : $*Array<Element>, #Array._buffer // user: %2
+  %2 = struct_element_addr %1 : $*_ArrayBuffer<Element>, #_ArrayBuffer._storage // user: %3
+  %3 = struct_element_addr %2 : $*_BridgeStorage<__ContiguousArrayStorageBase>, #_BridgeStorage.rawValue // user: %4
+  %4 = load %3 : $*Builtin.BridgeObject           // user: %5
+  %5 = end_cow_mutation %4 : $Builtin.BridgeObject // user: %6
+  %6 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%5 : $Builtin.BridgeObject) // user: %7
+  %7 = struct $_ArrayBuffer<Element> (%6 : $_BridgeStorage<__ContiguousArrayStorageBase>) // user: %8
+  %8 = struct $Array<Element> (%7 : $_ArrayBuffer<Element>) // user: %9
+  store %8 to %0 : $*Array<Element>               // id: %9
+  %10 = tuple ()                                  // user: %11
+  return %10 : $()                                // id: %11
+} // end sil function '$sSa12_endMutationyyF'
+
+sil_vtable LBImageMemoryController {
+  #LBImageMemoryController.testImageNamedCache: (LBImageMemoryController) -> () -> () : @$s23LBImageMemoryControllerAAC19testImageNamedCacheyyF	// LBImageMemoryController.testImageNamedCache()
+  #LBImageMemoryController.testFilePathNotCache: (LBImageMemoryController) -> () -> () : @$s23LBImageMemoryControllerAAC20testFilePathNotCacheyyF	// LBImageMemoryController.testFilePathNotCache()
+  #LBImageMemoryController.testDownloadImage: (LBImageMemoryController) -> () -> () : @$s23LBImageMemoryControllerAAC17testDownloadImageyyF	// LBImageMemoryController.testDownloadImage()
+  #LBImageMemoryController.downsample: (LBImageMemoryController) -> (URL, CGSize, CGFloat) -> UIImage : @$s23LBImageMemoryControllerAAC10downsample7imageAt2to5scaleSo7UIImageC10Foundation3URLV_So6CGSizeV12CoreGraphics7CGFloatVtF	// LBImageMemoryController.downsample(imageAt:to:scale:)
+  #LBImageMemoryController.deinit!deallocator: @$s23LBImageMemoryControllerAACfD	// LBImageMemoryController.__deallocating_deinit
+}
+
+sil_witness_table shared CFString: Hashable module CoreFoundation {
+  base_protocol Equatable: CFString: Equatable module CoreFoundation
+  method #Hashable.hashValue!getter: <Self where Self : Hashable> (Self) -> () -> Int : @$sSo11CFStringRefaSHSCSH9hashValueSivgTW	// protocol witness for Hashable.hashValue.getter in conformance CFStringRef
+  method #Hashable.hash: <Self where Self : Hashable> (Self) -> (inout Hasher) -> () : @$sSo11CFStringRefaSHSCSH4hash4intoys6HasherVz_tFTW	// protocol witness for Hashable.hash(into:) in conformance CFStringRef
+  method #Hashable._rawHashValue: <Self where Self : Hashable> (Self) -> (Int) -> Int : @$sSo11CFStringRefaSHSCSH13_rawHashValue4seedS2i_tFTW	// protocol witness for Hashable._rawHashValue(seed:) in conformance CFStringRef
+}
+
+sil_witness_table shared CFString: Equatable module CoreFoundation {
+  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @$sSo11CFStringRefaSQSCSQ2eeoiySbx_xtFZTW	// protocol witness for static Equatable.== infix(_:_:) in conformance CFStringRef
+}
+
+sil_witness_table shared CFString: _CFObject module CoreFoundation {
+  base_protocol Hashable: CFString: Hashable module CoreFoundation
+}
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'LBImageMemoryController/LBImageMemoryController.swift' => 'LBImageMemoryController.swift'
+
+

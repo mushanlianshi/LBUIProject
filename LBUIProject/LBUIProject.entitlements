@@ -4,9 +4,11 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.networking.HotspotConfiguration</key>
+	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.lb.uiproject</string>
+		<string>group.ethank.demo</string>
 	</array>
 </dict>
 </plist>

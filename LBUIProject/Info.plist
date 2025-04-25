@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>搜索外部蓝牙设备</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>请允许访问，你可以查看您每日的浏览记录</string>
 	<key>NSCameraUsageDescription</key>
@@ -44,11 +46,13 @@
 	<string>以便于您上传图片</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>使用语音，方便沟通</string>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>搜索外部蓝牙设备</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ConfigurationIntent</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BLTGenIconfont.ttf</string>
 	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
@@ -77,9 +81,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UIAppFonts</key>
-    <array>
-        <string>BLTGenIconfont.ttf</string>
-    </array>
 </dict>
 </plist>

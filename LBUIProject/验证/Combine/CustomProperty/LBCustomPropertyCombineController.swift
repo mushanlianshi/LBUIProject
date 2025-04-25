@@ -29,7 +29,10 @@ class LBCustomPropertyCombineController: UIViewController {
     }
     
     func bindObserver() {
+//        viewModel.validState.assign(to: &propertyView.button.blt.bindValidSelectResult)
         propertyView.button.blt.bindValidSelectResult(viewModel.validState).store(in: &cancellables)
         propertyView.blt.bindCustomModel(viewModel.modelObserver).store(in: &cancellables)
+        
+//        viewModel.selected.assign(to: \.isEnabled, on: propertyView.button)
     }
 }

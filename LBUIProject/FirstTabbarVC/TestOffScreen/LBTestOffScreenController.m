@@ -81,6 +81,8 @@
     _noOffScreenIVOne.image = [UIImage imageNamed:@"public_icon"];
     _noOffScreenIVOne.layer.cornerRadius = 30;
     _noOffScreenIVOne.layer.masksToBounds = YES;
+    _noOffScreenIVOne.layer.borderWidth = 1;
+    _noOffScreenIVOne.layer.borderColor = [UIColor blueColor].CGColor;
     [self.view addSubview:_noOffScreenIVOne];
     
     //1.父view一个图层
@@ -106,6 +108,10 @@
     view.layer.masksToBounds = YES;
     view.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:view];
+    
+    UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(320, 520, 20, 20)];
+    view2.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:view2];
     NSLog(@"LBLog view layer  %@   \n %@",view.layer.backgroundColor,view.backgroundColor);
     
 }

@@ -87,6 +87,7 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
                 
                 ///宽度是rightGroup的1 高度是rightGroup的0.3倍
                 let rightLittleItem = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.3)))
+                
                 rightLittleItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
                 ///右边两个设置成一组 竖直布局 高度是containerGroup的比例1  宽度是containerGroup的0.3
                 let rightGroup = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1)), subitem: rightLittleItem, count: 2)
@@ -98,7 +99,7 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
                 section.orthogonalScrollingBehavior = .groupPaging
             }
             ///竖直list列表的布局
-            else{
+            else if model.type == .list{
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100)))
                 item.contentInsets = .init(top: 10, leading: 15, bottom: 10, trailing: 15)
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100)), subitems: [item])
@@ -107,6 +108,8 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
                 
                 section.boundarySupplementaryItems = [self.sectionHeaderSupplementaryItem()]
                 section.orthogonalScrollingBehavior = .none
+            }else if model.type == .waterFlow{
+                section = self.waterFlowLayoutSection(sectionIndex)
             }
             ///设置是左右滚动还是上线滚
 //            section.orthogonalScrollingBehavior = sectionKind.scrollBehavior()
@@ -114,6 +117,33 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
         }, configuration: config)
         
         return layout
+    }
+    
+    
+    private func waterFlowLayoutSection(_ index: Int) -> NSCollectionLayoutSection{
+        let width = floor((BLT_SCREEN_WIDTH - 45) / 2)
+        var height = 100.0
+        if index % 2 == 0 {
+            height = 130.0
+        }
+        // 设置瀑布流的item 尺寸的大小
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(width),
+                                                  heightDimension: .absolute(height))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .estimated(150))
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(8)
+
+        let group2Cols = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: group, count: 2)
+        group2Cols.interItemSpacing = .fixed(8)
+
+        let section = NSCollectionLayoutSection(group: group2Cols)
+        section.interGroupSpacing = 15
+        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15)
+        return section
     }
     
     private func sectionHeaderSupplementaryItem() -> NSCollectionLayoutBoundarySupplementaryItem{
@@ -152,6 +182,21 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LBCollectionCompositionLayoutListCell.blt_className, for: indexPath) as? LBCollectionCompositionLayoutListCell else{
                     return UICollectionViewCell()
                 }
+                cell.titleLab.text = model.list?[indexPath.row].listText
+                return cell
+            case .waterFlow:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LBCollectionCompositionLayoutTextCell.blt_className, for: indexPath) as? LBCollectionCompositionLayoutTextCell else{
+                    return UICollectionViewCell()
+                }
+                if indexPath.row % 2 == 0 {
+                    cell.contentView.backgroundColor = UIColor(red: 100.0 / 255.0, green: 149.0 / 255.0, blue: 237.0 / 255.0, alpha: 1.0)
+                }else{
+                    cell.contentView.backgroundColor = UIColor(red: 150.0 / 255.0, green: 90.0 / 255.0, blue: 237.0 / 255.0, alpha: 1.0)
+                }
+                cell.contentView.layer.borderColor = UIColor.black.cgColor
+                cell.contentView.layer.borderWidth = 1
+                cell.contentView.layer.cornerRadius = 8
+                cell.titleLab.textAlignment = .center
                 cell.titleLab.text = model.list?[indexPath.row].listText
                 return cell
             }

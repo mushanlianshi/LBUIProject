@@ -14,6 +14,10 @@ class LBCustomPropertyCombineViewModel{
     
     var validState = PassthroughSubject<LBButtonValidState, Never>.init()
     
+    var selected = CurrentValueSubject<Bool, Never>.init(true)
+
+    @Published var name = "123"
+    
     private var model: LBCombinePropertyModel?
     
     private var state = LBButtonValidState.ok("normal")

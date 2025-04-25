@@ -14,6 +14,7 @@ import UIKit
 //下采样内存峰值 19.8 - 28.6 -> 31 -> 26.3
 //不使用下采样 contentsOfFile  19.4 -> 34.4 -> 39.3 -> 34.4  -> 31 会释放内存
 //不使用下采样 imageNamed      19.2 -> 34.1 -> 39 -> 34.1     不会释放内存
+// 原理是减少像素数来减少内存的占用
 @objc class LBImageMemoryController: UIViewController {
     private let imageView = UIImageView()
 

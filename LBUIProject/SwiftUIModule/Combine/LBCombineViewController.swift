@@ -8,6 +8,12 @@
 import UIKit
 import Combine
 
+enum LBTestEnum1{
+    case one
+    case two(_ name: String)
+//    var property: String?
+}
+
 class LBCombineViewController: UIViewController {
     
     private var cancellables = Set<AnyCancellable>()
@@ -17,6 +23,7 @@ class LBCombineViewController: UIViewController {
     lazy var combineView = LBCombineView()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.title = "Swift 原生的Combine"

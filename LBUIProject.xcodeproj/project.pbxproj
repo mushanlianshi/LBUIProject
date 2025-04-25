@@ -32,6 +32,13 @@
 		400E3DEB2695444B00C67D52 /* LBTestClassCacheMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DEA2695444B00C67D52 /* LBTestClassCacheMethodViewController.m */; };
 		400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */; };
 		400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */; };
+		4012373C2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401237372DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift */; };
+		4012373D2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401237382DAF8D5D00E7AAEC /* LBTestBookingGiftPackController2.swift */; };
+		4012373E2DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401237392DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView.swift */; };
+		4012373F2DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4012373A2DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView2.swift */; };
+		401237432DB0E77700E7AAEC /* LBWeakSwiftDic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401237422DB0E77600E7AAEC /* LBWeakSwiftDic.swift */; };
+		401237462DB24CD800E7AAEC /* LBFuctionTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401237452DB24CD800E7AAEC /* LBFuctionTypeController.swift */; };
+		4012374C2DB7237000E7AAEC /* LBConnectWifiAutoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4012374B2DB7237000E7AAEC /* LBConnectWifiAutoController.swift */; };
 		40140EEC2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 40140EEB2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		4014676F2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4014676E2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift */; };
 		401AA7E3288AB81C00A4C6DB /* LBThirdPartAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401AA7E2288AB81C00A4C6DB /* LBThirdPartAnimationController.swift */; };
@@ -383,15 +390,7 @@
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
 		40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1884294728410003F457 /* LBGrayViewController.swift */; };
 		40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EABDE026AFDD25007BD450 /* LBTransmitView.m */; };
-		40F1CD012A317CBC00A8066C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40744D112A316FED0096F399 /* WidgetKit.framework */; };
-		40F1CD022A317CBC00A8066C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40744D132A316FED0096F399 /* SwiftUI.framework */; };
-		40F1CD052A317CBC00A8066C /* LBWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F1CD042A317CBC00A8066C /* LBWidgetBundle.swift */; };
-		40F1CD072A317CBC00A8066C /* LBWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F1CD062A317CBC00A8066C /* LBWidgetLiveActivity.swift */; };
-		40F1CD092A317CBC00A8066C /* LBWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F1CD082A317CBC00A8066C /* LBWidget.swift */; };
-		40F1CD0C2A317CBD00A8066C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40F1CD0B2A317CBD00A8066C /* Assets.xcassets */; };
-		40F1CD0E2A317CBD00A8066C /* LBWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 40F1CD0A2A317CBC00A8066C /* LBWidget.intentdefinition */; };
 		40F1CD0F2A317CBD00A8066C /* LBWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 40F1CD0A2A317CBC00A8066C /* LBWidget.intentdefinition */; };
-		40F1CD122A317CBD00A8066C /* LBWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 40F1CD002A317CBB00A8066C /* LBWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40F1CD192A31810300A8066C /* LBWidgetUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F1CD182A31810300A8066C /* LBWidgetUpdateController.swift */; };
 		40F1CD1E2A31E48400A8066C /* rmvb123.avi in Resources */ = {isa = PBXBuildFile; fileRef = 40F1CD1D2A31E48400A8066C /* rmvb123.avi */; };
 		40F1CD202A31E74200A8066C /* output.mkv in Resources */ = {isa = PBXBuildFile; fileRef = 40F1CD1F2A31E6D000A8066C /* output.mkv */; };
@@ -431,13 +430,6 @@
 			remoteGlobalIDString = 4043EB00265F9E2400EACB2B;
 			remoteInfo = LBUIProject;
 		};
-		40F1CD102A317CBD00A8066C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4043EAF9265F9E2400EACB2B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 40F1CCFF2A317CBB00A8066C;
-			remoteInfo = LBWidgetExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -447,7 +439,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				40F1CD122A317CBD00A8066C /* LBWidgetExtension.appex in Embed App Extensions */,
 				40356F7D286BE89700561E00 /* FilterMessage.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -507,6 +498,13 @@
 		400E3DF426954EA800C67D52 /* LBTestLLDBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestLLDBViewController.m; sourceTree = "<group>"; };
 		400E3E992695879A00C67D52 /* LBSegemtnScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBSegemtnScrollViewController.h; sourceTree = "<group>"; };
 		400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBSegemtnScrollViewController.m; sourceTree = "<group>"; };
+		401237372DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBTestBookingGiftPackController.swift; sourceTree = "<group>"; };
+		401237382DAF8D5D00E7AAEC /* LBTestBookingGiftPackController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBTestBookingGiftPackController2.swift; sourceTree = "<group>"; };
+		401237392DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLMBookDetailGiftPacketContentView.swift; sourceTree = "<group>"; };
+		4012373A2DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLMBookDetailGiftPacketContentView2.swift; sourceTree = "<group>"; };
+		401237422DB0E77600E7AAEC /* LBWeakSwiftDic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBWeakSwiftDic.swift; sourceTree = "<group>"; };
+		401237452DB24CD800E7AAEC /* LBFuctionTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFuctionTypeController.swift; sourceTree = "<group>"; };
+		4012374B2DB7237000E7AAEC /* LBConnectWifiAutoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBConnectWifiAutoController.swift; sourceTree = "<group>"; };
 		40140EEA2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		40140EEB2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		4014676E2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRxSwiftOperatorsViewController.swift; sourceTree = "<group>"; };
@@ -947,7 +945,6 @@
 		40EA1884294728410003F457 /* LBGrayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGrayViewController.swift; sourceTree = "<group>"; };
 		40EABDDF26AFDD25007BD450 /* LBTransmitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTransmitView.h; sourceTree = "<group>"; };
 		40EABDE026AFDD25007BD450 /* LBTransmitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTransmitView.m; sourceTree = "<group>"; };
-		40F1CD002A317CBB00A8066C /* LBWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LBWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		40F1CD042A317CBC00A8066C /* LBWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBWidgetBundle.swift; sourceTree = "<group>"; };
 		40F1CD062A317CBC00A8066C /* LBWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		40F1CD082A317CBC00A8066C /* LBWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBWidget.swift; sourceTree = "<group>"; };
@@ -1024,15 +1021,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09BF6C6A1885141F37570A04 /* Pods_LBUIProject_LBUIProjectUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40F1CCFD2A317CBB00A8066C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40F1CD022A317CBC00A8066C /* SwiftUI.framework in Frameworks */,
-				40F1CD012A317CBC00A8066C /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,6 +1144,33 @@
 				400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */,
 			);
 			path = "分段式滑动";
+			sourceTree = "<group>";
+		};
+		4012373B2DAF8D5D00E7AAEC /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				401237372DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift */,
+				401237382DAF8D5D00E7AAEC /* LBTestBookingGiftPackController2.swift */,
+				401237392DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView.swift */,
+				4012373A2DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView2.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		401237442DB24CC000E7AAEC /* LBFuctionTypeController */ = {
+			isa = PBXGroup;
+			children = (
+				401237452DB24CD800E7AAEC /* LBFuctionTypeController.swift */,
+			);
+			path = LBFuctionTypeController;
+			sourceTree = "<group>";
+		};
+		4012374A2DB7235A00E7AAEC /* ConnectWifiAuto */ = {
+			isa = PBXGroup;
+			children = (
+				4012374B2DB7237000E7AAEC /* LBConnectWifiAutoController.swift */,
+			);
+			path = ConnectWifiAuto;
 			sourceTree = "<group>";
 		};
 		40140EE92A9F408C00B7E093 /* FDFullscreenPopGesture */ = {
@@ -1314,7 +1329,6 @@
 				4043EB1C265F9E2700EACB2B /* LBUIProjectTests.xctest */,
 				4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */,
 				40356F75286BE89700561E00 /* FilterMessage.appex */,
-				40F1CD002A317CBB00A8066C /* LBWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2017,6 +2031,7 @@
 				407B84AE2940300400AEDAEC /* BLTReverseSequence.swift */,
 				409DCEBE28B76E3C00699E24 /* CustomQueue */,
 				40C2EFC42D5349CC003DFBC9 /* LBCompressVideoUtil.swift */,
+				401237422DB0E77600E7AAEC /* LBWeakSwiftDic.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -2088,6 +2103,8 @@
 		40ABA5892A1DA86800B84488 /* 验证 */ = {
 			isa = PBXGroup;
 			children = (
+				4012374A2DB7235A00E7AAEC /* ConnectWifiAuto */,
+				401237442DB24CC000E7AAEC /* LBFuctionTypeController */,
 				4063BEA92DA9259E008B0D57 /* ScrollInScroll */,
 				40ABEB772DA3BE3900199320 /* LBTestSelfController.swift */,
 				40ABEB4D2DA3BE3500199320 /* AlertQueueController */,
@@ -2838,6 +2855,7 @@
 		40D43D0D2A67EE33001384BF /* SwiftUIModule */ = {
 			isa = PBXGroup;
 			children = (
+				4012373B2DAF8D5D00E7AAEC /* Booking */,
 				402922352D5ED19A0081AD17 /* AddUIKitView */,
 				402922322D5ECE6F0081AD17 /* SelectList */,
 				40BB0A662D5B1FAF00DFE362 /* Extension */,
@@ -3061,7 +3079,6 @@
 			);
 			dependencies = (
 				40356F7B286BE89700561E00 /* PBXTargetDependency */,
-				40F1CD112A317CBD00A8066C /* PBXTargetDependency */,
 			);
 			name = LBUIProject;
 			productName = LBUIProject;
@@ -3108,23 +3125,6 @@
 			productReference = 4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		40F1CCFF2A317CBB00A8066C /* LBWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40F1CD132A317CBD00A8066C /* Build configuration list for PBXNativeTarget "LBWidgetExtension" */;
-			buildPhases = (
-				40F1CCFC2A317CBB00A8066C /* Sources */,
-				40F1CCFD2A317CBB00A8066C /* Frameworks */,
-				40F1CCFE2A317CBB00A8066C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = LBWidgetExtension;
-			productName = LBWidgetExtension;
-			productReference = 40F1CD002A317CBB00A8066C /* LBWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -3149,9 +3149,6 @@
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 4043EB00265F9E2400EACB2B;
 					};
-					40F1CCFF2A317CBB00A8066C = {
-						CreatedOnToolsVersion = 14.2;
-					};
 				};
 			};
 			buildConfigurationList = 4043EAFC265F9E2400EACB2B /* Build configuration list for PBXProject "LBUIProject" */;
@@ -3173,7 +3170,6 @@
 				4043EB1B265F9E2700EACB2B /* LBUIProjectTests */,
 				4043EB26265F9E2700EACB2B /* LBUIProjectUITests */,
 				40356F74286BE89700561E00 /* FilterMessage */,
-				40F1CCFF2A317CBB00A8066C /* LBWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -3224,14 +3220,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40F1CCFE2A317CBB00A8066C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40F1CD0C2A317CBD00A8066C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3459,6 +3447,7 @@
 				40AE6FEC29C8616600C69932 /* HeaderPositionViewController.swift in Sources */,
 				402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */,
 				40ABEB5B2DA3BE3500199320 /* CLDurationDataPickerView.swift in Sources */,
+				4012373D2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController2.swift in Sources */,
 				40ABEB622DA3BE3500199320 /* CLFlopPrizeView.swift in Sources */,
 				409FC3E52A274BE70053B88C /* LBAVPlayerController.swift in Sources */,
 				40B35B7528640E970001FFE9 /* LBNavigatorScrollHiddenController.swift in Sources */,
@@ -3511,6 +3500,7 @@
 				40ABEB542DA3BE3500199320 /* CLCalendarLayoutAttributes.swift in Sources */,
 				40ABEB692DA3BE3500199320 /* CLGradientLayerView.swift in Sources */,
 				40C149E928AB2FBE005C9E00 /* LBNotificationViewController.swift in Sources */,
+				4012374C2DB7237000E7AAEC /* LBConnectWifiAutoController.swift in Sources */,
 				40ABEB742DA3BE3500199320 /* UISpringTimingParameters+Extension.swift in Sources */,
 				40ABEB6E2DA3BE3500199320 /* CLPopupTwoInputController.swift in Sources */,
 				40F38D252C8AD9A80046E4E5 /* LBDecorationCollectionViewLayout.swift in Sources */,
@@ -3564,6 +3554,7 @@
 				407DA97928A4CF93000B2BA8 /* LBTextView.swift in Sources */,
 				40D46FBF288E7471001A153A /* LBResponseChainViewController.m in Sources */,
 				409B06C328910FE7004724EB /* LBTabbarController.swift in Sources */,
+				4012373F2DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView2.swift in Sources */,
 				40ABEB502DA3BE3500199320 /* CLCalendarDelegate.swift in Sources */,
 				408DE8D92C74393E00B19350 /* LBDrawerSwiperAnimationController.swift in Sources */,
 				409FC3EB2A29C80A0053B88C /* BLTTaskChainManager.swift in Sources */,
@@ -3610,6 +3601,7 @@
 				4044D2272DACF5360012CD6D /* LBCustomPropertyCombineController.swift in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
 				403B24DE286565C80009D8E9 /* LBDragDownSecondPageView.swift in Sources */,
+				401237462DB24CD800E7AAEC /* LBFuctionTypeController.swift in Sources */,
 				402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */,
 				4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */,
 				40B4A0D12A73D00A00D02BB4 /* LBPreviewImageViewController.swift in Sources */,
@@ -3669,8 +3661,10 @@
 				40D43D1A2A67EF11001384BF /* LBChartTabView.swift in Sources */,
 				40D2764129C07580005343E3 /* LBTestWhereViewController.swift in Sources */,
 				4091F4B82A1390B600F29C06 /* CarouselFlowLayout.swift in Sources */,
+				4012373E2DAF8D5D00E7AAEC /* XLMBookDetailGiftPacketContentView.swift in Sources */,
 				407603A9284077B90019EC69 /* LBForwordingTarget.m in Sources */,
 				409C5BAD26A19988005B8344 /* NSObject+AutoProperty.m in Sources */,
+				401237432DB0E77700E7AAEC /* LBWeakSwiftDic.swift in Sources */,
 				40F38D2B2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift in Sources */,
 				40C2EFC52D5349CC003DFBC9 /* LBCompressVideoUtil.swift in Sources */,
 				40B338E329EF74720035CFC3 /* LYJInitSwiftManager.swift in Sources */,
@@ -3702,6 +3696,7 @@
 				40AE6FD629C8616600C69932 /* CollectionViewViewController.swift in Sources */,
 				402922392D5ED2470081AD17 /* LBUIKitGridView.swift in Sources */,
 				40D43D1D2A690B0A001384BF /* LBScrollKitHomeView.swift in Sources */,
+				4012373C2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift in Sources */,
 				404B0ECA2D92527C0070447D /* LBResponseInsetViewController.swift in Sources */,
 				404B0EA92D8D40440070447D /* LBTabAnimatedOCCell.m in Sources */,
 				409C16EC2A8631D8006EB24D /* LBExpandArea.swift in Sources */,
@@ -3773,17 +3768,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40F1CCFC2A317CBB00A8066C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40F1CD0E2A317CBD00A8066C /* LBWidget.intentdefinition in Sources */,
-				40F1CD072A317CBC00A8066C /* LBWidgetLiveActivity.swift in Sources */,
-				40F1CD092A317CBC00A8066C /* LBWidget.swift in Sources */,
-				40F1CD052A317CBC00A8066C /* LBWidgetBundle.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -3801,11 +3785,6 @@
 			isa = PBXTargetDependency;
 			target = 4043EB00265F9E2400EACB2B /* LBUIProject */;
 			targetProxy = 4043EB28265F9E2700EACB2B /* PBXContainerItemProxy */;
-		};
-		40F1CD112A317CBD00A8066C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 40F1CCFF2A317CBB00A8066C /* LBWidgetExtension */;
-			targetProxy = 40F1CD102A317CBD00A8066C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3851,7 +3830,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				DEVELOPMENT_TEAM = T54JS6U4YX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilterMessage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilterMessage;
@@ -3863,7 +3842,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111.FilterMessage;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123.FilterMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -3882,7 +3861,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				DEVELOPMENT_TEAM = T54JS6U4YX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilterMessage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilterMessage;
@@ -3894,7 +3873,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111.FilterMessage;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123.FilterMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4036,7 +4015,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				DEVELOPMENT_TEAM = T54JS6U4YX;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4054,7 +4033,7 @@
 				NEW_SETTING = "";
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "-o runtime --runtime-version $DEPLOYMENT_TARGET";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -4082,7 +4061,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				DEVELOPMENT_TEAM = T54JS6U4YX;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = mar64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4098,7 +4077,7 @@
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -4270,7 +4249,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				DEVELOPMENT_TEAM = T54JS6U4YX;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4286,7 +4265,7 @@
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -4347,7 +4326,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
+				DEVELOPMENT_TEAM = T54JS6U4YX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilterMessage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilterMessage;
@@ -4359,7 +4338,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111.FilterMessage;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123.FilterMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -4369,103 +4348,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = custom_debug;
-		};
-		40F1CD142A317CBD00A8066C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = LBWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LBWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = LBWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111.LBWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		40F1CD152A317CBD00A8066C /* custom_debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = LBWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LBWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = LBWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111.LBWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = custom_debug;
-		};
-		40F1CD162A317CBD00A8066C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = LBWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W7TC5X9L5S;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LBWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = LBWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Bateu.wanjian111.LBWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -4516,16 +4398,6 @@
 				4043EB37265F9E2700EACB2B /* Debug */,
 				406298FB288FEB74006A3024 /* custom_debug */,
 				4043EB38265F9E2700EACB2B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		40F1CD132A317CBD00A8066C /* Build configuration list for PBXNativeTarget "LBWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40F1CD142A317CBD00A8066C /* Debug */,
-				40F1CD152A317CBD00A8066C /* custom_debug */,
-				40F1CD162A317CBD00A8066C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
