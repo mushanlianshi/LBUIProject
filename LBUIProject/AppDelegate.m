@@ -50,11 +50,6 @@ struct B{
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSLog(@"LBLog didFinishLaunchingWithOptions ==============");
-    struct A a;
-    struct B b;
-    NSLog(@"LBLog a %@ ==============",@(sizeof(a)));
-    NSLog(@"LBLog b %@ ==============",@(sizeof(b)));
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     [self.window makeKeyAndVisible];
@@ -65,7 +60,6 @@ struct B{
     
     NSString *env = [[NSProcessInfo processInfo] environment][@"runEnvironment"];
     NSLog(@"LBLog env is %@", env);
-    [[NSRunLoop currentRunLoop] addPort:<#(nonnull NSPort *)#> forMode:<#(nonnull NSRunLoopMode)#>];
 #ifdef DEBUG
     //动态变化的
     // for iOS

@@ -46,11 +46,13 @@ extension BLTNameSpace where Base: UIRefreshControl {
     }
 }
 
+// 一个订阅描述， 订阅者告诉发布者，他需要订阅的信息
 @available(iOS 13.0, *)
 final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl>: Subscription where SubscriberType.Input == Control {
     private var subscriber: SubscriberType?
     private let control: Control
 
+    // subscriber是订阅者， control是被订阅的对象， event是被订阅对象里被订阅的事件
     init(subscriber: SubscriberType, control: Control, event: UIControl.Event) {
         self.subscriber = subscriber
         self.control = control
@@ -65,14 +67,19 @@ final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl
         subscriber = nil
     }
 
+    // 当点击事件发生时，调用订阅者订阅的方法，告诉订阅者
     @objc private func eventHandler() {
         _ = subscriber?.receive(control)
     }
 }
 
+
+// 一个发布者， 根据要订阅的控件类型，和事件来创建一个发布者。当这个类型有这个事件发生的时候， 发出消息
 public struct UIControlPublisher<Control: UIControl>: Publisher {
 
+    // 输出的类型是UIControl类型
     public typealias Output = Control
+    // 错误类型为Never，不可能出现错误
     public typealias Failure = Never
 
     let control: Control
@@ -83,11 +90,14 @@ public struct UIControlPublisher<Control: UIControl>: Publisher {
         self.controlEvents = events
     }
     
+    // 实现发布者协议的receive的方法，在里面让发布者和订阅者绑定起来
     @available(iOS 13.0, *)
     public func receive<S>(subscriber: S) where S: Subscriber,
                                                 S.Failure == UIControlPublisher.Failure,
                                                 S.Input == UIControlPublisher.Output {
+        // 创建一个订阅描述， 让订阅者来订阅的。 创建一个subscriber为订阅者， 订阅control的controlEvents事件的描述，当有这个事件的时候，发布消息，订阅者就能收到了
         let subscription = UIControlSubscription(subscriber: subscriber, control: control, event: controlEvents)
+        // 订阅者订阅这个描述信息，等有发布的时候就能收到了 Subscriber.receive(subscription:) 是建立发布者和订阅者之间正式连接的桥梁，也是让订阅者掌握主动权的开始。
         subscriber.receive(subscription: subscription)
     }
 }

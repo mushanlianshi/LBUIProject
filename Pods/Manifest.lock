@@ -100,6 +100,7 @@ PODS:
     - GKPhotoBrowser/Core
     - SDWebImage (~> 5.0)
   - GKSliderView (1.1.0)
+  - GPUImage (0.1.7)
   - HandyJSON (5.0.2)
   - Hero (1.6.2)
   - IBPCollectionViewCompositionalLayout (0.6.9)
@@ -619,6 +620,7 @@ DEPENDENCIES:
   - FaceAware
   - FSPagerView (from `https://github.com/WenchaoD/FSPagerView`)
   - GKPhotoBrowser (= 2.6.3)
+  - GPUImage (= 0.1.7)
   - HandyJSON (= 5.0.2)
   - Hero
   - IBPCollectionViewCompositionalLayout (= 0.6.9)
@@ -683,6 +685,7 @@ SPEC REPOS:
     - FaceAware
     - GKPhotoBrowser
     - GKSliderView
+    - GPUImage
     - HandyJSON
     - Hero
     - IBPCollectionViewCompositionalLayout
@@ -772,6 +775,7 @@ SPEC CHECKSUMS:
   FSPagerView: c96bcaff1f251d593c91df47f64a3b237568bcd1
   GKPhotoBrowser: 97f41f9349c1c74bb9ef742ff40840b57b347d1b
   GKSliderView: b5fc3b68bbfdb05ee403303377921d6564de61a9
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Hero: c69009dbc9e2f0472e081adc644dba05fcedae72
   IBPCollectionViewCompositionalLayout: bbb29e39ac564666a8c3cdb6633ed944b6feb55b
@@ -822,6 +826,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: ba517ba684676865b41c0b990f4118302450359f
+PODFILE CHECKSUM: 12a2a9721a59a152da8bc2ddb4ad57975255b538
 
 COCOAPODS: 1.16.2

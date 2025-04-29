@@ -14,7 +14,7 @@
 #import "CYLBadgeProtocol.h"
 #import "CYLBaseNavigationController.h"
 #import "CYLBaseTableViewController.h"
-#import "CYLJXPagingBaseViewController.h"
+#import "CYLBaseViewController.h"
 #import "CYLConstants.h"
 #import "CYLPlusButton.h"
 #import "CYLTabBar+CYLTabBarControllerExtention.h"

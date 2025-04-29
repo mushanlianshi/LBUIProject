@@ -20,6 +20,7 @@ ${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework
 ${BUILT_PRODUCTS_DIR}/FaceAware/FaceAware.framework
 ${BUILT_PRODUCTS_DIR}/GKPhotoBrowser/GKPhotoBrowser.framework
 ${BUILT_PRODUCTS_DIR}/GKSliderView/GKSliderView.framework
+${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework
 ${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
 ${BUILT_PRODUCTS_DIR}/Hero/Hero.framework
 ${BUILT_PRODUCTS_DIR}/IBPCollectionViewCompositionalLayout/IBPCollectionViewCompositionalLayout.framework

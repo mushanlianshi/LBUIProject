@@ -76,6 +76,38 @@ extension String {
         let regex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
         return matches(regex)
     }
+    
+    // 是不是合法的身份证，根据权重等判断的
+    func isValidIDCardNumber(_ idCardNumber: String) -> Bool {
+        // 检查基本格式
+        let pattern = "^[0-9]{17}[0-9Xx]$"
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let matches = regex.matches(in: idCardNumber, range: NSRange(location: 0, length: idCardNumber.utf16.count))
+        guard matches.count > 0 else {
+            return false
+        }
+        // 权重因子
+        let weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+        // 校验码对应关系
+        let checkCodes = ["1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"]
+        // 取前17位
+        let idArray = Array(idCardNumber.uppercased())
+        var sum = 0
+        for i in 0..<17 {
+            guard let num = Int(String(idArray[i])) else {
+                return false
+            }
+            sum += num * weights[i]
+        }
+
+        // 计算校验位
+        let modResult = sum % 11
+        let expectedCheckCode = checkCodes[modResult]
+        // 实际的第18位
+        let actualCheckCode = String(idArray[17])
+        return expectedCheckCode == actualCheckCode
+    }
+
 
     /// 根据字体和每一行宽度切割字符串
     func separatedLines(with font: UIFont, width: CGFloat) -> [String] {

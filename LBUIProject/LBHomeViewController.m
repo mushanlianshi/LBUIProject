@@ -209,7 +209,7 @@
         _tableView = [[UITableView alloc] init];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.estimatedRowHeight = 60;
+        _tableView.rowHeight = 55;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
         _tableView.contentOffset = CGPointMake(0, -200);

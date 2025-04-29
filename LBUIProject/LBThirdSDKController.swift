@@ -74,6 +74,7 @@ class LBThirdSDKController: UIViewController {
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.showsVerticalScrollIndicator = false
+        view.rowHeight = 55
         return view
     }()
     
@@ -121,6 +122,7 @@ class LBThirdSDKController: UIViewController {
                 [.title : "SwiftEntryKit弹框", .controller : LBAlertQueueManagerController.self],
                 [.title : "UICollectionViewCompositionalLayout布局", .controller : LBCollectionCompositionLayoutViewController.self],
                 [.title : "骨架屏", .controller : LBTabAnimatedViewController.self],
+                [.title : "GPUImage图片滤镜", .controller : LBGPUImageFilterViewController.self]
         ]
     }()
     
@@ -262,7 +264,7 @@ class LBThirdSDKController: UIViewController {
 }
 
 
-fileprivate extension String{
+extension String{
     static let title = "title"
     static let controller = "controller"
 }

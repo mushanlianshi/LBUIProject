@@ -333,6 +333,11 @@
 		40B35B79286441C00001FFE9 /* LBMultipleDelegatesContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B78286441C00001FFE9 /* LBMultipleDelegatesContainer.m */; };
 		40B35B7C286443DD0001FFE9 /* NSPointerArray+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7B286443DD0001FFE9 /* NSPointerArray+LBExtension.m */; };
 		40B35B7F28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B35B7E28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m */; };
+		40B3F8602DBE2112009C033F /* LBGPUImageFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B3F85F2DBE2112009C033F /* LBGPUImageFilterViewController.swift */; };
+		40B3F8632DBE21F4009C033F /* LBImageFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B3F8622DBE21F4009C033F /* LBImageFilterController.swift */; };
+		40B3F8652DBE2203009C033F /* LBVideoFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B3F8642DBE2203009C033F /* LBVideoFilterController.swift */; };
+		40B3F8672DBE269D009C033F /* UIViewController+BLTExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B3F8662DBE269D009C033F /* UIViewController+BLTExtension.swift */; };
+		40B3F8692DBE348E009C033F /* LBSelectVideoFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B3F8682DBE348E009C033F /* LBSelectVideoFilterViewController.swift */; };
 		40B4A0BE2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0BD2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift */; };
 		40B4A0C22A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0C12A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift */; };
 		40B4A0C42A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0C32A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift */; };
@@ -870,6 +875,11 @@
 		40B35B7B286443DD0001FFE9 /* NSPointerArray+LBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+LBExtension.m"; sourceTree = "<group>"; };
 		40B35B7D28644EA60001FFE9 /* NSObject+LBMultipleDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBMultipleDelegate.h"; sourceTree = "<group>"; };
 		40B35B7E28644EA60001FFE9 /* NSObject+LBMultipleDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBMultipleDelegate.m"; sourceTree = "<group>"; };
+		40B3F85F2DBE2112009C033F /* LBGPUImageFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGPUImageFilterViewController.swift; sourceTree = "<group>"; };
+		40B3F8622DBE21F4009C033F /* LBImageFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBImageFilterController.swift; sourceTree = "<group>"; };
+		40B3F8642DBE2203009C033F /* LBVideoFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBVideoFilterController.swift; sourceTree = "<group>"; };
+		40B3F8662DBE269D009C033F /* UIViewController+BLTExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+BLTExtension.swift"; sourceTree = "<group>"; };
+		40B3F8682DBE348E009C033F /* LBSelectVideoFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectVideoFilterViewController.swift; sourceTree = "<group>"; };
 		40B4A0BD2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCollectionDecorationStickViewController.swift; sourceTree = "<group>"; };
 		40B4A0C12A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTCollectionDecorationFlowLayout.swift; sourceTree = "<group>"; };
 		40B4A0C32A6FD98600D02BB4 /* BLTCollectionDecorationFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTCollectionDecorationFlowLayoutDelegate.swift; sourceTree = "<group>"; };
@@ -1999,6 +2009,7 @@
 		409C5BA926A19969005B8344 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				40B3F8662DBE269D009C033F /* UIViewController+BLTExtension.swift */,
 				405820682A6E47B9004252CB /* LivePreview */,
 				40C149EA28AB4960005C9E00 /* UIView */,
 				400A05D72863237B006574B5 /* UIImage+LBExtension.swift */,
@@ -2592,6 +2603,25 @@
 			path = "多代理的实现";
 			sourceTree = "<group>";
 		};
+		40B3F85B2DBE20AF009C033F /* GPUImage滤镜 */ = {
+			isa = PBXGroup;
+			children = (
+				40B3F8612DBE21DF009C033F /* LBImageFilterController */,
+				40B3F85F2DBE2112009C033F /* LBGPUImageFilterViewController.swift */,
+			);
+			path = "GPUImage滤镜";
+			sourceTree = "<group>";
+		};
+		40B3F8612DBE21DF009C033F /* LBImageFilterController */ = {
+			isa = PBXGroup;
+			children = (
+				40B3F8622DBE21F4009C033F /* LBImageFilterController.swift */,
+				40B3F8642DBE2203009C033F /* LBVideoFilterController.swift */,
+				40B3F8682DBE348E009C033F /* LBSelectVideoFilterViewController.swift */,
+			);
+			path = LBImageFilterController;
+			sourceTree = "<group>";
+		};
 		40B4A0BB2A6FD32D00D02BB4 /* FirstTabbarVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2751,6 +2781,7 @@
 		40D2763F29C0754C005343E3 /* ThirdTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				40B3F85B2DBE20AF009C033F /* GPUImage滤镜 */,
 				40ABEB822DA3C65700199320 /* LBBaseView.swift */,
 				40ABEB7E2DA3C5A400199320 /* Iconfont */,
 				404B0EA22D8D37D10070447D /* LBTabAnimated */,
@@ -3396,6 +3427,7 @@
 				40ABEB602DA3BE3500199320 /* CLYearMonthDayHourMinuteDataPickerView.swift in Sources */,
 				409FC3DE2A25F7560053B88C /* LBVideoPlayerBottomActionToolBar.swift in Sources */,
 				40ABEB6C2DA3BE3500199320 /* CLPopupOneInputController.swift in Sources */,
+				40B3F8692DBE348E009C033F /* LBSelectVideoFilterViewController.swift in Sources */,
 				4080FEBC2AD8DD5300FF79FC /* LBDrawImageUtil.swift in Sources */,
 				40AE6FDD29C8616600C69932 /* HeightChangeViewController.swift in Sources */,
 				40ABEB642DA3BE3500199320 /* CLTwoSidedView.swift in Sources */,
@@ -3597,6 +3629,7 @@
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
 				406EBD1C29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift in Sources */,
 				40B4A0BE2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift in Sources */,
+				40B3F8672DBE269D009C033F /* UIViewController+BLTExtension.swift in Sources */,
 				40AE6FE729C8616600C69932 /* TestListBaseView.swift in Sources */,
 				4044D2272DACF5360012CD6D /* LBCustomPropertyCombineController.swift in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
@@ -3695,6 +3728,7 @@
 				40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */,
 				40AE6FD629C8616600C69932 /* CollectionViewViewController.swift in Sources */,
 				402922392D5ED2470081AD17 /* LBUIKitGridView.swift in Sources */,
+				40B3F8632DBE21F4009C033F /* LBImageFilterController.swift in Sources */,
 				40D43D1D2A690B0A001384BF /* LBScrollKitHomeView.swift in Sources */,
 				4012373C2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift in Sources */,
 				404B0ECA2D92527C0070447D /* LBResponseInsetViewController.swift in Sources */,
@@ -3717,6 +3751,8 @@
 				40F38D272C8ADACC0046E4E5 /* SelectionModel.swift in Sources */,
 				40ABEB8E2DA3DB6100199320 /* LBCombineUserInfoModel.swift in Sources */,
 				409FC3FB2A2A010D0053B88C /* LLContractDetailChanQuanCheckTask.swift in Sources */,
+				40B3F8602DBE2112009C033F /* LBGPUImageFilterViewController.swift in Sources */,
+				40B3F8652DBE2203009C033F /* LBVideoFilterController.swift in Sources */,
 				407603AC284078AC0019EC69 /* NSObject+UnRecognizeSelector.m in Sources */,
 				40ABEB572DA3BE3500199320 /* CLCalendarView.swift in Sources */,
 				402922372D5ED1C20081AD17 /* LBAddUIKitViewPage.swift in Sources */,

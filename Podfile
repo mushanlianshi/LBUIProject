@@ -88,6 +88,9 @@ target 'LBUIProject' do
    pod 'SMSwiftBasicKit', '0.1.5'
    pod 'lottie-ios'
    pod 'BLTIconFont', :git => 'git@github.com:mushanlianshi/BLTIconFont.git'
+   
+   #滤镜
+   pod 'GPUImage', '0.1.7'
 
 
 

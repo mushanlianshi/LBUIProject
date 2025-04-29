@@ -10,5 +10,6 @@
 #import "BLTPreviewImageManager.h"
 #import "LBTabAnimatedOCCell.h"
 #import "LBTabAnimatedCardOCCell.h"
+#import "NSObject+AutoProperty.h"
 //#import <TXLiteAVSDK_Player/TXLiteAVSDK.h>
 //#import <SuperPlayer/SuperPlayer.h>
