@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 // 定义数据模型类 这里要观察list里面这个模型的isSelected 这里只能用struct 不能用class
 struct ItemModel: Identifiable {
@@ -29,7 +30,7 @@ class ItemViewModel: ObservableObject {
     
     init() {
         // 初始化 10 个模型
-        for i in 0..<10 {
+        for i in 0..<30 {
             items.append(ItemModel(name: "Item \(i)", isSelected: false))
         }
     }
@@ -49,6 +50,7 @@ class ItemViewModel: ObservableObject {
 
 // 定义主视图
 struct LBSelectListPage: View {
+    @State var mobile = ""
     @ObservedObject var viewModel = ItemViewModel()
     var body: some View {
         List {
@@ -65,6 +67,17 @@ struct LBSelectListPage: View {
                .listRowBackground(Color.blue)
             }
         }
+    }
+    
+    
+    func testView() -> some View {
+        ScrollView {
+            Text("Item 1")
+        }
+        .introspect(.scrollView, on: .iOS(.v13, .v14, .v15, .v16, .v17, .v18)) { scrollView in
+            // do something with UIScrollView
+        }
+        
     }
 }
 

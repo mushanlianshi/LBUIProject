@@ -36,6 +36,8 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "ScrollView嵌套Scrollview", vcClass: LBScrollViewInScrollViewController.self),
                 LBListItemModel.init(title: "Swift方法派发种类", vcClass: LBFuctionTypeController.self),
                 LBListItemModel.init(title: "自动连接wifi", vcClass: LBConnectWifiAutoController.self),
+                LBListItemModel.init(title: "手势优先级", vcClass: LBGesturePriorityViewController.self),
+                LBListItemModel.init(title: "AI问答器", vcClass: LBAIAnswerViewController.self),
             ]
         }
     }
@@ -48,6 +50,17 @@ class LBVerifyViewController: LBBaseCollectionViewController {
         return .portrait
     }
 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // 打印的结果一样， Self.self super.self打印的当前类型都是 LBVerifyViewController， 运行时的类型
+        print("LBLog class is \(type(of: self))")
+        print("LBLog class is \(type(of: self.self))")
+        print("LBLog class is \(type(of: super.self))")
+        let child = Child()
+        child.printType()
+    }
+    
 }
 
 
@@ -67,7 +80,24 @@ extension LBVerifyViewController{
         guard let vcClass = item.vcClass as? UIViewController.Type else {
             return
         }
-        self.navigationController?.pushViewController(vcClass.init(), animated: true)
+        let vc = vcClass.init()
+        vc.view.backgroundColor = .white
+        vc.navigationItem.title = item.title
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+
+
+class Parent {
+    func printType() {
+        print("self.Type: \(type(of: self))")  // 动态类型（运行时的真实类型）
+    }
+}
+
+class Child: Parent {
+    override func printType() {
+        print("Child self.Type: \(type(of: self))")
+        super.printType()
+    }
 }

@@ -122,7 +122,7 @@ class LBThirdSDKController: UIViewController {
                 [.title : "SwiftEntryKit弹框", .controller : LBAlertQueueManagerController.self],
                 [.title : "UICollectionViewCompositionalLayout布局", .controller : LBCollectionCompositionLayoutViewController.self],
                 [.title : "骨架屏", .controller : LBTabAnimatedViewController.self],
-                [.title : "GPUImage图片滤镜", .controller : LBGPUImageFilterViewController.self]
+                [.title : "GPUImage图片滤镜", .controller : LBGPUImageFilterViewController.self],
         ]
     }()
     
@@ -207,7 +207,9 @@ class LBThirdSDKController: UIViewController {
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+//            make.edges.equalToSuperview()
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(80)
         }
         
         let items: Observable<[[String : Any]]> = Observable.create { observer in

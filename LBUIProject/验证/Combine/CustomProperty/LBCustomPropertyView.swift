@@ -27,6 +27,28 @@ extension BLTNameSpace where Base: UIButton {
                 }
             }
     }
+    
+    
+    func validResult<P: Publisher>(_ publisher: P) -> AnyCancellable where P.Output == String, P.Failure == Never {
+        var cancelable = Set<AnyCancellable>()
+        let p = PassthroughSubject<String, Error>().eraseToAnyPublisher()
+        p.sink { result in
+            switch result{
+            case .finished:
+                print("LBLog finished ----")
+            case .failure(let err):
+                print("LBLOg error is \(err.localizedDescription)")
+            }
+        } receiveValue: { value in
+            
+        }.store(in: &cancelable)
+
+
+        return publisher.sink { value in
+            self.base.titleLabel?.text = value
+        }
+    }
+    
 }
 
 extension BLTNameSpace where Base: LBCustomPropertyView{
@@ -50,9 +72,9 @@ class LBCustomPropertyView: LBBaseView{
     
     private lazy var stackView = UIStackView.blt.initStackView(spacing: 10, axis: .vertical)
     
-    fileprivate lazy var nameLab = UILabel.blt.initWithText(text: "name", font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
+    fileprivate lazy var nameLab = UILabel.blt.initWithText(text: "", font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
     
-    fileprivate lazy var ageLab = UILabel.blt.initWithText(text: "0", font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
+    fileprivate lazy var ageLab = UILabel.blt.initWithText(text: "", font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
     
     lazy var button: UIButton = {
        let button = UIButton()

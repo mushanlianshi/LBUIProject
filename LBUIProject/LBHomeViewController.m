@@ -73,16 +73,37 @@
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.view);
-        make.bottom.mas_offset(-60);
+        make.left.bottom.top.right.equalTo(self.view);
     }];
     [self getNetworkAuth];
     [self testSemaphore];
 
     LBHomeViewController *vc;
     NSLog(@"LBLog vc count is %@",@(vc.count));
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+        [self testSyncSerialQueue];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+        [self testSyncSerialQueue];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+        [self testSyncSerialQueue];
+    });
+    
 }
 
+- (void)testSyncSerialQueue{
+    dispatch_queue_t queue = dispatch_queue_create("LBLog custom serial", DISPATCH_QUEUE_SERIAL);
+    dispatch_sync(queue, ^{
+        NSLog(@"LBLog current thread is %@", [NSThread currentThread]);
+        sleep(12);
+        NSLog(@"LBLog current thread is %@", [NSThread currentThread]);
+    });
+    NSLog(@"LBLog current thread is main thread --------- %@", [NSThread currentThread]);
+}
 
 - (void)playMusic{
 //    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"11111" ofType:@"flac"];

@@ -442,6 +442,7 @@
 
 - (void)lb_safeSetObject:(id)object forKey:(NSString *)key{
     key = key.copy;
+    // 单写 dispatch_barrier_async栅栏函数保证前面队列的任务都执行完之后，在执行这个异步操作。
     dispatch_barrier_async(_concurrentQueue, ^{
         [_dic setObject:object forKey:key];
         NSLog(@"LBLog setobject %@",[NSThread currentThread]);
@@ -451,6 +452,7 @@
 - (id)lb_safeObjectForKey:(NSString *)key{
     key = key.copy;
     __block id object = nil;
+    /// 同步保证一次只有一个线程访问
     dispatch_sync(_concurrentQueue, ^{
         object = [_dic objectForKey:key];
 //        NSLog(@"LBLog object forkey %@",[NSThread currentThread]);
@@ -458,5 +460,17 @@
     return object;
 }
 
+
+- (void)lb_safeObjectForKey2:(NSString *)key successBlock:(dispatch_block_t)successBlock{
+    key = key.copy;
+    __block id object = nil;
+    /// 多读 异步到并发队列中去，可以做到多读
+    dispatch_sync(_concurrentQueue, ^{
+        object = [_dic objectForKey:key];
+        if (successBlock) {
+            successBlock();
+        }
+    });
+}
 
 @end

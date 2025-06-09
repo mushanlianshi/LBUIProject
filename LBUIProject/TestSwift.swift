@@ -7,6 +7,7 @@
 
 import Foundation
 import HandyJSON
+import Combine
 
 protocol LBTestProtocol {
     
@@ -53,7 +54,6 @@ class LBHandyJsonModel: NSObject, HandyJSON{
         }
         let di = dic()
         let testModel = LBHandyJsonModel.deserialize(from: di)
-        print("LBLog testModel \(testModel)")
     }
     
     

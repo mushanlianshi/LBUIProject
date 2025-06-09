@@ -28,9 +28,9 @@ class LBTestSelfController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "测试self"
         //输出SomeClass doAnotherThing是类方法，类方法中的self指向实际运行的self
-        (SomeClass() as Base).doAnotherThing()
+//        (SomeClass() as Base).doAnotherThing()
         // Base   doSomething是协议方法 方法doSomething是协议扩展，它的类型是由调用端的静态类型决定的，也就是Base
-        (SomeClass() as Base).doSomething()
+//        (SomeClass() as Base).doSomething()
     }
     
 

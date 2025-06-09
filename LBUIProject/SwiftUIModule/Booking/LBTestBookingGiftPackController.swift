@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI 
 
-// 包裹一层处理属性后面设置的
+// 包裹一层处理属性后面设置的， 这样就是可选的了，不是创建的时候就必传
 class LBTestBookingGiftPackController: UIViewController {
     
     lazy var wrapper = LBModelWrapper<XLMBookDetailGiftPacketItemModel>()

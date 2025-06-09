@@ -18,6 +18,7 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.mixSwiftUIView, LBCombineViewController.self),
         (.selectList, AnyView(LBSelectListPage())),
         (.addUIKitView, AnyView(LBAddUIKitViewPage())),
+        (.mixSwiftUIView, LBSwiftUIRefreshListController.self),
     ]
 
     

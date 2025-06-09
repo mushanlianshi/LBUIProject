@@ -91,7 +91,10 @@ target 'LBUIProject' do
    
    #滤镜
    pod 'GPUImage', '0.1.7'
-
+   #textField等原生属性设置的
+#   pod 'SwiftUIIntrospect', '1.3.0'
+  #添加下拉刷新的
+  pod "SwiftUIRefresh"
 
 
   target 'LBUIProjectTests' do

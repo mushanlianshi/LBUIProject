@@ -54,8 +54,8 @@ struct B{
     self.window.frame = [UIScreen mainScreen].bounds;
     [self.window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [LBTabbarController new];
-//    self.window.rootViewController = [LBHomeViewController new];
+//    self.window.rootViewController = [LBTabbarController new];
+    self.window.rootViewController = [TransparentTabBarController new];
     [[UINavigationBar appearance] setTranslucent:NO];
     
     NSString *env = [[NSProcessInfo processInfo] environment][@"runEnvironment"];
