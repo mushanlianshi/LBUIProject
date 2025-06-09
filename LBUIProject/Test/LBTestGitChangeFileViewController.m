@@ -18,14 +18,9 @@
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// 测试修改内容，和另外个分支修改文件名比对，会不会对比
+- (void)test_changeFile{
+    
 }
-*/
 
 @end
