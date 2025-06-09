@@ -1,17 +1,17 @@
 //
-//  LBTestGitChangeFileViewController.m
+//  LBTestGitChangeFileViewController2222.m
 //  LBUIProject
 //
 //  Created by liu bin on 2025/6/9.
 //
 
-#import "LBTestGitChangeFileViewController.h"
+#import "LBTestGitChangeFileViewController2222.h"
 
-@interface LBTestGitChangeFileViewController ()
+@interface LBTestGitChangeFileViewController2222 ()
 
 @end
 
-@implementation LBTestGitChangeFileViewController
+@implementation LBTestGitChangeFileViewController2222
 
 - (void)viewDidLoad {
     [super viewDidLoad];

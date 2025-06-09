@@ -1,5 +1,5 @@
 //
-//  LBTestGitChangeFileViewController.h
+//  LBTestGitChangeFileViewController2222.h
 //  LBUIProject
 //
 //  Created by liu bin on 2025/6/9.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LBTestGitChangeFileViewController : UIViewController
+@interface LBTestGitChangeFileViewController2222 : UIViewController
 
 @end
 
