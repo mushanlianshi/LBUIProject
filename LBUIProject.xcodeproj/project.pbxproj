@@ -400,6 +400,7 @@
 		40DF3564286466A7008EE299 /* LBMultipleDelegatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */; };
 		40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
+		40E864092DF6654F00EA733B /* LBTestGitChangeFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController.m */; };
 		40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1884294728410003F457 /* LBGrayViewController.swift */; };
 		40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EABDE026AFDD25007BD450 /* LBTransmitView.m */; };
 		40F1CD0F2A317CBD00A8066C /* LBWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 40F1CD0A2A317CBC00A8066C /* LBWidget.intentdefinition */; };
@@ -966,6 +967,8 @@
 		40E1E5F02757235B00A8DBDB /* mainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainTest.m; sourceTree = "<group>"; };
 		40E1E6152757948C00A8DBDB /* mainTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainTest.cpp; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
+		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController.h; sourceTree = "<group>"; };
+		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController.m; sourceTree = "<group>"; };
 		40EA1884294728410003F457 /* LBGrayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGrayViewController.swift; sourceTree = "<group>"; };
 		40EABDDF26AFDD25007BD450 /* LBTransmitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTransmitView.h; sourceTree = "<group>"; };
 		40EABDE026AFDD25007BD450 /* LBTransmitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTransmitView.m; sourceTree = "<group>"; };
@@ -1362,6 +1365,7 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				40E864062DF6653F00EA733B /* Test */,
 				40D6843C2DE5BCFD004249E3 /* Resources */,
 				408400242D2CFE8A004A58CC /* Combine */,
 				4080FEB72AD8DCA600FF79FC /* SecondTabbar */,
@@ -3040,6 +3044,15 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
+		40E864062DF6653F00EA733B /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController.h */,
+				40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController.m */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		40EA1883294728280003F457 /* 置灰 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3506,6 +3519,7 @@
 				4023B0692AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift in Sources */,
 				40ABEB4F2DA3BE3500199320 /* CLCalendarConfig.swift in Sources */,
 				40AE6FA929C80AE600C69932 /* BLTAPMFPSManager.m in Sources */,
+				40E864092DF6654F00EA733B /* LBTestGitChangeFileViewController.m in Sources */,
 				4028C6092C3B80FA004E86F3 /* LBPresentFullScreenController.swift in Sources */,
 				400A4F9A2A03AD0800C7A51B /* LBRxSwiftOrEmptyShareController.swift in Sources */,
 				40ABEB812DA3C5A400199320 /* UIFont+LBExtension.swift in Sources */,
