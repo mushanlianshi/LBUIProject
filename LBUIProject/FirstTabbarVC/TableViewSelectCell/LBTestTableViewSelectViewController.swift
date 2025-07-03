@@ -101,6 +101,7 @@ class LBTestTableViewSelectViewController: UIViewController {
         view.addSubview(sureButton)
         deleteNilTest()
         testFuncObject(t: self)
+        
     }
     
     

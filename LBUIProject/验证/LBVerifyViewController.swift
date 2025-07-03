@@ -38,6 +38,8 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "自动连接wifi", vcClass: LBConnectWifiAutoController.self),
                 LBListItemModel.init(title: "手势优先级", vcClass: LBGesturePriorityViewController.self),
                 LBListItemModel.init(title: "AI问答器", vcClass: LBAIAnswerViewController.self),
+                LBListItemModel.init(title: "流式输出问答器", vcClass: LBSSEReponseController.self),
+                LBListItemModel.init(title: "UIKit加载SF Symbols设置颜色、大小", vcClass: LBUIKitLoadSFSymbolsController.self),
             ]
         }
     }

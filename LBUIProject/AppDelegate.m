@@ -40,7 +40,7 @@ struct B{
 //extern int __llvm_profile_write_file(void);
 //}
 
-@interface AppDelegate ()
+@interface AppDelegate ()<NSURLSessionTaskDelegate>
 
 @property (nonatomic, strong) NSMutableArray      *mArray;
 
@@ -63,8 +63,8 @@ struct B{
 #ifdef DEBUG
     //动态变化的
     // for iOS
-    [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
-    NSLog(@"LBLog injection ====");
+//    [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
+//    NSLog(@"LBLog injection ====");
     
 #endif
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -100,12 +100,40 @@ struct B{
 //    NSLog(@"LBlog getLocalIPAddress %@", [self getLocalIPAddress:false]);
 //    NSLog(@"LBlog getPublicIPAddress %@", [self getNetworkIPAddress]);
     
-    NSURL *url = [[NSURL alloc] initWithString:@"http://jscss.baletoo.com/Public/app/wanjian/map@3x.png"];
-    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSLog(@"lblog ---- %@", idfv);
+//    NSURL *url = [[NSURL alloc] initWithString:@"http://jscss.baletoo.com/Public/app/wanjian/map@3x.png"];
+//    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+//    NSLog(@"lblog ---- %@", idfv);
     
+//    NSURL *chunkUrl = [NSURL URLWithString:@"http://localhost:8088"];
+//    NSURLSessionDataTask *task = [[NSURLSession sharedSession]
+//        dataTaskWithURL:chunkUrl
+//        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//            // 不走这里，因为是流式，不完整
+//        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"LBLog 收到一段数据: %@", data);
+//        NSLog(@"LBLog 收到一段数据 string: %@", string);
+//        }];
+//    task.delegate = self;
+//    [task resume];
     return YES;
 }
+// 实现代理
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    NSString *chunk = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"收到一段数据: %@", chunk);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    if (httpResponse.statusCode != 200) {
+        NSError *error = [NSError errorWithDomain:@"SSEErrorDomain" code:httpResponse.statusCode userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"HTTP request failed with status code %ld", (long)httpResponse.statusCode]}];
+        NSLog(error.description);
+        completionHandler(NSURLSessionResponseCancel);
+        return;
+    }
+    completionHandler(NSURLSessionResponseAllow);
+}
+
 //performFetchWithCompletionHandler
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     printf("LBLog======");

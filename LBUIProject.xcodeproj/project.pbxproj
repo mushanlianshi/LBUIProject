@@ -62,6 +62,8 @@
 		4022E72529CDACD300C4476F /* LBRxSwiftPractiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022E72429CDACD300C4476F /* LBRxSwiftPractiseViewController.swift */; };
 		4023B0692AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023B0682AA5E33A00A55675 /* LBAlphaAndOpacityViewController.swift */; };
 		402412942A0B7E9000011588 /* LBRxSwiftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402412932A0B7E9000011588 /* LBRxSwiftTableViewController.swift */; };
+		402550DD2DF92C01002D8C03 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 402550DC2DF92C01002D8C03 /* SwiftUIIntrospect */; };
+		402550E02DF92E6E002D8C03 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 402550DF2DF92E6E002D8C03 /* SwiftUIPullToRefresh */; };
 		4026540426846D9800472F4F /* LBTestFaceAwareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4026540326846D9800472F4F /* LBTestFaceAwareController.m */; };
 		402654272684720A00472F4F /* TestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402654262684720A00472F4F /* TestSwift.swift */; };
 		4028B5242A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028B5232A09F2DD00D7A68A /* LBRxSwiftSchedulersViewController.swift */; };
@@ -74,6 +76,9 @@
 		402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */; };
 		402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */; };
 		402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402E3D2226BECAC60027CE64 /* LBBlockViewController.m */; };
+		403094F22E14D53C00E04161 /* LBSSEReponseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403094F12E14D53C00E04161 /* LBSSEReponseController.swift */; };
+		403094F42E15102300E04161 /* LBStreamJsonParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403094F32E15102300E04161 /* LBStreamJsonParse.swift */; };
+		403094F62E15161A00E04161 /* LBDouBaoParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403094F52E15161A00E04161 /* LBDouBaoParse.swift */; };
 		4033915C26B2A23400259FC6 /* LBStretchImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */; };
 		40356F78286BE89700561E00 /* MessageFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40356F77286BE89700561E00 /* MessageFilterExtension.swift */; };
 		40356F7D286BE89700561E00 /* FilterMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 40356F75286BE89700561E00 /* FilterMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -269,7 +274,6 @@
 		40ABEB6F2DA3BE3500199320 /* CLPopoverManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABEB442DA3BE3500199320 /* CLPopoverManager+Extension.swift */; };
 		40ABEB702DA3BE3500199320 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABEB452DA3BE3500199320 /* String+Extension.swift */; };
 		40ABEB722DA3BE3500199320 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABEB472DA3BE3500199320 /* UIFont+Extension.swift */; };
-		40ABEB732DA3BE3500199320 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABEB482DA3BE3500199320 /* UIImage+Extension.swift */; };
 		40ABEB742DA3BE3500199320 /* UISpringTimingParameters+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABEB492DA3BE3500199320 /* UISpringTimingParameters+Extension.swift */; };
 		40ABEB752DA3BE3500199320 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABEB4A2DA3BE3500199320 /* UITextField+Extension.swift */; };
 		40ABEB762DA3BE3500199320 /* LBAlertQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABEB4C2DA3BE3500199320 /* LBAlertQueueViewController.swift */; };
@@ -347,7 +351,6 @@
 		40B4A0D12A73D00A00D02BB4 /* LBPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0D02A73D00A00D02BB4 /* LBPreviewImageViewController.swift */; };
 		40B4A0D42A73D05D00D02BB4 /* BLTPreviewImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B4A0D32A73D05D00D02BB4 /* BLTPreviewImageManager.m */; };
 		40B73CAB2DCDB38F004B8CF7 /* LBSwiftUIRefreshListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B73CAA2DCDB38F004B8CF7 /* LBSwiftUIRefreshListViewModel.swift */; };
-		40B73CB12DCDCD22004B8CF7 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 40B73CB02DCDCD22004B8CF7 /* SwiftUIIntrospect */; };
 		40B73CB62DD1D8D9004B8CF7 /* LBCustomTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B73CB52DD1D8D9004B8CF7 /* LBCustomTabbarController.swift */; };
 		40B73CB92DD1E17A004B8CF7 /* LBGesturePriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B73CB82DD1E17A004B8CF7 /* LBGesturePriorityViewController.swift */; };
 		40BB0A5A2D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB0A592D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift */; };
@@ -418,6 +421,7 @@
 		40F38D2D2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2C2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift */; };
 		40F38D2F2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2E2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift */; };
 		40F9FA452DF1816600D5D736 /* LBAIAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */; };
+		40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -561,6 +565,9 @@
 		402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawRectController.swift; sourceTree = "<group>"; };
 		402E3D2126BECAC60027CE64 /* LBBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBlockViewController.h; sourceTree = "<group>"; };
 		402E3D2226BECAC60027CE64 /* LBBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBlockViewController.m; sourceTree = "<group>"; };
+		403094F12E14D53C00E04161 /* LBSSEReponseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSSEReponseController.swift; sourceTree = "<group>"; };
+		403094F32E15102300E04161 /* LBStreamJsonParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBStreamJsonParse.swift; sourceTree = "<group>"; };
+		403094F52E15161A00E04161 /* LBDouBaoParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDouBaoParse.swift; sourceTree = "<group>"; };
 		40329B1C285C8589007C4017 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4033915A26B2A23400259FC6 /* LBStretchImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStretchImageViewController.h; sourceTree = "<group>"; };
 		4033915B26B2A23400259FC6 /* LBStretchImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStretchImageViewController.m; sourceTree = "<group>"; };
@@ -805,7 +812,6 @@
 		40ABEB442DA3BE3500199320 /* CLPopoverManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLPopoverManager+Extension.swift"; sourceTree = "<group>"; };
 		40ABEB452DA3BE3500199320 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		40ABEB472DA3BE3500199320 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		40ABEB482DA3BE3500199320 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		40ABEB492DA3BE3500199320 /* UISpringTimingParameters+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISpringTimingParameters+Extension.swift"; sourceTree = "<group>"; };
 		40ABEB4A2DA3BE3500199320 /* UITextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		40ABEB4C2DA3BE3500199320 /* LBAlertQueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBAlertQueueViewController.swift; sourceTree = "<group>"; };
@@ -995,6 +1001,7 @@
 		40F38D2C2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullWidthSelfSizingCell.swift; sourceTree = "<group>"; };
 		40F38D2E2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomDecorationLayoutAttributes.swift; sourceTree = "<group>"; };
 		40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAIAnswerViewController.swift; sourceTree = "<group>"; };
+		40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUIKitLoadSFSymbolsController.swift; sourceTree = "<group>"; };
 		40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwiftHeader.swift; sourceTree = "<group>"; };
 		661A7F3507F09E41EDA38CB7 /* Pods-LBUIProject.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.custom_debug.xcconfig"; sourceTree = "<group>"; };
 		70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1019,13 +1026,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				401BEEA52A259E7F00F28892 /* VideoToolbox.framework in Frameworks */,
-				40B73CB12DCDCD22004B8CF7 /* SwiftUIIntrospect in Frameworks */,
 				401BEEA32A259E7900F28892 /* QuartzCore.framework in Frameworks */,
 				401BEEA12A259E7200F28892 /* OpenGLES.framework in Frameworks */,
 				401BEE9F2A259E6C00F28892 /* MobileCoreServices.framework in Frameworks */,
 				401BEE9D2A259E6200F28892 /* MediaPlayer.framework in Frameworks */,
 				401BEE9B2A259E5B00F28892 /* CoreVideo.framework in Frameworks */,
 				401BEE992A259E5400F28892 /* CoreMedia.framework in Frameworks */,
+				402550DD2DF92C01002D8C03 /* SwiftUIIntrospect in Frameworks */,
+				402550E02DF92E6E002D8C03 /* SwiftUIPullToRefresh in Frameworks */,
 				401BEE972A259E4C00F28892 /* AVFoundation.framework in Frameworks */,
 				401BEE952A259E4500F28892 /* UIKit.framework in Frameworks */,
 				401BEE932A259E3700F28892 /* AudioToolbox.framework in Frameworks */,
@@ -1307,6 +1315,16 @@
 				402E3D2226BECAC60027CE64 /* LBBlockViewController.m */,
 			);
 			path = Block;
+			sourceTree = "<group>";
+		};
+		403094F02E14D51900E04161 /* 流式输出 */ = {
+			isa = PBXGroup;
+			children = (
+				403094F12E14D53C00E04161 /* LBSSEReponseController.swift */,
+				403094F32E15102300E04161 /* LBStreamJsonParse.swift */,
+				403094F52E15161A00E04161 /* LBDouBaoParse.swift */,
+			);
+			path = "流式输出";
 			sourceTree = "<group>";
 		};
 		4033915926B2A1F400259FC6 /* StretchImage */ = {
@@ -2147,6 +2165,8 @@
 		40ABA5892A1DA86800B84488 /* 验证 */ = {
 			isa = PBXGroup;
 			children = (
+				403094F02E14D51900E04161 /* 流式输出 */,
+				40FDBFA22DF9293000BCF457 /* SFSymbols */,
 				40F9FA432DF1813000D5D736 /* AIAnswer */,
 				40B73CB72DD1E143004B8CF7 /* GesturePriority */,
 				4012374A2DB7235A00E7AAEC /* ConnectWifiAuto */,
@@ -2373,7 +2393,6 @@
 				40ABEB442DA3BE3500199320 /* CLPopoverManager+Extension.swift */,
 				40ABEB452DA3BE3500199320 /* String+Extension.swift */,
 				40ABEB472DA3BE3500199320 /* UIFont+Extension.swift */,
-				40ABEB482DA3BE3500199320 /* UIImage+Extension.swift */,
 				40ABEB492DA3BE3500199320 /* UISpringTimingParameters+Extension.swift */,
 				40ABEB4A2DA3BE3500199320 /* UITextField+Extension.swift */,
 			);
@@ -3121,6 +3140,14 @@
 			path = AIAnswer;
 			sourceTree = "<group>";
 		};
+		40FDBFA22DF9293000BCF457 /* SFSymbols */ = {
+			isa = PBXGroup;
+			children = (
+				40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */,
+			);
+			path = SFSymbols;
+			sourceTree = "<group>";
+		};
 		83F0C6F792EF35BDEB2C0FBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3189,7 +3216,8 @@
 			);
 			name = LBUIProject;
 			packageProductDependencies = (
-				40B73CB02DCDCD22004B8CF7 /* SwiftUIIntrospect */,
+				402550DC2DF92C01002D8C03 /* SwiftUIIntrospect */,
+				402550DF2DF92E6E002D8C03 /* SwiftUIPullToRefresh */,
 			);
 			productName = LBUIProject;
 			productReference = 4043EB01265F9E2400EACB2B /* LBUIProject.app */;
@@ -3273,7 +3301,8 @@
 			);
 			mainGroup = 4043EAF8265F9E2400EACB2B;
 			packageReferences = (
-				40B73CAF2DCDCD22004B8CF7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				402550DB2DF92C01002D8C03 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				402550DE2DF92E6D002D8C03 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */,
 			);
 			productRefGroup = 4043EB02265F9E2400EACB2B /* Products */;
 			projectDirPath = "";
@@ -3572,6 +3601,7 @@
 				40616F222BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift in Sources */,
 				40D46FC9288E7792001A153A /* LBResponseChainManager.m in Sources */,
 				40795CD42786BE7800E2A5B2 /* LBImageMemoryController.swift in Sources */,
+				403094F22E14D53C00E04161 /* LBSSEReponseController.swift in Sources */,
 				409FC3FA2A2A010D0053B88C /* LLContractDetailBeforeSignCheckTask.swift in Sources */,
 				40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */,
 				40441766299F4F28000F567F /* SYVerticalHorizontalTableView.m in Sources */,
@@ -3583,7 +3613,6 @@
 				4043EB17265F9E2700EACB2B /* main.m in Sources */,
 				4063EF4F285ADDCD00335BA2 /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				409FC3E02A25FA150053B88C /* LBVideoPlayerView.swift in Sources */,
-				40ABEB732DA3BE3500199320 /* UIImage+Extension.swift in Sources */,
 				409ACE4F26BA72740092A2DF /* LBCloseDoorAnimationViewController.m in Sources */,
 				40ABEB762DA3BE3500199320 /* LBAlertQueueViewController.swift in Sources */,
 				40ABA59E2A1F521100B84488 /* LBViewModelProtocol.swift in Sources */,
@@ -3715,6 +3744,7 @@
 				40AE6FE229C8616600C69932 /* UIWindow+JXSafeArea.swift in Sources */,
 				409B06C52891108F004724EB /* LBThirdSDKController.swift in Sources */,
 				4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */,
+				40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */,
 				406EBD1C29DEA80E00A6C06D /* LBBankFormatterTextFieldController.swift in Sources */,
 				40B4A0BE2A6FD65D00D02BB4 /* LBCollectionDecorationStickViewController.swift in Sources */,
 				40B3F8672DBE269D009C033F /* UIViewController+BLTExtension.swift in Sources */,
@@ -3834,6 +3864,7 @@
 				40ACEE732A49A0340001BCAB /* EKAttributes+LBExtension.swift in Sources */,
 				40BB0A5A2D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift in Sources */,
 				40B4A0C22A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift in Sources */,
+				403094F62E15161A00E04161 /* LBDouBaoParse.swift in Sources */,
 				40ABEB6D2DA3BE3500199320 /* CLPopupTipsController.swift in Sources */,
 				400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */,
 				400A4FB92A04D9EC00C7A51B /* LBFlipCardViewController.swift in Sources */,
@@ -3855,6 +3886,7 @@
 				402922342D5ECE820081AD17 /* LBSelectListPage.swift in Sources */,
 				40ACEE762A4C1A9D0001BCAB /* LBAlertQueueManager.swift in Sources */,
 				40D43D172A67EED6001384BF /* LBChartBarMarkView.swift in Sources */,
+				403094F42E15102300E04161 /* LBStreamJsonParse.swift in Sources */,
 				4009FC3A2A05159100221887 /* LBCollectionViewExtension.swift in Sources */,
 				40ABEB612DA3BE3500199320 /* CLFlopBottomView.swift in Sources */,
 				40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */,
@@ -4534,21 +4566,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		40B73CAF2DCDCD22004B8CF7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
+		402550DB2DF92C01002D8C03 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/swiftui-introspect.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.3.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+		402550DE2DF92E6D002D8C03 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-pull-to-refresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.9;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		40B73CB02DCDCD22004B8CF7 /* SwiftUIIntrospect */ = {
+		402550DC2DF92C01002D8C03 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 40B73CAF2DCDCD22004B8CF7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
+			package = 402550DB2DF92C01002D8C03 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
 			productName = SwiftUIIntrospect;
+		};
+		402550DF2DF92E6E002D8C03 /* SwiftUIPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 402550DE2DF92E6D002D8C03 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */;
+			productName = SwiftUIPullToRefresh;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

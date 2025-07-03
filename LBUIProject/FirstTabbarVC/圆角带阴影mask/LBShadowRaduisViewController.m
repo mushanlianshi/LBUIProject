@@ -79,11 +79,12 @@
     view.layer.cornerRadius = 10;
     view.layer.borderWidth = 1;
     view.layer.borderColor = [UIColor redColor].CGColor;
+    
     view.layer.shadowColor = [UIColor blueColor].CGColor;
     view.layer.shadowOffset = CGSizeMake(0,0);
     view.layer.shadowOpacity = 0.8;
     view.layer.shadowRadius = 2;
-    view.backgroundColor = [UIColor whiteColor];
+//    view.backgroundColor = [UIColor whiteColor];
     [self.verticalStackView addArrangedSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(100);

@@ -8,6 +8,21 @@
 #import "LBTestAvoidCrashViewController.h"
 #import <objc/runtime.h>
 
+@interface LBTestAfterBlock: NSObject
+
+- (void)executeBlock:(dispatch_block_t)block;
+
+@end
+
+
+@implementation LBTestAfterBlock
+
+- (void)executeBlock:(dispatch_block_t)block{
+    
+}
+
+@end
+
 @interface LBTestAvoidCrashViewController ()
 
 @end
@@ -18,9 +33,19 @@
     [super viewDidLoad];
     NSArray *array = [[NSArray alloc] init];
     
-    array[0];
+//    array[0];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.title = @"ewfwf";
+        NSLog(@"LBLog LBTestAvoidCrashViewController execute ----");
+    });
+    
 }
 
+
+- (void)dealloc
+{
+    NSLog(@"LBLog LBTestAvoidCrashViewController dealloc ----");
+}
 
 /*
 #pragma mark - Navigation

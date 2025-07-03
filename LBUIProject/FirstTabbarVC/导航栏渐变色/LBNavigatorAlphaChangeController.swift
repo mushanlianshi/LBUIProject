@@ -44,7 +44,7 @@ class LBNavigatorAlphaChangeController: UIViewController {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithTransparentBackground()
 //            appearance.backgroundColor = UIColor.clear
-            appearance.backgroundImage = UIImage.imageWithTintColor(color: .clear)
+            appearance.backgroundImage = UIImage.blt.imageWithTintColor(color: .clear)
             appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -60,7 +60,7 @@ class LBNavigatorAlphaChangeController: UIViewController {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithTransparentBackground()
 //            appearance.backgroundColor = UIColor.clear
-            appearance.backgroundImage = UIImage.imageWithTintColor(color: .white)
+            appearance.backgroundImage = UIImage.blt.imageWithTintColor(color: .white)
             appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -115,8 +115,8 @@ extension LBNavigatorAlphaChangeController: UITableViewDelegate, UITableViewData
 extension LBNavigatorAlphaChangeController: LBNavigationBarScrollDataSourcesProtocol{
     func backgroundImageOfAnimator(animator: LBNavigationBarScrollChangeAnimator, progress: CGFloat) -> UIImage? {
         self.setNeedsStatusBarAppearanceUpdate()
-//        return UIImage.imageWithTintColor(color: UIColor.blue.withAlphaComponent(progress))
-        return UIImage.imageWithTintColor(color: UIColor.white.withAlphaComponent(progress))
+//        return UIImage.blt.imageWithTintColor(color: UIColor.blue.withAlphaComponent(progress))
+        return UIImage.blt.imageWithTintColor(color: UIColor.white.withAlphaComponent(progress))
     }
     
     func titleViewTintColorOfAnimator(animator: LBNavigationBarScrollChangeAnimator, progress: CGFloat) -> UIColor? {

@@ -92,7 +92,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
         [self testSyncSerialQueue];
     });
-    
+    [self testInvalidJsonStr];
 }
 
 - (void)testSyncSerialQueue{
@@ -312,6 +312,181 @@
         _headerIV.clipsToBounds = true;
     }
     return _headerIV;
+}
+
+- (void)testInvalidJsonStr{
+    // 示例 1: 缺少闭合括号
+    NSString *brokenJSON1 = @"{\"name\":\"John\", \"age\":30, \"data\": [1, 2,";
+    NSString *tt = @"{\"locale\":\"zh-CN\",\"thought\":\"用户的需求是深入研究如何在行内网文和资讯平台结合互联网搜索处理复杂问题并提供报告的服务，并了解当前市场的认可度和喜好程度。需要收集相关的市场数据、平台信息、用户反馈以及技术实现方法。\",\"plan_title\": \"行内网文与资讯平台";
+    
+    
+    NSError *error;
+    NSDictionary *parsed1 = [self fixIncompleteJSON2:tt];
+    NSLog(@"修复后: %@", parsed1); // 输出: {name: "John", age: 30, data: [1, 2]}
+
+    // 示例 2: 缺少引号
+    NSString *brokenJSON2 = @"{\"name\":\"John\", \"age\":30}";
+    NSString *ss = @"{\"locale\": \"zh-CN\",\"thought\":\"用户的需求是深入研究如何在行内网文和资讯平台结合互联网搜索处理复杂问题并提供报告的服务，并了解当前市场的认可度和喜好程度。需要收集相关的市场数据、平台信息、用户反馈以及技术实现方法。\",\"plan_title\":\"行内网文与资讯平台结合互联网搜索处理复杂问题的研究报告计划\",\"steps\": [{\"step_number\": 1,\"title\":\"调研行内";
+    NSDictionary *parsed2 = [self fixIncompleteJSON2:ss];
+    NSLog(@"修复后: %@", parsed2); // 输出: {name: "John", age: 30}
+
+    // 示例 3: 极端不完整
+    NSString *brokenJSON3 = @"{\"name\":\"Alice\", \"list\": [1, 2,";
+    NSDictionary *parsed3 = [self fixIncompleteJSON2:brokenJSON3];
+    NSLog(@"修复后: %@", parsed3); // 输出: {name: "Alice", list: [1, 2]}
+}
+
+- (NSDictionary *)fixIncompleteJSON2:(NSString *)incompleteJSON {
+    if (!incompleteJSON.length) return nil;
+    
+    NSMutableString *fixedJSON = [incompleteJSON mutableCopy];
+    NSMutableArray *stack = [NSMutableArray array];
+    BOOL inString = NO;
+    BOOL escapeNext = NO;
+    
+    // 1. 分析 JSON 结构，检测缺失符号
+    for (NSInteger i = 0; i < incompleteJSON.length; i++) {
+        unichar c = [incompleteJSON characterAtIndex:i];
+        
+        if (escapeNext) {
+            escapeNext = NO;
+            continue;
+        }
+        
+        switch (c) {
+            case '\\':
+                escapeNext = YES; // 下一个字符是转义字符
+                break;
+            case '"':
+                if (!escapeNext) {
+                    inString = !inString; // 切换字符串状态
+                }
+                break;
+            case '{':
+            case '[':
+                if (!inString) [stack addObject:@(c)];
+                break;
+            case '}':
+                if (!inString) {
+                    if (stack.count > 0 && [stack.lastObject isEqual:@('{')]) {
+                        [stack removeLastObject];
+                    }
+                }
+                break;
+            case ']':
+                if (!inString) {
+                    if (stack.count > 0 && [stack.lastObject isEqual:@('[')]) {
+                        [stack removeLastObject];
+                    }
+                }
+                break;
+        }
+    }
+    
+    // 3. 补全未闭合的字符串（仅在未转义的情况下）
+    if (inString && !escapeNext) {
+        [fixedJSON appendString:@"\""];
+    }
+    
+    // 2. 补全缺失符号
+    while (stack.count > 0) {
+        unichar lastChar = [stack.lastObject unsignedShortValue];
+        [stack removeLastObject];
+        
+        switch (lastChar) {
+            case '{':
+                [fixedJSON appendString:@"}"];
+                break;
+            case '[':
+                [fixedJSON appendString:@"]"];
+                break;
+        }
+    }
+    
+    
+    
+    return [self dictionaryWithJsonString:fixedJSON];
+}
+
+- (NSDictionary *)fixIncompleteJSON:(NSString *)incompleteJSON {
+    if (!incompleteJSON.length) return incompleteJSON;
+    
+    NSMutableString *fixedJSON = [incompleteJSON mutableCopy];
+    NSMutableArray *stack = [NSMutableArray array];
+    BOOL inString = NO;
+    BOOL escapeNext = NO;
+    
+    // 1. 分析 JSON 结构，检测缺失符号
+    for (NSInteger i = 0; i < incompleteJSON.length; i++) {
+        unichar c = [incompleteJSON characterAtIndex:i];
+        
+        if (escapeNext) {
+            escapeNext = NO;
+            continue;
+        }
+        
+        switch (c) {
+            case '\\':
+                escapeNext = YES;
+                break;
+            case '"':
+                inString = !inString;
+                break;
+            case '{':
+            case '[':
+                if (!inString) [stack addObject:@(c)];
+                break;
+            case '}':
+                if (!inString) {
+                    if (stack.count > 0 && [stack.lastObject isEqual:@('{')]) {
+                        [stack removeLastObject];
+                    }
+                }
+                break;
+            case ']':
+                if (!inString) {
+                    if (stack.count > 0 && [stack.lastObject isEqual:@('[')]) {
+                        [stack removeLastObject];
+                    }
+                }
+                break;
+        }
+    }
+    
+    // 2. 补全缺失符号
+    while (stack.count > 0) {
+        unichar lastChar = [stack.lastObject unsignedShortValue];
+        [stack removeLastObject];
+        
+        switch (lastChar) {
+            case '{':
+                [fixedJSON appendString:@"}"];
+                break;
+            case '[':
+                [fixedJSON appendString:@"]"];
+                break;
+        }
+    }
+    
+    // 3. 补全未闭合的字符串
+    if (inString) {
+        [fixedJSON appendString:@"\""];
+    }
+    
+    return [self dictionaryWithJsonString:fixedJSON];
+}
+
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
 }
 
 - (void)testSemaphore{

@@ -39,14 +39,14 @@ struct LBSwiftUIRefreshListView: View {
                .listRowBackground(Color.blue)
             }
         }
-        .introspect(.list, on: .iOS(.v13, .v14, .v15)) {
-            print(type(of: $0)) // UITableView
-            addRefreshAndLoadMore($0)
-        }
-        .introspect(.list, on: .iOS(.v16, .v17, .v18)) {
-            print(type(of: $0)) // UICollectionView
-            addRefreshAndLoadMore($0)
-        }
+//        .introspect(.list, on: .iOS(.v13, .v14, .v15)) {
+//            print(type(of: $0)) // UITableView
+//            addRefreshAndLoadMore($0)
+//        }
+//        .introspect(.list, on: .iOS(.v16, .v17, .v18)) {
+//            print(type(of: $0)) // UICollectionView
+//            addRefreshAndLoadMore($0)
+//        }
     }
     
     
