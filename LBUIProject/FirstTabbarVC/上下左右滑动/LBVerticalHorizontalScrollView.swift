@@ -62,7 +62,7 @@ class LBVerticalHorizontalScrollView: UIScrollView {
     
     
     override var isDragging: Bool{
-        return super.isDragging
+        return super.isDragging || self.leftTableView.isDragging || self.rightTableView.isDragging || self.rightScrollView.isDragging
     }
     
     ///左边上下滑动的tableView   用来实现上下滑动的  需要联动右边的tableView
@@ -140,7 +140,7 @@ class LBVerticalHorizontalScrollView: UIScrollView {
 extension LBVerticalHorizontalScrollView: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        print("LBLog istracking \(scrollView.isTracking) \(scrollView.isDragging) \(self.isDragging)")
+//        print("LBLog istracking \(scrollView.isTracking) \(scrollView.isDragging) \(self.isDragging)")
         if scrollView == self {
             print("LBLog scroll is Self \(scrollView.contentOffset)")
         }else if scrollView == leftTableView{

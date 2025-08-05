@@ -202,6 +202,8 @@
             vc = [LBTestHitViewController new];
         }else if ([vcName isEqualToString:@"LBTestScrollVerticalHorizontalController"]){
             vc = [LBTestScrollVerticalHorizontalController new];
+        }else if ([vcName isEqualToString:@"LBTestScrollVerticalHorizontalController2"]){
+            vc = [LBTestScrollVerticalHorizontalController2 new];
         }else if ([vcName isEqualToString:@"LBTestStructAndClassController"]){
             vc = [LBTestStructAndClassController new];
         }
@@ -293,6 +295,7 @@
             @{@"title" : @"测试RxSwift", @"vcName" : @"LBRxSwiftViewController"},
             @{@"title" : @"测试响应链", @"vcName" : @"LBTestHitViewController"},
             @{@"title" : @"上下左右滚动", @"vcName" : @"LBTestScrollVerticalHorizontalController"},
+            @{@"title" : @"上下左右滚动2", @"vcName" : @"LBTestScrollVerticalHorizontalController2"},
             @{@"title" : @"测试struct and class", @"vcName" : @"LBTestStructAndClassController"},
         ];
     }

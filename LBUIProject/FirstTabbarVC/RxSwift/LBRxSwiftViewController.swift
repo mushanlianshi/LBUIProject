@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-///联系RxSwift
+///RxSwift
 class LBRxSwiftViewController: UIViewController {
     
     lazy var disposeBag = DisposeBag()
@@ -35,14 +35,16 @@ class LBRxSwiftViewController: UIViewController {
         let t = self.navigationItem.rx.title
         let tt = UITextView().rx.text
         
-        let o = ob.bind(to: tt).disposed(by: disposeBag)
-        let oo = ob.bind(to: t).disposed(by: disposeBag)
+        ob.bind(to: tt).disposed(by: disposeBag)
+        ob.bind(to: t).disposed(by: disposeBag)
+        
     }
     
     ///1.可观察序列
     private func testObservable(){
         
         let observableOne: Observable<String> = Observable.create { (observer) -> Disposable in
+            print("LBLog async execute thread  \(Thread.current)===========")
             ///这个block执行的次数   跟订阅的次数一致
             let list = [true, false]
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

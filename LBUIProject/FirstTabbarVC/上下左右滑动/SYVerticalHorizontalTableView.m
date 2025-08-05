@@ -561,7 +561,10 @@
 - (BOOL)isTracking
 {
     BOOL result = [super isTracking];
-    return self.tableLeft.isTracking | self.tableRight.isTracking | self.scrollRight.isTracking | result;
+    BOOL totalResult = self.tableLeft.isTracking | self.tableRight.isTracking | self.scrollRight.isTracking | result;
+    NSLog(@"LBLog leftTable %@ rightTable %@ scrollRight %@ self %@",@(self.tableLeft.isTracking), @(self.tableRight.isTracking),@(self.scrollRight.isTracking),@(result));
+    NSLog(@"LBLog totalResult is %@",@(totalResult));
+    return totalResult;
 }
 
 - (BOOL)isDecelerating

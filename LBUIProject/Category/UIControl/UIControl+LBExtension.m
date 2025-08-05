@@ -36,10 +36,10 @@
         if (actions == nil) {
             actions = [self actionsForTarget:target forControlEvent:UIControlEventPrimaryActionTriggered];
         }
-        NSLog(@"LBLog touch actions %@",actions);
+//        NSLog(@"LBLog touch actions %@",actions);
         if ([actions containsObject:NSStringFromSelector(action)]) {
             UITouch *touch = event.allTouches.anyObject;
-            NSLog(@"LBLog touch count %@",@(touch.tapCount));
+//            NSLog(@"LBLog touch count %@",@(touch.tapCount));
             if (touch.tapCount > 1) {
                 return;
             }

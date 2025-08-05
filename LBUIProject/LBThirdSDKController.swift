@@ -24,6 +24,7 @@ class LBTextOutputStreamModel: TextOutputStream {
 //
 //因此，正确的写法是第一种写法。
 func writeOne<Target>(to target: inout Target) where Target : TextOutputStream{
+    target.write("1123")
     print("LBLog writeOne")
 }
 ///这TextOutputStream已经不是类型了  而是变成了泛型 导致实际传入的对象可以不是遵守TextOutputStream协议的
@@ -207,9 +208,9 @@ class LBThirdSDKController: UIViewController {
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-            make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(80)
+            make.edges.equalToSuperview()
+//            make.left.right.top.equalToSuperview()
+//            make.bottom.equalTo()
         }
         
         let items: Observable<[[String : Any]]> = Observable.create { observer in

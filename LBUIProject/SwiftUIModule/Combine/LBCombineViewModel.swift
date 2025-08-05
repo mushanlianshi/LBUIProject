@@ -14,6 +14,8 @@ class LBCombineViewModel{
     
     var modelSubject = PassthroughSubject<LBCombineModel?, Never>()
     
+    var modelSubject2 = CurrentValueSubject<LBCombineModel?, Never>.init(nil)
+    
     init() {
         model.name = "jaja"
         model.age = 100

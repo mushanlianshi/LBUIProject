@@ -18,6 +18,7 @@ enum LBUserInfoService{
 
 
 extension LBUserInfoService: LBMoyaTargetTypeProtocol{
+    
     var requestTotalExtraParams: [String : Any]? {
         get {
             switch self {

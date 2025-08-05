@@ -17,6 +17,7 @@ class LBSecondViewController: LBBaseCollectionViewController{
             [
                 LBListItemModel.init(title: "notificationView", vcClass: LBNotificationViewController.self),
                 LBListItemModel.init(title: "上下左右滑动控件", vcClass: LBTestScrollVerticalHorizontalController.self),
+                LBListItemModel.init(title: "上下左右滑动控件2", vcClass: LBTestScrollVerticalHorizontalController2.self),
                 LBListItemModel.init(title: "折叠", vcClass: LBExpandCloseLabelController.self),
                 LBListItemModel.init(title: "stackview嵌套ScrollView", vcClass: UIStackViewInScrollViewController.self),
                 LBListItemModel.init(title: "装饰、悬停的UICollectionLayout", vcClass: LBCollectionDecorationStickViewController.self),

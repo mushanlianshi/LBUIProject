@@ -165,4 +165,20 @@ extension UIViewController{
         return tableView
     }
     
+    
+    private func testCodable(){
+        struct User: Codable {
+          let userId: Int
+          var userName: String
+          var age: Int?
+        }
+        let json = "{\"user_id\":1,\"user_name\":\"Tom\", \"age\":21}".data(using: .utf8)!
+              
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+              
+        let user = try? decoder.decode(User.self, from: json)
+    }
+    
 }
