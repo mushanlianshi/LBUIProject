@@ -29,6 +29,7 @@ class LBSecondViewController: LBBaseCollectionViewController{
                 LBListItemModel.init(title: "图片旋转", vcClass: LLImageClipController.self),
                 LBListItemModel.init(title: "IGListKit装饰视图", vcClass: LBIGListKitDecorationViewController.self),
                 LBListItemModel.init(title: "测试响应区域", vcClass: LBResponseInsetViewController.self),
+                LBListItemModel.init(title: "日历", vcClass: LBCalendarController.self),
             ]
         }
         set{}

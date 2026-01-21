@@ -22,7 +22,25 @@ struct WeakDictionary<Key: Hashable, Value: AnyObject> {
 
     /// 添加对象
     mutating func set(_ value: Value?, forKey key: Key) {
-        let valueee = value.map({ Weak($0) })
+        
+        // 等价于map转换
+//        let valueee = value.map({ Weak($0) })
+//        
+//        let flatResult = value.flatMap { val in
+//            Weak(val)
+//        }
+//        
+//        
+//        var weakValue: Weak<Value>?
+//        if let value = value{
+//            weakValue = Weak.init(value)
+//        }else{
+//            weakValue = nil
+//        }
+//        
+//        
+//        storage[key] = weakValue
+        
         storage[key] = value.map { Weak($0) }
     }
 
@@ -48,13 +66,16 @@ struct WeakDictionary<Key: Hashable, Value: AnyObject> {
 
     /// 当前所有 key-value 的元组
     var allItems: [(Key, Value)] {
-        storage.compactMap { key, weak in
-            if let value = weak.value {
+        let result1 = storage.compactMap { key, weakObj in
+            if let value = weakObj.value {
                 return (key, value)
             } else {
                 return nil
             }
         }
+        
+//        let result2 = storage.compactMap({ ($0.key, $0.value.value )})
+        return result1
     }
 
     /// 字典大小（仅计算有效对象）

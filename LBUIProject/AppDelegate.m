@@ -22,6 +22,8 @@
 #import <arpa/inet.h>
 #import <net/if.h>
 #import <Selene/Selene.h>
+#import "LBTextSplitter.h"
+#import "NSString+LBExtension.h"
 
 struct A{
     int    a;
@@ -115,7 +117,34 @@ struct B{
 //        }];
 //    task.delegate = self;
 //    [task resume];
+    [self testSliptor];
+    NSLog(@"LBLog user default name is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]);
+    [self testCompareStringVersion];
     return YES;
+}
+//typedef NS_CLOSED_ENUM(NSInteger, NSComparisonResult) {
+//    NSOrderedAscending = -1L,
+//    NSOrderedSame,
+//    NSOrderedDescending
+//};
+- (void)testCompareStringVersion{
+    NSLog(@"LBLog compare result %@", @([@"1.2.0.1" compare:@"1.2" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result %@", @([@"1.2.2.1" compare:@"1.2" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result %@", @([@"1.1.1" compare:@"1.2.0.1" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result %@", @([@"1.1" compare:@"1.1.0.1" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result %@", @([@"1.1" compare:@"1.1.0" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result %@", @([@"1.0" compare:@"1.0" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result %@", @([@"1.0.2" compare:@"1.0.02" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result %@", @([@"1.2.20" compare:@"1.2.20" options:NSNumericSearch]));
+    NSLog(@"LBLog compare result ---------------------------------------------");
+    NSLog(@"LBLog compare result %@", @([@"1.2.0.1" zy_compareWithOtherVersion:@"1.2"]));
+    NSLog(@"LBLog compare result %@", @([@"1.2.2.1" zy_compareWithOtherVersion:@"1.2"]));
+    NSLog(@"LBLog compare result %@", @([@"1.1.1" zy_compareWithOtherVersion:@"1.2.0.1"]));
+    NSLog(@"LBLog compare result %@", @([@"1.1" zy_compareWithOtherVersion:@"1.1.0.1"]));
+    NSLog(@"LBLog compare result %@", @([@"1.1" zy_compareWithOtherVersion:@"1.1.0"]));
+    NSLog(@"LBLog compare result %@", @([@"1.0" zy_compareWithOtherVersion:@"1.0"]));
+    NSLog(@"LBLog compare result %@", @([@"1.0.2" zy_compareWithOtherVersion:@"1.0.02"]));
+    NSLog(@"LBLog compare result %@", @([@"1.2.20" zy_compareWithOtherVersion:@"1.2.20"]));
 }
 // 实现代理
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
@@ -295,6 +324,46 @@ struct B{
 }
 
 
+- (void)testSliptor{
+    // 假设这是你的一万字文本
+    NSString *longText = [self readTxtFromBundleWithName:@"testLongText"];
+    NSLog(@"LBLog longText length is %ld",longText.length);
+        // 按大约500字和换行符分割
+        NSArray<NSString *> *splitArray = [LBTextSplitter splitText:longText afterApproximateLength:500];
+        
+        // 输出结果
+        NSLog(@"分割后的数组有 %lu 个元素", (unsigned long)splitArray.count);
+    NSInteger totalCount = 0;
+        for (NSUInteger i = 0; i < splitArray.count; i++) {
+            NSString *segment = splitArray[i];
+            NSLog(@"第 %lu 段长度: %lu", (unsigned long)i+1, (unsigned long)segment.length);
+            totalCount += segment.length;
+        }
+    NSLog(@"LBLog totalCount length is %ld",totalCount);
+}
+
+
+- (NSString *)readTxtFromBundleWithName:(NSString *)fileName {
+    // 获取文件路径（无需扩展名时会自动匹配）
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];
+    if (!filePath) {
+        NSLog(@"未找到资源文件: %@.txt", fileName);
+        return nil;
+    }
+    
+    // 读取文件内容，指定编码为UTF-8
+    NSError *error;
+    NSString *content = [NSString stringWithContentsOfFile:filePath
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:&error];
+    
+    if (error) {
+        NSLog(@"读取文件失败: %@", error.localizedDescription);
+        return nil;
+    }
+    
+    return content;
+}
 
 @end
 

@@ -81,3 +81,34 @@ struct LBHandyJsonItemModel: HandyJSON{
     var name = ""
     var age = 0
 }
+
+
+
+
+protocol LBTestProtocolT: Sendable{
+    associatedtype ModelType
+    func decodeModel(_ dic: [String: Any]) -> ModelType?
+    
+    /// 文件对应的数据模型类型
+        associatedtype Model: Sendable
+    /// 获取操作的数据转换方法：从文件模型转换为目标类型
+        typealias FetchTransform<To: Sendable> = @Sendable (_ model: Model) async throws -> To
+        
+        /// 保存操作的数据转换方法：从目标类型转换为文件模型
+        typealias SaveTransform<To: Sendable> = @Sendable (_ model: To) async throws -> Model
+}
+
+
+extension LBTestProtocolT where ModelType: HandyJSON{
+    func decodeModel(_ dic: [String: Any]) -> ModelType?{
+        return ModelType.deserialize(from:dic)
+    }
+    
+    /// 基于当前文件定义一个新的映射关系（转换模型类型）
+        func map<To: Sendable>(
+            fetch: @escaping FetchTransform<To>,
+            save: @escaping SaveTransform<To>
+        ) {
+            
+        }
+}

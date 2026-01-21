@@ -26,6 +26,8 @@ class LBResponseInsetViewController: UIViewController {
         return button
     }()
     
+    private lazy var animatingView = LBRadarView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         [containerView1, containerView2].forEach(view.addSubview(_:))
@@ -37,6 +39,8 @@ class LBResponseInsetViewController: UIViewController {
         let item2 = UIBarButtonItem.init(customView: containerView2)
 //        self.navigationItem.rightBarButtonItems = [item1, spacerItem, item2]
         self.navigationItem.rightBarButtonItems = [item1]
+        
+        self.view.addSubview(animatingView)
     }
     
     private func setConstraints(){

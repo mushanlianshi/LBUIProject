@@ -22,9 +22,9 @@ class LBMutiGestureScrollView: UIScrollView, UIGestureRecognizerDelegate {
 class LBScrollViewInScrollViewController: UIViewController{
     
     // 最大偏移高度， 默认和headerView的高度一样
-    var maxOffsetY = 160.0
+    var maxOffsetY = 360.0
     
-    var pinHeaderOffsetY = 50.0
+    var pinHeaderOffsetY = 150.0
     
     lazy var  needOffsetY = maxOffsetY - pinHeaderOffsetY
     
@@ -40,10 +40,12 @@ class LBScrollViewInScrollViewController: UIViewController{
     
     private lazy var innerScrollView: LBInnerScrollView = {
         let view = LBInnerScrollView.init(frame: .zero)
-        view.scrollViewDidScrollBlock = {
-            [weak self] scrollView in
-            self?.processInnerScrollViewDidScroll(scrollView)
-        }
+//        view.scrollViewDidScrollBlock = {
+//            [weak self] scrollView in
+//            self?.processInnerScrollViewDidScroll(scrollView)
+//        }
+        view.innerScrollView.delegate = self
+        view.innerScrollView.dataSource = self
         return view
     }()
     
@@ -64,7 +66,7 @@ class LBScrollViewInScrollViewController: UIViewController{
             make.left.right.equalTo(self.view)
             make.top.equalTo(headerView.snp.bottom)
             make.bottom.equalToSuperview()
-            make.height.equalTo(self.view)
+            make.height.equalTo(BLT_SCREEN_HEIGHT - pinHeaderOffsetY - BLT_SCREEN_NAVI_HEIGHT)
         }
     }
 }
@@ -72,6 +74,10 @@ class LBScrollViewInScrollViewController: UIViewController{
 
 extension LBScrollViewInScrollViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == innerScrollView.innerScrollView {
+            processInnerScrollViewDidScroll(scrollView)
+            return
+        }
         if (innerScrollView.innerScrollView.contentOffset.y > 0) {
             //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
             scrollView.contentOffset.y = needOffsetY
@@ -99,4 +105,24 @@ extension LBScrollViewInScrollViewController: UIScrollViewDelegate{
             outScrollView.contentOffset.y = needOffsetY
         }
     }
+}
+
+
+extension LBScrollViewInScrollViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.blt.dequeueReusableCell(UITableViewCell.self, indexPath: indexPath)
+        cell.textLabel?.text = "第\(indexPath.row)行"
+        cell.textLabel?.font = .blt.mediumFont(16)
+        cell.textLabel?.textColor = .blt.threeThreeBlackColor()
+        return cell
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("LBLog LBInnerScrollView did scroll")
+//        scrollViewDidScrollBlock?(scrollView)
+//    }
 }

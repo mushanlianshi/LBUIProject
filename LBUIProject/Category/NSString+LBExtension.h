@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)firstCapital;
 
+- (NSComparisonResult)zy_compareWithOtherVersion:(NSString *)otherVersion;
+
 @end
 
 NS_ASSUME_NONNULL_END

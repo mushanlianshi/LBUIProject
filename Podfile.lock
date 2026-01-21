@@ -80,8 +80,27 @@ PODS:
     - DifferenceKit/Core
   - Differentiator (5.0.0)
   - Dollar (9.0.0)
+  - Down (0.11.0)
   - DSScrollKit (0.3.0)
+  - DTCoreText (1.6.28):
+    - DTCoreText/Core (= 1.6.28)
+    - DTFoundation/Core (~> 1.7.19)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.19)
+    - DTFoundation/DTHTMLParser (~> 1.7.19)
+    - DTFoundation/UIKit (~> 1.7.19)
+  - DTCoreText/Core (1.6.28):
+    - DTFoundation/Core (~> 1.7.19)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.19)
+    - DTFoundation/DTHTMLParser (~> 1.7.19)
+    - DTFoundation/UIKit (~> 1.7.19)
+  - DTFoundation/Core (1.7.19)
+  - DTFoundation/DTAnimatedGIF (1.7.19)
+  - DTFoundation/DTHTMLParser (1.7.19):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.19):
+    - DTFoundation/Core
   - FaceAware (2.1.0)
+  - FLEX (5.22.10)
   - FSPagerView (0.8.3)
   - GKPhotoBrowser (2.6.3):
     - GKPhotoBrowser/Default (= 2.6.3)
@@ -103,10 +122,12 @@ PODS:
   - GPUImage (0.1.7)
   - HandyJSON (5.0.2)
   - Hero (1.6.2)
+  - Highlightr (2.1.0)
   - IBPCollectionViewCompositionalLayout (0.6.9)
   - IGListDiffKit (5.0.0)
   - IGListKit (5.0.0):
     - IGListDiffKit (= 5.0.0)
+  - Introspect (0.1.4)
   - JPSuspensionEntrance (1.0.1)
   - JXMarqueeView (0.1.1)
   - JXPagingView/Paging (2.1.2)
@@ -127,12 +148,14 @@ PODS:
   - LNPopupController (2.10.29)
   - LookinServer (1.0.6)
   - lottie-ios (4.5.1)
+  - MarkdownKit (1.7.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - MMKV (1.2.16):
     - MMKVCore (~> 1.2.16)
   - MMKVCore (1.2.16)
+  - MMMarkdown (0.5.5)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -530,39 +553,40 @@ PODS:
   - SJVideoPlayer/ResourceLoader (3.4.3):
     - SJBaseVideoPlayer (>= 3.7.5)
   - SkeletonView (1.30.4)
-  - SMSwiftBasicKit (0.1.5):
-    - SMSwiftBasicKit/Alert (= 0.1.5)
-    - SMSwiftBasicKit/Combine (= 0.1.5)
-    - SMSwiftBasicKit/Extension (= 0.1.5)
-    - SMSwiftBasicKit/ListView (= 0.1.5)
-    - SMSwiftBasicKit/NameSpace (= 0.1.5)
-    - SMSwiftBasicKit/Protocol (= 0.1.5)
-    - SMSwiftBasicKit/SwiftUI (= 0.1.5)
-    - SMSwiftBasicKit/Util (= 0.1.5)
-    - SMSwiftBasicKit/View (= 0.1.5)
-  - SMSwiftBasicKit/Alert (0.1.5):
+  - SmartCodable (4.3.9)
+  - SMSwiftBasicKit (0.1.8):
+    - SMSwiftBasicKit/Alert (= 0.1.8)
+    - SMSwiftBasicKit/Combine (= 0.1.8)
+    - SMSwiftBasicKit/Extension (= 0.1.8)
+    - SMSwiftBasicKit/ListView (= 0.1.8)
+    - SMSwiftBasicKit/NameSpace (= 0.1.8)
+    - SMSwiftBasicKit/Protocol (= 0.1.8)
+    - SMSwiftBasicKit/SwiftUI (= 0.1.8)
+    - SMSwiftBasicKit/Util (= 0.1.8)
+    - SMSwiftBasicKit/View (= 0.1.8)
+  - SMSwiftBasicKit/Alert (0.1.8):
     - SMSwiftBasicKit/Extension
-  - SMSwiftBasicKit/Combine (0.1.5):
+  - SMSwiftBasicKit/Combine (0.1.8):
     - SMSwiftBasicKit/Extension
-  - SMSwiftBasicKit/Extension (0.1.5):
+  - SMSwiftBasicKit/Extension (0.1.8):
     - SMSwiftBasicKit/NameSpace
     - SMSwiftBasicKit/Protocol
     - SMSwiftBasicKit/Util
     - SnapKit
-  - SMSwiftBasicKit/ListView (0.1.5):
+  - SMSwiftBasicKit/ListView (0.1.8):
     - SMSwiftBasicKit/Extension
     - SMSwiftBasicKit/NameSpace
     - SnapKit
-  - SMSwiftBasicKit/NameSpace (0.1.5)
-  - SMSwiftBasicKit/Protocol (0.1.5)
-  - SMSwiftBasicKit/SwiftUI (0.1.5):
+  - SMSwiftBasicKit/NameSpace (0.1.8)
+  - SMSwiftBasicKit/Protocol (0.1.8)
+  - SMSwiftBasicKit/SwiftUI (0.1.8):
     - SMSwiftBasicKit/Extension
     - SMSwiftBasicKit/NameSpace
-  - SMSwiftBasicKit/Util (0.1.5):
+  - SMSwiftBasicKit/Util (0.1.8):
     - SMSwiftBasicKit/NameSpace
     - SMSwiftBasicKit/Protocol
     - SnapKit
-  - SMSwiftBasicKit/View (0.1.5):
+  - SMSwiftBasicKit/View (0.1.8):
     - JXMarqueeView
     - Kingfisher
     - SMSwiftBasicKit/Extension
@@ -584,6 +608,8 @@ PODS:
     - TXLiteAVSDK_Player
   - SwiftDate (6.3.1)
   - SwiftEntryKit (2.0.0)
+  - SwiftUIRefresh (0.0.3):
+    - Introspect (~> 0.1.0)
   - SwipeTableView (0.2.6)
   - TABAnimated (2.6.6)
   - TXLiteAVSDK_Player (11.1.14143)
@@ -616,13 +642,17 @@ DEPENDENCIES:
   - DateToolsSwift
   - DiffableDataSources (= 0.5.0)
   - Dollar
+  - Down (from `https://github.com/iwasrobbed/Down.git`, tag `v0.11.0`)
   - DSScrollKit (= 0.3.0)
+  - DTCoreText
   - FaceAware
+  - FLEX
   - FSPagerView (from `https://github.com/WenchaoD/FSPagerView`)
   - GKPhotoBrowser (= 2.6.3)
   - GPUImage (= 0.1.7)
   - HandyJSON (= 5.0.2)
   - Hero
+  - Highlightr
   - IBPCollectionViewCompositionalLayout (= 0.6.9)
   - IGListKit (= 5.0.0)
   - JPSuspensionEntrance
@@ -633,10 +663,12 @@ DEPENDENCIES:
   - LNPopupController
   - LookinServer (= 1.0.6)
   - lottie-ios
+  - MarkdownKit
   - Masonry (~> 1.1.0)
   - MBProgressHUD
   - MJRefresh
   - MMKV
+  - MMMarkdown
   - Moya (= 15.0.0)
   - NVActivityIndicatorView (= 5.1.1)
   - QMUIKit (= 4.8.0)
@@ -646,12 +678,14 @@ DEPENDENCIES:
   - Selene
   - SJVideoPlayer
   - SkeletonView
-  - SMSwiftBasicKit (= 0.1.5)
+  - SmartCodable
+  - SMSwiftBasicKit (= 0.1.8)
   - SnapKit (= 4.2.0)
   - Spring (from `https://github.com/MengTo/Spring.git`)
   - SuperPlayer
   - SwiftDate (= 6.3.1)
   - SwiftEntryKit (= 2.0.0)
+  - SwiftUIRefresh
   - SwipeTableView (= 0.2.6)
   - TABAnimated
   - TXLiteAVSDK_Player
@@ -666,7 +700,6 @@ SPEC REPOS:
     - BLTAlertEventQueue
     - BLTBasicUIKit
     - BLTUIKitProject
-  http://git.ethank.com.cn/liubin/xinlimeiprivaterepo.git:
     - SMSwiftBasicKit
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
@@ -682,15 +715,20 @@ SPEC REPOS:
     - Differentiator
     - Dollar
     - DSScrollKit
+    - DTCoreText
+    - DTFoundation
     - FaceAware
+    - FLEX
     - GKPhotoBrowser
     - GKSliderView
     - GPUImage
     - HandyJSON
     - Hero
+    - Highlightr
     - IBPCollectionViewCompositionalLayout
     - IGListDiffKit
     - IGListKit
+    - Introspect
     - JPSuspensionEntrance
     - JXMarqueeView
     - JXPagingView
@@ -701,11 +739,13 @@ SPEC REPOS:
     - LNPopupController
     - LookinServer
     - lottie-ios
+    - MarkdownKit
     - Masonry
     - MBProgressHUD
     - MJRefresh
     - MMKV
     - MMKVCore
+    - MMMarkdown
     - Moya
     - NVActivityIndicatorView
     - QMUIKit
@@ -719,10 +759,12 @@ SPEC REPOS:
     - SJUIKit
     - SJVideoPlayer
     - SkeletonView
+    - SmartCodable
     - SnapKit
     - SuperPlayer
     - SwiftDate
     - SwiftEntryKit
+    - SwiftUIRefresh
     - SwipeTableView
     - TABAnimated
     - TXLiteAVSDK_Player
@@ -737,6 +779,9 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   BLTIconFont:
     :git: "git@github.com:mushanlianshi/BLTIconFont.git"
+  Down:
+    :git: https://github.com/iwasrobbed/Down.git
+    :tag: v0.11.0
   FSPagerView:
     :git: https://github.com/WenchaoD/FSPagerView
   Spring:
@@ -746,6 +791,9 @@ CHECKOUT OPTIONS:
   BLTIconFont:
     :commit: 460e2af63ec40f9301caec2b486f214c28da9843
     :git: "git@github.com:mushanlianshi/BLTIconFont.git"
+  Down:
+    :git: https://github.com/iwasrobbed/Down.git
+    :tag: v0.11.0
   FSPagerView:
     :commit: 968f0aaf120b8cb97d12c3a4447daa4926029f67
     :git: https://github.com/WenchaoD/FSPagerView
@@ -770,17 +818,23 @@ SPEC CHECKSUMS:
   DifferenceKit: ab185c4d7f9cef8af3fcf593e5b387fb81e999ca
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Dollar: 2fc9bdeeb2d3ae1f251461803240d5c93829ee0c
+  Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
   DSScrollKit: 08223f2a7497b70d041b37a1b445e537de5da48f
+  DTCoreText: 11b7fe2104f476f82e75a4e3dbdde74d7186cecb
+  DTFoundation: 76b624967cf5bcaae6bb057d622c536c36ef36d0
   FaceAware: f1266b8719a1a90da3d763b8cb428554edf0fa61
+  FLEX: f21ee4f498eed3f8a1eded66b21939fd3b7a22ce
   FSPagerView: c96bcaff1f251d593c91df47f64a3b237568bcd1
   GKPhotoBrowser: 97f41f9349c1c74bb9ef742ff40840b57b347d1b
   GKSliderView: b5fc3b68bbfdb05ee403303377921d6564de61a9
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Hero: c69009dbc9e2f0472e081adc644dba05fcedae72
+  Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   IBPCollectionViewCompositionalLayout: bbb29e39ac564666a8c3cdb6633ed944b6feb55b
   IGListDiffKit: 02d937d7e714d6f558771f284ed80668d483b522
   IGListKit: baf7e87b4c2262cd569c380e46ca5667a4a82c82
+  Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   JPSuspensionEntrance: 4df667eadc37a4b6da254db4e6d2d7b51356be17
   JXMarqueeView: 6bf9fb108ffa466ecb69fdbdf3de85128c5d5c47
   JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
@@ -791,11 +845,13 @@ SPEC CHECKSUMS:
   LNPopupController: 7f64391076386a5a89d36b243352a9dd7510a2e8
   LookinServer: 18155b1e4a08213c236a1dd6b7ca52328a70a1e3
   lottie-ios: 248b380fa1b97d18e792c37d90da7ab2aa0d6562
+  MarkdownKit: 0b15195c63cf3e39387949c4bdeccde0055e252a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   MMKV: 784471ce430a2e2d16afef9053d63fab1b357d9e
   MMKVCore: 9cfef4c48c6c46f66226fc2e4634d78490206a48
+  MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   QMUIKit: 3c622fe3c55c0dccfad750634bd9ee5e7ade9a53
@@ -809,12 +865,14 @@ SPEC CHECKSUMS:
   SJUIKit: a40111941e408cc17d4c1c23495aa92999e814b0
   SJVideoPlayer: 4f09814f58522e0975cb2dccfda925f6c8643467
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
-  SMSwiftBasicKit: 4b7ff66dbbc5bf0ff88946033b80fd055ff733dd
+  SmartCodable: efc682e18fb5eac77f4c0497e37c79590710c192
+  SMSwiftBasicKit: 64ab2abea9871a4d3a39340db21cf972f8636570
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SuperPlayer: de156983387d154c68f6fb460f963eadd670d9a5
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
+  SwiftUIRefresh: ca6ae2718d25aad5dd68bbf5d2ae36ef6ade98bf
   SwipeTableView: 67d8a2e6e18bd38c188fd4fabda0b278eaa08d2f
   TABAnimated: 75fece541a774193565697c7a11539d3c6f631b3
   TXLiteAVSDK_Player: 946dae329da9b31e24a417a47089af2f5fccea95
@@ -826,6 +884,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9cab37ddd37386ec41dbd19149d8f9c10287f609
+PODFILE CHECKSUM: 33beee35a4786eb6e6bdf9f0a917c4ee84d3f341
 
 COCOAPODS: 1.16.2

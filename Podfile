@@ -2,7 +2,7 @@
 platform :ios, '14.0'
 source 'https://github.com/CocoaPods/Specs.git'
 source 'git@github.com:mushanlianshi/LBUIKitSpecRepo.git'
-source 'http://git.ethank.com.cn/liubin/xinlimeiprivaterepo.git'
+#source 'http://git.ethank.com.cn/liubin/xinlimeiprivaterepo.git'
 
 target 'LBUIProject' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -85,7 +85,7 @@ target 'LBUIProject' do
    #弹框队列
    pod 'CLPopoverManager', '0.0.1'
    pod 'DateToolsSwift'
-   pod 'SMSwiftBasicKit', '0.1.5'
+   pod 'SMSwiftBasicKit', '0.1.8'
    pod 'lottie-ios'
    pod 'BLTIconFont', :git => 'git@github.com:mushanlianshi/BLTIconFont.git'
    
@@ -95,8 +95,18 @@ target 'LBUIProject' do
 #   pod 'SwiftUIIntrospect', '1.3.0'
   #添加下拉刷新的
   pod "SwiftUIRefresh"
-
-
+  pod "SmartCodable"
+  pod 'Down', :git => 'https://github.com/iwasrobbed/Down.git', :tag => 'v0.11.0'
+#  pod 'CocoaLumberjack', '2.2.0'
+#  pod 'RHSafeUtils', '~> 2.0.0'
+  pod 'MarkdownKit' # Markdown 解析
+  pod 'Highlightr'
+#  pod 'SSEClient'   # SSE 客户端（简化 SSE 连接）
+#  pod 'DOMPurify'    HTML XSS 过滤（可选，若后端内容可信可省略）
+#  pod 'Down'
+  pod 'DTCoreText'
+  pod 'MMMarkdown'
+  pod 'FLEX', :configurations => ['Debug']
   target 'LBUIProjectTests' do
     inherit! :search_paths
     # Pods for testing

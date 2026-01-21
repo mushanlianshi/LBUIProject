@@ -17,6 +17,9 @@
 #import <IJKMediaFramework/IJKMediaFramework.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import <LBCombineFramewrok/LBCombineFramewrok.h>
+#import <LBCombineFramewrok/LBCombineFramewrok-Swift.h>
+#import "StreamTextProcessor.h"
 
 @interface LBHomeViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -35,6 +38,8 @@
 @property (nonatomic, assign) NSInteger count;
 
 @property (nonatomic, strong) AVQueuePlayer *avPlayer;
+
+@property (nonatomic, strong) UIView *menuView;
 
 @end
 
@@ -63,14 +68,116 @@
     
 }
 
+- (void)testFramework{
+    LBOCPerson *person = [LBOCPerson new];
+    [person testName];
+    [person callSwiftMethod];
+    
+    LBSwiftClass *swiftClass = [LBSwiftClass new];
+    [swiftClass printClassName];
+    
+    [LBSwiftSchool printSchoolClass];
+}
+
+- (void)testSlipt{
+    // 创建处理器
+    StreamTextProcessor *processor = [[StreamTextProcessor alloc] init];
+
+    // 模拟流式输入（实际使用时是一个字一个字输入）
+    
+    NSString *longText = @"中国银行2025年一季度财务表现深度分析#### 核心财务指标呈现\"营收微增、利润下滑\"的分化态势\
+根据\"[中国银行执行董事刘进任职资格获批 该行2025年Q1净利润同比下降2%-雪球](https://xueqiu.com/2566964535/337787680)\"和\"[中国银行(601988.SH)：2025年一季报净利润为543.64亿元、同比较去年同期下降2.90%-搜狐网](https://m.sohu.com/a/890679155_223785/?pvid=000115_3w_a)\"披露的数据，中国银行在2025年第一季度呈现出营收与净利润走势分化的特征。集团实现营业收入1649.29亿元，同比增长2.56%，这一增长主要得益于非利息收入的强劲表现；但同期净利润却同比下降2.22%至586.44亿元（归母净利润543.64亿元，同比下降2.90%）。这种分化反映了当前银行业面临的特殊经营环境：一方面通过业务结构调整实现了收入增长，另一方面却受制于成本压力和税收因素导致利润收缩。\
+值得注意的是，\"[业绩欠佳-中国银行2025年一季度财报点评-百家号](https://baijiahao.baidu.com/s?id=1833330688111504899)\"指出，非利息收入同比增长18.91%成为关键亮点，其中手续费及佣金收入结束了自2024年以来的连续负增长，同比增长2.09%，这可能是金融服务收费政策调整后的积极信号。但同时，净利息收入同比下降4.42%，反映出传统利差业务仍面临严峻挑战。\
+    \
+#### 资产负债结构呈现\"贷款扩张、存款承压\"的行业共性\
+资产负债方面，中国银行在2025年第一季度展现出积极的规模扩张态势。根据雪球和百家号的数据，集团总资产达到359,871.47亿元，较上年末增长2.64%。其中贷款总额226,087.48亿元，增长4.70%，显示出在政策引导下持续加大信贷投放力度。特别值得注意的是公司贷款增长6.57%，远高于个人贷款0.72%的增速，这与\"[中国银行(601988)非息支撑营收改善 质量稳健经营|查股网](http://www.chaguwang.cn/report/601988/202505010012.html)\"中提到的\"信贷投放和金融投资依旧是企业规模增长的主要动能\"相印证，表明其业务重心正在向对公领域倾斜。\
+然而，负债端面临结构性压力。虽然吸收存款总额增长5.82%至256,104.99亿元，但\"[业绩欠佳-中国银行2025年一季度财报点评-百家号](https://baijiahao.baidu.com/s?id=1833330688111504899)\"分析指出，存款同比增速(6.24%)低于贷款同比增速(8.26%)，导致银行不得不加大同业负债配置力度（同比增长8.93%）。这种存贷增速剪刀差可能持续推高资金成本，为后续净息差表现埋下隐患。\
+#### 净息差持续收窄成为盈利主要拖累\
+多个来源([来源1](https://baijiahao.baidu.com/s?id=1833330688111504899)、[来源2](http://www.chaguwang.cn/report/601988/202505010012.html))证实，净息差收窄是中国银行利润下滑的核心因素。2025年一季度净息差录得1.29%，同比下滑15个基点，环比下降11个基点。深度分析显示，这一结果源于资产收益率同比下降45个基点，远超负债成本率32个基点的降幅。查股网的研报特别指出，2024年LPR多次调整导致的贷款重定价是主要原因，这也解释了为何在生息资产同比增长7.2%的情况下，净利息收入仍同比下降4.42%。\
+值得注意的是，东方财富网数据显示经营活动现金流净额转为-404.63亿元，同比大幅减少437.03亿元，这可能与资产端收益率下降情况下资金运用效率降低有关，进一步印证了息差收窄对整体经营质量的冲击。\
+#### 资产质量保持稳定但需关注潜在风险\
+资产质量方面呈现\"总体可控、隐忧初现\"的特征。根据搜狐和查股网的数据，不良贷款率维持在1.25%的水平，拨备覆盖率198%，满足监管要求且风险抵补能力充足。但细读\"[业绩欠佳-中国银行2025年一季度财报点评-百家号](https://baijiahao.baidu.com/s?id=1833330688111504899)\"可发现，拨备覆盖率较2024年末下降2.63个百分点，同时该行计提减值准备同比减少27亿元，这些迹象可能预示着资产质量边际承压。特别是考虑到贷款规模快速扩张（尤其是对公贷款增长11.23%）而经济复苏基础尚不牢固，未来不良贷款生成情况值得密切关注。\
+    \
+#### 管理架构调整与战略布局\
+人事方面，根据雪球报道，原副行长刘进在2025年6月正式就任执行董事，并进入董事会战略发展委员会。这位具有国家开发银行工作背景的高管上任，可能预示着中国银行将强化在政策性金融、对公业务等领域的布局，这与前述贷款结构向公司贷款倾斜的趋势相互印证。这种人事安排或许是为应对当前\"对公贷款驱动增长\"的业务模式而进行的战略配套。\
+#### 市场估值反映投资者谨慎预期\"[中国银行：2025年一季度净利润543.64亿元-东方财富网](https://wap.eastmoney.com/a/202505023395538898.html)\"提供的市场数据显示，截至报告期末中国银行市盈率(TTM)约7.1倍，市净率(LF)约0.59倍，显著低于行业平均水平。这种估值折价既反映了对净息差持续收窄的担忧，也包含了对资产质量可能恶化的预期。特别是0.59倍的市净率，表明市场认为其净资产收益率(一季度年化ROE约9.08%)难以持续提升。\
+#### 前瞻性观察要点\
+综合各渠道信息，中国银行2025年后续表现需重点关注：1）净息差能否在LPR企稳后逐步见底；2）非利息收入增长势头是否可持续；3）快速扩张的对公贷款资产质量变化；4）存款成本管控成效。这些因素将共同决定其能否在营收微增的基础上实现利润回暖，也是评估中国银行业整体复苏态势的重要窗口。";
+    for (NSInteger i = 0; i < longText.length; i++) {
+        NSString *character = [longText substringWithRange:NSMakeRange(i, 1)];
+        [processor processCharacter:character];
+    }
+
+    // 获取最终结果
+    NSArray *result = processor.resultArray;
+    [result enumerateObjectsUsingBlock:^(NSString  * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"分割结果obj length: %@", @(obj.length));
+    }];
+    NSLog(@"分割结果: %@", result);
+
+    // 验证是否能拼回原字符串
+    NSString *reconstructed = [result componentsJoinedByString:@""];
+    NSLog(@"重建后的字符串: %@", reconstructed);
+    NSLog(@"是否匹配: %@", [reconstructed isEqualToString:longText] ? @"YES" : @"NO");
+}
+
+- (void)tapClicked{
+    NSLog(@"LBLog tapClicked ------ ");
+}
+
+- (void)addLeftMenuAndPanGesture{
+    self.menuView = [[UIView alloc] initWithFrame:CGRectMake(-250, 0, 250, self.view.bounds.size.height)];
+    self.menuView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.9];
+    [self.view addSubview:self.menuView];
+    UIScreenEdgePanGestureRecognizer *edgePan =
+        [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgePan:)];
+    edgePan.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:edgePan];
+}
+
+- (void)handleLeftEdgePan:(UIScreenEdgePanGestureRecognizer *)gesture {
+    CGPoint translation = [gesture translationInView:self.view];
+    CGFloat offsetX = MIN(MAX(translation.x, 0), 250);  // 限制范围 0 ~ 250
+    
+    if (gesture.state == UIGestureRecognizerStateChanged) {
+        self.menuView.frame = CGRectMake(-250 + offsetX, 0, 250, self.view.bounds.size.height);
+    }
+    else if (gesture.state == UIGestureRecognizerStateEnded ||
+             gesture.state == UIGestureRecognizerStateCancelled) {
+         
+        if (offsetX > 100) { // 超过一半，打开
+            [self openMenu];
+        } else {             // 否则，关闭
+            [self closeMenu];
+        }
+    }
+}
+
+- (void)openMenu {
+    [self.view bringSubviewToFront:self.menuView];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.menuView.frame = CGRectMake(0, 0, 250, self.view.bounds.size.height);
+    }];
+}
+
+- (void)closeMenu {
+    [UIView animateWithDuration:0.25 animations:^{
+        self.menuView.frame = CGRectMake(-250, 0, 250, self.view.bounds.size.height);
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addLeftMenuAndPanGesture];
     [self.view addSubview:self.headerIV];
     [self.headerIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.view);
         make.height.mas_equalTo(200);
     }];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClicked)];
+    tap.cancelsTouchesInView = false;
+    [self.tableView addGestureRecognizer:tap];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.top.right.equalTo(self.view);
@@ -93,6 +200,8 @@
         [self testSyncSerialQueue];
     });
     [self testInvalidJsonStr];
+    [self testFramework];
+    [self testSlipt];
 }
 
 - (void)testSyncSerialQueue{
@@ -297,6 +406,10 @@
             @{@"title" : @"上下左右滚动", @"vcName" : @"LBTestScrollVerticalHorizontalController"},
             @{@"title" : @"上下左右滚动2", @"vcName" : @"LBTestScrollVerticalHorizontalController2"},
             @{@"title" : @"测试struct and class", @"vcName" : @"LBTestStructAndClassController"},
+            @{@"title" : @"表格拆分器", @"vcName" : @"LBChatTableViewController"},
+            @{@"title" : @"表格模拟展示", @"vcName" : @"LBDownTableWebViewController"},
+            @{@"title" : @"豆包拆分表格", @"vcName" : @"HYBStreamMarkdownController"},
+            @{@"title" : @"DDTextView展示表格", @"vcName" : @"LBMarkdownTableViewController"}
         ];
     }
     return _dataSources;

@@ -124,6 +124,7 @@ class LBThirdSDKController: UIViewController {
                 [.title : "UICollectionViewCompositionalLayout布局", .controller : LBCollectionCompositionLayoutViewController.self],
                 [.title : "骨架屏", .controller : LBTabAnimatedViewController.self],
                 [.title : "GPUImage图片滤镜", .controller : LBGPUImageFilterViewController.self],
+                [.title : "down三方库渲染表格", .controller : LBDownTableTestController.self],
         ]
     }()
     
@@ -192,9 +193,20 @@ class LBThirdSDKController: UIViewController {
         writeOne(to: &one)
         writeTwo(to: &two)
         testGeneric()
+        testLBUserDefaultWrapped()
     }
     
     
+    func testLBUserDefaultWrapped() {
+        UserDefaults.standard.setValue(nil, forKey: "househouse")
+        print("LBLog househouse \(UserDefaults.standard.value(forKey: "househouse"))")
+        print("LBLog userdefaulvalue \(UserDefaults.hasShowGuidePage)")
+        UserDefaults.currentVersion = "1.2.23"
+        print("LBLog currentVersion \(UserDefaults.currentVersion)")
+        
+        UserDefaults.houseId = nil
+        print("LBLog houseId \(UserDefaults.houseId)")
+    }
     
     func testGeneric() {
         LLLClass<Int>().testPrint()

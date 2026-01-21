@@ -34,12 +34,20 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "弹框队列", vcClass: LBAlertQueueViewController.self),
                 LBListItemModel.init(title: "测试self", vcClass: LBTestSelfController.self),
                 LBListItemModel.init(title: "ScrollView嵌套Scrollview", vcClass: LBScrollViewInScrollViewController.self),
+                LBListItemModel.init(title: "StickyHeaderNoEffectVC", vcClass: StickyHeaderNoEffectVC.self),
+                LBListItemModel.init(title: "tableview悬停效果", vcClass: LBStickyCollapsibleHeaderVC.self),
                 LBListItemModel.init(title: "Swift方法派发种类", vcClass: LBFuctionTypeController.self),
                 LBListItemModel.init(title: "自动连接wifi", vcClass: LBConnectWifiAutoController.self),
                 LBListItemModel.init(title: "手势优先级", vcClass: LBGesturePriorityViewController.self),
                 LBListItemModel.init(title: "AI问答器", vcClass: LBAIAnswerViewController.self),
                 LBListItemModel.init(title: "流式输出问答器", vcClass: LBSSEReponseController.self),
                 LBListItemModel.init(title: "UIKit加载SF Symbols设置颜色、大小", vcClass: LBUIKitLoadSFSymbolsController.self),
+                LBListItemModel.init(title: "AI问答输出", vcClass: LBAIChatViewController.self),
+                LBListItemModel.init(title: "AI问答输出MarkdownKit三方库", vcClass: LBMarkdownStreamViewController.self),
+                LBListItemModel.init(title: "chat模拟", vcClass: LBChatViewController.self),
+                LBListItemModel.init(title: "at功能", vcClass: LBATViewController.self),
+                LBListItemModel.init(title: "at功能2", vcClass: LBATViewController2.self),
+                LBListItemModel.init(title: "at功能deepSeek", vcClass: LBATDeepSeekViewController.self),
             ]
         }
     }
@@ -57,10 +65,14 @@ class LBVerifyViewController: LBBaseCollectionViewController {
         super.viewDidLoad()
         // 打印的结果一样， Self.self super.self打印的当前类型都是 LBVerifyViewController， 运行时的类型
         print("LBLog class is \(type(of: self))")
-        print("LBLog class is \(type(of: self.self))")
-        print("LBLog class is \(type(of: super.self))")
         let child = Child()
         child.printType()
+        
+        var expaned = false
+        
+        var expaned2 = false
+        expaned.toggle()
+        expaned2.toggle()
     }
     
 }

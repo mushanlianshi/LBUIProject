@@ -1,0 +1,11 @@
+framework module LBCombineFramewrok {
+  umbrella header "LBCombineFramewrok.h"
+  export *
+
+  module * { export * }
+}
+
+module LBCombineFramewrok.Swift {
+  header "LBCombineFramewrok-Swift.h"
+  requires objc
+}

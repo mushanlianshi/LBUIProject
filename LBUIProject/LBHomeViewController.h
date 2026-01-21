@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+//#import <ZhiYongSDK/ZhiYongSDK.h>
 // 类似NSObject即是类也是协议
 //@protocol LBHomeViewController <NSObject>
 //
