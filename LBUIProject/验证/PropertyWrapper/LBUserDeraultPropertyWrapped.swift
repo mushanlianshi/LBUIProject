@@ -10,13 +10,14 @@ import Foundation
 @propertyWrapper
 struct LBUserDefaultWrapped <Value>{
     let key: String
-    var defaultValue: Value
+    let defaultValue: Value
     var container: UserDefaults = .standard
     var wrappedValue: Value {
         get{
             container.object(forKey: key) as? Value ?? defaultValue
         }
         set {
+            /// 这里的optional 是Optional<Value>类型，只有是Optional类型才会走到这里。 Optional遵守AnyOptional协议，可以调用isNil属性
             if let optional = newValue as? AnyOptional, optional.isNil {
                 container.removeObject(forKey: key)
             } else {
@@ -27,7 +28,7 @@ struct LBUserDefaultWrapped <Value>{
 }
 
 
-/// 处理默认可以是nil的
+/// 处理默认可以是nil的, 封装一个类型，用来转换as?用的.  因为直接判断defaultValue == nil 会失败，defaultValue是Value类型，不是可选类型
 public protocol AnyOptional{
     var isNil: Bool { get }
 }
@@ -54,7 +55,7 @@ extension UserDefaults{
     @LBUserDefaultWrapped(key: "currentVersion", defaultValue: "")
     static var currentVersion
     
-    @LBUserDefaultWrapped(key: "houseId", defaultValue: nil)
+    @LBUserDefaultWrapped(key: "houseId")
     static var houseId: String?
 }
 

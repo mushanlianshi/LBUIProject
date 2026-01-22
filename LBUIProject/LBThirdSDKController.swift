@@ -235,7 +235,7 @@ class LBThirdSDKController: UIViewController {
         items.bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self)){
             (row, element, cell) in
             cell.textLabel?.text = element[.title] as? String
-        }
+        }.disposed(by: disposeBag)
         
         tableView.rx.modelSelected([String : Any].self).subscribe(onNext: {
             element in
