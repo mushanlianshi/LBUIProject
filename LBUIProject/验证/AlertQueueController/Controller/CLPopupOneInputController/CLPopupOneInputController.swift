@@ -270,8 +270,8 @@ extension CLPopupOneInputController {
     }
 }
 
-extension CLPopupOneInputController: CLPopoverProtocol {
-    func showAnimation(completion: (() -> Void)?) {
+extension CLPopupOneInputController {
+    override func showAnimation(completion: (() -> Void)?) {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         contentView.snp.remakeConstraints { make in
@@ -288,7 +288,7 @@ extension CLPopupOneInputController: CLPopoverProtocol {
         }
     }
 
-    func dismissAnimation(completion: (() -> Void)?) {
+    override func dismissAnimation(completion: (() -> Void)?) {
         contentView.snp.remakeConstraints { make in
             make.left.equalTo(36)
             make.right.equalTo(-36)

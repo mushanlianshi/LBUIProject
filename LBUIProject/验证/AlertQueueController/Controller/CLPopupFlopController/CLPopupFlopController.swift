@@ -147,8 +147,8 @@ class CLPopupFlopController: CLPopoverController {
     }
 }
 
-extension CLPopupFlopController: CLPopoverProtocol {
-    func showAnimation(completion: (() -> Void)?) {
+extension CLPopupFlopController {
+    override func showAnimation(completion: (() -> Void)?) {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         view.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.00)
@@ -165,7 +165,7 @@ extension CLPopupFlopController: CLPopoverProtocol {
         }
     }
 
-    func dismissAnimation(completion: (() -> Void)?) {
+    override func dismissAnimation(completion: (() -> Void)?) {
         UIView.animate(withDuration: 0.35, animations: {
             self.contentView.snp.updateConstraints { make in
                 make.top.equalTo(self.view.snp.top).offset(self.view.frame.height)

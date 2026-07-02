@@ -68,7 +68,7 @@ extension LBGenericClass where T == String{
     }
 }
 
-class LBThirdSDKController: UIViewController {
+class LBThirdSDKController: LBBaseCollectionViewController {
     
     lazy var disposeBag = DisposeBag()
     
@@ -105,28 +105,33 @@ class LBThirdSDKController: UIViewController {
         return button
     }()
     
-    lazy var listDataSources: [[String : Any]] = {
-        return [[.title : "RxSwift", .controller : LBRxSwiftHomeViewController.self],
-                [.title : "自定义反转Sequence", .controller : LBCustomReverseSequenceController.self],
-                [.title : "自定义操作符", .controller : LBCustomOperatorController.self],
-                [.title : "where操作符", .controller : LBTestWhereViewController.self],
-                [.title : "JXPagingView", .controller : LBJXPagingViewController.self],
-                [.title : "pageView实现", .controller : LBPageScrollViewController.self],
-                [.title : "dynamicMemberLookup转发", .controller : LBTestDynamicMemberLookupController.self],
-                [.title : "银行卡格式TextField", .controller : LBBankFormatterTextFieldController.self],
-                [.title : "本地化", .controller : LBLocaleViewController.self],
-                [.title : "fold卡片", .controller : LBFoldCardViewController.self],
-                [.title : "Mayo网络库", .controller : LBTestMayoNetworkController.self],
-                [.title : "IJKPlayer 播放器", .controller : LBIJKPlayerController.self],
-                [.title : "JVideoPlayer 播放器", .controller : LBSJVideoPlayerController.self],
-                [.title : "设计模式", .controller : LBDesignPatternHomeController.self],
-                [.title : "SwiftEntryKit弹框", .controller : LBAlertQueueManagerController.self],
-                [.title : "UICollectionViewCompositionalLayout布局", .controller : LBCollectionCompositionLayoutViewController.self],
-                [.title : "骨架屏", .controller : LBTabAnimatedViewController.self],
-                [.title : "GPUImage图片滤镜", .controller : LBGPUImageFilterViewController.self],
-                [.title : "down三方库渲染表格", .controller : LBDownTableTestController.self],
-        ]
-    }()
+    override var dataSources: [LBListItemModel]{
+        set{}
+        get{
+            return [
+                LBListItemModel.init(title: "验证RxSwift", vcClass: LBRxSwiftHomeViewController.self),
+                LBListItemModel.init(title: "自定义反转Sequence", vcClass: LBCustomReverseSequenceController.self),
+                LBListItemModel.init(title: "自定义操作符", vcClass: LBCustomOperatorController.self),
+                LBListItemModel.init(title: "where操作符", vcClass: LBTestWhereViewController.self),
+                LBListItemModel.init(title: "JXPagingView", vcClass: LBJXPagingViewController.self),
+                LBListItemModel.init(title: "pageView实现", vcClass: LBPageScrollViewController.self),
+                LBListItemModel.init(title: "dynamicMemberLookup转发", vcClass: LBTestDynamicMemberLookupController.self),
+                LBListItemModel.init(title: "银行卡格式TextField", vcClass: LBBankFormatterTextFieldController.self),
+                LBListItemModel.init(title: "本地化", vcClass: LBLocaleViewController.self),
+                LBListItemModel.init(title: "fold卡片", vcClass: LBFoldCardViewController.self),
+                LBListItemModel.init(title: "Mayo网络库", vcClass: LBTestMayoNetworkController.self),
+                LBListItemModel.init(title: "IJKPlayer 播放器", vcClass: LBIJKPlayerController.self),
+                LBListItemModel.init(title: "JVideoPlayer 播放器", vcClass: LBSJVideoPlayerController.self),
+                LBListItemModel.init(title: "设计模式", vcClass: LBDesignPatternHomeController.self),
+                LBListItemModel.init(title: "SwiftEntryKit弹框", vcClass: LBAlertQueueManagerController.self),
+                LBListItemModel.init(title: "UICollectionViewCompositionalLayout布局", vcClass: LBCollectionCompositionLayoutViewController.self),
+                LBListItemModel.init(title: "骨架屏", vcClass: LBTabAnimatedViewController.self),
+                LBListItemModel.init(title: "GPUImage图片滤镜", vcClass: LBGPUImageFilterViewController.self),
+                LBListItemModel.init(title: "down三方库渲染表格", vcClass: LBDownTableTestController.self),
+                LBListItemModel.init(title: "SmartCodable替换HandyJson", vcClass: LBSmartCodableReplaceHandyjsonController.self),
+            ]
+        }
+    }
     
     lazy var imageView: UIImageView = {
         let view = UIImageView()
@@ -144,7 +149,6 @@ class LBThirdSDKController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTableView()
         print("LBLog reduce 2222 is \(test(input: 1,2,3,4))")
         let coke = Drinking.drinking(name: "Coke")
         print("LBLog color \(coke.color == .black)") // Black
@@ -216,34 +220,6 @@ class LBThirdSDKController: UIViewController {
         LBGenericClass<String>().testPrint()
     }
     
-    func initTableView() {
-        view.addSubview(tableView)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-//            make.left.right.top.equalToSuperview()
-//            make.bottom.equalTo()
-        }
-        
-        let items: Observable<[[String : Any]]> = Observable.create { observer in
-            observer.onNext(
-                self.listDataSources
-            )
-            return Disposables.create()
-        }
-        
-        items.bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self)){
-            (row, element, cell) in
-            cell.textLabel?.text = element[.title] as? String
-        }.disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected([String : Any].self).subscribe(onNext: {
-            element in
-            self.pushPage(element)
-        }).disposed(by: disposeBag)
-        
-    }
-    
     
     func pushPage(_ info: [String : Any]) {
         guard let tmp = info[.controller] as? UIViewController.Type else { return }
@@ -274,6 +250,21 @@ class LBThirdSDKController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("LBLog viewWillDisappear ====")
+    }
+    
+}
+
+extension LBThirdSDKController{
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = dataSources[indexPath.row]
+        guard let vcClass = item.vcClass as? UIViewController.Type else {
+            return
+        }
+        let vc = vcClass.init()
+        vc.view.backgroundColor = .white
+        vc.navigationItem.title = item.title
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

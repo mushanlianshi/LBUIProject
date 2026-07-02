@@ -19,6 +19,9 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.selectList, AnyView(LBSelectListPage())),
         (.addUIKitView, AnyView(LBAddUIKitViewPage())),
         (.mixSwiftUIView, LBSwiftUIRefreshListController.self),
+        (.swiftUIEnvironmentData, AnyView(LBSwiftUIEnvironmentDataInjectPage())),
+        (.swiftUIEnvironmentData, AnyView(LBSwiftUIEnvironmentDataInjectPage())),
+//        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
 
     
@@ -47,12 +50,25 @@ extension LBSwiftUIHomeController{
 //        let hostVC: UIHostingController<<#Content: View#>>!
         let type = self.swiftUIDataList[indexPath.row].type
         
+//        if type == .navigationMix{
+//            if #available(iOS 16.0, *) {
+//                let root = LBNavigationMixRootContainerView()
+//                let vc = UIHostingController(rootView: root)
+//                // 关键：统一 UIKit 导航样式
+//                vc.navigationItem.title = "";
+////                vc.navigationItem.largeTitleDisplayMode = .never;
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            } else {
+//                
+//            };
+//        }
+//        else
         if type == .mixSwiftUIView {
             let vcType = self.swiftUIDataList[indexPath.row].view as! UIViewController.Type
             self.navigationController?.pushViewController(vcType.init(), animated: true)
         }else{
             let view = self.swiftUIDataList[indexPath.row].view as! AnyView
-            self.navigationController?.pushViewController(UIHostingController(rootView: view), animated: true)
+            self.navigationController?.pushViewController(LBCustomHostingController(rootView: view), animated: true)
         }
         
         
@@ -70,4 +86,6 @@ enum LBSwiftUIExampleType: String {
     case mixSwiftUIView = "内嵌SwiftUI view"
     case selectList = "列表点击选中"
     case addUIKitView = "加载UIKit中的控件"
+    case swiftUIEnvironmentData = "swiftUI中环境变量注册、存取"
+//    case navigationMix = "混合导航栏"
 }

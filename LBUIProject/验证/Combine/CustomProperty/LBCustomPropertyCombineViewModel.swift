@@ -38,16 +38,17 @@ class LBCustomPropertyCombineViewModel{
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {
             [weak self] in
             guard let self = self else { return }
-            self.model?.age += 1
-            switch self.state {
-            case .ok:
-                self.state = .empty("empty ")
-            case .empty:
-                self.state = .ok("ok")
-            }
-            self.validState.send(self.state)
-            self.modelObserver.send(self.model)
-            self.changeValidState()
+            self.changeModel()
+//            self.model?.age += 1
+//            switch self.state {
+//            case .ok:
+//                self.state = .empty("empty ")
+//            case .empty:
+//                self.state = .ok("ok")
+//            }
+//            self.validState.send(self.state)
+//            self.modelObserver.send(self.model)
+//            self.changeValidState()
         })
     }
     

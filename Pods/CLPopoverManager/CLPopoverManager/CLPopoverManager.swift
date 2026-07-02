@@ -7,6 +7,14 @@
 
 import UIKit
 
+private extension CLPopoverManager {
+    struct CLPopoverQueueItem {
+        let controller: CLPopoverProtocol
+        let enqueueTime = Date()
+        let completion: (() -> Void)?
+    }
+}
+
 // MARK: - 弹窗管理者
 
 @objcMembers public class CLPopoverManager: NSObject {
@@ -16,101 +24,154 @@ import UIKit
 
     deinit {}
 
-    private var waitQueue = [String: CLPopoverProtocol]()
+    private static let shared = CLPopoverManager()
 
-    private var windows = [String: CLPopoverWindow]()
-}
+    private var waitQueue = [String: CLPopoverQueueItem]()
 
-public extension CLPopoverManager {
-    @discardableResult static func mainSync<T>(execute block: () -> T) -> T {
-        guard !Thread.isMainThread else { return block() }
-        return DispatchQueue.main.sync { block() }
-    }
-}
+    private var activeWindows = [CLPopoverWindow]()
 
-public extension CLPopoverManager {
-    private static var manager: CLPopoverManager?
+    private var suspendedWindows = [String: [CLPopoverWindow]]()
 
-    private static let singletonSemaphore: DispatchSemaphore = {
-        let semap = DispatchSemaphore(value: 0)
-        semap.signal()
-        return semap
-    }()
-
-    private static var shared: CLPopoverManager {
-        singletonSemaphore.wait()
-        defer { singletonSemaphore.signal() }
-        if let sharedManager = manager {
-            return sharedManager
-        } else {
-            manager = CLPopoverManager()
-            return manager!
-        }
-    }
+    private var dismissingKeys = Set<String>()
 }
 
 public extension CLPopoverManager {
     /// 显示自定义弹窗
     static func show(_ controller: CLPopoverProtocol, completion: (() -> Void)? = nil) {
-        mainSync {
-            let shouldShow = !shared.windows.values.contains { $0.rootPopoverController?.config.popoverMode == .unique } &&
-                !shared.windows.values.contains { $0.rootPopoverController?.config.identifier == controller.config.identifier && controller.config.identifier != nil } &&
-                !shared.waitQueue.values.contains { $0.key != controller.key && $0.config.identifier == controller.config.identifier && controller.config.identifier != nil }
+        DispatchQueue.main.async {
+            if shared.activeWindows.contains(where: { $0.rootPopoverController?.config.popoverMode == .unique }) { return }
 
-            guard shouldShow else { return }
+            let allExistingControllers: [CLPopoverProtocol] = {
+                var controllers = [CLPopoverProtocol]()
+                controllers.append(contentsOf: shared.activeWindows.compactMap(\.rootPopoverController))
+                controllers.append(contentsOf: shared.waitQueue.values.map(\.controller))
+                controllers.append(contentsOf: shared.suspendedWindows.values.flatMap { $0 }.compactMap(\.rootPopoverController))
+                return controllers
+            }()
+
+            let controllerKey = controller.key
+            let controllerIdentifier = controller.config.identifier
+
+            if allExistingControllers.contains(where: {
+                $0.key == controllerKey || (controllerIdentifier != nil && $0.config.identifier == controllerIdentifier)
+            }) {
+                return
+            }
 
             switch controller.config.popoverMode {
             case .queue, .interrupt:
                 break
-            case .replace:
-                shared.windows.removeAll()
-            case .unique:
-                shared.windows.removeAll()
+            case .suspend:
+                shared.suspendedWindows[controller.key] = shared.activeWindows
+                shared.activeWindows.forEach { $0.isHidden = true }
+                shared.activeWindows.removeAll()
+            case .replaceInheritSuspend:
+                let windowsToReplace = shared.activeWindows
+                windowsToReplace.forEach { $0.isHidden = true }
+                shared.activeWindows.removeAll()
+
+                var allInheritedSuspended = [CLPopoverWindow]()
+                for window in windowsToReplace {
+                    guard let replacedKey = window.rootPopoverController?.key else { continue }
+                    guard let suspended = shared.suspendedWindows.removeValue(forKey: replacedKey) else { continue }
+                    allInheritedSuspended.append(contentsOf: suspended)
+                }
+                guard !allInheritedSuspended.isEmpty else { break }
+                shared.suspendedWindows[controller.key] = allInheritedSuspended
+            case .replaceClearSuspend:
+                let windowsToReplace = shared.activeWindows
+                windowsToReplace.forEach { $0.isHidden = true }
+                shared.activeWindows.removeAll()
+                for window in windowsToReplace {
+                    guard let replacedKey = window.rootPopoverController?.key else { continue }
+                    guard let suspendedToClear = shared.suspendedWindows.removeValue(forKey: replacedKey) else { continue }
+                    suspendedToClear.forEach { $0.isHidden = true }
+                }
+            case .replaceAll, .unique:
                 shared.waitQueue.removeAll()
+                shared.suspendedWindows.values.flatMap { $0 }.forEach { $0.isHidden = true }
+                shared.suspendedWindows.removeAll()
+                shared.activeWindows.forEach { $0.isHidden = true }
+                shared.activeWindows.removeAll()
             }
-            guard !(controller.config.popoverMode == .queue && !shared.windows.isEmpty) else {
-                shared.waitQueue[controller.key] = controller
+            if controller.config.popoverMode == .queue, !shared.activeWindows.isEmpty {
+                shared.waitQueue[controller.key] = CLPopoverQueueItem(controller: controller, completion: completion)
                 return
             }
-            let window = CLPopoverWindow(frame: UIScreen.main.bounds)
-            window.backgroundColor = .clear
-            if #available(iOS 13.0, *) {
-                window.overrideUserInterfaceStyle = .init(rawValue: controller.config.userInterfaceStyleOverride.rawValue) ?? .light
-            }
-            window.autoHideWhenPenetrated = controller.config.autoHideWhenPenetrated
-            window.allowsEventPenetration = controller.config.allowsEventPenetration
-            window.windowLevel = .alert + 50
-            window.rootViewController = controller
-            window.makeKeyAndVisible()
-            shared.windows[controller.key] = window
-            shared.waitQueue.removeValue(forKey: controller.key)
-            controller.showAnimation(completion: completion)
+            display(controller, completion: completion)
         }
     }
 
     /// 隐藏指定弹窗
     static func dismiss(_ key: String?, completion: (() -> Void)? = nil) {
         guard let key else { return }
-        func remove() {}
-        mainSync {
-            guard let window = shared.windows[key] else { return }
-            window.rootPopoverController?.dismissAnimation {
-                completion?()
+        DispatchQueue.main.async {
+            guard !shared.dismissingKeys.contains(key) else { return }
+            guard let window = shared.activeWindows.first(where: { $0.rootPopoverController?.key == key }) else {
                 shared.waitQueue.removeValue(forKey: key)
-                shared.windows.removeValue(forKey: key)
-                guard !(shared.windows.isEmpty && shared.waitQueue.isEmpty) else { return dismissAll() }
-                guard let lastController = shared.waitQueue.values.max(by: { $0.config.popoverPriority < $1.config.popoverPriority }) else { return }
-                show(lastController)
+                completion?()
+                return
+            }
+            shared.dismissingKeys.insert(key)
+            window.rootPopoverController?.dismissAnimation {
+                window.isHidden = true
+                completion?()
+                shared.activeWindows.removeAll(where: { $0.rootPopoverController?.key == key })
+                shared.dismissingKeys.remove(key)
+                if shared.activeWindows.isEmpty, shared.suspendedWindows.isEmpty, shared.waitQueue.isEmpty { return dismissAll() }
+                guard shared.activeWindows.isEmpty else { return }
+                if let windows = shared.suspendedWindows[key], !windows.isEmpty {
+                    windows.forEach { $0.isHidden = false }
+                    shared.activeWindows = windows
+                    shared.suspendedWindows.removeValue(forKey: key)
+                } else if let nextItem = shared.waitQueue.values.max(by: { lhs, rhs in
+                    if lhs.controller.config.popoverPriority != rhs.controller.config.popoverPriority {
+                        lhs.controller.config.popoverPriority < rhs.controller.config.popoverPriority
+                    } else {
+                        lhs.enqueueTime > rhs.enqueueTime
+                    }
+                }) {
+                    display(nextItem.controller, completion: nextItem.completion)
+                }
             }
         }
     }
 
     /// 隐藏所有弹窗
     static func dismissAll() {
-        mainSync {
+        DispatchQueue.main.async {
+            shared.dismissingKeys.removeAll()
             shared.waitQueue.removeAll()
-            shared.windows.removeAll()
-            manager = nil
+            shared.suspendedWindows.values.flatMap { $0 }.forEach { $0.isHidden = true }
+            shared.suspendedWindows.removeAll()
+            shared.activeWindows.forEach { $0.isHidden = true }
+            shared.activeWindows.removeAll()
         }
+    }
+}
+
+private extension CLPopoverManager {
+    static func display(_ controller: CLPopoverProtocol, completion: (() -> Void)? = nil) {
+        let window: CLPopoverWindow = {
+            if #available(iOS 13.0, *) {
+                let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+                let preferredScene = scenes.first { $0.activationState == .foregroundActive } ?? scenes.first
+                let popoverWindow = preferredScene.map { CLPopoverWindow(windowScene: $0) } ?? CLPopoverWindow(frame: UIScreen.main.bounds)
+                popoverWindow.overrideUserInterfaceStyle = .init(rawValue: controller.config.userInterfaceStyleOverride.rawValue) ?? .light
+                return popoverWindow
+            } else {
+                return CLPopoverWindow(frame: UIScreen.main.bounds)
+            }
+        }()
+
+        window.backgroundColor = .clear
+        window.autoHideWhenPenetrated = controller.config.autoHideWhenPenetrated
+        window.allowsEventPenetration = controller.config.allowsEventPenetration
+        window.windowLevel = .alert + 50
+        window.rootViewController = controller
+        window.makeKeyAndVisible()
+        shared.activeWindows.append(window)
+        shared.waitQueue.removeValue(forKey: controller.key)
+        controller.showAnimation(completion: completion)
     }
 }

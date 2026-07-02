@@ -23,6 +23,7 @@ class LBMarkdownStreamViewCell: UITableViewCell {
         tv.backgroundColor = .systemBackground
         tv.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         tv.isEditable = false
+        tv.isScrollEnabled = false;
         return tv
     }()
 
@@ -42,7 +43,7 @@ class LBMarkdownStreamViewCell: UITableViewCell {
         textView.scrollRangeToVisible(bottomRange)
     }
     
-    let label = UILabel()
+//    let label = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,16 +56,16 @@ class LBMarkdownStreamViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    func configure(text: String) {
-        // 异步渲染 Markdown
-        Task {
-            let down = Down(markdownString: text)
-            let attributed = try? down.toAttributedString()
-            await MainActor.run {
-                self.label.attributedText = attributed
-            }
-        }
-    }
+//    func configure(text: String) {
+//        // 异步渲染 Markdown
+//        Task {
+//            let down = Down(markdownString: text)
+//            let attributed = try? down.toAttributedString()
+//            await MainActor.run {
+//                self.label.attributedText = attributed
+//            }
+//        }
+//    }
 }
 
 // MARK: - ViewController
@@ -102,7 +103,7 @@ class LBMarkdownStreamViewController: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
         UIView.setAnimationsEnabled(true)
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

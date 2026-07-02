@@ -186,8 +186,8 @@ extension CLPopupCalendarController {}
 
 // MARK: - JmoVxia---私有方法
 
-extension CLPopupCalendarController: CLPopoverProtocol {
-    func showAnimation(completion: (() -> Void)?) {
+extension CLPopupCalendarController {
+    override func showAnimation(completion: (() -> Void)?) {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         colorView.snp.remakeConstraints { make in
@@ -202,7 +202,7 @@ extension CLPopupCalendarController: CLPopoverProtocol {
         }
     }
 
-    func dismissAnimation(completion: (() -> Void)?) {
+    override func dismissAnimation(completion: (() -> Void)?) {
         colorView.snp.remakeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(view.snp.bottom)

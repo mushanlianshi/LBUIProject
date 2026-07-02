@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import Markdown
 
 @main
 struct LBWidgetBundle: WidgetBundle {

@@ -10,7 +10,7 @@ import SwiftUI
 struct LBTestSwiftUI: View {
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Hello, World!")
     }
     
     //会报错 返回不同的类型
@@ -56,5 +56,51 @@ struct LBTestSwiftUI: View {
 struct LBTestSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         LBTestSwiftUI()
+    }
+}
+
+
+enum ImageSessions {
+    static let gallery: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.urlCache = URLCache(
+            memoryCapacity: 20 * 1024 * 1024,
+            diskCapacity: 100 * 1024 * 1024
+        )
+        config.requestCachePolicy = .useProtocolCachePolicy
+        return URLSession(configuration: config)
+    }()
+}
+
+struct ImageGallery: View {
+    let imageURLs: [URL]
+
+    var body: some View {
+        ScrollView {
+            AsyncImage(url: imageURLs.first ?? nil, content: {
+                image in
+                image.resizable()
+            }, placeholder: {
+                
+            })
+            
+            LazyVGrid(
+                columns: [
+                    GridItem(.adaptive(minimum: 120))
+                ]
+            ) {
+                ForEach(imageURLs, id: \.self) { url in
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(height: 120)
+                    .clipShape(.rect(cornerRadius: 16))
+                }
+            }
+        }
     }
 }

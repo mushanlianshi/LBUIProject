@@ -81,6 +81,7 @@
         documentAttributes:NULL];
     self.textView.attributedString = attributedString;
     CGSize size = [self.textView sizeThatFits:CGSizeMake(self.view.bounds.size.width, CGFLOAT_MAX)];
+    NSLog(@"LBLog size is %@", @(size));
 }
 
 - (void)renderMarkdownTable:(NSString *)markdown {

@@ -143,6 +143,7 @@
 		4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */; };
 		40616F202BFB385E00FEF9A1 /* vlc-hls.m3u8-.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 40616F1F2BFB378600FEF9A1 /* vlc-hls.m3u8-.mp4 */; };
 		40616F222BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40616F212BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift */; };
+		40628C992FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40628C982FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift */; };
 		406298EB288F8517006A3024 /* UINavigationBar+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */; };
 		406298EE288FBD28006A3024 /* LBCustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */; };
 		406298F0288FC18B006A3024 /* LBSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406298EF288FC18B006A3024 /* LBSliderTableCell.swift */; };
@@ -244,10 +245,17 @@
 		409FC3FC2A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC3F92A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift */; };
 		40A20A052A15B22C00353135 /* Pods_LBUIProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; };
 		40A20A062A15B22C00353135 /* Pods_LBUIProject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		40A2D3382FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D3352FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png */; };
+		40A2D3392FDBD481004A9788 /* LBAIProductAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D3362FDBD481004A9788 /* LBAIProductAdViewController.swift */; };
+		40A2D4E52FE3CBC4004A9788 /* LBSPMStreamMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D4E32FE3CBC4004A9788 /* LBSPMStreamMarkdownRenderer.swift */; };
+		40A2D4E62FE3CBC4004A9788 /* LBSPMStreamChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D4E42FE3CBC4004A9788 /* LBSPMStreamChatController.swift */; };
+		40A2D4E72FE3D246004A9788 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 40A2D4E82FE3CBC4004A9788 /* Down */; };
 		40A743652A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A743642A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift */; };
 		40A743682A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A743672A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift */; };
 		40A7436B2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A7436A2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift */; };
 		40A7436E2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A7436D2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift */; };
+		40A761E52FF609F6001C5BB2 /* Any+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A761E42FF609ED001C5BB2 /* Any+Extension.swift */; };
+		40A761E82FF639D6001C5BB2 /* LBPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A761E72FF639D6001C5BB2 /* LBPageViewController.swift */; };
 		40ABA5822A1C9D3500B84488 /* LBTestMayoNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA5812A1C9D3500B84488 /* LBTestMayoNetworkController.swift */; };
 		40ABA5842A1C9DD300B84488 /* LBUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA5832A1C9DD300B84488 /* LBUserInfoService.swift */; };
 		40ABA5862A1CA74600B84488 /* LBBaseMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA5852A1CA74600B84488 /* LBBaseMoyaProvider.swift */; };
@@ -459,10 +467,17 @@
 		40F38D2B2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2A2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift */; };
 		40F38D2D2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2C2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift */; };
 		40F38D2F2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F38D2E2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift */; };
+		40F5B1A32FF219D9002CCA9C /* LBSwiftUIEnvironmentDataInjectPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1A22FF219D9002CCA9C /* LBSwiftUIEnvironmentDataInjectPage.swift */; };
+		40F5B1CE2FF24287002CCA9C /* LBCustomHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1CD2FF24287002CCA9C /* LBCustomHostingController.swift */; };
+		40F5B1DA2FF39FA4002CCA9C /* LBNavigationMixPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1D92FF39FA4002CCA9C /* LBNavigationMixPage.swift */; };
+		40F5B1DC2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */; };
+		40F5B1DE2FF3A000002CCA9C /* LBNavigationMixRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */; };
 		40F9FA452DF1816600D5D736 /* LBAIAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */; };
+		40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
+		9833ACF550F34D1C9E09D0C2C4BB6AC3 /* LBATCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FF3B9599374A64866684A05D23BAE6 /* LBATCompleteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -515,6 +530,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		19FF3B9599374A64866684A05D23BAE6 /* LBATCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBATCompleteViewController.swift; sourceTree = "<group>"; };
 		2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProject_LBUIProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3131954787990370DAC18C5B /* Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig"; sourceTree = "<group>"; };
@@ -702,6 +718,7 @@
 		405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LBLivePreview.swift"; sourceTree = "<group>"; };
 		40616F1F2BFB378600FEF9A1 /* vlc-hls.m3u8-.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "vlc-hls.m3u8-.mp4"; sourceTree = "<group>"; };
 		40616F212BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSJVideoPlayerController.swift; sourceTree = "<group>"; };
+		40628C982FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSmartCodableReplaceHandyjsonController.swift; sourceTree = "<group>"; };
 		406298EA288F8517006A3024 /* UINavigationBar+LBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+LBExtension.swift"; sourceTree = "<group>"; };
 		406298ED288FBD28006A3024 /* LBCustomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomPageViewController.swift; sourceTree = "<group>"; };
 		406298EF288FC18B006A3024 /* LBSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSliderTableCell.swift; sourceTree = "<group>"; };
@@ -834,10 +851,16 @@
 		409FC3F92A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLContractDetailMutiContractCheckTask.swift; sourceTree = "<group>"; };
 		40A20A012A15B20100353135 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = Pods/TXLiteAVSDK_Player/TXLiteAVSDK_Player/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		40A20A072A15B25C00353135 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = Pods/TXLiteAVSDK_Player/TXLiteAVSDK_Player/TXSoundTouch.xcframework; sourceTree = "<group>"; };
+		40A2D3352FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14f009d621aa2c11aca9ed0b57cc1817.png; sourceTree = "<group>"; };
+		40A2D3362FDBD481004A9788 /* LBAIProductAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAIProductAdViewController.swift; sourceTree = "<group>"; };
+		40A2D4E32FE3CBC4004A9788 /* LBSPMStreamMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSPMStreamMarkdownRenderer.swift; sourceTree = "<group>"; };
+		40A2D4E42FE3CBC4004A9788 /* LBSPMStreamChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSPMStreamChatController.swift; sourceTree = "<group>"; };
 		40A743642A8CDB0B002B90BD /* LBAnimationHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAnimationHomeListViewController.swift; sourceTree = "<group>"; };
 		40A743672A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAnimationRandomFadeTextController.swift; sourceTree = "<group>"; };
 		40A7436A2A8CDC1E002B90BD /* LBBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		40A7436D2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRandomFadeAnimationLabel.swift; sourceTree = "<group>"; };
+		40A761E42FF609ED001C5BB2 /* Any+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Any+Extension.swift"; sourceTree = "<group>"; };
+		40A761E72FF639D6001C5BB2 /* LBPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBPageViewController.swift; sourceTree = "<group>"; };
 		40ABA5812A1C9D3500B84488 /* LBTestMayoNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestMayoNetworkController.swift; sourceTree = "<group>"; };
 		40ABA5832A1C9DD300B84488 /* LBUserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUserInfoService.swift; sourceTree = "<group>"; };
 		40ABA5852A1CA74600B84488 /* LBBaseMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBaseMoyaProvider.swift; sourceTree = "<group>"; };
@@ -1093,6 +1116,11 @@
 		40F38D2A2C8ADB860046E4E5 /* ManuallySelfSizingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuallySelfSizingCell.swift; sourceTree = "<group>"; };
 		40F38D2C2C8ADB970046E4E5 /* FullWidthSelfSizingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullWidthSelfSizingCell.swift; sourceTree = "<group>"; };
 		40F38D2E2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomDecorationLayoutAttributes.swift; sourceTree = "<group>"; };
+		40F5B1A22FF219D9002CCA9C /* LBSwiftUIEnvironmentDataInjectPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwiftUIEnvironmentDataInjectPage.swift; sourceTree = "<group>"; };
+		40F5B1CD2FF24287002CCA9C /* LBCustomHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomHostingController.swift; sourceTree = "<group>"; };
+		40F5B1D92FF39FA4002CCA9C /* LBNavigationMixPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigationMixPage.swift; sourceTree = "<group>"; };
+		40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigationMixRootContainerView.swift; sourceTree = "<group>"; };
+		40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNavigationMixRouter.swift; sourceTree = "<group>"; };
 		40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAIAnswerViewController.swift; sourceTree = "<group>"; };
 		40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUIKitLoadSFSymbolsController.swift; sourceTree = "<group>"; };
 		40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwiftHeader.swift; sourceTree = "<group>"; };
@@ -1118,6 +1146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A2D4E72FE3D246004A9788 /* Down in Frameworks */,
 				401BEEA52A259E7F00F28892 /* VideoToolbox.framework in Frameworks */,
 				40D023492E4DC8D00045F83C /* LBCombineFramewrok.framework in Frameworks */,
 				401BEEA32A259E7900F28892 /* QuartzCore.framework in Frameworks */,
@@ -1454,6 +1483,8 @@
 				403094F12E14D53C00E04161 /* LBSSEReponseController.swift */,
 				403094F32E15102300E04161 /* LBStreamJsonParse.swift */,
 				403094F52E15161A00E04161 /* LBDouBaoParse.swift */,
+				40A2D4E32FE3CBC4004A9788 /* LBSPMStreamMarkdownRenderer.swift */,
+				40A2D4E42FE3CBC4004A9788 /* LBSPMStreamChatController.swift */,
 			);
 			path = "流式输出";
 			sourceTree = "<group>";
@@ -1533,6 +1564,7 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				40A2D3372FDBD481004A9788 /* AIProduct */,
 				40BB81992E530963002BF3AF /* 流式输出 */,
 				40E864062DF6653F00EA733B /* Test */,
 				40D6843C2DE5BCFD004249E3 /* Resources */,
@@ -1599,6 +1631,7 @@
 				40D43CFF2A667AA9001384BF /* UIView+LBColor.h */,
 				40D43D002A667AA9001384BF /* UIView+LBColor.m */,
 				40D023482E4DC8D00045F83C /* LBCombineFramewrok.framework */,
+				40FAD32D2FDB9E0A00861B79 /* AIProduct */,
 			);
 			path = LBUIProject;
 			sourceTree = "<group>";
@@ -1747,6 +1780,14 @@
 				405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */,
 			);
 			path = LivePreview;
+			sourceTree = "<group>";
+		};
+		40628C972FF4B1CC00C60573 /* SmartCodable */ = {
+			isa = PBXGroup;
+			children = (
+				40628C982FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift */,
+			);
+			path = SmartCodable;
 			sourceTree = "<group>";
 		};
 		406298EC288FBD05006A3024 /* 自定义轮播图 */ = {
@@ -2006,6 +2047,7 @@
 		4080FEB72AD8DCA600FF79FC /* SecondTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				40A761E62FF639BB001C5BB2 /* PageController */,
 				409729242F20A73B00C3E7EB /* Calendar */,
 				404B0EC82D9252690070447D /* LBResponseInset */,
 				40F38D212C8AD94D0046E4E5 /* IGListKitDecoration */,
@@ -2299,6 +2341,15 @@
 			path = SwiftChain;
 			sourceTree = "<group>";
 		};
+		40A2D3372FDBD481004A9788 /* AIProduct */ = {
+			isa = PBXGroup;
+			children = (
+				40A2D3352FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png */,
+				40A2D3362FDBD481004A9788 /* LBAIProductAdViewController.swift */,
+			);
+			path = AIProduct;
+			sourceTree = "<group>";
+		};
 		40A743632A8CDAEF002B90BD /* 动画 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2330,6 +2381,14 @@
 				40A7436D2A8DB60E002B90BD /* LBRandomFadeAnimationLabel.swift */,
 			);
 			path = "随机渐变fadeLabel";
+			sourceTree = "<group>";
+		};
+		40A761E62FF639BB001C5BB2 /* PageController */ = {
+			isa = PBXGroup;
+			children = (
+				40A761E72FF639D6001C5BB2 /* LBPageViewController.swift */,
+			);
+			path = PageController;
 			sourceTree = "<group>";
 		};
 		40ABA5802A1C9D1400B84488 /* Moya网络库 */ = {
@@ -2573,6 +2632,7 @@
 		40ABEB4B2DA3BE3500199320 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				40A761E42FF609ED001C5BB2 /* Any+Extension.swift */,
 				40ABEB442DA3BE3500199320 /* CLPopoverManager+Extension.swift */,
 				40ABEB452DA3BE3500199320 /* String+Extension.swift */,
 				40ABEB472DA3BE3500199320 /* UIFont+Extension.swift */,
@@ -3045,6 +3105,7 @@
 		40D2763F29C0754C005343E3 /* ThirdTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				40628C972FF4B1CC00C60573 /* SmartCodable */,
 				40B3F85B2DBE20AF009C033F /* GPUImage滤镜 */,
 				40ABEB822DA3C65700199320 /* LBBaseView.swift */,
 				40ABEB7E2DA3C5A400199320 /* Iconfont */,
@@ -3150,6 +3211,9 @@
 		40D43D0D2A67EE33001384BF /* SwiftUIModule */ = {
 			isa = PBXGroup;
 			children = (
+				40F5B1D82FF39F81002CCA9C /* 混合导航栏 */,
+				40F5B1CC2FF24277002CCA9C /* CustomHostController */,
+				40F5B1A12FF2198F002CCA9C /* SwiftUI环境变量注入 */,
 				4012373B2DAF8D5D00E7AAEC /* Booking */,
 				402922352D5ED19A0081AD17 /* AddUIKitView */,
 				402922322D5ECE6F0081AD17 /* SelectList */,
@@ -3333,6 +3397,7 @@
 				40F32F642ECFF76C007EB13F /* LBATViewController2.swift */,
 				40F32F622ECFF75B007EB13F /* LBATTextView.swift */,
 				40F32F602ECF2B94007EB13F /* LBATViewController.swift */,
+				19FF3B9599374A64866684A05D23BAE6 /* LBATCompleteViewController.swift */,
 			);
 			path = AT;
 			sourceTree = "<group>";
@@ -3368,12 +3433,45 @@
 			path = IGListKitDecoration;
 			sourceTree = "<group>";
 		};
+		40F5B1A12FF2198F002CCA9C /* SwiftUI环境变量注入 */ = {
+			isa = PBXGroup;
+			children = (
+				40F5B1A22FF219D9002CCA9C /* LBSwiftUIEnvironmentDataInjectPage.swift */,
+			);
+			path = "SwiftUI环境变量注入";
+			sourceTree = "<group>";
+		};
+		40F5B1CC2FF24277002CCA9C /* CustomHostController */ = {
+			isa = PBXGroup;
+			children = (
+				40F5B1CD2FF24287002CCA9C /* LBCustomHostingController.swift */,
+			);
+			path = CustomHostController;
+			sourceTree = "<group>";
+		};
+		40F5B1D82FF39F81002CCA9C /* 混合导航栏 */ = {
+			isa = PBXGroup;
+			children = (
+				40F5B1D92FF39FA4002CCA9C /* LBNavigationMixPage.swift */,
+				40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */,
+				40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */,
+			);
+			path = "混合导航栏";
+			sourceTree = "<group>";
+		};
 		40F9FA432DF1813000D5D736 /* AIAnswer */ = {
 			isa = PBXGroup;
 			children = (
 				40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */,
 			);
 			path = AIAnswer;
+			sourceTree = "<group>";
+		};
+		40FAD32D2FDB9E0A00861B79 /* AIProduct */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AIProduct;
 			sourceTree = "<group>";
 		};
 		40FDBFA22DF9293000BCF457 /* SFSymbols */ = {
@@ -3454,6 +3552,7 @@
 			packageProductDependencies = (
 				402550DC2DF92C01002D8C03 /* SwiftUIIntrospect */,
 				402550DF2DF92E6E002D8C03 /* SwiftUIPullToRefresh */,
+				40A2D4E82FE3CBC4004A9788 /* Down */,
 			);
 			productName = LBUIProject;
 			productReference = 4043EB01265F9E2400EACB2B /* LBUIProject.app */;
@@ -3539,6 +3638,7 @@
 			packageReferences = (
 				402550DB2DF92C01002D8C03 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				402550DE2DF92E6D002D8C03 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */,
+				40A2D4E72FE3CBC4004A9788 /* XCRemoteSwiftPackageReference "Down" */,
 			);
 			productRefGroup = 4043EB02265F9E2400EACB2B /* Products */;
 			projectDirPath = "";
@@ -3557,6 +3657,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3564,6 +3665,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A2D3382FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png in Resources */,
 				40616F202BFB385E00FEF9A1 /* vlc-hls.m3u8-.mp4 in Resources */,
 				40D43CBF2A5D35B3001384BF /* 11111.flac in Resources */,
 				409D39172A3993F10063DA08 /* butterfly2.mp4 in Resources */,
@@ -3653,13 +3755,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3696,13 +3794,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3717,13 +3811,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3760,13 +3850,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3831,6 +3917,7 @@
 				4091DE4328AA48F000798E2A /* LBNotificationView.swift in Sources */,
 				40ABEB782DA3BE3900199320 /* LBTestSelfController.swift in Sources */,
 				40B4A0D42A73D05D00D02BB4 /* BLTPreviewImageManager.m in Sources */,
+				40F5B1DE2FF3A000002CCA9C /* LBNavigationMixRouter.swift in Sources */,
 				40ABEB512DA3BE3500199320 /* CLCalendarDelegateFlowLayout.swift in Sources */,
 				40ABA59C2A1F4F3C00B84488 /* LBMoyaTargetTypeProtocol.swift in Sources */,
 				40ABA5882A1CAA7000B84488 /* LBMoyaProviderResult.swift in Sources */,
@@ -3844,6 +3931,7 @@
 				40D43D062A67DC12001384BF /* LBScrollViewAnimatingExampleController.swift in Sources */,
 				40ABEB5C2DA3BE3500199320 /* CLHourMinuteDataPickerView.swift in Sources */,
 				407B84AF2940300400AEDAEC /* BLTReverseSequence.swift in Sources */,
+				40628C992FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift in Sources */,
 				40AE6FF129C9887400C69932 /* LBPageSegmentView.swift in Sources */,
 				40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */,
 				40AE6FEC29C8616600C69932 /* HeaderPositionViewController.swift in Sources */,
@@ -3996,6 +4084,7 @@
 				40ABFE2529DC333E008114C5 /* UITextField+LBFormatter.swift in Sources */,
 				40A743682A8CDB59002B90BD /* LBAnimationRandomFadeTextController.swift in Sources */,
 				4063EF4E285ADDCD00335BA2 /* CHTCollectionViewWaterfallCell.m in Sources */,
+				40F5B1DC2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift in Sources */,
 				40B35B7328640B210001FFE9 /* LBNavigationBarScrollHiddenAnimator.swift in Sources */,
 				40D43CF32A614A4D001384BF /* LBListScrollAnimatingHeaderView.swift in Sources */,
 				4002F5802EF8E7F300774AB1 /* LBUserDeraultPropertyWrapped.swift in Sources */,
@@ -4009,6 +4098,7 @@
 				408F681A288A873A0019F47D /* LBSkeletonViewController.swift in Sources */,
 				407603A6284077600019EC69 /* LBTestUnrecognizeSelectorViewController.m in Sources */,
 				40D43CDF2A6003A3001384BF /* UIStackViewInScrollViewController.m in Sources */,
+				40F5B1DA2FF39FA4002CCA9C /* LBNavigationMixPage.swift in Sources */,
 				4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */,
 				40BD1F4726D8D1480002E493 /* LBChainElement.m in Sources */,
 				4002F5842EF93C3200774AB1 /* HYBStreamContentModel.m in Sources */,
@@ -4026,6 +4116,7 @@
 				40AE6FE729C8616600C69932 /* TestListBaseView.swift in Sources */,
 				40F32F692ED00889007EB13F /* LBDeepSeekMentionTextView.swift in Sources */,
 				40F32F672ED0084A007EB13F /* LBATDeepSeekViewController.swift in Sources */,
+				9833ACF550F34D1C9E09D0C2C4BB6AC3 /* LBATCompleteViewController.swift in Sources */,
 				400F8AF92ECD5ED9004E99F6 /* LBMarkdownStreamViewController.swift in Sources */,
 				4044D2272DACF5360012CD6D /* LBCustomPropertyCombineController.swift in Sources */,
 				4085464A27438ECF00EEEC12 /* LBKVCController.m in Sources */,
@@ -4053,6 +4144,7 @@
 				40DF356128646014008EE299 /* NSString+LBExtension.m in Sources */,
 				409C16E62A821440006EB24D /* LLPropertyWrapperViewController.swift in Sources */,
 				40F38D202C8AA1AE0046E4E5 /* LLImageClipController.swift in Sources */,
+				40A761E82FF639D6001C5BB2 /* LBPageViewController.swift in Sources */,
 				407DA97B28A505A4000B2BA8 /* LBTextField.swift in Sources */,
 				404B1B812A7B985E002B46BB /* FoldClockItem.swift in Sources */,
 				40ABEB112DA3BE1A00199320 /* LBLoginCombineController.swift in Sources */,
@@ -4066,6 +4158,7 @@
 				404B1B7E2A7B985E002B46BB /* UIColor+Extension.swift in Sources */,
 				40AE6FE529C8616600C69932 /* PagingViewTableHeaderView.swift in Sources */,
 				409729282F20A76100C3E7EB /* CalendarTool.swift in Sources */,
+				40F5B1A32FF219D9002CCA9C /* LBSwiftUIEnvironmentDataInjectPage.swift in Sources */,
 				4002F5872EFA661700774AB1 /* HYBStreamMarkdownParser.m in Sources */,
 				40ABEB102DA3BE1A00199320 /* LBLoginCombineContentView.swift in Sources */,
 				40ABEB5A2DA3BE3500199320 /* CLDataPickerTitleView.swift in Sources */,
@@ -4140,6 +4233,7 @@
 				4012373C2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift in Sources */,
 				404B0ECA2D92527C0070447D /* LBResponseInsetViewController.swift in Sources */,
 				404B0EA92D8D40440070447D /* LBTabAnimatedOCCell.m in Sources */,
+				40F5B1CE2FF24287002CCA9C /* LBCustomHostingController.swift in Sources */,
 				409C16EC2A8631D8006EB24D /* LBExpandArea.swift in Sources */,
 				40B73CAB2DCDB38F004B8CF7 /* LBSwiftUIRefreshListViewModel.swift in Sources */,
 				4022E72329CD8FFC00C4476F /* LBTestDynamicMemberLookupController.swift in Sources */,
@@ -4153,6 +4247,9 @@
 				40BB0A5A2D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift in Sources */,
 				40B4A0C22A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift in Sources */,
 				403094F62E15161A00E04161 /* LBDouBaoParse.swift in Sources */,
+				40A2D3392FDBD481004A9788 /* LBAIProductAdViewController.swift in Sources */,
+				40A2D4E52FE3CBC4004A9788 /* LBSPMStreamMarkdownRenderer.swift in Sources */,
+				40A2D4E62FE3CBC4004A9788 /* LBSPMStreamChatController.swift in Sources */,
 				40ABEB6D2DA3BE3500199320 /* CLPopupTipsController.swift in Sources */,
 				400E3E9B2695879A00C67D52 /* LBSegemtnScrollViewController.m in Sources */,
 				400A4FB92A04D9EC00C7A51B /* LBFlipCardViewController.swift in Sources */,
@@ -4160,6 +4257,7 @@
 				409639072F0CE70700BDA144 /* UIWindow+Shake.m in Sources */,
 				40F38D272C8ADACC0046E4E5 /* SelectionModel.swift in Sources */,
 				40ABEB8E2DA3DB6100199320 /* LBCombineUserInfoModel.swift in Sources */,
+				40A761E52FF609F6001C5BB2 /* Any+Extension.swift in Sources */,
 				409FC3FB2A2A010D0053B88C /* LLContractDetailChanQuanCheckTask.swift in Sources */,
 				40B3F8602DBE2112009C033F /* LBGPUImageFilterViewController.swift in Sources */,
 				40B3F8652DBE2203009C033F /* LBVideoFilterController.swift in Sources */,
@@ -4278,7 +4376,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T54JS6U4YX;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilterMessage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilterMessage;
@@ -4290,7 +4388,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123.FilterMessage;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123.FilterMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -4309,7 +4407,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T54JS6U4YX;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilterMessage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilterMessage;
@@ -4321,7 +4419,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123.FilterMessage;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123.FilterMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4463,7 +4561,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = T54JS6U4YX;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4484,7 +4582,7 @@
 				NEW_SETTING = "";
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "-o runtime --runtime-version $DEPLOYMENT_TARGET";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -4512,7 +4610,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = T54JS6U4YX;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = mar64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4531,7 +4629,7 @@
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -4703,7 +4801,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = T54JS6U4YX;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4722,7 +4820,7 @@
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -4783,7 +4881,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T54JS6U4YX;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilterMessage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilterMessage;
@@ -4795,7 +4893,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ethank.MobileHotel123.FilterMessage;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123.FilterMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -4878,6 +4976,14 @@
 				minimumVersion = 1.1.9;
 			};
 		};
+		40A2D4E72FE3CBC4004A9788 /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iwasrobbed/Down.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -4890,6 +4996,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 402550DE2DF92E6D002D8C03 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */;
 			productName = SwiftUIPullToRefresh;
+		};
+		40A2D4E82FE3CBC4004A9788 /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40A2D4E72FE3CBC4004A9788 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

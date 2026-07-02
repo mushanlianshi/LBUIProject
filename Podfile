@@ -16,7 +16,7 @@ target 'LBUIProject' do
   pod 'Masonry', '~> 1.1.0'
   pod 'FaceAware'
 #  升级到1.0.6 处理M1芯片电脑  不支持arm64模拟器的
-  pod 'LookinServer', '= 1.0.6', :configurations => ['Debug']
+  pod 'LookinServer', '= 1.2.8', :configurations => ['Debug']
   pod 'BLTBasicUIKit', '0.3.1'
 #  pod 'BLTUIKitProject', :git => 'git@github.com:mushanlianshi/BLTUIKitProject.git', :tag => '= 1.9.3'
   pod 'BLTUIKitProject', '= 1.9.3'
@@ -83,7 +83,7 @@ target 'LBUIProject' do
    pod 'HandyJSON', '5.0.2'
    pod 'TABAnimated'
    #弹框队列
-   pod 'CLPopoverManager', '0.0.1'
+   pod 'CLPopoverManager', '0.0.9'
    pod 'DateToolsSwift'
    pod 'SMSwiftBasicKit', '0.1.8'
    pod 'lottie-ios'
@@ -95,8 +95,8 @@ target 'LBUIProject' do
 #   pod 'SwiftUIIntrospect', '1.3.0'
   #添加下拉刷新的
   pod "SwiftUIRefresh"
-  pod "SmartCodable"
-  pod 'Down', :git => 'https://github.com/iwasrobbed/Down.git', :tag => 'v0.11.0'
+  pod "SmartCodable", '6.0.8'
+#  pod 'Down', :git => 'https://github.com/iwasrobbed/Down.git', :tag => 'v0.11.0'
 #  pod 'CocoaLumberjack', '2.2.0'
 #  pod 'RHSafeUtils', '~> 2.0.0'
   pod 'MarkdownKit' # Markdown 解析

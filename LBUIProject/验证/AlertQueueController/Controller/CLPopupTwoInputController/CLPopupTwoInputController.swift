@@ -327,8 +327,8 @@ extension CLPopupTwoInputController {
     }
 }
 
-extension CLPopupTwoInputController: CLPopoverProtocol {
-    func showAnimation(completion: (() -> Void)?) {
+extension CLPopupTwoInputController {
+    override func showAnimation(completion: (() -> Void)?) {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         contentView.snp.remakeConstraints { make in
@@ -343,7 +343,7 @@ extension CLPopupTwoInputController: CLPopoverProtocol {
         }
     }
 
-    func dismissAnimation(completion: (() -> Void)?) {
+    override func dismissAnimation(completion: (() -> Void)?) {
         contentView.snp.remakeConstraints { make in
             make.left.equalTo(36)
             make.right.equalTo(-36)

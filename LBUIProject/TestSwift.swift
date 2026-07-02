@@ -13,6 +13,37 @@ protocol LBTestProtocol {
     
 }
 
+func testHandjsonConvert(){
+    
+    func dic() -> [String: Any]{
+        return[
+            "tit" : "2班",
+            "num" : "10",
+            "list" : [
+                [
+                    "name" : "student 1",
+                    "age" : "21"
+                ],
+                [
+                    "name" : "student 2",
+                    "age" : "12"
+                ],
+                [
+                    "name" : "student 3",
+                    "age" : "25"
+                ],
+                [
+                    "name" : "student 4",
+                    "age" : "21"
+                ],
+            ]
+        ]
+    }
+    let di = dic()
+    let testModel = LBHandyJsonModel.deserialize(from: di)
+    debugPrint("LBLog testmodel \(testModel?.toJSON())")
+}
+
 class LBHandyJsonModel: NSObject, HandyJSON{
     convenience init(obj: LBTestProtocol) {
         self.init()
@@ -24,36 +55,6 @@ class LBHandyJsonModel: NSObject, HandyJSON{
     
     required override init() {
         
-    }
-    
-    @objc func testConvert(){
-        
-        func dic() -> [String: Any]{
-            return[
-                "tit" : "2班",
-                "num" : "10",
-                "list" : [
-                    [
-                        "name" : "student 1",
-                        "age" : "21"
-                    ],
-                    [
-                        "name" : "student 2",
-                        "age" : "12"
-                    ],
-                    [
-                        "name" : "student 3",
-                        "age" : "25"
-                    ],
-                    [
-                        "name" : "student 4",
-                        "age" : "21"
-                    ],
-                ]
-            ]
-        }
-        let di = dic()
-        let testModel = LBHandyJsonModel.deserialize(from: di)
     }
     
     

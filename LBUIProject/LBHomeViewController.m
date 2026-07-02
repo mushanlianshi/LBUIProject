@@ -316,6 +316,15 @@
         }else if ([vcName isEqualToString:@"LBTestStructAndClassController"]){
             vc = [LBTestStructAndClassController new];
         }
+//        else if ([vcName isEqualToString:@"LBAddNameController"]){
+//            vc = [LBAddNameController new];
+//        }
+        else if ([vcName isEqualToString:@"LBAIProductAdViewController"]){
+            LBAIProductAdViewController *adVC = [LBAIProductAdViewController new];
+            adVC.modalPresentationStyle = UIModalPresentationFullScreen;
+            [self presentViewController:adVC animated:YES completion:nil];
+            return;
+        }
         vc.view.backgroundColor = [UIColor whiteColor];
         vc.navigationItem.title = dic[@"title"];
 //        [self.navigationController pushViewController:[UIViewController new] animated:NO];
@@ -409,7 +418,10 @@
             @{@"title" : @"表格拆分器", @"vcName" : @"LBChatTableViewController"},
             @{@"title" : @"表格模拟展示", @"vcName" : @"LBDownTableWebViewController"},
             @{@"title" : @"豆包拆分表格", @"vcName" : @"HYBStreamMarkdownController"},
-            @{@"title" : @"DDTextView展示表格", @"vcName" : @"LBMarkdownTableViewController"}
+            @{@"title" : @"DDTextView展示表格", @"vcName" : @"LBMarkdownTableViewController"},
+//            @{@"title" : @"AI首页滑动效果", @"vcName" : @"ZYAIHomeGestureViewController"},
+//            @{@"title" : @"Claude code写的修改名称页面", @"vcName" : @"LBAddNameController"},
+            @{@"title" : @"AI全屏广告页", @"vcName" : @"LBAIProductAdViewController"},
         ];
     }
     return _dataSources;

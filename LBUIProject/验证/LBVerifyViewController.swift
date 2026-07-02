@@ -45,9 +45,8 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "AI问答输出", vcClass: LBAIChatViewController.self),
                 LBListItemModel.init(title: "AI问答输出MarkdownKit三方库", vcClass: LBMarkdownStreamViewController.self),
                 LBListItemModel.init(title: "chat模拟", vcClass: LBChatViewController.self),
-                LBListItemModel.init(title: "at功能", vcClass: LBATViewController.self),
-                LBListItemModel.init(title: "at功能2", vcClass: LBATViewController2.self),
-                LBListItemModel.init(title: "at功能deepSeek", vcClass: LBATDeepSeekViewController.self),
+                LBListItemModel.init(title: "at功能完整实现（可用版）", vcClass: LBATCompleteViewController.self),
+                LBListItemModel.init(title: "SPM流式Markdown渲染聊天", vcClass: LBSPMStreamChatController.self),
             ]
         }
     }

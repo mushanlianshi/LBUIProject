@@ -9,8 +9,8 @@ import Foundation
 
 
 enum LBButtonValidState {
-    case ok(_ text: String)
-    case empty(_ text: String)
+    case ok(_ text: String, _ color: UIColor? = nil)
+    case empty(_ text: String, _ color: UIColor? = nil)
 }
 
 

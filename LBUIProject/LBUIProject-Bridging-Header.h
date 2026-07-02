@@ -12,5 +12,6 @@
 #import "LBTabAnimatedCardOCCell.h"
 #import "NSObject+AutoProperty.h"
 #import "SYVerticalHorizontalTableView.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 //#import <TXLiteAVSDK_Player/TXLiteAVSDK.h>
 //#import <SuperPlayer/SuperPlayer.h>

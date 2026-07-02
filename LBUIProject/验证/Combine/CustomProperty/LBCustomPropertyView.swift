@@ -18,12 +18,12 @@ extension BLTNameSpace where Base: UIButton {
             .sink { result in
 //                guard let self = self else { return }
                 switch result {
-                case .ok(let message):
+                case .ok(let message, let color):
                     self.base.setTitle(message, for: .normal)
-                    self.base.setTitleColor(.red, for: .normal)
-                case .empty(let message):
+                    self.base.setTitleColor(color ?? .red, for: .normal)
+                case .empty(let message, let color):
                     self.base.setTitle(message, for: .normal)
-                    self.base.setTitleColor(.black, for: .normal)
+                    self.base.setTitleColor(color ?? .black, for: .normal)
                 }
             }
     }
