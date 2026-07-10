@@ -22,7 +22,7 @@
 #define MMKV_SRC_MMKVPREDEF_H
 
 // disable encryption & decryption to reduce some code
-//#define MMKV_DISABLE_CRYPT
+// #define MMKV_DISABLE_CRYPT
 //#define MMKV_DISABLE_FLUTTER
 
 // using POSIX implementation
@@ -34,7 +34,7 @@
 #include <vector>
 #include <unordered_map>
 
-constexpr auto MMKV_VERSION = "v1.2.16";
+constexpr auto MMKV_VERSION = "v2.4.0";
 
 #ifdef DEBUG
 #    define MMKV_DEBUG
@@ -44,12 +44,23 @@ constexpr auto MMKV_VERSION = "v1.2.16";
 #    undef MMKV_DEBUG
 #endif
 
+#if __cplusplus>=202002L
+#    define MMKV_HAS_CPP20
+#endif
+
 #ifdef __ANDROID__
 #    ifdef FORCE_POSIX
 #        define MMKV_POSIX
 #    else
 #        define MMKV_ANDROID
 #    endif
+#elif __OHOS__
+#   ifdef FORCE_POSIX
+#       define MMKV_POSIX
+#   else
+#       define MMKV_ANDROID
+#       define MMKV_OHOS
+#endif
 #elif __APPLE__
 #    ifdef FORCE_POSIX
 #        define MMKV_POSIX
@@ -84,8 +95,8 @@ constexpr auto MMKV_VERSION = "v1.2.16";
 #    include <windows.h>
 
 constexpr auto MMKV_PATH_SLASH = L"\\";
-#    define MMKV_PATH_FORMAT "%ls"
 using MMKVFileHandle_t = HANDLE;
+#define MMKVFileHandleInvalidValue INVALID_HANDLE_VALUE
 using MMKVPath_t = std::wstring;
 extern MMKVPath_t string2MMKVPath_t(const std::string &str);
 extern std::string MMKVPath_t2String(const MMKVPath_t &str);
@@ -97,8 +108,8 @@ extern std::string MMKVPath_t2String(const MMKVPath_t &str);
 #else // MMKV_WIN32
 
 constexpr auto MMKV_PATH_SLASH = "/";
-#    define MMKV_PATH_FORMAT "%s"
 using MMKVFileHandle_t = int;
+constexpr MMKVFileHandle_t MMKVFileHandleInvalidValue = -1;
 using MMKVPath_t = std::string;
 #    define string2MMKVPath_t(str) (str)
 #    define MMKVPath_t2String(str) (str)
@@ -109,12 +120,22 @@ using MMKVPath_t = std::string;
 
 #endif // MMKV_WIN32
 
+#ifdef MMKV_ANDROID
+#define MMKV_EXPORT __attribute__((visibility("default")))
+#else
+#define MMKV_EXPORT
+#endif
+
 #ifdef MMKV_APPLE
+#ifdef __OBJC__
 #    import <Foundation/Foundation.h>
+using MMKVLog_t = NSString *;
+#else
+using MMKVLog_t = void *;
+#endif
 #    define MMKV_NAMESPACE_BEGIN namespace mmkv {
 #    define MMKV_NAMESPACE_END }
 #    define MMKV_NAMESPACE_PREFIX mmkv
-using MMKVLog_t = NSString *;
 #else
 #    define MMKV_NAMESPACE_BEGIN
 #    define MMKV_NAMESPACE_END
@@ -148,17 +169,7 @@ MMKV_NAMESPACE_END
 
 namespace mmkv {
 
-typedef void (*LogHandler)(MMKVLogLevel level, const char *file, int line, const char *function, MMKVLog_t message);
-
-// by default MMKV will discard all datas on failure
-// return `OnErrorRecover` to recover any data from file
-typedef MMKVRecoverStrategic (*ErrorHandler)(const std::string &mmapID, MMKVErrorType errorType);
-
-// called when content is changed by other process
-// doesn't guarantee real-time notification
-typedef void (*ContentChangeHandler)(const std::string &mmapID);
-
-extern size_t DEFAULT_MMAP_SIZE;
+extern MMKV_EXPORT size_t DEFAULT_MMAP_SIZE;
 #define DEFAULT_MMAP_ID "mmkv.default"
 
 class MMBuffer;
@@ -171,11 +182,29 @@ struct KeyValueHolderCrypt;
 #endif
 
 #ifdef MMKV_APPLE
+
+#ifdef __OBJC__
+struct HybridStringCP {
+    NSString *str;
+    HybridStringCP(std::string_view cpp);
+    ~HybridStringCP();
+};
+
+struct HybridString {
+    NSString *str;
+    HybridString(std::string_view cpp);
+    ~HybridString();
+};
+
 struct KeyHasher {
+    // enables heterogeneous lookup
+    using is_transparent = void;
     size_t operator()(NSString *key) const { return key.hash; }
 };
 
 struct KeyEqualer {
+    // enables heterogeneous lookup
+    using is_transparent = void;
     bool operator()(NSString *left, NSString *right) const {
         if (left == right) {
             return true;
@@ -183,14 +212,45 @@ struct KeyEqualer {
         return ([left isEqualToString:right] == YES);
     }
 };
-
 using MMKVVector = std::vector<std::pair<NSString *, mmkv::MMBuffer>>;
 using MMKVMap = std::unordered_map<NSString *, mmkv::KeyValueHolder, KeyHasher, KeyEqualer>;
 using MMKVMapCrypt = std::unordered_map<NSString *, mmkv::KeyValueHolderCrypt, KeyHasher, KeyEqualer>;
-#else
+#else // type erase for pure C++ users
+using MMKVVector = std::vector<std::pair<void *, mmkv::MMBuffer>>;
+using MMKVMap = std::unordered_map<void *, mmkv::KeyValueHolder>;
+using MMKVMapCrypt = std::unordered_map<void *, mmkv::KeyValueHolderCrypt>;
+#endif // __OBJC__
+
+#else // !MMKV_APPLE
+
+struct KeyHasher {
+    // enables heterogeneous lookup
+    using is_transparent = void;
+
+    std::size_t operator()(const std::string_view& str) const {
+        return std::hash<std::string_view>{}(str);
+    }
+
+    std::size_t operator()(const std::string& str) const {
+        return std::hash<std::string>{}(str);
+    }
+};
+
+struct KeyEqualer {
+    // enables heterogeneous lookup
+    using is_transparent = void;
+
+    bool operator()(const std::string_view& lhs, const std::string_view& rhs) const {
+        return lhs == rhs;
+    }
+
+    bool operator()(const std::string& lhs, const std::string& rhs) const {
+        return lhs == rhs;
+    }
+};
 using MMKVVector = std::vector<std::pair<std::string, mmkv::MMBuffer>>;
-using MMKVMap = std::unordered_map<std::string, mmkv::KeyValueHolder>;
-using MMKVMapCrypt = std::unordered_map<std::string, mmkv::KeyValueHolderCrypt>;
+using MMKVMap = std::unordered_map<std::string, mmkv::KeyValueHolder, KeyHasher, KeyEqualer>;
+using MMKVMapCrypt = std::unordered_map<std::string, mmkv::KeyValueHolderCrypt, KeyHasher, KeyEqualer>;
 #endif // MMKV_APPLE
 
 template <typename T>
@@ -198,6 +258,9 @@ void unused(const T &) {}
 
 constexpr size_t AES_KEY_LEN = 16;
 constexpr size_t AES_KEY_BITSET_LEN = 128;
+constexpr size_t AES_IV_LEN = 16;
+constexpr size_t AES256_KEY_LEN = 32;
+constexpr size_t AES256_KEY_BITSET_LEN = 256;
 
 } // namespace mmkv
 
@@ -210,36 +273,25 @@ constexpr size_t AES_KEY_BITSET_LEN = 128;
 
 #endif //cplus-plus
 
-#if defined(__arm__)
-  #if defined(__ARM_ARCH_7A__)
-    #if defined(__ARM_NEON__)
-      #if defined(__ARM_PCS_VFP)
-        #define MMKV_ABI "armeabi-v7a/NEON (hard-float)"
-      #else
-        #define MMKV_ABI "armeabi-v7a/NEON"
-      #endif
-    #else
-      #if defined(__ARM_PCS_VFP)
-        #define MMKV_ABI "armeabi-v7a (hard-float)"
-      #else
-        #define MMKV_ABI "armeabi-v7a"
-      #endif
-    #endif
-  #else
-   #define MMKV_ABI "armeabi"
-  #endif
-#elif defined(__i386__) || defined(_M_IX86)
-  #define MMKV_ABI "x86"
-#elif defined(__x86_64__) || defined(_M_X64)
+#ifndef MMKV_WIN32
+#    ifndef likely
+#        define mmkv_unlikely(x) (__builtin_expect(bool(x), 0))
+#        define mmkv_likely(x) (__builtin_expect(bool(x), 1))
+#    endif
+#else
+#    ifndef likely
+#        define mmkv_unlikely(x) (x)
+#        define mmkv_likely(x) (x)
+#    endif
+#endif
+
+#if defined(__x86_64__) || defined(_M_X64)
   #define MMKV_ABI "x86_64"
-#elif defined(__mips64)
-  #define MMKV_ABI "mips64"
-#elif defined(__mips__)
-  #define MMKV_ABI "mips"
 #elif defined(__aarch64__) || defined(_M_ARM64)
   #define MMKV_ABI "arm64-v8a"
 #else
-  #define MMKV_ABI "unknown"
+  #define MMKV_ABI "unknow"
+//  #error "Unsupported arch."
 #endif
 
 #endif //MMKV_SRC_MMKVPREDEF_H

@@ -106,7 +106,6 @@ open class JXPagingListContainerView: UIView {
     public private(set) var type: JXPagingListContainerType
     public private(set) weak var dataSource: JXPagingListContainerViewDataSource?
     public private(set) var scrollView: UIScrollView!
-    // 是不是category多层嵌套的，处理手势的
     public var isCategoryNestPagingEnabled = false {
         didSet {
             if let containerScrollView = scrollView as? JXPagingListContainerScrollView {
@@ -152,14 +151,11 @@ open class JXPagingListContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // 初始化
     open func commonInit() {
         guard let dataSource = dataSource else { return }
-        // 创建一个自定义controller， 设置成透明，不展示，  回调几个子controller的一些声明周期状态的
         containerVC = JXPagingListContainerViewController()
         containerVC.view.backgroundColor = .clear
         addSubview(containerVC.view)
-        // 自定义的controller的声明周期处罚了， 回调
         containerVC.viewWillAppearClosure = {[weak self] in
             self?.listWillAppear(at: self?.currentIndex ?? 0)
         }
@@ -173,7 +169,6 @@ open class JXPagingListContainerView: UIView {
             self?.listDidDisappear(at: self?.currentIndex ?? 0)
         }
         if type == .scrollView {
-            // 如果有自定义scrollView的类型，使用自定义的
             if let scrollViewClass = dataSource.scrollViewClass(in: self) as? UIScrollView.Type {
                 scrollView = scrollViewClass.init()
             }else {
@@ -221,7 +216,6 @@ open class JXPagingListContainerView: UIView {
         }
     }
 
-    // 即将展示的时候， 把containerVC添加到外面的controller的子child中去
     open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         var next: UIResponder? = newSuperview
@@ -272,14 +266,12 @@ open class JXPagingListContainerView: UIView {
     public func scrolling(from leftIndex: Int, to rightIndex: Int, percent: CGFloat, selectedIndex: Int) {
     }
 
-    // 外面的category点击切换调用的方法
     public func didClickSelectedItem(at index: Int) {
         guard checkIndexValid(index) else {
             return
         }
         willAppearIndex = -1
         willDisappearIndex = -1
-        // 手动去触发子controller的生命周期
         if currentIndex != index {
             listWillDisappear(at: currentIndex)
             listWillAppear(at: index)
@@ -306,7 +298,6 @@ open class JXPagingListContainerView: UIView {
         }else {
             collectionView.reloadData()
         }
-        // 调用当前子controller的生命周期的，如果没有就先创建子controller， 并缓存起来
         listWillAppear(at: currentIndex)
         listDidAppear(at: currentIndex)
     }
@@ -319,7 +310,7 @@ open class JXPagingListContainerView: UIView {
         }
         var existedList = validListDict[index]
         if existedList != nil {
-            //子列表已经创建好了 返回
+            //列表已经创建好了
             return
         }
         existedList = dataSource.listContainerView(self, initListAt: index)
@@ -343,7 +334,6 @@ open class JXPagingListContainerView: UIView {
         }
     }
 
-    // 手动触发子controller生命周期的
     private func listWillAppear(at index: Int) {
         guard let dataSource = dataSource else { return }
         guard checkIndexValid(index) else {
@@ -390,7 +380,6 @@ open class JXPagingListContainerView: UIView {
         }
     }
 
-    // 调用子controller的endAppearanceTransition 主动触发生命周期的
     private func listDidAppear(at index: Int) {
         guard checkIndexValid(index) else {
             return
@@ -435,7 +424,6 @@ open class JXPagingListContainerView: UIView {
         return true
     }
 
-    // 手动触发即将消失和即将展示的controller的生命周期的
     private func listDidAppearOrDisappear(scrollView: UIScrollView) {
         let currentIndexPercent = scrollView.contentOffset.x/scrollView.bounds.size.width
         if willAppearIndex != -1 || willDisappearIndex != -1 {
@@ -488,20 +476,16 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         return bounds.size
     }
 
-    // 左右滑动切换页面的scrollview的回调
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.listContainerViewDidScroll(self)
-        // 如果不是拖动返回
         guard scrollView.isTracking || scrollView.isDragging else {
             return
         }
         let percent = scrollView.contentOffset.x/scrollView.bounds.size.width
         let maxCount = Int(round(scrollView.contentSize.width/scrollView.bounds.size.width))
         var leftIndex = Int(floor(Double(percent)))
-        
         leftIndex = max(0, min(maxCount - 1, leftIndex))
         let rightIndex = leftIndex + 1;
-//        print("LBLog percent \(percent) \(leftIndex) \(rightIndex)")
         if percent < 0 || rightIndex >= maxCount {
             listDidAppearOrDisappear(scrollView: scrollView)
             return
@@ -567,7 +551,6 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
     }
 }
 
-// 创建一个ViewController的子类， 用来回调几个子controller的声明周期
 class JXPagingListContainerViewController: UIViewController {
     var viewWillAppearClosure: (()->())?
     var viewDidAppearClosure: (()->())?
@@ -592,51 +575,45 @@ class JXPagingListContainerViewController: UIViewController {
     }
 }
 
-
-// MARK: 处理categoryview嵌套categoryView手势问题的
 class JXPagingListContainerScrollView: UIScrollView, UIGestureRecognizerDelegate {
-    var isCategoryNestPagingEnabled = true
-//    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if isCategoryNestPagingEnabled, let panGestureClass = NSClassFromString("UIScrollViewPanGestureRecognizer"), gestureRecognizer.isMember(of: panGestureClass) {
-//            let panGesture = gestureRecognizer as! UIPanGestureRecognizer
-//            let velocityX = panGesture.velocity(in: panGesture.view!).x
-////            print("LBLog velocityX is \(velocityX)")
-//            if velocityX > 0 {
-//                //当前在第一个页面，且网游滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
-//                if contentOffset.x == 0 {
-//                    return false
-//                }
-//            }else if velocityX < 0 {
-//                //当前在最后一个页面，且往左滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
-//                if contentOffset.x + bounds.size.width == contentSize.width {
-//                    return false
-//                }
-//            }
-//        }
-//        return true
-//    }
+    var isCategoryNestPagingEnabled = false
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if isCategoryNestPagingEnabled, let panGestureClass = NSClassFromString("UIScrollViewPanGestureRecognizer"), gestureRecognizer.isMember(of: panGestureClass) {
+            let panGesture = gestureRecognizer as! UIPanGestureRecognizer
+            let velocityX = panGesture.velocity(in: panGesture.view!).x
+            if velocityX > 0 {
+                //当前在第一个页面，且往左滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
+                if contentOffset.x == 0 {
+                    return false
+                }
+            }else if velocityX < 0 {
+                //当前在最后一个页面，且往右滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
+                if contentOffset.x + bounds.size.width == contentSize.width {
+                    return false
+                }
+            }
+        }
+        return true
+    }
 }
-
-// MARK: 处理categoryview嵌套categoryView手势问题的
 class JXPagingListContainerCollectionView: UICollectionView, UIGestureRecognizerDelegate {
-    var isCategoryNestPagingEnabled = true
-//    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if isCategoryNestPagingEnabled, let panGestureClass = NSClassFromString("UIScrollViewPanGestureRecognizer"), gestureRecognizer.isMember(of: panGestureClass)  {
-//            let panGesture = gestureRecognizer as! UIPanGestureRecognizer
-//            let velocityX = panGesture.velocity(in: panGesture.view!).x
-////            print("LBLog velocityX is \(velocityX)")
-//            if velocityX > 0 {
-//                //当前在第一个页面，且往右滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
-//                if contentOffset.x == 0 {
-//                    return false
-//                }
-//            }else if velocityX < 0 {
-//                //当前在最后一个页面，且往左滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
-//                if contentOffset.x + bounds.size.width == contentSize.width {
-//                    return false
-//                }
-//            }
-//        }
-//        return true
-//    }
+    var isCategoryNestPagingEnabled = false
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if isCategoryNestPagingEnabled, let panGestureClass = NSClassFromString("UIScrollViewPanGestureRecognizer"), gestureRecognizer.isMember(of: panGestureClass)  {
+            let panGesture = gestureRecognizer as! UIPanGestureRecognizer
+            let velocityX = panGesture.velocity(in: panGesture.view!).x
+            if velocityX > 0 {
+                //当前在第一个页面，且往左滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
+                if contentOffset.x == 0 {
+                    return false
+                }
+            }else if velocityX < 0 {
+                //当前在最后一个页面，且往右滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
+                if contentOffset.x + bounds.size.width == contentSize.width {
+                    return false
+                }
+            }
+        }
+        return true
+    }
 }

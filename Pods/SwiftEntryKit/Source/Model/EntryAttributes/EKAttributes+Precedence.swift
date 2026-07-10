@@ -65,15 +65,6 @@ public extension EKAttributes {
             /** Ordered by priority */
             case priority
             
-            var testAge: Int{
-                get{
-                    return 0
-                }
-                set{
-                    
-                }
-            }
-            
             /** Returns the caching heuristics mechanism that determines the priority in queue */
             var heuristic: EntryCachingHeuristic {
                 switch self {

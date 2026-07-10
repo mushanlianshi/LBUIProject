@@ -7,27 +7,37 @@
 
 import UIKit
 import SwiftUI
-import SMSwiftBasicKit
 import PhotosUI
+import SnapKit
+import SMSwiftBasicKit
 
 ///UIKit 借用swiftUI来实现实时预览
 class LBLivePreviewViewController: UIViewController {
-
-    lazy var imageView = UIImageView.blt_imageView(with: UIImage(named: "mask_five_star"), mode: .scaleAspectFill)!
+    lazy var imageView: UIImageView = {
+        let image = UIImage.blt.imageWithSystemColorSymbols(name: "square.and.arrow.up", color: .red, pointSize: 35, weight: .medium)
+        let iv =  UIImageView.blt.initWithMode(mode: .scaleAspectFit, image: image)
+        iv.backgroundColor = .systemGray6.withAlphaComponent(0.5)
+        return iv
+    }()
     
-    lazy var titleLab = UILabel.blt.initWithText(text: "UIKit 借助SwiftUI来实现实时预览", font: .blt.normalFont(16), textColor: .blt.threeThreeBlackColor())
+    lazy var titleLab = UILabel.blt.initWithText(text: "UIKit 借助SwiftUI来实现实时预览", font: .blt.mediumFont(16), textColor: .blt.threeThreeBlackColor())
+    lazy var contentLab = UILabel.blt.initWithText(text: "UIKit 借助SwiftUI来实现实时预览", font: .blt.mediumFont(15), textColor: .blt.ninenineBlackColor(), textAlignment: .center)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "实时预览"
         self.view.backgroundColor = .white
+        debugPrint("LBLog self.imageView .image \(self.imageView.image)")
+//        [imageView, titleLab, contentLab].forEach(contentLab.addSubview(_:))
         view.addSubview(imageView)
         view.addSubview(titleLab)
+        view.addSubview(contentLab)
         self.titleLab.textAlignment = .center
-//        titleLab.textAlignment = .center
+        titleLab.frame = CGRectMake(0, 0, 300, 100);
+        //        titleLab.textAlignment = .center
         imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.view.snp_centerY).offset(-imageView.intrinsicContentSize.height / 2)
+//            make.height.width.equalTo(50)
         }
         
         titleLab.snp.makeConstraints { make in
@@ -36,11 +46,16 @@ class LBLivePreviewViewController: UIViewController {
             make.top.equalTo(imageView.snp_bottom).offset(20)
         }
         
+        contentLab.snp.makeConstraints { make in
+            make.left.right.equalTo(self.titleLab);
+            make.top.equalTo(self.titleLab.snp.bottom).offset(15)
+        }
+        
         titleLab.text = "111442122323eeeeee"
         
-        let view = PHLivePhotoView()
+        _ = PHLivePhotoView()
     }
-
+    
 }
 
 

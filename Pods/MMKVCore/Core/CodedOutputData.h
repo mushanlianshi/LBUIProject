@@ -43,6 +43,12 @@ public:
 
     void seek(size_t addedSize);
 
+    void reset();
+
+    size_t getPosition();
+
+    void setPosition(size_t position);
+
     void writeRawByte(uint8_t value);
 
     void writeRawLittleEndian32(int32_t value);
@@ -71,9 +77,7 @@ public:
 
     void writeData(const MMBuffer &value);
 
-#ifndef MMKV_APPLE
     void writeString(const std::string &value);
-#endif
 };
 
 } // namespace mmkv

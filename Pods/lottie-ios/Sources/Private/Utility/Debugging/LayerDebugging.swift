@@ -5,6 +5,8 @@
 //  Created by Brandon Withrow on 1/24/19.
 //
 
+#if DEBUG
+
 import QuartzCore
 
 // MARK: - LayerDebugStyle
@@ -30,7 +32,7 @@ protocol CustomLayerDebugging {
 
 // MARK: - DebugLayer
 
-class DebugLayer: CALayer {
+final class DebugLayer: CALayer {
   init(style: LayerDebugStyle) {
     super.init()
     zPosition = 1000
@@ -157,7 +159,8 @@ extension LayerDebugStyle {
       anchorColor: anchorColor,
       boundsColor: boundsColor,
       anchorWidth: 10,
-      boundsWidth: 2)
+      boundsWidth: 2
+    )
   }
 
   static func topLayerStyle() -> LayerDebugStyle {
@@ -168,7 +171,8 @@ extension LayerDebugStyle {
       anchorColor: anchorColor,
       boundsColor: boundsColor,
       anchorWidth: 10,
-      boundsWidth: 2)
+      boundsWidth: 2
+    )
   }
 
   static func nullLayerStyle() -> LayerDebugStyle {
@@ -179,7 +183,8 @@ extension LayerDebugStyle {
       anchorColor: anchorColor,
       boundsColor: boundsColor,
       anchorWidth: 10,
-      boundsWidth: 2)
+      boundsWidth: 2
+    )
   }
 
   static func shapeLayerStyle() -> LayerDebugStyle {
@@ -190,7 +195,8 @@ extension LayerDebugStyle {
       anchorColor: anchorColor,
       boundsColor: boundsColor,
       anchorWidth: 10,
-      boundsWidth: 2)
+      boundsWidth: 2
+    )
   }
 
   static func shapeRenderLayerStyle() -> LayerDebugStyle {
@@ -201,7 +207,8 @@ extension LayerDebugStyle {
       anchorColor: anchorColor,
       boundsColor: boundsColor,
       anchorWidth: 10,
-      boundsWidth: 2)
+      boundsWidth: 2
+    )
   }
 }
 
@@ -220,3 +227,5 @@ extension [LayerModel] {
   }
 
 }
+
+#endif

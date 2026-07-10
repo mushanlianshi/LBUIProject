@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/TXFFmpeg.h</key>
 		<data>
-		wAAGh76bSEqKCfAs897bo5qlUy0=
+		gWYzyXWWnIzrzfVCYXXcQNdOEIg=
 		</data>
 		<key>Headers/ffmpeg_rename_defines.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Headers/libavcodec/avcodec.h</key>
 		<data>
-		EYbMZ/gfAhygBo5zVWnRKH1+6NA=
+		GYXhbfuNfJt5BMbfwI89xOkZ3yo=
 		</data>
 		<key>Headers/libavcodec/avdct.h</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>Headers/libavformat/avformat.h</key>
 		<data>
-		aTOjkKeL0fKCsRqI2252ZZEoLKM=
+		RRNZA644h9bYOB74oHpvvNBVncg=
 		</data>
 		<key>Headers/libavformat/avio.h</key>
 		<data>
@@ -206,7 +206,7 @@
 		</data>
 		<key>Headers/libavutil/common.h</key>
 		<data>
-		o1DZkTDxdA2VoSa2sIonZwMN53Y=
+		PpzfbMvyefQmC6at0sj/AhDDB60=
 		</data>
 		<key>Headers/libavutil/cpu.h</key>
 		<data>
@@ -346,7 +346,7 @@
 		</data>
 		<key>Headers/libavutil/mathematics.h</key>
 		<data>
-		toiRItVKx8jXPvwDgAlHdDjabvA=
+		iwR6rBpL4jdPYzj5y2lkQQ2FDkA=
 		</data>
 		<key>Headers/libavutil/md5.h</key>
 		<data>
@@ -482,15 +482,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		QBqv5jmXeqPerOd+rWJ9C6+eAgU=
+		MHt9LkI97NQyiBEuIeG/15iJ7pU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		s/Mc0hdiuH7zOubtnON2Skw6z+k=
 		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		ovFJMFOLMjzh8DLJKmXncj8JIgU=
+		</data>
 		<key>TXFFmpeg_arm</key>
 		<data>
-		F6ATPSm1sPgN7DHdnE2NI+FXe+4=
+		/uvDOr1uFMTq9X6RwVosX3+w9N4=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -499,11 +503,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wAAGh76bSEqKCfAs897bo5qlUy0=
+			gWYzyXWWnIzrzfVCYXXcQNdOEIg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Bti/V+wGN69ht9D1yB4McB6exQLU33OUdsg09mv9Dco=
+			XvObuFdDvNz7oLJqaFHLzA4AUOnbQoHyXOa1aqW9HMY=
 			</data>
 		</dict>
 		<key>Headers/ffmpeg_rename_defines.h</key>
@@ -554,11 +558,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EYbMZ/gfAhygBo5zVWnRKH1+6NA=
+			GYXhbfuNfJt5BMbfwI89xOkZ3yo=
 			</data>
 			<key>hash2</key>
 			<data>
-			OtpszEkLH3KBUVPzqybcRQ7Tu/tUPMG2x66ZJwcqU8U=
+			NjMp2IWuQXDJqv+6zb3Oz7k28bWr5z2r+Cq2m1GJ/bk=
 			</data>
 		</dict>
 		<key>Headers/libavcodec/avdct.h</key>
@@ -796,11 +800,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aTOjkKeL0fKCsRqI2252ZZEoLKM=
+			RRNZA644h9bYOB74oHpvvNBVncg=
 			</data>
 			<key>hash2</key>
 			<data>
-			oTWB05cK4WYiWt8pUuQHMD2u0TeoDwORTuJ/OHawxX4=
+			eNduLblk4iIS5peL6g8asJnVCjTE1vjDFVFSybgtHLM=
 			</data>
 		</dict>
 		<key>Headers/libavformat/avio.h</key>
@@ -1049,11 +1053,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			o1DZkTDxdA2VoSa2sIonZwMN53Y=
+			PpzfbMvyefQmC6at0sj/AhDDB60=
 			</data>
 			<key>hash2</key>
 			<data>
-			wHVjXX66fSTScv1RxQX/WAIwV1N5tOC6sc1nR9NPnDE=
+			pugcA8zo0iFouuGrHAR4hwcTFGH2D49oz9nGFQTpITg=
 			</data>
 		</dict>
 		<key>Headers/libavutil/cpu.h</key>
@@ -1434,11 +1438,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			toiRItVKx8jXPvwDgAlHdDjabvA=
+			iwR6rBpL4jdPYzj5y2lkQQ2FDkA=
 			</data>
 			<key>hash2</key>
 			<data>
-			cS4NBlCSlkhdKKiDD1NLE/YOe7hzH1POmsuhbwijCYo=
+			8sy3gyy3FBLROxccTBt3JEUTPqUDc1UQbo+fQEd6Qrc=
 			</data>
 		</dict>
 		<key>Headers/libavutil/md5.h</key>
@@ -1815,15 +1819,26 @@
 			WIaDXyP0QCMaBdRzrIeOtldbJ8DYc9She/5FhtTUk98=
 			</data>
 		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ovFJMFOLMjzh8DLJKmXncj8JIgU=
+			</data>
+			<key>hash2</key>
+			<data>
+			CNkOaUbb/qDQtbF/tlnXfu0j5EO3Rdjntbn6N4y3RHc=
+			</data>
+		</dict>
 		<key>TXFFmpeg_arm</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			F6ATPSm1sPgN7DHdnE2NI+FXe+4=
+			/uvDOr1uFMTq9X6RwVosX3+w9N4=
 			</data>
 			<key>hash2</key>
 			<data>
-			PXvAf3Ntda6uQUvQQOfDfiRlG/PbYvA78l9JSXCxEag=
+			c1WzcXiHI3PimCCSRKiEwQ9HV9qjn4/aYn0t18G5A7U=
 			</data>
 		</dict>
 	</dict>

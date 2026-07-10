@@ -24,7 +24,6 @@ import Foundation
 //    static var name: String
 //}
 
-
 @propertyWrapper
 public struct BLTAppStorage<T: Codable> {
     

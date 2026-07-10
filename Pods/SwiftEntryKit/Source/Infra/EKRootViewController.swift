@@ -132,7 +132,6 @@ class EKRootViewController: UIViewController {
             addChild(viewController)
         }
         
-        
         // Extract the attributes struct
         let attributes = entryView.attributes
         

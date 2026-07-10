@@ -51,8 +51,6 @@ struct LBScrollListView<HeaderView: View>: View {
                 }
             }
             .statusBarHidden(scrollOffset.y > -3.0)
-//            .toolbarBackground(.hidden)
-//            .toolbarColorScheme(.dark, for: .navigationBar)
             .onAppear{
                 print("LBLog on Appear ==========")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {

@@ -17,6 +17,12 @@ class LBUIKitLoadSFSymbolsController: UIViewController {
         let image = UIImage.blt.imageWithSystemSymbols(name: "hand.raised", pointSize: 26, weight: .medium)
         let imageView = UIImageView(image: image)
         imageView.tintColor = .red
+        if #available(iOS 17.0, *) {
+                imageView.addSymbolEffect(
+                    .bounce,
+                    options: .default
+                )
+            }
         return imageView
     }()
     

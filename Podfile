@@ -4,6 +4,13 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'git@github.com:mushanlianshi/LBUIKitSpecRepo.git'
 #source 'http://git.ethank.com.cn/liubin/xinlimeiprivaterepo.git'
 
+target 'LBPreviewHost' do
+  use_frameworks!
+  pod 'SMSwiftBasicKit', '0.1.8'
+#  pod 'BLTBasicUIKit', '0.3.1'
+pod 'SnapKit', '= 4.2.0'
+end
+
 target 'LBUIProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -61,7 +68,7 @@ target 'LBUIProject' do
   pod 'Moya', '= 15.0.0'
   pod 'Selene'
 #  tabbar自定义的
-  pod 'CYLTabBarController'
+  pod 'CYLTabBarController', '1.17.22'
   #各种弹框样式的
   pod 'SwiftEntryKit', '= 2.0.0'
   #SwiftUI 滚动列表的
@@ -127,8 +134,12 @@ post_install do |installer|
   
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+#    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
     config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+      if target.name == 'LBPreviewHost'
+        config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+        config.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
+      end
 #    config.build_settings["BUILD_LIBRARY_FOR_DISTRIBUTION"] = true
     end
   end

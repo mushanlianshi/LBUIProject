@@ -78,8 +78,6 @@ void CodedOutputData::writeData(const MMBuffer &value) {
     this->writeRawData(value);
 }
 
-#ifndef MMKV_APPLE
-
 void CodedOutputData::writeString(const string &value) {
     size_t numberOfBytes = value.size();
     this->writeRawVarint32((int32_t) numberOfBytes);
@@ -91,8 +89,6 @@ void CodedOutputData::writeString(const string &value) {
     memcpy(m_ptr + m_position, ((uint8_t *) value.data()), numberOfBytes);
     m_position += numberOfBytes;
 }
-
-#endif // MMKV_APPLE
 
 size_t CodedOutputData::spaceLeft() {
     if (m_size <= m_position) {
@@ -107,6 +103,18 @@ void CodedOutputData::seek(size_t addedSize) {
     if (m_position > m_size) {
         throw out_of_range("OutOfSpace");
     }
+}
+
+void CodedOutputData::reset() {
+    m_position = 0;
+}
+
+size_t CodedOutputData::getPosition() {
+    return m_position;
+}
+
+void CodedOutputData::setPosition(size_t position) {
+    m_position = position;
 }
 
 void CodedOutputData::writeRawByte(uint8_t value) {

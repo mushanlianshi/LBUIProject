@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -87,10 +87,15 @@
 		402922342D5ECE820081AD17 /* LBSelectListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402922332D5ECE820081AD17 /* LBSelectListPage.swift */; };
 		402922372D5ED1C20081AD17 /* LBAddUIKitViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402922362D5ED1C20081AD17 /* LBAddUIKitViewPage.swift */; };
 		402922392D5ED2470081AD17 /* LBUIKitGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402922382D5ED2470081AD17 /* LBUIKitGridView.swift */; };
+		402957AF30008ED100B39BDA /* UIImage+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05D72863237B006574B5 /* UIImage+LBExtension.swift */; };
+		402957B030008ED800B39BDA /* UIIMage+LBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A05C92861B61B006574B5 /* UIIMage+LBExtension.swift */; };
+		402957B23000908F00B39BDA /* LBLivePreviewCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402957B13000908F00B39BDA /* LBLivePreviewCustomView.swift */; };
+		402957B33000908F00B39BDA /* LBLivePreviewCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402957B13000908F00B39BDA /* LBLivePreviewCustomView.swift */; };
 		402DEBAA2796900600B051C5 /* LBStrategyModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBA92796900600B051C5 /* LBStrategyModeController.m */; };
 		402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DEBB2279694C400B051C5 /* NSObject+LBCategory.m */; };
 		402E3A652AA1E3AD0039C6F5 /* LBDrawRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */; };
 		402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402E3D2226BECAC60027CE64 /* LBBlockViewController.m */; };
+		402EF0472FFB401B003A2394 /* LBSearchAndRequestBindCombineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EF0462FFB401B003A2394 /* LBSearchAndRequestBindCombineController.swift */; };
 		403094F22E14D53C00E04161 /* LBSSEReponseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403094F12E14D53C00E04161 /* LBSSEReponseController.swift */; };
 		403094F42E15102300E04161 /* LBStreamJsonParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403094F32E15102300E04161 /* LBStreamJsonParse.swift */; };
 		403094F62E15161A00E04161 /* LBDouBaoParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403094F52E15161A00E04161 /* LBDouBaoParse.swift */; };
@@ -141,6 +146,7 @@
 		405430D428AA358200CD3596 /* LBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405430D328AA358200CD3596 /* LBNotification.swift */; };
 		405820672A6E2580004252CB /* LBLivePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820662A6E2580004252CB /* LBLivePreviewViewController.swift */; };
 		4058206A2A6E47DB004252CB /* UIView+LBLivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820692A6E47DB004252CB /* UIView+LBLivePreview.swift */; };
+		406076FB2FFF92BC00BA4CA4 /* LBLivePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405820662A6E2580004252CB /* LBLivePreviewViewController.swift */; };
 		40616F202BFB385E00FEF9A1 /* vlc-hls.m3u8-.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 40616F1F2BFB378600FEF9A1 /* vlc-hls.m3u8-.mp4 */; };
 		40616F222BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40616F212BFB3BE100FEF9A1 /* LBSJVideoPlayerController.swift */; };
 		40628C992FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40628C982FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift */; };
@@ -205,6 +211,18 @@
 		4089872B26B9130D0004BBA8 /* LBAffineTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089872A26B9130D0004BBA8 /* LBAffineTransformController.m */; };
 		4089873B26B9435D0004BBA8 /* LBAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089873A26B9435D0004BBA8 /* LBAnimationViewController.m */; };
 		4089874426B962380004BBA8 /* LBBezierpathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089874326B962380004BBA8 /* LBBezierpathViewController.m */; };
+		408A33D12FFDF04500237503 /* LBTestSwiftListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33D02FFDF04500237503 /* LBTestSwiftListView.swift */; };
+		408A33EC2FFDF7A400237503 /* LBTestSwiftListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33D02FFDF04500237503 /* LBTestSwiftListView.swift */; };
+		408A33F12FFF79A000237503 /* CameraDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33F02FFF79A000237503 /* CameraDeviceModel.swift */; };
+		408A33F22FFF79A000237503 /* CameraDeviceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33EF2FFF79A000237503 /* CameraDeviceCardView.swift */; };
+		408A33F32FFF79A000237503 /* AICamereHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33EE2FFF79A000237503 /* AICamereHomeView.swift */; };
+		408A33F42FFF79A000237503 /* CameraDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33F02FFF79A000237503 /* CameraDeviceModel.swift */; };
+		408A33F52FFF79A000237503 /* CameraDeviceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33EF2FFF79A000237503 /* CameraDeviceCardView.swift */; };
+		408A33F62FFF79A000237503 /* AICamereHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33EE2FFF79A000237503 /* AICamereHomeView.swift */; };
+		408A33F92FFF7CA500237503 /* AICamereSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33F72FFF7CA500237503 /* AICamereSettingView.swift */; };
+		408A33FA2FFF7CA500237503 /* AICamereSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33F72FFF7CA500237503 /* AICamereSettingView.swift */; };
+		408A340D2FFF90D300237503 /* LBShareBarCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */; };
+		408A340E2FFF90D300237503 /* LBShareBarCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */; };
 		408DE8D92C74393E00B19350 /* LBDrawerSwiperAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */; };
 		408DE8DB2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */; };
 		408DE8DD2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8DC2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift */; };
@@ -473,11 +491,12 @@
 		40F5B1DC2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */; };
 		40F5B1DE2FF3A000002CCA9C /* LBNavigationMixRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */; };
 		40F9FA452DF1816600D5D736 /* LBAIAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */; };
-		40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		40FAE36A2FDBC5AA00861B79 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
 		9833ACF550F34D1C9E09D0C2C4BB6AC3 /* LBATCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FF3B9599374A64866684A05D23BAE6 /* LBATCompleteViewController.swift */; };
+		A58D48459B56D51FE1F50405 /* Pods_LBPreviewHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3371EEFBB7B63E90B5DF2B80 /* Pods_LBPreviewHost.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -530,11 +549,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		058E12BCD145400063342CA7 /* Pods-LBPreviewHost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBPreviewHost.debug.xcconfig"; path = "Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost.debug.xcconfig"; sourceTree = "<group>"; };
 		19FF3B9599374A64866684A05D23BAE6 /* LBATCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBATCompleteViewController.swift; sourceTree = "<group>"; };
 		2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProject_LBUIProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.debug.xcconfig"; sourceTree = "<group>"; };
 		3131954787990370DAC18C5B /* Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig"; sourceTree = "<group>"; };
+		3371EEFBB7B63E90B5DF2B80 /* Pods_LBPreviewHost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBPreviewHost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3796D8BCDACC2F4D97B0EFE1 /* Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		37F5C8C6DF153D87DD7C5D0D /* Pods-LBPreviewHost.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBPreviewHost.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost.custom_debug.xcconfig"; sourceTree = "<group>"; };
 		4002F57F2EF8E7F300774AB1 /* LBUserDeraultPropertyWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUserDeraultPropertyWrapped.swift; sourceTree = "<group>"; };
 		4002F5822EF93C3200774AB1 /* HYBStreamContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYBStreamContentModel.h; sourceTree = "<group>"; };
 		4002F5832EF93C3200774AB1 /* HYBStreamContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYBStreamContentModel.m; sourceTree = "<group>"; };
@@ -633,6 +655,7 @@
 		402922332D5ECE820081AD17 /* LBSelectListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectListPage.swift; sourceTree = "<group>"; };
 		402922362D5ED1C20081AD17 /* LBAddUIKitViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAddUIKitViewPage.swift; sourceTree = "<group>"; };
 		402922382D5ED2470081AD17 /* LBUIKitGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUIKitGridView.swift; sourceTree = "<group>"; };
+		402957B13000908F00B39BDA /* LBLivePreviewCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLivePreviewCustomView.swift; sourceTree = "<group>"; };
 		402DEBA82796900600B051C5 /* LBStrategyModeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBStrategyModeController.h; sourceTree = "<group>"; };
 		402DEBA92796900600B051C5 /* LBStrategyModeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBStrategyModeController.m; sourceTree = "<group>"; };
 		402DEBB1279694C400B051C5 /* NSObject+LBCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBCategory.h"; sourceTree = "<group>"; };
@@ -640,6 +663,7 @@
 		402E3A642AA1E3AD0039C6F5 /* LBDrawRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawRectController.swift; sourceTree = "<group>"; };
 		402E3D2126BECAC60027CE64 /* LBBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBlockViewController.h; sourceTree = "<group>"; };
 		402E3D2226BECAC60027CE64 /* LBBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBlockViewController.m; sourceTree = "<group>"; };
+		402EF0462FFB401B003A2394 /* LBSearchAndRequestBindCombineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSearchAndRequestBindCombineController.swift; sourceTree = "<group>"; };
 		403094F12E14D53C00E04161 /* LBSSEReponseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSSEReponseController.swift; sourceTree = "<group>"; };
 		403094F32E15102300E04161 /* LBStreamJsonParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBStreamJsonParse.swift; sourceTree = "<group>"; };
 		403094F52E15161A00E04161 /* LBDouBaoParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDouBaoParse.swift; sourceTree = "<group>"; };
@@ -806,6 +830,13 @@
 		4089873A26B9435D0004BBA8 /* LBAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBAnimationViewController.m; sourceTree = "<group>"; };
 		4089874226B962380004BBA8 /* LBBezierpathViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBBezierpathViewController.h; sourceTree = "<group>"; };
 		4089874326B962380004BBA8 /* LBBezierpathViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBBezierpathViewController.m; sourceTree = "<group>"; };
+		408A33D02FFDF04500237503 /* LBTestSwiftListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTestSwiftListView.swift; sourceTree = "<group>"; };
+		408A33D62FFDF75F00237503 /* LBPreviewHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBPreviewHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		408A33EE2FFF79A000237503 /* AICamereHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICamereHomeView.swift; sourceTree = "<group>"; };
+		408A33EF2FFF79A000237503 /* CameraDeviceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDeviceCardView.swift; sourceTree = "<group>"; };
+		408A33F02FFF79A000237503 /* CameraDeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDeviceModel.swift; sourceTree = "<group>"; };
+		408A33F72FFF7CA500237503 /* AICamereSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICamereSettingView.swift; sourceTree = "<group>"; };
+		408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShareBarCodeView.swift; sourceTree = "<group>"; };
 		408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationController.swift; sourceTree = "<group>"; };
 		408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationView.swift; sourceTree = "<group>"; };
 		408DE8DC2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationView2.swift; sourceTree = "<group>"; };
@@ -1124,6 +1155,7 @@
 		40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAIAnswerViewController.swift; sourceTree = "<group>"; };
 		40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBUIKitLoadSFSymbolsController.swift; sourceTree = "<group>"; };
 		40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwiftHeader.swift; sourceTree = "<group>"; };
+		51A4720E76E11FF51053866F /* Pods-LBPreviewHost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBPreviewHost.release.xcconfig"; path = "Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost.release.xcconfig"; sourceTree = "<group>"; };
 		661A7F3507F09E41EDA38CB7 /* Pods-LBUIProject.custom_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.custom_debug.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.custom_debug.xcconfig"; sourceTree = "<group>"; };
 		70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBUIProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9262DFDBE987A362065D220A /* Pods-LBUIProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProjectTests.release.xcconfig"; path = "Target Support Files/Pods-LBUIProjectTests/Pods-LBUIProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1133,6 +1165,20 @@
 		E32EB82D46265B8566D9B230 /* Pods-LBUIProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProject.release.xcconfig"; path = "Target Support Files/Pods-LBUIProject/Pods-LBUIProject.release.xcconfig"; sourceTree = "<group>"; };
 		F5DBC08EC101493A4FA487AF /* Pods-LBUIProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBUIProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-LBUIProjectTests/Pods-LBUIProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 408A33D52FFDF75F00237503 /* LBPreviewHost */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = LBPreviewHost; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		40356F72286BE89700561E00 /* Frameworks */ = {
@@ -1184,6 +1230,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		408A33D32FFDF75F00237503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58D48459B56D51FE1F50405 /* Pods_LBPreviewHost.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1199,6 +1253,9 @@
 				661A7F3507F09E41EDA38CB7 /* Pods-LBUIProject.custom_debug.xcconfig */,
 				3131954787990370DAC18C5B /* Pods-LBUIProject-LBUIProjectUITests.custom_debug.xcconfig */,
 				DAE63363A9F7B3347021BA00 /* Pods-LBUIProjectTests.custom_debug.xcconfig */,
+				058E12BCD145400063342CA7 /* Pods-LBPreviewHost.debug.xcconfig */,
+				37F5C8C6DF153D87DD7C5D0D /* Pods-LBPreviewHost.custom_debug.xcconfig */,
+				51A4720E76E11FF51053866F /* Pods-LBPreviewHost.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1477,6 +1534,14 @@
 			path = Block;
 			sourceTree = "<group>";
 		};
+		402EF0452FFB4006003A2394 /* SearchAndRequest */ = {
+			isa = PBXGroup;
+			children = (
+				402EF0462FFB401B003A2394 /* LBSearchAndRequestBindCombineController.swift */,
+			);
+			path = SearchAndRequest;
+			sourceTree = "<group>";
+		};
 		403094F02E14D51900E04161 /* 流式输出 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1544,6 +1609,7 @@
 				4043EB2A265F9E2700EACB2B /* LBUIProjectUITests */,
 				40356F76286BE89700561E00 /* FilterMessage */,
 				40F1CD032A317CBC00A8066C /* LBWidget */,
+				408A33D72FFDF75F00237503 /* LBPreviewHost */,
 				4043EB02265F9E2400EACB2B /* Products */,
 				28D35F3F57528AC8BD5D8779 /* Pods */,
 				83F0C6F792EF35BDEB2C0FBC /* Frameworks */,
@@ -1557,6 +1623,7 @@
 				4043EB1C265F9E2700EACB2B /* LBUIProjectTests.xctest */,
 				4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */,
 				40356F75286BE89700561E00 /* FilterMessage.appex */,
+				408A33D62FFDF75F00237503 /* LBPreviewHost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1770,6 +1837,7 @@
 			isa = PBXGroup;
 			children = (
 				405820662A6E2580004252CB /* LBLivePreviewViewController.swift */,
+				402957B13000908F00B39BDA /* LBLivePreviewCustomView.swift */,
 			);
 			path = LivePreview;
 			sourceTree = "<group>";
@@ -2167,6 +2235,40 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		408A33CD2FFDEFE300237503 /* TestList */ = {
+			isa = PBXGroup;
+			children = (
+				408A33D02FFDF04500237503 /* LBTestSwiftListView.swift */,
+			);
+			path = TestList;
+			sourceTree = "<group>";
+		};
+		408A33ED2FFF770B00237503 /* AICamereHome */ = {
+			isa = PBXGroup;
+			children = (
+				408A33EE2FFF79A000237503 /* AICamereHomeView.swift */,
+				408A33EF2FFF79A000237503 /* CameraDeviceCardView.swift */,
+				408A33F02FFF79A000237503 /* CameraDeviceModel.swift */,
+			);
+			path = AICamereHome;
+			sourceTree = "<group>";
+		};
+		408A33F82FFF7CA500237503 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				408A33F72FFF7CA500237503 /* AICamereSettingView.swift */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		408A340C2FFF90D300237503 /* shareBarCode */ = {
+			isa = PBXGroup;
+			children = (
+				408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */,
+			);
+			path = shareBarCode;
+			sourceTree = "<group>";
+		};
 		408DE8D72C7438AE00B19350 /* 抽屉效果 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2344,6 +2446,9 @@
 		40A2D3372FDBD481004A9788 /* AIProduct */ = {
 			isa = PBXGroup;
 			children = (
+				408A340C2FFF90D300237503 /* shareBarCode */,
+				408A33F82FFF7CA500237503 /* setting */,
+				408A33ED2FFF770B00237503 /* AICamereHome */,
 				40A2D3352FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png */,
 				40A2D3362FDBD481004A9788 /* LBAIProductAdViewController.swift */,
 			);
@@ -2484,6 +2589,7 @@
 		40ABEB0F2DA3BE1A00199320 /* Combine */ = {
 			isa = PBXGroup;
 			children = (
+				402EF0452FFB4006003A2394 /* SearchAndRequest */,
 				4044D2252DACF5230012CD6D /* CustomProperty */,
 				40ABEB842DA3C81900199320 /* Bind */,
 				40ABEB0A2DA3BE1A00199320 /* Login */,
@@ -3211,6 +3317,7 @@
 		40D43D0D2A67EE33001384BF /* SwiftUIModule */ = {
 			isa = PBXGroup;
 			children = (
+				408A33CD2FFDEFE300237503 /* TestList */,
 				40F5B1D82FF39F81002CCA9C /* 混合导航栏 */,
 				40F5B1CC2FF24277002CCA9C /* CustomHostController */,
 				40F5B1A12FF2198F002CCA9C /* SwiftUI环境变量注入 */,
@@ -3505,6 +3612,7 @@
 				70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */,
 				40744D112A316FED0096F399 /* WidgetKit.framework */,
 				40744D132A316FED0096F399 /* SwiftUI.framework */,
+				3371EEFBB7B63E90B5DF2B80 /* Pods_LBPreviewHost.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3598,13 +3706,35 @@
 			productReference = 4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		408A33D52FFDF75F00237503 /* LBPreviewHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 408A33E82FFDF76100237503 /* Build configuration list for PBXNativeTarget "LBPreviewHost" */;
+			buildPhases = (
+				785F17B8444728D62CC0FC14 /* [CP] Check Pods Manifest.lock */,
+				408A33D22FFDF75F00237503 /* Sources */,
+				408A33D32FFDF75F00237503 /* Frameworks */,
+				408A33D42FFDF75F00237503 /* Resources */,
+				F8659103B1D98AD63076542E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				408A33D72FFDF75F00237503 /* LBPreviewHost */,
+			);
+			name = LBPreviewHost;
+			productName = LBPreviewHost;
+			productReference = 408A33D62FFDF75F00237503 /* LBPreviewHost.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4043EAF9265F9E2400EACB2B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					40356F74286BE89700561E00 = {
@@ -3621,6 +3751,9 @@
 					4043EB26265F9E2700EACB2B = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 4043EB00265F9E2400EACB2B;
+					};
+					408A33D52FFDF75F00237503 = {
+						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
@@ -3648,6 +3781,7 @@
 				4043EB1B265F9E2700EACB2B /* LBUIProjectTests */,
 				4043EB26265F9E2700EACB2B /* LBUIProjectUITests */,
 				40356F74286BE89700561E00 /* FilterMessage */,
+				408A33D52FFDF75F00237503 /* LBPreviewHost */,
 			);
 		};
 /* End PBXProject section */
@@ -3657,7 +3791,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */,
+				40FAE36A2FDBC5AA00861B79 /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3699,6 +3833,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4043EB25265F9E2700EACB2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		408A33D42FFDF75F00237503 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3755,13 +3896,39 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		785F17B8444728D62CC0FC14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LBPreviewHost-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8D487137F0324560BF3A6671 /* [CP] Check Pods Manifest.lock */ = {
@@ -3794,9 +3961,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3811,9 +3982,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3850,13 +4025,38 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8659103B1D98AD63076542E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3949,6 +4149,7 @@
 				409FC3FA2A2A010D0053B88C /* LLContractDetailBeforeSignCheckTask.swift in Sources */,
 				40795CEC2786E9D300E2A5B2 /* LBTestAvoidCrashViewController.m in Sources */,
 				40441766299F4F28000F567F /* SYVerticalHorizontalTableView.m in Sources */,
+				408A340D2FFF90D300237503 /* LBShareBarCodeView.swift in Sources */,
 				40ABEB6A2DA3BE3500199320 /* CLMomentumView.swift in Sources */,
 				40D43CCF2A5FD2E6001384BF /* LBCollectionCompositionLayoutDefine.swift in Sources */,
 				40667D8226A5585A00027791 /* LBTestGestureView.m in Sources */,
@@ -4006,6 +4207,7 @@
 				40ACEE782A4C1ADA0001BCAB /* LBAlertEntity.swift in Sources */,
 				4091DE4628AA4FD000798E2A /* LBSecondViewController.swift in Sources */,
 				404247B22EE16A70004BB68E /* HXRealTimeContentElement.m in Sources */,
+				408A33F92FFF7CA500237503 /* AICamereSettingView.swift in Sources */,
 				40F32F632ECFF760007EB13F /* LBATTextView.swift in Sources */,
 				400F8AFE2ECDB7AF004E99F6 /* LBChatCell.swift in Sources */,
 				408DE8DB2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift in Sources */,
@@ -4045,6 +4247,9 @@
 				40F38D2F2C8ADD410046E4E5 /* LBCustomDecorationLayoutAttributes.swift in Sources */,
 				40AE6FE329C8616600C69932 /* DetailViewController.swift in Sources */,
 				40AE6FDC29C8616600C69932 /* HeightChangeAnimationViewController.swift in Sources */,
+				408A33F12FFF79A000237503 /* CameraDeviceModel.swift in Sources */,
+				408A33F22FFF79A000237503 /* CameraDeviceCardView.swift in Sources */,
+				408A33F32FFF79A000237503 /* AICamereHomeView.swift in Sources */,
 				40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */,
 				40ABEB702DA3BE3500199320 /* String+Extension.swift in Sources */,
 				408400292D2E1801004A58CC /* LBMixSwiftUIView.swift in Sources */,
@@ -4227,9 +4432,11 @@
 				40ABEB662DA3BE3500199320 /* CLPopupLoadingController.swift in Sources */,
 				40441763299F4F17000F567F /* LBVerticalHorizontalScrollView.swift in Sources */,
 				40AE6FD629C8616600C69932 /* CollectionViewViewController.swift in Sources */,
+				402957B33000908F00B39BDA /* LBLivePreviewCustomView.swift in Sources */,
 				402922392D5ED2470081AD17 /* LBUIKitGridView.swift in Sources */,
 				40B3F8632DBE21F4009C033F /* LBImageFilterController.swift in Sources */,
 				40D43D1D2A690B0A001384BF /* LBScrollKitHomeView.swift in Sources */,
+				402EF0472FFB401B003A2394 /* LBSearchAndRequestBindCombineController.swift in Sources */,
 				4012373C2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController.swift in Sources */,
 				404B0ECA2D92527C0070447D /* LBResponseInsetViewController.swift in Sources */,
 				404B0EA92D8D40440070447D /* LBTabAnimatedOCCell.m in Sources */,
@@ -4262,6 +4469,7 @@
 				40B3F8602DBE2112009C033F /* LBGPUImageFilterViewController.swift in Sources */,
 				40B3F8652DBE2203009C033F /* LBVideoFilterController.swift in Sources */,
 				407603AC284078AC0019EC69 /* NSObject+UnRecognizeSelector.m in Sources */,
+				408A33D12FFDF04500237503 /* LBTestSwiftListView.swift in Sources */,
 				40ABEB572DA3BE3500199320 /* CLCalendarView.swift in Sources */,
 				402922372D5ED1C20081AD17 /* LBAddUIKitViewPage.swift in Sources */,
 				40EABDE126AFDD25007BD450 /* LBTransmitView.m in Sources */,
@@ -4311,6 +4519,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				4043EB2C265F9E2700EACB2B /* LBUIProjectUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		408A33D22FFDF75F00237503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				402957B030008ED800B39BDA /* UIIMage+LBExtension.swift in Sources */,
+				402957AF30008ED100B39BDA /* UIImage+LBExtension.swift in Sources */,
+				406076FB2FFF92BC00BA4CA4 /* LBLivePreviewViewController.swift in Sources */,
+				408A33EC2FFDF7A400237503 /* LBTestSwiftListView.swift in Sources */,
+				408A33F42FFF79A000237503 /* CameraDeviceModel.swift in Sources */,
+				408A33F52FFF79A000237503 /* CameraDeviceCardView.swift in Sources */,
+				408A340E2FFF90D300237503 /* LBShareBarCodeView.swift in Sources */,
+				402957B23000908F00B39BDA /* LBLivePreviewCustomView.swift in Sources */,
+				408A33F62FFF79A000237503 /* AICamereHomeView.swift in Sources */,
+				408A33FA2FFF7CA500237503 /* AICamereSettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4904,6 +5129,113 @@
 			};
 			name = custom_debug;
 		};
+		408A33E92FFDF76100237503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 058E12BCD145400063342CA7 /* Pods-LBPreviewHost.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4G263MGGP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LBPreviewHost/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.liubin.LBPreviewHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		408A33EA2FFDF76100237503 /* custom_debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37F5C8C6DF153D87DD7C5D0D /* Pods-LBPreviewHost.custom_debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4G263MGGP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LBPreviewHost/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.liubin.LBPreviewHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = custom_debug;
+		};
+		408A33EB2FFDF76100237503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51A4720E76E11FF51053866F /* Pods-LBPreviewHost.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4G263MGGP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LBPreviewHost/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.liubin.LBPreviewHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4953,6 +5285,16 @@
 				4043EB37265F9E2700EACB2B /* Debug */,
 				406298FB288FEB74006A3024 /* custom_debug */,
 				4043EB38265F9E2700EACB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		408A33E82FFDF76100237503 /* Build configuration list for PBXNativeTarget "LBPreviewHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				408A33E92FFDF76100237503 /* Debug */,
+				408A33EA2FFDF76100237503 /* custom_debug */,
+				408A33EB2FFDF76100237503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

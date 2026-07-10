@@ -40,9 +40,7 @@ final class AsyncLock<I: InvocableType>
     // }
 
     private func enqueue(_ action: I) -> I? {
-        self.lock();
-        ///defer确保方法结束前调用unlock  不论提前return还是最终执行完都会执行defer
-        defer { self.unlock() }
+        self.lock(); defer { self.unlock() }
         if self.hasFaulted {
             return nil
         }

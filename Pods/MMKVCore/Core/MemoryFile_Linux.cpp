@@ -48,24 +48,31 @@ typedef int (*renameat2_t)(int old_dir_fd, const char* old_path, int new_dir_fd,
 
 namespace mmkv {
 
-extern bool getFileSize(int fd, size_t &size);
-
 bool tryAtomicRename(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
     bool renamed = false;
 
     // try renameat2() first
-#ifdef SYS_renameat2
+#if defined(SYS_renameat2)
 #ifdef MMKV_ANDROID
     static auto g_renameat2 = (renameat2_t) dlsym(RTLD_DEFAULT, "renameat2");
     if (g_renameat2) {
         renamed = (g_renameat2(AT_FDCWD, srcPath.c_str(), AT_FDCWD, dstPath.c_str(), RENAME_EXCHANGE) == 0);
+    }
+    if (!renamed && errno != ENOENT) {
+        MMKVWarning("fail on renameat2() [%s] to [%s], %d(%s)", srcPath.c_str(), dstPath.c_str(), errno,
+                    strerror(errno));
     }
 #endif
     if (!renamed) {
         renamed = (syscall(SYS_renameat2, AT_FDCWD, srcPath.c_str(), AT_FDCWD, dstPath.c_str(), RENAME_EXCHANGE) == 0);
     }
     if (!renamed && errno != ENOENT) {
-        MMKVError("fail on renameat2() [%s] to [%s], %d(%s)", srcPath.c_str(), dstPath.c_str(), errno, strerror(errno));
+        MMKVWarning("fail on syscall(SYS_renameat2) [%s] to [%s], %d(%s)", srcPath.c_str(), dstPath.c_str(), errno,
+                    strerror(errno));
+    }
+
+    if (renamed && (srcPath != dstPath)) {
+        ::unlink(srcPath.c_str());
     }
 #endif // SYS_renameat2
 
@@ -76,7 +83,6 @@ bool tryAtomicRename(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
         }
     }
 
-    ::unlink(srcPath.c_str());
     return true;
 }
 

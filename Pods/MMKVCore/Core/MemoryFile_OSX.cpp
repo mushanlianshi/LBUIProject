@@ -53,39 +53,43 @@ void tryResetFileProtection(const string &path) {
 #ifdef MMKV_APPLE
 
 #include <copyfile.h>
-#include <mach/mach_time.h>
+#include <unistd.h>
 
 namespace mmkv {
 
-bool tryAtomicRename(const char *src, const char *dst) {
+bool tryAtomicRename(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
+    if (srcPath.empty() || dstPath.empty()) {
+        return false;
+    }
     bool renamed = false;
 
     // try atomic swap first
     if (@available(iOS 10.0, watchOS 3.0, macOS 10.12, *)) {
         // renameat2() equivalent
-        if (renamex_np(src, dst, RENAME_SWAP) == 0) {
+        if (renamex_np(srcPath.c_str(), dstPath.c_str(), RENAME_SWAP) == 0) {
             renamed = true;
+            if (srcPath != dstPath) {
+                ::unlink(srcPath.c_str());
+            }
         } else if (errno != ENOENT) {
-            MMKVError("fail to renamex_np %s to %s, %s", src, dst, strerror(errno));
+            MMKVError("fail to renamex_np %s to %s, %s", srcPath.c_str(), dstPath.c_str(), strerror(errno));
         }
     }
 
     if (!renamed) {
         // try old style rename
-        if (rename(src, dst) != 0) {
-            MMKVError("fail to rename %s to %s, %s", src, dst, strerror(errno));
+        if (rename(srcPath.c_str(), dstPath.c_str()) != 0) {
+            MMKVError("fail to rename %s to %s, %s", srcPath.c_str(), dstPath.c_str(), strerror(errno));
             return false;
         }
     }
-
-    unlink(src);
 
     return true;
 }
 
 bool copyFile(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
-    // prepare a temp file for atomic rename, avoid data corruption of suddent crash
-    NSString *uniqueFileName = [NSString stringWithFormat:@"mmkv_%llu", mach_absolute_time()];
+    // prepare a temp file for atomic rename, avoid data corruption of sudden crash
+    NSString *uniqueFileName = [NSString stringWithFormat:@"mmkv_%zu", (size_t) NSDate.timeIntervalSinceReferenceDate];
     NSString *tmpFile = [NSTemporaryDirectory() stringByAppendingPathComponent:uniqueFileName];
     if (copyfile(srcPath.c_str(), tmpFile.UTF8String, nullptr, COPYFILE_UNLINK | COPYFILE_CLONE) != 0) {
         MMKVError("fail to copyfile [%s] to [%s], %s", srcPath.c_str(), tmpFile.UTF8String, strerror(errno));
@@ -97,8 +101,12 @@ bool copyFile(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
         MMKVInfo("copyfile [%s] to [%s] finish.", srcPath.c_str(), dstPath.c_str());
         return true;
     }
+
+    MMKVInfo("rename fail, try copy file content instead.");
+    auto ret = copyFileContent(tmpFile.UTF8String, dstPath);
+
     unlink(tmpFile.UTF8String);
-    return false;
+    return ret;
 }
 
 bool copyFileContent(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
@@ -125,7 +133,7 @@ bool copyFileContent(const MMKVPath_t &srcPath, MMKVFileHandle_t dstFD) {
     }
 
     // sendfile() equivalent
-    if (::fcopyfile(srcFile.getFd(), dstFD, nullptr, COPYFILE_ACL | COPYFILE_STAT | COPYFILE_XATTR | COPYFILE_DATA) == 0) {
+    if (::fcopyfile(srcFile.getFd(), dstFD, nullptr, COPYFILE_ALL) == 0) {
         MMKVInfo("copy content from %s to fd[%d] finish", srcPath.c_str(), dstFD);
         return true;
     }
@@ -135,6 +143,29 @@ bool copyFileContent(const MMKVPath_t &srcPath, MMKVFileHandle_t dstFD) {
 
 bool copyFileContent(const MMKVPath_t &srcPath, MMKVFileHandle_t dstFD, bool needTruncate) {
     return copyFileContent(srcPath, dstFD);
+}
+
+bool isDiskOfMMAPFileCorrupted(MemoryFile *file, bool &needReportReadFail) {
+    uint32_t info;
+    auto fd = file->getFd();
+    auto path = file->getPath().c_str();
+
+    auto oldPos = lseek(fd, 0, SEEK_CUR);
+    lseek(fd, 0, SEEK_SET);
+    auto size = read(fd, &info, sizeof(info));
+    auto err = errno;
+    lseek(fd, oldPos, SEEK_SET);
+
+    if (size <= 0) {
+        needReportReadFail = true;
+        MMKVError("fail to read [%s] from fd [%d], errno: %d (%s)", path, fd, err, strerror(err));
+        if (err == EDEVERR || err == EILSEQ || err == EINVAL || err == ENXIO) {
+            MMKVWarning("file fail to read, consider it illegal, delete now: [%s]", path);
+            return true;
+        }
+    }
+    file->cleanMayflyFD();
+    return false;
 }
 
 } // namespace mmkv

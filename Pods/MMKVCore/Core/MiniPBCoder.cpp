@@ -23,6 +23,8 @@
 #include "CodedInputDataCrypt.h"
 #include "CodedOutputData.h"
 #include "PBEncodeItem.hpp"
+#include "PBUtility.h"
+#include "MMKVLog.h"
 
 #ifdef MMKV_APPLE
 #    if __has_feature(objc_arc)
@@ -75,12 +77,29 @@ void MiniPBCoder::writeRootObject() {
                 m_outputData->writeUInt32(encodeItem->valueSize);
                 break;
             }
-#ifndef MMKV_APPLE
+#ifdef MMKV_HAS_CPP20
+            case PBEncodeItemType_Int32: {
+                m_outputData->writeInt32(encodeItem->value.int32Value);
+                break;
+            }
+            case PBEncodeItemType_UInt32: {
+                m_outputData->writeUInt32(encodeItem->value.uint32Value);
+                break;
+            }
+            case PBEncodeItemType_Int64: {
+                m_outputData->writeInt64(encodeItem->value.int64Value);
+                break;
+            }
+            case PBEncodeItemType_UInt64: {
+                m_outputData->writeUInt64(encodeItem->value.uint64Value);
+                break;
+            }
+#endif // MMKV_HAS_CPP20
             case PBEncodeItemType_String: {
                 m_outputData->writeString(*(encodeItem->value.strValue));
                 break;
             }
-#else
+#ifdef MMKV_APPLE
             case PBEncodeItemType_NSString: {
                 m_outputData->writeUInt32(encodeItem->valueSize);
                 if (encodeItem->valueSize > 0 && encodeItem->value.tmpObjectValue != nullptr) {
@@ -127,8 +146,6 @@ size_t MiniPBCoder::prepareObjectForEncode(const MMBuffer &buffer) {
     return index;
 }
 
-#ifndef MMKV_DISABLE_CRYPT
-
 size_t MiniPBCoder::prepareObjectForEncode(const MMKVVector &vec) {
     m_encodeItems->push_back(PBEncodeItem());
     PBEncodeItem *encodeItem = &(m_encodeItems->back());
@@ -167,18 +184,24 @@ size_t MiniPBCoder::prepareObjectForEncode(const MMKVVector &vec) {
     return index;
 }
 
-#endif // MMKV_DISABLE_CRYPT
-
 MMBuffer MiniPBCoder::writePreparedItems(size_t index) {
-    PBEncodeItem *oItem = (index < m_encodeItems->size()) ? &(*m_encodeItems)[index] : nullptr;
-    if (oItem && oItem->compiledSize > 0) {
-        m_outputBuffer = new MMBuffer(oItem->compiledSize);
-        m_outputData = new CodedOutputData(m_outputBuffer->getPtr(), m_outputBuffer->length());
+    try {
+        PBEncodeItem *oItem = (index < m_encodeItems->size()) ? &(*m_encodeItems)[index] : nullptr;
+        if (oItem && oItem->compiledSize > 0) {
+            m_outputBuffer = new MMBuffer(oItem->compiledSize);
+            m_outputData = new CodedOutputData(m_outputBuffer->getPtr(), m_outputBuffer->length());
 
-        writeRootObject();
+            writeRootObject();
+        }
+
+        return std::move(*m_outputBuffer);
+    } catch (const std::exception &exception) {
+        MMKVError("%s", exception.what());
+        return MMBuffer();
+    } catch (...) {
+        MMKVError("encode fail");
+        return MMBuffer();
     }
-
-    return std::move(*m_outputBuffer);
 }
 
 MMBuffer MiniPBCoder::encodeDataWithObject(const MMBuffer &obj) {
@@ -192,10 +215,11 @@ MMBuffer MiniPBCoder::encodeDataWithObject(const MMBuffer &obj) {
     } catch (const std::exception &exception) {
         MMKVError("%s", exception.what());
         return MMBuffer();
+    } catch (...) {
+        MMKVError("prepare encode fail");
+        return MMBuffer();
     }
 }
-
-#ifndef MMKV_APPLE
 
 size_t MiniPBCoder::prepareObjectForEncode(const string &str) {
     m_encodeItems->push_back(PBEncodeItem());
@@ -204,14 +228,14 @@ size_t MiniPBCoder::prepareObjectForEncode(const string &str) {
     {
         encodeItem->type = PBEncodeItemType_String;
         encodeItem->value.strValue = &str;
-        encodeItem->valueSize = static_cast<int32_t>(str.size());
+        encodeItem->valueSize = static_cast<uint32_t>(str.size());
     }
     encodeItem->compiledSize = pbRawVarint32Size(encodeItem->valueSize) + encodeItem->valueSize;
 
     return index;
 }
 
-size_t MiniPBCoder::prepareObjectForEncode(const vector<string> &v) {
+size_t MiniPBCoder::prepareObjectForEncode(const MMKV_STRING_CONTAINER &v) {
     m_encodeItems->push_back(PBEncodeItem());
     PBEncodeItem *encodeItem = &(m_encodeItems->back());
     size_t index = m_encodeItems->size() - 1;
@@ -233,6 +257,110 @@ size_t MiniPBCoder::prepareObjectForEncode(const vector<string> &v) {
     return index;
 }
 
+#ifdef MMKV_HAS_CPP20
+
+size_t MiniPBCoder::prepareObjectForEncode(const std::span<const int32_t> &vec) {
+    m_encodeItems->push_back(PBEncodeItem());
+    PBEncodeItem *encodeItem = &(m_encodeItems->back());
+    size_t index = m_encodeItems->size() - 1;
+    {
+        encodeItem->type = PBEncodeItemType_Container;
+        encodeItem->value.bufferValue = nullptr;
+
+        for (const auto value : vec) {
+            PBEncodeItem item;
+            item.type = PBEncodeItemType_Int32;
+            item.value.int32Value = value;
+            item.compiledSize = pbInt32Size(value);
+
+            (*m_encodeItems)[index].valueSize += item.compiledSize;
+            m_encodeItems->push_back(std::move(item));
+        }
+
+        encodeItem = &(*m_encodeItems)[index];
+    }
+    encodeItem->compiledSize = pbRawVarint32Size(encodeItem->valueSize) + encodeItem->valueSize;
+
+    return index;
+}
+
+size_t MiniPBCoder::prepareObjectForEncode(const std::span<const uint32_t> &vec) {
+    m_encodeItems->push_back(PBEncodeItem());
+    PBEncodeItem *encodeItem = &(m_encodeItems->back());
+    size_t index = m_encodeItems->size() - 1;
+    {
+        encodeItem->type = PBEncodeItemType_Container;
+        encodeItem->value.bufferValue = nullptr;
+
+        for (const auto value : vec) {
+            PBEncodeItem item;
+            item.type = PBEncodeItemType_UInt32;
+            item.value.uint32Value = value;
+            item.compiledSize = pbUInt32Size(value);
+
+            (*m_encodeItems)[index].valueSize += item.compiledSize;
+            m_encodeItems->push_back(std::move(item));
+        }
+
+        encodeItem = &(*m_encodeItems)[index];
+    }
+    encodeItem->compiledSize = pbRawVarint32Size(encodeItem->valueSize) + encodeItem->valueSize;
+
+    return index;
+}
+
+size_t MiniPBCoder::prepareObjectForEncode(const std::span<const int64_t> &vec) {
+    m_encodeItems->push_back(PBEncodeItem());
+    PBEncodeItem *encodeItem = &(m_encodeItems->back());
+    size_t index = m_encodeItems->size() - 1;
+    {
+        encodeItem->type = PBEncodeItemType_Container;
+        encodeItem->value.bufferValue = nullptr;
+
+        for (const auto value : vec) {
+            PBEncodeItem item;
+            item.type = PBEncodeItemType_Int64;
+            item.value.int64Value = value;
+            item.compiledSize = pbInt64Size(value);
+
+            (*m_encodeItems)[index].valueSize += item.compiledSize;
+            m_encodeItems->push_back(std::move(item));
+        }
+
+        encodeItem = &(*m_encodeItems)[index];
+    }
+    encodeItem->compiledSize = pbRawVarint32Size(encodeItem->valueSize) + encodeItem->valueSize;
+
+    return index;
+}
+
+size_t MiniPBCoder::prepareObjectForEncode(const std::span<const uint64_t> &vec) {
+    m_encodeItems->push_back(PBEncodeItem());
+    PBEncodeItem *encodeItem = &(m_encodeItems->back());
+    size_t index = m_encodeItems->size() - 1;
+    {
+        encodeItem->type = PBEncodeItemType_Container;
+        encodeItem->value.bufferValue = nullptr;
+
+        for (const auto value : vec) {
+            PBEncodeItem item;
+            item.type = PBEncodeItemType_UInt64;
+            item.value.uint64Value = value;
+            item.compiledSize = pbUInt64Size(value);
+
+            (*m_encodeItems)[index].valueSize += item.compiledSize;
+            m_encodeItems->push_back(std::move(item));
+        }
+
+        encodeItem = &(*m_encodeItems)[index];
+    }
+    encodeItem->compiledSize = pbRawVarint32Size(encodeItem->valueSize) + encodeItem->valueSize;
+
+    return index;
+}
+
+#endif // MMKV_HAS_CPP20
+
 vector<string> MiniPBCoder::decodeOneVector() {
     vector<string> v;
 
@@ -240,12 +368,139 @@ vector<string> MiniPBCoder::decodeOneVector() {
 
     while (!m_inputData->isAtEnd()) {
         auto value = m_inputData->readString();
-        v.push_back(move(value));
+        v.push_back(std::move(value));
     }
 
     return v;
 }
 
+#ifdef MMKV_HAS_CPP20
+
+bool MiniPBCoder::decodeOneVector(std::vector<bool> &result) {
+    try {
+        auto size = m_inputData->readUInt32();
+        result.reserve(size / pbBoolSize());
+
+        while (!m_inputData->isAtEnd()) {
+            auto value = m_inputData->readBool();
+            result.push_back(value);
+        }
+        return true;
+    } catch (std::exception &exception) {
+        MMKVError("%s", exception.what());
+    } catch (...) {
+        MMKVError("decode fail");
+    }
+    return false;
+}
+
+bool MiniPBCoder::decodeOneVector(std::vector<int32_t> &result) {
+    try {
+        m_inputData->readInt32();
+
+        while (!m_inputData->isAtEnd()) {
+            auto value = m_inputData->readInt32();
+            result.push_back(value);
+        }
+        return true;
+    } catch (std::exception &exception) {
+        MMKVError("%s", exception.what());
+    } catch (...) {
+        MMKVError("decode fail");
+    }
+    return false;
+}
+
+bool MiniPBCoder::decodeOneVector(std::vector<uint32_t> &result) {
+    try {
+        m_inputData->readInt32();
+
+        while (!m_inputData->isAtEnd()) {
+            auto value = m_inputData->readUInt32();
+            result.push_back(value);
+        }
+        return true;
+    } catch (std::exception &exception) {
+        MMKVError("%s", exception.what());
+    } catch (...) {
+        MMKVError("decode fail");
+    }
+    return false;
+}
+
+bool MiniPBCoder::decodeOneVector(std::vector<int64_t> &result) {
+    try {
+        m_inputData->readInt32();
+
+        while (!m_inputData->isAtEnd()) {
+            auto value = m_inputData->readInt64();
+            result.push_back(value);
+        }
+        return true;
+    } catch (std::exception &exception) {
+        MMKVError("%s", exception.what());
+    } catch (...) {
+        MMKVError("decode fail");
+    }
+    return false;
+}
+
+bool MiniPBCoder::decodeOneVector(std::vector<uint64_t> &result) {
+    try {
+        m_inputData->readInt32();
+
+        while (!m_inputData->isAtEnd()) {
+            auto value = m_inputData->readUInt64();
+            result.push_back(value);
+        }
+        return true;
+    } catch (std::exception &exception) {
+        MMKVError("%s", exception.what());
+    } catch (...) {
+        MMKVError("decode fail");
+    }
+    return false;
+}
+
+bool MiniPBCoder::decodeOneVector(std::vector<float> &result) {
+    try {
+        auto size = m_inputData->readUInt32();
+        result.reserve(size / pbFloatSize());
+
+        while (!m_inputData->isAtEnd()) {
+            auto value = m_inputData->readFloat();
+            result.push_back(value);
+        }
+        return true;
+    } catch (std::exception &exception) {
+        MMKVError("%s", exception.what());
+    } catch (...) {
+        MMKVError("decode fail");
+    }
+    return false;
+}
+
+bool MiniPBCoder::decodeOneVector(std::vector<double> &result) {
+    try {
+        auto size = m_inputData->readUInt32();
+        result.reserve(size / pbDoubleSize());
+
+        while (!m_inputData->isAtEnd()) {
+            auto value = m_inputData->readDouble();
+            result.push_back(value);
+        }
+        return true;
+    } catch (std::exception &exception) {
+        MMKVError("%s", exception.what());
+    } catch (...) {
+        MMKVError("decode fail");
+    }
+    return false;
+}
+
+#endif // MMKV_HAS_CPP20
+
+#ifndef MMKV_APPLE
 void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
     auto block = [position, this](MMKVMap &dictionary) {
         if (position) {
@@ -259,7 +514,7 @@ void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
             if (key.length() > 0) {
                 m_inputData->readData(kvHolder);
                 if (kvHolder.valueSize > 0) {
-                    dictionary[key] = move(kvHolder);
+                    dictionary[key] = std::move(kvHolder);
                 } else {
                     auto itr = dictionary.find(key);
                     if (itr != dictionary.end()) {
@@ -275,6 +530,8 @@ void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
             block(dic);
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("prepare encode fail");
         }
     } else {
         try {
@@ -283,6 +540,8 @@ void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
             dic.swap(tmpDic);
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("prepare encode fail");
         }
     }
 }
@@ -302,7 +561,7 @@ void MiniPBCoder::decodeOneMap(MMKVMapCrypt &dic, size_t position, bool greedy) 
             if (key.length() > 0) {
                 m_inputDataDecrpt->readData(kvHolder);
                 if (kvHolder.realValueSize() > 0) {
-                    dictionary[key] = move(kvHolder);
+                    dictionary[key] = std::move(kvHolder);
                 } else {
                     auto itr = dictionary.find(key);
                     if (itr != dictionary.end()) {
@@ -318,6 +577,8 @@ void MiniPBCoder::decodeOneMap(MMKVMapCrypt &dic, size_t position, bool greedy) 
             block(dic);
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("prepare encode fail");
         }
     } else {
         try {
@@ -326,10 +587,12 @@ void MiniPBCoder::decodeOneMap(MMKVMapCrypt &dic, size_t position, bool greedy) 
             dic.swap(tmpDic);
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("prepare encode fail");
         }
     }
 }
-
+#endif // !MMKV_APPLE
 #    endif // MMKV_DISABLE_CRYPT
 
 vector<string> MiniPBCoder::decodeVector(const MMBuffer &oData) {
@@ -337,7 +600,46 @@ vector<string> MiniPBCoder::decodeVector(const MMBuffer &oData) {
     return oCoder.decodeOneVector();
 }
 
-#endif // MMKV_APPLE
+#ifdef MMKV_HAS_CPP20
+MMBuffer MiniPBCoder::getEncodeData(const std::vector<bool> &value) {
+    auto valueLength = static_cast<uint32_t>(value.size() * pbBoolSize());
+    auto size = pbRawVarint32Size(valueLength) + valueLength;
+    auto buffer = MMBuffer(size);
+    CodedOutputData output(buffer.getPtr(), size);
+    output.writeUInt32(valueLength);
+
+    for (auto single : value) {
+        output.writeBool(single);
+    }
+    return buffer;
+}
+
+MMBuffer MiniPBCoder::getEncodeData(const std::span<const float> &value) {
+    auto valueLength = static_cast<uint32_t>(value.size() * pbFloatSize());
+    auto size = pbRawVarint32Size(valueLength) + valueLength;
+    auto buffer = MMBuffer(size);
+    CodedOutputData output(buffer.getPtr(), size);
+    output.writeUInt32(valueLength);
+
+    for (auto single : value) {
+        output.writeFloat(single);
+    }
+    return buffer;
+}
+
+MMBuffer MiniPBCoder::getEncodeData(const std::span<const double> &value) {
+    auto valueLength = static_cast<uint32_t>(value.size() * pbDoubleSize());
+    auto size = pbRawVarint32Size(valueLength) + valueLength;
+    auto buffer = MMBuffer(size);
+    CodedOutputData output(buffer.getPtr(), size);
+    output.writeUInt32(valueLength);
+
+    for (auto single : value) {
+        output.writeDouble(single);
+    }
+    return buffer;
+}
+#endif // MMKV_HAS_CPP20
 
 void MiniPBCoder::decodeMap(MMKVMap &dic, const MMBuffer &oData, size_t position) {
     MiniPBCoder oCoder(&oData);

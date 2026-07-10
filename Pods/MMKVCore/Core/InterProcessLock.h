@@ -45,18 +45,19 @@ class FileLock {
     bool platformUnLock(bool unLockFirstIfNeeded);
 
 #    ifndef MMKV_WIN32
-    bool isFileLockValid() { return m_fd >= 0; }
+    bool isFileLockValid() const { return m_fd >= 0; }
 #        ifdef MMKV_ANDROID
-    const bool m_isAshmem;
+    const bool m_useFcntlLock; // fcntl(F_OFD_SETLK)
+    const bool m_isAshmem; // fcntl(F_SETLK)
     struct flock m_lockInfo;
-    bool ashmemLock(LockType lockType, bool wait, bool unLockFirstIfNeeded, bool *tryAgain);
-    bool ashmemUnLock(bool unLockFirstIfNeeded);
+    bool fcntlLock(LockType lockType, bool wait, bool unLockFirstIfNeeded, bool *tryAgain);
+    bool fcntlUnLock(bool unLockFirstIfNeeded);
 #        endif
 
 #    else  // defined(MMKV_WIN32)
     OVERLAPPED m_overLapped;
 
-    bool isFileLockValid() { return m_fd != INVALID_HANDLE_VALUE; }
+    bool isFileLockValid() const { return m_fd != INVALID_HANDLE_VALUE; }
 #    endif // MMKV_WIN32
 
 public:
@@ -64,17 +65,22 @@ public:
 #        ifndef MMKV_ANDROID
     explicit FileLock(MMKVFileHandle_t fd) : m_fd(fd), m_sharedLockCount(0), m_exclusiveLockCount(0) {}
 #        else
-    explicit FileLock(MMKVFileHandle_t fd, bool isAshmem = false);
+    // locking with pos & len only works in fcntl lock type
+    explicit FileLock(MMKVFileHandle_t fd, bool useFcntlLock = false, bool isAshmem = false, int64_t lockPos = 0, int64_t lockLen = 0);
 #        endif // MMKV_ANDROID
 #    else      // defined(MMKV_WIN32)
-    explicit FileLock(MMKVFileHandle_t fd) : m_fd(fd), m_overLapped{}, m_sharedLockCount(0), m_exclusiveLockCount(0) {}
+    explicit FileLock(MMKVFileHandle_t fd) : m_fd(fd), m_sharedLockCount(0), m_exclusiveLockCount(0), m_overLapped{} {}
 #    endif     // MMKV_WIN32
+    ~FileLock();
 
     bool lock(LockType lockType);
 
     bool try_lock(LockType lockType, bool *tryAgain);
 
     bool unlock(LockType lockType);
+
+    // unlock all and destroy file lock
+    void destroyAndUnLock();
 
     // just forbid it for possibly misuse
     explicit FileLock(const FileLock &other) = delete;

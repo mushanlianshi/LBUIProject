@@ -34,10 +34,10 @@ struct LBCollectionCompositionLayoutViewModel {
             "1. Injection does not work with Whole Module Optimization."
         ].map{LBCollectionCompositionLayoutItemModel.init(listText: $0)}, name: "1. Injection does not work with Whole Module Optimization.1. Injection does not work with Whole Module Optimization.1. Injection does not work with Whole Module Optimization.")
         
-        let group2 = LBCollectionCompositionLayoutSectionModel.init(type: .group, list:nil, name: "hori group")
+        let group2 = LBCollectionCompositionLayoutSectionModel.init(type: .group, list:nil, name: "空list的sectionheader view 空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view空list的sectionheader view")
         
         let waterFlow = LBCollectionCompositionLayoutSectionModel.init(type: .waterFlow, list: [
-            "11", "22", "33", "44", "55", "66", "77", "88"
+            "11", "22", "33", "44", "55", "66", "77", "88","11", "22", "33", "44", "55", "66", "77", "88",
         ].map{LBCollectionCompositionLayoutItemModel.init(listText: $0)}, name: "waterFlow")
         
         dataSources.append(contentsOf: [banner, group, list, group2, waterFlow])

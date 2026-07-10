@@ -18,12 +18,15 @@
  * limitations under the License.
  */
 
+#define NOMINMAX // undefine max/min
+
 #include "MMBuffer.h"
 #include <cerrno>
 #include <cstdlib>
 #include <cstring>
 #include <utility>
 #include <stdexcept>
+#include <algorithm>
 
 #ifdef MMKV_APPLE
 #    if __has_feature(objc_arc)
@@ -81,6 +84,13 @@ MMBuffer::MMBuffer(void *source, size_t length, MMBufferCopyFlag flag) : isNoCop
     }
 }
 
+bool MMBuffer::operator==(const MMBuffer& other) const {
+    if (this->length() != other.length()) {
+        return false;
+    }
+    return !memcmp((uint8_t*)this->getPtr(), (uint8_t*)other.getPtr(), this->length());
+}
+
 #ifdef MMKV_APPLE
 MMBuffer::MMBuffer(NSData *data, MMBufferCopyFlag flag)
     : type(MMBufferType_Normal), ptr((void *) data.bytes), size(data.length), isNoCopy(flag) {
@@ -103,6 +113,21 @@ MMBuffer::MMBuffer(MMBuffer &&other) noexcept : type(other.type) {
         other.detach();
     } else {
         paddedSize = other.paddedSize;
+        memcpy(paddedBuffer, other.paddedBuffer, paddedSize);
+    }
+}
+
+MMBuffer::MMBuffer(MMBuffer &&other, size_t length) noexcept : type(other.type) {
+    if (type == MMBufferType_Normal) {
+        size = std::min(other.size, length);
+        ptr = other.ptr;
+        isNoCopy = other.isNoCopy;
+#ifdef MMKV_APPLE
+        m_data = other.m_data;
+#endif
+        other.detach();
+    } else {
+        paddedSize = std::min(other.paddedSize, static_cast<uint8_t>(length));
         memcpy(paddedBuffer, other.paddedBuffer, paddedSize);
     }
 }
@@ -145,11 +170,8 @@ MMBuffer &MMBuffer::operator=(MMBuffer &&other) noexcept {
 #endif
             other.detach();
         } else {
-            uint8_t tmp[SmallBufferSize()];
-            memcpy(tmp, other.paddedBuffer, other.paddedSize);
-            memcpy(other.paddedBuffer, paddedBuffer, paddedSize);
-            memcpy(paddedBuffer, tmp, other.paddedSize);
-            std::swap(paddedSize, other.paddedSize);
+            paddedSize = other.paddedSize;
+            memcpy(paddedBuffer, other.paddedBuffer, other.paddedSize);
         }
     }
 
@@ -181,5 +203,37 @@ void MMBuffer::detach() {
     auto memsetPtr = (size_t *) &type;
     *memsetPtr = 0;
 }
+
+#ifdef MMKV_APPLE
+NSData *MMBuffer::toNSData(bool transferOwnerShip) {
+    if (!transferOwnerShip) {
+        if (m_data) {
+            return m_data;
+        } else {
+            return [NSData dataWithBytesNoCopy:getPtr() length:length() freeWhenDone:NO];
+        }
+    }
+    if (m_data != nil) {
+        if (isNoCopy == MMBufferNoCopy) {
+            return m_data;
+        } else {
+            auto result = [m_data autorelease];
+            m_data = nil;
+            return result;
+        }
+    }
+    if (isStoredOnStack()) {
+        return [NSData dataWithBytes:getPtr() length:length()];
+    } else {
+        if (isNoCopy == MMBufferNoCopy) {
+            return [NSData dataWithBytesNoCopy:getPtr() length:length() freeWhenDone:NO];
+        } else {
+            auto result = [NSData dataWithBytesNoCopy:getPtr() length:length()];
+            detach();
+            return result;
+        }
+    }
+}
+#endif
 
 } // namespace mmkv

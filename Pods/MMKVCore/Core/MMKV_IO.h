@@ -26,12 +26,25 @@
 
 MMKV_NAMESPACE_BEGIN
 
-std::string mmapedKVKey(const std::string &mmapID, const MMKVPath_t *rootPath = nullptr);
-MMKVPath_t mappedKVPathWithID(const std::string &mmapID, MMKVMode mode, const MMKVPath_t *rootPath);
-MMKVPath_t crcPathWithID(const std::string &mmapID, MMKVMode mode, const MMKVPath_t *rootPath);
+std::string mmapedKVKey(const std::string &mmapID, const MMKVPath_t *rootPath = nullptr, bool alreadyAbsolute = false);
+std::string legacyMmapedKVKey(const std::string &mmapID, const MMKVPath_t *rootPath = nullptr);
+#ifndef MMKV_ANDROID
+MMKVPath_t mappedKVPathWithID(const std::string &mmapID, const MMKVPath_t *rootPath, bool alreadyAbsolute = false);
+#else
+MMKVPath_t mappedKVPathWithID(const std::string &mmapID, const MMKVPath_t *rootPath, MMKVMode mode = MMKV_MULTI_PROCESS, bool alreadyAbsolute = false);
+#endif
+MMKVPath_t crcPathWithPath(const MMKVPath_t &kvPath);
 
 MMKVRecoverStrategic onMMKVCRCCheckFail(const std::string &mmapID);
 MMKVRecoverStrategic onMMKVFileLengthError(const std::string &mmapID);
+
+#ifndef MMKV_WIN32
+constexpr auto SPECIAL_CHARACTER_DIRECTORY_NAME = "specialCharacter";
+constexpr auto CRC_SUFFIX = ".crc";
+#else
+constexpr auto SPECIAL_CHARACTER_DIRECTORY_NAME = L"specialCharacter";
+constexpr auto CRC_SUFFIX = L".crc";
+#endif
 
 template <typename T>
 void clearDictionary(T *dic) {
@@ -50,6 +63,21 @@ enum : bool {
     KeepSequence = false,
     IncreaseSequence = true,
 };
+
+#ifdef MMKV_ANDROID
+// status of migrating old file to new file
+enum class MigrateStatus: uint32_t {
+    NotSpecial, // it's not specially (mistakenly) encoded
+    NoneExist, // none of these files exist
+    NewExist, // only new file exist
+    OldToNewMigrated, // migrated, it's one time only operation
+    OldToNewMigrateFail, // old file exist but fail to migrate (maybe other process opened)
+    OldAndNewExist, // both old and new exist (fail to delete old file? old file migrated from old device?)
+};
+
+// historically Android mistakenly use mmapKey as mmapID, we try migrate back to normal when possible
+MigrateStatus tryMigrateLegacyMMKVFile(const std::string &mmapID, const MMKVPath_t *rootPath, bool alreadyAbsolute = false);
+#endif // MMKV_ANDROID
 
 MMKV_NAMESPACE_END
 

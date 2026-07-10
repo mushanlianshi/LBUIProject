@@ -20,7 +20,12 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.addUIKitView, AnyView(LBAddUIKitViewPage())),
         (.mixSwiftUIView, LBSwiftUIRefreshListController.self),
         (.swiftUIEnvironmentData, AnyView(LBSwiftUIEnvironmentDataInjectPage())),
-        (.swiftUIEnvironmentData, AnyView(LBSwiftUIEnvironmentDataInjectPage())),
+        (.mixSwiftUIView, LBTestBookingGiftPackController.self),
+        (.mixSwiftUIView, LBTestBookingGiftPackController2.self),
+        (.selectList, AnyView(LBTestSwiftListView(clickBlock: {}))),
+        (.aiCameraHome, AnyView(AICamereHomeView())),
+        (.aiCameraSetting, AnyView(AICamereSettingView())),
+        (.shareBarCode, AnyView(LBShareBarCodeView())),
 //        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
 
@@ -70,7 +75,16 @@ extension LBSwiftUIHomeController{
             let view = self.swiftUIDataList[indexPath.row].view as! AnyView
             self.navigationController?.pushViewController(LBCustomHostingController(rootView: view), animated: true)
         }
-        
+//        某社区是一个老旧小区，共有居民3200户，常住人口约8000人。其中60岁以上老年人占总人口的18%
+//        ，有空巢老人27名。社区内配套设施老旧，缺乏无障碍设施，部分楼栋没有电梯。近年来，社区居民
+//        就老旧小区改造、增设无障碍、加装电梯等问题反映强烈。经过社区居委会召开居民会议征求意见，
+//        超过80%的居民同意进行旧区改造。但在实施过程中，部分低层住户因采光、噪音等问题反对加装电
+//        梯，部分居民对改造方案中的停车位调整意见不一。同时，改造资金需要多方筹集，仅靠政府补贴不
+//        足以完成全部改造任务。
+//        问题：
+//        1. 请分析该社区旧区改造面临的主要矛盾和问题。（10分） 风景  颠簸  城隍庙
+//        2. 作为社区工作者，你将如何协调各方利益主体，推进改造工作顺利进行？（10分）
+
         
 //        self.navigationController?.pushViewController(UIHostingController(rootView: swiftView), animated: true)
     }
@@ -87,5 +101,8 @@ enum LBSwiftUIExampleType: String {
     case selectList = "列表点击选中"
     case addUIKitView = "加载UIKit中的控件"
     case swiftUIEnvironmentData = "swiftUI中环境变量注册、存取"
+    case aiCameraHome = "摄像头列表"
+    case aiCameraSetting = "摄像头-设置"
+    case shareBarCode = "二维码配网"
 //    case navigationMix = "混合导航栏"
 }

@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks.sh
+${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/SMSwiftBasicKit/SMSwiftBasicKit.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

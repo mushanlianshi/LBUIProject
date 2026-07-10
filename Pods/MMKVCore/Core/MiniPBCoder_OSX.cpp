@@ -19,6 +19,7 @@
  */
 
 #include "MiniPBCoder.h"
+#include "MMKVLog.h"
 
 #ifdef MMKV_APPLE
 
@@ -84,13 +85,13 @@ void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
         }
         while (!m_inputData->isAtEnd()) {
             KeyValueHolder kvHolder;
-            const auto &key = m_inputData->readString(kvHolder);
+            const auto &key = m_inputData->readNSString(kvHolder);
             if (key.length > 0) {
                 m_inputData->readData(kvHolder);
                 auto itr = dictionary.find(key);
                 if (itr != dictionary.end()) {
                     if (kvHolder.valueSize > 0) {
-                        itr->second = move(kvHolder);
+                        itr->second = std::move(kvHolder);
                     } else {
                         auto oldKey = itr->first;
                         dictionary.erase(itr);
@@ -98,7 +99,7 @@ void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
                     }
                 } else {
                     if (kvHolder.valueSize > 0) {
-                        dictionary.emplace(key, move(kvHolder));
+                        dictionary.emplace(key, std::move(kvHolder));
                         [key retain];
                     }
                 }
@@ -111,6 +112,8 @@ void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
             block(dic);
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("decode fail");
         }
     } else {
         try {
@@ -122,6 +125,8 @@ void MiniPBCoder::decodeOneMap(MMKVMap &dic, size_t position, bool greedy) {
             }
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("decode fail");
         }
     }
 }
@@ -137,13 +142,13 @@ void MiniPBCoder::decodeOneMap(MMKVMapCrypt &dic, size_t position, bool greedy) 
         }
         while (!m_inputDataDecrpt->isAtEnd()) {
             KeyValueHolderCrypt kvHolder;
-            const auto &key = m_inputDataDecrpt->readString(kvHolder);
+            const auto &key = m_inputDataDecrpt->readNSString(kvHolder);
             if (key.length > 0) {
                 m_inputDataDecrpt->readData(kvHolder);
                 auto itr = dictionary.find(key);
                 if (itr != dictionary.end()) {
                     if (kvHolder.realValueSize() > 0) {
-                        itr->second = move(kvHolder);
+                        itr->second = std::move(kvHolder);
                     } else {
                         auto oldKey = itr->first;
                         dictionary.erase(itr);
@@ -151,7 +156,7 @@ void MiniPBCoder::decodeOneMap(MMKVMapCrypt &dic, size_t position, bool greedy) 
                     }
                 } else {
                     if (kvHolder.realValueSize() > 0) {
-                        dictionary.emplace(key, move(kvHolder));
+                        dictionary.emplace(key, std::move(kvHolder));
                         [key retain];
                     }
                 }
@@ -164,6 +169,8 @@ void MiniPBCoder::decodeOneMap(MMKVMapCrypt &dic, size_t position, bool greedy) 
             block(dic);
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("decode fail");
         }
     } else {
         try {
@@ -175,6 +182,8 @@ void MiniPBCoder::decodeOneMap(MMKVMapCrypt &dic, size_t position, bool greedy) 
             }
         } catch (std::exception &exception) {
             MMKVError("%s", exception.what());
+        } catch (...) {
+            MMKVError("decode fail");
         }
     }
 }
@@ -187,9 +196,9 @@ NSObject *MiniPBCoder::decodeObject(const MMBuffer &oData, Class cls) {
     }
     CodedInputData input(oData.getPtr(), oData.length());
     if (cls == [NSString class]) {
-        return input.readString();
+        return input.readNSString();
     } else if (cls == [NSMutableString class]) {
-        return [NSMutableString stringWithString:input.readString()];
+        return [NSMutableString stringWithString:input.readNSString()];
     } else if (cls == [NSData class]) {
         return input.readNSData();
     } else if (cls == [NSMutableData class]) {

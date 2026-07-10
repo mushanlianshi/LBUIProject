@@ -1,4 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks.sh
+${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/SMSwiftBasicKit/SMSwiftBasicKit.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.framework
@@ -31,10 +35,8 @@ ${BUILT_PRODUCTS_DIR}/IGListDiffKit/IGListDiffKit.framework
 ${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework
 ${BUILT_PRODUCTS_DIR}/Introspect/Introspect.framework
 ${BUILT_PRODUCTS_DIR}/JPSuspensionEntrance/JPSuspensionEntrance.framework
-${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework
 ${BUILT_PRODUCTS_DIR}/JXPagingView/JXPagingView.framework
 ${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework
-${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/KingfisherWebP/KingfisherWebP.framework
 ${BUILT_PRODUCTS_DIR}/LNPopupController/LNPopupController.framework
 ${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
@@ -55,11 +57,9 @@ ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SJBaseVideoPlayer/SJBaseVideoPlayer.framework
 ${BUILT_PRODUCTS_DIR}/SJUIKit/SJUIKit.framework
 ${BUILT_PRODUCTS_DIR}/SJVideoPlayer/SJVideoPlayer.framework
-${BUILT_PRODUCTS_DIR}/SMSwiftBasicKit/SMSwiftBasicKit.framework
 ${BUILT_PRODUCTS_DIR}/Selene/Selene.framework
 ${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
 ${BUILT_PRODUCTS_DIR}/SmartCodable/SmartCodable.framework
-${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/Spring/Spring.framework
 ${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework
 ${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework
@@ -74,5 +74,6 @@ ${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework
 ${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework
 ${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXLiteAVSDK_Player.framework/TXLiteAVSDK_Player
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXSoundTouch.framework/TXSoundTouch
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/TXLiteAVSDK_Player/TXFFmpeg.framework/TXFFmpeg

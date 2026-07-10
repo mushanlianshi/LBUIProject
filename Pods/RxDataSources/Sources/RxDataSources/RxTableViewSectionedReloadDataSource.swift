@@ -14,6 +14,7 @@ import RxSwift
 import RxCocoa
 #endif
 import Differentiator
+
 open class RxTableViewSectionedReloadDataSource<Section: SectionModelType>
     : TableViewSectionedDataSource<Section>
     , RxTableViewDataSourceType {

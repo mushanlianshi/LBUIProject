@@ -82,6 +82,20 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
             }
             ///横向group的布局
             else if(model.type == .group){
+                guard let _ = model.list else {
+                    /// list是空的
+                    let zoreItem = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(10), heightDimension: .estimated(10)))
+                    let containerGroup = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .absolute(0), heightDimension: .absolute(0.4)), subitems: [zoreItem])
+                    containerGroup.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+                    section = NSCollectionLayoutSection(group: containerGroup)
+                    let header = self.sectionHeaderSupplementaryItem()
+                    // 没有内容，悬停不住
+                    header.pinToVisibleBounds = true
+                    section.boundarySupplementaryItems = [header]
+                    section.orthogonalScrollingBehavior = .none
+                    return section
+                }
+                
                 let leftLargeItem = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.7), heightDimension: .fractionalHeight(1)))
                 leftLargeItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
                 
@@ -95,7 +109,9 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
                 let containerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.4)), subitems: [leftLargeItem, rightGroup])
                 containerGroup.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
                 section = NSCollectionLayoutSection(group: containerGroup)
-                section.boundarySupplementaryItems = [self.sectionHeaderSupplementaryItem()]
+                let header = self.sectionHeaderSupplementaryItem()
+                header.pinToVisibleBounds = true
+                section.boundarySupplementaryItems = [header]
                 section.orthogonalScrollingBehavior = .groupPaging
             }
             ///竖直list列表的布局
@@ -106,7 +122,10 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
                 group.contentInsets = .init(top: 55, leading: 0, bottom: 0, trailing: 0)
                 section = NSCollectionLayoutSection(group: group)
                 
-                section.boundarySupplementaryItems = [self.sectionHeaderSupplementaryItem()]
+                let header = self.sectionHeaderSupplementaryItem()
+                /// 悬停
+                header.pinToVisibleBounds = true
+                section.boundarySupplementaryItems = [header]
                 section.orthogonalScrollingBehavior = .none
             }else if model.type == .waterFlow{
                 section = self.waterFlowLayoutSection(sectionIndex)
@@ -120,28 +139,47 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
     }
     
     
-    private func waterFlowLayoutSection(_ index: Int) -> NSCollectionLayoutSection{
-        let width = floor((BLT_SCREEN_WIDTH - 45) / 2)
-        var height = 100.0
-        if index % 2 == 0 {
-            height = 130.0
+    private func waterFlowLayoutSection(_ sectionIndex: Int) -> NSCollectionLayoutSection {
+        let columnCount = 2
+        let spacing: CGFloat = 8
+        let contentWidth = UIScreen.main.bounds.width - 30
+        let itemWidth = floor((contentWidth - spacing) / CGFloat(columnCount))
+        let itemCount = self.viewModel.dataSources[sectionIndex].list?.count ?? 0
+
+        let heights: [CGFloat] = [80, 250, 110, 90, 150, 70, 120, 100,80, 250, 110, 90, 150, 70, 120, 100]
+
+        // 预计算总高度，避免 estimated 与实际不匹配导致布局循环
+        let totalHeight: CGFloat = {
+            var columnHeights: [CGFloat] = [0, 0]
+            for i in 0..<itemCount {
+                let col = columnHeights.enumerated().min(by: { $0.element < $1.element })!.offset
+                let h = heights[min(i, heights.count - 1)]
+                columnHeights[col] += h + spacing
+            }
+            return (columnHeights.max() ?? 0)
+        }()
+
+        let group = NSCollectionLayoutGroup.custom(
+            layoutSize: .init(widthDimension: .fractionalWidth(1.0),
+                              heightDimension: .absolute(totalHeight))
+        ) { _ in
+            var items = [NSCollectionLayoutGroupCustomItem]()
+            var columnHeights: [CGFloat] = [0, 0]
+
+            for i in 0..<itemCount {
+                let col = columnHeights.enumerated().min(by: { $0.element < $1.element })!.offset
+                let x = CGFloat(col) * (itemWidth + spacing)
+                let y = columnHeights[col]
+                let height = heights[min(i, heights.count - 1)]
+                items.append(NSCollectionLayoutGroupCustomItem(
+                    frame: CGRect(x: x, y: y, width: itemWidth, height: height)
+                ))
+                columnHeights[col] = y + height + spacing
+            }
+            return items
         }
-        // 设置瀑布流的item 尺寸的大小
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(width),
-                                                  heightDimension: .absolute(height))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .estimated(150))
-        
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .fixed(8)
 
-        let group2Cols = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: group, count: 2)
-        group2Cols.interItemSpacing = .fixed(8)
-
-        let section = NSCollectionLayoutSection(group: group2Cols)
-        section.interGroupSpacing = 15
+        let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15)
         return section
     }
@@ -212,6 +250,7 @@ class LBCollectionCompositionLayoutViewController: UIViewController {
             print("LBLog model name \(model.name) \(model.type)");
             if bltCheckStringIsEmpty(model.name) == false , let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BLTCollectionSectionHeaderTextView.blt_className, for: indexPath) as? BLTCollectionSectionHeaderTextView{
                 header.titleLab.text = model.name
+                header.backgroundColor = .white
                 return header
             }
             return nil

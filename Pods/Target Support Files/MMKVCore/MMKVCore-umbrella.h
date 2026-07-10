@@ -12,8 +12,10 @@
 
 #import "MMBuffer.h"
 #import "MMKV.h"
+#import "MMKVHandler.h"
 #import "MMKVLog.h"
 #import "MMKVPredef.h"
+#import "MiniPBCoder.h"
 #import "PBUtility.h"
 #import "ScopedLock.hpp"
 #import "ThreadLock.h"

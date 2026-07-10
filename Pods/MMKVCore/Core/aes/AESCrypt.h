@@ -24,11 +24,15 @@
 
 #include "../MMKVPredef.h"
 #include <cstddef>
+#include <cstdint>
 
 #ifdef MMKV_DISABLE_CRYPT
 
 namespace mmkv {
-class AESCrypt;
+class AESCrypt {
+public:
+    static uint32_t randomItemSizeHolder(uint32_t size);
+};
 }
 
 #else
@@ -43,7 +47,7 @@ namespace mmkv {
 
 struct AESCryptStatus {
     uint8_t m_number;
-    uint8_t m_vector[AES_KEY_LEN];
+    uint8_t m_vector[AES_IV_LEN];
 };
 
 #pragma pack(pop)
@@ -53,20 +57,21 @@ class CodedInputDataCrypt;
 // a AES CFB-128 encrypt-decrypt full-duplex wrapper
 class AESCrypt {
     bool m_isClone = false;
+    const bool m_isAES256 = false;
     uint32_t m_number = 0;
     openssl::AES_KEY *m_aesKey = nullptr;
     openssl::AES_KEY *m_aesRollbackKey = nullptr;
-    uint8_t m_key[AES_KEY_LEN] = {};
+    uint8_t m_key[AES256_KEY_LEN] = {};
 
 public:
-    uint8_t m_vector[AES_KEY_LEN] = {};
+    uint8_t m_vector[AES_IV_LEN] = {};
 
 private:
     // for cloneWithStatus()
     AESCrypt(const AESCrypt &other, const AESCryptStatus &status);
 
 public:
-    AESCrypt(const void *key, size_t keyLength, const void *iv = nullptr, size_t ivLength = 0);
+    AESCrypt(const void *key, size_t keyLength, const void *iv = nullptr, size_t ivLength = 0, bool aes256 = false);
     AESCrypt(AESCrypt &&other) = default;
 
     ~AESCrypt();
@@ -83,10 +88,14 @@ public:
     void resetIV(const void *iv = nullptr, size_t ivLength = 0);
     void resetStatus(const AESCryptStatus &status);
 
-    // output must have [AES_KEY_LEN] space
+    // output must have [AES_KEY_LEN/AES256_KEY_LEN] space
     void getKey(void *output) const;
 
+    uint32_t getMaxKeyLength() const { return m_isAES256 ? AES256_KEY_LEN : AES_KEY_LEN; }
+    int getMaxKeyBitLength() const { return m_isAES256 ? AES256_KEY_BITSET_LEN : AES_KEY_BITSET_LEN; }
+
     static void fillRandomIV(void *vector);
+    static uint32_t randomItemSizeHolder(uint32_t size);
 
     // just forbid it for possibly misuse
     explicit AESCrypt(const AESCrypt &other) = delete;
@@ -97,6 +106,7 @@ public:
 #ifdef MMKV_DEBUG
     // check if AESCrypt is encrypt-decrypt full-duplex
     static void testAESCrypt();
+    static void testAESCrypt(const void *key, size_t keyLength, const uint8_t plainText[], size_t textLength);
 #endif
 };
 

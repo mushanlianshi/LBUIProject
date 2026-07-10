@@ -53,7 +53,6 @@ extension KingfisherWrapper where Base: KFCrossPlatformImage {
 // MARK: - Create image from WebP data
 extension KingfisherWrapper where Base: KFCrossPlatformImage {
     public static func image(webpData: Data, scale: CGFloat, onlyFirstFrame: Bool) -> KFCrossPlatformImage? {
-        
         let frameCount = WebPImageFrameCountGetFromData(webpData as CFData)
         if (frameCount == 0) {
             return nil

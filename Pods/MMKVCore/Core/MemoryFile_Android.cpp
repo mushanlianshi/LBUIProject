@@ -70,32 +70,29 @@ File::File(MMKVFileHandle_t ashmemFD)
     }
 }
 
-MemoryFile::MemoryFile(string path, size_t size, FileType fileType)
-    : m_diskFile(std::move(path), OpenFlag::ReadWrite | OpenFlag::Create, size, fileType), m_ptr(nullptr), m_size(0), m_fileType(fileType) {
+MemoryFile::MemoryFile(string path, FileType fileType, size_t expectedCapacity, bool isReadOnly, bool mayflyFD)
+    : m_diskFile(std::move(path), isReadOnly ? OpenFlag::ReadOnly : (OpenFlag::ReadWrite | OpenFlag::Create),
+                 expectedCapacity, fileType),
+    m_ptr(nullptr), m_size(0), m_fileType(fileType), m_readOnly(isReadOnly), m_isMayflyFD(mayflyFD) {
     if (m_fileType == MMFILE_TYPE_FILE) {
-        reloadFromFile();
+        reloadFromFile(expectedCapacity);
     } else {
         if (m_diskFile.isFileValid()) {
             m_size = m_diskFile.m_size;
-            auto ret = mmap();
-            if (!ret) {
-                doCleanMemoryCache(true);
-            }
+            mmapOrCleanup(nullptr);
         }
     }
 }
 
 MemoryFile::MemoryFile(int ashmemFD)
-    : m_diskFile(ashmemFD), m_ptr(nullptr), m_size(0), m_fileType(MMFILE_TYPE_ASHMEM) {
+    : m_diskFile(ashmemFD), m_ptr(nullptr), m_size(0), m_fileType(MMFILE_TYPE_ASHMEM), m_readOnly(false),
+    m_isMayflyFD(false) {
     if (!m_diskFile.isFileValid()) {
         MMKVError("fd %d invalid", ashmemFD);
     } else {
         m_size = m_diskFile.m_size;
         MMKVInfo("ashmem name:%s, size:%zu", m_diskFile.m_path.c_str(), m_size);
-        auto ret = mmap();
-        if (!ret) {
-            doCleanMemoryCache(true);
-        }
+        mmapOrCleanup(nullptr);
     }
 }
 
@@ -114,9 +111,12 @@ constexpr auto ASHMEM_IOC = 0x77;
 #    define ASHMEM_SET_SIZE _IOW(ASHMEM_IOC, 3, size_t)
 #    define ASHMEM_GET_SIZE _IO(ASHMEM_IOC, 4)
 
+#ifndef MMKV_OHOS
 int g_android_api = __ANDROID_API_L__;
+#endif
 std::string g_android_tmpDir = "/data/local/tmp/";
 
+#ifndef MMKV_OHOS
 void *loadLibrary() {
     auto name = "libandroid.so";
     static auto handle = dlopen(name, RTLD_LAZY | RTLD_LOCAL);
@@ -127,41 +127,59 @@ void *loadLibrary() {
 }
 
 typedef int (*AShmem_create_t)(const char *name, size_t size);
+typedef size_t (*AShmem_getSize_t)(int fd);
+
+#endif
 
 int ASharedMemory_create(const char *name, size_t size) {
-    int fd = -1;
-    if (g_android_api >= __ANDROID_API_O__) {
+#ifndef MMKV_OHOS
+    if (g_android_api >= __ANDROID_API_O__ || g_android_api >= __ANDROID_API_M__) {
         static auto handle = loadLibrary();
         static AShmem_create_t funcPtr =
             (handle != nullptr) ? reinterpret_cast<AShmem_create_t>(dlsym(handle, "ASharedMemory_create")) : nullptr;
         if (funcPtr) {
-            fd = funcPtr(name, size);
+            int fd = funcPtr(name, size);
             if (fd < 0) {
                 MMKVError("fail to ASharedMemory_create %s with size %zu, errno:%s", name, size, strerror(errno));
+            } else {
+                MMKVInfo("ASharedMemory_create %s with size %zu, fd:%d", name, size, fd);
+                return fd;
             }
-        } else {
+        } else if (g_android_api >= __ANDROID_API_O__) {
             MMKVWarning("fail to locate ASharedMemory_create() from loading libandroid.so");
         }
-    }
-    if (fd < 0) {
-        fd = open(ASHMEM_NAME_DEF, O_RDWR | O_CLOEXEC);
-        if (fd < 0) {
-            MMKVError("fail to open ashmem:%s, %s", name, strerror(errno));
-        } else {
-            if (ioctl(fd, ASHMEM_SET_NAME, name) != 0) {
-                MMKVError("fail to set ashmem name:%s, %s", name, strerror(errno));
-            } else if (ioctl(fd, ASHMEM_SET_SIZE, size) != 0) {
-                MMKVError("fail to set ashmem:%s, size %zu, %s", name, size, strerror(errno));
+
+        static AShmem_create_t regionFuncPtr =
+            (handle != nullptr) ? reinterpret_cast<AShmem_create_t>(dlsym(handle, "ashmem_create_region")) : nullptr;
+        if (regionFuncPtr) {
+            int fd = regionFuncPtr(name, size);
+            if (fd < 0) {
+                MMKVError("fail to ashmem_create_region %s with size %zu, errno:%s", name, size, strerror(errno));
+            } else {
+                MMKVInfo("ashmem_create_region %s with size %zu, fd:%d", name, size, fd);
+                return fd;
             }
+        } else {
+            MMKVWarning("fail to locate ashmem_create_region() from loading libandroid.so");
+        }
+    }
+#endif
+    int fd = open(ASHMEM_NAME_DEF, O_RDWR | O_CLOEXEC);
+    if (fd < 0) {
+        MMKVError("fail to open ashmem:%s, %s", name, strerror(errno));
+    } else {
+        if (ioctl(fd, ASHMEM_SET_NAME, name) != 0) {
+            MMKVError("fail to set ashmem name:%s, %s", name, strerror(errno));
+        } else if (ioctl(fd, ASHMEM_SET_SIZE, size) != 0) {
+            MMKVError("fail to set ashmem:%s, size %zu, %s", name, size, strerror(errno));
         }
     }
     return fd;
 }
 
-typedef size_t (*AShmem_getSize_t)(int fd);
-
 size_t ASharedMemory_getSize(int fd) {
     size_t size = 0;
+#ifndef MMKV_OHOS
     if (g_android_api >= __ANDROID_API_O__) {
         static auto handle = loadLibrary();
         static AShmem_getSize_t funcPtr =
@@ -175,6 +193,7 @@ size_t ASharedMemory_getSize(int fd) {
             MMKVWarning("fail to locate ASharedMemory_create() from loading libandroid.so");
         }
     }
+#endif
     if (size == 0) {
         int tmp = ioctl(fd, ASHMEM_GET_SIZE, nullptr);
         if (tmp < 0) {
@@ -190,9 +209,11 @@ string ASharedMemory_getName(int fd) {
     // Android Q doesn't have ASharedMemory_getName()
     // I've make a request to Google, https://issuetracker.google.com/issues/130741665
     // There's nothing we can do before it's supported officially by Google
-    if (g_android_api >= __ANDROID_API_Q__) {
+#ifndef MMKV_OHOS
+    if (g_android_api >= __ANDROID_API_O__) {
         return "";
     }
+#endif
 
     char name[ASHMEM_NAME_LEN] = {0};
     if (ioctl(fd, ASHMEM_GET_NAME, name) != 0) {
@@ -206,6 +227,22 @@ string ASharedMemory_getName(int fd) {
 
 MMKVPath_t ashmemMMKVPathWithID(const MMKVPath_t &mmapID) {
     return MMKVPath_t(ASHMEM_NAME_DEF) + MMKV_PATH_SLASH + mmapID;
+}
+
+static long long timespec_to_ms(struct timespec ts) {
+    return (long long)ts.tv_sec * 1000LL + ts.tv_nsec / 1000000LL;
+}
+
+long long getFileModifyTimeInMS(const char *path) {
+    if (!path) {
+        return -1;
+    }
+    struct stat soStat = {};
+    if (::stat(path, &soStat) < 0) {
+        MMKVError("fail to stat %s: %d(%s)", path, errno, strerror(errno));
+        return -1;
+    }
+    return timespec_to_ms(soStat.st_mtim);
 }
 
 #endif // MMKV_ANDROID

@@ -23,6 +23,7 @@
 #ifdef __cplusplus
 
 #include "../MMKVPredef.h"
+#include <cstdint>
 
 #if MMKV_EMBED_ZLIB
 
@@ -39,7 +40,10 @@ uLong crc32(uLong crc, const Bytef *buf, z_size_t len);
 #else // MMKV_EMBED_ZLIB
 
 #    include <zlib.h>
-
+// some old version of zlib doesn't define z_size_t
+#    ifndef z_size_t
+       typedef size_t z_size_t;
+#    endif
 #    define ZLIB_CRC32(crc, buf, len) ::crc32(crc, buf, static_cast<uInt>(len))
 
 #endif // MMKV_EMBED_ZLIB
@@ -53,9 +57,14 @@ namespace mmkv {
 uint32_t armv8_crc32(uint32_t crc, const uint8_t *buf, size_t len);
 }
 
+#   ifdef MMKV_OHOS
+// getauxval(AT_HWCAP) in OHOS returns wrong value, we just assume all OHOS device have crc32 instr
+#       define CRC32 mmkv::armv8_crc32
+#   else
 // have to check CPU's instruction set dynamically
 typedef uint32_t (*CRC32_Func_t)(uint32_t crc, const uint8_t *buf, size_t len);
 extern CRC32_Func_t CRC32;
+#   endif
 
 #else // defined(__aarch64__) && defined(__linux__)
 

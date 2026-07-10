@@ -37,6 +37,8 @@
 #include <algorithm>
 #include <cassert>
 #include <cstring>
+#include <ctime>
+#include <filesystem>
 
 #ifdef MMKV_IOS
 #    include "MMKV_OSX.h"
@@ -48,23 +50,22 @@
 #    endif
 #endif // MMKV_APPLE
 
+#ifndef MMKV_WIN32
+#    include <unistd.h>
+#endif
+
 using namespace std;
 using namespace mmkv;
+namespace fs = std::filesystem;
 using KVHolderRet_t = std::pair<bool, KeyValueHolder>;
-
-constexpr uint32_t Fixed32Size = pbFixed32Size();
+extern ThreadLock *g_instanceLock;
+extern unordered_map<string, MMKV *> *g_instanceDic;
+extern MMKVPath_t g_realRootDir;
 
 MMKV_NAMESPACE_BEGIN
 
 void MMKV::loadFromFile() {
-    if (!m_metaFile->isFileValid()) {
-        m_metaFile->reloadFromFile();
-    }
-    if (!m_metaFile->isFileValid()) {
-        MMKVError("file [%s] not valid", m_metaFile->getPath().c_str());
-    } else {
-        m_metaInfo->read(m_metaFile->getMemory());
-    }
+    loadMetaInfoAndCheck();
 #ifndef MMKV_DISABLE_CRYPT
     if (m_crypter) {
         if (m_metaInfo->m_version >= MMKVVersionRandomIV) {
@@ -73,7 +74,14 @@ void MMKV::loadFromFile() {
     }
 #endif
     if (!m_file->isFileValid()) {
-        m_file->reloadFromFile();
+        m_file->reloadFromFile(m_expectedCapacity);
+    } else if (isMultiProcess()) {
+        // the file size may change by other process between instance creation and loadFromFile
+        // because we have lazy load
+        auto actualFileSize = m_file->getActualFileSize();
+        if (actualFileSize != m_file->getFileSize()) {
+            m_file->reloadFromFile(m_expectedCapacity);
+        }
     }
     if (!m_file->isFileValid()) {
         MMKVError("file [%s] not valid", m_path.c_str());
@@ -83,7 +91,7 @@ void MMKV::loadFromFile() {
         checkDataValid(loadFromFile, needFullWriteback);
         MMKVInfo("loading [%s] with %zu actual size, file size %zu, InterProcess %d, meta info "
                  "version:%u",
-                 m_mmapID.c_str(), m_actualSize, m_file->getFileSize(), m_isInterProcess, m_metaInfo->m_version);
+                 m_mmapID.c_str(), m_actualSize, m_file->getFileSize(), isMultiProcess(), m_metaInfo->m_version);
         auto ptr = (uint8_t *) m_file->getMemory();
         // loading
         if (loadFromFile && m_actualSize > 0) {
@@ -116,7 +124,7 @@ void MMKV::loadFromFile() {
             }
             m_output = new CodedOutputData(ptr + Fixed32Size, m_file->getFileSize() - Fixed32Size);
             m_output->seek(m_actualSize);
-            if (needFullWriteback) {
+            if (needFullWriteback && !isReadOnly()) {
                 fullWriteback();
             }
         } else {
@@ -124,7 +132,9 @@ void MMKV::loadFromFile() {
             SCOPED_LOCK(m_exclusiveProcessLock);
 
             m_output = new CodedOutputData(ptr + Fixed32Size, m_file->getFileSize() - Fixed32Size);
-            if (m_actualSize > 0) {
+            if (isReadOnly()) {
+                // do nothing
+            } else if (m_actualSize > 0) {
                 writeActualSize(0, 0, nullptr, IncreaseSequence);
                 sync(MMKV_SYNC);
             } else {
@@ -133,6 +143,11 @@ void MMKV::loadFromFile() {
         }
         auto count = m_crypter ? m_dicCrypt->size() : m_dic->size();
         MMKVInfo("loaded [%s] with %zu key-values", m_mmapID.c_str(), count);
+        notifyContentLoaded();
+//        auto keys = allKeys();
+//        for (size_t index = 0; index < count; index++) {
+//            MMKVInfo("key[%llu]: %s", index, keys[index].c_str());
+//        }
     }
 
     m_needLoadFromFile = false;
@@ -140,6 +155,9 @@ void MMKV::loadFromFile() {
 
 // read from last m_position
 void MMKV::partialLoadFromFile() {
+    if (!m_file->isFileValid()) {
+        return;
+    }
     m_metaInfo->read(m_metaFile->getMemory());
 
     size_t oldActualSize = m_actualSize;
@@ -155,7 +173,7 @@ void MMKV::partialLoadFromFile() {
                 size_t addedSize = m_actualSize - position;
                 auto basePtr = (uint8_t *) m_file->getMemory() + Fixed32Size;
                 // incremental update crc digest
-                m_crcDigest = (uint32_t) CRC32(m_crcDigest, basePtr + position, addedSize);
+                m_crcDigest = (uint32_t) CRC32(m_crcDigest, basePtr + position, (z_size_t) addedSize);
                 if (m_crcDigest == m_metaInfo->m_crcDigest) {
                     MMBuffer inputBuffer(basePtr, m_actualSize, MMBufferNoCopy);
 #ifndef MMKV_DISABLE_CRYPT
@@ -169,7 +187,7 @@ void MMKV::partialLoadFromFile() {
                     m_output->seek(addedSize);
                     m_hasFullWriteback = false;
 
-                    auto count = m_crypter ? m_dicCrypt->size() : m_dic->size();
+                    [[maybe_unused]] auto count = m_crypter ? m_dicCrypt->size() : m_dic->size();
                     MMKVDebug("partial loaded [%s] with %zu values", m_mmapID.c_str(), count);
                     return;
                 } else {
@@ -181,6 +199,98 @@ void MMKV::partialLoadFromFile() {
     // something is wrong, do a full load
     clearMemoryCache();
     loadFromFile();
+}
+
+static bool deleteOrRenameFile(const MMKVPath_t &src) {
+    if (!deleteFile(src)) {
+        fs::path path = src;
+        auto folder = path.parent_path().native();
+        auto filename = path.filename().native();
+        if (auto tmpPath = getUniqueFileName(folder, filename)) {
+            return tryAtomicRename(src, tmpPath.value());
+        }
+        return false;
+    }
+    return true;
+}
+
+bool MMKV::checkFileHasDiskError() {
+    if (m_isSecondLoad) {
+        return false;
+    }
+    m_isSecondLoad = true;
+
+    bool needReportReadFail = false;
+    if (isDiskOfMMAPFileCorrupted(m_metaFile, needReportReadFail)) {
+        m_metaFile->clearMemoryCache();
+        deleteOrRenameFile(m_metaFile->getPath());
+        m_metaFile->reloadFromFile();
+    }
+
+    if (!m_file->isFileValid()) {
+        m_file->reloadFromFile(m_expectedCapacity);
+    }
+    if (!m_file->isFileValid()) {
+        MMKVError("file [%s] not valid", m_file->getPath().c_str());
+        return false;
+    }
+    if (isDiskOfMMAPFileCorrupted(m_file, needReportReadFail)) {
+        m_file->clearMemoryCache();
+        deleteOrRenameFile(m_file->getPath());
+        m_file->reloadFromFile(m_expectedCapacity);
+    }
+    return needReportReadFail;
+}
+
+void MMKV::loadMetaInfoAndCheck() {
+    if (!m_metaFile->isFileValid()) {
+        m_metaFile->reloadFromFile();
+    }
+    if (!m_metaFile->isFileValid()) {
+        MMKVError("file [%s] not valid", m_metaFile->getPath().c_str());
+        return;
+    }
+
+    if (checkFileHasDiskError()) {
+        // let user know?
+    }
+
+    // check again, the meta file might get reloaded
+    if (!m_metaFile->isFileValid()) {
+        MMKVError("file [%s] not valid", m_metaFile->getPath().c_str());
+        return;
+    }
+
+    m_metaInfo->read(m_metaFile->getMemory());
+
+    if (isReadOnly()) {
+        return;
+    }
+
+    // the meta file is in specious status
+    if (m_metaInfo->m_version >= MMKVVersionHolder) {
+        MMKVWarning("meta file [%s] in specious state, version %u, flags 0x%llx", m_mmapID.c_str(),
+                    m_metaInfo->m_version, m_metaInfo->m_flags);
+
+        // MMKVVersionActualSize is the last version we don't check meta file
+        m_metaInfo->m_version = MMKVVersionActualSize;
+        m_metaInfo->m_flags = 0;
+        m_metaInfo->write(m_metaFile->getMemory());
+    }
+
+    if (m_metaInfo->m_version >= MMKVVersionFlag) {
+        m_enableKeyExpire = m_metaInfo->hasFlag(MMKVMetaInfo::EnableKeyExipre);
+        if (m_enableKeyExpire && m_enableCompareBeforeSet) {
+            MMKVError("enableCompareBeforeSet will be invalid when Expiration is on");
+            m_enableCompareBeforeSet = false;
+        }
+        MMKVInfo("meta file [%s] has flag [%llu]", m_mmapID.c_str(), m_metaInfo->m_flags);
+    } else {
+        if (m_metaInfo->m_flags != 0) {
+            m_metaInfo->m_flags = 0;
+            m_metaInfo->write(m_metaFile->getMemory());
+        }
+    }
 }
 
 void MMKV::checkDataValid(bool &loadFromFile, bool &needFullWriteback) {
@@ -230,9 +340,10 @@ void MMKV::checkDataValid(bool &loadFromFile, bool &needFullWriteback) {
             loadFromFile = true;
         } else {
             checkLastConfirmedInfo();
-
             if (!loadFromFile) {
+
                 auto strategic = onMMKVCRCCheckFail(m_mmapID);
+                strategic = m_recoverStrategic.has_value() ? m_recoverStrategic.value() : strategic;
                 if (strategic == OnErrorRecover) {
                     loadFromFile = true;
                     needFullWriteback = true;
@@ -247,6 +358,7 @@ void MMKV::checkDataValid(bool &loadFromFile, bool &needFullWriteback) {
 
         if (!loadFromFile) {
             auto strategic = onMMKVFileLengthError(m_mmapID);
+            strategic = m_recoverStrategic.has_value() ? m_recoverStrategic.value() : strategic;
             if (strategic == OnErrorRecover) {
                 // make sure we don't over read the file
                 m_actualSize = fileSize - Fixed32Size;
@@ -266,7 +378,7 @@ void MMKV::checkLoadData() {
         loadFromFile();
         return;
     }
-    if (!m_isInterProcess) {
+    if (!isMultiProcess()) {
         return;
     }
 
@@ -284,24 +396,25 @@ void MMKV::checkLoadData() {
         clearMemoryCache();
         loadFromFile();
         notifyContentChanged();
-    } else if (m_metaInfo->m_crcDigest != metaInfo.m_crcDigest) {
-        MMKVDebug("[%s] oldCrc %u, newCrc %u, new actualSize %u", m_mmapID.c_str(), m_metaInfo->m_crcDigest,
-                  metaInfo.m_crcDigest, metaInfo.m_actualSize);
+    } else if ((m_metaInfo->m_crcDigest != metaInfo.m_crcDigest) || (m_metaInfo->m_actualSize != metaInfo.m_actualSize)) {
+        MMKVDebug("[%s] crcDigest %u -> %u, actualSize %u -> %u", m_mmapID.c_str(), m_metaInfo->m_crcDigest,
+                  metaInfo.m_crcDigest, m_metaInfo->m_actualSize, metaInfo.m_actualSize);
         SCOPED_LOCK(m_sharedProcessLock);
 
-        size_t fileSize = m_file->getActualFileSize();
+        // looks like this is no longer needed
+        // for we inc sequence on truncate()/trim()/expandAndWriteBack()/fullWriteBack() etc
+        /*size_t fileSize = m_file->getActualFileSize();
         if (m_file->getFileSize() != fileSize) {
             MMKVInfo("file size has changed [%s] from %zu to %zu", m_mmapID.c_str(), m_file->getFileSize(), fileSize);
             clearMemoryCache();
             loadFromFile();
-        } else {
+        } else*/ {
             partialLoadFromFile();
         }
         notifyContentChanged();
     }
 }
 
-constexpr uint32_t ItemSizeHolder = 0x00ffffff;
 constexpr uint32_t ItemSizeHolderSize = 4;
 
 static pair<MMBuffer, size_t> prepareEncode(const MMKVMap &dic) {
@@ -340,9 +453,19 @@ static pair<MMBuffer, size_t> prepareEncode(const MMKVMapCrypt &dic) {
     // skip the pb size of buffer
     auto sizeOfMap = CodedInputData(buffer.getPtr(), buffer.length()).readUInt32();
     totalSize += sizeOfMap;
-    return make_pair(move(buffer), totalSize);
+    return make_pair(std::move(buffer), totalSize);
 }
 #endif
+
+static pair<MMBuffer, size_t> prepareEncode(MMKVVector &&vec) {
+    // make some room for placeholder
+    size_t totalSize = ItemSizeHolderSize;
+    auto buffer = MiniPBCoder::encodeDataWithObject(vec);
+    // skip the pb size of buffer
+    auto sizeOfMap = CodedInputData(buffer.getPtr(), buffer.length()).readUInt32();
+    totalSize += sizeOfMap;
+    return make_pair(std::move(buffer), totalSize);
+}
 
 // since we use append mode, when -[setData: forKey:] many times, space may not be enough
 // try a full rewrite to make space
@@ -351,56 +474,86 @@ bool MMKV::ensureMemorySize(size_t newSize) {
         MMKVWarning("[%s] file not valid", m_mmapID.c_str());
         return false;
     }
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return false;
+    }
 
     if (newSize >= m_output->spaceLeft() || (m_crypter ? m_dicCrypt->empty() : m_dic->empty())) {
-        // try a full rewrite to make space
-        auto fileSize = m_file->getFileSize();
-        auto preparedData = m_crypter ? prepareEncode(*m_dicCrypt) : prepareEncode(*m_dic);
-        auto sizeOfDic = preparedData.second;
-        size_t lenNeeded = sizeOfDic + Fixed32Size + newSize;
-        size_t dicCount = m_crypter ? m_dicCrypt->size() : m_dic->size();
-        size_t avgItemSize = lenNeeded / std::max<size_t>(1, dicCount);
-        size_t futureUsage = avgItemSize * std::max<size_t>(8, (dicCount + 1) / 2);
-        // 1. no space for a full rewrite, double it
-        // 2. or space is not large enough for future usage, double it to avoid frequently full rewrite
-        if (lenNeeded >= fileSize || (lenNeeded + futureUsage) >= fileSize) {
-            size_t oldSize = fileSize;
-            do {
-                fileSize *= 2;
-            } while (lenNeeded + futureUsage >= fileSize);
-            MMKVInfo("extending [%s] file size from %zu to %zu, incoming size:%zu, future usage:%zu", m_mmapID.c_str(),
-                     oldSize, fileSize, newSize, futureUsage);
-
-            // if we can't extend size, rollback to old state
-            if (!m_file->truncate(fileSize)) {
-                return false;
-            }
-
-            // check if we fail to make more space
-            if (!isFileValid()) {
-                MMKVWarning("[%s] file not valid", m_mmapID.c_str());
-                return false;
-            }
+        // remove expired keys
+        if (m_enableKeyExpire) {
+            filterExpiredKeys();
         }
-        return doFullWriteBack(move(preparedData), nullptr);
+        // try a full rewrite to make space
+        auto preparedData = m_crypter ? prepareEncode(*m_dicCrypt) : prepareEncode(*m_dic);
+        // dic.empty() means inserting key-value for the first time, no need to call msync()
+        return expandAndWriteBack(newSize, std::move(preparedData), m_crypter ? !m_dicCrypt->empty() : !m_dic->empty());
     }
     return true;
 }
 
-size_t MMKV::readActualSize() {
-    MMKV_ASSERT(m_file->getMemory());
-    MMKV_ASSERT(m_metaFile->isFileValid());
-
-    uint32_t actualSize = 0;
-    memcpy(&actualSize, m_file->getMemory(), Fixed32Size);
-
-    if (m_metaInfo->m_version >= MMKVVersionActualSize) {
-        if (m_metaInfo->m_actualSize != actualSize) {
-            MMKVWarning("[%s] actual size %u, meta actual size %u", m_mmapID.c_str(), actualSize,
-                        m_metaInfo->m_actualSize);
+bool MMKV::checkSizeLimit(size_t size, const MMBuffer &keyData, uint32_t originKeyLength) {
+    if (m_itemSizeLimit != 0 && size > m_itemSizeLimit) {
+        auto isKeyEncoded = (originKeyLength < keyData.length());
+        uint8_t *keyPtr = nullptr;
+        if (isKeyEncoded) {
+            auto keyLen = pbRawVarint32Size(originKeyLength);
+            keyPtr = (uint8_t *) keyData.getPtr() + keyLen;
+        } else {
+            keyPtr = (uint8_t *) keyData.getPtr();
         }
+        MMKVError("[%s] itemSizeLimit %u: ignore value size %zu of key [%.*s] too large",
+                  m_mmapID.c_str(), m_itemSizeLimit, size, originKeyLength, keyPtr);
+        return false;
+    }
+    return true;
+}
+
+// try a full rewrite to make space
+bool MMKV::expandAndWriteBack(size_t newSize, std::pair<mmkv::MMBuffer, size_t> preparedData, bool needSync) {
+    auto fileSize = m_file->getFileSize();
+    auto sizeOfDic = preparedData.second;
+    size_t lenNeeded = sizeOfDic + Fixed32Size + newSize;
+    size_t nowDicCount = m_crypter ? m_dicCrypt->size() : m_dic->size();
+    size_t laterDicCount = std::max<size_t>(1, nowDicCount + 1);
+    // or use <cmath> ceil()
+    size_t avgItemSize = (lenNeeded + laterDicCount - 1) / laterDicCount;
+    size_t futureUsage = avgItemSize * std::max<size_t>(8, laterDicCount / 2);
+    // 1. no space for a full rewrite, double it
+    // 2. or space is not large enough for future usage, double it to avoid frequently full rewrite
+    if (lenNeeded >= fileSize || (needSync && (lenNeeded + futureUsage) >= fileSize)) {
+        size_t oldSize = fileSize;
+        do {
+            fileSize *= 2;
+        } while (lenNeeded + futureUsage >= fileSize);
+        MMKVInfo("extending [%s] file size from %zu to %zu, incoming size:%zu, future usage:%zu", m_mmapID.c_str(),
+                 oldSize, fileSize, newSize, futureUsage);
+
+        // if we can't extend size, rollback to old state
+        // this is a good place to mock enlarging file failure
+        if (!m_file->truncate(fileSize)) {
+            return false;
+        }
+
+        // check if we fail to make more space
+        if (!isFileValid()) {
+            MMKVWarning("[%s] file not valid", m_mmapID.c_str());
+            return false;
+        }
+    }
+    return doFullWriteBack(std::move(preparedData), nullptr, needSync);
+}
+
+size_t MMKV::readActualSize() {
+    if (m_metaInfo->m_version >= MMKVVersionActualSize) {
+        MMKV_ASSERT(m_metaFile->isFileValid());
+
         return m_metaInfo->m_actualSize;
     } else {
+        MMKV_ASSERT(m_file->isFileValid());
+
+        uint32_t actualSize = 0;
+        memcpy(&actualSize, m_file->getMemory(), Fixed32Size);
         return actualSize;
     }
 }
@@ -409,18 +562,18 @@ void MMKV::oldStyleWriteActualSize(size_t actualSize) {
     MMKV_ASSERT(m_file->getMemory());
 
     m_actualSize = actualSize;
-#ifdef MMKV_IOS
-    auto ret = guardForBackgroundWriting(m_file->getMemory(), Fixed32Size);
-    if (!ret.first) {
-        return;
-    }
-#endif
     memcpy(m_file->getMemory(), &actualSize, Fixed32Size);
 }
 
 bool MMKV::writeActualSize(size_t size, uint32_t crcDigest, const void *iv, bool increaseSequence) {
+    if (isReadOnly()) {
+        return false;
+    }
+
     // backward compatibility
-    oldStyleWriteActualSize(size);
+    if (!increaseSequence && m_metaInfo->m_version < MMKVVersionActualSize) {
+        oldStyleWriteActualSize(size);
+    }
 
     if (!m_metaFile->isFileValid()) {
         return false;
@@ -436,7 +589,7 @@ bool MMKV::writeActualSize(size_t size, uint32_t crcDigest, const void *iv, bool
         needsFullWrite = true;
     }
 #ifndef MMKV_DISABLE_CRYPT
-    if (unlikely(iv)) {
+    if (mmkv_unlikely(iv)) {
         memcpy(m_metaInfo->m_vector, iv, sizeof(m_metaInfo->m_vector));
         if (m_metaInfo->m_version < MMKVVersionRandomIV) {
             m_metaInfo->m_version = MMKVVersionRandomIV;
@@ -444,7 +597,7 @@ bool MMKV::writeActualSize(size_t size, uint32_t crcDigest, const void *iv, bool
         needsFullWrite = true;
     }
 #endif
-    if (unlikely(increaseSequence)) {
+    if (mmkv_unlikely(increaseSequence)) {
         m_metaInfo->m_sequence++;
         m_metaInfo->m_lastConfirmedMetaInfo.lastActualSize = static_cast<uint32_t>(size);
         m_metaInfo->m_lastConfirmedMetaInfo.lastCRCDigest = crcDigest;
@@ -455,13 +608,12 @@ bool MMKV::writeActualSize(size_t size, uint32_t crcDigest, const void *iv, bool
         MMKVInfo("[%s] increase sequence to %u, crc %u, actualSize %u", m_mmapID.c_str(), m_metaInfo->m_sequence,
                  m_metaInfo->m_crcDigest, m_metaInfo->m_actualSize);
     }
-#ifdef MMKV_IOS
-    auto ret = guardForBackgroundWriting(m_metaFile->getMemory(), sizeof(MMKVMetaInfo));
-    if (!ret.first) {
-        return false;
+    if (m_metaInfo->m_version < MMKVVersionFlag) {
+        m_metaInfo->m_flags = 0;
+        m_metaInfo->m_version = MMKVVersionFlag;
+        needsFullWrite = true;
     }
-#endif
-    if (unlikely(needsFullWrite)) {
+    if (mmkv_unlikely(needsFullWrite)) {
         m_metaInfo->write(m_metaFile->getMemory());
     } else {
         m_metaInfo->writeCRCAndActualSizeOnly(m_metaFile->getMemory());
@@ -469,7 +621,7 @@ bool MMKV::writeActualSize(size_t size, uint32_t crcDigest, const void *iv, bool
     return true;
 }
 
-MMBuffer MMKV::getDataForKey(MMKVKey_t key) {
+MMBuffer MMKV::getRawDataForKey(MMKVKey_t key) {
     checkLoadData();
 #ifndef MMKV_DISABLE_CRYPT
     if (m_crypter) {
@@ -489,6 +641,13 @@ MMBuffer MMKV::getDataForKey(MMKVKey_t key) {
     }
     MMBuffer nan;
     return nan;
+}
+
+mmkv::MMBuffer MMKV::getDataForKey(MMKVKey_t key) {
+    if (mmkv_unlikely(m_enableKeyExpire)) {
+        return getDataWithoutMTimeForKey(key);
+    }
+    return getRawDataForKey(key);
 }
 
 #ifndef MMKV_DISABLE_CRYPT
@@ -519,23 +678,52 @@ bool MMKV::setDataForKey(MMBuffer &&data, MMKVKey_t key, bool isDataHolder) {
         }
         auto itr = m_dicCrypt->find(key);
         if (itr != m_dicCrypt->end()) {
+            bool onlyOneKey = !isMultiProcess() && m_dicCrypt->size() == 1;
 #    ifdef MMKV_APPLE
-            auto ret = appendDataWithKey(data, key, itr->second, isDataHolder);
+            KVHolderRet_t ret;
+            if (onlyOneKey) {
+                ret = overrideDataWithKey(data, key, itr->second, isDataHolder);
+            } else {
+                ret = appendDataWithKey(data, key, itr->second, isDataHolder);
+            }
 #    else
-            auto ret = appendDataWithKey(data, key, isDataHolder);
+            KVHolderRet_t ret;
+            if (onlyOneKey) {
+                ret = overrideDataWithKey(data, key, isDataHolder);
+            } else {
+                ret = appendDataWithKey(data, key, isDataHolder);
+            }
 #    endif
             if (!ret.first) {
                 return false;
             }
+            KeyValueHolderCrypt kvHolder;
             if (KeyValueHolderCrypt::isValueStoredAsOffset(ret.second.valueSize)) {
-                KeyValueHolderCrypt kvHolder(ret.second.keySize, ret.second.valueSize, ret.second.offset);
+                kvHolder = KeyValueHolderCrypt(ret.second.keySize, ret.second.valueSize, ret.second.offset);
                 memcpy(&kvHolder.cryptStatus, &t_status, sizeof(t_status));
-                itr->second = move(kvHolder);
             } else {
-                itr->second = KeyValueHolderCrypt(move(data));
+                kvHolder = KeyValueHolderCrypt(std::move(data));
+            }
+            if (mmkv_likely(!m_enableKeyExpire)) {
+                itr->second = std::move(kvHolder);
+            } else {
+                itr = m_dicCrypt->find(key);
+                if (itr != m_dicCrypt->end()) {
+                    itr->second = std::move(kvHolder);
+                } else {
+                    // in case filterExpiredKeys() is triggered
+                    m_dicCrypt->emplace(key, std::move(kvHolder));
+                    mmkv_retain_key(key);
+                }
             }
         } else {
-            auto ret = appendDataWithKey(data, key, isDataHolder);
+            bool needOverride = !isMultiProcess() && m_dicCrypt->empty() && m_actualSize > 0;
+            KVHolderRet_t ret;
+            if (needOverride) {
+                ret = overrideDataWithKey(data, key, isDataHolder);
+            } else {
+                ret = appendDataWithKey(data, key, isDataHolder);
+            }
             if (!ret.first) {
                 return false;
             }
@@ -546,32 +734,97 @@ bool MMKV::setDataForKey(MMBuffer &&data, MMKVKey_t key, bool isDataHolder) {
                     memcpy(&(r.first->second.cryptStatus), &t_status, sizeof(t_status));
                 }
             } else {
-                m_dicCrypt->emplace(key, KeyValueHolderCrypt(move(data)));
+                m_dicCrypt->emplace(key, KeyValueHolderCrypt(std::move(data)));
             }
+            mmkv_retain_key(key);
         }
     } else
 #endif // MMKV_DISABLE_CRYPT
     {
         auto itr = m_dic->find(key);
         if (itr != m_dic->end()) {
-            auto ret = appendDataWithKey(data, itr->second, isDataHolder);
-            if (!ret.first) {
-                return false;
+            // compare data before appending to file
+            if (isCompareBeforeSetEnabled()) {
+                auto basePtr = (uint8_t *) (m_file->getMemory()) + Fixed32Size;
+                MMBuffer oldValueData = itr->second.toMMBuffer(basePtr);
+                if (isDataHolder) {
+                    CodedInputData inputData(oldValueData.getPtr(), oldValueData.length());
+                    try {
+                        // read extra holder header bytes and to real MMBuffer
+                        oldValueData = CodedInputData::readRealData(oldValueData);
+                        if (oldValueData == data) {
+                            // MMKVInfo("[key] %s, set the same data", key.c_str());
+                            return true;
+                        }
+                    } catch (std::exception &exception) {
+                        MMKVWarning("compareBeforeSet exception: %s", exception.what());
+                    } catch (...) {
+                        MMKVWarning("compareBeforeSet fail");
+                    }
+                } else {
+                    if (oldValueData == data) {
+                        //  MMKVInfo("[key] %s, set the same data", key.c_str());
+                        return true;
+                    }
+                }
             }
-            itr->second = std::move(ret.second);
+
+            bool onlyOneKey = !isMultiProcess() && m_dic->size() == 1;
+            if (mmkv_likely(!m_enableKeyExpire)) {
+                KVHolderRet_t ret;
+                if (onlyOneKey) {
+                    ret = overrideDataWithKey(data, itr->second, isDataHolder);
+                } else {
+                    ret = appendDataWithKey(data, itr->second, isDataHolder);
+                }
+                if (!ret.first) {
+                    return false;
+                }
+                itr->second = std::move(ret.second);
+            } else {
+                KVHolderRet_t ret;
+                if (onlyOneKey) {
+                    ret = overrideDataWithKey(data, key, isDataHolder);
+                } else {
+                    ret = appendDataWithKey(data, key, isDataHolder);
+                }
+                if (!ret.first) {
+                    return false;
+                }
+                itr = m_dic->find(key);
+                if (itr != m_dic->end()) {
+                    itr->second = std::move(ret.second);
+                } else {
+                    // in case filterExpiredKeys() is triggered
+                    m_dic->emplace(key, std::move(ret.second));
+                    mmkv_retain_key(key);
+                }
+            }
         } else {
-            auto ret = appendDataWithKey(data, key, isDataHolder);
+            bool needOverride = !isMultiProcess() && m_dic->empty() && m_actualSize > 0;
+            KVHolderRet_t ret;
+            if (needOverride) {
+                ret = overrideDataWithKey(data, key, isDataHolder);
+            } else {
+                ret = appendDataWithKey(data, key, isDataHolder);
+            }
             if (!ret.first) {
                 return false;
             }
             m_dic->emplace(key, std::move(ret.second));
+            mmkv_retain_key(key);
         }
     }
     m_hasFullWriteback = false;
-#ifdef MMKV_APPLE
-    [key retain];
-#endif
     return true;
+}
+
+template <typename T>
+static void eraseHelper(T& container, std::string_view key) {
+    auto itr = container.find(key);
+    if (itr != container.end()) {
+        container.erase(itr);
+    }
 }
 
 bool MMKV::removeDataForKey(MMKVKey_t key) {
@@ -587,6 +840,13 @@ bool MMKV::removeDataForKey(MMKVKey_t key) {
 #    ifdef MMKV_APPLE
             auto ret = appendDataWithKey(nan, key, itr->second);
             if (ret.first) {
+                if (mmkv_unlikely(m_enableKeyExpire)) {
+                    // filterExpiredKeys() may invalid itr
+                    itr = m_dicCrypt->find(key);
+                    if (itr == m_dicCrypt->end()) {
+                        return true;
+                    }
+                }
                 auto oldKey = itr->first;
                 m_dicCrypt->erase(itr);
                 [oldKey release];
@@ -594,7 +854,11 @@ bool MMKV::removeDataForKey(MMKVKey_t key) {
 #    else
             auto ret = appendDataWithKey(nan, key);
             if (ret.first) {
-                m_dicCrypt->erase(itr);
+                if (mmkv_unlikely(m_enableKeyExpire)) {
+                    eraseHelper(*m_dicCrypt, key);
+                } else {
+                    m_dicCrypt->erase(itr);
+                }
             }
 #    endif
             return ret.first;
@@ -606,14 +870,26 @@ bool MMKV::removeDataForKey(MMKVKey_t key) {
         if (itr != m_dic->end()) {
             m_hasFullWriteback = false;
             static MMBuffer nan;
-            auto ret = appendDataWithKey(nan, itr->second);
+            auto ret = mmkv_likely(!m_enableKeyExpire) ? appendDataWithKey(nan, itr->second) : appendDataWithKey(nan, key);
             if (ret.first) {
 #ifdef MMKV_APPLE
+                if (mmkv_unlikely(m_enableKeyExpire)) {
+                    // filterExpiredKeys() may invalid itr
+                    itr = m_dic->find(key);
+                    if (itr == m_dic->end()) {
+                        return true;
+                    }
+                }
                 auto oldKey = itr->first;
                 m_dic->erase(itr);
                 [oldKey release];
 #else
-                m_dic->erase(itr);
+                if (mmkv_unlikely(m_enableKeyExpire)) {
+                    // filterExpiredKeys() may invalid itr
+                    eraseHelper(*m_dic, key);
+                } else {
+                    m_dic->erase(itr);
+                }
 #endif
             }
             return ret.first;
@@ -638,17 +914,14 @@ MMKV::doAppendDataWithKey(const MMBuffer &data, const MMBuffer &keyData, bool is
 
     SCOPED_LOCK(m_exclusiveProcessLock);
 
+    if (!checkSizeLimit(size, keyData, originKeyLength)) {
+        return make_pair(false, KeyValueHolder());
+    }
     bool hasEnoughSize = ensureMemorySize(size);
     if (!hasEnoughSize || !isFileValid()) {
         return make_pair(false, KeyValueHolder());
     }
 
-#ifdef MMKV_IOS
-    auto ret = guardForBackgroundWriting(m_output->curWritePointer(), size);
-    if (!ret.first) {
-        return make_pair(false, KeyValueHolder());
-    }
-#endif
 #ifndef MMKV_DISABLE_CRYPT
     if (m_crypter) {
         if (KeyValueHolderCrypt::isValueStoredAsOffset(valueLength)) {
@@ -669,6 +942,9 @@ MMKV::doAppendDataWithKey(const MMBuffer &data, const MMBuffer &keyData, bool is
     } catch (std::exception &e) {
         MMKVError("%s", e.what());
         return make_pair(false, KeyValueHolder());
+    } catch (...) {
+        MMKVError("append fail");
+        return make_pair(false, KeyValueHolder());
     }
 
     auto offset = static_cast<uint32_t>(m_actualSize);
@@ -684,6 +960,100 @@ MMKV::doAppendDataWithKey(const MMBuffer &data, const MMBuffer &keyData, bool is
     return make_pair(true, KeyValueHolder(originKeyLength, valueLength, offset));
 }
 
+KVHolderRet_t MMKV::doOverrideDataWithKey(const MMBuffer &data,
+                                          const MMBuffer &keyData,
+                                          bool isDataHolder,
+                                          uint32_t originKeyLength) {
+    auto isKeyEncoded = (originKeyLength < keyData.length());
+    auto keyLength = static_cast<uint32_t>(keyData.length());
+    auto valueLength = static_cast<uint32_t>(data.length());
+    if (isDataHolder) {
+        valueLength += pbRawVarint32Size(valueLength);
+    }
+    // size needed to encode the key
+    size_t size = isKeyEncoded ? keyLength : (keyLength + pbRawVarint32Size(keyLength));
+    // size needed to encode the value
+    size += valueLength + pbRawVarint32Size(valueLength);
+
+    if (!checkSizeLimit(size, keyData, originKeyLength)) {
+        return make_pair(false, KeyValueHolder());
+    }
+
+    if (!checkSizeForOverride(size)) {
+        return doAppendDataWithKey(data, keyData, isDataHolder, originKeyLength);
+    }
+
+    // we don't not support override in multi-process mode
+    // SCOPED_LOCK(m_exclusiveProcessLock);
+
+#ifndef MMKV_DISABLE_CRYPT
+    if (m_crypter) {
+        if (m_metaInfo->m_version >= MMKVVersionRandomIV) {
+            m_crypter->resetIV(m_metaInfo->m_vector, sizeof(m_metaInfo->m_vector));
+        } else {
+            m_crypter->resetIV();
+        }
+    }
+#endif
+    try {
+        // write ItemSizeHolder
+        m_output->setPosition(0);
+        m_output->writeUInt32(AESCrypt::randomItemSizeHolder(ItemSizeHolderSize));
+        m_actualSize = ItemSizeHolderSize;
+#ifndef MMKV_DISABLE_CRYPT
+        if (m_crypter) {
+            auto ptr = (uint8_t *) m_file->getMemory() + Fixed32Size;
+            m_crypter->encrypt(ptr, ptr, m_actualSize);
+            if (KeyValueHolderCrypt::isValueStoredAsOffset(valueLength)) {
+                m_crypter->getCurStatus(t_status);
+            }
+        }
+#endif
+        if (isKeyEncoded) {
+            m_output->writeRawData(keyData);
+        } else {
+            m_output->writeData(keyData);
+        }
+        if (isDataHolder) {
+            m_output->writeRawVarint32((int32_t) valueLength);
+        }
+        m_output->writeData(data); // note: write size of data
+    } catch (std::exception &e) {
+        MMKVError("%s", e.what());
+        return make_pair(false, KeyValueHolder());
+    } catch (...) {
+        MMKVError("append fail");
+        return make_pair(false, KeyValueHolder());
+    }
+
+    auto offset = static_cast<uint32_t>(m_actualSize);
+    m_actualSize += size;
+#ifndef MMKV_DISABLE_CRYPT
+    if (m_crypter) {
+        auto ptr = (uint8_t *) m_file->getMemory() + Fixed32Size + offset;
+        m_crypter->encrypt(ptr, ptr, size);
+    }
+#endif
+    recalculateCRCDigestOnly();
+
+    return make_pair(true, KeyValueHolder(originKeyLength, valueLength, offset));
+}
+
+bool MMKV::checkSizeForOverride(size_t size) {
+    if (!isFileValid()) {
+        MMKVWarning("[%s] file not valid", m_mmapID.c_str());
+        return false;
+    }
+
+    // only override if the file can hole it without ftruncate()
+    auto fileSize = m_file->getFileSize();
+    auto spaceNeededForOverride = size + Fixed32Size + ItemSizeHolderSize;
+    if (size > fileSize || spaceNeededForOverride > fileSize) {
+        return false;
+    }
+    return true;
+}
+
 KVHolderRet_t MMKV::appendDataWithKey(const MMBuffer &data, MMKVKey_t key, bool isDataHolder) {
 #ifdef MMKV_APPLE
     auto oData = [key dataUsingEncoding:NSUTF8StringEncoding];
@@ -692,6 +1062,16 @@ KVHolderRet_t MMKV::appendDataWithKey(const MMBuffer &data, MMKVKey_t key, bool 
     auto keyData = MMBuffer((void *) key.data(), key.size(), MMBufferNoCopy);
 #endif
     return doAppendDataWithKey(data, keyData, isDataHolder, static_cast<uint32_t>(keyData.length()));
+}
+
+KVHolderRet_t MMKV::overrideDataWithKey(const MMBuffer &data, MMKVKey_t key, bool isDataHolder) {
+#ifdef MMKV_APPLE
+    auto oData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    auto keyData = MMBuffer(oData, MMBufferNoCopy);
+#else
+    auto keyData = MMBuffer((void *) key.data(), key.size(), MMBufferNoCopy);
+#endif
+    return doOverrideDataWithKey(data, keyData, isDataHolder, static_cast<uint32_t>(keyData.length()));
 }
 
 KVHolderRet_t MMKV::appendDataWithKey(const MMBuffer &data, const KeyValueHolder &kvHolder, bool isDataHolder) {
@@ -719,7 +1099,40 @@ KVHolderRet_t MMKV::appendDataWithKey(const MMBuffer &data, const KeyValueHolder
     return doAppendDataWithKey(data, keyData, isDataHolder, keyLength);
 }
 
-bool MMKV::fullWriteback(AESCrypt *newCrypter) {
+// only one key in dict, do not append, just rewrite from beginning
+KVHolderRet_t MMKV::overrideDataWithKey(const MMBuffer &data, const KeyValueHolder &kvHolder, bool isDataHolder) {
+    // we don't not support override in multi-process mode
+    // SCOPED_LOCK(m_exclusiveProcessLock);
+
+    uint32_t keyLength = kvHolder.keySize;
+    // size needed to encode the key
+    size_t rawKeySize = keyLength + pbRawVarint32Size(keyLength);
+
+    // ensureMemorySize() (inside doAppendDataWithKey() which be called from doOverrideDataWithKey())
+    // might change kvHolder.offset, so have to do it early
+    {
+        auto valueLength = static_cast<uint32_t>(data.length());
+        if (isDataHolder) {
+            valueLength += pbRawVarint32Size(valueLength);
+        }
+        auto size = rawKeySize + valueLength + pbRawVarint32Size(valueLength);
+        bool hasEnoughSize = checkSizeForOverride(size);
+        if (!hasEnoughSize) {
+            return appendDataWithKey(data, kvHolder, isDataHolder);
+        }
+    }
+    auto basePtr = (uint8_t *) m_file->getMemory() + Fixed32Size;
+    MMBuffer keyData;
+    if (kvHolder.offset < ItemSizeHolderSize) {
+        keyData = MMBuffer(basePtr + kvHolder.offset, rawKeySize, MMBufferCopy);
+    } else {
+        keyData = MMBuffer(basePtr + kvHolder.offset, rawKeySize, MMBufferNoCopy);
+    }
+
+    return doOverrideDataWithKey(data, keyData, isDataHolder, keyLength);
+}
+
+bool MMKV::fullWriteback(AESCrypt *newCrypter, bool onlyWhileExpire) {
     if (m_hasFullWriteback) {
         return true;
     }
@@ -730,24 +1143,37 @@ bool MMKV::fullWriteback(AESCrypt *newCrypter) {
         MMKVWarning("[%s] file not valid", m_mmapID.c_str());
         return false;
     }
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return false;
+    }
 
-    if (m_crypter ? m_dicCrypt->empty() : m_dic->empty()) {
+    if (mmkv_unlikely(m_enableKeyExpire)) {
+        auto expiredCount = filterExpiredKeys();
+        if (onlyWhileExpire && expiredCount == 0) {
+            return true;
+        }
+    }
+
+    auto isEmpty = m_crypter ? m_dicCrypt->empty() : m_dic->empty();
+    if (isEmpty) {
         clearAll();
         return true;
     }
 
+    SCOPED_LOCK(m_exclusiveProcessLock);
     auto preparedData = m_crypter ? prepareEncode(*m_dicCrypt) : prepareEncode(*m_dic);
     auto sizeOfDic = preparedData.second;
-    SCOPED_LOCK(m_exclusiveProcessLock);
     if (sizeOfDic > 0) {
         auto fileSize = m_file->getFileSize();
         if (sizeOfDic + Fixed32Size <= fileSize) {
-            return doFullWriteBack(move(preparedData), newCrypter);
+            return doFullWriteBack(std::move(preparedData), newCrypter);
         } else {
             assert(0);
             assert(newCrypter == nullptr);
-            // ensureMemorySize will extend file & full rewrite, no need to write back again
-            return ensureMemorySize(sizeOfDic + Fixed32Size - fileSize);
+            // expandAndWriteBack() will extend file & full rewrite, no need to write back again
+            auto newSize = sizeOfDic + Fixed32Size - fileSize;
+            return expandAndWriteBack(newSize, std::move(preparedData));
         }
     }
     return false;
@@ -798,7 +1224,7 @@ memmoveDictionary(MMKVMap &dic, CodedOutputData *output, uint8_t *ptr, AESCrypt 
         }
     }
     // hold the fake size of dictionary's serialization result
-    output->writeRawVarint32(ItemSizeHolder);
+    output->writeUInt32(AESCrypt::randomItemSizeHolder(ItemSizeHolderSize));
     auto writtenSize = static_cast<size_t>(writePtr - originOutputPtr);
 #ifndef MMKV_DISABLE_CRYPT
     if (encrypter) {
@@ -829,14 +1255,16 @@ static void memmoveDictionary(MMKVMapCrypt &dic,
         }
         sort(vec.begin(), vec.end(), [](auto left, auto right) { return left->offset < right->offset; });
     }
-    auto sizeHolder = ItemSizeHolder, sizeHolderSize = ItemSizeHolderSize;
+    auto sizeHolderSize = ItemSizeHolderSize;
+    auto sizeHolder = AESCrypt::randomItemSizeHolder(sizeHolderSize);
     if (!vec.empty()) {
         auto smallestOffset = vec.front()->offset;
         if (smallestOffset != ItemSizeHolderSize && smallestOffset <= 5) {
             sizeHolderSize = smallestOffset;
             assert(sizeHolderSize != 0);
             static const uint32_t ItemSizeHolders[] = {0, 0x0f, 0xff, 0xffff, 0xffffff, 0xffffffff};
-            sizeHolder = ItemSizeHolders[sizeHolderSize];
+            sizeHolder = AESCrypt::randomItemSizeHolder(sizeHolderSize);
+            assert(sizeHolder >= ItemSizeHolders[sizeHolderSize] && sizeHolder <= ItemSizeHolders[sizeHolderSize]);
         }
     }
     output->writeRawVarint32(static_cast<int32_t>(sizeHolder));
@@ -898,58 +1326,102 @@ static void memmoveDictionary(MMKVMapCrypt &dic,
 
 #endif // MMKV_DISABLE_CRYPT
 
-bool MMKV::doFullWriteBack(pair<MMBuffer, size_t> preparedData, AESCrypt *newCrypter) {
-    auto ptr = (uint8_t *) m_file->getMemory();
-    auto totalSize = preparedData.second;
-#ifdef MMKV_IOS
-    auto ret = guardForBackgroundWriting(ptr + Fixed32Size, totalSize);
-    if (!ret.first) {
-        return false;
+static void fullWriteBackWholeData(MMBuffer allData, size_t totalSize, CodedOutputData *output) {
+    auto originOutputPtr = output->curWritePointer();
+    output->writeUInt32(AESCrypt::randomItemSizeHolder(ItemSizeHolderSize));
+    if (allData.length() > 0) {
+        auto dataSize = CodedInputData(allData.getPtr(), allData.length()).readUInt32();
+        if (dataSize > 0) {
+            auto dataPtr = (uint8_t *) allData.getPtr() + pbRawVarint32Size(dataSize);
+            memcpy(output->curWritePointer(), dataPtr, dataSize);
+            output->seek(dataSize);
+        }
     }
-#endif
+    [[maybe_unused]] auto writtenSize = (size_t)(output->curWritePointer() - originOutputPtr);
+    assert(writtenSize == totalSize);
+}
 
 #ifndef MMKV_DISABLE_CRYPT
-    uint8_t newIV[AES_KEY_LEN];
-    auto decrypter = m_crypter;
+bool MMKV::doFullWriteBack(pair<MMBuffer, size_t> prepared, AESCrypt *newCrypter, bool needSync) {
+    auto ptr = (uint8_t *) m_file->getMemory();
+    auto totalSize = prepared.second;
+
+    uint8_t newIV[AES_IV_LEN];
     auto encrypter = (newCrypter == InvalidCryptPtr) ? nullptr : (newCrypter ? newCrypter : m_crypter);
     if (encrypter) {
         AESCrypt::fillRandomIV(newIV);
         encrypter->resetIV(newIV, sizeof(newIV));
     }
-#endif
 
     delete m_output;
     m_output = new CodedOutputData(ptr + Fixed32Size, m_file->getFileSize() - Fixed32Size);
-#ifndef MMKV_DISABLE_CRYPT
     if (m_crypter) {
-        memmoveDictionary(*m_dicCrypt, m_output, ptr, decrypter, encrypter, preparedData);
+        auto decrypter = m_crypter;
+        memmoveDictionary(*m_dicCrypt, m_output, ptr, decrypter, encrypter, prepared);
+    } else if (prepared.first.length() != 0) {
+        auto &preparedData = prepared.first;
+        fullWriteBackWholeData(std::move(preparedData), totalSize, m_output);
+        if (encrypter) {
+            encrypter->encrypt(ptr + Fixed32Size, ptr + Fixed32Size, totalSize);
+        }
     } else {
-#else
-    {
-        auto encrypter = m_crypter;
-#endif
         memmoveDictionary(*m_dic, m_output, ptr, encrypter, totalSize);
     }
 
     m_actualSize = totalSize;
-#ifndef MMKV_DISABLE_CRYPT
     if (encrypter) {
-        recaculateCRCDigestWithIV(newIV);
-    } else
-#endif
-    {
-        recaculateCRCDigestWithIV(nullptr);
+        recalculateCRCDigestWithIV(newIV);
+    } else {
+        recalculateCRCDigestWithIV(nullptr);
     }
     m_hasFullWriteback = true;
-    // make sure lastConfirmedMetaInfo is saved
-    sync(MMKV_SYNC);
+    // make sure lastConfirmedMetaInfo is saved if needed
+    if (needSync) {
+        sync(MMKV_SYNC);
+    }
     return true;
 }
 
+#else // MMKV_DISABLE_CRYPT
+
+bool MMKV::doFullWriteBack(pair<MMBuffer, size_t> prepared, AESCrypt *, bool needSync) {
+    auto ptr = (uint8_t *) m_file->getMemory();
+    auto totalSize = prepared.second;
+
+    delete m_output;
+    m_output = new CodedOutputData(ptr + Fixed32Size, m_file->getFileSize() - Fixed32Size);
+    if (prepared.first.length() != 0) {
+        auto &preparedData = prepared.first;
+        fullWriteBackWholeData(std::move(preparedData), totalSize, m_output);
+    } else {
+        constexpr AESCrypt *encrypter = nullptr;
+        memmoveDictionary(*m_dic, m_output, ptr, encrypter, totalSize);
+    }
+
+    m_actualSize = totalSize;
+    recalculateCRCDigestWithIV(nullptr);
+    m_hasFullWriteback = true;
+    // make sure lastConfirmedMetaInfo is saved if needed
+    if (needSync) {
+        sync(MMKV_SYNC);
+    }
+    return true;
+}
+#endif // MMKV_DISABLE_CRYPT
+
 #ifndef MMKV_DISABLE_CRYPT
-bool MMKV::reKey(const string &cryptKey) {
+bool MMKV::reKey(const string &cryptKey, bool aes256) {
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return false;
+    }
     SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
     checkLoadData();
+    if (!isFileValid()) {
+        MMKVWarning("[%s] file not valid", m_mmapID.c_str());
+        return false;
+    }
 
     bool ret = false;
     if (m_crypter) {
@@ -960,7 +1432,7 @@ bool MMKV::reKey(const string &cryptKey) {
             } else {
                 // change encryption key
                 MMKVInfo("reKey with new aes key");
-                auto newCrypt = new AESCrypt(cryptKey.data(), cryptKey.length());
+                auto newCrypt = new AESCrypt(cryptKey.data(), cryptKey.length(), nullptr, 0, aes256);
                 m_hasFullWriteback = false;
                 ret = fullWriteback(newCrypt);
                 if (ret) {
@@ -988,7 +1460,7 @@ bool MMKV::reKey(const string &cryptKey) {
             // transform plain text to encrypted text
             MMKVInfo("reKey to a aes key");
             m_hasFullWriteback = false;
-            auto newCrypt = new AESCrypt(cryptKey.data(), cryptKey.length());
+            auto newCrypt = new AESCrypt(cryptKey.data(), cryptKey.length(), nullptr, 0, aes256);
             ret = fullWriteback(newCrypt);
             if (ret) {
                 m_crypter = newCrypt;
@@ -1011,18 +1483,25 @@ bool MMKV::reKey(const string &cryptKey) {
 #endif
 
 void MMKV::trim() {
-    SCOPED_LOCK(m_lock);
     MMKVInfo("prepare to trim %s", m_mmapID.c_str());
-
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return;
+    }
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
     checkLoadData();
+    if (!isFileValid()) {
+        MMKVWarning("[%s] file not valid", m_mmapID.c_str());
+        return;
+    }
 
     if (m_actualSize == 0) {
         clearAll();
         return;
-    } else if (m_file->getFileSize() <= DEFAULT_MMAP_SIZE) {
+    } else if (m_file->getFileSize() <= m_expectedCapacity) {
         return;
     }
-    SCOPED_LOCK(m_exclusiveProcessLock);
 
     fullWriteback();
     auto oldSize = m_file->getFileSize();
@@ -1030,7 +1509,7 @@ void MMKV::trim() {
     while (fileSize > (m_actualSize + Fixed32Size) * 2) {
         fileSize /= 2;
     }
-    fileSize = std::max<size_t>(fileSize, DEFAULT_MMAP_SIZE);
+    fileSize = std::max<size_t>(fileSize, m_expectedCapacity);
     if (oldSize == fileSize) {
         MMKVInfo("there's no need to trim %s with size %zu, actualSize %zu", m_mmapID.c_str(), fileSize, m_actualSize);
         return;
@@ -1050,21 +1529,31 @@ void MMKV::trim() {
     MMKVInfo("finish trim %s from %zu to %zu", m_mmapID.c_str(), oldSize, fileSize);
 }
 
-void MMKV::clearAll() {
+void MMKV::clearAll(bool keepSpace) {
     MMKVInfo("cleaning all key-values from [%s]", m_mmapID.c_str());
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return;
+    }
     SCOPED_LOCK(m_lock);
     SCOPED_LOCK(m_exclusiveProcessLock);
-
     checkLoadData();
+    if (!isFileValid()) {
+        MMKVWarning("[%s] file not valid", m_mmapID.c_str());
+        return;
+    }
 
-    if (m_file->getFileSize() == DEFAULT_MMAP_SIZE && m_actualSize == 0) {
+    if (m_file->getFileSize() == m_expectedCapacity && m_actualSize == 0) {
         MMKVInfo("nothing to clear for [%s]", m_mmapID.c_str());
         return;
     }
-    m_file->truncate(DEFAULT_MMAP_SIZE);
+
+    if (!keepSpace) {
+        m_file->truncate(m_expectedCapacity);
+    }
 
 #ifndef MMKV_DISABLE_CRYPT
-    uint8_t newIV[AES_KEY_LEN];
+    uint8_t newIV[AES_IV_LEN];
     AESCrypt::fillRandomIV(newIV);
     if (m_crypter) {
         m_crypter->resetIV(newIV, sizeof(newIV));
@@ -1073,20 +1562,107 @@ void MMKV::clearAll() {
 #else
     writeActualSize(0, 0, nullptr, IncreaseSequence);
 #endif
+
     m_metaFile->msync(MMKV_SYNC);
 
-    clearMemoryCache();
+    clearMemoryCache(keepSpace);
     loadFromFile();
 }
 
-bool MMKV::isFileValid(const string &mmapID, MMKVPath_t *relatePath) {
-    MMKVPath_t kvPath = mappedKVPathWithID(mmapID, MMKV_SINGLE_PROCESS, relatePath);
-    if (!isFileExist(kvPath)) {
-        return true;
+size_t MMKV::importFrom(MMKV *src) {
+    if (!src) {
+        return 0;
+    }
+    MMKVInfo("importing from [%s] to [%s]", src->m_mmapID.c_str(), m_mmapID.c_str());
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return 0;
     }
 
-    MMKVPath_t crcPath = crcPathWithID(mmapID, MMKV_SINGLE_PROCESS, relatePath);
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
+    SCOPED_LOCK(src->m_lock);
+    SCOPED_LOCK(src->m_exclusiveProcessLock);
+
+    checkLoadData();
+    src->checkLoadData();
+    if (!isFileValid() || !src->isFileValid()) {
+        MMKVWarning("[%s] or [%s] file not valid", m_mmapID.c_str(), src->m_mmapID.c_str());
+        return 0;
+    }
+
+    size_t count = 0;
+    bool notAutoExpire = !m_enableKeyExpire;
+    auto time = UInt32ToInt32((m_expiredInSeconds != ExpireNever) ? getCurrentTimeInSecond() + m_expiredInSeconds : ExpireNever);
+    for (auto &key : src->allKeys(false)) {
+        auto value = src->getDataForKey(key);
+        if (value.length() > 0) {
+            if (mmkv_likely(notAutoExpire)) {
+                setDataForKey(std::move(value), key, false);
+            } else {
+                auto tmp = MMBuffer(value.length() + Fixed32Size);
+                CodedOutputData output(tmp.getPtr(), tmp.length());
+                // no need write size, it's already written in value
+                output.writeRawData(value);
+                output.writeRawLittleEndian32(time);
+                setDataForKey(std::move(tmp), key, false);
+            }
+            count++;
+        }
+    }
+
+    MMKVInfo("imported %llu from [%s] to [%s]", count, src->m_mmapID.c_str(), m_mmapID.c_str());
+    return count;
+}
+
+static std::pair<MMKVPath_t, MMKVPath_t> getStorage(const std::string &mmapID, const MMKVPath_t *relatePath, std::string& realID, std::string& mmapKey) {
+    relatePath = relatePath ? relatePath : &g_realRootDir;
+    auto ns = MMKV::nameSpace(*relatePath);
+    relatePath = &ns.getRootDir();
+#ifdef MMKV_ANDROID
+    auto migrateStatus = tryMigrateLegacyMMKVFile(mmapID, relatePath, true);
+    if (migrateStatus == MigrateStatus::NoneExist) {
+        MMKVWarning("file id [%s] not exist in path %s", mmapID.c_str(), relatePath->c_str());
+        return {};
+    } else if (migrateStatus == MigrateStatus::OldToNewMigrateFail) {
+        realID = legacyMmapedKVKey(mmapID, relatePath);
+    } else {
+        realID = mmapID;
+    }
+    MMKVPath_t kvPath = mappedKVPathWithID(realID, relatePath, MMKV_MULTI_PROCESS, true);
+#else
+    realID = mmapID;
+    MMKVPath_t kvPath = mappedKVPathWithID(realID, relatePath, true);
+#endif
+    mmapKey = mmapedKVKey(realID, relatePath, true);
+    MMKVDebug("mmapKey %s, real ID %s", mmapKey.c_str(), realID.c_str());
+
+    MMKVPath_t crcPath = crcPathWithPath(kvPath);
+    if (!isFileExist(kvPath)) {
+        const auto &kvPathUTF8 = MMKVPath_t2String(kvPath);
+        MMKVInfo("file not exist %s", kvPathUTF8.c_str());
+        kvPath.resize(0);
+    }
     if (!isFileExist(crcPath)) {
+        const auto &crcPathUTF8 = MMKVPath_t2String(crcPath);
+        MMKVInfo("crc file not exist %s", crcPathUTF8.c_str());
+        crcPath.resize(0);
+    }
+    return {kvPath, crcPath};
+}
+
+bool MMKV::isFileValid(const string &mmapID, const MMKVPath_t *relatePath) {
+    if (!g_instanceLock) {
+        return false;
+    }
+    SCOPED_LOCK(g_instanceLock);
+
+    std::string realID, mmapKey;
+    auto [kvPath, crcPath] = getStorage(mmapID, relatePath, realID, mmapKey);
+    if (kvPath.empty()) {
+        return true;
+    }
+    if (crcPath.empty()) {
         return false;
     }
 
@@ -1121,6 +1697,437 @@ bool MMKV::isFileValid(const string &mmapID, MMKVPath_t *relatePath) {
     } else {
         return false;
     }
+}
+
+bool MMKV::removeStorage(const std::string &mmapID, const MMKVPath_t *relatePath) {
+    if (!g_instanceLock) {
+        return false;
+    }
+    SCOPED_LOCK(g_instanceLock);
+
+    std::string realID, mmapKey;
+    auto [kvPath, crcPath] = getStorage(mmapID, relatePath, realID, mmapKey);
+    if (kvPath.empty() && crcPath.empty()) {
+        return false;
+    }
+    MMKVInfo("remove storage [%s]", realID.c_str());
+
+    if (crcPath.empty()) {
+        deleteFile(kvPath);
+        return true;
+    }
+
+    File crcFile(crcPath, OpenFlag::ReadOnly);
+    if (!crcFile.isFileValid()) {
+        deleteFile(kvPath);
+        return true;
+    }
+    FileLock fileLock(crcFile.getFd());
+    InterProcessLock lock(&fileLock, ExclusiveLockType);
+    SCOPED_LOCK(&lock);
+
+    auto itr = g_instanceDic->find(mmapKey);
+    if (itr != g_instanceDic->end()) {
+        itr->second->close();
+        // itr is not valid after this
+    }
+
+    deleteFile(kvPath);
+    deleteFile(crcPath);
+
+    return true;
+}
+
+bool MMKV::checkExist(const std::string &mmapID, const MMKVPath_t *relatePath) {
+    if (!g_instanceLock) {
+        return false;
+    }
+    SCOPED_LOCK(g_instanceLock);
+
+    std::string realID, mmapKey;
+    auto [kvPath, crcPath] = getStorage(mmapID, relatePath, realID, mmapKey);
+    return (!kvPath.empty() && !crcPath.empty());
+}
+
+// ---- auto expire ----
+
+uint32_t MMKV::getCurrentTimeInSecond() {
+    auto time = ::time(nullptr);
+    return static_cast<uint32_t>(time);
+}
+
+bool MMKV::doFullWriteBack(MMKVVector &&vec) {
+    auto preparedData = prepareEncode(std::move(vec));
+
+    // must clean before write-back and after prepareEncode()
+    if (m_crypter) {
+        clearDictionary(m_dicCrypt);
+    } else {
+        clearDictionary(m_dic);
+    }
+
+    bool ret = false;
+    auto sizeOfDic = preparedData.second;
+    auto fileSize = m_file->getFileSize();
+    if (sizeOfDic + Fixed32Size <= fileSize) {
+        ret = doFullWriteBack(std::move(preparedData), nullptr);
+    } else {
+        // expandAndWriteBack() will extend file & full rewrite, no need to write back again
+        auto newSize = sizeOfDic + Fixed32Size - fileSize;
+        ret = expandAndWriteBack(newSize, std::move(preparedData));
+    }
+
+    clearMemoryCache();
+    return ret;
+}
+
+void MMKV::configAutoExipreIfNeeded(const MMKVConfig &config) {
+    if (!config.enableKeyExpire.has_value()) {
+        return;
+    }
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return;
+    }
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
+
+    // it will set m_enableKeyExpire from meta file
+    loadMetaInfoAndCheck();
+
+    if (!m_metaFile->isFileValid()) {
+        return;
+    }
+
+    if (m_enableKeyExpire) {
+        if (config.enableKeyExpire.value()) {
+            m_expiredInSeconds = config.expiredInSeconds;
+        } else {
+            disableAutoKeyExpire();
+        }
+    } else {
+        if (config.enableKeyExpire.value()) {
+            enableAutoKeyExpire(config.expiredInSeconds);
+        } else {
+            // no action
+        }
+    }
+}
+
+bool MMKV::enableAutoKeyExpire(uint32_t expiredInSeconds) {
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return false;
+    }
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
+    checkLoadData();
+    if (!isFileValid() || !m_metaFile->isFileValid()) {
+        MMKVWarning("[%s] file not valid", m_mmapID.c_str());
+        return false;
+    }
+
+    if (m_enableCompareBeforeSet) {
+        MMKVError("enableCompareBeforeSet will be invalid when Expiration is on");
+        m_enableCompareBeforeSet = false;
+    }
+
+    if (m_expiredInSeconds != expiredInSeconds) {
+        MMKVInfo("expiredInSeconds: %u", expiredInSeconds);
+        m_expiredInSeconds = expiredInSeconds;
+    }
+    m_enableKeyExpire = true;
+    if (m_metaInfo->hasFlag(MMKVMetaInfo::EnableKeyExipre)) {
+        return true;
+    }
+
+    auto autoRecordExpireTime = (m_expiredInSeconds != 0);
+    auto time = autoRecordExpireTime ? getCurrentTimeInSecond() + m_expiredInSeconds : 0;
+    MMKVInfo("turn on recording expire date for all keys inside [%s] from now %u", m_mmapID.c_str(), time);
+    m_metaInfo->setFlag(MMKVMetaInfo::EnableKeyExipre);
+    m_metaInfo->m_version = MMKVVersionFlag;
+
+    if (m_file->getFileSize() == m_expectedCapacity && m_actualSize == 0) {
+        MMKVInfo("file is new, don't need a full writeback [%s], just update meta file", m_mmapID.c_str());
+        writeActualSize(0, 0, nullptr, IncreaseSequence);
+        m_metaFile->msync(MMKV_SYNC);
+        return true;
+    }
+
+    MMKVVector vec;
+    auto packKeyValue = [&](const auto &key, const MMBuffer &value) {
+        MMBuffer data(value.length() + Fixed32Size);
+        auto ptr = (uint8_t *) data.getPtr();
+        memcpy(ptr, value.getPtr(), value.length());
+        memcpy(ptr + value.length(), &time, Fixed32Size);
+        vec.emplace_back(key, std::move(data));
+    };
+
+    auto basePtr = (uint8_t *) (m_file->getMemory()) + Fixed32Size;
+#ifndef MMKV_DISABLE_CRYPT
+    if (m_crypter) {
+        for (auto &pair : *m_dicCrypt) {
+            auto &key = pair.first;
+            auto &value = pair.second;
+            auto buffer = value.toMMBuffer(basePtr, m_crypter);
+            packKeyValue(key, buffer);
+        }
+    } else
+#endif
+    {
+        for (auto &pair : *m_dic) {
+            auto &key = pair.first;
+            auto &value = pair.second;
+            auto buffer = value.toMMBuffer(basePtr);
+            packKeyValue(key, buffer);
+        }
+    }
+
+    return doFullWriteBack(std::move(vec));
+}
+
+bool MMKV::disableAutoKeyExpire() {
+    if (isReadOnly()) {
+        MMKVWarning("[%s] file readonly", m_mmapID.c_str());
+        return false;
+    }
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
+    checkLoadData();
+    if (!isFileValid() || !m_metaFile->isFileValid()) {
+        MMKVWarning("[%s] file not valid", m_mmapID.c_str());
+        return false;
+    }
+
+    m_expiredInSeconds = 0;
+    m_enableKeyExpire = false;
+    if (!m_metaInfo->hasFlag(MMKVMetaInfo::EnableKeyExipre)) {
+        return true;
+    }
+
+    MMKVInfo("erase previous recorded expire date for all keys inside [%s]", m_mmapID.c_str());
+    m_metaInfo->unsetFlag(MMKVMetaInfo::EnableKeyExipre);
+    m_metaInfo->m_version = MMKVVersionFlag;
+
+    if (m_file->getFileSize() == m_expectedCapacity && m_actualSize == 0) {
+        MMKVInfo("file is new, don't need a full write-back [%s], just update meta file", m_mmapID.c_str());
+        writeActualSize(0, 0, nullptr, IncreaseSequence);
+        m_metaFile->msync(MMKV_SYNC);
+        return true;
+    }
+
+    MMKVVector vec;
+    auto packKeyValue = [&](auto &key, const MMBuffer &value) {
+        assert(value.length() >= Fixed32Size);
+        if (value.length() < Fixed32Size) {
+#ifdef MMKV_APPLE
+            MMKVWarning("key [%@] has invalid value size %u", key, value.length());
+#else
+            MMKVWarning("key [%s] has invalid value size %u", key.data(), value.length());
+#endif
+            return;
+        }
+        MMBuffer data(value.length() - Fixed32Size);
+        auto ptr = (uint8_t *) data.getPtr();
+        memcpy(ptr, value.getPtr(), value.length() - Fixed32Size);
+        vec.emplace_back(key, std::move(data));
+    };
+
+    auto basePtr = (uint8_t *) (m_file->getMemory()) + Fixed32Size;
+#ifndef MMKV_DISABLE_CRYPT
+    if (m_crypter) {
+        for (auto &pair : *m_dicCrypt) {
+            auto &key = pair.first;
+            auto &value = pair.second;
+            auto buffer = value.toMMBuffer(basePtr, m_crypter);
+            packKeyValue(key, buffer);
+        }
+    } else
+#endif
+    {
+        for (auto &pair : *m_dic) {
+            auto &key = pair.first;
+            auto &value = pair.second;
+            auto buffer = value.toMMBuffer(basePtr);
+            packKeyValue(key, buffer);
+        }
+    }
+
+    return doFullWriteBack(std::move(vec));
+}
+
+uint32_t MMKV::getExpireTimeForKey(MMKVKey_t key) {
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_sharedProcessLock);
+    checkLoadData();
+
+    if (!m_enableKeyExpire || mmkv_key_length(key) == 0) {
+        return 0;
+    }
+    auto raw = getRawDataForKey(key);
+    assert(raw.length() == 0 || raw.length() >= Fixed32Size);
+    if (raw.length() < Fixed32Size) {
+        if (raw.length() != 0) {
+#ifdef MMKV_APPLE
+            MMKVWarning("key [%@] has invalid value size %u", key, raw.length());
+#else
+            MMKVWarning("key [%s] has invalid value size %u", key.data(), raw.length());
+#endif
+        }
+        return 0;
+    }
+    auto ptr = (const uint8_t *) raw.getPtr() + raw.length() - Fixed32Size;
+    auto time = *(const uint32_t *) ptr;
+    return time;
+}
+
+mmkv::MMBuffer MMKV::getDataWithoutMTimeForKey(MMKVKey_t key) {
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_sharedProcessLock);
+    checkLoadData();
+
+    auto raw = getRawDataForKey(key);
+    assert(raw.length() == 0 || raw.length() >= Fixed32Size);
+    if (raw.length() < Fixed32Size) {
+        if (raw.length() != 0) {
+#ifdef MMKV_APPLE
+            MMKVWarning("key [%@] has invalid value size %u", key, raw.length());
+#else
+            MMKVWarning("key [%s] has invalid value size %u", key.data(), raw.length());
+#endif
+        }
+        return raw;
+    }
+    auto newLength = raw.length() - Fixed32Size;
+    if (m_enableKeyExpire) {
+        auto ptr = (const uint8_t *) raw.getPtr() + newLength;
+        auto time = *(const uint32_t *) ptr;
+        if (time != ExpireNever && time <= getCurrentTimeInSecond()) {
+#ifdef MMKV_APPLE
+            MMKVInfo("deleting expired key [%@] in mmkv [%s], due date %u", key, m_mmapID.c_str(), time);
+#else
+            MMKVInfo("deleting expired key [%s] in mmkv [%s], due date %u", key.data(), m_mmapID.c_str(), time);
+#endif
+            removeValueForKey(key);
+            return MMBuffer();
+        }
+    }
+    return MMBuffer(std::move(raw), newLength);
+}
+
+#define NOOP ((void) 0)
+
+size_t MMKV::filterExpiredKeys() {
+    if (!m_enableKeyExpire || (m_crypter ? m_dicCrypt->empty() : m_dic->empty())) {
+        return 0;
+    }
+    SCOPED_LOCK(m_sharedProcessLock);
+
+    auto now = getCurrentTimeInSecond();
+    MMKVInfo("filtering expired keys inside [%s] now: %u, m_expiredInSeconds: %u", m_mmapID.c_str(), now,
+             m_expiredInSeconds);
+
+    size_t count = 0;
+    auto basePtr = (uint8_t *) (m_file->getMemory()) + Fixed32Size;
+#ifndef MMKV_DISABLE_CRYPT
+    if (m_crypter) {
+        for (auto itr = m_dicCrypt->begin(); itr != m_dicCrypt->end(); NOOP) {
+            auto &kvHolder = itr->second;
+            assert(kvHolder.realValueSize() >= Fixed32Size);
+            if (kvHolder.realValueSize() < Fixed32Size) {
+#ifdef MMKV_APPLE
+                MMKVWarning("key [%@] has invalid value size %u", itr->first, kvHolder.realValueSize());
+#else
+                MMKVWarning("key [%s] has invalid value size %u", itr->first.c_str(), kvHolder.realValueSize());
+#endif
+                itr++;
+                continue;
+            }
+            auto buffer = kvHolder.toMMBuffer(basePtr, m_crypter);
+            auto ptr = (uint8_t *) buffer.getPtr();
+            ptr += buffer.length() - Fixed32Size;
+            auto time = *(const uint32_t *) ptr;
+            if (time != ExpireNever && time <= now) {
+                auto oldKey = itr->first;
+                itr = m_dicCrypt->erase(itr);
+#    ifdef MMKV_APPLE
+                MMKVInfo("deleting expired key [%@], due date %u", oldKey, time);
+                [oldKey release];
+#    else
+                MMKVInfo("deleting expired key [%s], due date %u", oldKey.c_str(), time);
+#    endif
+                count++;
+            } else {
+                itr++;
+            }
+        }
+    } else
+#endif // !MMKV_DISABLE_CRYPT
+    {
+        for (auto itr = m_dic->begin(); itr != m_dic->end(); NOOP) {
+            auto &kvHolder = itr->second;
+            assert(kvHolder.valueSize >= Fixed32Size);
+            if (kvHolder.valueSize < Fixed32Size) {
+#ifdef MMKV_APPLE
+                MMKVWarning("key [%@] has invalid value size %u", itr->first, kvHolder.valueSize);
+#else
+                MMKVWarning("key [%s] has invalid value size %u", itr->first.c_str(), kvHolder.valueSize);
+#endif
+                itr++;
+                continue;
+            }
+            auto ptr = basePtr + kvHolder.offset + kvHolder.computedKVSize;
+            ptr += kvHolder.valueSize - Fixed32Size;
+            auto time = *(const uint32_t *) ptr;
+            if (time != ExpireNever && time <= now) {
+                auto oldKey = itr->first;
+                itr = m_dic->erase(itr);
+#ifdef MMKV_APPLE
+                MMKVInfo("deleting expired key [%@], due date %u", oldKey, time);
+                [oldKey release];
+#else
+                MMKVInfo("deleting expired key [%s], due date %u", oldKey.c_str(), time);
+#endif
+                count++;
+            } else {
+                itr++;
+            }
+        }
+    }
+    if (count != 0) {
+        MMKVInfo("deleted %zu expired keys inside [%s]", count, m_mmapID.c_str());
+    }
+    return count;
+}
+
+bool MMKV::enableCompareBeforeSet() {
+    MMKVInfo("enableCompareBeforeSet for [%s]", m_mmapID.c_str());
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
+
+    assert(!m_enableKeyExpire && "enableCompareBeforeSet is invalid when Expiration is on");
+    assert(!m_crypter && "enableCompareBeforeSet is invalid when key encryption is on");
+    if (m_enableKeyExpire || m_crypter) {
+        return false;
+    }
+
+    m_enableCompareBeforeSet = true;
+    return true;
+}
+
+bool MMKV::disableCompareBeforeSet() {
+    MMKVInfo("disableCompareBeforeSet for [%s]", m_mmapID.c_str());
+    SCOPED_LOCK(m_lock);
+    SCOPED_LOCK(m_exclusiveProcessLock);
+
+    assert(!m_enableKeyExpire && "disableCompareBeforeSet is invalid when Expiration is on");
+    assert(!m_crypter && "disableCompareBeforeSet is invalid when key encryption is on");
+    if (m_enableKeyExpire || m_crypter) {
+        return false;
+    }
+
+    m_enableCompareBeforeSet = false;
+    return true;
 }
 
 MMKV_NAMESPACE_END

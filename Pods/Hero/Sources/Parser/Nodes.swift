@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public class ExprNode: CustomStringConvertible, Equatable {
   public var range: CountableRange<Int> = 0..<0
   public let name: String

@@ -40,7 +40,7 @@ class LBSearchCombineController: UIViewController {
         let mainThread = UIBarButtonItem.init(title: "主队列", style: .done, target: self, action: #selector(addTextChangeBind))
         let globalThread = UIBarButtonItem.init(title: "全局队列", style: .done, target: self, action: #selector(addTextChangeBindGlobal))
         self.navigationItem.rightBarButtonItems = [mainThread, globalThread]
-        
+        addTextChangeBind()
     }
     
     @objc func addTextChangeBind()  {
@@ -64,7 +64,7 @@ class LBSearchCombineController: UIViewController {
             .compactMap{ $0 }  // 过滤掉nil
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)// 设置间隔0.5秒没有新元素触发一次， 避免一直点
             .sink { text in
-                print("LBLog text changed ----- \(text) \(Thread.current)")
+                print("LBLog text changed global queue ----- \(text) \(Thread.current)")
             }.store(in: &cancellables)
 //        textField.publisher(for: \.text)
 //            .compactMap{ $0 }  // 过滤掉nil

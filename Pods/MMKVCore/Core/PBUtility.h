@@ -26,18 +26,6 @@
 
 #include <cstdint>
 
-#ifndef MMKV_WIN32
-#    ifndef likely
-#        define unlikely(x) (__builtin_expect(bool(x), 0))
-#        define likely(x) (__builtin_expect(bool(x), 1))
-#    endif
-#else
-#    ifndef likely
-#        define unlikely(x) (x)
-#        define likely(x) (x)
-#    endif
-#endif
-
 namespace mmkv {
 
 template <typename T, typename P>
@@ -146,6 +134,13 @@ static inline uint32_t pbInt32Size(int32_t value) {
 static inline uint32_t pbUInt32Size(uint32_t value) {
     return pbRawVarint32Size(value);
 }
+
+static inline uint32_t pbMMBufferSize(const MMBuffer &data) {
+    auto valueLength = static_cast<uint32_t>(data.length());
+    return valueLength + pbUInt32Size(valueLength);
+}
+
+constexpr uint32_t Fixed32Size = pbFixed32Size();
 
 } // namespace mmkv
 

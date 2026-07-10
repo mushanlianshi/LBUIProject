@@ -29,21 +29,25 @@
 #    include "ThreadLock.h"
 #    include <cassert>
 #    include <strsafe.h>
+#    include <filesystem>
 
 using namespace std;
+namespace fs = std::filesystem;
 
 namespace mmkv {
 
 static bool getFileSize(MMKVFileHandle_t fd, size_t &size);
+static bool getFileSize(const wchar_t *filename, size_t &size);
 static bool ftruncate(MMKVFileHandle_t file, size_t size);
 
-File::File(MMKVPath_t path, OpenFlag flag) : m_path(std::move(path)), m_fd(INVALID_HANDLE_VALUE), m_flag(flag) {
+File::File(MMKVPath_t path, OpenFlag flag)
+    : m_path(std::move(path)), m_utf8Path(MMKVPath_t2String(m_path)), m_fd(INVALID_HANDLE_VALUE), m_flag(flag) {
     open();
 }
 
 static pair<int, int> OpenFlag2NativeFlag(OpenFlag flag) {
     int access = 0, create = OPEN_EXISTING;
-    if (flag & OpenFlag::ReadWrite) {
+    if ((flag & OpenFlagRWMask) == OpenFlag::ReadWrite) {
         access = (GENERIC_READ | GENERIC_WRITE);
     } else if (flag & OpenFlag::ReadOnly) {
         access |= GENERIC_READ;
@@ -70,44 +74,57 @@ bool File::open() {
     m_fd = CreateFile(m_path.c_str(), pair.first, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr,
                       pair.second, FILE_ATTRIBUTE_NORMAL, nullptr);
     if (!isFileValid()) {
-        MMKVError("fail to open:[%ls], %d", m_path.c_str(), GetLastError());
+        MMKVError("fail to open:[%s], flag %x, error %d", m_utf8Path.c_str(), m_flag, GetLastError());
         return false;
     }
-    MMKVInfo("open fd[%p], %ls", m_fd, m_path.c_str());
+    MMKVInfo("open fd[%p], flag %x, %s", m_fd, m_flag, m_utf8Path.c_str());
     return true;
 }
 
 void File::close() {
     if (isFileValid()) {
-        MMKVInfo("closing fd[%p], %ls", m_fd, m_path.c_str());
+        MMKVInfo("closing fd[%p], %s", m_fd, m_utf8Path.c_str());
         if (CloseHandle(m_fd)) {
             m_fd = INVALID_HANDLE_VALUE;
         } else {
-            MMKVError("fail to close [%ls], %d", m_path.c_str(), GetLastError());
+            MMKVError("fail to close [%s], %d", m_utf8Path.c_str(), GetLastError());
         }
     }
 }
 
 size_t File::getActualFileSize() const {
     size_t size = 0;
-    mmkv::getFileSize(m_fd, size);
+    if (isFileValid()) {
+        mmkv::getFileSize(m_fd, size);
+    } else {
+        mmkv::getFileSize(m_path.c_str(), size);
+    }
     return size;
 }
 
-MemoryFile::MemoryFile(MMKVPath_t path)
-    : m_diskFile(std::move(path), OpenFlag::ReadWrite | OpenFlag::Create)
+MemoryFile::MemoryFile(MMKVPath_t path, size_t expectedCapacity, bool readOnly, bool mayflyFD)
+    : m_diskFile(std::move(path), readOnly ? OpenFlag::ReadOnly : (OpenFlag::ReadWrite | OpenFlag::Create))
     , m_fileMapping(nullptr)
     , m_ptr(nullptr)
-    , m_size(0) {
-    reloadFromFile();
+    , m_size(0)
+    , m_readOnly(readOnly)
+    , m_isMayflyFD(mayflyFD) {
+    reloadFromFile(expectedCapacity);
 }
 
-bool MemoryFile::truncate(size_t size) {
+bool MemoryFile::truncate(size_t size, FileLock *fileLock) {
+    if (m_isMayflyFD) {
+        openIfNeeded();
+    }
     if (!m_diskFile.isFileValid()) {
         return false;
     }
     if (size == m_size) {
         return true;
+    }
+    if (m_readOnly) {
+        // truncate readonly file not allow
+        return false;
     }
 
     auto oldSize = m_size;
@@ -117,22 +134,13 @@ bool MemoryFile::truncate(size_t size) {
         m_size = ((m_size / DEFAULT_MMAP_SIZE) + 1) * DEFAULT_MMAP_SIZE;
     }
 
-    if (!ftruncate(m_diskFile.getFd(), m_size)) {
-        MMKVError("fail to truncate [%ls] to size %zu", m_diskFile.m_path.c_str(), m_size);
-        m_size = oldSize;
-        return false;
-    }
-    if (m_size > oldSize) {
-        if (!zeroFillFile(m_diskFile.getFd(), oldSize, m_size - oldSize)) {
-            MMKVError("fail to zeroFile [%ls] to size %zu", m_diskFile.m_path.c_str(), m_size);
-            m_size = oldSize;
-            return false;
-        }
-    }
-
+    // Win32 won't ftruncate a file if there's active file mmapping/handle, we have to unmmap/close ahead
+    bool needMMapOnFailure = false;
     if (m_ptr) {
+        // if we have a valid file mapping before, we should restore it regardless
+        needMMapOnFailure = true;
         if (!UnmapViewOfFile(m_ptr)) {
-            MMKVError("fail to munmap [%ls], %d", m_diskFile.m_path.c_str(), GetLastError());
+            MMKVError("fail to munmap [%s], %d", m_diskFile.getUTF8Path().c_str(), GetLastError());
         }
         m_ptr = nullptr;
     }
@@ -140,68 +148,102 @@ bool MemoryFile::truncate(size_t size) {
         CloseHandle(m_fileMapping);
         m_fileMapping = nullptr;
     }
-    auto ret = mmap();
-    if (!ret) {
-        doCleanMemoryCache(true);
+
+    if (!ftruncate(m_diskFile.getFd(), m_size)) {
+        MMKVError("fail to truncate [%s] to size %zu", m_diskFile.getUTF8Path().c_str(), m_size);
+        m_size = oldSize;
+        if (needMMapOnFailure) {
+            mmapOrCleanup(fileLock);
+        }
+        return false;
     }
-    return ret;
+    if (m_size > oldSize) {
+        if (!zeroFillFile(m_diskFile.getFd(), oldSize, m_size - oldSize)) {
+            MMKVError("fail to zeroFile [%s] to size %zu", m_diskFile.getUTF8Path().c_str(), m_size);
+            m_size = oldSize;
+            if (needMMapOnFailure) {
+                mmapOrCleanup(fileLock);
+            }
+            return false;
+        }
+    }
+
+    return mmapOrCleanup(fileLock);
 }
 
 bool MemoryFile::msync(SyncFlag syncFlag) {
+    if (m_readOnly) {
+        // there's no point in msync() readonly memory
+        return true;
+    }
     if (m_ptr) {
         if (FlushViewOfFile(m_ptr, m_size)) {
-            if (syncFlag == MMKV_SYNC) {
-                if (!FlushFileBuffers(m_diskFile.getFd())) {
-                    MMKVError("fail to FlushFileBuffers [%ls]:%d", m_diskFile.m_path.c_str(), GetLastError());
-                    return false;
+            if (syncFlag == MMKV_SYNC && openIfNeeded()) {
+                auto ret = FlushFileBuffers(m_diskFile.getFd());
+                if (!ret) {
+                    MMKVError("fail to FlushFileBuffers [%s]:%d", m_diskFile.getUTF8Path().c_str(), GetLastError());
                 }
+                cleanMayflyFD();
+                return ret;
             }
             return true;
         }
-        MMKVError("fail to FlushViewOfFile [%ls]:%d", m_diskFile.m_path.c_str(), GetLastError());
+        MMKVError("fail to FlushViewOfFile [%s]:%d", m_diskFile.getUTF8Path().c_str(), GetLastError());
         return false;
     }
     return false;
 }
 
-bool MemoryFile::mmap() {
-    m_fileMapping = CreateFileMapping(m_diskFile.getFd(), nullptr, PAGE_READWRITE, 0, 0, nullptr);
+bool MemoryFile::mmapOrCleanup(FileLock *fileLock) {
+    auto mode = m_readOnly ? PAGE_READONLY : PAGE_READWRITE;
+    m_fileMapping = CreateFileMapping(m_diskFile.getFd(), nullptr, mode, 0, 0, nullptr);
     if (!m_fileMapping) {
-        MMKVError("fail to CreateFileMapping [%ls], %d", m_diskFile.m_path.c_str(), GetLastError());
+        MMKVError("fail to CreateFileMapping [%s], mode %x, %d", m_diskFile.getUTF8Path().c_str(), mode,
+                  GetLastError());
         return false;
     } else {
-        m_ptr = (char *) MapViewOfFile(m_fileMapping, FILE_MAP_ALL_ACCESS, 0, 0, 0);
+        auto viewMode = m_readOnly ? FILE_MAP_READ : FILE_MAP_ALL_ACCESS;
+        m_ptr = (char*)MapViewOfFile(m_fileMapping, viewMode, 0, 0, 0);
         if (!m_ptr) {
-            MMKVError("fail to mmap [%ls], %d", m_diskFile.m_path.c_str(), GetLastError());
+            MMKVError("fail to mmap [%s], mode %x, %d", m_diskFile.getUTF8Path().c_str(), viewMode, GetLastError());
+
+            doCleanMemoryCache(true);
             return false;
         }
-    }
+        MMKVInfo("mmap to address [%p], [%s]", m_ptr, m_diskFile.getUTF8Path().c_str());
 
-    return true;
+        if (m_isMayflyFD && fileLock) {
+            fileLock->destroyAndUnLock();
+        }
+
+        cleanMayflyFD();
+        return true;
+    }
 }
 
-void MemoryFile::reloadFromFile() {
+void MemoryFile::reloadFromFile(size_t expectedCapacity) {
     if (isFileValid()) {
-        MMKVWarning("calling reloadFromFile while the cache [%ls] is still valid", m_diskFile.m_path.c_str());
+        MMKVWarning("calling reloadFromFile while the cache [%s] is still valid", m_diskFile.getUTF8Path().c_str());
         assert(0);
         clearMemoryCache();
     }
-    m_diskFile.open();
-    if (m_diskFile.isFileValid()) {
+    if (openIfNeeded()) {
         FileLock fileLock(m_diskFile.getFd());
-        InterProcessLock lock(&fileLock, ExclusiveLockType);
+        InterProcessLock lock(&fileLock, SharedLockType);
         SCOPED_LOCK(&lock);
 
         mmkv::getFileSize(m_diskFile.getFd(), m_size);
+        size_t expectedSize = std::max<size_t>(DEFAULT_MMAP_SIZE, roundUp<size_t>(expectedCapacity, DEFAULT_MMAP_SIZE));
         // round up to (n * pagesize)
-        if (m_size < DEFAULT_MMAP_SIZE || (m_size % DEFAULT_MMAP_SIZE != 0)) {
-            size_t roundSize = ((m_size / DEFAULT_MMAP_SIZE) + 1) * DEFAULT_MMAP_SIZE;
-            truncate(roundSize);
+        if (!m_readOnly && (m_size < expectedSize || (m_size % DEFAULT_MMAP_SIZE != 0))) {
+            InterProcessLock exclusiveLock(&fileLock, ExclusiveLockType);
+            SCOPED_LOCK(&exclusiveLock);
+
+            size_t roundSize = ((m_size / DEFAULT_MMAP_SIZE) + 1) * DEFAULT_MMAP_SIZE;;
+            roundSize = std::max<size_t>(expectedSize, roundSize);
+            truncate(roundSize, &fileLock);
         } else {
-            auto ret = mmap();
-            if (!ret) {
-                doCleanMemoryCache(true);
-            }
+            mmapOrCleanup(&fileLock);
         }
     }
 }
@@ -218,10 +260,57 @@ void MemoryFile::doCleanMemoryCache(bool forceClean) {
     m_diskFile.close();
 }
 
+bool MemoryFile::openIfNeeded() {
+    if (!m_diskFile.isFileValid()) {
+        return m_diskFile.open();
+    }
+    return true;
+}
+
+void MemoryFile::cleanMayflyFD() {
+    if (m_isMayflyFD) {
+        if (m_diskFile.isFileValid()) {
+            m_diskFile.close();
+        }
+        if (m_fileMapping) {
+            CloseHandle(m_fileMapping);
+            m_fileMapping = nullptr;
+        }
+    }
+}
+
+size_t MemoryFile::getActualFileSize() {
+    if (!m_isMayflyFD && !m_diskFile.isFileValid()) {
+        return 0;
+    }
+
+    return m_diskFile.getActualFileSize();
+}
+
+MMKVFileHandle_t MemoryFile::getFd() {
+    if (m_isMayflyFD) {
+        openIfNeeded();
+    }
+    return m_diskFile.getFd();
+}
+
 size_t getPageSize() {
     SYSTEM_INFO system_info;
     GetSystemInfo(&system_info);
     return system_info.dwPageSize;
+}
+
+MMKVPath_t absolutePath(const MMKVPath_t& path) {
+    fs::path relative_path(path);
+    fs::path absolute_path = fs::absolute(relative_path);
+    try {
+        fs::path normalized = fs::weakly_canonical(absolute_path);
+        return normalized.wstring();
+    } catch (std::exception &e) {
+        const auto &utf8Path = MMKVPath_t2String(absolute_path.wstring());
+        MMKVError("fail to weakly_canonical() path %s, error: %s", utf8Path.c_str(), e.what());
+    }
+    return absolute_path.wstring();
 }
 
 bool isFileExist(const MMKVPath_t &nsFilePath) {
@@ -248,12 +337,14 @@ bool mkPath(const MMKVPath_t &str) {
         auto attribute = GetFileAttributes(path);
         if (attribute == INVALID_FILE_ATTRIBUTES) {
             if (!CreateDirectory(path, nullptr)) {
-                MMKVError("fail to create dir:%ls, %d", str.c_str(), GetLastError());
+                const auto &utf8Path = MMKVPath_t2String(str);
+                MMKVError("fail to create dir:%s, %d", utf8Path.c_str(), GetLastError());
                 free(path);
                 return false;
             }
         } else if (!(attribute & FILE_ATTRIBUTE_DIRECTORY)) {
-            MMKVError("%ls attribute:%d not a directry", str.c_str(), attribute);
+            const auto &utf8Path = MMKVPath_t2String(str);
+            MMKVError("%s attribute:%d not a directory", utf8Path.c_str(), attribute);
             free(path);
             return false;
         }
@@ -276,17 +367,19 @@ MMBuffer *readWholeFile(const MMKVPath_t &nsFilePath) {
             buffer = new MMBuffer(static_cast<size_t>(fileLength));
             SetFilePointer(fd, 0, 0, FILE_BEGIN);
             DWORD readSize = 0;
-            if (ReadFile(fd, buffer->getPtr(), fileLength, &readSize, nullptr)) {
+            if (ReadFile(fd, buffer->getPtr(), (DWORD) fileLength, &readSize, nullptr)) {
                 //fileSize = readSize;
             } else {
-                MMKVWarning("fail to read %ls: %d", nsFilePath.c_str(), GetLastError());
+                const auto &utf8Path = MMKVPath_t2String(nsFilePath);
+                MMKVWarning("fail to read %s: %d", utf8Path.c_str(), GetLastError());
                 delete buffer;
                 buffer = nullptr;
             }
         }
         CloseHandle(fd);
     } else {
-        MMKVWarning("fail to open %ls: %d", nsFilePath.c_str(), GetLastError());
+        const auto &utf8Path = MMKVPath_t2String(nsFilePath);
+        MMKVWarning("fail to open %s: %d", utf8Path.c_str(), GetLastError());
     }
     return buffer;
 }
@@ -299,7 +392,7 @@ bool zeroFillFile(MMKVFileHandle_t file, size_t startPos, size_t size) {
         return true;
     }
 
-    LARGE_INTEGER position;
+    LARGE_INTEGER position = {};
     position.QuadPart = startPos;
     if (!SetFilePointerEx(file, position, nullptr, FILE_BEGIN)) {
         MMKVError("fail to lseek fd[%p], error:%d", file, GetLastError());
@@ -317,7 +410,7 @@ bool zeroFillFile(MMKVFileHandle_t file, size_t startPos, size_t size) {
     }
     if (size > 0) {
         DWORD bytesWritten = 0;
-        if (!WriteFile(file, zeros, size, &bytesWritten, nullptr)) {
+        if (!WriteFile(file, zeros, (DWORD) size, &bytesWritten, nullptr)) {
             MMKVError("fail to write fd[%p], error:%d", file, GetLastError());
             return false;
         }
@@ -326,7 +419,7 @@ bool zeroFillFile(MMKVFileHandle_t file, size_t startPos, size_t size) {
 }
 
 static bool ftruncate(MMKVFileHandle_t file, size_t size) {
-    LARGE_INTEGER large;
+    LARGE_INTEGER large = {};
     large.QuadPart = size;
     if (SetFilePointerEx(file, large, 0, FILE_BEGIN)) {
         if (SetEndOfFile(file)) {
@@ -349,6 +442,15 @@ static bool getFileSize(MMKVFileHandle_t fd, size_t &size) {
     return false;
 }
 
+bool getFileSize(const wchar_t *filename, size_t &size) {
+    WIN32_FILE_ATTRIBUTE_DATA fileAttr = {};
+    if (GetFileAttributesEx(filename, GetFileExInfoStandard, &fileAttr)) {
+        size = ((ULONGLONG)fileAttr.nFileSizeHigh << 32) | fileAttr.nFileSizeLow;
+        return true;
+    }
+    return false;
+}
+
 static pair<MMKVPath_t, MMKVFileHandle_t> createUniqueTempFile(const wchar_t *prefix) {
     wchar_t lpTempPathBuffer[MAX_PATH];
     //  Gets the temp path env string (no guarantee it's a valid path).
@@ -363,18 +465,22 @@ static pair<MMKVPath_t, MMKVFileHandle_t> createUniqueTempFile(const wchar_t *pr
         MMKVError("GetTempFileName failed %d", GetLastError());
         return {L"", INVALID_HANDLE_VALUE};
     }
-    auto hTempFile = CreateFile(szTempFileName, GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
+    auto hTempFile =
+        CreateFile(szTempFileName, GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
+    const auto &utf8Path = MMKVPath_t2String(szTempFileName);
     if (hTempFile == INVALID_HANDLE_VALUE) {
-        MMKVError("fail to create unique temp file [%ls], %d", szTempFileName, GetLastError());
+        MMKVError("fail to create unique temp file [%s], %d", utf8Path.c_str(), GetLastError());
         return {L"", INVALID_HANDLE_VALUE};
     }
-    MMKVDebug("create unique temp file [%ls] with fd[%p]", szTempFileName, hTempFile);
+    MMKVDebug("create unique temp file [%s] with fd[%p]", utf8Path.c_str(), hTempFile);
     return {MMKVPath_t(szTempFileName), hTempFile};
 }
 
 bool tryAtomicRename(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
     if (MoveFileEx(srcPath.c_str(), dstPath.c_str(), MOVEFILE_REPLACE_EXISTING | MOVEFILE_COPY_ALLOWED) == 0) {
-        MMKVError("MoveFileEx [%ls] to [%ls] failed %d", srcPath.c_str(), dstPath.c_str(), GetLastError());
+        const auto &utf8SrcPath = MMKVPath_t2String(srcPath);
+        const auto &utf8DstPath = MMKVPath_t2String(dstPath);
+        MMKVError("MoveFileEx [%s] to [%s] failed %d", utf8SrcPath.c_str(), utf8DstPath.c_str(), GetLastError());
         return false;
     }
     return true;
@@ -400,8 +506,8 @@ bool copyFileContent(const MMKVPath_t &srcPath, MMKVFileHandle_t dstFD, bool nee
     // the Win32 platform don't have sendfile()/fcopyfile() equivalent, do it the hard way
     while (true) {
         DWORD sizeRead = 0;
-        if (!ReadFile(srcFile.getFd(), buffer, bufferSize, &sizeRead, nullptr)) {
-            MMKVError("fail to read %ls: %d", srcPath.c_str(), GetLastError());
+        if (!ReadFile(srcFile.getFd(), buffer, (DWORD) bufferSize, &sizeRead, nullptr)) {
+            MMKVError("fail to read %s: %d", srcFile.getUTF8Path().c_str(), GetLastError());
             goto errorOut;
         }
 
@@ -426,7 +532,7 @@ bool copyFileContent(const MMKVPath_t &srcPath, MMKVFileHandle_t dstFD, bool nee
     }
 
     ret = true;
-    MMKVInfo("copy content from %ls to fd[%d] finish", srcPath.c_str(), dstFD);
+    MMKVInfo("copy content from %s to fd[%d] finish", srcFile.getUTF8Path().c_str(), dstFD);
 
 errorOut:
     free(buffer);
@@ -445,11 +551,14 @@ bool copyFile(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
 
     bool renamed = false;
     if (copyFileContent(srcPath, tmpFD, false)) {
-        MMKVInfo("copyed file [%ls] to [%ls]", srcPath.c_str(), tmpPath.c_str());
+        const auto &utf8SrcPath = MMKVPath_t2String(srcPath);
+        const auto &utf8TmpPath = MMKVPath_t2String(tmpPath);
+        MMKVInfo("copied file [%s] to [%s]", utf8SrcPath.c_str(), utf8TmpPath.c_str());
         CloseHandle(tmpFD);
         renamed = tryAtomicRename(tmpPath.c_str(), dstPath.c_str());
         if (renamed) {
-            MMKVInfo("copyfile [%ls] to [%ls] finish.", srcPath.c_str(), dstPath.c_str());
+            const auto &utf8DstPath = MMKVPath_t2String(dstPath);
+            MMKVInfo("copyfile [%s] to [%s] finish.", utf8SrcPath.c_str(), utf8DstPath.c_str());
         }
     } else {
         CloseHandle(tmpFD);
@@ -468,9 +577,10 @@ bool copyFileContent(const MMKVPath_t &srcPath, const MMKVPath_t &dstPath) {
     }
     auto ret = copyFileContent(srcPath, dstFile.getFd(), false);
     if (!ret) {
-        MMKVError("fail to copyfile(): target file %ls", dstPath.c_str());
+        MMKVError("fail to copyfile(): target file %s", dstFile.getUTF8Path().c_str());
     } else {
-        MMKVInfo("copy content from %ls to [%ls] finish", srcPath.c_str(), dstPath.c_str());
+        const auto &utf8SrcPath = MMKVPath_t2String(srcPath);
+        MMKVInfo("copy content from %s to [%s] finish", utf8SrcPath.c_str(), dstFile.getUTF8Path().c_str());
     }
     return ret;
 }
@@ -511,6 +621,56 @@ void walkInDir(const MMKVPath_t &dirPath,
     }
 
     FindClose(hFind);
+}
+
+bool isDiskOfMMAPFileCorrupted(MemoryFile *file, bool &needReportReadFail) {
+    // make sure the file is valid
+    __try {
+        auto filesize = file->getFileSize();
+        volatile uint8_t* ptr = (uint8_t*) file->getMemory();
+        // check the head of every page
+        for (size_t index = 0; index < filesize; index += DEFAULT_MMAP_SIZE) {
+            volatile uint8_t byte = ptr[index];
+            MMKVDebug("%zu byte of the file: 0x%x", index, byte);
+        }
+        // check the very last byte of the file
+        if (filesize > 1) {
+            volatile uint8_t byte = ptr[filesize - 1];
+            MMKVDebug("%zu byte of the file: 0x%x", filesize - 1, byte);
+        }
+    }
+    __except ((GetExceptionCode() == EXCEPTION_IN_PAGE_ERROR || GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION)
+              ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH) {
+        needReportReadFail = true;
+        DWORD errorCode = GetExceptionCode();
+        MMKVError("fail to mmap [%s], %d", file->getUTF8Path().c_str(), errorCode);
+        return true;
+    }
+    return false;
+}
+
+bool deleteFile(const MMKVPath_t &path) {
+    if (!DeleteFile(path.c_str())) {
+        const auto &utf8Path = MMKVPath_t2String(path);
+        MMKVError("failed to delete file [%s], %d", utf8Path.c_str(), GetLastError());
+        return false;
+    }
+    return true;
+}
+
+std::optional<MMKVPath_t> getUniqueFileName(const MMKVPath_t &folder, const MMKVPath_t &prefix) {
+    // Buffer for the resulting path
+    wchar_t tempFileName[MAX_PATH];
+    UINT uUnique = 0;
+
+    UINT result = GetTempFileName(folder.c_str(), prefix.c_str(), uUnique, tempFileName);
+    if (result == 0) {
+        const auto &utf8Folder = MMKVPath_t2String(folder);
+        MMKVError("failed to GetTempFileName file [%s], %d", utf8Folder.c_str(), GetLastError());
+        return std::nullopt;
+    }
+
+    return std::wstring(tempFileName);
 }
 
 } // namespace mmkv

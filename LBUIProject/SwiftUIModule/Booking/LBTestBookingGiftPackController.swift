@@ -11,6 +11,8 @@ import SwiftUI
 // 包裹一层处理属性后面设置的， 这样就是可选的了，不是创建的时候就必传
 class LBTestBookingGiftPackController: UIViewController {
     
+    var currentCount = 0
+    
     lazy var wrapper = LBModelWrapper<XLMBookDetailGiftPacketItemModel>()
     
     lazy var giftView = XLMBookDetailGiftPacketContentView.init(wrapper: wrapper,detailBlock: { item in
@@ -23,8 +25,10 @@ class LBTestBookingGiftPackController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         let hostVC = UIHostingController(rootView: giftView)
         view.addSubview(hostVC.view)
+        hostVC.view.backgroundColor = .lightGray
         hostVC.view.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalTo(200)
@@ -42,17 +46,18 @@ class LBTestBookingGiftPackController: UIViewController {
     func refreshGiftView() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             [weak self] in
-            if let weakSelf = self  {
-                let model = weakSelf.itemModel
-                model.price = "\(model.price.blt.toInt()! + model.price.blt.toInt()!)"
-                model.title = model.title + model.title
-                model.selected = !model.selected
-                model.type = XLMBookDetailGiftPacketType.init(rawValue: model.type.rawValue + 1) ?? .gold
-                self?.wrapper.itemModel = self?.itemModel
-                print("LBLog selected \(model.selected) \(model.title)")
-                
+            guard let self = self else { return }
+            let model = self.itemModel
+            model.price = "\(model.price.blt.toInt()! + model.price.blt.toInt()!)"
+            model.title = model.title + model.title
+            model.selected = !model.selected
+            model.type = XLMBookDetailGiftPacketType.init(rawValue: model.type.rawValue + 1) ?? .gold
+            self.wrapper.itemModel = self.itemModel
+            print("LBLog selected \(model.selected) \(model.title)")
+            if self.currentCount < 4{
+                self.currentCount += 1
+                self.refreshGiftView()
             }
-            self?.refreshGiftView()
         })
     }
 }

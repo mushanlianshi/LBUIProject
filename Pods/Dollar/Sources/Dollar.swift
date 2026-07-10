@@ -62,7 +62,8 @@ open class Dollar {
         return { f() }
     }
 
-    /// 用索引中的元素  创建一个新的数组
+    /// Creates an array of elements from the specified indexes, or keys, of the collection.
+    /// Indexes may be specified as individual arguments or as arrays of indexes.
     ///
     /// - parameter array: The array to source from
     /// - parameter indexes: Get elements from these indexes
@@ -263,7 +264,6 @@ open class Dollar {
         }
     }
 
-    /// 查找第一个数组中和后面数组中不同的元素   用字典效率高
     /// Creates an array excluding all values of the provided arrays with or without order
     /// Without order difference is much faster and at times 100% than difference with order
     ///
@@ -357,7 +357,6 @@ open class Dollar {
         }
     }
 
-    /// 判断数组中的每个元素是否都满足 block的条件
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// - parameter array: The array to check.
@@ -373,7 +372,7 @@ open class Dollar {
     }
 
 
-    /// 返回一个数的阶乘
+    /// Returns Factorial of integer
     ///
     /// - parameter num: number whose factorial needs to be calculated
     /// - returns: factorial
@@ -417,7 +416,6 @@ open class Dollar {
         return array
     }
 
-    /// 查找第一个符合条件的元素
     /// Iterates over elements of an array and returning the first element
     /// that the callback returns true for.
     ///

@@ -11,6 +11,10 @@ enum TextJustification: Int, Codable {
   case left
   case right
   case center
+  case justifyLastLineLeft
+  case justifyLastLineRight
+  case justifyLastLineCenter
+  case justifyLastLineFull
 }
 
 // MARK: - TextDocument
@@ -18,6 +22,23 @@ enum TextJustification: Int, Codable {
 final class TextDocument: Codable, DictionaryInitializable, AnyInitializable {
 
   // MARK: Lifecycle
+
+  required init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    text = try container.decode(String.self, forKey: .text)
+    fontSize = try container.decode(Double.self, forKey: .fontSize)
+    fontFamily = try container.decode(String.self, forKey: .fontFamily)
+    justification = try container.decode(TextJustification.self, forKey: .justification)
+    tracking = try container.decode(Int.self, forKey: .tracking)
+    lineHeight = try container.decodeIfPresent(Double.self, forKey: .lineHeight) ?? 0
+    baseline = try container.decodeIfPresent(Double.self, forKey: .baseline)
+    fillColorData = try container.decodeIfPresent(LottieColor.self, forKey: .fillColorData)
+    strokeColorData = try container.decodeIfPresent(LottieColor.self, forKey: .strokeColorData)
+    strokeWidth = try container.decodeIfPresent(Double.self, forKey: .strokeWidth)
+    strokeOverFill = try container.decodeIfPresent(Bool.self, forKey: .strokeOverFill)
+    textFramePosition = try container.decodeIfPresent(LottieVector3D.self, forKey: .textFramePosition)
+    textFrameSize = try container.decodeIfPresent(LottieVector3D.self, forKey: .textFrameSize)
+  }
 
   init(dictionary: [String: Any]) throws {
     text = try dictionary.value(for: CodingKeys.text)
@@ -29,7 +50,7 @@ final class TextDocument: Codable, DictionaryInitializable, AnyInitializable {
     }
     self.justification = justification
     tracking = try dictionary.value(for: CodingKeys.tracking)
-    lineHeight = try dictionary.value(for: CodingKeys.lineHeight)
+    lineHeight = (try? dictionary.value(for: CodingKeys.lineHeight)) ?? 0
     baseline = try dictionary.value(for: CodingKeys.baseline)
     if let fillColorRawValue = dictionary[CodingKeys.fillColorData.rawValue] {
       fillColorData = try? LottieColor(value: fillColorRawValue)

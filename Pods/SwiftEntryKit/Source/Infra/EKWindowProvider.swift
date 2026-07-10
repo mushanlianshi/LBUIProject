@@ -39,7 +39,6 @@ final class EKWindowProvider: EntryPresenterDelegate {
 
     /** Entry queueing heuristic  */
     private let entryQueue = EKAttributes.Precedence.QueueingHeuristic.value.heuristic
-//    EKAttributes.Precedence.QueueingHeuristic.value.age
     
     private weak var entryView: EKEntryView!
 
@@ -225,7 +224,6 @@ final class EKWindowProvider: EntryPresenterDelegate {
         guard let entryVC = prepare(for: entryView.attributes, presentInsideKeyWindow: presentInsideKeyWindow) else {
             return
         }
-        print("LBLog entry is \(entryVC) \(EKWindowProvider.shared.entryWindow)")
         entryVC.configure(entryView: entryView)
         self.entryView = entryView
         self.rollbackWindow = rollbackWindow
