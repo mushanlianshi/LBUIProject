@@ -247,6 +247,17 @@
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        NSLog(@"LBLog testView 指针指向的的地址 %@, 指针本身的地址 %p", testView, &testView);
 //    });
+    
+
+//党的二十届三中全会指出，法治是中国式现代化的重要保障。下列不属于完善中国特色社会主义法治体系举措的是（）
+//
+//    健全基层民主制度
+//
+//    深入推进依法行政
+//
+//    深化立法领域改革
+//
+//    加强涉外法治建设
 }
 
 - (void)viewDidLayoutSubviews{

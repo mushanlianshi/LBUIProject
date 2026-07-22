@@ -47,6 +47,7 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "chat模拟", vcClass: LBChatViewController.self),
                 LBListItemModel.init(title: "at功能完整实现（可用版）", vcClass: LBATCompleteViewController.self),
                 LBListItemModel.init(title: "SPM流式Markdown渲染聊天", vcClass: LBSPMStreamChatController.self),
+                LBListItemModel.init(title: "webview渲染流式内容", vcClass: ChatViewController.self),
             ]
         }
     }
@@ -99,8 +100,16 @@ extension LBVerifyViewController{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    
+//在考古学研究中判断人类遗骸的性别具有重要意义，对于了解古代社会结构具有重要意义。科学家发现牙釉质中含有釉原蛋白，编码这种蛋白的基因恰好位于性染色体——X染色体和Y染色体上，研究者认为，用牙齿判定遗骸性别的方法可用于考古研究。
+//    以下哪项如果为真，最能支持上述论证？
+//
+//    牙齿是古人类遗骸中最容易找到并且保存最完好的部分
+//
+//    儿童遗骸的骨骼没有明显的性别差异
+//
+//    人类遗骸的性别比例与当时人类社会的性别比例大致相同
+//
+//    测量某些骨骼特征如骨盆的结构通常可以直接判定性别
     
 }
 

@@ -109,7 +109,7 @@ static BLTAPMFPSManager *instance;
 
 static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info)
 {
-    NSLog(@"LBLog current thread %@  %@",[NSThread currentThread], @(activity), @(kCFRunLoopBeforeSources), @(kCFRunLoopAfterWaiting));
+    NSLog(@"LBLog current thread %@  %@ %@ %@",[NSThread currentThread], @(activity), @(kCFRunLoopBeforeSources), @(kCFRunLoopAfterWaiting));
     instance->activity = activity;
     // 发送信号
     dispatch_semaphore_t semaphore = instance->semaphore;

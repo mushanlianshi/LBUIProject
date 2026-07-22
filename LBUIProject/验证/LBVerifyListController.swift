@@ -64,7 +64,7 @@ class LBVerifyListController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             [weak self] in
             
-            self?.viewModel.extraTotalParams = ["eee" : "ccccc", "dddd" : "ccccc"]
+            self?.viewModel.extraTotalParams = ["key1" : "ccccc", "key2" : "ccccc"]
             self?.loadDataIsFooter(isFooter: false)
         })
     }

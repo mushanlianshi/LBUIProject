@@ -277,4 +277,5 @@ class LBAIProductAdViewController: UIViewController {
         }))
         present(alert, animated: true)
     }
+    
 }

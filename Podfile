@@ -36,7 +36,9 @@ target 'LBUIProject' do
   pod 'JXPagingView/Paging', '= 2.1.2'
   pod 'JXSegmentedView', '1.2.7'
   pod 'MJRefresh'
-  pod 'YYKit', '~> 1.0.9'
+#  pod 'YYKit', '~> 1.0.9'
+  pod 'YYKit'
+  pod 'libwebp'
   pod 'Dollar'
   pod 'AFNetworking', '~> 4.0'
   pod 'TXLiteAVSDK_Player', :modular_headers => true

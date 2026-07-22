@@ -659,6 +659,7 @@ DEPENDENCIES:
   - JXSegmentedView (= 1.2.7)
   - Kingfisher (~> 6.2.0)
   - KingfisherWebP (= 1.3.0)
+  - libwebp
   - LNPopupController
   - LookinServer (= 1.2.8)
   - lottie-ios
@@ -692,7 +693,7 @@ DEPENDENCIES:
   - ViewAnimator
   - Watchdog
   - WechatOpenSDK (= 2.0.2)
-  - YYKit (~> 1.0.9)
+  - YYKit
 
 SPEC REPOS:
   "git@github.com:mushanlianshi/LBUIKitSpecRepo.git":
@@ -876,6 +877,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: a0808787ce888619541ee55af3df22650f32e6f7
+PODFILE CHECKSUM: cef6141989cef5b4b225279589610f475835aadf
 
 COCOAPODS: 1.16.2
