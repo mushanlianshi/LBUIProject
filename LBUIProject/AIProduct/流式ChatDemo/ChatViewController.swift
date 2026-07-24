@@ -1,7 +1,7 @@
 import UIKit
-
+//不是 WebView 的 marked 不耗 CPU，而是它在 JS 引擎（独立进程）里解析，主线程只 evaluateJavaScript(字符串) 传个字符串过去，重活不在主线程。而 TextView 模式把"正则切分 + AttributedString 解析 + 富文本构建 + 多次 layout"全压在主线程同步跑——所以主线程 CPU 飙升特别显眼。本质一样是"每拍全量重渲"，只是 WebView 把成本藏到了别的进程。
 /// AI 对话主控制器
-///
+/// JS渲染有独立的进程，所以效果还不错，不占用主线程
 /// 核心设计：
 /// - 纯 UIKit 自己实现对话框架（UITableView + 输入栏 + 流式管线）
 /// - Markdown 渲染交给 cell 内的 WKWebView（marked + highlight.js + KaTeX），离线可用

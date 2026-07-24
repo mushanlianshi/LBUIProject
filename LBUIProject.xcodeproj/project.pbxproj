@@ -1597,7 +1597,7 @@
 			path = chatweb;
 			sourceTree = "<group>";
 		};
-		4022FB253010A8440058B3E4 /* ChatDemo */ = {
+		4022FB253010A8440058B3E4 /* 流式ChatDemo */ = {
 			isa = PBXGroup;
 			children = (
 				4022FB1D3010A8440058B3E4 /* chatweb */,
@@ -1609,7 +1609,7 @@
 				4022FB233010A8440058B3E4 /* MarkdownStyle.swift */,
 				4022FB243010A8440058B3E4 /* UserBubbleCell.swift */,
 			);
-			path = ChatDemo;
+			path = "流式ChatDemo";
 			sourceTree = "<group>";
 		};
 		4023B0672AA5E31800A55675 /* Alpha和opacity */ = {
@@ -2624,7 +2624,7 @@
 		40A2D3372FDBD481004A9788 /* AIProduct */ = {
 			isa = PBXGroup;
 			children = (
-				4022FB253010A8440058B3E4 /* ChatDemo */,
+				4022FB253010A8440058B3E4 /* 流式ChatDemo */,
 				409A2659300A2422001AC7D7 /* 流式输出 */,
 				408A340C2FFF90D300237503 /* shareBarCode */,
 				408A33F82FFF7CA500237503 /* setting */,

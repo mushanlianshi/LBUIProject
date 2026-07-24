@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- 第三方库样式：KaTeX（含公式字体 @font-face）+ highlight.js 主题，外链 vendor/ 下文件，离线可用 -->
+<link rel="stylesheet" href="katex.min.css">
+<link rel="stylesheet" href="highlight.min.css">
+
+<!-- 应用自有样式 -->
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1c1c1e;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: 100%;
+  }
+  #content { padding: 14px 14px 16px; }
+  #content > :first-child { margin-top: 0; }
+  #content > :last-child { margin-bottom: 0; }
+  h1 { font-size: 24px; font-weight: 700; margin: 18px 0 10px; }
+  h2 { font-size: 20px; font-weight: 700; margin: 16px 0 8px; }
+  h3 { font-size: 17px; font-weight: 600; margin: 14px 0 6px; }
+  h4, h5, h6 { font-size: 16px; font-weight: 600; margin: 12px 0 6px; }
+  p { margin: 8px 0; }
+  a { color: #007aff; text-decoration: none; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px;
+    background: #f1f1f3;
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: #c0341d;
+  }
+  pre {
+    background: #f6f7f9;
+    border: 1px solid #e3e5e8;
+    border-radius: 8px;
+    padding: 12px;
+    overflow-x: auto;
+    margin: 10px 0;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: #24292f;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  blockquote {
+    margin: 10px 0;
+    padding: 6px 12px;
+    border-left: 4px solid #c7c7cc;
+    background: #f6f6f8;
+    color: #3a3a3c;
+    border-radius: 0 6px 6px 0;
+  }
+  blockquote p { margin: 4px 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+  }
+  th, td {
+    border: 1px solid #d9d9de;
+    padding: 6px 10px;
+    text-align: left;
+  }
+  th { background: #f2f2f5; font-weight: 600; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  hr { border: none; border-top: 1px solid #e0e0e5; margin: 14px 0; }
+  img { max-width: 100%; border-radius: 8px; }
+  .katex-display { margin: 10px 0; overflow-x: auto; overflow-y: hidden; }
+</style>
+</head>
+<body>
+<div id="content"></div>
+
+<!-- 第三方库：marked / highlight.js / KaTeX，按依赖顺序同步加载 -->
+<script src="marked.min.js"></script>
+<script src="highlight.min.js"></script>
+<script src="katex.min.js"></script>
+
+<!-- 应用逻辑：markdown 解析 + 代码高亮 + 公式渲染 + 高度回传 -->
+<script>
+  var codeStore = [];
+  var mathStore = [];
+  var T0 = String.fromCharCode(0);
+  function codePH(m) { codeStore.push(m); return T0 + 'C' + (codeStore.length - 1) + T0; }
+  function mathPH(html) { mathStore.push(html); return T0 + 'M' + (mathStore.length - 1) + T0; }
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function renderCode(raw) {
+    if (raw.indexOf('```') === 0) {
+      var m = raw.match(/^```([^\n]*)/);
+      var lang = m ? m[1].trim() : '';
+      var inner = raw.replace(/^```[^\n]*\n?/, '').replace(/```\s*$/, '');
+      return '<pre><code' + (lang ? ' class="language-' + lang + '"' : '') + '>' + escapeHtml(inner) + '</code></pre>';
+    }
+    return '<code>' + escapeHtml(raw.replace(/`/g, '')) + '</code>';
+  }
+  function reportHeight() {
+    var el = document.getElementById('content');
+    if (el) window.webkit.messageHandlers.height.postMessage(el.scrollHeight);
+  }
+  function renderMarkdown(md) {
+    try {
+      codeStore = [];
+      mathStore = [];
+      var s = md || '';
+      // 保护代码块/行内代码，避免其中的数学分隔符被误解析
+      s = s.replace(/```[\s\S]*?```/g, function (m) { return codePH(m); });
+      s = s.replace(/`[^`\n]+`/g, function (m) { return codePH(m); });
+      // 块级公式 $$...$$
+      s = s.replace(/\$\$([\s\S]+?)\$\$/g, function (_, t) {
+        try { return mathPH(katex.renderToString(t, { displayMode: true, throwOnError: false })); }
+        catch (e) { return t; }
+      });
+      // 行内公式 \(...\)
+      s = s.replace(/\\\(([\s\S]+?)\\\)/g, function (_, t) {
+        try { return mathPH(katex.renderToString(t, { displayMode: false, throwOnError: false })); }
+        catch (e) { return t; }
+      });
+      // 行内公式 $...$
+      s = s.replace(/(^|[^\\$])\$([^$\n]+?)\$/g, function (_, a, t) {
+        try { return a + mathPH(katex.renderToString(t, { displayMode: false, throwOnError: false })); }
+        catch (e) { return a + t; }
+      });
+      var html = marked.parse(s, { breaks: true, gfm: true });
+      html = html.replace(new RegExp(T0 + 'M(\\d+)' + T0, 'g'), function (_, i) { return mathStore[+i] || ''; });
+      html = html.replace(new RegExp(T0 + 'C(\\d+)' + T0, 'g'), function (_, i) { return renderCode(codeStore[+i] || ''); });
+      var el = document.getElementById('content');
+      el.innerHTML = html;
+      el.querySelectorAll('pre code').forEach(function (b) { if (window.hljs) hljs.highlightElement(b); });
+      reportHeight();
+    } catch (e) {
+      document.getElementById('content').textContent = md || '';
+      reportHeight();
+    }
+  }
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(function () { reportHeight(); });
+    ro.observe(document.getElementById('content'));
+  }
+</script>
+</body>
+</html>

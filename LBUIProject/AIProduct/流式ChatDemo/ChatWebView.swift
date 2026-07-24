@@ -78,20 +78,6 @@ final class ChatWebView: WKWebView {
         if let u = bundle.url(forResource: "index", withExtension: "html") {
             candidates.insert(u)
         }
-        // 2) 保留 chatweb/ 子目录结构
-        if let u = bundle.url(forResource: "index", withExtension: "html", subdirectory: "chatweb") {
-            candidates.insert(u)
-        }
-        // 3) 兜底：枚举根下所有 .html
-        if let all = bundle.urls(forResourcesWithExtension: "html", subdirectory: nil) {
-            candidates.formUnion(all)
-        }
-        // 4) 绝对路径兜底
-        if let root = bundle.resourceURL {
-            candidates.insert(root.appendingPathComponent("index.html"))
-            candidates.insert(root.appendingPathComponent("chatweb/index.html"))
-        }
-
         let fm = FileManager.default
         for url in candidates where fm.fileExists(atPath: url.path) {
             templateURL = url
