@@ -62,9 +62,9 @@ final class ChatViewController: UIViewController {
     private var streamingMessage: ChatMessage?
     private var stickToBottom = true   // 用户是否停留在底部（决定是否跟随流式滚动）
     private var lastUIUpdate: CFTimeInterval = 0
-    private let charInterval: TimeInterval = 0.05    // 每 50ms 推送
-    private let charsPerTick = 3                     // 每次推送 3 个字符
-    private let uiThrottle: CFTimeInterval = 0.08      // 150ms 节流 UI 更新
+    private let charInterval: TimeInterval = 0.03    // 每 30ms 推送
+    private let charsPerTick = 5                    // 每次推送 5 个字符
+    private let uiThrottle: CFTimeInterval = 0.08      // 80ms 节流 UI 更新
 
     deinit {
         streamTimer?.invalidate()
@@ -240,8 +240,8 @@ final class ChatViewController: UIViewController {
         guard let row = messages.firstIndex(where: { $0.id == msg.id }) else { return }
         // 10pt 死区（滞回）：只有真正增长超过 10pt 才采纳并滚动。
         // 结尾 KaTeX 字体落定 / highlight 上色导致的 ±几 pt 小波动会被挡在这里，
-        // 不再逐帧重排 + 追底，从而消除“最后一点流式内容抖动/往上顶”。
-        guard height > messages[row].renderedHeight + 10 else { return }
+        // 不再逐帧重排 + 追底，从而消除“最后一点流式内容抖动/往上顶”。 或则结束的时候刷新高度, 如果结束的时候是链接，高度突然变小，要刷新高度
+        guard height > messages[row].renderedHeight + 10 || messages[row].isStreaming == false else { return }
         messages[row].renderedHeight = height
         UIView.performWithoutAnimation {
             tableView.beginUpdates()
@@ -249,7 +249,7 @@ final class ChatViewController: UIViewController {
         }
         // 用 stickToBottom（由用户滚动意图维护），不依赖重排瞬间的 offset，
         // 避免单次高度增量大时被误判为“已离开底部”而停止滚动。
-        if stickToBottom {
+        if stickToBottom && isNearBottom() {
             scrollToBottom()
         }
     }
@@ -261,6 +261,7 @@ final class ChatViewController: UIViewController {
         let ip = IndexPath(row: messages.count - 1, section: 0)
         guard tableView.numberOfRows(inSection: 0) > ip.row else { return }
         tableView.scrollToRow(at: ip, at: .bottom, animated: animated)
+        debugPrint("LBLog scrollToBottom -------------------------------")
     }
 
     /// 是否“接近底部”。仅在用户主动拖动/惯性滚动时用于更新 stickToBottom，
@@ -269,7 +270,7 @@ final class ChatViewController: UIViewController {
         let contentH = tableView.contentSize.height
         let offsetY = tableView.contentOffset.y
         let visibleH = tableView.bounds.height
-        return contentH - offsetY - visibleH < 40
+        return contentH - offsetY - visibleH < 80
     }
 
     // MARK: - Keyboard
@@ -304,8 +305,16 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     // 程序触发的 scrollToBottom 不改变该标志。
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.isDragging || scrollView.isDecelerating {
-            stickToBottom = isNearBottom()
+            stickToBottom = false
         }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        stickToBottom = true
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        stickToBottom = true
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

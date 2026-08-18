@@ -82,10 +82,10 @@ final class AssistantMarkdownCell: UITableViewCell {
 
     // MARK: - Reuse
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        onHeight = nil
-        heightConstraint.constant = 1
-        webView.renderMarkdown("")
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        onHeight = nil
+//        heightConstraint.constant = 1
+//        webView.renderMarkdown("")
+//    }
 }

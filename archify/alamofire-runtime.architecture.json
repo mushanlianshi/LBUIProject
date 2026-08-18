@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Alamofire 5.7.1 运行时架构",
+    "output": "alamofire-runtime.html",
+    "quality_profile": "showcase",
+    "viewBox": [1240, 660],
+    "views": [
+      { "id": "main-path", "label": "主请求路径", "focus": ["app", "session", "adapter", "datarequest", "urlsession", "delegate", "serializer"], "note": "一次请求从发起到响应序列化的完整生命周期。" },
+      { "id": "extensions", "label": "拦截与响应扩展点", "focus": ["adapter", "retrier", "serializer"], "note": "自定义拦截、重试与响应解析的接入位置。" }
+    ]
+  },
+  "components": [
+    { "id": "app", "type": "frontend", "label": "App 调用层", "sublabel": "AF.request + publishString", "pos": [30, 300], "size": [150, 64] },
+    { "id": "session", "type": "backend", "label": "Session", "sublabel": "AF = Session.default", "pos": [250, 300], "size": [150, 64], "tag": "入口" },
+    { "id": "adapter", "type": "backend", "label": "RequestAdapter", "sublabel": "自定义拦截 · adapt()", "pos": [250, 110], "size": [150, 58], "tag": "扩展点" },
+    { "id": "datarequest", "type": "backend", "label": "DataRequest", "sublabel": "URLRequest 构造 → 创建 task", "pos": [480, 300], "size": [150, 64] },
+    { "id": "serializer", "type": "backend", "label": "ResponseSerializer", "sublabel": "自定义响应器 · serialize()", "pos": [480, 110], "size": [150, 58], "tag": "扩展点" },
+    { "id": "urlsession", "type": "external", "label": "URLSession", "sublabel": "Foundation · 网络 I/O", "pos": [740, 300], "size": [150, 64], "tag": "系统依赖" },
+    { "id": "trust", "type": "security", "label": "ServerTrustManager", "sublabel": "TLS 证书 / 公钥固定", "pos": [740, 90], "size": [150, 52], "tag": "信任评估" },
+    { "id": "server", "type": "external", "label": "远端 Server", "sublabel": "https://httpbin.org", "pos": [1030, 300], "size": [140, 64] },
+    { "id": "delegate", "type": "backend", "label": "SessionDelegate", "sublabel": "URLSessionDelegate 桥接", "pos": [740, 480], "size": [150, 64] },
+    { "id": "retrier", "type": "backend", "label": "RequestRetrier", "sublabel": "自定义拦截 · retry()", "pos": [480, 480], "size": [150, 58], "tag": "扩展点" }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Alamofire 5.7.1 · Pods/Source（应用进程内）", "wraps": ["session", "adapter", "datarequest", "serializer", "retrier", "delegate", "trust", "urlsession"] },
+    { "kind": "security-group", "label": "信任边界 · 系统网络栈（网络 I/O · TLS · 缓存）", "wraps": ["urlsession", "trust"] }
+  ],
+  "connections": [
+    { "id": "app-session", "from": "app", "to": "session", "label": "AF.request(url, parameters:)", "variant": "emphasis", "labelDy": 56 },
+    { "id": "session-adapter", "from": "session", "to": "adapter", "label": "adapter.adapt() 拦截适配", "fromSide": "top", "toSide": "bottom", "variant": "emphasis" },
+    { "id": "adapter-datarequest", "from": "adapter", "to": "datarequest", "label": "适配后 URLRequest → 创建 task", "variant": "emphasis" },
+    { "id": "datarequest-urlsession", "from": "datarequest", "to": "urlsession", "label": "URLSession.dataTask(with:)", "variant": "emphasis", "labelDy": 56 },
+    { "id": "urlsession-server", "from": "urlsession", "to": "server", "label": "HTTPS GET", "variant": "security" },
+    { "id": "urlsession-delegate", "from": "urlsession", "to": "delegate", "label": "URLSessionDelegate 回调", "fromSide": "bottom", "toSide": "top", "variant": "emphasis", "labelDy": 72 },
+    { "id": "urlsession-trust", "from": "urlsession", "to": "trust", "label": "评估 TLS challenge", "fromSide": "top", "toSide": "bottom", "variant": "security" },
+    { "id": "delegate-retrier", "from": "delegate", "to": "retrier", "label": "retryOrFinish → retry()", "variant": "security", "labelDy": 56 },
+    { "id": "retrier-datarequest", "from": "retrier", "to": "datarequest", "label": "retryRequest(withDelay:) 重跑", "fromSide": "top", "toSide": "bottom", "variant": "dashed" },
+    { "id": "datarequest-serializer", "from": "datarequest", "to": "serializer", "label": "finish → serialize()", "fromSide": "top", "toSide": "bottom", "variant": "emphasis" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "主路径 · 一次请求", "items": [
+      "AF.request → Session → DataRequest",
+      "URLSession.dataTask → 回调 → serialize()",
+      "Combine 入口：publishString()"
+    ] },
+    { "dot": "emerald", "title": "自定义拦截与响应", "items": [
+      "RequestInterceptor = adapt() + retry()，可组合",
+      "内置 AuthenticationInterceptor、RetryPolicy",
+      "ResponseSerializer：serialize() 自定义解析"
+    ] },
+    { "dot": "amber", "title": "外部依赖与信任边界", "items": [
+      "Foundation URLSession：网络 I/O · 缓存",
+      "ServerTrustManager：TLS 证书 / 公钥固定",
+      "EventMonitor · DispatchQueue · httpbin.org"
+    ] }
+  ]
+}
