@@ -257,6 +257,8 @@
 		408A33FA2FFF7CA500237503 /* AICamereSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A33F72FFF7CA500237503 /* AICamereSettingView.swift */; };
 		408A340D2FFF90D300237503 /* LBShareBarCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */; };
 		408A340E2FFF90D300237503 /* LBShareBarCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */; };
+		408A35142FFF910000000001 /* LBShareManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A35122FFF910000000001 /* LBShareManagementView.swift */; };
+		408A35152FFF910000000001 /* LBShareManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A35132FFF910000000001 /* LBShareManagementViewController.swift */; };
 		408DE8D92C74393E00B19350 /* LBDrawerSwiperAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */; };
 		408DE8DB2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */; };
 		408DE8DD2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DE8DC2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift */; };
@@ -916,6 +918,8 @@
 		408A33F02FFF79A000237503 /* CameraDeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDeviceModel.swift; sourceTree = "<group>"; };
 		408A33F72FFF7CA500237503 /* AICamereSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICamereSettingView.swift; sourceTree = "<group>"; };
 		408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShareBarCodeView.swift; sourceTree = "<group>"; };
+		408A35122FFF910000000001 /* LBShareManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShareManagementView.swift; sourceTree = "<group>"; };
+		408A35132FFF910000000001 /* LBShareManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShareManagementViewController.swift; sourceTree = "<group>"; };
 		408DE8D82C74393E00B19350 /* LBDrawerSwiperAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationController.swift; sourceTree = "<group>"; };
 		408DE8DA2C743BB200B19350 /* LBDrawerSwiperAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationView.swift; sourceTree = "<group>"; };
 		408DE8DC2C74880C00B19350 /* LBDrawerSwiperAnimationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDrawerSwiperAnimationView2.swift; sourceTree = "<group>"; };
@@ -3513,8 +3517,18 @@
 				40D43D1B2A69083F001384BF /* ScrollList */,
 				40D43D102A67EED6001384BF /* ChartView */,
 				40D43D0E2A67EE59001384BF /* LBSwiftUIHomeController.swift */,
+				408A35112FFF910000000001 /* ShareManagement */,
 			);
 			path = SwiftUIModule;
+			sourceTree = "<group>";
+		};
+		408A35112FFF910000000001 /* ShareManagement */ = {
+			isa = PBXGroup;
+			children = (
+				408A35122FFF910000000001 /* LBShareManagementView.swift */,
+				408A35132FFF910000000001 /* LBShareManagementViewController.swift */,
+			);
+			path = ShareManagement;
 			sourceTree = "<group>";
 		};
 		40D43D102A67EED6001384BF /* ChartView */ = {
@@ -4727,6 +4741,8 @@
 				4085463C27434D8F00EEEC12 /* LBKVOViewController.m in Sources */,
 				404247AC2EE120C7004BB68E /* HXContentElement.m in Sources */,
 				40D43D152A67EED6001384BF /* LBChartLineMarkView.swift in Sources */,
+				408A35142FFF910000000001 /* LBShareManagementView.swift in Sources */,
+				408A35152FFF910000000001 /* LBShareManagementViewController.swift in Sources */,
 				4089873B26B9435D0004BBA8 /* LBAnimationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

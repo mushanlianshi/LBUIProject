@@ -26,6 +26,8 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.aiCameraHome, AnyView(AICamereHomeView())),
         (.aiCameraSetting, AnyView(AICamereSettingView())),
         (.shareBarCode, AnyView(LBShareBarCodeView())),
+        (.shareManagement, AnyView(LBShareManagementView())),
+        (.shareManagement, LBShareManagementViewController.self),
 //        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
 
@@ -71,6 +73,9 @@ extension LBSwiftUIHomeController{
         if type == .mixSwiftUIView {
             let vcType = self.swiftUIDataList[indexPath.row].view as! UIViewController.Type
             self.navigationController?.pushViewController(vcType.init(), animated: true)
+        }else if let vcType = self.swiftUIDataList[indexPath.row].view as? UIViewController.Type {
+            // 兼容任意 type 挂 UIKit 控制器
+            self.navigationController?.pushViewController(vcType.init(), animated: true)
         }else{
             let view = self.swiftUIDataList[indexPath.row].view as! AnyView
             self.navigationController?.pushViewController(LBCustomHostingController(rootView: view), animated: true)
@@ -104,5 +109,6 @@ enum LBSwiftUIExampleType: String {
     case aiCameraHome = "摄像头列表"
     case aiCameraSetting = "摄像头-设置"
     case shareBarCode = "二维码配网"
+    case shareManagement = "分享管理"
 //    case navigationMix = "混合导航栏"
 }
