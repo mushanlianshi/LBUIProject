@@ -28,6 +28,8 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.shareBarCode, AnyView(LBShareBarCodeView())),
         (.shareManagement, AnyView(LBShareManagementView())),
         (.shareManagement, LBShareManagementViewController.self),
+        (.bluetoothList, AnyView(LBBluetoothListView())),
+        (.bluetoothList, LBBluetoothListViewController.self),
 //        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
 
@@ -110,5 +112,6 @@ enum LBSwiftUIExampleType: String {
     case aiCameraSetting = "摄像头-设置"
     case shareBarCode = "二维码配网"
     case shareManagement = "分享管理"
+    case bluetoothList = "蓝牙列表"
 //    case navigationMix = "混合导航栏"
 }
