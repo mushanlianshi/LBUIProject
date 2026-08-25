@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SwiftUI
+import MJRefresh
 
 // MARK: - 数据模型
 class LBBluetoothDevice: NSObject {
@@ -73,6 +74,7 @@ class LBBluetoothListViewController: UIViewController {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+        tableView.estimatedSectionFooterHeight = 0
         tableView.register(LBBluetoothDeviceCell.self, forCellReuseIdentifier: NSStringFromClass(LBBluetoothDeviceCell.self))
         tableView.register(LBBluetoothSwiftUICell.self, forCellReuseIdentifier: NSStringFromClass(LBBluetoothSwiftUICell.self))
         tableView.dataSource = self
@@ -97,6 +99,58 @@ class LBBluetoothListViewController: UIViewController {
             make.right.equalToSuperview().offset(-14)
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+        setupRefresh()
+    }
+
+    // MARK: - MJRefresh 下拉刷新 / 上拉加载
+    private func setupRefresh() {
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            self?.headerRefresh()
+        })
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
+            self?.footerLoadMore()
+        })
+    }
+
+    /// 下拉刷新：模拟请求，重置为初始设备列表
+    private func headerRefresh() {
+        print("LBLog bluetooth header refresh begin")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self else { return }
+            self.devices = [
+                LBBluetoothDevice(name: "LANYA_66"),
+                LBBluetoothDevice(name: "AB_AABB"),
+                LBBluetoothDevice(name: "JD_NING"),
+                LBBluetoothDevice(name: "KB_SKFILV"),
+            ]
+            self.selectedID = self.devices.first?.id
+            self.tableView.mj_footer?.resetNoMoreData()
+            self.tableView.reloadData()
+            self.tableView.mj_header?.endRefreshing()
+            print("LBLog bluetooth header refresh done, count \(self.devices.count)")
+        }
+    }
+
+    /// 上拉加载：每次追加 2 个新设备，超过 12 个提示没有更多
+    private func footerLoadMore() {
+        print("LBLog bluetooth footer load more begin")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self else { return }
+            if self.devices.count >= 16 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+                print("LBLog bluetooth no more data")
+                return
+            }
+            let count = self.devices.count
+            self.devices.append(contentsOf: [
+                LBBluetoothDevice(name: "NEW_DEVICE_\(count + 1)"),
+                LBBluetoothDevice(name: "NEW_DEVICE_\(count + 2)"),
+                LBBluetoothDevice(name: "NEW_DEVICE_\(count + 3)"),
+            ])
+            self.tableView.reloadData()
+            self.tableView.mj_footer?.endRefreshing()
+            print("LBLog bluetooth load more done, count \(self.devices.count)")
         }
     }
 
@@ -202,8 +256,9 @@ extension LBBluetoothListViewController: UITableViewDataSource, UITableViewDeleg
             label.text = "其它"
             header.addSubview(label)
             label.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(12)
                 make.left.equalToSuperview().offset(12)
-                make.bottom.equalToSuperview().offset(-14)
+                make.bottom.equalToSuperview().offset(-12)
             }
             return header
         }
@@ -219,7 +274,7 @@ extension LBBluetoothListViewController: UITableViewDataSource, UITableViewDeleg
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        section == 0 ? 16 : 0.01
+        0.01
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

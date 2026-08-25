@@ -86,7 +86,11 @@ class LBTabbarController: UITabBarController {
             print("LBLog queue is ====== \( serialQueue.qos) \(serialQueue.qos.relativePriority)")
         }
         testLineParams()
+        
+        UITableView.appearance().sectionHeaderTopPadding = 0;
     }
+    
+    
     
     func testLineParams() {
         var mutableArray = [1,2,3]

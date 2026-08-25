@@ -145,6 +145,9 @@
 		404247AF2EE12417004BB68E /* HXSimpleStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 404247AE2EE12417004BB68E /* HXSimpleStreamParser.m */; };
 		404247B22EE16A70004BB68E /* HXRealTimeContentElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 404247B12EE16A70004BB68E /* HXRealTimeContentElement.m */; };
 		404247B52EE16AA1004BB68E /* HXRealTimeStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 404247B42EE16AA1004BB68E /* HXRealTimeStreamParser.m */; };
+		4043D738303D8DC600504254 /* LBBluetoothListHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D737303D8DC200504254 /* LBBluetoothListHostingController.swift */; };
+		4043D73B303D8F3C00504254 /* LBBluetoothUIKitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D73A303D8F3C00504254 /* LBBluetoothUIKitRow.swift */; };
+		4043D73F303D8F9000504254 /* LBRefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D73E303D8F9000504254 /* LBRefreshScrollView.swift */; };
 		4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB05265F9E2400EACB2B /* AppDelegate.m */; };
 		4043EB0C265F9E2400EACB2B /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB0B265F9E2400EACB2B /* LBHomeViewController.m */; };
 		4043EB0F265F9E2400EACB2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4043EB0D265F9E2400EACB2B /* Main.storyboard */; };
@@ -771,6 +774,9 @@
 		404247B12EE16A70004BB68E /* HXRealTimeContentElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXRealTimeContentElement.m; sourceTree = "<group>"; };
 		404247B32EE16AA1004BB68E /* HXRealTimeStreamParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXRealTimeStreamParser.h; sourceTree = "<group>"; };
 		404247B42EE16AA1004BB68E /* HXRealTimeStreamParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXRealTimeStreamParser.m; sourceTree = "<group>"; };
+		4043D737303D8DC200504254 /* LBBluetoothListHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBluetoothListHostingController.swift; sourceTree = "<group>"; };
+		4043D73A303D8F3C00504254 /* LBBluetoothUIKitRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBluetoothUIKitRow.swift; sourceTree = "<group>"; };
+		4043D73E303D8F9000504254 /* LBRefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRefreshScrollView.swift; sourceTree = "<group>"; };
 		4043EB01265F9E2400EACB2B /* LBUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4043EB04265F9E2400EACB2B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4043EB05265F9E2400EACB2B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1757,6 +1763,30 @@
 			path = "表格拆分";
 			sourceTree = "<group>";
 		};
+		4043D739303D8EE100504254 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4043D73A303D8F3C00504254 /* LBBluetoothUIKitRow.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4043D73C303D8F7A00504254 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				4043D73D303D8F8100504254 /* View */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		4043D73D303D8F8100504254 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4043D73E303D8F9000504254 /* LBRefreshScrollView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4043EAF8265F9E2400EACB2B = {
 			isa = PBXGroup;
 			children = (
@@ -2236,6 +2266,7 @@
 		407DA97528A4CF35000B2BA8 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
+				4043D73C303D8F7A00504254 /* SwiftUI */,
 				40A7436C2A8DB5E8002B90BD /* 随机渐变fadeLabel */,
 				40B4A0C02A6FD6C000D02BB4 /* CollectionViewFlowLayout */,
 				405430D228AA356900CD3596 /* LBNotificationView */,
@@ -2424,6 +2455,26 @@
 				408A340B2FFF90D300237503 /* LBShareBarCodeView.swift */,
 			);
 			path = shareBarCode;
+			sourceTree = "<group>";
+		};
+		408A35112FFF910000000001 /* ShareManagement */ = {
+			isa = PBXGroup;
+			children = (
+				408A35122FFF910000000001 /* LBShareManagementView.swift */,
+				408A35132FFF910000000001 /* LBShareManagementViewController.swift */,
+			);
+			path = ShareManagement;
+			sourceTree = "<group>";
+		};
+		408A35162FFF910000000002 /* BluetoothList */ = {
+			isa = PBXGroup;
+			children = (
+				4043D739303D8EE100504254 /* View */,
+				4043D737303D8DC200504254 /* LBBluetoothListHostingController.swift */,
+				408A35172FFF910000000002 /* LBBluetoothListView.swift */,
+				408A35182FFF910000000002 /* LBBluetoothListViewController.swift */,
+			);
+			path = BluetoothList;
 			sourceTree = "<group>";
 		};
 		408DE8D72C7438AE00B19350 /* 抽屉效果 */ = {
@@ -3527,24 +3578,6 @@
 			path = SwiftUIModule;
 			sourceTree = "<group>";
 		};
-		408A35112FFF910000000001 /* ShareManagement */ = {
-			isa = PBXGroup;
-			children = (
-				408A35122FFF910000000001 /* LBShareManagementView.swift */,
-				408A35132FFF910000000001 /* LBShareManagementViewController.swift */,
-			);
-			path = ShareManagement;
-			sourceTree = "<group>";
-		};
-		408A35162FFF910000000002 /* BluetoothList */ = {
-			isa = PBXGroup;
-			children = (
-				408A35172FFF910000000002 /* LBBluetoothListView.swift */,
-				408A35182FFF910000000002 /* LBBluetoothListViewController.swift */,
-			);
-			path = BluetoothList;
-			sourceTree = "<group>";
-		};
 		40D43D102A67EED6001384BF /* ChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4381,6 +4414,7 @@
 				40AE6FF129C9887400C69932 /* LBPageSegmentView.swift in Sources */,
 				40525F4B26A7ED0200B6AEBA /* LBImageRecogineViewController.m in Sources */,
 				40AE6FEC29C8616600C69932 /* HeaderPositionViewController.swift in Sources */,
+				4043D738303D8DC600504254 /* LBBluetoothListHostingController.swift in Sources */,
 				402E3D2326BECAC60027CE64 /* LBBlockViewController.m in Sources */,
 				40ABEB5B2DA3BE3500199320 /* CLDurationDataPickerView.swift in Sources */,
 				4012373D2DAF8D5D00E7AAEC /* LBTestBookingGiftPackController2.swift in Sources */,
@@ -4629,6 +4663,7 @@
 				40744D0A2A2F185E0096F399 /* LBDecoratorProduct.swift in Sources */,
 				4081A45329B182B400B476C8 /* LBTestStructAndClassController.swift in Sources */,
 				40AE6FEB29C8616600C69932 /* NaviHiddenViewController.swift in Sources */,
+				4043D73B303D8F3C00504254 /* LBBluetoothUIKitRow.swift in Sources */,
 				40ABEB862DA3C82800199320 /* LBCombineBindController.swift in Sources */,
 				406298F0288FC18B006A3024 /* LBSliderTableCell.swift in Sources */,
 				408F681F288AA0830019F47D /* LLTransitionAnimationController.swift in Sources */,
@@ -4636,6 +4671,7 @@
 				40ABEB832DA3C65700199320 /* LBBaseView.swift in Sources */,
 				40D46FC2288E7538001A153A /* LBResponseChain.m in Sources */,
 				404B0EAF2D8D68950070447D /* LBTabAnimatedCardOCCell.m in Sources */,
+				4043D73F303D8F9000504254 /* LBRefreshScrollView.swift in Sources */,
 				40140EEC2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				40ABEB752DA3BE3500199320 /* UITextField+Extension.swift in Sources */,
 				4086B7B22845EBE1003CE2FF /* LLDoubleScrollViewPinController1.swift in Sources */,

@@ -28,7 +28,7 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.shareBarCode, AnyView(LBShareBarCodeView())),
         (.shareManagement, AnyView(LBShareManagementView())),
         (.shareManagement, LBShareManagementViewController.self),
-        (.bluetoothList, AnyView(LBBluetoothListView())),
+        (.bluetoothList, LBBluetoothListHostingController.self),
         (.bluetoothList, LBBluetoothListViewController.self),
 //        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
