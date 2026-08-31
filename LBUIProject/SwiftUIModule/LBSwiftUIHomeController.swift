@@ -38,6 +38,32 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         collectionView.blt.registerReusableCell(cell: LBBaseColumnListCell.self)
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        let deferResult = testDefer()
+        debugPrint("LBLog testDeferValue is \(deferResult)")
+        testCapture()
+    }
+    
+    
+    private func testDefer() -> Int{
+        var value = 10
+        defer {
+            value = 20
+            print("LBLog defer:", value)
+        }
+        return value
+    }
+    
+    private func testCapture() {
+        var a = 0
+        var b = 0
+        let closure = { [a] in
+            print("LBLog closure capture \(a), \(b)")
+        }
+
+        a = 10
+        b = 10
+        closure()
     }
 
 }

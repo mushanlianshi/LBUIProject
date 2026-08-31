@@ -51,7 +51,7 @@ class LBLivePreviewViewController: UIViewController {
             make.top.equalTo(self.titleLab.snp.bottom).offset(15)
         }
         
-        titleLab.text = "111442122323eeeeee"
+        titleLab.text = "111442122323eeeeee让人11"
         
         _ = PHLivePhotoView()
     }

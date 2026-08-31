@@ -11,10 +11,10 @@ import Combine
 class LBCombineViewModel{
     
     lazy var model = LBCombineModel.init()
-    
-    var modelSubject = PassthroughSubject<LBCombineModel?, Never>()
-    
-    var modelSubject2 = CurrentValueSubject<LBCombineModel?, Never>.init(nil)
+    ///PassthroughSubject 不缓存值，首次发送打空。
+    var modelSubject2 = PassthroughSubject<LBCombineModel?, Never>()
+    ///新订阅者自动收到当前值
+    var modelSubject = CurrentValueSubject<LBCombineModel?, Never>.init(nil)
     
     init() {
         model.name = "jaja"

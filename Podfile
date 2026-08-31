@@ -136,7 +136,7 @@ post_install do |installer|
   
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-#    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+#    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"  处理主target不能swiftUI预览的
     config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
       if target.name == 'LBPreviewHost'
         config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'

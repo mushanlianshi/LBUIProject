@@ -461,14 +461,14 @@
 }
 
 
-- (void)lb_safeObjectForKey2:(NSString *)key successBlock:(dispatch_block_t)successBlock{
+- (void)lb_safeObjectForKey2:(NSString *)key successBlock:(void(^)(id obj))successBlock{
     key = key.copy;
     __block id object = nil;
     /// 多读 异步到并发队列中去，可以做到多读
     dispatch_sync(_concurrentQueue, ^{
         object = [_dic objectForKey:key];
         if (successBlock) {
-            successBlock();
+            successBlock(object);
         }
     });
 }

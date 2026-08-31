@@ -50,6 +50,8 @@ class LBRxSwiftOrEmptyShareController: UIViewController {
     
     ///orEmpty过去掉optional的值
     func testOrEmpty() {
+        let optionalValue: String? = nil
+        
         self.textView.rx.text.orEmpty.subscribe { value in
 //            print("LBLog value is \(value)")
         } onError: { error in
@@ -112,5 +114,16 @@ class LBRxSwiftOrEmptyShareController: UIViewController {
         
         ob.drive(self.navigationItem.rx.title).disposed(by: disposeBag)
     }
+    
+    
+//年年初，国际互联网名称和编号分配公司宣布第三次顶级域名开放申请。在未开放个人注册之前，交易一个“.cn”域名不仅手续________，而且需要个人________寻找一个“单位”用于注册填写，或挂靠某个组织（比如域名注册商）完成注册。依次填入划横线部分最恰当的一项是：
+//
+//    繁琐 煞费苦心
+//
+//    烦琐 费尽心机
+//
+//    琐碎 挖空心思
+//
+//    繁杂 绞尽脑汁
 
 }

@@ -6,10 +6,17 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 
 class BLTSwiftTaskViewController: UIViewController {
+    @Published
+    var name = "123"
+    @AppStorage("testName")
+    var testName = ""
+    
+    @AppStorage("testName2")
+    var testName2: String?
     
     lazy var chainManager = BLTTaskChainManager<LLContractDetailSignBeforeModel, LLContractDetailBeforeSignCheckTask>()
     

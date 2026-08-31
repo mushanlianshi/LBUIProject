@@ -45,10 +45,13 @@ extension UIRefreshControl {
 final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl>: Subscription where SubscriberType.Input == Control {
     private var subscriber: SubscriberType?
     private let control: Control
+    /// 记录订阅的事件：cancel 时据此移除 target-action
+    private let event: UIControl.Event
 
     init(subscriber: SubscriberType, control: Control, event: UIControl.Event) {
         self.subscriber = subscriber
         self.control = control
+        self.event = event
         control.addTarget(self, action: #selector(eventHandler), for: event)
     }
 
@@ -57,6 +60,10 @@ final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl
     }
 
     func cancel() {
+        /// addTarget 对 target 是非持有引用，必须显式移除；
+        /// 否则 control 比 subscription 长寿时（复用 cell、单例 view 等），
+        /// 事件触发会调到已释放的 subscription → 野指针崩溃
+        control.removeTarget(self, action: #selector(eventHandler), for: event)
         subscriber = nil
     }
 
