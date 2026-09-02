@@ -148,6 +148,16 @@
 		4043D738303D8DC600504254 /* LBBluetoothListHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D737303D8DC200504254 /* LBBluetoothListHostingController.swift */; };
 		4043D73B303D8F3C00504254 /* LBBluetoothUIKitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D73A303D8F3C00504254 /* LBBluetoothUIKitRow.swift */; };
 		4043D73F303D8F9000504254 /* LBRefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D73E303D8F9000504254 /* LBRefreshScrollView.swift */; };
+		4043D76030457F1A00504254 /* LBCombineSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D75F30457F1A00504254 /* LBCombineSearchViewModel.swift */; };
+		4043D7A23045819700504254 /* LBCombineSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D7A13045819700504254 /* LBCombineSearchView.swift */; };
+		4043D8963046A95200504254 /* LBNetworkBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8903046A95200504254 /* LBNetworkBus.swift */; };
+		4043D8973046A95200504254 /* LBWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D88C3046A95200504254 /* LBWeatherAPI.swift */; };
+		4043D8983046A95200504254 /* LBNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8933046A95200504254 /* LBNetworkProvider.swift */; };
+		4043D8993046A95200504254 /* LBCommonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D88F3046A95200504254 /* LBCommonParameters.swift */; };
+		4043D89A3046A95200504254 /* LBNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8913046A95200504254 /* LBNetworkConfig.swift */; };
+		4043D89B3046A95200504254 /* LBNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8923046A95200504254 /* LBNetworkError.swift */; };
+		4043D89C3046A95200504254 /* LBCommonParameterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D88E3046A95200504254 /* LBCommonParameterPlugin.swift */; };
+		4043D8123046200100504254 /* LBCityCoordinateSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8113046200100504254 /* LBCityCoordinateSearchView.swift */; };
 		4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB05265F9E2400EACB2B /* AppDelegate.m */; };
 		4043EB0C265F9E2400EACB2B /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB0B265F9E2400EACB2B /* LBHomeViewController.m */; };
 		4043EB0F265F9E2400EACB2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4043EB0D265F9E2400EACB2B /* Main.storyboard */; };
@@ -777,6 +787,16 @@
 		4043D737303D8DC200504254 /* LBBluetoothListHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBluetoothListHostingController.swift; sourceTree = "<group>"; };
 		4043D73A303D8F3C00504254 /* LBBluetoothUIKitRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBluetoothUIKitRow.swift; sourceTree = "<group>"; };
 		4043D73E303D8F9000504254 /* LBRefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRefreshScrollView.swift; sourceTree = "<group>"; };
+		4043D75F30457F1A00504254 /* LBCombineSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCombineSearchViewModel.swift; sourceTree = "<group>"; };
+		4043D7A13045819700504254 /* LBCombineSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCombineSearchView.swift; sourceTree = "<group>"; };
+		4043D8113046200100504254 /* LBCityCoordinateSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCityCoordinateSearchView.swift; sourceTree = "<group>"; };
+		4043D88C3046A95200504254 /* LBWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBWeatherAPI.swift; sourceTree = "<group>"; };
+		4043D88E3046A95200504254 /* LBCommonParameterPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCommonParameterPlugin.swift; sourceTree = "<group>"; };
+		4043D88F3046A95200504254 /* LBCommonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCommonParameters.swift; sourceTree = "<group>"; };
+		4043D8903046A95200504254 /* LBNetworkBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNetworkBus.swift; sourceTree = "<group>"; };
+		4043D8913046A95200504254 /* LBNetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNetworkConfig.swift; sourceTree = "<group>"; };
+		4043D8923046A95200504254 /* LBNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNetworkError.swift; sourceTree = "<group>"; };
+		4043D8933046A95200504254 /* LBNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNetworkProvider.swift; sourceTree = "<group>"; };
 		4043EB01265F9E2400EACB2B /* LBUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4043EB04265F9E2400EACB2B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4043EB05265F9E2400EACB2B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1787,6 +1807,46 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4043D75A30457ECE00504254 /* LBSearchTextFieldView */ = {
+			isa = PBXGroup;
+			children = (
+				4043D7A13045819700504254 /* LBCombineSearchView.swift */,
+				4043D75F30457F1A00504254 /* LBCombineSearchViewModel.swift */,
+				4043D8113046200100504254 /* LBCityCoordinateSearchView.swift */,
+			);
+			path = LBSearchTextFieldView;
+			sourceTree = "<group>";
+		};
+		4043D88D3046A95200504254 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4043D88C3046A95200504254 /* LBWeatherAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4043D8943046A95200504254 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4043D88E3046A95200504254 /* LBCommonParameterPlugin.swift */,
+				4043D88F3046A95200504254 /* LBCommonParameters.swift */,
+				4043D8903046A95200504254 /* LBNetworkBus.swift */,
+				4043D8913046A95200504254 /* LBNetworkConfig.swift */,
+				4043D8923046A95200504254 /* LBNetworkError.swift */,
+				4043D8933046A95200504254 /* LBNetworkProvider.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4043D8953046A95200504254 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4043D88D3046A95200504254 /* API */,
+				4043D8943046A95200504254 /* Core */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		4043EAF8265F9E2400EACB2B = {
 			isa = PBXGroup;
 			children = (
@@ -1818,6 +1878,7 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				4043D8953046A95200504254 /* Network */,
 				40A2D3372FDBD481004A9788 /* AIProduct */,
 				40BB81992E530963002BF3AF /* 流式输出 */,
 				40E864062DF6653F00EA733B /* Test */,
@@ -3556,6 +3617,7 @@
 		40D43D0D2A67EE33001384BF /* SwiftUIModule */ = {
 			isa = PBXGroup;
 			children = (
+				4043D75A30457ECE00504254 /* LBSearchTextFieldView */,
 				408A33CD2FFDEFE300237503 /* TestList */,
 				40F5B1D82FF39F81002CCA9C /* 混合导航栏 */,
 				40F5B1CC2FF24277002CCA9C /* CustomHostController */,
@@ -4372,6 +4434,7 @@
 				40ABEB812DA3C5A400199320 /* UIFont+LBExtension.swift in Sources */,
 				4076039F2840693E0019EC69 /* LBTestRunloopViewController.m in Sources */,
 				402DEBB3279694C400B051C5 /* NSObject+LBCategory.m in Sources */,
+				4043D7A23045819700504254 /* LBCombineSearchView.swift in Sources */,
 				400E3DF526954EA800C67D52 /* LBTestLLDBViewController.m in Sources */,
 				401BEEA92A25A27300F28892 /* LBIJKPlayerController.swift in Sources */,
 				4002F58A2EFA667800774AB1 /* HYBStreamMarkdownController.m in Sources */,
@@ -4471,6 +4534,7 @@
 				400A05CE2862FB62006574B5 /* 栈溢出.swift in Sources */,
 				40BB0A5C2D5ADAEC00DFE362 /* LBAlphaAlertController.swift in Sources */,
 				40ABEB802DA3C5A400199320 /* BLTGenIconfontImage.m in Sources */,
+				4043D76030457F1A00504254 /* LBCombineSearchViewModel.swift in Sources */,
 				40ABEB542DA3BE3500199320 /* CLCalendarLayoutAttributes.swift in Sources */,
 				404E71092DCD9C3D00D8BA23 /* LBSwiftUIRefreshListView.swift in Sources */,
 				40ABEB692DA3BE3500199320 /* CLGradientLayerView.swift in Sources */,
@@ -4510,6 +4574,14 @@
 				407B52802EADE1E600FA7675 /* LBSmoothCollapsibleHeaderVC.swift in Sources */,
 				40ABEB5F2DA3BE3500199320 /* CLYearMonthDayDataPickerView.swift in Sources */,
 				40ACEE712A4960F10001BCAB /* LBAlertQueueManagerController.swift in Sources */,
+				4043D8963046A95200504254 /* LBNetworkBus.swift in Sources */,
+				4043D8973046A95200504254 /* LBWeatherAPI.swift in Sources */,
+				4043D8983046A95200504254 /* LBNetworkProvider.swift in Sources */,
+				4043D8993046A95200504254 /* LBCommonParameters.swift in Sources */,
+				4043D89A3046A95200504254 /* LBNetworkConfig.swift in Sources */,
+				4043D89B3046A95200504254 /* LBNetworkError.swift in Sources */,
+				4043D89C3046A95200504254 /* LBCommonParameterPlugin.swift in Sources */,
+				4043D8123046200100504254 /* LBCityCoordinateSearchView.swift in Sources */,
 				407603AF28409EAC0019EC69 /* LBTestTableViewSelectViewController.swift in Sources */,
 				405430D428AA358200CD3596 /* LBNotification.swift in Sources */,
 				40AE6FB329C860B700C69932 /* LBJXPagingViewController.swift in Sources */,

@@ -83,6 +83,7 @@ class LBCombineViewController: UIViewController {
     /// 表现为滚动全程沉默、停稳后才补一条；GCD 主队列不受 mode 影响
     private func bindScrollViewThrottle() {
         scrollView.publisher(for: \.contentOffset)
+//            .subscribe(on: DispatchQueue.global(priority: .background))
             .throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
             .sink { offset in
                 print("LBLog throttle 50ms contentOffset (\(Int(offset.x)), \(Int(offset.y)))")

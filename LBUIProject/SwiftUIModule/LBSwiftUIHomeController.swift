@@ -30,6 +30,7 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.shareManagement, LBShareManagementViewController.self),
         (.bluetoothList, LBBluetoothListHostingController.self),
         (.bluetoothList, LBBluetoothListViewController.self),
+        (.combineSearch, AnyView(LBCombineSearchView())),
 //        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
 
@@ -139,5 +140,6 @@ enum LBSwiftUIExampleType: String {
     case shareBarCode = "二维码配网"
     case shareManagement = "分享管理"
     case bluetoothList = "蓝牙列表"
+    case combineSearch = "天气搜索"
 //    case navigationMix = "混合导航栏"
 }
