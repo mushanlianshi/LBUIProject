@@ -8,6 +8,22 @@
 
 // import CryptoSwift
 import UIKit
+import SMSwiftBasicKit
+
+/// String 便捷版：Collection 的 safe 下标要求 String.Index，使用不友好，
+/// 这里提供 Int 下标（负数/越界返回 nil）
+/// `"hello".blt[safe: 1]` → `Optional("e")`；`"hello".blt[safe: 9]` → `nil`
+extension BLTNameSpace where Base == String {
+
+    public subscript(safe intIndex: Int) -> Character? {
+        guard intIndex >= 0,
+              let index = base.index(base.startIndex, offsetBy: intIndex, limitedBy: base.endIndex),
+              index < base.endIndex else {
+            return nil
+        }
+        return base[index]
+    }
+}
 
 extension String {
     /// 验证邮箱

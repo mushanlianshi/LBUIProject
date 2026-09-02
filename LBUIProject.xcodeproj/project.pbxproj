@@ -150,6 +150,7 @@
 		4043D73F303D8F9000504254 /* LBRefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D73E303D8F9000504254 /* LBRefreshScrollView.swift */; };
 		4043D76030457F1A00504254 /* LBCombineSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D75F30457F1A00504254 /* LBCombineSearchViewModel.swift */; };
 		4043D7A23045819700504254 /* LBCombineSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D7A13045819700504254 /* LBCombineSearchView.swift */; };
+		4043D8123046200100504254 /* LBCityCoordinateSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8113046200100504254 /* LBCityCoordinateSearchView.swift */; };
 		4043D8963046A95200504254 /* LBNetworkBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8903046A95200504254 /* LBNetworkBus.swift */; };
 		4043D8973046A95200504254 /* LBWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D88C3046A95200504254 /* LBWeatherAPI.swift */; };
 		4043D8983046A95200504254 /* LBNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8933046A95200504254 /* LBNetworkProvider.swift */; };
@@ -157,7 +158,6 @@
 		4043D89A3046A95200504254 /* LBNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8913046A95200504254 /* LBNetworkConfig.swift */; };
 		4043D89B3046A95200504254 /* LBNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8923046A95200504254 /* LBNetworkError.swift */; };
 		4043D89C3046A95200504254 /* LBCommonParameterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D88E3046A95200504254 /* LBCommonParameterPlugin.swift */; };
-		4043D8123046200100504254 /* LBCityCoordinateSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8113046200100504254 /* LBCityCoordinateSearchView.swift */; };
 		4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB05265F9E2400EACB2B /* AppDelegate.m */; };
 		4043EB0C265F9E2400EACB2B /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB0B265F9E2400EACB2B /* LBHomeViewController.m */; };
 		4043EB0F265F9E2400EACB2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4043EB0D265F9E2400EACB2B /* Main.storyboard */; };
@@ -1908,7 +1908,6 @@
 				40795CCC2786BE0B00E2A5B2 /* ImageMemory */,
 				4085464027434F2500EEEC12 /* LoadAndInitialize */,
 				401E940B2721749D00F3BAB2 /* MethodExchange */,
-				409C5BA926A19969005B8344 /* Category */,
 				404B993926831A3E00B81861 /* LBFPSManager */,
 				40BE036F2679F917000D3A70 /* TableViewNoStick */,
 				4043EB3C265F9E9400EACB2B /* TestAutoLayout */,
@@ -2711,6 +2710,8 @@
 		409DCEBD28B76E1F00699E24 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				409C5BA926A19969005B8344 /* Category */,
+				40ABEB4B2DA3BE3500199320 /* Extension */,
 				40140EE92A9F408C00B7E093 /* FDFullscreenPopGesture */,
 				401BEE8A2A259E0900F28892 /* IJKMediaFramework.framework */,
 				407B84AE2940300400AEDAEC /* BLTReverseSequence.swift */,
@@ -3053,7 +3054,6 @@
 			children = (
 				40ABEB202DA3BE3500199320 /* CLCalendar */,
 				40ABEB432DA3BE3500199320 /* Controller */,
-				40ABEB4B2DA3BE3500199320 /* Extension */,
 				40ABEB4C2DA3BE3500199320 /* LBAlertQueueViewController.swift */,
 			);
 			path = AlertQueueController;
