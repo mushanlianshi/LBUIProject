@@ -22,6 +22,7 @@ ${BUILT_PRODUCTS_DIR}/DiffableDataSources/DiffableDataSources.framework
 ${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/Dollar/Dollar.framework
+${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework
 ${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework
 ${BUILT_PRODUCTS_DIR}/FaceAware/FaceAware.framework
 ${BUILT_PRODUCTS_DIR}/GKPhotoBrowser/GKPhotoBrowser.framework

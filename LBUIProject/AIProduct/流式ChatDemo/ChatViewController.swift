@@ -54,6 +54,15 @@ final class ChatViewController: UIViewController {
     private var messages: [ChatMessage] = []
     private var bottomConstraint: NSLayoutConstraint!
 
+    // MARK: - Session（FMDB 持久化）
+
+    /// 恢复的历史会话；nil = 新会话。反射入口无参构造走默认 nil
+    var existingSession: ChatSessionModel?
+    /// 当前会话。延迟创建：首次发送消息时才建行落库，没发过消息就退出不占库
+    private var currentSession: ChatSessionModel?
+    /// 流式中每 3 拍（约 90ms）落库一次半成品
+    private var streamPersistTick = 0
+
     // MARK: - Streaming
 
     private var streamTimer: Timer?
@@ -80,6 +89,30 @@ final class ChatViewController: UIViewController {
         setupKeyboard()
         textField.delegate = self
         sendButton.addTarget(self, action: #selector(didTapSend), for: .touchUpInside)
+        setupSession()
+    }
+
+    // MARK: - Session
+    /// 历史会话：恢复消息列表；新会话：不建库，等首次发送再创建。右上角挂「历史记录」入口
+    private func setupSession() {
+        if let existing = existingSession {
+            currentSession = existing
+            messages = ChatDAO.shared.messages(sessionId: existing.id)
+            tableView.reloadData()
+            debugPrint("LBLog 恢复会话 \(existing.id)，共 \(messages.count) 条消息")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                [weak self] in
+                self?.scrollToBottom()
+            })
+        } else {
+            debugPrint("LBLog 新页面（会话延迟创建：首次发送时才落库）")
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "历史记录", style: .plain, target: self, action: #selector(openHistory))
+    }
+
+
+    @objc private func openHistory() {
+        navigationController?.pushViewController(ChatSessionListViewController(), animated: true)
     }
 
     // MARK: - Setup
@@ -164,6 +197,12 @@ final class ChatViewController: UIViewController {
         tableView.insertRows(at: [IndexPath(row: messages.count - 1, section: 0)], with: .none)
         scrollToBottom()
 
+        // 持久化：惰性建会话（首次发送时才创建并落库）+ 用户消息入库 + 写会话标题
+        let session = currentSession ?? ChatDAO.shared.createSession()
+        currentSession = session
+        ChatDAO.shared.insertMessage(sessionId: session.id, message: userMsg)
+        ChatDAO.shared.updateTitle(sessionId: session.id, title: String(text.prefix(20)))
+
         // 开始流式回复
         startStreaming()
     }
@@ -178,12 +217,16 @@ final class ChatViewController: UIViewController {
             messages.append(msg)
             tableView.insertRows(at: [IndexPath(row: messages.count - 1, section: 0)], with: .none)
             scrollToBottom()
+            if let session = currentSession {
+                ChatDAO.shared.insertMessage(sessionId: session.id, message: msg)
+            }
             return
         }
 
         streamChars = Array(content)
         streamIndex = 0
         lastUIUpdate = 0
+        streamPersistTick = 0
 
         let msg = ChatMessage(role: .assistant, text: "", isStreaming: true)
         messages.append(msg)
@@ -204,6 +247,16 @@ final class ChatViewController: UIViewController {
             let partial = String(self.streamChars[0..<end])
             self.streamingMessage?.text = partial
 
+            // 每 3 拍（约 90ms）落库一次半成品（INSERT OR REPLACE 幂等），
+            // 流式中杀 App 也能恢复到最近一拍；终态在流式结束时统一落库
+            self.streamPersistTick += 1
+            if self.streamPersistTick >= 3 {
+                self.streamPersistTick = 0
+                if let streaming = self.streamingMessage, let session = self.currentSession {
+                    ChatDAO.shared.upsertMessage(sessionId: session.id, message: streaming)
+                }
+            }
+
             // 节流更新 UI
             let now = CACurrentMediaTime()
             if now - self.lastUIUpdate >= self.uiThrottle || end >= self.streamChars.count {
@@ -216,6 +269,10 @@ final class ChatViewController: UIViewController {
                 timer.invalidate()
                 self.streamTimer = nil
                 self.streamingMessage?.isStreaming = false
+                // 终态落库（含当前缓存高度；结束后 WebView 高度修正会再 upsert 一次）
+                if let streaming = self.streamingMessage, let session = self.currentSession {
+                    ChatDAO.shared.upsertMessage(sessionId: session.id, message: streaming)
+                }
                 // 注意：最后一拍已在上面的节流分支（end>=count 命中）渲染过一次，
                 // 这里不再重复调用 updateStreamingCell，避免对同一全文触发两次
                 // WebView 渲染与两次异步高度回传，从而引发结尾抖动。
@@ -243,10 +300,15 @@ final class ChatViewController: UIViewController {
         // 不再逐帧重排 + 追底，从而消除“最后一点流式内容抖动/往上顶”。 或则结束的时候刷新高度, 如果结束的时候是链接，高度突然变小，要刷新高度
         guard height > messages[row].renderedHeight + 10 || messages[row].isStreaming == false else { return }
         messages[row].renderedHeight = height
+        // 终态后的高度修正同步落库（流式中不写，由每 3 拍/终态统一负责）
+        if !messages[row].isStreaming, let session = currentSession {
+            ChatDAO.shared.upsertMessage(sessionId: session.id, message: messages[row])
+        }
         UIView.performWithoutAnimation {
             tableView.beginUpdates()
             tableView.endUpdates()
         }
+
         // 用 stickToBottom（由用户滚动意图维护），不依赖重排瞬间的 offset，
         // 避免单次高度增量大时被误判为“已离开底部”而停止滚动。
         if stickToBottom && isNearBottom() {
@@ -260,6 +322,8 @@ final class ChatViewController: UIViewController {
         guard !messages.isEmpty else { return }
         let ip = IndexPath(row: messages.count - 1, section: 0)
         guard tableView.numberOfRows(inSection: 0) > ip.row else { return }
+        // 先完成未定的布局（行高修正等），contentSize 稳定后再滚，避免滚到旧高度位置
+        tableView.layoutIfNeeded()
         tableView.scrollToRow(at: ip, at: .bottom, animated: animated)
         debugPrint("LBLog scrollToBottom -------------------------------")
     }
@@ -332,6 +396,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: AssistantMarkdownCell.reuseId, for: indexPath) as! AssistantMarkdownCell
             // 直接用已存储的完整文本重新渲染 —— cell 复用后永远不空白；
             // 高度变化通过 onHeight 回调异步上报
+            debugPrint("LBLog role is agent \(indexPath.row) \(msg.renderedHeight)")
             cell.configure(message: msg) { [weak self] height in
                 self?.handleAssistantHeight(msg: msg, height: height)
             }

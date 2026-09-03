@@ -10,6 +10,8 @@ import WebKit
 /// - 渲染高度由 WebView 异步回传（字体加载、流式增量都会触发），
 ///   通过 `onHeight` 回调告诉 ViewController 更新行高并决定是否滚动。
 final class AssistantMarkdownCell: UITableViewCell {
+    
+    private var message: ChatMessage?
 
     static let reuseId = "AssistantMarkdownCell"
 
@@ -57,6 +59,11 @@ final class AssistantMarkdownCell: UITableViewCell {
 
         // WebView 渲染出内容高度后：先更新自身约束，再通知外层
         webView.onHeight = { [weak self] height in
+            /// 历史记录有高度的，就不在回调了，防止闪烁
+            if let msg = self?.message, msg.isFromHistory, msg.renderedHeight > height{
+                return
+            }
+            debugPrint("LBLog height is \(height)")
             self?.heightConstraint.constant = height
             self?.onHeight?(height)
         }
@@ -71,6 +78,10 @@ final class AssistantMarkdownCell: UITableViewCell {
     /// 用完整 markdown 文本配置 cell（首次显示或 cell 复用时调用）
     /// - Parameter onHeight: 渲染高度变化时的回调，用于更新 UITableView 行高
     func configure(message: ChatMessage, onHeight: @escaping (CGFloat) -> Void) {
+        self.message = message
+        if message.renderedHeight > 0, message.isStreaming == false{
+            self.heightConstraint.constant = height
+        }
         self.onHeight = onHeight
         webView.renderMarkdown(message.text)
     }

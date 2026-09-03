@@ -115,6 +115,8 @@ target 'LBUIProject' do
 #  pod 'Down'
   pod 'DTCoreText'
   pod 'MMMarkdown'
+  #聊天会话记录持久化（流式ChatDemo）
+  pod 'FMDB'
   pod 'FLEX', :configurations => ['Debug']
   target 'LBUIProjectTests' do
     inherit! :search_paths

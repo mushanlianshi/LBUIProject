@@ -98,6 +98,11 @@ PODS:
     - DTFoundation/Core
   - FaceAware (2.1.0)
   - FLEX (5.22.10)
+  - FMDB (2.7.12):
+    - FMDB/standard (= 2.7.12)
+  - FMDB/Core (2.7.12)
+  - FMDB/standard (2.7.12):
+    - FMDB/Core
   - FSPagerView (0.8.3)
   - GKPhotoBrowser (2.6.3):
     - GKPhotoBrowser/Default (= 2.6.3)
@@ -646,6 +651,7 @@ DEPENDENCIES:
   - DTCoreText
   - FaceAware
   - FLEX
+  - FMDB
   - FSPagerView (from `https://github.com/WenchaoD/FSPagerView`)
   - GKPhotoBrowser (= 2.6.3)
   - GPUImage (= 0.1.7)
@@ -719,6 +725,7 @@ SPEC REPOS:
     - DTFoundation
     - FaceAware
     - FLEX
+    - FMDB
     - GKPhotoBrowser
     - GKSliderView
     - GPUImage
@@ -817,6 +824,7 @@ SPEC CHECKSUMS:
   DTFoundation: 76b624967cf5bcaae6bb057d622c536c36ef36d0
   FaceAware: f1266b8719a1a90da3d763b8cb428554edf0fa61
   FLEX: f21ee4f498eed3f8a1eded66b21939fd3b7a22ce
+  FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
   FSPagerView: c96bcaff1f251d593c91df47f64a3b237568bcd1
   GKPhotoBrowser: 97f41f9349c1c74bb9ef742ff40840b57b347d1b
   GKSliderView: 7c6f853afeb0ae370bb8dce76ec669d6e9109d1d
@@ -877,6 +885,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: cef6141989cef5b4b225279589610f475835aadf
+PODFILE CHECKSUM: 65feb75d28d7ec784b5aeaf6b07de53cea7e3d39
 
 COCOAPODS: 1.16.2

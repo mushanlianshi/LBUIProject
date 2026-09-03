@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		09BF6C6A1885141F37570A04 /* Pods_LBUIProject_LBUIProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC5BF20E87113CBB81D038E /* Pods_LBUIProject_LBUIProjectUITests.framework */; };
+		0DE65A1BB52AAA77DF761BFC /* Pods_LBUIProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; };
 		4002F5802EF8E7F300774AB1 /* LBUserDeraultPropertyWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002F57F2EF8E7F300774AB1 /* LBUserDeraultPropertyWrapped.swift */; };
 		4002F5842EF93C3200774AB1 /* HYBStreamContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4002F5832EF93C3200774AB1 /* HYBStreamContentModel.m */; };
 		4002F5872EFA661700774AB1 /* HYBStreamMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4002F5862EFA661700774AB1 /* HYBStreamMarkdownParser.m */; };
@@ -82,6 +83,21 @@
 		4022FB2A3010A8440058B3E4 /* MarkdownStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022FB233010A8440058B3E4 /* MarkdownStyle.swift */; };
 		4022FB2B3010A8440058B3E4 /* ChatWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022FB213010A8440058B3E4 /* ChatWebView.swift */; };
 		4022FB2C3010A8440058B3E4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022FB203010A8440058B3E4 /* ChatViewController.swift */; };
+		4043D9013047000100504254 /* ChatDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9003047000100504254 /* ChatDatabase.swift */; };
+		4043D9033047000100504254 /* ChatDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9023047000100504254 /* ChatDAO.swift */; };
+		4043D9053047000100504254 /* ChatSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9043047000100504254 /* ChatSessionModel.swift */; };
+		4043D9073047000100504254 /* ChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9063047000100504254 /* ChatSessionListViewController.swift */; };
+		4043D9083047000100504254 /* ChatStore */ = {
+			isa = PBXGroup;
+			children = (
+				4043D9003047000100504254 /* ChatDatabase.swift */,
+				4043D9023047000100504254 /* ChatDAO.swift */,
+				4043D9043047000100504254 /* ChatSessionModel.swift */,
+				4043D9063047000100504254 /* ChatSessionListViewController.swift */,
+			);
+			path = ChatStore;
+			sourceTree = "<group>";
+		};
 		4022FB2D3010A8440058B3E4 /* KaTeX_SansSerif-Italic.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 4022FB0D3010A8440058B3E4 /* KaTeX_SansSerif-Italic.woff2 */; };
 		4022FB2E3010A8440058B3E4 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 4022FB193010A8440058B3E4 /* katex.min.js */; };
 		4022FB2F3010A8440058B3E4 /* marked.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 4022FB1A3010A8440058B3E4 /* marked.min.js */; };
@@ -553,7 +569,7 @@
 		40F5B1DC2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */; };
 		40F5B1DE2FF3A000002CCA9C /* LBNavigationMixRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */; };
 		40F9FA452DF1816600D5D736 /* LBAIAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */; };
-		40FAE36A2FDBC5AA00861B79 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
@@ -666,6 +682,10 @@
 		400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBSegemtnScrollViewController.m; sourceTree = "<group>"; };
 		400F8AF82ECD5ED7004E99F6 /* LBMarkdownStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMarkdownStreamViewController.swift; sourceTree = "<group>"; };
 		400F8AFB2ECDB781004E99F6 /* LBChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBChatViewController.swift; sourceTree = "<group>"; };
+		4043D9003047000100504254 /* ChatDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDatabase.swift; sourceTree = "<group>"; };
+		4043D9023047000100504254 /* ChatDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDAO.swift; sourceTree = "<group>"; };
+		4043D9043047000100504254 /* ChatSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionModel.swift; sourceTree = "<group>"; };
+		4043D9063047000100504254 /* ChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewController.swift; sourceTree = "<group>"; };
 		400F8AFD2ECDB7AF004E99F6 /* LBChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBChatCell.swift; sourceTree = "<group>"; };
 		400F8AFF2ECDB7E9004E99F6 /* MarkdownStreamingParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStreamingParser.swift; sourceTree = "<group>"; };
 		400F8B012ECDB80E004E99F6 /* LBChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBChatMessage.swift; sourceTree = "<group>"; };
@@ -1286,7 +1306,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -1296,7 +1316,18 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = LBPreviewHost; sourceTree = "<group>"; };
+		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = LBPreviewHost;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1329,6 +1360,7 @@
 				401BEE8F2A259E2400F28892 /* libz.tbd in Frameworks */,
 				401BEE8D2A259E1800F28892 /* libc++.tbd in Frameworks */,
 				401BEE8B2A259E0900F28892 /* IJKMediaFramework.framework in Frameworks */,
+				0DE65A1BB52AAA77DF761BFC /* Pods_LBUIProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1642,6 +1674,7 @@
 				4022FB223010A8440058B3E4 /* LBMarkdownParser.swift */,
 				4022FB233010A8440058B3E4 /* MarkdownStyle.swift */,
 				4022FB243010A8440058B3E4 /* UserBubbleCell.swift */,
+				4043D9083047000100504254 /* ChatStore */,
 			);
 			path = "流式ChatDemo";
 			sourceTree = "<group>";
@@ -4094,7 +4127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FAE36A2FDBC5AA00861B79 /* (null) in Resources */,
+				40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4236,13 +4269,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4301,13 +4330,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4322,13 +4347,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4365,13 +4386,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4386,13 +4403,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4811,6 +4824,10 @@
 				4022FB2A3010A8440058B3E4 /* MarkdownStyle.swift in Sources */,
 				4022FB2B3010A8440058B3E4 /* ChatWebView.swift in Sources */,
 				4022FB2C3010A8440058B3E4 /* ChatViewController.swift in Sources */,
+				4043D9013047000100504254 /* ChatDatabase.swift in Sources */,
+				4043D9033047000100504254 /* ChatDAO.swift in Sources */,
+				4043D9053047000100504254 /* ChatSessionModel.swift in Sources */,
+				4043D9073047000100504254 /* ChatSessionListViewController.swift in Sources */,
 				40ACEE732A49A0340001BCAB /* EKAttributes+LBExtension.swift in Sources */,
 				40BB0A5A2D5ADA3100DFE362 /* LBChangeIconWithoutAlertController.swift in Sources */,
 				40B4A0C22A6FD6F200D02BB4 /* BLTCollectionDecorationFlowLayout.swift in Sources */,
