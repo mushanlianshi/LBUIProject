@@ -9,6 +9,45 @@ import Foundation
 import SMSwiftBasicKit
 
 
+// MARK: - 原地合并（mutating，2026/9/2 新增）
+/// mutating 方法无法挂在 .blt 命名空间上：BLTNameSpace.base 是 let 属性，
+/// 且 Dictionary 是 struct，`dict.blt` 持有的是拷贝——改 base 影响不到原字典。
+/// 故直接 extension Dictionary（与上方非 mutating 的 addEntriesFromDic 区分：
+/// 那个返回新字典，本组方法原地修改）。
+/// 标准库 merge(_:uniquingKeysWith:) 每次都要传闭包，这里提供免闭包便捷版
+public extension Dictionary {
+
+    /// 原地合并另一个字典，key 冲突时新值覆盖旧值（对齐 OC addEntriesFromDictionary 语义）
+    ///
+    /// 用法：
+    /// var dict = ["a": 1, "b": 2]
+    /// dict.bltMerge(["b": 99, "c": 3])
+    /// // dict == ["a": 1, "b": 99, "c": 3]
+    mutating func bltMerge(_ other: [Key: Value]) {
+        other.forEach { self[$0.key] = $0.value }
+    }
+
+    /// 原地合并键值对序列（元组数组等），同样新覆盖旧
+    ///
+    /// 用法：`dict.bltMerge([("k1", 1), ("k2", 2)])`
+    mutating func bltMerge<S: Sequence>(_ pairs: S) where S.Element == (Key, Value) {
+        pairs.forEach { self[$0.0] = $0.1 }
+    }
+
+    /// 原地合并，key 冲突时保留旧值（与 bltMerge 覆盖策略相反，按需选用）
+    ///
+    /// 用法：
+    /// var dict = ["a": 1]
+    /// dict.bltMergeKeepingCurrent(["a": 99, "b": 2])
+    /// // dict == ["a": 1, "b": 2]
+    mutating func bltMergeKeepingCurrent(_ other: [Key: Value]) {
+        for (key, value) in other where self[key] == nil {
+            self[key] = value
+        }
+    }
+}
+
+
 ///项目中都是String
 extension BLTNameSpace where Base == Dictionary<String, Any>{
     public func addEntries(from otherDictionary: [String : Any]?) -> [String : Any]{
