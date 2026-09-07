@@ -32,6 +32,8 @@
 	<string>方便你与人更快捷的沟通</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>以便于检测网络状态并为您提供合适的内容</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 	<key>NSLocalizedDescription</key>
 	<string>使用推送服务</string>
 	<key>NSLocationAlwaysUsageDescription</key>

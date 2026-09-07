@@ -122,6 +122,20 @@ struct B{
     [self testCompareStringVersion];
     return YES;
 }
+
+/// 外部 URL 回跳入口：点击灵动岛/锁屏 Live Activity（widgetURL lbuiproject://delivery）、
+/// 其他 App 唤起本 App 都走这里。
+/// 必须实现：Info.plist 配置了 LSSupportsOpeningDocumentsInPlace，
+/// 系统要求 delegate 响应 openURL，缺失会抛 NSInternalInconsistencyException 直接崩溃
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    NSLog(@"LBLog openURL %@ options %@", url.absoluteString, options);
+    if ([url.scheme isEqualToString:@"lbuiproject"]) {
+        // 外卖配送灵动岛/锁屏卡片深链：lbuiproject://deliveryDetail?orderID=xxx
+        // 由 Router 解析订单号，切到「SwiftUI」Tab 并 push 对应订单详情页
+        [LBDeliveryDeepLinkRouter handleOpenURL:url];
+    }
+    return YES;
+}
 //typedef NS_CLOSED_ENUM(NSInteger, NSComparisonResult) {
 //    NSOrderedAscending = -1L,
 //    NSOrderedSame,

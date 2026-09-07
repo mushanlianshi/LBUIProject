@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -83,21 +83,6 @@
 		4022FB2A3010A8440058B3E4 /* MarkdownStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022FB233010A8440058B3E4 /* MarkdownStyle.swift */; };
 		4022FB2B3010A8440058B3E4 /* ChatWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022FB213010A8440058B3E4 /* ChatWebView.swift */; };
 		4022FB2C3010A8440058B3E4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022FB203010A8440058B3E4 /* ChatViewController.swift */; };
-		4043D9013047000100504254 /* ChatDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9003047000100504254 /* ChatDatabase.swift */; };
-		4043D9033047000100504254 /* ChatDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9023047000100504254 /* ChatDAO.swift */; };
-		4043D9053047000100504254 /* ChatSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9043047000100504254 /* ChatSessionModel.swift */; };
-		4043D9073047000100504254 /* ChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9063047000100504254 /* ChatSessionListViewController.swift */; };
-		4043D9083047000100504254 /* ChatStore */ = {
-			isa = PBXGroup;
-			children = (
-				4043D9003047000100504254 /* ChatDatabase.swift */,
-				4043D9023047000100504254 /* ChatDAO.swift */,
-				4043D9043047000100504254 /* ChatSessionModel.swift */,
-				4043D9063047000100504254 /* ChatSessionListViewController.swift */,
-			);
-			path = ChatStore;
-			sourceTree = "<group>";
-		};
 		4022FB2D3010A8440058B3E4 /* KaTeX_SansSerif-Italic.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 4022FB0D3010A8440058B3E4 /* KaTeX_SansSerif-Italic.woff2 */; };
 		4022FB2E3010A8440058B3E4 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 4022FB193010A8440058B3E4 /* katex.min.js */; };
 		4022FB2F3010A8440058B3E4 /* marked.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 4022FB1A3010A8440058B3E4 /* marked.min.js */; };
@@ -174,6 +159,13 @@
 		4043D89A3046A95200504254 /* LBNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8913046A95200504254 /* LBNetworkConfig.swift */; };
 		4043D89B3046A95200504254 /* LBNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D8923046A95200504254 /* LBNetworkError.swift */; };
 		4043D89C3046A95200504254 /* LBCommonParameterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D88E3046A95200504254 /* LBCommonParameterPlugin.swift */; };
+		4043D9013047000100504254 /* ChatDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9003047000100504254 /* ChatDatabase.swift */; };
+		4043D9033047000100504254 /* ChatDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9023047000100504254 /* ChatDAO.swift */; };
+		4043D9053047000100504254 /* ChatSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9043047000100504254 /* ChatSessionModel.swift */; };
+		4043D9073047000100504254 /* ChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043D9063047000100504254 /* ChatSessionListViewController.swift */; };
+		4043DA113047000100504254 /* LBDeliveryWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043DA0E3047000100504254 /* LBDeliveryWidgetBundle.swift */; };
+		4043DA123047000100504254 /* LBDeliveryLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043DA0F3047000100504254 /* LBDeliveryLiveActivity.swift */; };
+		4043DA183047000100504254 /* LBDeliveryWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4043DA053047000100504254 /* LBDeliveryWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4043EB06265F9E2400EACB2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB05265F9E2400EACB2B /* AppDelegate.m */; };
 		4043EB0C265F9E2400EACB2B /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043EB0B265F9E2400EACB2B /* LBHomeViewController.m */; };
 		4043EB0F265F9E2400EACB2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4043EB0D265F9E2400EACB2B /* Main.storyboard */; };
@@ -540,6 +532,11 @@
 		40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */; };
 		40E354B52E43244D00B36FF4 /* LBTextSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E354B42E43244D00B36FF4 /* LBTextSplitter.m */; };
 		40E354B72E43253700B36FF4 /* testLongText.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E354B62E43253700B36FF4 /* testLongText.txt */; };
+		40E3A81A304E50DC004D71CF /* LBDeliverySimulateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A818304E50DC004D71CF /* LBDeliverySimulateViewController.swift */; };
+		40E3A820304E50DC004D71CF /* DeliveryActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */; };
+		40E3A822304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */; };
+		40E3A81B304E50DC004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
+		40E3A81C304E5149004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
 		40E864092DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */; };
 		40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1884294728410003F457 /* LBGrayViewController.swift */; };
@@ -585,6 +582,20 @@
 			remoteGlobalIDString = 40356F74286BE89700561E00;
 			remoteInfo = FilterMessage;
 		};
+		4043DA063047000100504254 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4043EAF9265F9E2400EACB2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4043DA043047000100504254;
+			remoteInfo = LBDeliveryWidget;
+		};
+		4043DA223047000200504254 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4043DA213047000200504254 /* Pods.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE185A3F2532A574A7A8070BE688E657;
+			remoteInfo = "Pods-LBUIProject";
+		};
 		4043EB1D265F9E2700EACB2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4043EAF9265F9E2400EACB2B /* Project object */;
@@ -609,6 +620,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				40356F7D286BE89700561E00 /* FilterMessage.appex in Embed App Extensions */,
+				4043DA183047000100504254 /* LBDeliveryWidget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,10 +694,6 @@
 		400E3E9A2695879A00C67D52 /* LBSegemtnScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBSegemtnScrollViewController.m; sourceTree = "<group>"; };
 		400F8AF82ECD5ED7004E99F6 /* LBMarkdownStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMarkdownStreamViewController.swift; sourceTree = "<group>"; };
 		400F8AFB2ECDB781004E99F6 /* LBChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBChatViewController.swift; sourceTree = "<group>"; };
-		4043D9003047000100504254 /* ChatDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDatabase.swift; sourceTree = "<group>"; };
-		4043D9023047000100504254 /* ChatDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDAO.swift; sourceTree = "<group>"; };
-		4043D9043047000100504254 /* ChatSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionModel.swift; sourceTree = "<group>"; };
-		4043D9063047000100504254 /* ChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewController.swift; sourceTree = "<group>"; };
 		400F8AFD2ECDB7AF004E99F6 /* LBChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBChatCell.swift; sourceTree = "<group>"; };
 		400F8AFF2ECDB7E9004E99F6 /* MarkdownStreamingParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStreamingParser.swift; sourceTree = "<group>"; };
 		400F8B012ECDB80E004E99F6 /* LBChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBChatMessage.swift; sourceTree = "<group>"; };
@@ -817,6 +825,15 @@
 		4043D8913046A95200504254 /* LBNetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNetworkConfig.swift; sourceTree = "<group>"; };
 		4043D8923046A95200504254 /* LBNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNetworkError.swift; sourceTree = "<group>"; };
 		4043D8933046A95200504254 /* LBNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNetworkProvider.swift; sourceTree = "<group>"; };
+		4043D9003047000100504254 /* ChatDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDatabase.swift; sourceTree = "<group>"; };
+		4043D9023047000100504254 /* ChatDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDAO.swift; sourceTree = "<group>"; };
+		4043D9043047000100504254 /* ChatSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionModel.swift; sourceTree = "<group>"; };
+		4043D9063047000100504254 /* ChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewController.swift; sourceTree = "<group>"; };
+		4043DA053047000100504254 /* LBDeliveryWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LBDeliveryWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4043DA213047000200504254 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		4043DA0D3047000100504254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4043DA0E3047000100504254 /* LBDeliveryWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryWidgetBundle.swift; sourceTree = "<group>"; };
+		4043DA0F3047000100504254 /* LBDeliveryLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryLiveActivity.swift; sourceTree = "<group>"; };
 		4043EB01265F9E2400EACB2B /* LBUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4043EB04265F9E2400EACB2B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4043EB05265F9E2400EACB2B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1253,6 +1270,10 @@
 		40E354B32E43244D00B36FF4 /* LBTextSplitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTextSplitter.h; sourceTree = "<group>"; };
 		40E354B42E43244D00B36FF4 /* LBTextSplitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTextSplitter.m; sourceTree = "<group>"; };
 		40E354B62E43253700B36FF4 /* testLongText.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testLongText.txt; sourceTree = "<group>"; };
+		40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryAttributes.swift; sourceTree = "<group>"; };
+		40E3A818304E50DC004D71CF /* LBDeliverySimulateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliverySimulateViewController.swift; sourceTree = "<group>"; };
+		40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryActivityManager.swift; sourceTree = "<group>"; };
+		40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryOrderDetailViewController.swift; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
 		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController2222.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController2222.h; sourceTree = "<group>"; };
 		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController2222.m; sourceTree = "<group>"; };
@@ -1306,7 +1327,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */ = {
+		408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -1316,22 +1337,18 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */,
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = LBPreviewHost;
-			sourceTree = "<group>";
-		};
+		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = LBPreviewHost; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		40356F72286BE89700561E00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043DA023047000100504254 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1344,7 +1361,6 @@
 			files = (
 				40A2D4E72FE3D246004A9788 /* Down in Frameworks */,
 				401BEEA52A259E7F00F28892 /* VideoToolbox.framework in Frameworks */,
-				40D023492E4DC8D00045F83C /* LBCombineFramewrok.framework in Frameworks */,
 				401BEEA32A259E7900F28892 /* QuartzCore.framework in Frameworks */,
 				401BEEA12A259E7200F28892 /* OpenGLES.framework in Frameworks */,
 				401BEE9F2A259E6C00F28892 /* MobileCoreServices.framework in Frameworks */,
@@ -1359,7 +1375,6 @@
 				401BEE912A259E2D00F28892 /* libbz2.tbd in Frameworks */,
 				401BEE8F2A259E2400F28892 /* libz.tbd in Frameworks */,
 				401BEE8D2A259E1800F28892 /* libc++.tbd in Frameworks */,
-				401BEE8B2A259E0900F28892 /* IJKMediaFramework.framework in Frameworks */,
 				0DE65A1BB52AAA77DF761BFC /* Pods_LBUIProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1880,6 +1895,27 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		4043D9083047000100504254 /* ChatStore */ = {
+			isa = PBXGroup;
+			children = (
+				4043D9003047000100504254 /* ChatDatabase.swift */,
+				4043D9023047000100504254 /* ChatDAO.swift */,
+				4043D9043047000100504254 /* ChatSessionModel.swift */,
+				4043D9063047000100504254 /* ChatSessionListViewController.swift */,
+			);
+			path = ChatStore;
+			sourceTree = "<group>";
+		};
+		4043DA0C3047000100504254 /* LBDeliveryWidget */ = {
+			isa = PBXGroup;
+			children = (
+				4043DA0E3047000100504254 /* LBDeliveryWidgetBundle.swift */,
+				4043DA0F3047000100504254 /* LBDeliveryLiveActivity.swift */,
+				4043DA0D3047000100504254 /* Info.plist */,
+			);
+			path = LBDeliveryWidget;
+			sourceTree = "<group>";
+		};
 		4043EAF8265F9E2400EACB2B = {
 			isa = PBXGroup;
 			children = (
@@ -1887,6 +1923,7 @@
 				4043EB03265F9E2400EACB2B /* LBUIProject */,
 				4043EB1F265F9E2700EACB2B /* LBUIProjectTests */,
 				4043EB2A265F9E2700EACB2B /* LBUIProjectUITests */,
+				4043DA0C3047000100504254 /* LBDeliveryWidget */,
 				40356F76286BE89700561E00 /* FilterMessage */,
 				40F1CD032A317CBC00A8066C /* LBWidget */,
 				408A33D72FFDF75F00237503 /* LBPreviewHost */,
@@ -1903,6 +1940,7 @@
 				4043EB1C265F9E2700EACB2B /* LBUIProjectTests.xctest */,
 				4043EB27265F9E2700EACB2B /* LBUIProjectUITests.xctest */,
 				40356F75286BE89700561E00 /* FilterMessage.appex */,
+				4043DA053047000100504254 /* LBDeliveryWidget.appex */,
 				408A33D62FFDF75F00237503 /* LBPreviewHost.app */,
 			);
 			name = Products;
@@ -1911,6 +1949,7 @@
 		4043EB03265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXGroup;
 			children = (
+				40E3A819304E50DC004D71CF /* LBDelivery */,
 				4043D8953046A95200504254 /* Network */,
 				40A2D3372FDBD481004A9788 /* AIProduct */,
 				40BB81992E530963002BF3AF /* 流式输出 */,
@@ -3786,6 +3825,17 @@
 			path = "圆角带阴影mask";
 			sourceTree = "<group>";
 		};
+		40E3A819304E50DC004D71CF /* LBDelivery */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */,
+				40E3A818304E50DC004D71CF /* LBDeliverySimulateViewController.swift */,
+				40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */,
+				40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */,
+			);
+			path = LBDelivery;
+			sourceTree = "<group>";
+		};
 		40E6C5442D79769E0067FB8C /* Codable */ = {
 			isa = PBXGroup;
 			children = (
@@ -3973,6 +4023,23 @@
 			productReference = 40356F75286BE89700561E00 /* FilterMessage.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		4043DA043047000100504254 /* LBDeliveryWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4043DA0B3047000100504254 /* Build configuration list for PBXNativeTarget "LBDeliveryWidget" */;
+			buildPhases = (
+				4043DA013047000100504254 /* Sources */,
+				4043DA023047000100504254 /* Frameworks */,
+				4043DA033047000100504254 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LBDeliveryWidget;
+			productName = LBDeliveryWidget;
+			productReference = 4043DA053047000100504254 /* LBDeliveryWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4043EB00265F9E2400EACB2B /* LBUIProject */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4043EB30265F9E2700EACB2B /* Build configuration list for PBXNativeTarget "LBUIProject" */;
@@ -3991,6 +4058,8 @@
 			);
 			dependencies = (
 				40356F7B286BE89700561E00 /* PBXTargetDependency */,
+				4043DA073047000100504254 /* PBXTargetDependency */,
+				4043DA233047000200504254 /* PBXTargetDependency */,
 			);
 			name = LBUIProject;
 			packageProductDependencies = (
@@ -4076,6 +4145,9 @@
 					40356F74286BE89700561E00 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					4043DA043047000100504254 = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					4043EB00265F9E2400EACB2B = {
 						CreatedOnToolsVersion = 12.3;
 						LastSwiftMigration = 1230;
@@ -4117,6 +4189,7 @@
 				4043EB1B265F9E2700EACB2B /* LBUIProjectTests */,
 				4043EB26265F9E2700EACB2B /* LBUIProjectUITests */,
 				40356F74286BE89700561E00 /* FilterMessage */,
+				4043DA043047000100504254 /* LBDeliveryWidget */,
 				408A33D52FFDF75F00237503 /* LBPreviewHost */,
 			);
 		};
@@ -4127,7 +4200,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */,
+				40FAE36A2FDBC5AA00861B79 /* (null) in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043DA033047000100504254 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4269,9 +4349,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4330,9 +4414,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4347,9 +4435,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4386,9 +4478,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4403,9 +4499,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4420,6 +4520,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				40356F78286BE89700561E00 /* MessageFilterExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4043DA013047000100504254 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40E3A81C304E5149004D71CF /* LBDeliveryAttributes.swift in Sources */,
+				4043DA113047000100504254 /* LBDeliveryWidgetBundle.swift in Sources */,
+				4043DA123047000100504254 /* LBDeliveryLiveActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4869,6 +4979,10 @@
 				405820672A6E2580004252CB /* LBLivePreviewViewController.swift in Sources */,
 				409DCEC028B76E5500699E24 /* LBCustomQueueManager.swift in Sources */,
 				40B4A0CD2A7210A000D02BB4 /* LBResponderTransferViewController.swift in Sources */,
+				40E3A81A304E50DC004D71CF /* LBDeliverySimulateViewController.swift in Sources */,
+				40E3A820304E50DC004D71CF /* DeliveryActivityManager.swift in Sources */,
+				40E3A822304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift in Sources */,
+				40E3A81B304E50DC004D71CF /* LBDeliveryAttributes.swift in Sources */,
 				406B18792D2E4688003ED486 /* LBCombineModel.swift in Sources */,
 				40C20B4A298A095500B23342 /* LBTestHitViewController.swift in Sources */,
 				400A05BE2861A386006574B5 /* UIControl+LBPublisher.swift in Sources */,
@@ -4929,6 +5043,15 @@
 			isa = PBXTargetDependency;
 			target = 40356F74286BE89700561E00 /* FilterMessage */;
 			targetProxy = 40356F7A286BE89700561E00 /* PBXContainerItemProxy */;
+		};
+		4043DA073047000100504254 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4043DA043047000100504254 /* LBDeliveryWidget */;
+			targetProxy = 4043DA063047000100504254 /* PBXContainerItemProxy */;
+		};
+		4043DA233047000200504254 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			targetProxy = 4043DA223047000200504254 /* PBXContainerItemProxy */;
 		};
 		4043EB1E265F9E2700EACB2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5028,6 +5151,97 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123.FilterMessage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4043DA083047000100504254 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123.LBDeliveryWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4043DA093047000100504254 /* custom_debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123.LBDeliveryWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = custom_debug;
+		};
+		4043DA0A3047000100504254 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6FYSH5LF5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123.LBDeliveryWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -5188,6 +5402,7 @@
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "-o runtime --runtime-version $DEPLOYMENT_TARGET";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework IJKMediaFramework -framework LBCombineFramewrok";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5235,6 +5450,7 @@
 				);
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework IJKMediaFramework -framework LBCombineFramewrok";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5428,6 +5644,7 @@
 				);
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework IJKMediaFramework -framework LBCombineFramewrok";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5630,6 +5847,16 @@
 				40356F7E286BE89700561E00 /* Debug */,
 				406298FC288FEB74006A3024 /* custom_debug */,
 				40356F7F286BE89700561E00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4043DA0B3047000100504254 /* Build configuration list for PBXNativeTarget "LBDeliveryWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4043DA083047000100504254 /* Debug */,
+				4043DA093047000100504254 /* custom_debug */,
+				4043DA0A3047000100504254 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

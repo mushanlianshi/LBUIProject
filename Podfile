@@ -79,7 +79,7 @@ target 'LBUIProject' do
   pod 'NVActivityIndicatorView', '= 5.1.1'
   #修改了源码   不能升级
   pod 'SwipeTableView', '= 0.2.6'
-  pod 'WechatOpenSDK', '2.0.2'
+  #pod 'WechatOpenSDK', '2.0.2'  # 2026/9/7 移除：主工程零使用；且 2.0.2 无模拟器 arm64 切片，阻断 M 芯片模拟器链接
 #  pod 'charts', :git => 'https://github.com/danielgindi/Charts.git', :tag => '3.6.0
    #微信公众号悬浮框三方库
    pod 'JPSuspensionEntrance'

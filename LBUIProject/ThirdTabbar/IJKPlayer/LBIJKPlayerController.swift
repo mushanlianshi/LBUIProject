@@ -1,3 +1,5 @@
+#if !targetEnvironment(simulator)
+// IJKMediaFramework 仅含真机 arm64 切片，模拟器下整文件跳过（入口注册见 LBThirdSDKController）
 //
 //  LBIJKPlayerController.swift
 //  LBUIProject
@@ -56,3 +58,5 @@ class LBIJKPlayerController: UIViewController {
     }
 
 }
+
+#endif

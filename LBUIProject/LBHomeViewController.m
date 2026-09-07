@@ -14,11 +14,15 @@
 #import <CoreTelephony/CTCellularData.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BLTAPMFPSManager.h"
-#import <IJKMediaFramework/IJKMediaFramework.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+// LBCombineFramewrok / IJKMediaFramework 均仅含真机 arm64 切片（无 iOS-Simulator 平台），
+// 模拟器下条件编译跳过（framework 链接也只在真机 sdk 生效，见工程 OTHER_LDFLAGS）
+#if !TARGET_OS_SIMULATOR
+#import <IJKMediaFramework/IJKMediaFramework.h>
 #import <LBCombineFramewrok/LBCombineFramewrok.h>
 #import <LBCombineFramewrok/LBCombineFramewrok-Swift.h>
+#endif
 #import "StreamTextProcessor.h"
 
 @interface LBHomeViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
@@ -69,14 +73,16 @@
 }
 
 - (void)testFramework{
+#if !TARGET_OS_SIMULATOR
     LBOCPerson *person = [LBOCPerson new];
     [person testName];
     [person callSwiftMethod];
-    
+
     LBSwiftClass *swiftClass = [LBSwiftClass new];
     [swiftClass printClassName];
-    
+
     [LBSwiftSchool printSchoolClass];
+#endif
 }
 
 - (void)testSlipt{

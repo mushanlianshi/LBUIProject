@@ -108,7 +108,7 @@ class LBThirdSDKController: LBBaseCollectionViewController {
     override var dataSources: [LBListItemModel]{
         set{}
         get{
-            return [
+            var list = [
                 LBListItemModel.init(title: "验证RxSwift", vcClass: LBRxSwiftHomeViewController.self),
                 LBListItemModel.init(title: "自定义反转Sequence", vcClass: LBCustomReverseSequenceController.self),
                 LBListItemModel.init(title: "自定义操作符", vcClass: LBCustomOperatorController.self),
@@ -120,7 +120,6 @@ class LBThirdSDKController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "本地化", vcClass: LBLocaleViewController.self),
                 LBListItemModel.init(title: "fold卡片", vcClass: LBFoldCardViewController.self),
                 LBListItemModel.init(title: "Mayo网络库", vcClass: LBTestMayoNetworkController.self),
-                LBListItemModel.init(title: "IJKPlayer 播放器", vcClass: LBIJKPlayerController.self),
                 LBListItemModel.init(title: "JVideoPlayer 播放器", vcClass: LBSJVideoPlayerController.self),
                 LBListItemModel.init(title: "设计模式", vcClass: LBDesignPatternHomeController.self),
                 LBListItemModel.init(title: "SwiftEntryKit弹框", vcClass: LBAlertQueueManagerController.self),
@@ -130,6 +129,11 @@ class LBThirdSDKController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "down三方库渲染表格", vcClass: LBDownTableTestController.self),
                 LBListItemModel.init(title: "SmartCodable替换HandyJson", vcClass: LBSmartCodableReplaceHandyjsonController.self),
             ]
+            // IJKMediaFramework 仅含真机 arm64 切片，模拟器下不注册入口
+#if !targetEnvironment(simulator)
+            list.append(LBListItemModel.init(title: "IJKPlayer 播放器", vcClass: LBIJKPlayerController.self))
+#endif
+            return list
         }
     }
     

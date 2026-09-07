@@ -38,6 +38,9 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
     override func viewDidLoad() {
         collectionView.blt.registerReusableCell(cell: LBBaseColumnListCell.self)
         super.viewDidLoad()
+        if #available(iOS 16.1, *) {
+            swiftUIDataList.append((.deliverySimulate, LBDeliveryEntryViewController.self))
+        }
         view.backgroundColor = .white
         
         let deferResult = testDefer()
@@ -141,5 +144,6 @@ enum LBSwiftUIExampleType: String {
     case shareManagement = "分享管理"
     case bluetoothList = "蓝牙列表"
     case combineSearch = "天气搜索"
+    case deliverySimulate = "外卖配送灵动岛"
 //    case navigationMix = "混合导航栏"
 }

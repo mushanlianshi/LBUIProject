@@ -1,3 +1,5 @@
+#if !targetEnvironment(simulator)
+// IJKMediaFramework 仅含真机 arm64 切片，模拟器下整文件跳过（入口注册见 LBThirdSDKController）
 //
 //  LBVideoPlayerView.swift
 //  LBUIProject
@@ -86,3 +88,5 @@ class LBVideoPlayerView: UIView {
 //        print("LBLog state \(state)")
     }
 }
+
+#endif

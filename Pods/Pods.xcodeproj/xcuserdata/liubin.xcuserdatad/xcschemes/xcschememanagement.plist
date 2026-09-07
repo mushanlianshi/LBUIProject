@@ -634,26 +634,19 @@
 			<key>orderHint</key>
 			<integer>96</integer>
 		</dict>
-		<key>WechatOpenSDK.xcscheme</key>
+		<key>YYKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>97</integer>
 		</dict>
-		<key>YYKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>98</integer>
-		</dict>
 		<key>YYModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>99</integer>
+			<integer>98</integer>
 		</dict>
 		<key>libwebp.xcscheme</key>
 		<dict>

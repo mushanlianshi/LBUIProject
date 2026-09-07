@@ -626,7 +626,6 @@ PODS:
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - ViewAnimator (3.1.0)
   - Watchdog (5.2)
-  - WechatOpenSDK (2.0.2)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -698,7 +697,6 @@ DEPENDENCIES:
   - "UITableView+FDTemplateLayoutCell (= 1.6)"
   - ViewAnimator
   - Watchdog
-  - WechatOpenSDK (= 2.0.2)
   - YYKit
 
 SPEC REPOS:
@@ -779,7 +777,6 @@ SPEC REPOS:
     - "UITableView+FDTemplateLayoutCell"
     - ViewAnimator
     - Watchdog
-    - WechatOpenSDK
     - YYKit
     - YYModel
 
@@ -881,10 +878,9 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   Watchdog: 622647e6bc5a55665e6dbae0b7831ad8d95abeab
-  WechatOpenSDK: e79349b37d44c015210f39fd6d2379f0ec60efe2
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 65feb75d28d7ec784b5aeaf6b07de53cea7e3d39
+PODFILE CHECKSUM: 226fbadd86df2c6361656fd3f22f4b8ed11194d6
 
 COCOAPODS: 1.16.2
