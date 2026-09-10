@@ -535,6 +535,7 @@
 		40E3A81A304E50DC004D71CF /* LBDeliverySimulateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A818304E50DC004D71CF /* LBDeliverySimulateViewController.swift */; };
 		40E3A820304E50DC004D71CF /* DeliveryActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */; };
 		40E3A822304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */; };
+		40E3A825304E50DC004D71CF /* LBDeliveryOrderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A824304E50DC004D71CF /* LBDeliveryOrderWidget.swift */; };
 		40E3A81B304E50DC004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
 		40E3A81C304E5149004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
@@ -1274,6 +1275,7 @@
 		40E3A818304E50DC004D71CF /* LBDeliverySimulateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliverySimulateViewController.swift; sourceTree = "<group>"; };
 		40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryActivityManager.swift; sourceTree = "<group>"; };
 		40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryOrderDetailViewController.swift; sourceTree = "<group>"; };
+		40E3A824304E50DC004D71CF /* LBDeliveryOrderWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryOrderWidget.swift; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
 		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController2222.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController2222.h; sourceTree = "<group>"; };
 		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController2222.m; sourceTree = "<group>"; };
@@ -1911,6 +1913,7 @@
 			children = (
 				4043DA0E3047000100504254 /* LBDeliveryWidgetBundle.swift */,
 				4043DA0F3047000100504254 /* LBDeliveryLiveActivity.swift */,
+				40E3A824304E50DC004D71CF /* LBDeliveryOrderWidget.swift */,
 				4043DA0D3047000100504254 /* Info.plist */,
 			);
 			path = LBDeliveryWidget;
@@ -4530,6 +4533,7 @@
 				40E3A81C304E5149004D71CF /* LBDeliveryAttributes.swift in Sources */,
 				4043DA113047000100504254 /* LBDeliveryWidgetBundle.swift in Sources */,
 				4043DA123047000100504254 /* LBDeliveryLiveActivity.swift in Sources */,
+				40E3A825304E50DC004D71CF /* LBDeliveryOrderWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5170,6 +5174,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
+				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -5201,6 +5206,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
+				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -5231,6 +5237,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
+				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

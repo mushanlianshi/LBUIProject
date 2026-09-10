@@ -87,7 +87,7 @@ class LBDeliverySimulateViewController: UIViewController {
     }()
 
     private lazy var statusLabel: UILabel = {
-        let label = UILabel.blt.initWithText(text: "点击「开始配送」发起实时活动，可多次点击模拟多订单\n锁屏卡片堆叠展示；灵动岛显示最新订单，长按可切换",
+        let label = UILabel.blt.initWithText(text: "点击「开始配送」发起实时活动，可多次点击模拟多订单\n锁屏卡片堆叠；灵动岛显示最新订单，长按可切换\n桌面长按空白处可添加「订单配送」小组件（小/中尺寸）",
                                             font: .blt.normalFont(13),
                                             textColor: .blt.sixsixBlackColor(),
                                             textAlignment: .center)

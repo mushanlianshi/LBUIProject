@@ -30,6 +30,12 @@ extension LBTargetType {
     var logRequest: Bool { LBNetworkConfig.logRequestEnabled }
     var logResponse: Bool { LBNetworkConfig.logResponseEnabled }
     var headers: [String: String]? { nil }
+
+    /// 默认统一域名：LBNetworkConfig 按环境（runEnvironment → debug/pre/prod）自动分发。
+    /// 大多数模块无需关心；两种例外：
+    /// - 全路径第三方接口（isFullPath = true）：endpointClosure 整体替换 URL，本属性不参与
+    /// - 独立域名的模块：覆写本属性即可
+    var baseURL: URL { LBNetworkConfig.baseURL }
 }
 
 // MARK: - 统一响应壳

@@ -7,20 +7,38 @@
 
 import SwiftUI
 import Combine
+import UIKit
+import MJRefresh
 
 // MARK: - ViewModel
 /// 城市坐标查询：输入中文城市名 → debounce → Geocoding 接口 → 坐标/行政/海拔/人口列表。
 /// 管道结构与 LBCombineSearchViewModel 一致：防抖 / 中文校验 / switchToLatest 竞态保护 /
 /// catch 保活 / 值到达复位 isLoading（外层流永不完成，receiveCompletion 不会来）
+///
+/// 分页策略：Open-Meteo Geocoding 不支持 offset 翻页（count 上限 100），
+/// 搜索时一次拉全量缓存 allResults，客户端按 pageSize 切片分页；
+/// 下拉刷新 = 重新请求当前关键词（真网络请求）；上拉加载 = 缓存切片追加
 private final class LBCityCoordinateSearchViewModel: ObservableObject {
 
     @Published var searchText: String = ""
+    /// 当前已展示的（分页切片后）结果
     @Published private(set) var results: [LBGeocodingResponse.GeoResult] = []
+    /// 首次搜索的全屏 loading（下拉刷新由 MJRefresh 菊花承担，不置此标记避免列表闪没）
     @Published private(set) var isLoading: Bool = false
     @Published var errorMessage: String?
 
+    /// 全量缓存（服务端一次返回，客户端切片分页）
+    private var allResults: [LBGeocodingResponse.GeoResult] = []
+    /// 当前搜索关键词（下拉刷新复用）
+    private var currentQuery: String?
+    /// 每页条数（上拉加载切片步长）
+    private let pageSize = 10
+    /// 单次请求上限（Open-Meteo Geocoding count 上限 100）
+    private let fetchCount = 100
+
     private let weatherProvider = LBNetworkProvider<LBWeatherAPI>()
     private var cancellables = Set<AnyCancellable>()
+    private var refreshCancellable: AnyCancellable?
 
     init() {
         $searchText
@@ -50,22 +68,63 @@ private final class LBCityCoordinateSearchViewModel: ObservableObject {
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] list in
                 self?.isLoading = false
-                self?.results = list
-                if list.isEmpty {
-                    self?.errorMessage = "未找到相关地点"
-                }
+                self?.applySearchResult(list)
             })
             .store(in: &cancellables)
     }
 
     private func searchPublisher(_ query: String) -> AnyPublisher<[LBGeocodingResponse.GeoResult], Never> {
-        weatherProvider.request(.cityCoordinate(name: query), type: LBGeocodingResponse.self)
+        currentQuery = query
+        return weatherProvider.request(.cityCoordinate(name: query, count: fetchCount), type: LBGeocodingResponse.self)
             .map { $0.results ?? [] }
             .catch { error -> Just<[LBGeocodingResponse.GeoResult]> in
                 debugPrint("LBLog 坐标查询失败: \(error.localizedDescription)")
                 return Just([])
             }
             .eraseToAnyPublisher()
+    }
+
+    /// 搜索到达：重置分页（全量缓存 + 展示第一页）
+    private func applySearchResult(_ list: [LBGeocodingResponse.GeoResult]) {
+        allResults = list
+        results = Array(list.prefix(pageSize))
+        if list.isEmpty {
+            errorMessage = "未找到相关地点"
+        }
+    }
+
+    // MARK: - 下拉刷新（重新请求当前关键词）
+    func refresh(scrollView: UIScrollView) {
+        debugPrint("LBLog 坐标查询下拉刷新")
+        guard let query = currentQuery else {
+            scrollView.mj_header?.endRefreshing()
+            return
+        }
+        refreshCancellable = searchPublisher(query)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] list in
+                self?.applySearchResult(list)
+                scrollView.mj_header?.endRefreshing()
+                scrollView.mj_footer?.resetNoMoreData()
+            }
+    }
+
+    // MARK: - 上拉加载（模拟：复制当前列表追加一遍，演示无限加载效果）
+    /// Open-Meteo Geocoding 无 offset 翻页参数，真实分页无从谈起；
+    /// demo 模拟做法：把当前已展示内容整体复制追加（每次上拉列表翻倍），
+    /// 永不到底（不调 endRefreshingWithNoMoreData），配合 0.5s 延迟模拟网络往返。
+    /// 注意：重复内容的服务端 id 会撞，View 层 ForEach 必须用 enumerated offset 作 id
+    func loadMore(scrollView: UIScrollView) {
+        debugPrint("LBLog 坐标查询上拉加载（模拟），当前 \(results.count) 条，复制追加")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self, !self.results.isEmpty else {
+                scrollView.mj_footer?.endRefreshing()
+                return
+            }
+            self.results.append(contentsOf: self.results)
+            scrollView.mj_footer?.endRefreshing()
+            debugPrint("LBLog 坐标查询上拉完成，现 \(self.results.count) 条")
+        }
     }
 
     private static func containsChinese(_ text: String) -> Bool {
@@ -75,6 +134,8 @@ private final class LBCityCoordinateSearchViewModel: ObservableObject {
     func clearSearch() {
         searchText = ""
         results = []
+        allResults = []
+        currentQuery = nil
         errorMessage = nil
     }
 }
@@ -94,20 +155,31 @@ struct LBCityCoordinateSearchView: View {
         VStack(spacing: 0) {
             searchField
 
-            if viewModel.isLoading {
+            if viewModel.isLoading && viewModel.results.isEmpty {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else if let error = viewModel.errorMessage {
+            } else if let error = viewModel.errorMessage, viewModel.results.isEmpty {
                 errorView(error)
             } else if viewModel.results.isEmpty {
                 emptyView
             } else {
-                List(viewModel.results) { result in
-                    CityCoordinateRow(result: result)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 14, bottom: 6, trailing: 14))
-                        .listRowSeparator(.hidden)
+                /// 搜索到结果后：项目封装的 MJRefresh 容器承载（下拉刷新/上拉加载）。
+                /// 首次 loading 全屏指示；刷新期间列表保留（菊花由 MJRefresh header 自己展示）
+                LBRefreshScrollView(content: VStack(spacing: 10) {
+                    /// id 用 offset 而非 result.id：模拟加载会把同一条数据重复追加，
+                    /// 服务端 GeoResult.id（GeoNames Int id）会撞，ForEach 要求 id 唯一
+                    ForEach(Array(viewModel.results.enumerated()), id: \.offset) { _, result in
+                        CityCoordinateRow(result: result)
+                    }
                 }
-                .listStyle(.plain)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10),
+                onRefresh: { scrollView in
+                    viewModel.refresh(scrollView: scrollView)
+                },
+                onLoadMore: { scrollView in
+                    viewModel.loadMore(scrollView: scrollView)
+                })
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

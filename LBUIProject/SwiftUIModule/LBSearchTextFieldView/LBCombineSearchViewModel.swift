@@ -61,7 +61,9 @@ class LBCombineSearchViewModel: ObservableObject {
             }
             .switchToLatest()
             .sink(
-                receiveCompletion: { _ in },
+                receiveCompletion: { error in
+                    
+                },
                 receiveValue: { [weak self] results in
                     debugPrint("LBLog 搜索完成，共 \(results.count) 条")
                     /// isLoading 只能在这里复位：外层 $searchText 永不完成，

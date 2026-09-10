@@ -7,6 +7,7 @@
 
 import Foundation
 import ActivityKit
+import WidgetKit
 
 /// 外卖配送 Live Activity 单例管理器（产品化架构）
 ///
@@ -43,6 +44,27 @@ final class DeliveryActivityManager {
 
     private init() {}
 
+    // MARK: - 桌面小组件数据同步
+    /// App Group 与存储 key（与 LBDeliveryWidget 的 SharedOrderStore 保持一致）
+    private static let appGroupName = "group.zhiyong.test.project"
+    private static let ordersKey = "lb.delivery.orders"
+
+    /// 订单增减时写入共享容器并刷新小组件时间线。
+    /// 只传不可变配置（发起时间 + 匀速参数），进度由 Widget 本地推演预计算 entries，
+    /// 因此无需每 5 秒 reload（刷新预算每天仅 40~70 次，省着用）；
+    /// App 被杀后时间线已在系统侧，桌面小组件照样跑完全程
+    private func syncOrdersToWidget() {
+        guard let defaults = UserDefaults(suiteName: Self.appGroupName) else {
+            debugPrint("LBLog App Group 不可用（真机需开发者账号开通 group.zhiyong.test.project 并重签）")
+            return
+        }
+        let snapshots = simulators.values.map { $0.snapshot }
+        if let data = try? JSONEncoder().encode(snapshots) {
+            defaults.set(data, forKey: Self.ordersKey)
+        }
+        WidgetCenter.shared.reloadTimelines(ofKind: "LBDeliveryOrderWidget")
+    }
+
     // MARK: - 发起订单
     /// 发起新订单配送模拟，返回订单ID（如「订单3251」）；实时活动未开启/发起失败返回 nil
     @discardableResult
@@ -64,6 +86,7 @@ final class DeliveryActivityManager {
         }
         simulators[orderID] = simulator
         simulator.start()
+        syncOrdersToWidget()
         debugPrint("LBLog 发起 \(orderID)，当前 \(simulators.count) 个订单进行中")
         return orderID
     }
@@ -99,6 +122,7 @@ final class DeliveryActivityManager {
     private func removeOrder(_ orderID: String) {
         simulators[orderID]?.cleanup()
         simulators.removeValue(forKey: orderID)
+        syncOrdersToWidget()
         onOrderUpdate?(orderID,
                        .init(remainingDistance: 0, progress: 1,
                              statusText: "已结束", isDelivered: true),
@@ -127,6 +151,17 @@ private final class DeliveryOrderSimulator {
     private(set) var startedAt: TimeInterval = Date().timeIntervalSince1970
     /// 最近一次状态（页面快照展示）
     private(set) var lastState: LBDeliveryAttributes.ContentState
+
+    /// 桌面小组件数据契约（不可变配置，Widget 据此本地推演整条时间线）
+    var snapshot: DeliveryOrderSnapshot {
+        DeliveryOrderSnapshot(orderID: orderID,
+                              destination: attributes.destination,
+                              riderName: attributes.riderName,
+                              startedAt: startedAt,
+                              duration: totalDuration,
+                              updateInterval: updateInterval,
+                              totalDistance: totalDistance)
+    }
 
     private let totalDuration: TimeInterval = 75
     private let updateInterval: TimeInterval = 5

@@ -53,7 +53,7 @@ struct LBWidgetEntryView : View {
     }
     
     func getShareTime() -> String{
-        guard var url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.lb.uiproject") else {
+        guard var url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.zhiyong.test.project") else {
             return "0"
         }
         url.appendPathComponent("widgetShareData.json")

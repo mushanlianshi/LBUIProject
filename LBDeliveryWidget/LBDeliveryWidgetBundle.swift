@@ -12,5 +12,6 @@ import SwiftUI
 struct LBDeliveryWidgetBundle: WidgetBundle {
     var body: some Widget {
         LBDeliveryLiveActivity()
+        LBDeliveryOrderWidget()
     }
 }

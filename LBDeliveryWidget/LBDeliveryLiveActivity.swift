@@ -81,6 +81,8 @@ private func deliveryDeepLinkURL(orderID: String) -> URL? {
     components.scheme = "lbuiproject"
     components.host = "deliveryDetail"
     components.queryItems = [URLQueryItem(name: "orderID", value: orderID)]
+    debugPrint("LBLog components \(components)")
+    debugPrint("LBLog components url \(String(describing: components.url))")
     return components.url
 }
 
@@ -106,9 +108,6 @@ private struct LockScreenDeliveryView: View {
             // 中部：标题 + 进度条 + 状态
             VStack(alignment: .leading, spacing: 6) {
                 HStack(spacing: 6) {
-                    Text("距目的地 \(String(format: "%.1f", context.state.remainingDistance)) km")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(context.state.isDelivered ? Color(red: 0x34 / 255, green: 0xC7 / 255, blue: 0x7B / 255) : titleBlack)
                     if context.state.isDelivered {
                         Text("已送达")
                             .font(.system(size: 11, weight: .medium))
@@ -117,10 +116,18 @@ private struct LockScreenDeliveryView: View {
                             .padding(.vertical, 2)
                             .background(Color(red: 0x34 / 255, green: 0xC7 / 255, blue: 0x7B / 255).opacity(0.12))
                             .clipShape(Capsule())
+                    }else{
+                        Text("距目的地 \(String(format: "%.1f", context.state.remainingDistance)) km")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(context.state.isDelivered ? Color(red: 0x34 / 255, green: 0xC7 / 255, blue: 0x7B / 255) : titleBlack)
                     }
                 }
-                ProgressView(value: context.state.progress)
-                    .tint(context.state.isDelivered ? Color(red: 0x34 / 255, green: 0xC7 / 255, blue: 0x7B / 255) : themeBlue)
+                
+                if !context.state.isDelivered{
+                    ProgressView(value: context.state.progress)
+                        .tint(context.state.isDelivered ? Color(red: 0x34 / 255, green: 0xC7 / 255, blue: 0x7B / 255) : themeBlue)
+                }
+                
                 Text("\(context.attributes.orderID) · \(context.state.statusText)")
                     .font(.system(size: 12))
                     .foregroundColor(subTitleGray)

@@ -33,3 +33,24 @@ struct LBDeliveryAttributes: ActivityAttributes {
     /// 骑手名（静态）
     let riderName: String
 }
+
+// MARK: - 桌面小组件数据契约（主 App 写入 App Group，LBDeliveryWidget 读取）
+/// 只传「不可变配置」：配送进度可由 startedAt + 匀速参数本地推演，
+/// Widget 据此预计算整条 timeline（系统按 entry 时间自动切换，不消耗刷新预算）
+struct DeliveryOrderSnapshot: Codable {
+
+    /// 订单号
+    let orderID: String
+    /// 目的地
+    let destination: String
+    /// 骑手名
+    let riderName: String
+    /// 发起时间戳（推演进度的基准）
+    let startedAt: TimeInterval
+    /// 配送总时长（秒），demo 固定 75
+    let duration: TimeInterval
+    /// 更新步长（秒），demo 固定 5（timeline entry 间隔）
+    let updateInterval: TimeInterval
+    /// 总距离（km），demo 固定 5.0
+    let totalDistance: Double
+}

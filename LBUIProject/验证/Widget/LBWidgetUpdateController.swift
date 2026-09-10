@@ -35,7 +35,7 @@ class LBWidgetUpdateController: UIViewController {
     }
     
     private func setTimeToAppShare(){
-        guard var url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.lb.uiproject") else {
+        guard var url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.zhiyong.test.project") else {
             return
         }
         url.appendPathComponent("widgetShareData.json")

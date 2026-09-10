@@ -166,6 +166,10 @@ class LBDeliveryOrderDetailViewController: UIViewController {
             progressView.setProgress(1, animated: false)
             progressView.progressTintColor = UIColor.blt.hexColor(0x34C77B)
             statusLabel.text = "订单已结束（灵动岛/锁屏卡片保留 5 分钟后自动清除）"
+            
+            distanceLabel.isHidden = true
+            progressView.isHidden = true
+            
             return
         }
         riderLabel.text = info.attributes.riderName
@@ -190,7 +194,7 @@ final class LBDeliveryDeepLinkRouter: NSObject {
             debugPrint("LBLog 配送深链缺少 orderID：\(url.absoluteString)")
             return
         }
-        debugPrint("LBLog 配送深链回跳订单 \(orderID)")
+        debugPrint("LBLog 配送深链回跳订单 \(url)")
         DispatchQueue.main.async {
             pushOrderDetail(orderID: orderID)
         }

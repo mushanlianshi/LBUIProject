@@ -101,15 +101,15 @@ enum LBWeatherAPI: LBTargetType {
     /// 按经纬度查县/区实时天气
     case countyWeather(latitude: Double, longitude: Double)
 
-    /// 按城市名查地理坐标与城市信息（Geocoding）
-    case cityCoordinate(name: String)
+    /// 按城市名查地理坐标与城市信息（Geocoding）。
+    /// 注意：Open-Meteo Geocoding 不支持 offset 翻页，count 为单次返回上限（1~100）——
+    /// 需分页的场景一次拉全量（count=100），由客户端切片分页
+    case cityCoordinate(name: String, count: Int)
 
     // MARK: TargetType
-    var baseURL: URL {
-        /// 全路径接口用不到 baseURL，返回占位（endpointClosure 会整体替换 URL）
-        URL(string: "https://placeholder.invalid")!
-    }
-
+    /// baseURL 走协议默认实现（LBNetworkConfig 环境域名）；
+    /// 本 API 全是全路径接口（isFullPath = true），endpointClosure 直接用 path 整体替换 URL，
+    /// baseURL 实际不参与——无需覆写
     var path: String {
         switch self {
         case .countyWeather:
@@ -132,11 +132,11 @@ enum LBWeatherAPI: LBTargetType {
                     "timezone": "Asia/Shanghai",
                 ],
                 encoding: URLEncoding.default)
-        case .cityCoordinate(let name):
+        case .cityCoordinate(let name, let count):
             return .requestParameters(
                 parameters: [
                     "name": name,
-                    "count": "10",
+                    "count": String(count),
                     "language": "zh",
                     "format": "json",
                 ],
