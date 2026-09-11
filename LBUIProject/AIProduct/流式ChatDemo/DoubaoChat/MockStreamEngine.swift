@@ -23,6 +23,10 @@ enum DoubaoMockEvent {
     case contactCard(name: String, title: String, intro: String, tags: [String])
     /// 回答结束，追加推荐问卡片
     case recommend(questions: [String])
+    /// 未知卡片（前向兼容演示：模拟服务端下发了老版本不认识的新卡片类型）
+    case unsupportedCard(rawType: String, rawPayload: String)
+    /// 本轮流式结束（对应真实 SSE 流的 done 事件；VC 据此追加操作栏 item）
+    case roundFinished
     /// 空拍（纯消耗节拍，制造「上一块输出完 → 停顿 → 下一卡片出现」的节奏）
     case idle
 }
@@ -125,13 +129,24 @@ final class DoubaoMockStreamEngine {
         events.append(.answerStart)
         events.append(contentsOf: chunks(of: answerC, event: { .answerText($0) }, size: 10))
 
-        // 7. 推荐问（最后出现）
+        // 7. 未知卡片（前向兼容演示：模拟服务端新上的「地图卡片」，老版本不认识）
+        //    真实场景是 wire format 解析失败兜底构造；demo 直接由剧本发出
+        events.append(contentsOf: Array(repeating: .idle, count: 10))
+        events.append(.unsupportedCard(
+            rawType: "map_card_v2",
+            rawPayload: "{\"lat\":30.2741,\"lng\":120.1551,\"address\":\"杭州市·滨江区\"}"))
+
+        // 8. 推荐问（最后出现）
         events.append(contentsOf: Array(repeating: .idle, count: 10))
         events.append(.recommend(questions: [
             "「\(question)」的主流方案有哪些优缺点？",
             "新手入门该从哪一步开始？",
             "有没有可参考的开源项目？",
         ]))
+
+        // 9. 本轮结束（对应真实 SSE done）：VC 追加操作栏（播报/复制/赞踩）
+        events.append(contentsOf: Array(repeating: .idle, count: 6))
+        events.append(.roundFinished)
         return events
     }
 

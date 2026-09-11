@@ -10,7 +10,8 @@ import Foundation
 /// AI 正文 model（流式增长）
 /// Hashable/== 只看 id：文本每拍变化但 id 不变 → 结构 diff 为空，
 /// 内容刷新走 reconfigureItems（见 DoubaoChatItem 注释）
-struct DoubaoMarkdownModel: Identifiable, Hashable {
+/// Codable：随整轮 JSON 落库；renderedHeight 一并持久化，历史恢复时 cell 直接采用缓存高度
+struct DoubaoMarkdownModel: Identifiable, Hashable, Codable {
 
     let id = UUID()
     /// 已到达的正文（流式中持续追加）

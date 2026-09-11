@@ -42,12 +42,12 @@ final class DoubaoRecommendCell: UICollectionViewCell {
 
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(44)
+            make.leading.equalToSuperview().offset(15)
         }
         chipStack.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-12)
+            make.trailing.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-8)
         }
     }

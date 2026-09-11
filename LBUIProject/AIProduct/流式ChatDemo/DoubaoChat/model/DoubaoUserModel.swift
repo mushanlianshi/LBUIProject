@@ -9,7 +9,8 @@ import Foundation
 
 /// 用户消息 model
 /// Hashable/== 只看 id：发送后内容不变，不参与流式更新
-struct DoubaoUserModel: Identifiable, Hashable {
+/// Codable：随整轮 answerItems JSON 落库（id 稳定编解码，恢复后 upsert 对齐主键）
+struct DoubaoUserModel: Identifiable, Hashable, Codable {
 
     let id = UUID()
     let text: String

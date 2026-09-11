@@ -24,7 +24,10 @@ enum DoubaoChatSection: Hashable {
 /// - 结构变化（卡片插入/删除）→ id 不同 → snapshot diff 自动计算 insert/delete
 /// - 内容变化（流式文本增长、折叠态切换，id 不变）→ diff 结果为空，
 ///   由 VC 调 reconfigureItems([item]) 定向刷新（iOS 14 fallback reloadItems）
-enum DoubaoChatItem: Hashable {
+///
+/// Codable：整轮落库时 answerItems 序列化为 JSON（Swift 5.5+ 对带关联值枚举自动合成，
+/// 编码形如 {"markdown":{"id":...,"text":...}}）
+enum DoubaoChatItem: Hashable, Codable {
     /// 用户消息气泡
     case user(DoubaoUserModel)
     /// 思考过程块（流式中展开增长，结束后折叠，可点击切换）
@@ -35,4 +38,10 @@ enum DoubaoChatItem: Hashable {
     case contact(DoubaoContactModel)
     /// 推荐问卡片（回答结束后追加）
     case recommend(DoubaoRecommendModel)
+    /// 未知卡片（前向兼容兜底）：老版本 App 收到服务端新卡片类型时使用。
+    /// 保留原始 type + payload 原样存库/同步，渲染时展示「暂不支持」占位——
+    /// 不丢数据（新版本 App 或其他端能正常解析）、不崩溃、不发版也能同步会话
+    case unsupported(DoubaoUnsupportedModel)
+    /// 回答操作栏（播报/复制/点赞/点踩）：一轮回答结束后追加在 section 底部
+    case actions(DoubaoActionsModel)
 }

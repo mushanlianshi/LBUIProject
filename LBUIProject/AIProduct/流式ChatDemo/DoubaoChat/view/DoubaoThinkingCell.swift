@@ -7,17 +7,23 @@
 
 import UIKit
 import SnapKit
+import BLTBasicUIKit
 
 /// 思考过程块 cell（豆包「深度思考」交互）
 /// - 流式中：头部 spinner + 「思考中」，body 展示流式思考文本（强制展开）
-/// - 结束后：折叠成一行「已深度思考 · 用时 Ns」，点击头部切换展开/收起
+/// - 结束后：折叠成一行「已深度思考 · 用时 Ns」，点击整块切换展开/收起
 /// - 折叠/展开是内容变化（id 不变），由 VC reconfigure 刷新，不产生结构 diff
 final class DoubaoThinkingCell: UICollectionViewCell {
 
     static let reuseId = "DoubaoThinkingCell"
 
-    /// 头部/内容点击切换展开态
-    var onToggleExpand: (() -> Void)?
+    /// 整块点击切换展开态。
+    /// ⚠️ 传 id 而不是捕获 model：闭包是 configure 时生成的，reconfigure 未落地前连点，
+    /// 捕获的旧 model 会把两次切换算成同一个值 → 表现为「点了不动」
+    var onToggleExpand: ((UUID) -> Void)?
+
+    /// 当前配置的思考块 id（点击回调回传给 VC）
+    private var modelID: UUID?
 
     private let container: UIView = {
         let v = UIView()
@@ -54,8 +60,9 @@ final class DoubaoThinkingCell: UICollectionViewCell {
         return lbl
     }()
 
-    private let bodyLabel: UILabel = {
-        let lbl = UILabel()
+    private let bodyLabel: BLTContentInsetLabel = {
+        let lbl = BLTContentInsetLabel()
+        lbl.contentEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 15)
         lbl.textColor = UIColor.blt.hexColor(0x8A8A8A)
         lbl.font = .systemFont(ofSize: 13)
         lbl.numberOfLines = 0
@@ -95,8 +102,6 @@ final class DoubaoThinkingCell: UICollectionViewCell {
         v.snp.makeConstraints { make in
             make.height.equalTo(34)
         }
-        // 头部点击切换展开（流式中 VC 侧忽略）
-        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(headerTapped)))
         return v
     }()
 
@@ -108,10 +113,14 @@ final class DoubaoThinkingCell: UICollectionViewCell {
         contentView.addSubview(container)
         container.addSubview(stackView)
 
+        // 命中区域 = 整个灰色块（头部 + 正文 + 内边距），不再只有 34pt 的头部条；
+        // 挂在 container 上而非 contentView，避免与上下 item 间距重叠误触
+        container.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(blockTapped)))
+
         container.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-12)
+            make.trailing.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-4)
         }
         stackView.snp.makeConstraints { make in
@@ -124,11 +133,21 @@ final class DoubaoThinkingCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) { nil }
 
-    @objc private func headerTapped() {
-        onToggleExpand?()
+    /// 按压反馈：整块在手指出没期间有一次底色变化，避免「点了没反应」的错觉
+    override var isHighlighted: Bool {
+        didSet {
+            guard isHighlighted != oldValue else { return }
+            container.backgroundColor = UIColor.blt.hexColor(isHighlighted ? 0xEDEFF3 : 0xF7F8FA)
+        }
+    }
+
+    @objc private func blockTapped() {
+        guard let modelID else { return }
+        onToggleExpand?(modelID)
     }
 
     func configure(model: DoubaoThinkingModel) {
+        modelID = model.id
         if model.isStreaming {
             titleLabel.text = "思考中"
             spinner.startAnimating()
@@ -141,5 +160,7 @@ final class DoubaoThinkingCell: UICollectionViewCell {
         bodyLabel.text = model.text
         // 流式中强制展开；结束后按 isExpanded
         bodyLabel.isHidden = model.isStreaming ? false : !model.isExpanded
+        // 复用防串色：上一次高亮态可能残留在复用的 cell 上
+        container.backgroundColor = UIColor.blt.hexColor(0xF7F8FA)
     }
 }

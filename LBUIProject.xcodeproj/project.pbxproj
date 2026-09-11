@@ -54,7 +54,6 @@
 		40140EEC2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 40140EEB2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		4014676F2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4014676E2A0A2676000DB207 /* LBRxSwiftOperatorsViewController.swift */; };
 		401AA7E3288AB81C00A4C6DB /* LBThirdPartAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401AA7E2288AB81C00A4C6DB /* LBThirdPartAnimationController.swift */; };
-		401BEE8B2A259E0900F28892 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401BEE8A2A259E0900F28892 /* IJKMediaFramework.framework */; };
 		401BEE8D2A259E1800F28892 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 401BEE8C2A259E1800F28892 /* libc++.tbd */; };
 		401BEE8F2A259E2400F28892 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 401BEE8E2A259E2400F28892 /* libz.tbd */; };
 		401BEE912A259E2D00F28892 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 401BEE902A259E2D00F28892 /* libbz2.tbd */; };
@@ -491,7 +490,6 @@
 		40C2EFC32D5306FD003DFBC9 /* LBIntToStringDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2EFC22D5306FD003DFBC9 /* LBIntToStringDecoder.swift */; };
 		40C2EFC52D5349CC003DFBC9 /* LBCompressVideoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2EFC42D5349CC003DFBC9 /* LBCompressVideoUtil.swift */; };
 		40C937FF299F0D7400EC434D /* LBTestScrollVerticalHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C937FE299F0D7400EC434D /* LBTestScrollVerticalHorizontalController.swift */; };
-		40D023492E4DC8D00045F83C /* LBCombineFramewrok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D023482E4DC8D00045F83C /* LBCombineFramewrok.framework */; };
 		40D026642E5329580045F83C /* StreamTextProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D026632E5329580045F83C /* StreamTextProcessor.m */; };
 		40D2764129C07580005343E3 /* LBTestWhereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D2764029C07580005343E3 /* LBTestWhereViewController.swift */; };
 		40D43CBF2A5D35B3001384BF /* 11111.flac in Resources */ = {isa = PBXBuildFile; fileRef = 40D43CBE2A5D3575001384BF /* 11111.flac */; };
@@ -529,10 +527,14 @@
 		40DD721A2E659D2C00097B1D /* LBAIChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DD72192E659D2C00097B1D /* LBAIChatViewController.swift */; };
 		40DF356128646014008EE299 /* NSString+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF356028646014008EE299 /* NSString+LBExtension.m */; };
 		40DF3564286466A7008EE299 /* LBMultipleDelegatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */; };
+		40DFDFFD3053DC15007BFB30 /* DoubaoAnswerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDFFC3053DC15007BFB30 /* DoubaoAnswerBackground.swift */; };
+		40DFDFFF3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDFFE3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift */; };
 		40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */; };
 		40E354B52E43244D00B36FF4 /* LBTextSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E354B42E43244D00B36FF4 /* LBTextSplitter.m */; };
 		40E354B72E43253700B36FF4 /* testLongText.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E354B62E43253700B36FF4 /* testLongText.txt */; };
 		40E3A81A304E50DC004D71CF /* LBDeliverySimulateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A818304E50DC004D71CF /* LBDeliverySimulateViewController.swift */; };
+		40E3A81B304E50DC004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
+		40E3A81C304E5149004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
 		40E3A820304E50DC004D71CF /* DeliveryActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */; };
 		40E3A822304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */; };
 		40E3A825304E50DC004D71CF /* LBDeliveryOrderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A824304E50DC004D71CF /* LBDeliveryOrderWidget.swift */; };
@@ -550,8 +552,13 @@
 		40E3A847304E50DC004D71CF /* DoubaoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A846304E50DC004D71CF /* DoubaoChatViewController.swift */; };
 		40E3A849304E50DC004D71CF /* MockStreamEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A848304E50DC004D71CF /* MockStreamEngine.swift */; };
 		40E3A84E304E50DC004D71CF /* DoubaoQARoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */; };
-		40E3A81B304E50DC004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
-		40E3A81C304E5149004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
+		40E3A851304E50DC004D71CF /* DoubaoChatDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A850304E50DC004D71CF /* DoubaoChatDAO.swift */; };
+		40E3A853304E50DC004D71CF /* DoubaoChatStoreKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A852304E50DC004D71CF /* DoubaoChatStoreKeeper.swift */; };
+		40E3A855304E50DC004D71CF /* DoubaoChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A854304E50DC004D71CF /* DoubaoChatSessionListViewController.swift */; };
+		40E3A857304E50DC004D71CF /* DoubaoUnsupportedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A856304E50DC004D71CF /* DoubaoUnsupportedModel.swift */; };
+		40E3A859304E50DC004D71CF /* DoubaoUnsupportedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A858304E50DC004D71CF /* DoubaoUnsupportedCell.swift */; };
+		40E3A85B304E50DC004D71CF /* DoubaoActionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A85A304E50DC004D71CF /* DoubaoActionsModel.swift */; };
+		40E3A85D304E50DC004D71CF /* DoubaoActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A85C304E50DC004D71CF /* DoubaoActionsCell.swift */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
 		40E864092DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */; };
 		40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1884294728410003F457 /* LBGrayViewController.swift */; };
@@ -581,7 +588,7 @@
 		40F5B1DC2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */; };
 		40F5B1DE2FF3A000002CCA9C /* LBNavigationMixRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */; };
 		40F9FA452DF1816600D5D736 /* LBAIAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */; };
-		40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		40FAE36A2FDBC5AA00861B79 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
@@ -845,10 +852,10 @@
 		4043D9043047000100504254 /* ChatSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionModel.swift; sourceTree = "<group>"; };
 		4043D9063047000100504254 /* ChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewController.swift; sourceTree = "<group>"; };
 		4043DA053047000100504254 /* LBDeliveryWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LBDeliveryWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		4043DA213047000200504254 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		4043DA0D3047000100504254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4043DA0E3047000100504254 /* LBDeliveryWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryWidgetBundle.swift; sourceTree = "<group>"; };
 		4043DA0F3047000100504254 /* LBDeliveryLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryLiveActivity.swift; sourceTree = "<group>"; };
+		4043DA213047000200504254 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		4043EB01265F9E2400EACB2B /* LBUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4043EB04265F9E2400EACB2B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4043EB05265F9E2400EACB2B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1278,6 +1285,8 @@
 		40DF356028646014008EE299 /* NSString+LBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBExtension.m"; sourceTree = "<group>"; };
 		40DF3562286466A7008EE299 /* LBMultipleDelegatesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBMultipleDelegatesController.h; sourceTree = "<group>"; };
 		40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBMultipleDelegatesController.m; sourceTree = "<group>"; };
+		40DFDFFC3053DC15007BFB30 /* DoubaoAnswerBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoAnswerBackground.swift; sourceTree = "<group>"; };
+		40DFDFFE3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DoubaoChatViewController+CollectionDataSources.swift"; sourceTree = "<group>"; };
 		40E19657267B4E32008207D5 /* LBShadowRaduisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBShadowRaduisViewController.h; sourceTree = "<group>"; };
 		40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBShadowRaduisViewController.m; sourceTree = "<group>"; };
 		40E1E5F02757235B00A8DBDB /* mainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainTest.m; sourceTree = "<group>"; };
@@ -1304,6 +1313,13 @@
 		40E3A846304E50DC004D71CF /* DoubaoChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatViewController.swift; sourceTree = "<group>"; };
 		40E3A848304E50DC004D71CF /* MockStreamEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStreamEngine.swift; sourceTree = "<group>"; };
 		40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoQARoundModel.swift; sourceTree = "<group>"; };
+		40E3A850304E50DC004D71CF /* DoubaoChatDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatDAO.swift; sourceTree = "<group>"; };
+		40E3A852304E50DC004D71CF /* DoubaoChatStoreKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatStoreKeeper.swift; sourceTree = "<group>"; };
+		40E3A854304E50DC004D71CF /* DoubaoChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatSessionListViewController.swift; sourceTree = "<group>"; };
+		40E3A856304E50DC004D71CF /* DoubaoUnsupportedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoUnsupportedModel.swift; sourceTree = "<group>"; };
+		40E3A858304E50DC004D71CF /* DoubaoUnsupportedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoUnsupportedCell.swift; sourceTree = "<group>"; };
+		40E3A85A304E50DC004D71CF /* DoubaoActionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoActionsModel.swift; sourceTree = "<group>"; };
+		40E3A85C304E50DC004D71CF /* DoubaoActionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoActionsCell.swift; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
 		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController2222.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController2222.h; sourceTree = "<group>"; };
 		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController2222.m; sourceTree = "<group>"; };
@@ -1723,43 +1739,6 @@
 				40E3A84A304E50DC004D71CF /* DoubaoChat */,
 			);
 			path = "流式ChatDemo";
-			sourceTree = "<group>";
-		};
-		40E3A84A304E50DC004D71CF /* DoubaoChat */ = {
-			isa = PBXGroup;
-			children = (
-				40E3A846304E50DC004D71CF /* DoubaoChatViewController.swift */,
-				40E3A848304E50DC004D71CF /* MockStreamEngine.swift */,
-				40E3A84B304E50DC004D71CF /* model */,
-				40E3A84C304E50DC004D71CF /* view */,
-			);
-			path = DoubaoChat;
-			sourceTree = "<group>";
-		};
-		40E3A84B304E50DC004D71CF /* model */ = {
-			isa = PBXGroup;
-			children = (
-				40E3A830304E50DC004D71CF /* DoubaoChatItem.swift */,
-				40E3A832304E50DC004D71CF /* DoubaoUserModel.swift */,
-				40E3A834304E50DC004D71CF /* DoubaoMarkdownModel.swift */,
-				40E3A836304E50DC004D71CF /* DoubaoThinkingModel.swift */,
-				40E3A838304E50DC004D71CF /* DoubaoContactModel.swift */,
-				40E3A83A304E50DC004D71CF /* DoubaoRecommendModel.swift */,
-				40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		40E3A84C304E50DC004D71CF /* view */ = {
-			isa = PBXGroup;
-			children = (
-				40E3A83C304E50DC004D71CF /* DoubaoUserBubbleCell.swift */,
-				40E3A83E304E50DC004D71CF /* DoubaoMarkdownCell.swift */,
-				40E3A840304E50DC004D71CF /* DoubaoThinkingCell.swift */,
-				40E3A842304E50DC004D71CF /* DoubaoContactCardCell.swift */,
-				40E3A844304E50DC004D71CF /* DoubaoRecommendCell.swift */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		4023B0672AA5E31800A55675 /* Alpha和opacity */ = {
@@ -3884,6 +3863,14 @@
 			path = markdown;
 			sourceTree = "<group>";
 		};
+		40DFDFFB3053DC00007BFB30 /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				40DFDFFC3053DC15007BFB30 /* DoubaoAnswerBackground.swift */,
+			);
+			path = ReusableView;
+			sourceTree = "<group>";
+		};
 		40E19653267B4E07008207D5 /* 圆角带阴影mask */ = {
 			isa = PBXGroup;
 			children = (
@@ -3903,6 +3890,60 @@
 				40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */,
 			);
 			path = LBDelivery;
+			sourceTree = "<group>";
+		};
+		40E3A84A304E50DC004D71CF /* DoubaoChat */ = {
+			isa = PBXGroup;
+			children = (
+				40DFDFFE3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift */,
+				40E3A846304E50DC004D71CF /* DoubaoChatViewController.swift */,
+				40E3A848304E50DC004D71CF /* MockStreamEngine.swift */,
+				40E3A84B304E50DC004D71CF /* model */,
+				40E3A84C304E50DC004D71CF /* view */,
+				40E3A84F304E50DC004D71CF /* Store */,
+			);
+			path = DoubaoChat;
+			sourceTree = "<group>";
+		};
+		40E3A84B304E50DC004D71CF /* model */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A830304E50DC004D71CF /* DoubaoChatItem.swift */,
+				40E3A832304E50DC004D71CF /* DoubaoUserModel.swift */,
+				40E3A834304E50DC004D71CF /* DoubaoMarkdownModel.swift */,
+				40E3A836304E50DC004D71CF /* DoubaoThinkingModel.swift */,
+				40E3A838304E50DC004D71CF /* DoubaoContactModel.swift */,
+				40E3A83A304E50DC004D71CF /* DoubaoRecommendModel.swift */,
+				40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */,
+				40E3A856304E50DC004D71CF /* DoubaoUnsupportedModel.swift */,
+				40E3A85A304E50DC004D71CF /* DoubaoActionsModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		40E3A84C304E50DC004D71CF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				40DFDFFB3053DC00007BFB30 /* ReusableView */,
+				40E3A83C304E50DC004D71CF /* DoubaoUserBubbleCell.swift */,
+				40E3A83E304E50DC004D71CF /* DoubaoMarkdownCell.swift */,
+				40E3A840304E50DC004D71CF /* DoubaoThinkingCell.swift */,
+				40E3A842304E50DC004D71CF /* DoubaoContactCardCell.swift */,
+				40E3A844304E50DC004D71CF /* DoubaoRecommendCell.swift */,
+				40E3A858304E50DC004D71CF /* DoubaoUnsupportedCell.swift */,
+				40E3A85C304E50DC004D71CF /* DoubaoActionsCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		40E3A84F304E50DC004D71CF /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A850304E50DC004D71CF /* DoubaoChatDAO.swift */,
+				40E3A852304E50DC004D71CF /* DoubaoChatStoreKeeper.swift */,
+				40E3A854304E50DC004D71CF /* DoubaoChatSessionListViewController.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		40E6C5442D79769E0067FB8C /* Codable */ = {
@@ -4936,6 +4977,7 @@
 				40ABEB832DA3C65700199320 /* LBBaseView.swift in Sources */,
 				40D46FC2288E7538001A153A /* LBResponseChain.m in Sources */,
 				404B0EAF2D8D68950070447D /* LBTabAnimatedCardOCCell.m in Sources */,
+				40DFDFFD3053DC15007BFB30 /* DoubaoAnswerBackground.swift in Sources */,
 				4043D73F303D8F9000504254 /* LBRefreshScrollView.swift in Sources */,
 				40140EEC2A9F408C00B7E093 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				40ABEB752DA3BE3500199320 /* UITextField+Extension.swift in Sources */,
@@ -4994,6 +5036,7 @@
 				400A4FA22A04B25C00C7A51B /* LBLocaleViewController.swift in Sources */,
 				40AE6FE129C8616600C69932 /* JXPagingBaseViewController.swift in Sources */,
 				40ABEB6F2DA3BE3500199320 /* CLPopoverManager+Extension.swift in Sources */,
+				40DFDFFF3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift in Sources */,
 				40ABA5822A1C9D3500B84488 /* LBTestMayoNetworkController.swift in Sources */,
 				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,
 				400A05CC2862F159006574B5 /* Array+LBExtension.swift in Sources */,
@@ -5067,6 +5110,13 @@
 				40E3A847304E50DC004D71CF /* DoubaoChatViewController.swift in Sources */,
 				40E3A849304E50DC004D71CF /* MockStreamEngine.swift in Sources */,
 				40E3A84E304E50DC004D71CF /* DoubaoQARoundModel.swift in Sources */,
+				40E3A851304E50DC004D71CF /* DoubaoChatDAO.swift in Sources */,
+				40E3A853304E50DC004D71CF /* DoubaoChatStoreKeeper.swift in Sources */,
+				40E3A855304E50DC004D71CF /* DoubaoChatSessionListViewController.swift in Sources */,
+				40E3A857304E50DC004D71CF /* DoubaoUnsupportedModel.swift in Sources */,
+				40E3A859304E50DC004D71CF /* DoubaoUnsupportedCell.swift in Sources */,
+				40E3A85B304E50DC004D71CF /* DoubaoActionsModel.swift in Sources */,
+				40E3A85D304E50DC004D71CF /* DoubaoActionsCell.swift in Sources */,
 				406B18792D2E4688003ED486 /* LBCombineModel.swift in Sources */,
 				40C20B4A298A095500B23342 /* LBTestHitViewController.swift in Sources */,
 				400A05BE2861A386006574B5 /* UIControl+LBPublisher.swift in Sources */,
@@ -5249,12 +5299,12 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
-				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -5281,12 +5331,12 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
-				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -5312,12 +5362,12 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G6FYSH5LF5;
 				GENERATE_INFOPLIST_FILE = YES;
-				CODE_SIGN_ENTITLEMENTS = LBDeliveryWidget/LBDeliveryWidgetExtension.entitlements;
 				INFOPLIST_FILE = LBDeliveryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBDeliveryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -5489,7 +5539,13 @@
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
 				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "-o runtime --runtime-version $DEPLOYMENT_TARGET";
-				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework IJKMediaFramework -framework LBCombineFramewrok";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"-framework",
+					IJKMediaFramework,
+					"-framework",
+					LBCombineFramewrok,
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5537,7 +5593,13 @@
 				);
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
-				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework IJKMediaFramework -framework LBCombineFramewrok";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"-framework",
+					IJKMediaFramework,
+					"-framework",
+					LBCombineFramewrok,
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5731,7 +5793,13 @@
 				);
 				MARKETING_VERSION = 11.0.0;
 				NEW_SETTING = "";
-				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework IJKMediaFramework -framework LBCombineFramewrok";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"-framework",
+					IJKMediaFramework,
+					"-framework",
+					LBCombineFramewrok,
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.com.icbc.eZhiYong123;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -96,7 +96,7 @@ final class DoubaoContactCardCell: UICollectionViewCell {
         cardView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-12)
+            make.trailing.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-4)
         }
         avatarLabel.snp.makeConstraints { make in

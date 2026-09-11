@@ -9,7 +9,7 @@ import Foundation
 
 /// 找人卡片 model（正文流式中途穿插插入的结构性卡片）
 /// 插入后内容不变，只有结构 insert（snapshot diff 自动处理，无 reconfigure 需求）
-struct DoubaoContactModel: Identifiable, Hashable {
+struct DoubaoContactModel: Identifiable, Hashable, Codable {
 
     let id = UUID()
     /// 姓名

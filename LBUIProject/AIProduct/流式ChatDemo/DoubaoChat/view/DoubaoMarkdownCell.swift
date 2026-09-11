@@ -47,17 +47,6 @@ final class DoubaoMarkdownCell: UICollectionViewCell {
     /// 高度回传触发的 reconfigure 只改高度字段，不重跑几百 ms 的 JS 渲染）
     private var lastRenderedText: String?
 
-    private let avatarLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "🤖"
-        lbl.font = .systemFont(ofSize: 18)
-        lbl.textAlignment = .center
-        lbl.backgroundColor = UIColor.blt.hexColor(0xE8F1FE)
-        lbl.layer.cornerRadius = 16
-        lbl.layer.masksToBounds = true
-        return lbl
-    }()
-
     /// Markdown 渲染内核（与旧版 AssistantMarkdownCell 同款，可复用不重建）
     private let webView: ChatWebView = ChatWebView()
 
@@ -71,19 +60,12 @@ final class DoubaoMarkdownCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-
-        contentView.addSubview(avatarLabel)
         contentView.addSubview(webView)
-
-        avatarLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(12)
-            make.top.equalToSuperview().offset(6)
-            make.width.height.equalTo(32)
-        }
+        
         webView.snp.makeConstraints { make in
-            make.top.equalTo(avatarLabel).offset(-2)
-            make.leading.equalTo(avatarLabel.snp.trailing).offset(10)
-            make.trailing.equalToSuperview().offset(-8)
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(3)
+            make.trailing.equalToSuperview().offset(-3)
             make.bottom.equalToSuperview().offset(-6)
             heightConstraint = make.height.equalTo(1).constraint
         }

@@ -8,7 +8,7 @@
 import Foundation
 
 /// 推荐问卡片 model（回答结束后追加；点击 chip = 以该问题发起新一轮对话）
-struct DoubaoRecommendModel: Identifiable, Hashable {
+struct DoubaoRecommendModel: Identifiable, Hashable, Codable {
 
     let id = UUID()
     /// 推荐问题列表

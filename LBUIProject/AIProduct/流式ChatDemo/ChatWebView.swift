@@ -27,6 +27,10 @@ final class ChatWebView: WKWebView {
 
         backgroundColor = .clear
         isOpaque = false
+        // ⚠️ 关键：WKWebView 的 scrollView 默认自带不透明白底，会盖住宿主背景
+        // （section decoration 背景卡被它挡住，只露出边缘——「只见边框不见背景色」的元凶）
+        scrollView.backgroundColor = .clear
+        scrollView.isOpaque = false
         scrollView.isScrollEnabled = false
         scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false

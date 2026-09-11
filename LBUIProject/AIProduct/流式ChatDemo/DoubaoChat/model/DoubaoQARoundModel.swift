@@ -14,7 +14,9 @@ import Foundation
 /// UI 层映射（Diffable）：
 /// - .question(id) section ← userModel 一项
 /// - .answer(id) section   ← answerItems 拍平成 item（复用/diff 粒度是 cell 级）
-struct DoubaoQARoundModel {
+///
+/// Codable：一轮 = DB 一行（question + answerItems 整体 JSON），持久化与恢复的最小单元
+struct DoubaoQARoundModel: Codable {
 
     /// 轮次 id（问/答两个 section 用它关联；也是 diffable 的 section identifier 载体）
     let id = UUID()

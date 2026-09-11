@@ -12,7 +12,7 @@ import Foundation
 /// 生命周期：插入（isStreaming=true, isExpanded=true 流式展开增长）
 ///         → thinkingEnd（isStreaming=false, isExpanded=false 折叠成一行摘要）
 ///         → 用户点击头部可随时切换 isExpanded（reconfigure 刷新，不动结构）
-struct DoubaoThinkingModel: Identifiable, Hashable {
+struct DoubaoThinkingModel: Identifiable, Hashable, Codable {
 
     let id = UUID()
     /// 思考内容（流式增长）

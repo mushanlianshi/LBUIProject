@@ -91,7 +91,7 @@ final class LBChatViewController: UIViewController {
 //                cell.setNeedsLayout()
 //                cell.layoutIfNeeded()
             
-                if ceill(self.lastCellHeight) != ceill(cell.bounds.size.height)  {
+                if ceil(self.lastCellHeight) != ceil(Double(cell.bounds.size.height))  {
                     // 🔥 KEY —让 tableView 重新计算高度
                     
                     DispatchQueue.main.async {
