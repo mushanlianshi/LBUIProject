@@ -21,6 +21,10 @@ struct DoubaoMarkdownModel: Identifiable, Hashable, Codable {
     /// 渲染高度缓存（WebView 回传后写回）：
     /// 流式中每拍更新；终态后滚动复用/历史加载时 cell 直接采用，不再走高度回调（防跳变+布局风暴）
     var renderedHeight: CGFloat = 0
+    /// 高度对应的渲染宽度（宽度指纹，多端同步场景的关键）：
+    /// 别的机型/网页端同步来的高度是「别人在别的宽度下量的」——折行数不同高度必然不同。
+    /// 恢复时校验：宽度匹配才用缓存高度；不匹配则作废，走「估算首帧 + 异步重测」
+    var renderedWidth: CGFloat = 0
     /// 是否历史记录（将来持久层恢复时置 true；当前 demo 无历史入口，模型层先备好）
     var isFromHistory = false
 

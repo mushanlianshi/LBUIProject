@@ -173,6 +173,18 @@ final class DoubaoChatDAO {
                     case .markdown(var m):
                         m.isStreaming = false
                         m.isFromHistory = true
+                        // 多端同步高度校验：缓存高度带着「宽度指纹」——
+                        // 别的机型/网页端同步来的高度是在别的渲染宽度下量的（折行数不同），
+                        // 本机宽度不匹配则作废：renderedHeight 清零，cell 走「估算首帧 + 异步重测」
+//#if DEBUG
+//                        m.renderedWidth = 999
+//#endif
+                        /// 屏幕宽度不相同，不能用缓存的高度了
+                        if m.renderedWidth > 0,
+                           abs(m.renderedWidth - UIScreen.main.bounds.width) > 1 {
+                            m.renderedHeight = 0
+                            m.renderedWidth = 0
+                        }
                         round.answerItems[i] = .markdown(m)
                     case .thinking(var t):
                         t.isStreaming = false

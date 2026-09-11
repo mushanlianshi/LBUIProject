@@ -47,9 +47,12 @@ extension DoubaoChatViewController {
                     self.applyRenderedHeight(modelID: modelID, height: height,
                                              followScroll: self.stickToBottom)
                 }
-                // 终态高度定型：只写回 model 缓存（下轮复用 configure 直接采用），不触发重排
+                // 终态高度定型/修正：KaTeX 公式、Web 字体是异步加载的——真实高度可能分
+                // 两次到达（文本先渲完报一次、公式渲完再报一次）。缓存有变化时必须
+                // reconfigure 收敛 layout（否则停在第一次的中间值：公式卡下方空白/被裁）；
+                // 与缓存一致（滚动复用同高度回传）才静默——防布局风暴的语义保留在去重判断里
                 cell.onHeightSettled = { [weak self] modelID, height in
-                    self?.updateRenderedHeight(modelID: modelID, height: height)
+                    self?.settleRenderedHeight(modelID: modelID, height: height)
                 }
             }
         }
@@ -227,14 +230,32 @@ extension DoubaoChatViewController {
         }
     }
 
+    /// 终态高度修正（onHeightSettled 入口）：缓存有变化 → reconfigure 收敛（不滚动）。
+    /// 与 applyRenderedHeight 的区别：不跟随滚动意图（终态修正不该拽人），只做布局收敛
+    func settleRenderedHeight(modelID: UUID, height: CGFloat) {
+        guard !updateRenderedHeight(modelID: modelID, height: height) else { return }
+        for r in rounds.indices {
+            if let i = rounds[r].answerItems.firstIndex(where: {
+                if case .markdown(let m) = $0 { return m.id == modelID }
+                return false
+            }), case .markdown(let m) = rounds[r].answerItems[i] {
+                applySnapshot(reconfiguring: [.markdown(m)], forceScrollToBottom: false)
+                return
+            }
+        }
+    }
+
     /// 高度写回 model：更新 rounds 源（供复用/终态 configure 采用）+ 活跃引用
     /// （下一拍 updateItem 构造新 model 时带上，不被旧副本覆盖）。
+    /// 同时写入宽度指纹（renderedWidth）：多端同步来的「别的宽度下的高度」恢复时据此作废。
     /// 返回 true = 高度未变化（重复回传，调用方据此跳过 invalidate）
     @discardableResult
     func updateRenderedHeight(modelID: UUID, height: CGFloat) -> Bool {
+        let renderWidth = collectionView.frame.width
         var duplicated = true
         if markdownModel?.id == modelID, markdownModel?.renderedHeight != height {
             markdownModel?.renderedHeight = height
+            markdownModel?.renderedWidth = renderWidth
             duplicated = false
         }
         for r in rounds.indices {
@@ -243,6 +264,7 @@ extension DoubaoChatViewController {
                 return false
             }), case .markdown(var m) = rounds[r].answerItems[i], m.renderedHeight != height {
                 m.renderedHeight = height
+                m.renderedWidth = renderWidth
                 rounds[r].answerItems[i] = .markdown(m)
                 duplicated = false
             }

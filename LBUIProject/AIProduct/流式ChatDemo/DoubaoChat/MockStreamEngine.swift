@@ -110,7 +110,7 @@ final class DoubaoMockStreamEngine {
         // 4. 正文B：multi-paragraph.md 前段（多语言混排段落，验证复杂文本排版）
         let answerB = "再从一段多语言排版的文字里看看文本处理的细节，"
             + "顺便推荐一位这个领域的专家：\n\n"
-            + String(Self.loadMarkdown("multi-paragraph").prefix(1000))
+            + String(Self.loadMarkdown("multi-paragraph").prefix(2000))
         events.append(contentsOf: Array(repeating: .idle, count: 10))
         events.append(.answerStart)
         events.append(contentsOf: chunks(of: answerB, event: { .answerText($0) }, size: 10))

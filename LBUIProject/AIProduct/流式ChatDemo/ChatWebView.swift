@@ -16,6 +16,15 @@ final class ChatWebView: WKWebView {
     private var pendingMarkdown: String?
     private var templateURL: URL?
 
+    // MARK: - 宽度屏障（修「历史恢复首帧空白/高度为0」）
+    /// ⚠️ cell 尚未布局时 configure 就会触发渲染：此时 webView.frame.width == 0，
+    /// JS 拿不到可用宽度 → 文档塌成一条线 → 高度回传 0~1pt、内容白屏
+    /// （老 ChatViewController「历史记录刚进来不显示」同根）。
+    /// 解法：宽度未就位前只缓存文本，layoutSubviews 拿到真实宽度后再真正渲染
+    private var hasValidWidth = false
+    /// 宽度屏障期间缓存的待渲染文本（宽度就位后自动补渲）
+    private var pendingWidthMarkdown: String?
+
     convenience init() {
         let config = WKWebViewConfiguration()
         let uc = WKUserContentController()
@@ -51,17 +60,35 @@ final class ChatWebView: WKWebView {
         super.init(coder: coder)
     }
 
+    /// 宽度屏障解除点：cell 布局完成（frame 拿到真实宽度）后补渲染缓存文本
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if !hasValidWidth, bounds.width > 0 {
+            hasValidWidth = true
+            if let text = pendingWidthMarkdown {
+                pendingWidthMarkdown = nil
+                renderMarkdown(text)
+            }
+        }
+    }
+
     deinit {
         configuration.userContentController.removeScriptMessageHandler(forName: "height")
     }
 
     // MARK: - Public
 
-    /// 渲染 markdown 文本。模板未加载完时先缓存，加载完成后自动补渲染。
+    /// 渲染 markdown 文本。模板未加载完时先缓存，加载完成后自动补渲染；
+    /// 宽度未就位（cell 未布局 frame 为 zero）时也先缓存，layoutSubviews 后补渲染——
+    /// 否则 JS 按宽度 0 渲染，文档塌成一条线（高度 0~1pt），表现为白屏
     func renderMarkdown(_ markdown: String) {
         let text = LBMarkdownParser.shared.preprocess(markdown)
         if !didLoadTemplate {
             pendingMarkdown = text
+            return
+        }
+        guard hasValidWidth else {
+            pendingWidthMarkdown = text
             return
         }
         evaluateJavaScript(renderJSCall(for: text), completionHandler: nil)

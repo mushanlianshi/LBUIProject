@@ -47,6 +47,12 @@ final class DoubaoMarkdownCell: UICollectionViewCell {
     /// 高度回传触发的 reconfigure 只改高度字段，不重跑几百 ms 的 JS 渲染）
     private var lastRenderedText: String?
 
+    /// 历史无缓存（多端同步/宽度指纹作废）走了估算首帧：真实高度首次回来时必须
+    /// 走 onHeightChanged 触发 VC reconfigure——否则 layout 缓存高度停在估算值：
+    /// 估算偏高 → 内容下方大面积空白；估算偏低 → 内容被裁（「碰一下才显示」）。
+    /// 收敛一次后回归终态静默路径（复用时已带缓存高度）
+    private var awaitingMeasure = false
+
     /// Markdown 渲染内核（与旧版 AssistantMarkdownCell 同款，可复用不重建）
     private let webView: ChatWebView = ChatWebView()
 
@@ -71,7 +77,7 @@ final class DoubaoMarkdownCell: UICollectionViewCell {
         }
 
         webView.onHeight = { [weak self] height in
-            guard let self else { return }
+            guard let self, height > 0 else { return }   // 宽度未就位等异常报 0 高，直接忽略防塌陷
             // 历史记录防回缩（同旧版 AssistantMarkdownCell）：缓存高度大于新报值时保持缓存，
             // 挡掉 JS 重渲先报中间值导致的跳变
             if let id = self.currentModelID,
@@ -81,6 +87,14 @@ final class DoubaoMarkdownCell: UICollectionViewCell {
             }
             self.heightConstraint.update(offset: height)
             guard self.isStreamingState else {
+                // 估算首帧场景（历史无缓存）：真实高度首次到达必须触发 reconfigure——
+                // 静默写缓存不够，layout 缓存高度还停在估算值（偏高=空白/偏低=被裁）
+                if self.awaitingMeasure, let id = self.currentModelID {
+                    self.awaitingMeasure = false
+                    self.lastReportedHeight = height
+                    self.onHeightChanged?(id, height)   // VC 写缓存 + reconfigure → layout 重新 self-size
+                    return
+                }
                 // 终态：高度静默就位（滚动复用/历史加载场景），不打扰 VC 布局；
                 // 仅把最终定型高度写回 model 缓存（下轮复用 configure 直接采用）
                 self.lastReportedHeight = height
@@ -103,6 +117,8 @@ final class DoubaoMarkdownCell: UICollectionViewCell {
 
     /// 配置/流式更新统一入口。
     /// - 终态且有缓存高度（终态定格/滚动复用/历史加载）：约束直接采用缓存高度
+    /// - 历史记录无缓存高度（多端同步/宽度指纹不匹配被作废）：估算高度撑首帧——
+    ///   宁可高估不低估（高估暂留白，低估裁字），JS 渲染完回传真实高度后 reconfigure 收敛
     /// - 复用到「不同 item」：高度约束重置为 1，新内容渲染期间不占旧 item 的巨大高度
     /// - ⚠️ 同文本跳过 WebView 重渲：高度回传后 VC 会 reconfigure 本 cell（只更新高度字段），
     ///   若不跳过，每次高度变化都会触发几百 ms 的 JS 全文重渲 + 新一轮高度回传 → 死循环
@@ -116,15 +132,35 @@ final class DoubaoMarkdownCell: UICollectionViewCell {
             // 流式中此处约束=上一拍高度，本拍渲染完报更高再走一轮回传，链路闭环
             heightConstraint.update(offset: model.renderedHeight)
             lastReportedHeight = model.renderedHeight
+            awaitingMeasure = false
+        } else if model.isFromHistory {
+            // 历史记录但无缓存高度（别的端同步来 / 宽度指纹不匹配被作废）：
+            // 估算高度撑首帧；真实高度回来时走 onHeightChanged 触发 reconfigure 收敛
+            let estimated = Self.estimateHeight(text: model.text)
+            heightConstraint.update(offset: estimated)
+            lastReportedHeight = 0
+            awaitingMeasure = true
         } else if isReuseToOtherItem {
             heightConstraint.update(offset: 1)
             lastReportedHeight = 0
+            awaitingMeasure = false
         } else {
             lastReportedHeight = 0
+            awaitingMeasure = false
         }
         if lastRenderedText != model.text {
             lastRenderedText = model.text
             webView.renderMarkdown(model.text)
         }
+    }
+
+    /// 无缓存高度的粗估（首帧占位）：按字符量折算行数——
+    /// 纯文本行高 ~24pt、每行 ~40 字（中文 15pt 字号），段落空行计 12pt；
+    /// 高估有上限（×1.15 系数），低估裁字不可接受，适度高估留白可接受
+    private static func estimateHeight(text: String) -> CGFloat {
+        let lineBreaks = text.filter { $0 == "\n" }.count
+        let lines = max(1, Int(ceil(Double(text.count) / 40.0))) + lineBreaks
+        let estimated = CGFloat(lines) * 24.0 + 24.0
+        return min(estimated * 1.15, 6000)
     }
 }
