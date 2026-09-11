@@ -536,6 +536,20 @@
 		40E3A820304E50DC004D71CF /* DeliveryActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */; };
 		40E3A822304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */; };
 		40E3A825304E50DC004D71CF /* LBDeliveryOrderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A824304E50DC004D71CF /* LBDeliveryOrderWidget.swift */; };
+		40E3A831304E50DC004D71CF /* DoubaoChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A830304E50DC004D71CF /* DoubaoChatItem.swift */; };
+		40E3A833304E50DC004D71CF /* DoubaoUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A832304E50DC004D71CF /* DoubaoUserModel.swift */; };
+		40E3A835304E50DC004D71CF /* DoubaoMarkdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A834304E50DC004D71CF /* DoubaoMarkdownModel.swift */; };
+		40E3A837304E50DC004D71CF /* DoubaoThinkingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A836304E50DC004D71CF /* DoubaoThinkingModel.swift */; };
+		40E3A839304E50DC004D71CF /* DoubaoContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A838304E50DC004D71CF /* DoubaoContactModel.swift */; };
+		40E3A83B304E50DC004D71CF /* DoubaoRecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A83A304E50DC004D71CF /* DoubaoRecommendModel.swift */; };
+		40E3A83D304E50DC004D71CF /* DoubaoUserBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A83C304E50DC004D71CF /* DoubaoUserBubbleCell.swift */; };
+		40E3A83F304E50DC004D71CF /* DoubaoMarkdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A83E304E50DC004D71CF /* DoubaoMarkdownCell.swift */; };
+		40E3A841304E50DC004D71CF /* DoubaoThinkingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A840304E50DC004D71CF /* DoubaoThinkingCell.swift */; };
+		40E3A843304E50DC004D71CF /* DoubaoContactCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A842304E50DC004D71CF /* DoubaoContactCardCell.swift */; };
+		40E3A845304E50DC004D71CF /* DoubaoRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A844304E50DC004D71CF /* DoubaoRecommendCell.swift */; };
+		40E3A847304E50DC004D71CF /* DoubaoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A846304E50DC004D71CF /* DoubaoChatViewController.swift */; };
+		40E3A849304E50DC004D71CF /* MockStreamEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A848304E50DC004D71CF /* MockStreamEngine.swift */; };
+		40E3A84E304E50DC004D71CF /* DoubaoQARoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */; };
 		40E3A81B304E50DC004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
 		40E3A81C304E5149004D71CF /* LBDeliveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A817304E50DC004D71CF /* LBDeliveryAttributes.swift */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
@@ -1276,6 +1290,20 @@
 		40E3A81F304E50DC004D71CF /* DeliveryActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryActivityManager.swift; sourceTree = "<group>"; };
 		40E3A821304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryOrderDetailViewController.swift; sourceTree = "<group>"; };
 		40E3A824304E50DC004D71CF /* LBDeliveryOrderWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeliveryOrderWidget.swift; sourceTree = "<group>"; };
+		40E3A830304E50DC004D71CF /* DoubaoChatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatItem.swift; sourceTree = "<group>"; };
+		40E3A832304E50DC004D71CF /* DoubaoUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoUserModel.swift; sourceTree = "<group>"; };
+		40E3A834304E50DC004D71CF /* DoubaoMarkdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoMarkdownModel.swift; sourceTree = "<group>"; };
+		40E3A836304E50DC004D71CF /* DoubaoThinkingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoThinkingModel.swift; sourceTree = "<group>"; };
+		40E3A838304E50DC004D71CF /* DoubaoContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoContactModel.swift; sourceTree = "<group>"; };
+		40E3A83A304E50DC004D71CF /* DoubaoRecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoRecommendModel.swift; sourceTree = "<group>"; };
+		40E3A83C304E50DC004D71CF /* DoubaoUserBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoUserBubbleCell.swift; sourceTree = "<group>"; };
+		40E3A83E304E50DC004D71CF /* DoubaoMarkdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoMarkdownCell.swift; sourceTree = "<group>"; };
+		40E3A840304E50DC004D71CF /* DoubaoThinkingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoThinkingCell.swift; sourceTree = "<group>"; };
+		40E3A842304E50DC004D71CF /* DoubaoContactCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoContactCardCell.swift; sourceTree = "<group>"; };
+		40E3A844304E50DC004D71CF /* DoubaoRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoRecommendCell.swift; sourceTree = "<group>"; };
+		40E3A846304E50DC004D71CF /* DoubaoChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatViewController.swift; sourceTree = "<group>"; };
+		40E3A848304E50DC004D71CF /* MockStreamEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStreamEngine.swift; sourceTree = "<group>"; };
+		40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoQARoundModel.swift; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
 		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController2222.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController2222.h; sourceTree = "<group>"; };
 		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController2222.m; sourceTree = "<group>"; };
@@ -1692,8 +1720,46 @@
 				4022FB233010A8440058B3E4 /* MarkdownStyle.swift */,
 				4022FB243010A8440058B3E4 /* UserBubbleCell.swift */,
 				4043D9083047000100504254 /* ChatStore */,
+				40E3A84A304E50DC004D71CF /* DoubaoChat */,
 			);
 			path = "流式ChatDemo";
+			sourceTree = "<group>";
+		};
+		40E3A84A304E50DC004D71CF /* DoubaoChat */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A846304E50DC004D71CF /* DoubaoChatViewController.swift */,
+				40E3A848304E50DC004D71CF /* MockStreamEngine.swift */,
+				40E3A84B304E50DC004D71CF /* model */,
+				40E3A84C304E50DC004D71CF /* view */,
+			);
+			path = DoubaoChat;
+			sourceTree = "<group>";
+		};
+		40E3A84B304E50DC004D71CF /* model */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A830304E50DC004D71CF /* DoubaoChatItem.swift */,
+				40E3A832304E50DC004D71CF /* DoubaoUserModel.swift */,
+				40E3A834304E50DC004D71CF /* DoubaoMarkdownModel.swift */,
+				40E3A836304E50DC004D71CF /* DoubaoThinkingModel.swift */,
+				40E3A838304E50DC004D71CF /* DoubaoContactModel.swift */,
+				40E3A83A304E50DC004D71CF /* DoubaoRecommendModel.swift */,
+				40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		40E3A84C304E50DC004D71CF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A83C304E50DC004D71CF /* DoubaoUserBubbleCell.swift */,
+				40E3A83E304E50DC004D71CF /* DoubaoMarkdownCell.swift */,
+				40E3A840304E50DC004D71CF /* DoubaoThinkingCell.swift */,
+				40E3A842304E50DC004D71CF /* DoubaoContactCardCell.swift */,
+				40E3A844304E50DC004D71CF /* DoubaoRecommendCell.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		4023B0672AA5E31800A55675 /* Alpha和opacity */ = {
@@ -4987,6 +5053,20 @@
 				40E3A820304E50DC004D71CF /* DeliveryActivityManager.swift in Sources */,
 				40E3A822304E50DC004D71CF /* LBDeliveryOrderDetailViewController.swift in Sources */,
 				40E3A81B304E50DC004D71CF /* LBDeliveryAttributes.swift in Sources */,
+				40E3A831304E50DC004D71CF /* DoubaoChatItem.swift in Sources */,
+				40E3A833304E50DC004D71CF /* DoubaoUserModel.swift in Sources */,
+				40E3A835304E50DC004D71CF /* DoubaoMarkdownModel.swift in Sources */,
+				40E3A837304E50DC004D71CF /* DoubaoThinkingModel.swift in Sources */,
+				40E3A839304E50DC004D71CF /* DoubaoContactModel.swift in Sources */,
+				40E3A83B304E50DC004D71CF /* DoubaoRecommendModel.swift in Sources */,
+				40E3A83D304E50DC004D71CF /* DoubaoUserBubbleCell.swift in Sources */,
+				40E3A83F304E50DC004D71CF /* DoubaoMarkdownCell.swift in Sources */,
+				40E3A841304E50DC004D71CF /* DoubaoThinkingCell.swift in Sources */,
+				40E3A843304E50DC004D71CF /* DoubaoContactCardCell.swift in Sources */,
+				40E3A845304E50DC004D71CF /* DoubaoRecommendCell.swift in Sources */,
+				40E3A847304E50DC004D71CF /* DoubaoChatViewController.swift in Sources */,
+				40E3A849304E50DC004D71CF /* MockStreamEngine.swift in Sources */,
+				40E3A84E304E50DC004D71CF /* DoubaoQARoundModel.swift in Sources */,
 				406B18792D2E4688003ED486 /* LBCombineModel.swift in Sources */,
 				40C20B4A298A095500B23342 /* LBTestHitViewController.swift in Sources */,
 				400A05BE2861A386006574B5 /* UIControl+LBPublisher.swift in Sources */,

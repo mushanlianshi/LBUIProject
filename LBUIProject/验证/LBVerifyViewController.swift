@@ -48,6 +48,7 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "at功能完整实现（可用版）", vcClass: LBATCompleteViewController.self),
                 LBListItemModel.init(title: "SPM流式Markdown渲染聊天", vcClass: LBSPMStreamChatController.self),
                 LBListItemModel.init(title: "webview渲染流式内容", vcClass: ChatViewController.self),
+                LBListItemModel.init(title: "豆包式卡片流式对话(Diffable)", vcClass: DoubaoChatViewController.self),
             ]
         }
     }
