@@ -126,7 +126,7 @@ class LBThirdSDKController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "UICollectionViewCompositionalLayout布局", vcClass: LBCollectionCompositionLayoutViewController.self),
                 LBListItemModel.init(title: "骨架屏", vcClass: LBTabAnimatedViewController.self),
                 LBListItemModel.init(title: "GPUImage图片滤镜", vcClass: LBGPUImageFilterViewController.self),
-                LBListItemModel.init(title: "down三方库渲染表格", vcClass: LBDownTableTestController.self),
+//                LBListItemModel.init(title: "down三方库渲染表格", vcClass: LBDownTableTestController.self),
                 LBListItemModel.init(title: "SmartCodable替换HandyJson", vcClass: LBSmartCodableReplaceHandyjsonController.self),
             ]
             // IJKMediaFramework 仅含真机 arm64 切片，模拟器下不注册入口

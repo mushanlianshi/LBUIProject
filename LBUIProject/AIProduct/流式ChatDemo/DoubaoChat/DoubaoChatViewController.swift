@@ -112,6 +112,7 @@ final class DoubaoChatViewController: UIViewController {
     var recommendRegistration: UICollectionView.CellRegistration<DoubaoRecommendCell, DoubaoChatItem>!
     var unsupportedRegistration: UICollectionView.CellRegistration<DoubaoUnsupportedCell, DoubaoChatItem>!
     var actionsRegistration: UICollectionView.CellRegistration<DoubaoActionsCell, DoubaoChatItem>!
+    var loadingRegistration: UICollectionView.CellRegistration<DoubaoLoadingCell, DoubaoChatItem>!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -217,19 +218,53 @@ final class DoubaoChatViewController: UIViewController {
         sendQuestion(text)
     }
 
-    /// 发起一轮提问：新建 QA 轮次（新的一对 question/answer section）→ 启动 mock 剧本。
-    /// 正在流式中则先打断（旧轮的流式卡定格为结束态）。
-    /// 非 private：+CollectionDataSources 分类里找人卡/推荐问的回调要调
+    /// 发起一轮提问（豆包语义：先加载动画 → 服务端首字返回 → 动画消失、内容开始）：
+    /// 新建轮次 → 插入 loading 卡（2 秒）→ 移除 loading → 启动 mock 剧本。
+    /// 正在流式/加载中再提问：打断旧剧本、剥掉旧 loading（闭包的 roundID 校验兜底）
     func sendQuestion(_ text: String) {
         engine.stop()
         finalizeActiveStream()   // 上一轮还在流式中的卡定格
+        removeAllLoadingItems()  // 上一轮加载被打断：剥掉残留 loading 卡
         store.ensureSession(firstQuestion: text)   // 惰性建会话（历史会话继续聊不新建）
         let round = DoubaoQARoundModel(userModel: DoubaoUserModel(text: text))
         rounds.append(round)
         currentRoundID = round.id
-        store.persist(round: round)   // 用户消息即终态，立即落库
-        applySnapshot(reconfiguring: nil, forceScrollToBottom: true)
-        engine.start(script: DoubaoMockStreamEngine.script(for: text))
+        store.persist(round: round)   // 用户消息即终态，立即落库（此时 answerItems 尚无 loading）
+        appendAnswerItem(.loading(DoubaoLoadingModel()))
+        // 模拟服务端「首字延迟」：loading 展示 2 秒后移除并开始流式输出
+        let roundID = round.id
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            guard let self, self.currentRoundID == roundID else { return }  // 已被新一轮提问打断
+            self.removeLoadingItem(roundID: roundID)
+            self.engine.start(script: DoubaoMockStreamEngine.script(for: text))
+        }
+    }
+
+    /// 移除指定轮的 loading 卡（结构性删除：snapshot 重建，diff 自动算 delete）
+    private func removeLoadingItem(roundID: UUID) {
+        guard let index = rounds.firstIndex(where: { $0.id == roundID }) else { return }
+        let filtered = rounds[index].answerItems.filter {
+            if case .loading = $0 { return false }
+            return true
+        }
+        guard filtered.count != rounds[index].answerItems.count else { return }
+        rounds[index].answerItems = filtered
+        applySnapshot(reconfiguring: nil, forceScrollToBottom: stickToBottom)
+    }
+
+    /// 剥掉所有轮次残留的 loading 卡（新一轮提问打断上一轮加载时清理）
+    private func removeAllLoadingItems() {
+        var changed = false
+        for r in rounds.indices {
+            let filtered = rounds[r].answerItems.filter {
+                if case .loading = $0 { changed = true; return false }
+                return true
+            }
+            rounds[r].answerItems = filtered
+        }
+        if changed {
+            applySnapshot(reconfiguring: nil, forceScrollToBottom: false)
+        }
     }
 
     // MARK: - Mock 事件消费（SSE 模拟层 → Diffable 数据层）

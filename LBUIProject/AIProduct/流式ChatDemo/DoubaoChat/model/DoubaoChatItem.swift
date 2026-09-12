@@ -44,4 +44,6 @@ enum DoubaoChatItem: Hashable, Codable {
     case unsupported(DoubaoUnsupportedModel)
     /// 回答操作栏（播报/复制/点赞/点踩）：一轮回答结束后追加在 section 底部
     case actions(DoubaoActionsModel)
+    /// 加载占位（豆包式等待动画）：发送后插入，2 秒后服务端「首字返回」时结构性删除
+    case loading(DoubaoLoadingModel)
 }

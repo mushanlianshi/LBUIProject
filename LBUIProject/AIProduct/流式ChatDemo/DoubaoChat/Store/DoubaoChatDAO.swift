@@ -168,6 +168,11 @@ final class DoubaoChatDAO {
                 guard let payloadString = rs.string(forColumn: "payload"),
                       let data = payloadString.data(using: .utf8) else { continue }
                 guard var round = try? JSONDecoder().decode(DoubaoQARoundModel.self, from: data) else { continue }
+                // loading 是纯 UI 态：正常流程不落库，这里兜底剥离防御异常残留（恢复后永远不该有等待动画）
+                round.answerItems = round.answerItems.filter {
+                    if case .loading = $0 { return false }
+                    return true
+                }
                 for i in round.answerItems.indices {
                     switch round.answerItems[i] {
                     case .markdown(var m):

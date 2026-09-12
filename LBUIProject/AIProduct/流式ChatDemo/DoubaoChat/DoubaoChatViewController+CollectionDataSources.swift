@@ -89,6 +89,9 @@ extension DoubaoChatViewController {
                 cell.onDislike = { self?.toggleFeedback(like: false) }
             }
         }
+        loadingRegistration = UICollectionView.CellRegistration { _, _, _ in
+            // loading 无数据可配：纯动画占位卡
+        }
 
         // 2. 再构造 dataSource（cell provider 闭包里只 dequeue，不创建任何东西）
         dataSource = UIKit.UICollectionViewDiffableDataSource<DoubaoChatSection, DoubaoChatItem>(
@@ -116,6 +119,9 @@ extension DoubaoChatViewController {
             case .actions:
                 return collectionView.dequeueConfiguredReusableCell(
                     using: self.actionsRegistration, for: indexPath, item: item)
+            case .loading:
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: self.loadingRegistration, for: indexPath, item: item)
             }
         }
     }

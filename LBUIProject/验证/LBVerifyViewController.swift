@@ -42,11 +42,9 @@ class LBVerifyViewController: LBBaseCollectionViewController {
                 LBListItemModel.init(title: "AI问答器", vcClass: LBAIAnswerViewController.self),
                 LBListItemModel.init(title: "流式输出问答器", vcClass: LBSSEReponseController.self),
                 LBListItemModel.init(title: "UIKit加载SF Symbols设置颜色、大小", vcClass: LBUIKitLoadSFSymbolsController.self),
-                LBListItemModel.init(title: "AI问答输出", vcClass: LBAIChatViewController.self),
-                LBListItemModel.init(title: "AI问答输出MarkdownKit三方库", vcClass: LBMarkdownStreamViewController.self),
-                LBListItemModel.init(title: "chat模拟", vcClass: LBChatViewController.self),
+//                LBListItemModel.init(title: "chat模拟", vcClass: LBChatViewController.self),
                 LBListItemModel.init(title: "at功能完整实现（可用版）", vcClass: LBATCompleteViewController.self),
-                LBListItemModel.init(title: "SPM流式Markdown渲染聊天", vcClass: LBSPMStreamChatController.self),
+//                LBListItemModel.init(title: "SPM流式Markdown渲染聊天", vcClass: LBSPMStreamChatController.self),
                 LBListItemModel.init(title: "webview渲染流式内容", vcClass: ChatViewController.self),
                 LBListItemModel.init(title: "豆包式卡片流式对话(Diffable)", vcClass: DoubaoChatViewController.self),
             ]
