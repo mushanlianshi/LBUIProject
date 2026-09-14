@@ -89,7 +89,8 @@ target 'LBUIProject' do
    #日期处理库
    pod 'SwiftDate', '6.3.1'
    pod 'IGListKit', '5.0.0'
-   pod 'HandyJSON', '5.0.2'
+#   pod 'HandyJSON', '5.0.2'
+   pod 'HandyJSON', :git => 'https://github.com/Miles-Matheson/HandyJSON.git'
    pod 'TABAnimated'
    #弹框队列
    pod 'CLPopoverManager', '0.0.9'

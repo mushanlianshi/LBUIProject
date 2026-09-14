@@ -122,7 +122,7 @@ PODS:
     - SDWebImage (~> 5.0)
   - GKSliderView (1.2.3)
   - GPUImage (0.1.7)
-  - HandyJSON (5.0.2)
+  - HandyJSON (5.0.4-beta)
   - Hero (1.6.4)
   - Highlightr (2.1.0)
   - IBPCollectionViewCompositionalLayout (0.6.9)
@@ -654,7 +654,7 @@ DEPENDENCIES:
   - FSPagerView (from `https://github.com/WenchaoD/FSPagerView`)
   - GKPhotoBrowser (= 2.6.3)
   - GPUImage (= 0.1.7)
-  - HandyJSON (= 5.0.2)
+  - HandyJSON (from `https://github.com/Miles-Matheson/HandyJSON.git`)
   - Hero
   - Highlightr
   - IBPCollectionViewCompositionalLayout (= 0.6.9)
@@ -727,7 +727,6 @@ SPEC REPOS:
     - GKPhotoBrowser
     - GKSliderView
     - GPUImage
-    - HandyJSON
     - Hero
     - Highlightr
     - IBPCollectionViewCompositionalLayout
@@ -785,6 +784,8 @@ EXTERNAL SOURCES:
     :git: "git@github.com:mushanlianshi/BLTIconFont.git"
   FSPagerView:
     :git: https://github.com/WenchaoD/FSPagerView
+  HandyJSON:
+    :git: https://github.com/Miles-Matheson/HandyJSON.git
   Spring:
     :git: https://github.com/MengTo/Spring.git
 
@@ -795,6 +796,9 @@ CHECKOUT OPTIONS:
   FSPagerView:
     :commit: f90ab7d2ee6847823708a0a4e11e87c3ee4e6e48
     :git: https://github.com/WenchaoD/FSPagerView
+  HandyJSON:
+    :commit: de8a7126d2270da55cea3cb45dadffcfd002dbbe
+    :git: https://github.com/Miles-Matheson/HandyJSON.git
   Spring:
     :commit: 50d92a5b9e08848387ae95bf44c6ad20834f7083
     :git: https://github.com/MengTo/Spring.git
@@ -826,7 +830,7 @@ SPEC CHECKSUMS:
   GKPhotoBrowser: 97f41f9349c1c74bb9ef742ff40840b57b347d1b
   GKSliderView: 7c6f853afeb0ae370bb8dce76ec669d6e9109d1d
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
   Hero: 473a0143017e1371d050fcbedb67d317925097f2
   Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   IBPCollectionViewCompositionalLayout: bbb29e39ac564666a8c3cdb6633ed944b6feb55b
@@ -881,6 +885,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 226fbadd86df2c6361656fd3f22f4b8ed11194d6
+PODFILE CHECKSUM: 6823197964644e30e6202a8637863691c841c0a6
 
 COCOAPODS: 1.16.2

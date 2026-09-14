@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -518,8 +518,6 @@
 		40DF3564286466A7008EE299 /* LBMultipleDelegatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */; };
 		40DFDFFD3053DC15007BFB30 /* DoubaoAnswerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDFFC3053DC15007BFB30 /* DoubaoAnswerBackground.swift */; };
 		40DFDFFF3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDFFE3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift */; };
-		40E3A861304E50DC004D71CF /* DoubaoLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A860304E50DC004D71CF /* DoubaoLoadingModel.swift */; };
-		40E3A863304E50DC004D71CF /* DoubaoLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A862304E50DC004D71CF /* DoubaoLoadingCell.swift */; };
 		40E19659267B4E32008207D5 /* LBShadowRaduisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */; };
 		40E354B52E43244D00B36FF4 /* LBTextSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E354B42E43244D00B36FF4 /* LBTextSplitter.m */; };
 		40E354B72E43253700B36FF4 /* testLongText.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E354B62E43253700B36FF4 /* testLongText.txt */; };
@@ -550,6 +548,8 @@
 		40E3A859304E50DC004D71CF /* DoubaoUnsupportedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A858304E50DC004D71CF /* DoubaoUnsupportedCell.swift */; };
 		40E3A85B304E50DC004D71CF /* DoubaoActionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A85A304E50DC004D71CF /* DoubaoActionsModel.swift */; };
 		40E3A85D304E50DC004D71CF /* DoubaoActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A85C304E50DC004D71CF /* DoubaoActionsCell.swift */; };
+		40E3A861304E50DC004D71CF /* DoubaoLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A860304E50DC004D71CF /* DoubaoLoadingModel.swift */; };
+		40E3A863304E50DC004D71CF /* DoubaoLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A862304E50DC004D71CF /* DoubaoLoadingCell.swift */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
 		40E864092DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */; };
 		40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1884294728410003F457 /* LBGrayViewController.swift */; };
@@ -579,7 +579,7 @@
 		40F5B1DC2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */; };
 		40F5B1DE2FF3A000002CCA9C /* LBNavigationMixRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */; };
 		40F9FA452DF1816600D5D736 /* LBAIAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */; };
-		40FAE36A2FDBC5AA00861B79 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
@@ -1266,8 +1266,6 @@
 		40DF3563286466A7008EE299 /* LBMultipleDelegatesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBMultipleDelegatesController.m; sourceTree = "<group>"; };
 		40DFDFFC3053DC15007BFB30 /* DoubaoAnswerBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoAnswerBackground.swift; sourceTree = "<group>"; };
 		40DFDFFE3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DoubaoChatViewController+CollectionDataSources.swift"; sourceTree = "<group>"; };
-		40E3A860304E50DC004D71CF /* DoubaoLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoLoadingModel.swift; sourceTree = "<group>"; };
-		40E3A862304E50DC004D71CF /* DoubaoLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoLoadingCell.swift; sourceTree = "<group>"; };
 		40E19657267B4E32008207D5 /* LBShadowRaduisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBShadowRaduisViewController.h; sourceTree = "<group>"; };
 		40E19658267B4E32008207D5 /* LBShadowRaduisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBShadowRaduisViewController.m; sourceTree = "<group>"; };
 		40E1E5F02757235B00A8DBDB /* mainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainTest.m; sourceTree = "<group>"; };
@@ -1301,6 +1299,8 @@
 		40E3A858304E50DC004D71CF /* DoubaoUnsupportedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoUnsupportedCell.swift; sourceTree = "<group>"; };
 		40E3A85A304E50DC004D71CF /* DoubaoActionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoActionsModel.swift; sourceTree = "<group>"; };
 		40E3A85C304E50DC004D71CF /* DoubaoActionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoActionsCell.swift; sourceTree = "<group>"; };
+		40E3A860304E50DC004D71CF /* DoubaoLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoLoadingModel.swift; sourceTree = "<group>"; };
+		40E3A862304E50DC004D71CF /* DoubaoLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoLoadingCell.swift; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
 		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController2222.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController2222.h; sourceTree = "<group>"; };
 		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController2222.m; sourceTree = "<group>"; };
@@ -1354,7 +1354,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -1364,7 +1364,18 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = LBPreviewHost; sourceTree = "<group>"; };
+		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = LBPreviewHost;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1435,6 +1446,7 @@
 		28D35F3F57528AC8BD5D8779 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				4043DA213047000200504254 /* Pods.xcodeproj */,
 				30979B816D35F06E4B51C4A0 /* Pods-LBUIProject.debug.xcconfig */,
 				E32EB82D46265B8566D9B230 /* Pods-LBUIProject.release.xcconfig */,
 				3796D8BCDACC2F4D97B0EFE1 /* Pods-LBUIProject-LBUIProjectUITests.debug.xcconfig */,
@@ -4254,7 +4266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FAE36A2FDBC5AA00861B79 /* (null) in Resources */,
+				40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4403,13 +4415,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4468,13 +4476,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4489,13 +4493,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4532,13 +4532,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4553,13 +4549,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

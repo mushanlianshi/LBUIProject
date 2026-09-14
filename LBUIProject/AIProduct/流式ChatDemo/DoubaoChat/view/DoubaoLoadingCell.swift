@@ -49,7 +49,7 @@ final class DoubaoLoadingCell: UICollectionViewCell {
             dots.append(dot)
         }
         stackView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(44)
+            make.leading.equalToSuperview().offset(15)
             make.top.equalToSuperview().offset(12)
             make.bottom.equalToSuperview().offset(-12)
         }
