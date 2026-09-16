@@ -31,8 +31,12 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.bluetoothList, LBBluetoothListHostingController.self),
         (.bluetoothList, LBBluetoothListViewController.self),
         (.combineSearch, AnyView(LBCombineSearchView())),
+        (.nightMode, AnyView(LBNightModeEntryPage())),
 //        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
+    
+    @AppStorage("LBSelectName")
+    private var selectCityName = ""
 
     
     override func viewDidLoad() {
@@ -46,6 +50,9 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         let deferResult = testDefer()
         debugPrint("LBLog testDeferValue is \(deferResult)")
         testCapture()
+        debugPrint("LBLog selectCityName before \(selectCityName)")
+        selectCityName = selectCityName + "1"
+        debugPrint("LBLog selectCityName after \(selectCityName)")
     }
     
     
@@ -145,5 +152,6 @@ enum LBSwiftUIExampleType: String {
     case bluetoothList = "蓝牙列表"
     case combineSearch = "天气搜索"
     case deliverySimulate = "外卖配送灵动岛"
+    case nightMode = "SwiftUI深夜模式(Environment)"
 //    case navigationMix = "混合导航栏"
 }

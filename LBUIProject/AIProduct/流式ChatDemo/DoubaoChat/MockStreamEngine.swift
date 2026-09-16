@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// 模拟流失输出每次chunk出几个字
+fileprivate let mockspeedCount = 5
+
 /// Mock 流式事件（模拟真实 SSE：不同类型的事件/卡片按剧本顺序穿插到达）
 enum DoubaoMockEvent {
     /// 思考块出现（VC 插入 thinking 卡片，展开态）
@@ -90,7 +93,7 @@ final class DoubaoMockStreamEngine {
         这个问题涉及专业判断，可以推荐几位该领域的资深人士给用户深入咨询。
         整理回答结构：先给结论，再展开细节，最后补充专家引荐和相关问题推荐。
         """
-        events.append(contentsOf: chunks(of: thinking, event: { .thinkingText($0) }, size: 7))
+        events.append(contentsOf: chunks(of: thinking, event: { .thinkingText($0) }, size: mockspeedCount))
         events.append(.idle)
         events.append(.thinkingEnd(seconds: 3))
 
@@ -98,7 +101,7 @@ final class DoubaoMockStreamEngine {
         let answerA = "关于「\(question)」，先用一组表格数据给你建立整体认知：\n\n"
             + Self.loadMarkdown("tables")
         events.append(.answerStart)
-        events.append(contentsOf: chunks(of: answerA, event: { .answerText($0) }, size: 10))
+        events.append(contentsOf: chunks(of: answerA, event: { .answerText($0) }, size: mockspeedCount))
 
         // 3. 找人卡片①（正文A定格，卡片结构性插入）
         events.append(contentsOf: Array(repeating: .idle, count: 10))
@@ -113,7 +116,7 @@ final class DoubaoMockStreamEngine {
             + String(Self.loadMarkdown("multi-paragraph").prefix(2000))
         events.append(contentsOf: Array(repeating: .idle, count: 10))
         events.append(.answerStart)
-        events.append(contentsOf: chunks(of: answerB, event: { .answerText($0) }, size: 10))
+        events.append(contentsOf: chunks(of: answerB, event: { .answerText($0) }, size: mockspeedCount))
 
         // 5. 找人卡片②
         events.append(contentsOf: Array(repeating: .idle, count: 10))
@@ -127,7 +130,7 @@ final class DoubaoMockStreamEngine {
             + Self.loadMarkdown("math")
         events.append(contentsOf: Array(repeating: .idle, count: 10))
         events.append(.answerStart)
-        events.append(contentsOf: chunks(of: answerC, event: { .answerText($0) }, size: 10))
+        events.append(contentsOf: chunks(of: answerC, event: { .answerText($0) }, size: mockspeedCount))
 
         // 7. 未知卡片（前向兼容演示：模拟服务端新上的「地图卡片」，老版本不认识）
         //    真实场景是 wire format 解析失败兜底构造；demo 直接由剧本发出

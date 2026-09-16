@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -287,6 +287,8 @@
 		409729262F20A75B00C3E7EB /* LBCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409729252F20A75B00C3E7EB /* LBCalendarController.swift */; };
 		409729282F20A76100C3E7EB /* CalendarTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409729272F20A76100C3E7EB /* CalendarTool.swift */; };
 		4097292A2F20A80B00C3E7EB /* LBCalendarAddReduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409729292F20A80B00C3E7EB /* LBCalendarAddReduceView.swift */; };
+		40991CB73057F22300BFC4FB /* LBLoadStaticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40991CB63057F22300BFC4FB /* LBLoadStaticController.swift */; };
+		40991CB93057F23500BFC4FB /* LBSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40991CB83057F23500BFC4FB /* LBSDKBundle.bundle */; };
 		409A2660300A2439001AC7D7 /* tables.md in Resources */ = {isa = PBXBuildFile; fileRef = 409A265F300A2439001AC7D7 /* tables.md */; };
 		409A2661300A2439001AC7D7 /* math.md in Resources */ = {isa = PBXBuildFile; fileRef = 409A265C300A2439001AC7D7 /* math.md */; };
 		409A2662300A2439001AC7D7 /* roboto.md in Resources */ = {isa = PBXBuildFile; fileRef = 409A265E300A2439001AC7D7 /* roboto.md */; };
@@ -322,6 +324,7 @@
 		409FC3FA2A2A010D0053B88C /* LLContractDetailBeforeSignCheckTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC3F72A2A010B0053B88C /* LLContractDetailBeforeSignCheckTask.swift */; };
 		409FC3FB2A2A010D0053B88C /* LLContractDetailChanQuanCheckTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC3F82A2A010C0053B88C /* LLContractDetailChanQuanCheckTask.swift */; };
 		409FC3FC2A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC3F92A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift */; };
+		40A18D60305912FC00048B4E /* LBSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A18D5F305912FC00048B4E /* LBSDK.xcframework */; };
 		40A20A062A15B22C00353135 /* Pods_LBUIProject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC56BA80BC7C9AF748BFD1DA /* Pods_LBUIProject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		40A2D3382FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D3352FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png */; };
 		40A2D3392FDBD481004A9788 /* LBAIProductAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D3362FDBD481004A9788 /* LBAIProductAdViewController.swift */; };
@@ -550,6 +553,9 @@
 		40E3A85D304E50DC004D71CF /* DoubaoActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A85C304E50DC004D71CF /* DoubaoActionsCell.swift */; };
 		40E3A861304E50DC004D71CF /* DoubaoLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A860304E50DC004D71CF /* DoubaoLoadingModel.swift */; };
 		40E3A863304E50DC004D71CF /* DoubaoLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A862304E50DC004D71CF /* DoubaoLoadingCell.swift */; };
+		40E3A867304E50DC004D71CF /* LBNightThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A864304E50DC004D71CF /* LBNightThemeManager.swift */; };
+		40E3A869304E50DC004D71CF /* LBNightModeEntryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A868304E50DC004D71CF /* LBNightModeEntryPage.swift */; };
+		40E3A86B304E50DC004D71CF /* LBNightModeDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A86A304E50DC004D71CF /* LBNightModeDetailPage.swift */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
 		40E864092DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */; };
 		40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1884294728410003F457 /* LBGrayViewController.swift */; };
@@ -579,7 +585,7 @@
 		40F5B1DC2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DB2FF39FE3002CCA9C /* LBNavigationMixRootContainerView.swift */; };
 		40F5B1DE2FF3A000002CCA9C /* LBNavigationMixRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5B1DD2FF3A000002CCA9C /* LBNavigationMixRouter.swift */; };
 		40F9FA452DF1816600D5D736 /* LBAIAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9FA442DF1816600D5D736 /* LBAIAnswerViewController.swift */; };
-		40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		40FAE36A2FDBC5AA00861B79 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		40FDBFA42DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FDBFA32DF9295000BCF457 /* LBUIKitLoadSFSymbolsController.swift */; };
 		40FF3A2829FA4BBF00685C3B /* LBSwiftHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF3A2729FA4BBF00685C3B /* LBSwiftHeader.swift */; };
 		571A47D069FAC8FA7EA9B479 /* Pods_LBUIProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AE5E289C2EDB73D8D6F292 /* Pods_LBUIProjectTests.framework */; };
@@ -1006,6 +1012,8 @@
 		409729252F20A75B00C3E7EB /* LBCalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCalendarController.swift; sourceTree = "<group>"; };
 		409729272F20A76100C3E7EB /* CalendarTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTool.swift; sourceTree = "<group>"; };
 		409729292F20A80B00C3E7EB /* LBCalendarAddReduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCalendarAddReduceView.swift; sourceTree = "<group>"; };
+		40991CB63057F22300BFC4FB /* LBLoadStaticController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLoadStaticController.swift; sourceTree = "<group>"; };
+		40991CB83057F23500BFC4FB /* LBSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LBSDKBundle.bundle; sourceTree = "<group>"; };
 		409A265B300A2439001AC7D7 /* kitchen-sink.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "kitchen-sink.md"; sourceTree = "<group>"; };
 		409A265C300A2439001AC7D7 /* math.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = math.md; sourceTree = "<group>"; };
 		409A265D300A2439001AC7D7 /* multi-paragraph.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "multi-paragraph.md"; sourceTree = "<group>"; };
@@ -1038,6 +1046,7 @@
 		409FC3F72A2A010B0053B88C /* LLContractDetailBeforeSignCheckTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLContractDetailBeforeSignCheckTask.swift; sourceTree = "<group>"; };
 		409FC3F82A2A010C0053B88C /* LLContractDetailChanQuanCheckTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLContractDetailChanQuanCheckTask.swift; sourceTree = "<group>"; };
 		409FC3F92A2A010D0053B88C /* LLContractDetailMutiContractCheckTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLContractDetailMutiContractCheckTask.swift; sourceTree = "<group>"; };
+		40A18D5F305912FC00048B4E /* LBSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LBSDK.xcframework; sourceTree = "<group>"; };
 		40A20A012A15B20100353135 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = Pods/TXLiteAVSDK_Player/TXLiteAVSDK_Player/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		40A20A072A15B25C00353135 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = Pods/TXLiteAVSDK_Player/TXLiteAVSDK_Player/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		40A2D3352FDBD481004A9788 /* 14f009d621aa2c11aca9ed0b57cc1817.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14f009d621aa2c11aca9ed0b57cc1817.png; sourceTree = "<group>"; };
@@ -1301,6 +1310,9 @@
 		40E3A85C304E50DC004D71CF /* DoubaoActionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoActionsCell.swift; sourceTree = "<group>"; };
 		40E3A860304E50DC004D71CF /* DoubaoLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoLoadingModel.swift; sourceTree = "<group>"; };
 		40E3A862304E50DC004D71CF /* DoubaoLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoLoadingCell.swift; sourceTree = "<group>"; };
+		40E3A864304E50DC004D71CF /* LBNightThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNightThemeManager.swift; sourceTree = "<group>"; };
+		40E3A868304E50DC004D71CF /* LBNightModeEntryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNightModeEntryPage.swift; sourceTree = "<group>"; };
+		40E3A86A304E50DC004D71CF /* LBNightModeDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNightModeDetailPage.swift; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
 		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController2222.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController2222.h; sourceTree = "<group>"; };
 		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController2222.m; sourceTree = "<group>"; };
@@ -1354,7 +1366,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */ = {
+		408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -1364,18 +1376,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				408A33E72FFDF76100237503 /* Exceptions for "LBPreviewHost" folder in "LBPreviewHost" target */,
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = LBPreviewHost;
-			sourceTree = "<group>";
-		};
+		408A33D72FFDF75F00237503 /* LBPreviewHost */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (408A33E72FFDF76100237503 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = LBPreviewHost; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1404,6 +1405,7 @@
 				401BEE9D2A259E6200F28892 /* MediaPlayer.framework in Frameworks */,
 				401BEE9B2A259E5B00F28892 /* CoreVideo.framework in Frameworks */,
 				401BEE992A259E5400F28892 /* CoreMedia.framework in Frameworks */,
+				40A18D60305912FC00048B4E /* LBSDK.xcframework in Frameworks */,
 				402550DD2DF92C01002D8C03 /* SwiftUIIntrospect in Frameworks */,
 				402550E02DF92E6E002D8C03 /* SwiftUIPullToRefresh in Frameworks */,
 				401BEE972A259E4C00F28892 /* AVFoundation.framework in Frameworks */,
@@ -2451,6 +2453,7 @@
 		4080FEB72AD8DCA600FF79FC /* SecondTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				40991CB53057F1FC00BFC4FB /* staticsdk */,
 				40A761E62FF639BB001C5BB2 /* PageController */,
 				409729242F20A73B00C3E7EB /* Calendar */,
 				404B0EC82D9252690070447D /* LBResponseInset */,
@@ -2686,6 +2689,16 @@
 				409729292F20A80B00C3E7EB /* LBCalendarAddReduceView.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		40991CB53057F1FC00BFC4FB /* staticsdk */ = {
+			isa = PBXGroup;
+			children = (
+				40A18D5F305912FC00048B4E /* LBSDK.xcframework */,
+				40991CB83057F23500BFC4FB /* LBSDKBundle.bundle */,
+				40991CB63057F22300BFC4FB /* LBLoadStaticController.swift */,
+			);
+			path = staticsdk;
 			sourceTree = "<group>";
 		};
 		409A2659300A2422001AC7D7 /* 流式输出 */ = {
@@ -3724,6 +3737,7 @@
 				40D43D0E2A67EE59001384BF /* LBSwiftUIHomeController.swift */,
 				408A35112FFF910000000001 /* ShareManagement */,
 				408A35162FFF910000000002 /* BluetoothList */,
+				40E3A865304E50DC004D71CF /* NightModeDemo */,
 			);
 			path = SwiftUIModule;
 			sourceTree = "<group>";
@@ -3892,6 +3906,16 @@
 				40E3A862304E50DC004D71CF /* DoubaoLoadingCell.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		40E3A865304E50DC004D71CF /* NightModeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A864304E50DC004D71CF /* LBNightThemeManager.swift */,
+				40E3A868304E50DC004D71CF /* LBNightModeEntryPage.swift */,
+				40E3A86A304E50DC004D71CF /* LBNightModeDetailPage.swift */,
+			);
+			path = NightModeDemo;
 			sourceTree = "<group>";
 		};
 		40E3A84F304E50DC004D71CF /* Store */ = {
@@ -4266,7 +4290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FAE36A2FDBC5AA00861B79 /* BuildFile in Resources */,
+				40FAE36A2FDBC5AA00861B79 /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4325,6 +4349,7 @@
 				4063EF5B285AFC1000335BA2 /* cat3.jpg in Resources */,
 				40F1CD222A31EB2300A8066C /* butterfly.avi in Resources */,
 				409FC3E82A29BFC50053B88C /* testExcel.xlsx in Resources */,
+				40991CB93057F23500BFC4FB /* LBSDKBundle.bundle in Resources */,
 				40ABEB7F2DA3C5A400199320 /* BLTGenIconfont.ttf in Resources */,
 				40795CD92786C39800E2A5B2 /* test_memory_image.jpeg in Resources */,
 				40ABEB672DA3BE3500199320 /* loading.json in Resources */,
@@ -4415,9 +4440,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4476,9 +4505,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject-LBUIProjectUITests/Pods-LBUIProject-LBUIProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4493,9 +4526,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4532,9 +4569,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBUIProject/Pods-LBUIProject-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4549,9 +4590,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LBPreviewHost/Pods-LBPreviewHost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4641,6 +4686,7 @@
 				40AE6FDB29C8616600C69932 /* HeightChangeAnimationTableHeaderView.swift in Sources */,
 				40D43D062A67DC12001384BF /* LBScrollViewAnimatingExampleController.swift in Sources */,
 				40ABEB5C2DA3BE3500199320 /* CLHourMinuteDataPickerView.swift in Sources */,
+				40991CB73057F22300BFC4FB /* LBLoadStaticController.swift in Sources */,
 				407B84AF2940300400AEDAEC /* BLTReverseSequence.swift in Sources */,
 				40628C992FF4B1EB00C60573 /* LBSmartCodableReplaceHandyjsonController.swift in Sources */,
 				40AE6FF129C9887400C69932 /* LBPageSegmentView.swift in Sources */,
@@ -4965,6 +5011,9 @@
 				40DFDFFF3053E1E1007BFB30 /* DoubaoChatViewController+CollectionDataSources.swift in Sources */,
 				40E3A861304E50DC004D71CF /* DoubaoLoadingModel.swift in Sources */,
 				40E3A863304E50DC004D71CF /* DoubaoLoadingCell.swift in Sources */,
+				40E3A867304E50DC004D71CF /* LBNightThemeManager.swift in Sources */,
+				40E3A869304E50DC004D71CF /* LBNightModeEntryPage.swift in Sources */,
+				40E3A86B304E50DC004D71CF /* LBNightModeDetailPage.swift in Sources */,
 				40ABA5822A1C9D3500B84488 /* LBTestMayoNetworkController.swift in Sources */,
 				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,
 				400A05CC2862F159006574B5 /* Array+LBExtension.swift in Sources */,
@@ -5456,6 +5505,7 @@
 					"$(PROJECT_DIR)/LBUIProject/ThirdTabbar/EasyChat",
 					"$(PROJECT_DIR)/LBUIProject",
 					"$(PROJECT_DIR)/LBUIProject/Zhiyong",
+					"$(PROJECT_DIR)/LBUIProject/SecondTabbar/staticsdk",
 				);
 				INFOPLIST_FILE = LBUIProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBUIProject;
@@ -5511,6 +5561,7 @@
 					"$(PROJECT_DIR)/LBUIProject/ThirdTabbar/EasyChat",
 					"$(PROJECT_DIR)/LBUIProject",
 					"$(PROJECT_DIR)/LBUIProject/Zhiyong",
+					"$(PROJECT_DIR)/LBUIProject/SecondTabbar/staticsdk",
 				);
 				INFOPLIST_FILE = LBUIProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBUIProject;
@@ -5711,6 +5762,7 @@
 					"$(PROJECT_DIR)/LBUIProject/ThirdTabbar/EasyChat",
 					"$(PROJECT_DIR)/LBUIProject",
 					"$(PROJECT_DIR)/LBUIProject/Zhiyong",
+					"$(PROJECT_DIR)/LBUIProject/SecondTabbar/staticsdk",
 				);
 				INFOPLIST_FILE = LBUIProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LBUIProject;

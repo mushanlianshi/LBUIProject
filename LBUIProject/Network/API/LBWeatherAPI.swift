@@ -10,7 +10,7 @@ import Moya
 import Alamofire
 
 // MARK: - 模型（自旧 APIClient.swift 迁移）
-/// 「市→下属县/区」天气预报搜索结果
+/// 「市→下属县/区」天气预报搜索结果  遵守Identifiable，让id稳定，这样列表插入、删除动画不会出问题。
 struct SearchResult: Identifiable {
     let id = UUID()
     /// 县/区名，如「西湖区」「桐庐县」

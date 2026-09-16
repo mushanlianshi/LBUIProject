@@ -31,6 +31,7 @@ class LBSecondViewController: LBBaseCollectionViewController{
                 LBListItemModel.init(title: "测试响应区域", vcClass: LBResponseInsetViewController.self),
                 LBListItemModel.init(title: "日历", vcClass: LBCalendarController.self),
                 LBListItemModel.init(title: "UIPageController翻页效果", vcClass: LBBookReaderViewController.self),
+                LBListItemModel.init(title: "加载静态库", vcClass: LBLoadStaticController.self),
             ]
         }
         set{}
