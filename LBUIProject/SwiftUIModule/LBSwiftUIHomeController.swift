@@ -117,7 +117,11 @@ extension LBSwiftUIHomeController{
             self.navigationController?.pushViewController(vcType.init(), animated: true)
         }else{
             let view = self.swiftUIDataList[indexPath.row].view as! AnyView
-            self.navigationController?.pushViewController(LBCustomHostingController(rootView: view), animated: true)
+            var title: String? = nil
+            if type == .nightMode {
+                title = "深夜模式"
+            }
+            self.navigationController?.pushViewController(LBCustomHostingController(naviTitle: title, rootView: view), animated: true)
         }
 //        某社区是一个老旧小区，共有居民3200户，常住人口约8000人。其中60岁以上老年人占总人口的18%
 //        ，有空巢老人27名。社区内配套设施老旧，缺乏无障碍设施，部分楼栋没有电梯。近年来，社区居民

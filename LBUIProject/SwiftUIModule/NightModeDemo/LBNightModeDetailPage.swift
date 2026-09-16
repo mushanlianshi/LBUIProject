@@ -28,10 +28,16 @@ struct LBNightModeDetailPage: View {
 
     var body: some View {
         ZStack {
-            // 天色渐变（环境值驱动）
-            LinearGradient(colors: theme.skyGradient,
-                           startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
+            // 天色渐变（环境值驱动）：双层叠加 + opacity 过渡（LinearGradient 间无插值动画，见 EntryPage 注释）
+            ZStack {
+                LinearGradient(colors: LBNightTheme.day.skyGradient,
+                               startPoint: .top, endPoint: .bottom)
+                LinearGradient(colors: LBNightTheme.night.skyGradient,
+                               startPoint: .top, endPoint: .bottom)
+                    .opacity(theme == .night ? 1 : 0)
+            }
+            .animation(.easeInOut(duration: 1.2), value: theme == .night)
+            .ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 16) {

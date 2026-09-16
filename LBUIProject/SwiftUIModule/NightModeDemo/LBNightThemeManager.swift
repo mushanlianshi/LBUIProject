@@ -51,6 +51,14 @@ private struct LBNightThemeKey: EnvironmentKey {
     static let defaultValue = LBNightTheme.day
 }
 
+/// ⚠️ 独立 Key 是独立存储槽位：EnvironmentValues 内部按 Key 的「类型」寻址——
+/// 两个环境变量共用同一个 Key 类型 = 共用一个槽位 = 后注入覆盖先注入，
+/// 读取端永远只拿到最后写入的那份（注入 lbNightThemeCustom 会把 lbNightTheme 顶掉）
+private struct LBNightThemeCustomKey: EnvironmentKey {
+    /// 默认值：与 lbNightTheme 相反（白天），未注入时兜底
+    static let defaultValue = LBNightTheme.day
+}
+
 extension EnvironmentValues {
     /// 页面用 @Environment(\.lbNightTheme) 读取主题 token（只读，纯函数式）
     var lbNightTheme: LBNightTheme {
@@ -61,6 +69,16 @@ extension EnvironmentValues {
             self[LBNightThemeKey.self] = newValue
         }
     }
+
+    /// 反向主题环境变量（验证「独立 Key = 独立槽位」：与 lbNightTheme 互不干扰）
+    var lbNightThemeCustom: LBNightTheme {
+        get {
+            self[LBNightThemeCustomKey.self]
+        }
+        set {
+            self[LBNightThemeCustomKey.self] = newValue
+        }
+    }
 }
 
 // MARK: - 主题管理器（通道二：EnvironmentObject，可写可订阅、多页面共享）
@@ -69,17 +87,8 @@ extension EnvironmentValues {
 final class LBNightThemeManager: ObservableObject {
 
     /// 当前是否深夜（唯一事实来源）
-    @Published var isNight: Bool = false {
-        didSet {
-            // 环境值由注入点计算：manager.isNight 变 → 注入的 \.lbNightTheme 跟着变
-            // 切换带动画：颜色 1.2s 渐变过渡
-            if oldValue != isNight {
-                withAnimation(.easeInOut(duration: 2.2)) {
-                    objectWillChange.send()
-                }
-            }
-        }
-    }
+    /// 注：动画在 skyProgress 的 didSet 里包「赋值动作」（见下），本属性不再需要 didSet
+    @Published var isNight: Bool = false
 
     /// 自动模式（定时轮转天色）
     @Published var isAutoMode: Bool = true
@@ -90,7 +99,13 @@ final class LBNightThemeManager: ObservableObject {
         didSet {
             let night = skyProgress > 0.5
             if night != isNight {
-                isNight = night
+                // ⚠️ 动画必须包「状态赋值」，不能包 objectWillChange.send()：
+                // withAnimation 的事务只有覆盖到赋值动作才能挂上这次变更——
+                // @Published 在 willSet（赋值瞬间）已自动发射通知，
+                // 包 send() 是无效 hack（信号不带事务），视图结构一变动画就丢
+                withAnimation(.easeInOut(duration: 1.2)) {
+                    isNight = night
+                }
             }
         }
     }

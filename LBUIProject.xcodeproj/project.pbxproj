@@ -556,6 +556,7 @@
 		40E3A867304E50DC004D71CF /* LBNightThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A864304E50DC004D71CF /* LBNightThemeManager.swift */; };
 		40E3A869304E50DC004D71CF /* LBNightModeEntryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A868304E50DC004D71CF /* LBNightModeEntryPage.swift */; };
 		40E3A86B304E50DC004D71CF /* LBNightModeDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A86A304E50DC004D71CF /* LBNightModeDetailPage.swift */; };
+		40E3A86D304E50DC004D71CF /* LBRatioHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A86C304E50DC004D71CF /* LBRatioHStack.swift */; };
 		40E6C5462D7976C60067FB8C /* LBCodableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6C5452D7976C60067FB8C /* LBCodableController.swift */; };
 		40E864092DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */; };
 		40EA1885294728410003F457 /* LBGrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1884294728410003F457 /* LBGrayViewController.swift */; };
@@ -1313,6 +1314,7 @@
 		40E3A864304E50DC004D71CF /* LBNightThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNightThemeManager.swift; sourceTree = "<group>"; };
 		40E3A868304E50DC004D71CF /* LBNightModeEntryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNightModeEntryPage.swift; sourceTree = "<group>"; };
 		40E3A86A304E50DC004D71CF /* LBNightModeDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNightModeDetailPage.swift; sourceTree = "<group>"; };
+		40E3A86C304E50DC004D71CF /* LBRatioHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRatioHStack.swift; sourceTree = "<group>"; };
 		40E6C5452D7976C60067FB8C /* LBCodableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCodableController.swift; sourceTree = "<group>"; };
 		40E864072DF6654F00EA733B /* LBTestGitChangeFileViewController2222.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBTestGitChangeFileViewController2222.h; sourceTree = "<group>"; };
 		40E864082DF6654F00EA733B /* LBTestGitChangeFileViewController2222.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBTestGitChangeFileViewController2222.m; sourceTree = "<group>"; };
@@ -1867,6 +1869,7 @@
 		4043D73D303D8F8100504254 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				40E3A86C304E50DC004D71CF /* LBRatioHStack.swift */,
 				4043D73E303D8F9000504254 /* LBRefreshScrollView.swift */,
 			);
 			path = View;
@@ -3908,16 +3911,6 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		40E3A865304E50DC004D71CF /* NightModeDemo */ = {
-			isa = PBXGroup;
-			children = (
-				40E3A864304E50DC004D71CF /* LBNightThemeManager.swift */,
-				40E3A868304E50DC004D71CF /* LBNightModeEntryPage.swift */,
-				40E3A86A304E50DC004D71CF /* LBNightModeDetailPage.swift */,
-			);
-			path = NightModeDemo;
-			sourceTree = "<group>";
-		};
 		40E3A84F304E50DC004D71CF /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -3926,6 +3919,16 @@
 				40E3A854304E50DC004D71CF /* DoubaoChatSessionListViewController.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		40E3A865304E50DC004D71CF /* NightModeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A864304E50DC004D71CF /* LBNightThemeManager.swift */,
+				40E3A868304E50DC004D71CF /* LBNightModeEntryPage.swift */,
+				40E3A86A304E50DC004D71CF /* LBNightModeDetailPage.swift */,
+			);
+			path = NightModeDemo;
 			sourceTree = "<group>";
 		};
 		40E6C5442D79769E0067FB8C /* Codable */ = {
@@ -5014,6 +5017,7 @@
 				40E3A867304E50DC004D71CF /* LBNightThemeManager.swift in Sources */,
 				40E3A869304E50DC004D71CF /* LBNightModeEntryPage.swift in Sources */,
 				40E3A86B304E50DC004D71CF /* LBNightModeDetailPage.swift in Sources */,
+				40E3A86D304E50DC004D71CF /* LBRatioHStack.swift in Sources */,
 				40ABA5822A1C9D3500B84488 /* LBTestMayoNetworkController.swift in Sources */,
 				4085464327434F5000EEEC12 /* LBLoadAndInitializeController.m in Sources */,
 				400A05CC2862F159006574B5 /* Array+LBExtension.swift in Sources */,
