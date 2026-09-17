@@ -150,9 +150,9 @@ enum LBWeatherAPI: LBTargetType {
 
     // MARK: 日志开关示例（默认全局 false，见 LBNetworkConfig）
     /// 单请求开启示例：仅本 API 打印响应（全局开关不动）
-    var logResponse: Bool { true }
+    var logResponse: Bool { false }
     /// 单请求关闭示例：全局开了打印，仅本 API 静默
-    var logRequest: Bool { true }
+    var logRequest: Bool { false }
 }
 
 // MARK: - 市下属县/区数据

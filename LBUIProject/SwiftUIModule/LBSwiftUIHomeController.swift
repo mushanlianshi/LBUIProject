@@ -32,6 +32,7 @@ class LBSwiftUIHomeController: LBBaseCollectionViewController {
         (.bluetoothList, LBBluetoothListViewController.self),
         (.combineSearch, AnyView(LBCombineSearchView())),
         (.nightMode, AnyView(LBNightModeEntryPage())),
+        (.refreshableList, AnyView(LBRefreshableListView())),
 //        (.navigationMix, AnyView(LBNavigationMixHomeView())),
     ]
     
@@ -157,5 +158,6 @@ enum LBSwiftUIExampleType: String {
     case combineSearch = "天气搜索"
     case deliverySimulate = "外卖配送灵动岛"
     case nightMode = "SwiftUI深夜模式(Environment)"
+    case refreshableList = "SwiftUI下拉刷新上拉加载"
 //    case navigationMix = "混合导航栏"
 }

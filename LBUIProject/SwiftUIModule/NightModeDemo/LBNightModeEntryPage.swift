@@ -41,6 +41,11 @@ struct LBNightModeEntryPage: View {
         .environmentObject(manager)                    // 通道二：可写共享状态
         .environment(\.lbNightTheme, manager.isNight ? .night : .day)  // 通道一：只读 token
         .environment(\.lbNightThemeCustom, manager.isNight ? .day : .night)  // 通道一：只读 token
+        .onAppear { /// 类似viewwillapeear方法，即将展示的时候调用
+            
+        }.task {    /// 类似viewwillapeear方法，即将展示的时候调用，只是里面的任务异步执行
+            
+        }
     }
 
     private var content: some View {
@@ -221,6 +226,7 @@ struct LBNightCustomCardsSection: View {
             Text(icon).font(.system(size: 26))
             Text(title).font(.system(size: 12)).foregroundColor(themeCustom.primaryText)
         }
+        /// 外层只是提供内容，最终觉得自己多大，是子控件确定的，父控件提供建议和位置
         .frame(maxWidth: .infinity)     // ← 关键：吃满 LBRatioHStack 分配的宽度
         .frame(maxHeight: .infinity)    // 行内等高（高度吃满行高）
         .padding(.vertical, 18)
