@@ -16,11 +16,14 @@ final class DoubaoChatSessionModel {
     var title: String
     /// 创建时间戳
     let createdAt: TimeInterval
+    /// 最后活跃时间戳（继续对话即刷新；历史列表按它倒序——旧会话活跃后浮顶）
+    var updatedAt: TimeInterval
 
-    init(id: String, title: String, createdAt: TimeInterval) {
+    init(id: String, title: String, createdAt: TimeInterval, updatedAt: TimeInterval = 0) {
         self.id = id
         self.title = title
         self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
 }
 
@@ -48,10 +51,15 @@ final class DoubaoChatDAO {
             CREATE TABLE IF NOT EXISTS doubao_session (
                 id          TEXT PRIMARY KEY,
                 title       TEXT NOT NULL DEFAULT '',
-                created_at  REAL NOT NULL
+                created_at  REAL NOT NULL,
+                updated_at  REAL NOT NULL DEFAULT 0
             );
             """
             db.executeUpdate(createSession, withArgumentsIn: [])
+
+            // 旧库迁移：updated_at 列加于 v2（继续对话的会话要浮到列表顶部，靠它排序）
+            db.executeUpdate("ALTER TABLE doubao_session ADD COLUMN updated_at REAL NOT NULL DEFAULT 0",
+                             withArgumentsIn: [])
 
             let createRound = """
             CREATE TABLE IF NOT EXISTS doubao_round (
@@ -69,28 +77,33 @@ final class DoubaoChatDAO {
     }
 
     // MARK: - 会话
-    /// 创建新会话，返回模型
+    /// 创建新会话，返回模型（updated_at 初始 = created_at）
     func createSession() -> DoubaoChatSessionModel {
         let session = DoubaoChatSessionModel(id: UUID().uuidString,
                                              title: "",
                                              createdAt: Date().timeIntervalSince1970)
         queue.inDatabase { db in
-            db.executeUpdate("INSERT INTO doubao_session (id, title, created_at) VALUES (?, ?, ?)",
-                             withArgumentsIn: [session.id, session.title, session.createdAt])
+            db.executeUpdate("INSERT INTO doubao_session (id, title, created_at, updated_at) VALUES (?, ?, ?, ?)",
+                             withArgumentsIn: [session.id, session.title, session.createdAt, session.createdAt])
         }
         return session
     }
 
-    /// 会话列表（按创建时间倒序）
+    /// 会话列表（按最后活跃时间倒序：继续对话的旧会话浮到顶部，对齐微信/豆包的会话排序）
+    /// 排序键 COALESCE(updated_at, created_at)：迁移期的旧行 updated_at=0 时回退创建时间
     func listSessions() -> [DoubaoChatSessionModel] {
         var sessions: [DoubaoChatSessionModel] = []
         queue.inDatabase { db in
-            guard let rs = db.executeQuery("SELECT id, title, created_at FROM doubao_session ORDER BY created_at DESC",
-                                           withArgumentsIn: []) else { return }
+            let sql = """
+            SELECT id, title, created_at, updated_at FROM doubao_session
+            ORDER BY CASE WHEN updated_at > 0 THEN updated_at ELSE created_at END DESC
+            """
+            guard let rs = db.executeQuery(sql, withArgumentsIn: []) else { return }
             while rs.next() {
                 sessions.append(DoubaoChatSessionModel(id: rs.string(forColumn: "id") ?? "",
                                                        title: rs.string(forColumn: "title") ?? "",
-                                                       createdAt: rs.double(forColumn: "created_at")))
+                                                       createdAt: rs.double(forColumn: "created_at"),
+                                                       updatedAt: rs.double(forColumn: "updated_at")))
             }
             rs.close()
         }
@@ -127,7 +140,8 @@ final class DoubaoChatDAO {
     // MARK: - 轮次
     /// 幂等写入（流式中每 N 拍半成品 + 终态各调一次，同一 API）。
     /// 对齐旧版 ChatDAO 哲学用 ON CONFLICT 而非 REPLACE：只更新 payload（内含最新文本/高度/卡片），
-    /// created_at 永远定格首次插入，保证恢复时轮次顺序稳定
+    /// created_at 永远定格首次插入，保证恢复时轮次顺序稳定。
+    /// 同时刷新会话 updated_at：继续对话的旧会话浮到历史列表顶部（listSessions 按它倒序）
     func upsertRound(sessionId: String, round: DoubaoQARoundModel) {
         guard let payload = try? JSONEncoder().encode(round),
               let payloadString = String(data: payload, encoding: .utf8) else {
@@ -149,6 +163,9 @@ final class DoubaoChatDAO {
                     payloadString,
                     Date().timeIntervalSince1970,
                 ])
+            // 会话活跃时间刷新（同一事务性时序内：轮次落库即会话活跃）
+            db.executeUpdate("UPDATE doubao_session SET updated_at = ? WHERE id = ?",
+                             withArgumentsIn: [Date().timeIntervalSince1970, sessionId])
         }
     }
 

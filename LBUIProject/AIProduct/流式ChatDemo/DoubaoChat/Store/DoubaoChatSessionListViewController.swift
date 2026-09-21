@@ -151,7 +151,9 @@ private class DoubaoSessionCell: UITableViewCell {
 
     func render(session: DoubaoChatSessionModel, roundCount: Int) {
         titleLabel.text = session.title.isEmpty ? "新会话" : session.title
-        let time = Self.timeFormatter.string(from: Date(timeIntervalSince1970: session.createdAt))
+        // 展示最后活跃时间（继续对话会刷新它；旧数据无 updated_at 时回退创建时间）
+        let activeTime = session.updatedAt > 0 ? session.updatedAt : session.createdAt
+        let time = Self.timeFormatter.string(from: Date(timeIntervalSince1970: activeTime))
         detailLabel.text = "\(roundCount) 轮对话 · \(time)"
     }
 }

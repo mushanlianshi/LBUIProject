@@ -191,7 +191,26 @@ extension DoubaoChatViewController {
     /// 统一的 snapshot 构建入口：按 rounds 全量重建（数据量小 diff 成本可忽略）。
     /// 每轮一对 section：.question(id) 装用户气泡、.answer(id) 装答侧卡片序列；
     /// 答侧为空时不加 answer section（避免空背景卡片闪现）
-    func applySnapshot(reconfiguring: [DoubaoChatItem]?, forceScrollToBottom: Bool) {
+    /// completion：apply 完成（可选滚动后）回调——历史恢复首帧定位的「数据源就绪」信号
+    ///
+    /// ⚠️ 用户手势进行中（拖拽/减速）挂起 apply：diffable apply 在 contentSize 变化时
+    /// 会调整 contentOffset（UIKit 的可见项保持补偿）——流式期间每拍 apply 与手指
+    /// 抢 offset → 橡皮筋来回反弹抖动（豆包类产品流式中不动列表框架，无此问题）。
+    /// 数据照常写 rounds（内存态不丢），snapshot 攒挂起标记，松手一次性补 apply
+    func applySnapshot(reconfiguring: [DoubaoChatItem]?,
+                       forceScrollToBottom: Bool,
+                       completion: (() -> Void)? = nil) {
+        // 手势期间挂起（首帧豁免：dataSource 从未 apply 过时必须放行——
+        // setupSession 发生在任何手势之前，此条件只为防御极端时序下的空列表锁死）
+        let isInitialApply = collectionView.numberOfSections == 0
+        if !isInitialApply,
+           collectionView.isDragging || collectionView.isDecelerating || collectionView.isTracking {
+            pendingApplyDuringGesture = true
+            // completion 不能丢：一次性回调挂起期间直接执行（数据已在 rounds，语义无损）
+            completion?()
+            return
+        }
+
         var snapshot = UIKit.NSDiffableDataSourceSnapshot<DoubaoChatSection, DoubaoChatItem>()
         for round in rounds {
             /// 添加问题的section 和 items
@@ -213,10 +232,36 @@ extension DoubaoChatViewController {
             }
         }
         dataSource.apply(snapshot, animatingDifferences: false) { [weak self] in
+            guard let self else { return }
             if forceScrollToBottom {
-                self?.scrollToBottom()
+                self.scrollToBottom()
             }
+            completion?()
         }
+    }
+
+    /// 松手补拍：DidEndDragging/DidEndDecelerating 里调用——
+    /// 手势期间攒下的所有数据变化（流式文本 N 拍 + 可能的新卡片）一次 apply 完。
+    /// （pendingApplyDuringGesture 存储属性在主类——extension 不能加存储属性）
+    ///
+    /// ⚠️ 必须全量 reconfigure：挂起期间「id 不变、值变了」的内容更新
+    /// （流式文本增长、定格去光标、高度写回）在 diff 眼里是零变化——
+    /// 若 reconfiguring 传 nil，重建 snapshot 后 item 标识符全部未动，
+    /// diff 判定无事发生，可见 cell 永远停在松手前的旧文本；
+    /// 而挂起期间结构插入的新卡片能正常出现（insert 算得出来）——
+    /// 表现为「后面的泡泡都出了，前面那张流式卡内容不全」的漏洞。
+    /// 补拍把当前全部 item 标记 reconfigure：configure 幂等
+    /// （markdown 同文本跳过 JS 重渲），且 reconfigureItems 只触达可见 cell，
+    /// 一次手势结束只补一次，成本可控
+    func flushPendingApplyIfNeeded() {
+        guard pendingApplyDuringGesture else { return }
+        pendingApplyDuringGesture = false
+        var allItems: [DoubaoChatItem] = []
+        for round in rounds {
+            allItems.append(.user(round.userModel))
+            allItems.append(contentsOf: round.answerItems)
+        }
+        applySnapshot(reconfiguring: allItems, forceScrollToBottom: stickToBottom)
     }
 
     // MARK: - WebView 高度回传（数据驱动 reconfigure 增量更新）
@@ -300,6 +345,10 @@ extension DoubaoChatViewController {
     // MARK: - Scroll
     func scrollToBottom(animated: Bool = false) {
         debugPrint("LBLog scrollToBottom -------------------------")
+        // ⚠️ 用户手势进行中不程序滚底：流式期间用户按住列表时，程序滚动会与手指拖拽
+        // 互相拉扯（setContentOffset 抢占 pan 手势的 offset → 反弹 → 再滚 → 来回抖动）。
+        // 跳过后由「松手判定 + stickToBottom」接管：在底部松手 → 恢复跟随；不在 → 不跟随
+        guard !collectionView.isDragging, !collectionView.isDecelerating else { return }
         let lastSection = collectionView.numberOfSections - 1
         guard lastSection >= 0 else { return }
         let lastItem = collectionView.numberOfItems(inSection: lastSection) - 1
@@ -320,18 +369,27 @@ extension DoubaoChatViewController {
 // MARK: - 滚动意图维护（同旧版：用户上滑看历史则停止跟随，拖回底部恢复）
 extension DoubaoChatViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.isDragging || scrollView.isDecelerating {
+        // ⚠️ 橡皮筋（bounces）期间不判定意图：拖到顶/底越界时 offset 是负值/越界值，
+        // isNearBottom 的计算被污染（内容增长时相对位置漂移 → 判定翻转 → 恢复跟随 →
+        // 程序滚底拽人 → 用户再拖 → 来回抖动）。越界期间冻结意图，松手回弹后再判
+        let isBouncing = scrollView.contentOffset.y < -scrollView.contentInset.top
+            || scrollView.contentOffset.y > scrollView.contentSize.height
+                - scrollView.bounds.height + scrollView.contentInset.bottom
+        if !isBouncing, scrollView.isDragging || scrollView.isDecelerating {
             stickToBottom = false
         }
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         stickToBottom = isNearBottom()
+        flushPendingApplyIfNeeded()   // 惯性滚动结束：补拍手势期间攒下的 snapshot
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             stickToBottom = isNearBottom()
+            flushPendingApplyIfNeeded()   // 松手即停（无惯性）：立即补拍
         }
+        // 有惯性时由 DidEndDecelerating 兜底补拍
     }
 }

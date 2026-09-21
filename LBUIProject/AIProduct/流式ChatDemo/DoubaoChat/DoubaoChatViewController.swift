@@ -99,6 +99,9 @@ final class DoubaoChatViewController: UIViewController {
     /// 用户是否停留在底部（流式滚动跟随判定）
     var stickToBottom = true
 
+    /// 手势期间挂起的 apply 补拍标记（松手时触发一次全量 apply，见分类 applySnapshot 注释）
+    var pendingApplyDuringGesture = false
+
     var bottomConstraint: NSLayoutConstraint!
 
     // MARK: - Cell Registrations（交互回调在这里闭包注入）
@@ -132,20 +135,54 @@ final class DoubaoChatViewController: UIViewController {
     }
 
     // MARK: - 会话（对齐旧版 ChatViewController 模式）
-    /// 历史会话：恢复全部轮次（终态直显，WebView 用缓存高度零回调）；新会话：右上角只挂入口
+    /// 历史会话恢复——豆包式首帧定位（对齐 26Project 方案）：
+    /// 进入时隐藏列表（页面底色 = 列表底色，隐藏期间视觉是纯背景），
+    /// 「apply 完成 + 布局就绪」双条件满足后一次性滚底再显示——
+    /// 用户看到的第一帧就是最后一轮，全程无「顶部→底部」可见跳变。
+    /// 旧 0.5s 延迟跳变的根源：apply 是异步 diff，首帧停在顶部渲染第一条，
+    /// 固定延迟后才跳底，中间过程肉眼可见
     private func setupSession() {
         if let existing = existingSession {
             store.attach(existing)
+            collectionView.isHidden = true   // 定位完成前不显示（双底色相同，视觉纯背景）
             rounds = DoubaoChatDAO.shared.rounds(sessionId: existing.id)
-            applySnapshot(reconfiguring: nil, forceScrollToBottom: false)
             debugPrint("LBLog 恢复豆包会话 \(existing.id)，共 \(rounds.count) 轮")
-            /// 延迟一拍滚动：WebView 以缓存高度同步就位，快照 apply 完成后再滚到底所见即终态
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                self?.scrollToBottom()
+            applySnapshot(reconfiguring: nil, forceScrollToBottom: false) { [weak self] in
+                // 条件一：数据源 apply 完成（numberOfSections 已就位，滚底不落空）
+                self?.dataSourceReadyOnEnter = true
+                self?.tryScrollToBottomOnEnter()
             }
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "历史记录", style: .plain,
                                                             target: self, action: #selector(openHistory))
+    }
+
+    // MARK: - 首帧定位就绪门卫（双条件一次性）
+    /// apply 完成（数据源就位）
+    private var dataSourceReadyOnEnter = false
+    /// 布局完成（bounds.width 非零，contentSize 按真实宽度算出）
+    private var pendingScrollToBottomOnEnter = true
+
+    /// 布局就绪补偿路径：viewDidLayoutSubviews 在 apply 完成前后都可能触发，
+    /// 每次都尝试满足条件二（仅历史恢复期间）
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if pendingScrollToBottomOnEnter, collectionView.bounds.width > 0 {
+            tryScrollToBottomOnEnter()
+        }
+    }
+
+    /// 双条件门卫：apply 完成 && 布局就绪 → 一次滚底 + 显示列表。
+    /// 两个时序漏洞各自被另一方补上：
+    /// - apply 早于布局：bounds.width=0，contentSize 错值 → 挂起等 viewDidLayoutSubviews
+    /// - 布局早于 apply：numberOfSections=0，滚底无效 → 挂起等 apply completion
+    private func tryScrollToBottomOnEnter() {
+        guard pendingScrollToBottomOnEnter, dataSourceReadyOnEnter,
+              collectionView.bounds.width > 0 else { return }
+        pendingScrollToBottomOnEnter = false
+        scrollToBottom()
+        collectionView.isHidden = false   // 定位完成，列表登场——第一帧即底部终态
+        // 空会话也照常显示（scrollToBottom 内部 guard 兜底）
     }
 
     @objc private func openHistory() {
