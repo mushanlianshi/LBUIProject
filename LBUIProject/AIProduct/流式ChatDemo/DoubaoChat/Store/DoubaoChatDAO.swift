@@ -77,9 +77,10 @@ final class DoubaoChatDAO {
     }
 
     // MARK: - 会话
-    /// 创建新会话，返回模型（updated_at 初始 = created_at）
-    func createSession() -> DoubaoChatSessionModel {
-        let session = DoubaoChatSessionModel(id: UUID().uuidString,
+    /// 创建新会话，返回模型（updated_at 初始 = created_at）。
+    /// - Parameter id: 预定 id（流中心建桶时已生成、页面据此订阅；默认随机生成兼容旧调用方）
+    func createSession(id: String = UUID().uuidString) -> DoubaoChatSessionModel {
+        let session = DoubaoChatSessionModel(id: id,
                                              title: "",
                                              createdAt: Date().timeIntervalSince1970)
         queue.inDatabase { db in

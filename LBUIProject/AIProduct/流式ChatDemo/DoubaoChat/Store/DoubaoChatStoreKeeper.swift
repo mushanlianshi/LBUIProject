@@ -27,10 +27,11 @@ final class DoubaoChatStoreKeeper {
         self.session = session
     }
 
-    /// 确保会话存在（首次发送时惰性创建 + 写标题）
-    func ensureSession(firstQuestion: String) {
+    /// 确保会话存在（首次发送时惰性创建 + 写标题）。
+    /// id 由流中心建桶时预生成——桶、订阅、DB 行三方用同一个 id 关联
+    func ensureSession(id: String, firstQuestion: String) {
         guard session == nil else { return }
-        session = DoubaoChatDAO.shared.createSession()
+        session = DoubaoChatDAO.shared.createSession(id: id)
         DoubaoChatDAO.shared.updateTitle(sessionId: session!.id,
                                          title: String(firstQuestion.prefix(20)))
     }

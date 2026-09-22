@@ -42,6 +42,10 @@ final class DoubaoMockStreamEngine {
     /// 事件出口（主线程回调）
     var onEvent: ((DoubaoMockEvent) -> Void)?
 
+    /// 剧本自然跑完出口（队列耗尽自动 stop 时回调一次；手动 stop 不回调——
+    /// 调用方自己知道流停了）。订阅方据此刷新「流式中」相关 UI（如 发送/停止 按钮）
+    var onFinish: (() -> Void)?
+
     private var timer: Timer?
     private var queue: [DoubaoMockEvent] = []
 
@@ -65,6 +69,7 @@ final class DoubaoMockStreamEngine {
             }
             guard !self.queue.isEmpty else {
                 self.stop()
+                self.onFinish?()
                 return
             }
             self.onEvent?(self.queue.removeFirst())

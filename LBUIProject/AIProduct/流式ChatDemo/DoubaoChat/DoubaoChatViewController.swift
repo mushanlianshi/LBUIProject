@@ -11,22 +11,23 @@ import AVFoundation
 
 /// 豆包式多卡片流式对话页（UICollectionView + NSDiffableDataSource）
 ///
-/// 对照旧版 ChatViewController（UITableView + 手动 insertRows），
-/// 本页演示 Diffable 在「多卡片类型 + 流式中途结构穿插」场景的分工：
+/// 架构（全局流中心版）：数据（rounds）+ 引擎 + 事件状态机 + 落库已全部上移到
+/// DoubaoChatStreamCenter（App 级单例，按会话分桶），本页退化为纯渲染订阅者——
+/// attach 订阅流通知 → 翻译成 applySnapshot。由此获得的能力（对齐豆包）：
+/// - 流式输出中退出页面：流在后台继续跑、照常落库；重进（含从历史记录进）无缝续播
+/// - 多会话并发：每个会话独立桶互不干扰，会话 A 生成中不影响会话 B 提问
+/// - 流式中的「发送」按钮切换为「停止生成」
 ///
 /// 分组结构（主流 AI 对话的数据层对齐：一轮 QA = 一个 DoubaoQARoundModel）：
 /// - .question(roundID) section：用户气泡（无背景）
 /// - .answer(roundID) section：该轮全部回答卡片（整段挂背景卡片 decoration）
-/// 每轮两个 section 靠同一 UUID 关联，答的 section 背景即「这段回答」的整体视觉边界
 ///
 /// 两层更新机制（关键设计）：
-/// - 结构变化 → snapshot appendItems/apply，diff 自动算 insert（找人卡片中途插入、推荐问追加）
-/// - 内容变化（id 不变）→ reconfigureItems 定向刷新（思考文本增长、正文增长、折叠态切换），
-///   iOS 14 fallback 到 reloadItems
+/// - 结构变化 → snapshot appendItems/apply，diff 自动算 insert
+/// - 内容变化（id 不变）→ reconfigureItems 定向刷新（iOS 14 fallback 到 reloadItems）
 ///
-/// 职责拆分：UICollectionView 数据源/布局/diffable 更新/滚动代理在
-/// DoubaoChatViewController+CollectionDataSources.swift 分类里；
-/// 本文件只保留 UI 搭建、事件消费、会话持久化、输入交互。
+/// 本页保留的纯 UI 关注点：手势挂起、stickToBottom 滚动意图、键盘、输入交互。
+/// 数据源/布局/diffable 更新在 DoubaoChatViewController+CollectionDataSources.swift 分类里
 /// （存储属性无法放进 extension，留在主类并去 private 供分类访问）
 final class DoubaoChatViewController: UIViewController {
 
@@ -74,27 +75,17 @@ final class DoubaoChatViewController: UIViewController {
         return v
     }()
 
-    // MARK: - Data & Diffable
-    /// 有序数据源（snapshot 的唯一事实来源）：一轮问答 = 一个 round
-    var rounds: [DoubaoQARoundModel] = []
-    /// 当前流式中的轮次 id（事件到达时定位追加/更新的目标 round）
-    var currentRoundID: UUID?
-
-    // MARK: - 持久化（模块隔离：具体逻辑全在 Store/DoubaoChatStoreKeeper，VC 只做调用）
+    // MARK: - 流订阅（数据在流桶里，VC 不持有 rounds）
     /// 恢复的历史会话；nil = 新会话。反射入口无参构造走默认 nil
     var existingSession: DoubaoChatSessionModel?
-    /// 持久化代理（会话生命周期 + 落库节流）
-    private let store = DoubaoChatStoreKeeper()
+    /// 当前订阅的会话流上下文（attach 后数据/事件/落库全由它负责）
+    var stream: DoubaoChatSessionStream!
 
+    // MARK: - Diffable
     /// 注意：项目里 ThirdTabbar 的 DiffableDataSources pod 把
     /// UICollectionViewDiffableDataSource/NSDiffableDataSourceSnapshot 全局 typealias
     /// 指向了第三方实现（无 reconfigureItems），这里必须用 UIKit. 全限定名拿系统原生类
     var dataSource: UIKit.UICollectionViewDiffableDataSource<DoubaoChatSection, DoubaoChatItem>!
-
-    /// 当前流式中的思考块 / 正文 model id（事件到达时定位更新）
-    var thinkingModel: DoubaoThinkingModel?
-    var markdownModel: DoubaoMarkdownModel?
-    let engine = DoubaoMockStreamEngine()
 
     /// 用户是否停留在底部（流式滚动跟随判定）
     var stickToBottom = true
@@ -128,31 +119,42 @@ final class DoubaoChatViewController: UIViewController {
         collectionView.delegate = self
         textField.delegate = self
         sendButton.addTarget(self, action: #selector(didTapSend), for: .touchUpInside)
-        engine.onEvent = { [weak self] event in
-            self?.handleMockEvent(event)
-        }
         setupSession()
     }
 
-    // MARK: - 会话（对齐旧版 ChatViewController 模式）
-    /// 历史会话恢复——豆包式首帧定位（对齐 26Project 方案）：
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 重入抢占订阅权：同一会话先后打开两个页面（本页 → 历史列表 → 同一会话），
+        // 弹回本页时把订阅权抢回来，继续收增量通知。
+        // 同时补一次按钮状态：订阅被抢/页面离开期间流可能已结束（错过 onFinish 通知）
+        stream.subscriber = self
+        updateSendButtonState()
+    }
+
+    // MARK: - 会话订阅
+    /// attach 流桶 + 首帧定位——豆包式首帧定位（对齐 26Project 方案）：
     /// 进入时隐藏列表（页面底色 = 列表底色，隐藏期间视觉是纯背景），
     /// 「apply 完成 + 布局就绪」双条件满足后一次性滚底再显示——
     /// 用户看到的第一帧就是最后一轮，全程无「顶部→底部」可见跳变。
-    /// 旧 0.5s 延迟跳变的根源：apply 是异步 diff，首帧停在顶部渲染第一条，
-    /// 固定延迟后才跳底，中间过程肉眼可见
+    ///
+    /// 两条进入路径（对 VC 透明，拿到的都是「当前最全的 rounds」）：
+    /// - 历史会话：桶活跃（后台生成中）→ 内存 rounds 无缝续播；桶不在 → 从库重建终态
+    /// - 新会话：预生成 sessionID 建空桶（DB 行延迟到首次提问）
     private func setupSession() {
         if let existing = existingSession {
-            store.attach(existing)
+            stream = DoubaoChatStreamCenter.shared.stream(for: existing)
             collectionView.isHidden = true   // 定位完成前不显示（双底色相同，视觉纯背景）
-            rounds = DoubaoChatDAO.shared.rounds(sessionId: existing.id)
-            debugPrint("LBLog 恢复豆包会话 \(existing.id)，共 \(rounds.count) 轮")
+            debugPrint("LBLog 恢复豆包会话 \(existing.id)，共 \(stream.rounds.count) 轮，流式中: \(stream.isStreaming)")
             applySnapshot(reconfiguring: nil, forceScrollToBottom: false) { [weak self] in
                 // 条件一：数据源 apply 完成（numberOfSections 已就位，滚底不落空）
                 self?.dataSourceReadyOnEnter = true
                 self?.tryScrollToBottomOnEnter()
             }
+        } else {
+            stream = DoubaoChatStreamCenter.shared.createStream()
         }
+        stream.subscriber = self
+        updateSendButtonState()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "历史记录", style: .plain,
                                                             target: self, action: #selector(openHistory))
     }
@@ -190,7 +192,10 @@ final class DoubaoChatViewController: UIViewController {
     }
 
     deinit {
-        engine.stop()
+        // 只解绑不掐流：非流式中的桶由 center 随之销毁；流式中的保留后台续跑完
+        if let stream {
+            DoubaoChatStreamCenter.shared.detach(stream)
+        }
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -247,6 +252,12 @@ final class DoubaoChatViewController: UIViewController {
 
     // MARK: - Actions
     @objc private func didTapSend() {
+        // 流式中 = 停止生成（对齐豆包：发送按钮切换为停止按钮）；
+        // 按钮刷新由流桶的流态翻转通知驱动（stopStreaming 内 notifyStreamingState）
+        if stream.isStreaming {
+            stream.stopStreaming()
+            return
+        }
         guard let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else {
             return
         }
@@ -255,144 +266,21 @@ final class DoubaoChatViewController: UIViewController {
         sendQuestion(text)
     }
 
-    /// 发起一轮提问（豆包语义：先加载动画 → 服务端首字返回 → 动画消失、内容开始）：
-    /// 新建轮次 → 插入 loading 卡（2 秒）→ 移除 loading → 启动 mock 剧本。
-    /// 正在流式/加载中再提问：打断旧剧本、剥掉旧 loading（闭包的 roundID 校验兜底）
+    /// 发起一轮提问：打断旧流/建会话/loading/剧本/落库全在流桶里，
+    /// 离开页面期间照常执行
     func sendQuestion(_ text: String) {
-        engine.stop()
-        finalizeActiveStream()   // 上一轮还在流式中的卡定格
-        removeAllLoadingItems()  // 上一轮加载被打断：剥掉残留 loading 卡
-        store.ensureSession(firstQuestion: text)   // 惰性建会话（历史会话继续聊不新建）
-        let round = DoubaoQARoundModel(userModel: DoubaoUserModel(text: text))
-        rounds.append(round)
-        currentRoundID = round.id
-        store.persist(round: round)   // 用户消息即终态，立即落库（此时 answerItems 尚无 loading）
-        appendAnswerItem(.loading(DoubaoLoadingModel()))
-        // 模拟服务端「首字延迟」：loading 展示 2 秒后移除并开始流式输出
-        let roundID = round.id
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-            guard let self, self.currentRoundID == roundID else { return }  // 已被新一轮提问打断
-            self.removeLoadingItem(roundID: roundID)
-            self.engine.start(script: DoubaoMockStreamEngine.script(for: text))
-        }
+        stream.ask(text)
     }
 
-    /// 移除指定轮的 loading 卡（结构性删除：snapshot 重建，diff 自动算 delete）
-    private func removeLoadingItem(roundID: UUID) {
-        guard let index = rounds.firstIndex(where: { $0.id == roundID }) else { return }
-        let filtered = rounds[index].answerItems.filter {
-            if case .loading = $0 { return false }
-            return true
-        }
-        guard filtered.count != rounds[index].answerItems.count else { return }
-        rounds[index].answerItems = filtered
-        applySnapshot(reconfiguring: nil, forceScrollToBottom: stickToBottom)
-    }
-
-    /// 剥掉所有轮次残留的 loading 卡（新一轮提问打断上一轮加载时清理）
-    private func removeAllLoadingItems() {
-        var changed = false
-        for r in rounds.indices {
-            let filtered = rounds[r].answerItems.filter {
-                if case .loading = $0 { changed = true; return false }
-                return true
-            }
-            rounds[r].answerItems = filtered
-        }
-        if changed {
-            applySnapshot(reconfiguring: nil, forceScrollToBottom: false)
-        }
-    }
-
-    // MARK: - Mock 事件消费（SSE 模拟层 → Diffable 数据层）
-    /// 状态机语义：按事件流的「类型边界」分组——不同类型事件一出现，
-    /// 前面的流式卡/思考卡立即定格结束，新内容新开一张卡（绝不拼回旧卡）。
-    /// 支持「正文 → 卡片 → 新正文 → 思考 → …」任意穿插的剧本
-    private func handleMockEvent(_ event: DoubaoMockEvent) {
-        switch event {
-        case .thinkingStart:
-            finalizeActiveStream()
-            let model = DoubaoThinkingModel()
-            thinkingModel = model
-            appendAnswerItem(.thinking(model))
-
-        case .thinkingText(let chunk):
-            // 当前无活跃思考卡（被其他类型卡片打断/剧本直接发文本）→ 新开一张
-            if thinkingModel == nil {
-                finalizeActiveStream()
-                let model = DoubaoThinkingModel()
-                thinkingModel = model
-                appendAnswerItem(.thinking(model))
-            }
-            thinkingModel?.text += chunk
-            if let model = thinkingModel {
-                updateItem(.thinking(model))
-            }
-            persistCurrentRound(throttled: true)
-
-        case .thinkingEnd(let seconds):
-            // 只结束「当前活跃」的思考卡；无活跃卡（事件乱序/已被打断）忽略
-            guard var model = thinkingModel else { return }
-            model.isStreaming = false
-            model.isExpanded = false
-            model.elapsedSeconds = seconds
-            thinkingModel = nil
-            updateItem(.thinking(model))
-
-        case .answerStart:
-            finalizeActiveStream()
-            let model = DoubaoMarkdownModel()
-            markdownModel = model
-            appendAnswerItem(.markdown(model))
-
-        case .answerText(let chunk):
-            // 当前无活跃正文卡（被找人卡片等打断后正文继续）→ 新开一张，不拼回旧卡
-            if markdownModel == nil {
-                finalizeActiveStream()
-                let model = DoubaoMarkdownModel()
-                markdownModel = model
-                appendAnswerItem(.markdown(model))
-            }
-            markdownModel?.text += chunk
-            if let model = markdownModel {
-                updateItem(.markdown(model))
-            }
-            persistCurrentRound(throttled: true)
-
-        case .contactCard(let name, let title, let intro, let tags):
-            // 结构性插入：先定格前面流式中的卡，再插卡片（Diffable 主场：diff 自动 insert）
-            finalizeActiveStream()
-            let model = DoubaoContactModel(name: name, title: title, intro: intro, tags: tags)
-            appendAnswerItem(.contact(model))
-
-        case .recommend(let questions):
-            finalizeActiveStream()
-            let model = DoubaoRecommendModel(questions: questions)
-            appendAnswerItem(.recommend(model))
-
-        case .unsupportedCard(let rawType, let rawPayload):
-            // 前向兼容兜底：服务端新卡片类型，本版本无对应 case——
-            // 原样存（落库/同步不丢数据），渲染占位「暂不支持」
-            finalizeActiveStream()
-            let model = DoubaoUnsupportedModel(rawType: rawType, rawPayload: rawPayload)
-            appendAnswerItem(.unsupported(model))
-
-        case .roundFinished:
-            // 本轮流式结束（对应真实 SSE done）：定格 + 追加操作栏（播报/复制/赞踩）
-            finalizeActiveStream()
-            appendAnswerItem(.actions(DoubaoActionsModel()))
-
-        case .idle:
-            // 空拍：纯消耗节拍（制造「上一块输出完 → 停顿 → 下一卡片出现」的节奏），无动作
-            break
-        }
-
-        // 结构事件（卡片插入/思考结束/终态）立即落库——文本事件已各自节流，这里补结构变化
-        switch event {
-        case .thinkingStart, .thinkingEnd, .answerStart, .contactCard, .recommend, .unsupportedCard, .roundFinished:
-            persistCurrentRound(throttled: false)
-        default:
-            break
+    /// 发送/停止切换（流式中显示停止，对应豆包「停止生成」；
+    /// 状态变化时机：attach 后 + 每次流通知回调）
+    private func updateSendButtonState() {
+        if stream.isStreaming {
+            sendButton.setTitle("停止", for: .normal)
+            sendButton.setTitleColor(.systemRed, for: .normal)
+        } else {
+            sendButton.setTitle("发送", for: .normal)
+            sendButton.setTitleColor(.systemBlue, for: .normal)
         }
     }
 
@@ -400,15 +288,9 @@ final class DoubaoChatViewController: UIViewController {
     /// 系统 TTS 播报器（再次点击播报 = 停止）
     private lazy var synthesizer = AVSpeechSynthesizer()
 
-    /// 当前操作栏所属轮次（roundFinished 后即当前轮；历史恢复时为最后一轮）
-    private var actionsRoundID: UUID? {
-        rounds.last?.id
-    }
-
-    /// 操作栏目标轮的全部正文文本（多个 markdown 块按段落拼接）
+    /// 操作栏目标轮的全部正文文本（多个 markdown 块按段落拼接）——纯读操作，直接读流桶
     private func currentRoundPlainText() -> String? {
-        guard let roundID = actionsRoundID,
-              let round = rounds.last(where: { $0.id == roundID }) else { return nil }
+        guard let round = stream.rounds.last else { return nil }
         var texts: [String] = []
         for item in round.answerItems {
             if case .markdown(let m) = item, !m.text.isEmpty {
@@ -418,7 +300,7 @@ final class DoubaoChatViewController: UIViewController {
         return texts.isEmpty ? nil : texts.joined(separator: "\n\n")
     }
 
-    /// 以下三个 action 非 private：+CollectionDataSources 分类里操作栏 registration 回调要调
+    /// 以下两个 action 非 private：+CollectionDataSources 分类里操作栏 registration 回调要调
     func speechCurrentRound() {
         guard let text = currentRoundPlainText() else { return }
         if synthesizer.isSpeaking {
@@ -434,54 +316,6 @@ final class DoubaoChatViewController: UIViewController {
         guard let text = currentRoundPlainText() else { return }
         UIPasteboard.general.string = text
         debugPrint("LBLog 已复制本轮回答（\(text.count) 字）")
-    }
-
-    /// 点赞/点踩互斥切换：改 model → reconfigure 该 item（增量刷新，状态随整轮 JSON 落库）
-    func toggleFeedback(like: Bool) {
-        guard let roundID = actionsRoundID,
-              let r = rounds.firstIndex(where: { $0.id == roundID }),
-              let i = rounds[r].answerItems.firstIndex(where: {
-                  if case .actions = $0 { return true }
-                  return false
-              }),
-              case .actions(var model) = rounds[r].answerItems[i] else { return }
-        if like {
-            model.isLiked.toggle()
-            if model.isLiked { model.isDisliked = false }
-        } else {
-            model.isDisliked.toggle()
-            if model.isDisliked { model.isLiked = false }
-        }
-        rounds[r].answerItems[i] = .actions(model)
-        applySnapshot(reconfiguring: [.actions(model)], forceScrollToBottom: false)
-        store.persist(round: rounds[r])   // 状态变化立即落库
-    }
-
-    /// 落库当前轮（StoreKeeper 代理：节流/立即两档；rounds 里的数据始终是最新）
-    private func persistCurrentRound(throttled: Bool) {
-        guard let roundID = currentRoundID,
-              let round = rounds.first(where: { $0.id == roundID }) else { return }
-        if throttled {
-            store.persistThrottled(round: round)
-        } else {
-            store.persist(round: round)
-        }
-    }
-
-    /// 定格当前流式中的卡（不同类型事件到达时调用）：
-    /// 正文去光标；思考卡若无 end 事件被硬打断，也转为结束态（保持当前展开状态）
-    private func finalizeActiveStream() {
-        if var model = markdownModel {
-            model.isStreaming = false
-            markdownModel = nil
-            updateItem(.markdown(model))
-        }
-        if var model = thinkingModel {
-            model.isStreaming = false
-            model.elapsedSeconds = max(model.elapsedSeconds, 1)
-            thinkingModel = nil
-            updateItem(.thinking(model))
-        }
     }
 
     // MARK: - Keyboard
@@ -503,6 +337,24 @@ final class DoubaoChatViewController: UIViewController {
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+// MARK: - DoubaoChatStreamDelegate（流通知 → diffable 两层更新）
+extension DoubaoChatViewController: DoubaoChatStreamDelegate {
+    /// 流桶数据变化 → 翻译成 applySnapshot：
+    /// - reconfiguring 为空 = 结构变化（重建 snapshot，diff 自动算增删）
+    /// - 非空 = 内容变化（带最新值 reconfigure 定向刷新）
+    /// - followsScrollIntent 决定是否按 stickToBottom 意图跟到底（原地变化不许拽人）
+    func chatStreamDidUpdate(reconfiguring: [DoubaoChatItem], followsScrollIntent: Bool) {
+        applySnapshot(reconfiguring: reconfiguring.isEmpty ? nil : reconfiguring,
+                      forceScrollToBottom: followsScrollIntent ? stickToBottom : false)
+    }
+
+    /// 流式态翻转（ask 开始 / 剧本跑完 / 手动停止）——只在这三个低频点刷新按钮，
+    /// 数据每拍高频通知不再掺和按钮状态
+    func chatStreamStreamingStateDidChange() {
+        updateSendButtonState()
     }
 }
 

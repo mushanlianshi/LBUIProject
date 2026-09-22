@@ -546,6 +546,7 @@
 		40E3A84E304E50DC004D71CF /* DoubaoQARoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */; };
 		40E3A851304E50DC004D71CF /* DoubaoChatDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A850304E50DC004D71CF /* DoubaoChatDAO.swift */; };
 		40E3A853304E50DC004D71CF /* DoubaoChatStoreKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A852304E50DC004D71CF /* DoubaoChatStoreKeeper.swift */; };
+		40E3A881304E50DC004D71CF /* DoubaoChatStreamCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A880304E50DC004D71CF /* DoubaoChatStreamCenter.swift */; };
 		40E3A855304E50DC004D71CF /* DoubaoChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A854304E50DC004D71CF /* DoubaoChatSessionListViewController.swift */; };
 		40E3A857304E50DC004D71CF /* DoubaoUnsupportedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A856304E50DC004D71CF /* DoubaoUnsupportedModel.swift */; };
 		40E3A859304E50DC004D71CF /* DoubaoUnsupportedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A858304E50DC004D71CF /* DoubaoUnsupportedCell.swift */; };
@@ -1308,6 +1309,7 @@
 		40E3A84D304E50DC004D71CF /* DoubaoQARoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoQARoundModel.swift; sourceTree = "<group>"; };
 		40E3A850304E50DC004D71CF /* DoubaoChatDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatDAO.swift; sourceTree = "<group>"; };
 		40E3A852304E50DC004D71CF /* DoubaoChatStoreKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatStoreKeeper.swift; sourceTree = "<group>"; };
+		40E3A880304E50DC004D71CF /* DoubaoChatStreamCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatStreamCenter.swift; sourceTree = "<group>"; };
 		40E3A854304E50DC004D71CF /* DoubaoChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoChatSessionListViewController.swift; sourceTree = "<group>"; };
 		40E3A856304E50DC004D71CF /* DoubaoUnsupportedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoUnsupportedModel.swift; sourceTree = "<group>"; };
 		40E3A858304E50DC004D71CF /* DoubaoUnsupportedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoUnsupportedCell.swift; sourceTree = "<group>"; };
@@ -3927,6 +3929,7 @@
 			children = (
 				40E3A850304E50DC004D71CF /* DoubaoChatDAO.swift */,
 				40E3A852304E50DC004D71CF /* DoubaoChatStoreKeeper.swift */,
+				40E3A880304E50DC004D71CF /* DoubaoChatStreamCenter.swift */,
 				40E3A854304E50DC004D71CF /* DoubaoChatSessionListViewController.swift */,
 			);
 			path = Store;
@@ -5117,6 +5120,7 @@
 				40E3A84E304E50DC004D71CF /* DoubaoQARoundModel.swift in Sources */,
 				40E3A851304E50DC004D71CF /* DoubaoChatDAO.swift in Sources */,
 				40E3A853304E50DC004D71CF /* DoubaoChatStoreKeeper.swift in Sources */,
+				40E3A881304E50DC004D71CF /* DoubaoChatStreamCenter.swift in Sources */,
 				40E3A855304E50DC004D71CF /* DoubaoChatSessionListViewController.swift in Sources */,
 				40E3A857304E50DC004D71CF /* DoubaoUnsupportedModel.swift in Sources */,
 				40E3A859304E50DC004D71CF /* DoubaoUnsupportedCell.swift in Sources */,
